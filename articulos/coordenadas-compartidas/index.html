@@ -157,7 +157,7 @@
           <div class="card w3 y">
             <span class="c-label">Datum</span>
             <span class="c-title">Elipsoide anclado a la Tierra real</span>
-            <span class="c-foot">ejemplo: ETRS89</span>
+            <span class="c-foot">ejemplo: <span data-pais="datum">ETRS89</span></span>
           </div>
         </div>
       </div>
@@ -453,7 +453,7 @@
           </div>
           <div class="card w3">
             <span class="c-label">Un punto UTM en España</span>
-            <span class="c-text mono" style="font-size:14px">X ≈ 400 000 m<br>Y ≈ 4 400 000 m</span>
+            <span class="c-text mono" style="font-size:14px">E ≈ <span data-pais="e-aprox">400 000</span><br>N ≈ <span data-pais="n-aprox">4 400 000</span></span>
           </div>
           <div class="card w3 y">
             <span class="c-label">Síntomas</span>
@@ -479,7 +479,7 @@
             <span class="c-label">Precisión simple: unas 7 cifras útiles</span>
             <svg class="draw" viewBox="0 0 640 210" role="img" aria-label="Con una coordenada UTM las siete cifras se gastan en la parte entera; con una coordenada local sobran cifras para los decimales">
               <g font-family="JetBrains Mono, monospace" font-size="22" font-weight="700" text-anchor="middle">
-                <text x="14" y="26" font-size="11" text-anchor="start" font-weight="400" fill="#666">UTM · Y = 4 474 310,800 m</text>
+                <text x="14" y="26" font-size="11" text-anchor="start" font-weight="400" fill="#666"><tspan data-pais="epsg-nombre">huso 30</tspan> · N = <tspan data-pais="n">4 474 310,800</tspan></text>
                 <g stroke="#000" stroke-width="2"><rect x="14" y="38" width="40" height="48" fill="#000"/><rect x="58" y="38" width="40" height="48" fill="#000"/><rect x="102" y="38" width="40" height="48" fill="#000"/><rect x="146" y="38" width="40" height="48" fill="#000"/><rect x="190" y="38" width="40" height="48" fill="#000"/><rect x="234" y="38" width="40" height="48" fill="#000"/><rect x="278" y="38" width="40" height="48" fill="#000"/></g>
                 <g fill="#fff"><text x="34" y="70">4</text><text x="78" y="70">4</text><text x="122" y="70">7</text><text x="166" y="70">4</text><text x="210" y="70">3</text><text x="254" y="70">1</text><text x="298" y="70">1</text></g>
                 <text x="332" y="72">,</text>
@@ -591,11 +591,11 @@
         <div class="b-cards">
           <div class="card w6 g">
             <span class="c-label">Una coordenada, dos partes</span>
-            <svg class="draw" viewBox="0 0 640 170" role="img" aria-label="4 474 310,800 se descompone en 4 474 000 guardado una vez más 310,800 en cada vértice">
+            <svg class="draw" viewBox="0 0 640 170" role="img" aria-label="Una coordenada grande se descompone en un desplazamiento redondo guardado una vez más la parte pequeña en cada vértice">
               <g font-family="Inter, sans-serif" font-weight="900">
-                <text x="14" y="52" font-size="40" letter-spacing="-1">4 474 310,800</text>
+                <text x="14" y="52" font-size="40" letter-spacing="-1"><tspan data-pais="n">4 474 310,800</tspan></text>
                 <text x="328" y="52" font-size="40">=</text>
-                <rect x="364" y="14" width="186" height="52" rx="6" fill="#000"/><text x="378" y="52" font-size="34" fill="#fff">4 474 000</text>
+                <rect x="364" y="14" width="186" height="52" rx="6" fill="#000"/><text x="378" y="52" font-size="34" fill="#fff"><tspan data-pais="n-big">4 474 000</tspan></text>
                 <text x="560" y="52" font-size="40">+</text>
               </g>
               <rect x="364" y="94" width="150" height="52" rx="6" fill="#FFFF00" stroke="#000" stroke-width="2.5"/>
@@ -753,11 +753,11 @@
           </div>
           <div class="card w3">
             <span class="c-label">Esquema</span>
-            <svg class="draw" viewBox="0 0 280 230" role="img" aria-label="Contexto geométrico, IfcMapConversion e IfcProjectedCRS con EPSG 25830">
+            <svg class="draw" viewBox="0 0 280 230" role="img" aria-label="Contexto geométrico, IfcMapConversion e IfcProjectedCRS con el código EPSG del proyecto">
               <g font-family="JetBrains Mono, monospace" font-size="12">
                 <rect x="10" y="6" width="260" height="44" rx="4" fill="#fff" stroke="#000" stroke-width="2"/><text x="22" y="33">Contexto del modelo</text>
                 <rect x="10" y="88" width="260" height="44" rx="4" fill="#FFFF00" stroke="#000" stroke-width="2.5"/><text x="22" y="115" font-weight="700">IfcMapConversion</text>
-                <rect x="10" y="170" width="260" height="54" rx="4" fill="#000"/><text x="22" y="194" fill="#fff" font-weight="700">IfcProjectedCRS</text><text x="22" y="213" fill="#FFFF00">EPSG:25830</text>
+                <rect x="10" y="170" width="260" height="54" rx="4" fill="#000"/><text x="22" y="194" fill="#fff" font-weight="700">IfcProjectedCRS</text><text x="22" y="213" fill="#FFFF00">EPSG:<tspan data-pais="epsg">25830</tspan></text>
               </g>
               <g stroke="#000" stroke-width="2"><line x1="140" y1="50" x2="140" y2="84"/><line x1="140" y1="132" x2="140" y2="166"/></g>
               <g font-family="JetBrains Mono, monospace" font-size="10" fill="#666"><text x="150" y="72">E · N · H · giro</text><text x="150" y="154">sistema destino</text></g>
@@ -1101,7 +1101,7 @@
           <div class="card w6 g">
             <span class="c-label">Shared Reference Point</span>
             <svg class="draw" viewBox="0 0 640 170" role="img" aria-label="Civil 3D exporta los puntos A y B en un XML que Revit importa en el mismo orden">
-              <rect x="4" y="30" width="190" height="120" rx="6" fill="#000"/><text x="18" y="56" font-family="Inter, sans-serif" font-weight="900" font-size="14" fill="#fff">CIVIL 3D</text><text x="18" y="76" font-family="JetBrains Mono, monospace" font-size="11" fill="#D5D5CB">EPSG 25830</text>
+              <rect x="4" y="30" width="190" height="120" rx="6" fill="#000"/><text x="18" y="56" font-family="Inter, sans-serif" font-weight="900" font-size="14" fill="#fff">CIVIL 3D</text><text x="18" y="76" font-family="JetBrains Mono, monospace" font-size="11" fill="#D5D5CB">EPSG <tspan data-pais="epsg">25830</tspan></text>
               <circle cx="60" cy="118" r="9" fill="#FFFF00"/><text x="56" y="122" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700">A</text><circle cx="140" cy="108" r="9" fill="#FFFF00"/><text x="136" y="112" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700">B</text>
               <path d="M200 90 H262" stroke="#000" stroke-width="2"/><polygon points="268,90 258,85 258,95" fill="#000"/>
               <rect x="272" y="52" width="96" height="76" rx="4" fill="#FFFF00" stroke="#000" stroke-width="2"/><text x="296" y="84" font-family="JetBrains Mono, monospace" font-size="15" font-weight="700">XML</text><text x="288" y="108" font-family="JetBrains Mono, monospace" font-size="11">A · B</text>
@@ -1194,7 +1194,7 @@
           </div>
           <div class="card w3 k">
             <span class="c-label">04 · En qué sistema</span>
-            <b class="c-num" style="color:var(--accent)">25830</b>
+            <b class="c-num" style="color:var(--accent)"><span data-pais="epsg">25830</span></b>
             <span class="c-foot">un código EPSG, no un nombre</span>
           </div>
         </div>
@@ -1255,7 +1255,7 @@
           </div>
           <div class="card w3">
             <span class="c-label">Sí puede</span>
-            <span class="c-title">Exigir EPSG:25830</span>
+            <span class="c-title">Exigir EPSG:<span data-pais="epsg">25830</span></span>
             <span class="c-foot">y que exista la conversión</span>
           </div>
           <div class="card w3 k">
@@ -1370,7 +1370,7 @@
           </div>
           <div class="card w6 g">
             <span class="c-label">Una regla de georreferenciación</span>
-            <div class="flow"><span class="chip">Proyecto</span><span class="arrow">→</span><span class="chip y">Name = EPSG:25830</span><span class="arrow">→</span><span class="chip k">Pasa o falla</span></div>
+            <div class="flow"><span class="chip">Proyecto</span><span class="arrow">→</span><span class="chip y">Name = EPSG:<span data-pais="epsg">25830</span></span><span class="arrow">→</span><span class="chip k">Pasa o falla</span></div>
           </div>
         </div>
       </div>
@@ -1637,7 +1637,7 @@
 </div>
 <div class="card w3">
 <h4>Cuánto es una coordenada UTM</h4>
-<p>En España ronda los 400 000 m en X y los 4 400 000 m en Y: cientos de veces más lejos de lo que el motor tolera.</p>
+<p>En <span data-pais="nombre">España</span>, con <span data-pais="epsg-nombre">huso 30</span>, ronda los <span data-pais="e-aprox">400 000</span> en E y los <span data-pais="n-aprox">4 400 000</span> en N: cientos de veces más lejos de lo que el motor tolera.</p>
 </div>
 <div class="card w6 y">
 <span class="c-label">¿Cuántos kilómetros exactamente?</span><p>Depende del programa, y pocos fabricantes lo publican. Los radios conocidos están en el bloque de software.</p>
@@ -1684,7 +1684,7 @@
             <tr><td>float32</td><td class="num">4</td><td>≈ 7</td><td>Y redondeada a medio metro</td></tr>
             <tr><td>float64</td><td class="num">8</td><td>≈ 15–16</td><td>Sin pérdida práctica</td></tr>
             <tr class="is-key"><td>int32 + escala + desplazamiento</td><td class="num">4</td><td>fijas</td><td>Milímetro con escala 0,001</td></tr>
-            <tr><td>Texto (IFC en STEP)</td><td class="num">1 por carácter</td><td>las escritas</td><td><code>4474310.800</code> = 11 bytes; <code>310.800</code> = 7</td></tr>
+            <tr><td>Texto (IFC en STEP)</td><td class="num">1 por carácter</td><td>las escritas</td><td><code><span data-pais="n-raw">4474310.800</span></code> = <span data-pais="n-bytes">11</span> bytes; <code>310.800</code> = 7</td></tr>
           </tbody>
         </table></div>
       </div>
@@ -1712,7 +1712,7 @@
       <div class="card w3">
         <h4>Cómo elegir el desplazamiento</h4>
         <ol class="vsteps">
-          <li>Un número redondo cerca de la obra (por ejemplo, 440 000 · 4 474 000).</li>
+          <li>Un número redondo cerca de la obra (por ejemplo, <span data-pais="e-big">440 000</span> · <span data-pais="n-big">4 474 000</span>).</li>
           <li>Pactado en el BEP y el mismo para todas las disciplinas.</li>
           <li>Anotado con su EPSG, para poder deshacerlo.</li>
         </ol>
@@ -1969,10 +1969,10 @@
       <svg viewBox="0 0 760 300" role="img" aria-label="El modelo se dibuja junto a su origen; el punto georreferenciado lleva las coordenadas UTM y la rotación.">
         <rect x="0" y="0" width="760" height="300" fill="#F7F7F4"/>
         <g stroke="#E3E3DB" stroke-width="1"><line x1="0" y1="60" x2="760" y2="60"/><line x1="0" y1="120" x2="760" y2="120"/><line x1="0" y1="180" x2="760" y2="180"/><line x1="0" y1="240" x2="760" y2="240"/><line x1="152" y1="0" x2="152" y2="300"/><line x1="304" y1="0" x2="304" y2="300"/><line x1="456" y1="0" x2="456" y2="300"/><line x1="608" y1="0" x2="608" y2="300"/></g>
-        <text x="16" y="24" font-family="JetBrains Mono, monospace" font-size="11" fill="#666">MUNDO REAL · ETRS89 / UTM 30N (EPSG:25830)</text>
+        <text x="16" y="24" font-family="JetBrains Mono, monospace" font-size="11" fill="#666">MUNDO REAL · <tspan data-pais="crs-nombre">ETRS89 / UTM zone 30N</tspan> (EPSG:<tspan data-pais="epsg">25830</tspan>)</text>
         <g transform="translate(40,275)"><line x1="0" y1="0" x2="34" y2="0" stroke="#8F8F87" stroke-width="2"/><line x1="0" y1="0" x2="0" y2="-34" stroke="#8F8F87" stroke-width="2"/><text x="8" y="-12" font-family="JetBrains Mono, monospace" font-size="10" fill="#8F8F87">0,0 UTM (a cientos de km)</text></g>
         <line x1="44" y1="271" x2="455" y2="160" stroke="#8F8F87" stroke-width="1.5" stroke-dasharray="5 5"/>
-        <text x="150" y="228" font-family="JetBrains Mono, monospace" font-size="11" fill="#3D3D3D" transform="rotate(-15 150 228)">E 440 125,250 · N 4 474 310,800</text>
+        <text x="150" y="228" font-family="JetBrains Mono, monospace" font-size="11" fill="#3D3D3D" transform="rotate(-15 150 228)">E <tspan data-pais="e">440 125,250</tspan> · N <tspan data-pais="n">4 474 310,800</tspan></text>
         <g transform="translate(470,160) rotate(-14)">
           <rect x="-10" y="-110" width="210" height="120" fill="#fff" stroke="#000" stroke-width="2.5"/>
           <rect x="20" y="-85" width="70" height="70" fill="#EFEFEA" stroke="#000"/><rect x="100" y="-85" width="80" height="45" fill="#EFEFEA" stroke="#000"/>
@@ -2255,9 +2255,9 @@
 </div>
 <div class="card w6">
 <h4>Ejemplo para España (IFC4)</h4>
-<pre><code>#20=IFCPROJECTEDCRS('<span class="y">EPSG:25830</span>','ETRS89 / UTM zone 30N','EPSG:6258','EPSG:5180','UTM','30N',#10);
-#21=IFCMAPCONVERSION(#11,#20,<span class="y">440125.250,4474310.800,655.320</span>,0.9993908,0.0348995,1.);</code></pre>
-<p><code>GeodeticDatum</code> y <code>VerticalDatum</code> llevan códigos de datum: 6258 (ETRS89) y 5180 (Alicante), no el 5782 del sistema vertical (<a href="https://standards.buildingsmart.org/IFC/RELEASE/IFC4_3/HTML/lexical/IfcProjectedCRS.htm" target="_blank" rel="noopener">IFC4.3</a>).</p>
+<pre><code>#20=IFCPROJECTEDCRS('<span class="y">EPSG:<span data-pais="epsg">25830</span></span>','<span data-pais="crs-nombre">ETRS89 / UTM zone 30N</span>','EPSG:<span data-pais="datum-code">6258</span>','EPSG:<span data-pais="vdatum-code">5180</span>','<span data-pais="metodo">Transverse Mercator</span>',<span data-pais="zona-ifc">'30N'</span>,#10);
+#21=IFCMAPCONVERSION(#11,#20,<span class="y"><span data-pais="e-raw">440125.250</span>,<span data-pais="n-raw">4474310.800</span>,655.320</span>,0.9993908,0.0348995,1.);</code></pre>
+<p><code>GeodeticDatum</code> y <code>VerticalDatum</code> llevan códigos de datum: <span data-pais="datum-code">6258</span> (<span data-pais="datum">ETRS89</span>) y <span data-pais="vdatum-code">5180</span> (<span data-pais="alt">Alicante</span>), no el <span data-pais="alt-epsg">5782</span> del sistema vertical (<a href="https://standards.buildingsmart.org/IFC/RELEASE/IFC4_3/HTML/lexical/IfcProjectedCRS.htm" target="_blank" rel="noopener">IFC4.3</a>).</p>
 </div>
 <div class="card w3">
 <h4>IFC2x3 y referencias</h4>
@@ -2384,7 +2384,7 @@
             <tr><td>Dónde</td><td><code>IfcMapConversion</code> · <code>Eastings</code>, <code>Northings</code></td><td>Coordenadas UTM del origen local</td></tr>
             <tr><td>Hacia dónde</td><td><code>XAxisAbscissa</code>, <code>XAxisOrdinate</code></td><td>Coseno y seno del giro respecto a la cuadrícula</td></tr>
             <tr><td>A qué cota</td><td><code>OrthogonalHeight</code></td><td>Altitud del ±0,00 sobre REDNAP</td></tr>
-            <tr class="is-key"><td>En qué sistema</td><td><code>IfcProjectedCRS</code> · <code>Name</code></td><td><code>EPSG:25830</code> (o el huso que toque)</td></tr>
+            <tr class="is-key"><td>En qué sistema</td><td><code>IfcProjectedCRS</code> · <code>Name</code></td><td><code>EPSG:<span data-pais="epsg">25830</span></code> (o el huso que toque)</td></tr>
             <tr><td>Unidades</td><td><code>Scale</code></td><td>1 en metros; 0,001 si el modelo va en milímetros</td></tr>
           </tbody>
         </table></div>
@@ -2453,7 +2453,7 @@
   &lt;requirements&gt;
     &lt;attribute&gt;
       &lt;name&gt;&lt;simpleValue&gt;Name&lt;/simpleValue&gt;&lt;/name&gt;
-      &lt;value&gt;&lt;simpleValue&gt;EPSG:25830&lt;/simpleValue&gt;&lt;/value&gt;
+      &lt;value&gt;&lt;simpleValue&gt;EPSG:<span data-pais="epsg">25830</span>&lt;/simpleValue&gt;&lt;/value&gt;
     &lt;/attribute&gt;
   &lt;/requirements&gt;
 &lt;/specification&gt;
@@ -2503,7 +2503,7 @@ from ifcopenshell.util.geolocation import auto_xyz2enh
 
 modelo = ifcopenshell.open("modelo.ifc")
 e, n, h = auto_xyz2enh(modelo, 10.0, 20.0, 0.0)   # testigo, en local
-topo = (440010.000, 4474020.000, 650.000)          # lista del topógrafo
+topo = (<span data-pais="topo-e">440010.000</span>, <span data-pais="topo-n">4474020.000</span>, 650.000)          # lista del topógrafo
 error = max(abs(a - b) for a, b in zip((e, n, h), topo))
 print("OK" if error &lt; 0.01 else f"Desvío de {error:.3f} m")</code></pre>
         <p class="table-note">Probado con IfcOpenShell 0.9.0. La función aplica la <code>IfcMapConversion</code> del fichero (o <code>ePSet_MapConversion</code> en IFC2x3).</p>
@@ -2613,7 +2613,7 @@ print("OK" if error &lt; 0.01 else f"Desvío de {error:.3f} m")</code></pre>
 <div class="b-cards"><div class="card w6">
 <dl class="glossary">
       <dt>CRS</dt><dd>Sistema de referencia de coordenadas: datum, proyección y unidades.</dd>
-      <dt>Datum</dt><dd>Modelo de la Tierra al que se refieren las coordenadas. En España, ETRS89.</dd>
+      <dt>Datum</dt><dd>Modelo de la Tierra al que se refieren las coordenadas. En <span data-pais="nombre">España</span>, <span data-pais="datum">ETRS89</span>.</dd>
       <dt>EPSG</dt><dd>Registro con un código numérico para cada sistema de referencia.</dd>
       <dt>UTM</dt><dd>Proyección Universal Transversa de Mercator, en husos de 6°.</dd>
       <dt>Altura ortométrica</dt><dd>Altitud sobre el nivel medio del mar. La de los planos.</dd>

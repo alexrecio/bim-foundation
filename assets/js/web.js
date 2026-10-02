@@ -250,10 +250,12 @@
     est: '<circle cx="80" cy="62" r="34" fill="none" stroke="#000" stroke-width="3"/><path d="M30 28 H130" stroke="#000" stroke-width="2"/><rect x="50" y="20" width="60" height="10" fill="#FFFF00" stroke="#000" stroke-width="2.5"/><circle cx="80" cy="28" r="4" fill="#000"/>',
     zonas: '<g stroke="#000" stroke-width="2.5" fill="#fff"><rect x="14" y="16" width="44" height="30"/><rect x="58" y="16" width="38" height="30"/><rect x="96" y="16" width="50" height="30"/><rect x="14" y="46" width="60" height="38"/><rect x="74" y="46" width="34" height="38" fill="#FFFF00"/><rect x="108" y="46" width="38" height="38"/></g>'
   };
-  // País del lector: se recuerda entre artículos (localStorage) y, la primera vez, se deduce del idioma del navegador
+  // País y sistema del lector: se eligen al entrar (ventana de bienvenida), se recuerdan entre artículos (localStorage)
+  // y todos los ejemplos <span data-pais="campo"> se recalculan en ese sistema
   const P = window.BF_PAISES || [];
   const REG = [['EU', 'Europa'], ['AM', 'América'], ['AP', 'Asia y Oceanía'], ['MA', 'Oriente Medio y África']];
   const byId = (id) => P.find((x) => x.id === id);
+  const ls = (k, v) => { try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch (e) { /* sin almacenamiento */ } return null; };
   const paisGuess = () => {
     for (const l of navigator.languages || [navigator.language || '']) {
       const r = (l.split('-')[1] || '').toUpperCase();
@@ -261,31 +263,55 @@
     }
     return 'ES';
   };
-  let paisId = (() => { try { const v = localStorage.getItem('bf-pais'); if (byId(v)) return v; } catch (e) { /* sin almacenamiento */ } return paisGuess(); })();
+  let paisId = byId(ls('bf-pais')) ? ls('bf-pais') : paisGuess();
+  const sysOf = (p, c) => (p.epsg.find(([k]) => k === +c) ? +c : p.key);
+  let sysId = sysOf(byId(paisId) || P[0] || { epsg: [], key: 0 }, ls('bf-epsg'));
   const pc = () => '<span class="tag">Por confirmar</span>';
-  const keyOf = (p) => (p.epsg.find(([c]) => c === p.key) || p.epsg[0]);
-  // <span data-pais="campo"> muestra el dato del país del lector en cualquier texto
+  const cur = () => byId(paisId);
+  const sysRow = (p, c) => (p.epsg.find(([k]) => k === c) || p.epsg[0]);
+  const sis = (p) => (p.sis || {})[sysId] || ['', null, 'm', '', '', 0, 0];
+  // Números de ejemplo: el punto de la capital (o de la zona) con la misma parte local que usa el artículo (125,250 · 310,800)
+  const fmt = (v, d = 3) => { const [n, x] = Math.abs(v).toFixed(d).split('.'); return (v < 0 ? '−' : '') + n.replace(/\B(?=(\d{3})+$)/g, ' ') + (d ? ',' + x : ''); };
+  const big = (v) => Math.floor(v / 1000) * 1000;
+  const ej = (p) => { const s2 = sis(p); return [big(s2[5]) + 125.25, big(s2[6]) + 310.8]; };
+  const aprox = (v) => { const m = Math.abs(v) >= 100000 ? 100000 : 10000; return Math.floor(v / m) * m; };
   const CAMPOS = {
-    nombre: (p) => p.nombre, datum: (p) => p.datum, 'datum-epsg': (p) => p.datumEpsg, proy: (p) => p.proy,
-    epsg: (p) => keyOf(p)[0], 'epsg-nombre': (p) => keyOf(p)[1], alt: (p) => p.alt || 'su sistema de altitudes',
-    'alt-epsg': (p) => p.altEpsg || '—', red: (p) => p.red || 'su red geodésica nacional', org: (p) => p.org
+    nombre: (p) => p.nombre, datum: (p) => p.datum, 'datum-epsg': (p) => p.datumEpsg || '—', proy: (p) => p.proy,
+    epsg: () => sysId, 'epsg-nombre': (p) => sysRow(p, sysId)[1], 'crs-nombre': (p) => sis(p)[0], 'datum-code': (p) => sis(p)[1] || '—',
+    'zona-ifc': (p) => (sis(p)[4] ? `'${sis(p)[4]}'` : '$'), unidad: (p) => ({ m: 'm', ftUS: 'pies US', ft: 'pies' }[sis(p)[2]] || 'm'), metodo: (p) => sis(p)[3], zona: (p) => sis(p)[4] || '—',
+    alt: (p) => p.alt || 'su sistema de altitudes', 'alt-epsg': (p) => p.altEpsg || '—', 'vdatum-code': (p) => p.vdc || '—',
+    red: (p) => p.red || 'su red geodésica nacional', org: (p) => p.org,
+    e: (p) => fmt(ej(p)[0]), n: (p) => fmt(ej(p)[1]), 'e-raw': (p) => ej(p)[0].toFixed(3), 'n-raw': (p) => ej(p)[1].toFixed(3),
+    'e-big': (p) => fmt(big(ej(p)[0]), 0), 'n-big': (p) => fmt(big(ej(p)[1]), 0), 'e-small': () => '125,250', 'n-small': () => '310,800',
+    'e-aprox': (p) => fmt(aprox(ej(p)[0]), 0), 'n-aprox': (p) => fmt(aprox(ej(p)[1]), 0),
+    'n-bytes': (p) => ej(p)[1].toFixed(3).length,
+    'topo-e': (p) => (big(ej(p)[0]) + 10).toFixed(3), 'topo-n': (p) => (big(ej(p)[1]) + 20).toFixed(3)
   };
-  const paisTexts = () => { const p = byId(paisId); if (!p) return; document.querySelectorAll('[data-pais]').forEach((el) => { const f = CAMPOS[el.dataset.pais]; if (f) el.textContent = f(p); }); };
+  const paisTexts = () => { const p = cur(); if (!p) return; document.querySelectorAll('[data-pais]').forEach((el) => { const f = CAMPOS[el.dataset.pais]; if (f) el.textContent = f(p); }); };
+  window.BF_CRS = { origen: () => { const p = cur(); if (!p) return null; const s2 = sis(p); return [big(s2[5]) + 100, big(s2[6]) + 200]; } };
   const dEpsg = (c) => (c ? 'EPSG ' + c : 'sin código EPSG');
+  const codes = (p, btn) => p.epsg.map(([c, t]) => `<${btn ? 'button type="button"' : 'span'} class="paises-code${c === sysId ? ' is-key' : ''}" data-epsg="${c}"><b>${c}</b>${t}</${btn ? 'button' : 'span'}>`).join('');
   const paisCard = (p) => `
-        <div class="paises-proy"><svg viewBox="0 0 160 100" class="draw" aria-hidden="true">${PROY_SVG[p.tipo] || PROY_SVG.utm}</svg><span class="c-label">Proyección habitual</span><b>${keyOf(p)[1]}</b><span class="paises-desc">${p.proy}</span></div>
+        <div class="paises-proy"><svg viewBox="0 0 160 100" class="draw" aria-hidden="true">${PROY_SVG[p.tipo] || PROY_SVG.utm}</svg><span class="c-label">Tu sistema</span><b>${sysRow(p, sysId)[1]}</b><span class="paises-desc">${p.proy}</span></div>
         <div><span class="c-label">Datum</span><b>${p.datum}</b><span class="mono">${dEpsg(p.datumEpsg)}</span></div>
         <div><span class="c-label">Altitudes</span>${p.alt ? `<b>${p.alt}</b><span class="mono">${dEpsg(p.altEpsg)}</span>` : `<b>Red nacional</b>${pc()}`}</div>
         <div><span class="c-label">Red geodésica</span><b class="paises-red">${p.red || '—'}</b><span class="mono"><a href="${p.url}" target="_blank" rel="noopener">${p.org}</a></span></div>
-        <div class="paises-codes"><span class="c-label">Códigos EPSG para el BEP y el IFC</span><div>${p.epsg.map(([c, t]) => `<span class="paises-code${c === p.key ? ' is-key' : ''}"><b>${c}</b>${t}</span>`).join('')}</div><p>${p.obra ? p.obra + ' ' : ''}${p.revisar ? pc() + ' ' : ''}${(p.fuentes || []).length ? `Fuentes: ${p.fuentes.map((u, k) => `<a href="${u}" target="_blank" rel="noopener">${k + 1}</a>`).join(' · ')}` : ''}</p></div>`;
-  const paisDraw = () => {
-    const p = byId(paisId); if (!p) return;
+        <div class="paises-codes"><span class="c-label">Elige el sistema de tu obra · códigos EPSG para el BEP y el IFC</span><div>${codes(p, true)}</div><p>${p.obra ? p.obra + ' ' : ''}${p.revisar ? pc() + ' ' : ''}${(p.fuentes || []).length ? `Fuentes: ${p.fuentes.map((u, k) => `<a href="${u}" target="_blank" rel="noopener">${k + 1}</a>`).join(' · ')}` : ''}</p></div>`;
+  const crsDraw = () => {
+    const p = cur(); if (!p) return;
     document.querySelectorAll('.paises').forEach((el) => { el.querySelector('select').value = p.id; el.querySelector('.paises-out').innerHTML = paisCard(p); });
     document.querySelectorAll('.paises-tabla tr[data-p]').forEach((tr) => tr.classList.toggle('is-key', tr.dataset.p === p.id));
+    document.querySelectorAll('[data-crs-chip]').forEach((b) => { b.innerHTML = `<span class="label">Tu sistema</span><b>${p.nombre} · EPSG ${sysId}</b><i>cambiar</i>`; });
     paisTexts();
+    document.dispatchEvent(new CustomEvent('bf-crs'));
   };
-  const setPais = (id) => { if (!byId(id)) return; paisId = id; try { localStorage.setItem('bf-pais', id); } catch (e) { /* sin almacenamiento */ } paisDraw(); };
-  const paisSelect = () => `<label class="paises-sel"><span class="label">Tu país</span><select aria-label="Elegir país">${REG.map(([r, n]) => {
+  const setCrs = (id, c) => {
+    const p = byId(id); if (!p) return;
+    paisId = id; sysId = sysOf(p, c);
+    ls('bf-pais', id); ls('bf-epsg', String(sysId));
+    crsDraw();
+  };
+  const paisSelect = (lbl = 'Tu país') => `<label class="paises-sel"><span class="label">${lbl}</span><select aria-label="Elegir país">${REG.map(([r, n]) => {
     const L = P.filter((p) => p.reg === r).sort((x, y) => x.nombre.localeCompare(y.nombre, 'es'));
     return L.length ? `<optgroup label="${n}">${L.map((p) => `<option value="${p.id}">${p.nombre}</option>`).join('')}</optgroup>` : '';
   }).join('')}</select></label>`;
@@ -294,17 +320,60 @@
     const L = [...P].sort((x, y) => x.nombre.localeCompare(y.nombre, 'es'));
     el.innerHTML = `<div class="table-wrap"><table><thead><tr><th>País</th><th>Datum</th><th>Proyección</th><th>EPSG habitual</th><th>Altitudes</th><th>Red geodésica</th></tr></thead><tbody>${L.map((p) => `<tr data-p="${p.id}"${p.id === paisId ? ' class="is-key"' : ''}><td>${p.nombre}${p.revisar ? ' ' + pc() : ''}</td><td>${p.datum}${p.datumEpsg ? ` <span class="mono">${p.datumEpsg}</span>` : ''}</td><td>${p.proy}</td><td class="mono">${p.epsg.map(([c]) => c).join(' · ')}</td><td>${p.alt ? `${p.alt}${p.altEpsg ? ` <span class="mono">${p.altEpsg}</span>` : ''}` : pc()}</td><td>${p.red || '—'} · <a href="${p.url}" target="_blank" rel="noopener">${p.org}</a></td></tr>`).join('')}</tbody></table></div>`;
   };
+  // Ventana de bienvenida: país + sistema; se abre la primera vez y desde «Tu sistema» en el menú
+  const crsDialog = () => {
+    if (document.getElementById('crs-dialog')) return;
+    let did = paisId, dsys = sysId;
+    const d = document.createElement('div');
+    d.id = 'crs-dialog'; d.setAttribute('role', 'dialog'); d.setAttribute('aria-modal', 'true'); d.setAttribute('aria-labelledby', 'crs-t');
+    const body = () => {
+      const p = byId(did); const s2 = (p.sis || {})[dsys] || ['', null, 'm', '', '', 0, 0];
+      return `<div class="crs-box">
+        <span class="kicker-y">Antes de empezar</span>
+        <h3 id="crs-t">¿En qué sistema trabajas<span class="dot">?</span></h3>
+        <p>Los ejemplos de coordenadas del artículo se calculan en el sistema que elijas. Se recuerda en toda la serie.</p>
+        ${paisSelect('País')}
+        <span class="c-label">Sistema de coordenadas</span>
+        <div class="crs-codes">${codes(p, true).replace(/is-key/g, '').replace(`data-epsg="${dsys}"`, `data-epsg="${dsys}" aria-pressed="true"`)}</div>
+        <div class="crs-prev"><span class="label">Un punto de ejemplo en ${p.nombre}</span><b>E ${fmt(big(s2[5]) + 125.25)} · N ${fmt(big(s2[6]) + 310.8)}</b><span class="mono">${s2[0]}${s2[2] !== 'm' ? ' · en pies' : ''}</span></div>
+        <div class="crs-actions"><button type="button" class="btn" data-crs-ok>Usar este sistema</button><button type="button" class="crs-skip" data-crs-skip>Ahora no</button></div>
+      </div>`;
+    };
+    const paint = () => {
+      d.innerHTML = body();
+      d.querySelector('select').value = did;
+      d.querySelector('select').addEventListener('change', (e) => { did = e.target.value; dsys = byId(did).key; paint(); });
+      d.querySelectorAll('[data-epsg]').forEach((b) => b.addEventListener('click', () => { dsys = +b.dataset.epsg; paint(); }));
+      d.querySelector('[data-crs-ok]').addEventListener('click', () => { setCrs(did, dsys); ls('bf-crs-ok', '1'); close(); });
+      d.querySelector('[data-crs-skip]').addEventListener('click', () => { ls('bf-crs-ok', '1'); close(); });
+    };
+    const close = () => { d.remove(); document.removeEventListener('keydown', esc); };
+    const esc = (e) => { if (e.key === 'Escape') { ls('bf-crs-ok', '1'); close(); } };
+    paint(); document.body.appendChild(d); document.addEventListener('keydown', esc);
+    d.querySelector('select').focus();
+  };
   if (P.length) {
     document.querySelectorAll('.paises').forEach((el) => {
       el.innerHTML = `<div class="paises-bar">${paisSelect()}<span class="paises-hint">Se recuerda en todos los artículos</span></div><div class="paises-out" aria-live="polite"></div>`;
-      el.querySelector('select').addEventListener('change', (e) => setPais(e.target.value));
+      el.querySelector('select').addEventListener('change', (e) => setCrs(e.target.value));
+      el.addEventListener('click', (e) => { const b = e.target.closest('button[data-epsg]'); if (b) setCrs(paisId, b.dataset.epsg); });
     });
-    paisDraw();
+    // Botón «Tu sistema» en el menú de diapositivas (escritorio y móvil)
+    const chip = () => {
+      const b = document.createElement('button');
+      b.type = 'button'; b.className = 'crs-chip'; b.setAttribute('data-crs-chip', '');
+      b.addEventListener('click', (e) => { e.stopPropagation(); crsDialog(); });
+      return b;
+    };
+    const kn = document.querySelector('#deck-nav > .kicker-y'); if (kn) kn.after(chip());
+    const so = document.querySelector('#deck-sheet > ol'); if (so) so.before(chip());
+    crsDraw();
+    if (document.querySelector('main.deck') && !ls('bf-crs-ok') && !/[?&]sin-bienvenida/.test(location.search)) crsDialog();
   }
 
   // Lector de coordenadas: un cursor que se arrastra y se lee en tres sistemas
   document.querySelectorAll('.lector').forEach((el) => {
-    const E0 = +el.dataset.e0, N0 = +el.dataset.n0, S = 10; // 10 px = 1 m
+    let E0 = +el.dataset.e0, N0 = +el.dataset.n0; const S = 10; // 10 px = 1 m
     const IO = [80, 240], PB = [150, 200], V = [480, 80];
     const f = (v) => { const [n, d] = Math.abs(v).toFixed(2).split('.'); return (v < 0 ? '−' : '') + n.replace(/\B(?=(\d{3})+$)/g, '\u00a0') + ',' + d; };
     el.innerHTML = `
@@ -317,7 +386,7 @@
         <circle cx="${PB[0]}" cy="${PB[1]}" r="8" fill="#fff" stroke="#000" stroke-width="2.5"/><path d="M${PB[0] - 8} ${PB[1]} h16 M${PB[0]} ${PB[1] - 8} v16" stroke="#000" stroke-width="2"/><text x="${PB[0] + 12}" y="${PB[1] + 4}" font-family="JetBrains Mono, monospace" font-size="11">punto base</text>
         <polygon points="${V[0]},${V[1] - 10} ${V[0] + 9},${V[1] + 6} ${V[0] - 9},${V[1] + 6}" fill="none" stroke="#000" stroke-width="2.5"/><text x="${V[0] + 14}" y="${V[1] + 4}" font-family="JetBrains Mono, monospace" font-size="11">vértice</text>
         <g class="lector-sp"><circle r="11" fill="#FFFF00" stroke="#000" stroke-width="3"/><path d="M-11 0 h22 M0 -11 v22" stroke="#000" stroke-width="2"/></g>
-        <g class="lector-far"><path d="M60 290 L14 296" stroke="#000" stroke-width="2.5"/><polygon points="6,297 18,290 18,302" fill="#000"/><text x="66" y="294" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700">Survey Point y origen compartido: a 440 km</text></g>
+        <g class="lector-far"><path d="M60 290 L14 296" stroke="#000" stroke-width="2.5"/><polygon points="6,297 18,290 18,302" fill="#000"/><text x="66" y="294" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700" class="lector-far-t"></text></g>
         <g class="lector-cur" style="cursor:grab"><circle r="16" fill="transparent"/><circle r="6" fill="#000"/><path d="M-14 0 h28 M0 -14 v28" stroke="#000" stroke-width="1.5"/></g>
       </svg>
       <div class="lector-out">
@@ -330,6 +399,7 @@
     let P = [300, 160], mode = 'clip';
     const xy = (p, o) => [(p[0] - o[0]) / S, (o[1] - p[1]) / S];
     const draw = () => {
+      far.querySelector('.lector-far-t').textContent = `Survey Point y origen compartido: a ${fmt(Math.round(Math.hypot(E0, N0) / 1000), 0)} km`;
       cur.setAttribute('transform', `translate(${P[0]} ${P[1]})`);
       const a = xy(P, IO), b = xy(P, PB);
       el.querySelector('[data-o="io"]').textContent = `x ${f(a[0])} · y ${f(a[1])}`;
@@ -346,6 +416,9 @@
     svg.addEventListener('pointerdown', (e) => { drag = true; svg.setPointerCapture(e.pointerId); P = pt(e); draw(); });
     svg.addEventListener('pointermove', (e) => { if (drag) { P = pt(e); draw(); } });
     svg.addEventListener('pointerup', () => { drag = false; });
+    const origen = () => { const o = window.BF_CRS && window.BF_CRS.origen(); if (o) { E0 = o[0]; N0 = o[1]; } };
+    origen();
+    document.addEventListener('bf-crs', () => { origen(); draw(); });
     el.querySelectorAll('[data-sp]').forEach((b) => b.addEventListener('click', () => {
       mode = b.dataset.sp; el.querySelectorAll('[data-sp]').forEach((x) => x.classList.toggle('is-on', x === b)); draw();
     }));
