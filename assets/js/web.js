@@ -77,7 +77,7 @@
   const icono = (a) => `${root}assets/img/iconos/${a.slug || '_plantilla'}.svg`;
   const cover = (a) => `<div class="cover" aria-hidden="true"><span class="cover-n">${a.numero || 'NN'}</span>` +
     `<img src="${root}assets/img/cubiertas/${a.slug || '_plantilla'}.svg" alt="" onerror="this.src='${root}assets/img/cubiertas/_plantilla.svg'">` +
-    `<span class="cover-t">${a.tema || 'Tema'}</span><span class="cover-bf">k</span></div>`;
+    `<span class="cover-t">${a.tema || 'Tema'}</span><span class="cover-bf">bk</span></div>`;
 
   // Portada de la web: rejilla de artículos con su cubierta
   const list = document.getElementById('article-list');

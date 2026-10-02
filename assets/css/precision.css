@@ -338,10 +338,10 @@ body.l2-lock .pz-hud { display: none; }
 .k-cur { display: inline-block; width: .55em; height: .95em; margin-left: .08em; vertical-align: -.12em; background: var(--accent); box-shadow: inset 0 0 0 1.5px var(--black); animation: k-blink 1.05s steps(1) infinite; }
 @keyframes k-blink { 50% { opacity: 0; } }
 /* Botón del cartucho: «k» en mono con el cursor */
-#menu-trigger { font-family: var(--mono); font-weight: 700; font-size: 20px; letter-spacing: 0; text-transform: lowercase; position: relative; }
-#menu-trigger::after { content: ""; position: absolute; right: 11px; bottom: 13px; width: 6px; height: 6px; background: var(--accent); }
+#menu-trigger { font-family: var(--mono); font-weight: 700; font-size: 17px; letter-spacing: -.04em; text-transform: lowercase; position: relative; }
+#menu-trigger::after { content: ""; position: absolute; right: 8px; bottom: 15px; width: 5px; height: 5px; background: var(--accent); }
 #menu-trigger:hover::after { background: var(--black); }
-.cover-bf { font-family: var(--mono); font-weight: 700; font-size: 13px !important; text-transform: lowercase; }
+.cover-bf { font-family: var(--mono); font-weight: 700; font-size: 11px !important; letter-spacing: -.04em !important; text-transform: lowercase; }
 
 /* Barra de estado (antes, lector de coordenadas) */
 .pz-hud { gap: 10px; }
