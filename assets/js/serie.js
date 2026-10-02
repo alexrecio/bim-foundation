@@ -56,15 +56,14 @@ window.SERIE = [
     estado: 'relleno'
   },
   {
-    // Artículo ficticio de relleno (arquitectura de la web): sustituir o borrar
     slug: 'bep-plan-de-ejecucion',
     numero: '06',
     titulo: 'Plan de ejecución BIM',
-    resumen: 'El documento que convierte los requisitos del cliente en un plan de trabajo.',
+    resumen: 'Qué piden los requisitos de información (OIR, PIR, AIR, EIR) y cómo responde el BEP según ISO 19650: partes, matriz, planes de entrega, CDE, el Plan BIM español y cómo se comprueba.',
     tema: 'Gestión',
-    fecha: '2027-01',
-    lectura: '6 ideas',
-    estado: 'relleno'
+    fecha: '2026-10',
+    lectura: '29 ideas',
+    estado: 'borrador'
   },
   {
     slug: 'gemelos-digitales',

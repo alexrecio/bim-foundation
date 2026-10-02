@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Borrador: quitar noindex al publicar -->
   <meta name="robots" content="noindex, nofollow">
-  <title>Plan de ejecución BIM (relleno) | BIM Foundation</title>
-  <meta name="description" content="Artículo ficticio de relleno.">
+  <title>Plan de ejecución BIM | BIM Foundation</title>
+  <meta name="description" content="Qué es el plan de ejecución BIM (BEP), cómo responde a los requisitos de información (OIR, PIR, AIR, EIR) de ISO 19650 y cómo se configura, se aplica en el CDE y se comprueba.">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Plan de ejecución BIM (relleno) · BIM Foundation">
-  <meta property="og:description" content="El documento que convierte los requisitos del cliente en un plan de trabajo.">
+  <meta property="og:title" content="Plan de ejecución BIM · BIM Foundation">
+  <meta property="og:description" content="El cliente dice qué información necesita. El BEP dice cómo, quién y cuándo se va a producir.">
   <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="../../assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="../../assets/css/estilo.css">
@@ -28,119 +28,821 @@
     </div>
   </div>
 
-  <!-- ARTÍCULO FICTICIO DE RELLENO para trabajar la arquitectura de la web. Sustituir o borrar antes de publicar. -->
+  <!-- Menú de diapositivas: se rellena con data-nav de cada <section> -->
   <aside id="deck-nav" aria-label="Diapositivas">
-    <span class="kicker-y">BEP · 6 ideas</span>
+    <span class="kicker-y">BEP · 29 ideas</span>
     <ol></ol>
   </aside>
   <div id="deck-bar">
     <div id="deck-sheet"><ol></ol></div>
     <button type="button" id="deck-bar-btn" aria-expanded="false" aria-controls="deck-sheet">
-      <span class="n">01</span><span class="t">Portada</span>
+      <span class="n">01/29</span><span class="t">Portada</span>
       <span class="chev" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M3 9l4-4 4 4" fill="none" stroke="#fff" stroke-width="2"/></svg></span>
     </button>
   </div>
 
+  <!--
+    Regla de capas
+    Capa 1 = una diapositiva por idea, legible en 15 segundos: titular + tarjetas visuales (cifras, diagramas, chips) con rótulos breves.
+    Capa 2 = la ficha que abre «Ver detalle» (<template id="l2-…">), también en tarjetas. Solo añade lo que la diapositiva no dice.
+    Investigación y base de fuentes: /mnt/project-files/investigacion/06-bep/ y /mnt/project-files/fuentes/06-bep/.
+  -->
   <main class="deck">
 
+    <!-- ========== PORTADA ========== -->
     <section class="slide" id="portada" data-nav="Portada">
       <div class="bento">
         <div class="b-title">
           <p class="hero-id"><a href="../../" style="text-decoration:none">BIM Foundation · 06</a></p>
-          <span class="kicker-y lg">BEP · ISO 19650-2</span>
+          <span class="kicker-y lg">Requisitos · ISO 19650 · CDE</span>
           <h1 class="display">Plan de<br>ejecución<br><span class="hl-y">BIM<span class="dot">.</span></span></h1>
-          <p class="slide-lead">El documento que convierte los requisitos del cliente en un plan de trabajo.</p>
-          <div class="slide-actions"><a class="btn" href="#requisitos">Empezar <span aria-hidden="true">↓</span></a></div>
+          <p class="slide-lead">El cliente dice qué información necesita. El BEP dice cómo, quién y cuándo se va a producir.</p>
+          <div class="slide-actions"><a class="btn" href="#problema">Empezar <span aria-hidden="true">↓</span></a></div>
         </div>
         <div class="b-cards">
           <div class="card w6 ficha" data-ficha></div>
-          <div class="card w6 y"><span class="c-label">Artículo de relleno</span><span class="c-title">Contenido ficticio para probar la arquitectura de la web</span><span class="c-foot">Textos y cifras inventados · no usar como referencia</span></div>
+          <div class="card w6 g">
+            <span class="c-label">El artículo en seis bloques</span>
+            <ol class="mapa">
+              <li class="is-key"><a href="#problema"><b>I</b><span>Conceptos generales</span><em>12 ideas · para cualquier programa</em></a></li>
+              <li><a href="#familia"><b>II</b><span>Estándares</span><em>6 ideas · ISO 19650, anexo británico, España</em></a></li>
+              <li><a href="#configurar"><b>III</b><span>Software</span><em>2 ideas · plantillas y redacción</em></a></li>
+              <li><a href="#cde-plataformas"><b>IV</b><span>Plataformas</span><em>2 ideas · el CDE aplica el BEP</em></a></li>
+              <li><a href="#formatos"><b>V</b><span>Interoperabilidad</span><em>2 ideas · formatos abiertos e IDS</em></a></li>
+              <li><a href="#calidad"><b>VI</b><span>Control de calidad</span><em>3 ideas · entregas, herramientas y evaluación</em></a></li>
+            </ol>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="slide" id="requisitos" data-nav="Requisitos">
+    <!-- ========== I · EL PROBLEMA ========== -->
+    <section class="slide" id="problema" data-cap="I · Conceptos generales" data-nav="El problema">
       <div class="bento">
         <div class="b-title">
           <span class="slide-n"></span>
-          <span class="kicker-y">Punto de partida</span>
-          <h2 class="display">Del EIR al BEP<span class="dot">.</span></h2>
-          <p class="slide-lead">El cliente pide; el equipo responde cómo lo va a cumplir.</p>
-          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="requisitos"><span class="plus">+</span> Ver detalle</button></div>
+          <span class="kicker-y">El problema</span>
+          <h2 class="display">«Lo quiero en BIM» no es un requisito<span class="dot">.</span></h2>
+          <p class="slide-lead">Si nadie escribe qué información hace falta, cada equipo entiende una cosa y la entrega no sirve para lo que el cliente necesitaba.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="problema"><span class="plus">+</span> Ver detalle</button></div>
         </div>
         <div class="b-cards">
-          <div class="card w6 g"><span class="c-label">Documentos</span><div class="flow"><span class="chip">EIR</span><span class="arrow">→</span><span class="chip">BEP previo</span><span class="arrow">→</span><span class="chip y">BEP</span><span class="arrow">→</span><span class="chip k">MIDP / TIDP</span></div></div>
-          <div class="card w3 k"><span class="c-label">Documentos</span><b class="c-num">4<small></small></b><span class="c-foot">Relleno</span></div>
-          <div class="card w3 g"><span class="c-label">Quién</span><span class="c-title">Adjudicatario</span><span class="badge y">Responde</span></div>
+          <div class="card w2">
+            <span class="c-label">01</span>
+            <svg class="draw" viewBox="0 0 160 110" aria-hidden="true"><g fill="#EFEFEA" stroke="#000" stroke-width="2"><rect x="30" y="60" width="100" height="36"/><rect x="38" y="30" width="84" height="30"/><rect x="48" y="10" width="64" height="20"/></g><g stroke="#000" stroke-width="1.2"><path d="M30 72h100M30 84h100M38 42h84M38 52h84M48 20h64"/><path d="M50 60v36M70 60v36M90 60v36M110 60v36M60 30v30M80 30v30M100 30v30M64 10v20M80 10v20M96 10v20"/></g></svg>
+            <span class="c-title">Geometría de más</span>
+          </div>
+          <div class="card w2">
+            <span class="c-label">02</span>
+            <svg class="draw" viewBox="0 0 160 110" aria-hidden="true"><rect x="30" y="22" width="100" height="70" fill="#fff" stroke="#000" stroke-width="2.5"/><g font-family="JetBrains Mono, monospace" font-size="11"><text x="40" y="44">Material: —</text><text x="40" y="62">Código: —</text><text x="40" y="80">Fabricante: —</text></g></svg>
+            <span class="c-title">Datos de menos</span>
+          </div>
+          <div class="card w2">
+            <span class="c-label">03</span>
+            <svg class="draw" viewBox="0 0 160 110" aria-hidden="true"><path d="M44 14h52l20 20v62H44z" fill="#fff" stroke="#000" stroke-width="2.5" stroke-linejoin="round"/><path d="M96 14v20h20" fill="none" stroke="#000" stroke-width="2.5"/><text x="54" y="72" font-family="JetBrains Mono, monospace" font-size="16" font-weight="700">.???</text><path d="M124 44 L144 64 M144 44 L124 64" stroke="#000" stroke-width="3" stroke-linecap="round"/></svg>
+            <span class="c-title">Formato que nadie abre</span>
+          </div>
+          <div class="card w3 k">
+            <span class="c-label">Lo que faltaba</span>
+            <div class="chips"><span class="chip y">Qué</span><span class="chip">Para qué</span><span class="chip">Cuándo</span><span class="chip">Quién</span><span class="chip">Cómo</span></div>
+          </div>
+          <div class="card w3 y">
+            <span class="c-label">La solución</span>
+            <span class="c-title">Requisitos escritos</span>
+            <span class="c-title">y un plan que los responde</span>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="slide" id="contenido" data-nav="Contenido">
+    <!-- ========== I · CASCADA DE REQUISITOS ========== -->
+    <section class="slide" id="cascada" data-nav="La cascada de requisitos">
       <div class="bento">
         <div class="b-title">
           <span class="slide-n"></span>
-          <span class="kicker-y">Índice</span>
-          <h2 class="display">Qué debe incluir<span class="dot">.</span></h2>
-          <p class="slide-lead">Roles, software, nomenclatura, coordenadas, CDE y entregables.</p>
+          <span class="kicker-y">Requisitos de información</span>
+          <h2 class="display">De la estrategia al dato<span class="dot">.</span></h2>
+          <p class="slide-lead">Los requisitos bajan en cascada: de lo que la organización necesita saber de sus activos a lo que cada contrato debe entregar.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="cascada"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w4">
+            <span class="c-label">Cuatro siglas, un orden</span>
+            <svg class="draw" viewBox="0 0 440 270" role="img" aria-label="Los requisitos de la organización alimentan los del proyecto y los del activo; ambos se trasladan a los requisitos de intercambio de cada contrato, que producen los modelos de información del proyecto y del activo">
+              <g font-family="JetBrains Mono, monospace">
+                <rect x="140" y="6" width="160" height="46" rx="4" fill="#000"/><text x="220" y="27" text-anchor="middle" fill="#fff" font-weight="700" font-size="16">OIR</text><text x="220" y="44" text-anchor="middle" fill="#FFFF00" font-size="10">la organización</text>
+                <rect x="20" y="92" width="160" height="46" rx="4" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="100" y="113" text-anchor="middle" font-weight="700" font-size="16">PIR</text><text x="100" y="130" text-anchor="middle" font-size="10" fill="#666">el proyecto</text>
+                <rect x="260" y="92" width="160" height="46" rx="4" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="340" y="113" text-anchor="middle" font-weight="700" font-size="16">AIR</text><text x="340" y="130" text-anchor="middle" font-size="10" fill="#666">el activo</text>
+                <rect x="140" y="176" width="160" height="46" rx="4" fill="#FFFF00" stroke="#000" stroke-width="3"/><text x="220" y="197" text-anchor="middle" font-weight="700" font-size="16">EIR</text><text x="220" y="214" text-anchor="middle" font-size="10">cada contrato</text>
+                <text x="100" y="262" text-anchor="middle" font-size="11" fill="#666">→ PIM</text><text x="340" y="262" text-anchor="middle" font-size="11" fill="#666">→ AIM</text>
+              </g>
+              <g stroke="#000" stroke-width="2" fill="none"><path d="M190 52 L110 90"/><path d="M250 52 L330 90"/><path d="M110 138 L190 174"/><path d="M330 138 L250 174"/><path d="M180 222 L120 248"/><path d="M260 222 L320 248"/></g>
+            </svg>
+          </div>
+          <div class="card w2 k">
+            <span class="c-label">La E de EIR</span>
+            <span class="c-title" style="color:var(--accent);font-size:clamp(22px,2.4vw,34px)">Exchange</span>
+            <span class="c-foot">antes «Employer's»: ahora uno por cada contrato</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== I · ROLES ========== -->
+    <section class="slide" id="roles" data-nav="Quién pide, quién responde">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Las partes</span>
+          <h2 class="display">Quién pide y quién responde<span class="dot">.</span></h2>
+          <p class="slide-lead">La parte que designa contrata a una parte designada principal, que coordina a sus partes designadas. Juntas forman el equipo de desarrollo.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="roles"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w6 g">
+            <span class="c-label">Equipo del proyecto</span>
+            <svg class="draw" viewBox="0 0 640 250" role="img" aria-label="La parte que designa encarga a la parte designada principal, que encarga a tres partes designadas; cada una trabaja con equipos de tarea">
+              <g font-family="JetBrains Mono, monospace" font-size="12">
+                <rect x="220" y="6" width="200" height="44" rx="22" fill="#FFFF00" stroke="#000" stroke-width="3"/><text x="320" y="33" text-anchor="middle" font-weight="700">PARTE QUE DESIGNA</text>
+                <rect x="190" y="84" width="260" height="44" rx="22" fill="#000"/><text x="320" y="111" text-anchor="middle" fill="#fff" font-weight="700">PARTE DESIGNADA PRINCIPAL</text>
+                <rect x="40" y="162" width="160" height="40" rx="20" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="120" y="187" text-anchor="middle">P. designada</text>
+                <rect x="240" y="162" width="160" height="40" rx="20" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="320" y="187" text-anchor="middle">P. designada</text>
+                <rect x="440" y="162" width="160" height="40" rx="20" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="520" y="187" text-anchor="middle">P. designada</text>
+                <g fill="#fff" stroke="#000" stroke-width="1.5"><circle cx="96" cy="230" r="8"/><circle cx="120" cy="230" r="8"/><circle cx="144" cy="230" r="8"/><circle cx="308" cy="230" r="8"/><circle cx="332" cy="230" r="8"/><circle cx="508" cy="230" r="8"/><circle cx="532" cy="230" r="8"/></g>
+                <text x="420" y="234" text-anchor="middle" font-size="10" fill="#666">equipos de tarea</text>
+                <text x="330" y="66" font-size="10" fill="#666">EIR + designación</text>
+              </g>
+              <g stroke="#000" stroke-width="2"><line x1="320" y1="50" x2="320" y2="84"/><path d="M320 128 V145 H120 V162 M320 145 V162 M320 145 H520 V162" fill="none"/></g>
+              <path d="M24 74 H616 V244 H24 Z" fill="none" stroke="#000" stroke-width="1.5" stroke-dasharray="6 5"/><text x="30" y="90" font-family="JetBrains Mono, monospace" font-size="10" fill="#666">equipo de desarrollo</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== I · QUÉ ES EL BEP ========== -->
+    <section class="slide" id="bep" data-nav="El BEP responde al EIR">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Plan de ejecución BIM</span>
+          <h2 class="display">El BEP responde al EIR<span class="dot">.</span></h2>
+          <p class="slide-lead">El EIR dice qué información quiere el cliente. El BEP explica cómo la producirá el equipo, con qué medios y bajo qué normas.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="bep"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w4">
+            <span class="c-label">Pregunta y respuesta</span>
+            <svg class="draw" viewBox="0 0 440 200" role="img" aria-label="El documento EIR con preguntas se responde con el documento BEP, punto por punto">
+              <g stroke="#000" stroke-width="3" stroke-linejoin="round"><path d="M20 14h120l24 24v150H20z" fill="#fff"/><path d="M276 14h120l24 24v150H276z" fill="#FFFF00"/></g>
+              <g fill="none" stroke="#000" stroke-width="3"><path d="M140 14v24h24"/><path d="M396 14v24h24"/></g>
+              <g font-family="JetBrains Mono, monospace" font-size="12" font-weight="700"><text x="34" y="42">EIR</text><text x="290" y="42">BEP</text></g>
+              <g font-family="JetBrains Mono, monospace" font-size="12"><text x="34" y="78">¿Qué?</text><text x="34" y="106">¿Cuándo?</text><text x="34" y="134">¿Formato?</text><text x="34" y="162">¿Normas?</text></g>
+              <g stroke="#000" stroke-width="2.5" fill="none" stroke-linecap="round"><path d="M292 72l5 5 9-10M292 100l5 5 9-10M292 128l5 5 9-10M292 156l5 5 9-10"/></g>
+              <g stroke="#000" stroke-width="1.5"><path d="M316 74h80M316 102h80M316 130h64M316 158h72"/></g>
+              <g stroke="#000" stroke-width="1.2" stroke-dasharray="3 4"><path d="M110 74H286M120 102H286M126 130H286M120 158H286"/></g>
+            </svg>
+          </div>
+          <div class="card w2 k">
+            <span class="c-label">Dos versiones</span>
+            <span class="c-title" style="color:#fff">Previo</span><span class="c-foot">con la oferta</span>
+            <span class="c-title" style="color:var(--accent)">Confirmado</span><span class="c-foot">tras la designación</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== I · CONTENIDO ========== -->
+    <section class="slide" id="contenido" data-nav="Qué lleva un BEP">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Qué lleva</span>
+          <h2 class="display">Siete apartados mínimos<span class="dot">.</span></h2>
+          <p class="slide-lead">La norma fija lo que debe traer el BEP que acompaña a la oferta. Lo demás es forma: ni las páginas ni los logotipos lo hacen mejor.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="contenido"><span class="plus">+</span> Ver detalle</button></div>
         </div>
         <div class="b-cards">
-          <div class="card w6"><span class="c-label">Peso de cada apartado (relleno)</span><div class="bars"><div class="bar"><span>ROL</span><i style="width:40%">roles</i></div><div class="bar"><span>SW</span><i style="width:30%">software</i></div><div class="bar"><span>NOM</span><i style="width:50%">nomenclatura</i></div><div class="bar is-key"><span>COO</span><i style="width:70%">coordenadas</i></div><div class="bar"><span>CDE</span><i style="width:60%">CDE</i></div></div></div>
+          <div class="card w2 y"><span class="step-n">1</span><span class="c-title">Personas</span><span class="c-foot">gestión de la información</span></div>
+          <div class="card w2"><span class="step-n">2</span><span class="c-title">Estrategia de entrega</span><span class="c-foot">cómo se cumple el EIR</span></div>
+          <div class="card w2"><span class="step-n">3</span><span class="c-title">Federación</span><span class="c-foot">cómo se divide el modelo</span></div>
+          <div class="card w2"><span class="step-n">4</span><span class="c-title">Matriz</span><span class="c-foot">de responsabilidades</span></div>
+          <div class="card w2"><span class="step-n">5</span><span class="c-title">Métodos</span><span class="c-foot">de producción</span></div>
+          <div class="card w2"><span class="step-n">6</span><span class="c-title">Estándar</span><span class="c-foot">nombres, unidades, EPSG:<span data-pais="epsg">25830</span></span></div>
+          <div class="card w6 k"><span class="step-n">7</span><span class="c-title" style="color:#fff">Software, hardware e infraestructura</span><span class="c-foot">programas, versiones y formatos de cada equipo</span></div>
         </div>
       </div>
     </section>
 
-    <section class="slide" id="hitos" data-nav="Hitos">
+    <!-- ========== I · MATRIZ ========== -->
+    <section class="slide" id="matriz" data-nav="Matriz de responsabilidades">
       <div class="bento">
         <div class="b-title">
           <span class="slide-n"></span>
-          <span class="kicker-y">Calendario</span>
-          <h2 class="display">Entregas ligadas a fases<span class="dot">.</span></h2>
-          <p class="slide-lead">Cada hito dice qué modelo, con qué nivel y en qué formato.</p>
-          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="hitos"><span class="plus">+</span> Ver detalle</button></div>
+          <span class="kicker-y">Matriz de responsabilidades</span>
+          <h2 class="display">Quién produce qué<span class="dot">.</span></h2>
+          <p class="slide-lead">Cada entregable, cruzado con el equipo que lo produce. En la oferta va de alto nivel; tras la designación, se detalla hasta el contenedor.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="matriz"><span class="plus">+</span> Ver detalle</button></div>
         </div>
         <div class="b-cards">
-          <div class="card w6 g"><span class="c-label">Hitos</span><svg class="draw" viewBox="0 0 620 140" aria-hidden="true"><rect x="10" y="62" width="134" height="68" rx="6" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="22" y="118" font-family="Inter, sans-serif" font-weight="900" font-size="14">H1</text><rect x="160" y="48" width="134" height="82" rx="6" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="172" y="118" font-family="Inter, sans-serif" font-weight="900" font-size="14">H2</text><rect x="310" y="34" width="134" height="96" rx="6" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="322" y="118" font-family="Inter, sans-serif" font-weight="900" font-size="14">H3</text><rect x="460" y="20" width="134" height="110" rx="6" fill="#FFFF00" stroke="#000" stroke-width="2.5"/><text x="472" y="118" font-family="Inter, sans-serif" font-weight="900" font-size="14">H4</text></svg></div>
-          <div class="card w3 y"><span class="c-label">Hitos</span><b class="c-num">4<small></small></b><span class="c-foot">Relleno</span></div>
-          <div class="card w3 k"><span class="c-label">Formatos</span><b class="c-num">3<small></small></b><span class="c-foot">IFC · PDF · nativo</span></div>
+          <div class="card w4">
+            <span class="c-label">Entregable × equipo</span>
+            <svg class="draw" viewBox="0 0 440 230" role="img" aria-label="Tabla con cuatro entregables y cuatro equipos: cada fila tiene un único responsable marcado en negro y colaboradores en blanco">
+              <g font-family="JetBrains Mono, monospace" font-size="12">
+                <text x="180" y="22" text-anchor="middle" font-weight="700">ARQ</text><text x="240" y="22" text-anchor="middle" font-weight="700">EST</text><text x="300" y="22" text-anchor="middle" font-weight="700">INS</text><text x="360" y="22" text-anchor="middle" font-weight="700">TOP</text>
+                <text x="10" y="64">Modelo arq.</text><text x="10" y="108">Modelo est.</text><text x="10" y="152">Federado</text><text x="10" y="196">Topografía</text>
+              </g>
+              <g stroke="#8F8F87" stroke-width="1"><path d="M0 36H430M0 80H430M0 124H430M0 168H430M0 212H430"/></g>
+              <g stroke="#000" stroke-width="2.5"><rect x="166" y="46" width="28" height="24" fill="#000"/><rect x="226" y="46" width="28" height="24" fill="#fff"/><rect x="286" y="46" width="28" height="24" fill="#fff"/>
+                <rect x="166" y="90" width="28" height="24" fill="#fff"/><rect x="226" y="90" width="28" height="24" fill="#000"/>
+                <rect x="166" y="134" width="28" height="24" fill="#FFFF00"/><rect x="226" y="134" width="28" height="24" fill="#fff"/><rect x="286" y="134" width="28" height="24" fill="#fff"/><rect x="346" y="134" width="28" height="24" fill="#fff"/>
+                <rect x="346" y="178" width="28" height="24" fill="#000"/></g>
+            </svg>
+          </div>
+          <div class="card w2 g">
+            <span class="c-label">Leyenda</span>
+            <div class="chips"><span class="chip k">Produce</span><span class="chip">Aporta</span><span class="chip y">Coordina</span></div>
+            <span class="c-foot">una sola persona responsable por fila</span>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="slide" id="vivo" data-nav="Documento vivo">
+    <!-- ========== I · TIDP / MIDP ========== -->
+    <section class="slide" id="midp" data-nav="Del TIDP al MIDP">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Planes de entrega</span>
+          <h2 class="display">Cada equipo, su plan<span class="dot">.</span></h2>
+          <p class="slide-lead">Cada equipo de tarea escribe su TIDP: qué contenedores entrega y cuándo. La parte designada principal los suma en un único MIDP.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="midp"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w6">
+            <span class="c-label">Tres TIDP → un MIDP</span>
+            <svg class="draw" viewBox="0 0 640 230" role="img" aria-label="Tres planes de equipo con barras de entregas en el tiempo se suman en un plan maestro con las mismas barras alineadas a los hitos">
+              <g font-family="JetBrains Mono, monospace" font-size="12">
+                <text x="0" y="34">TIDP ARQ</text><text x="0" y="74">TIDP EST</text><text x="0" y="114">TIDP INS</text><text x="0" y="184" font-weight="700">MIDP</text>
+              </g>
+              <g stroke="#000" stroke-width="2"><rect x="110" y="20" width="150" height="20" fill="#fff"/><rect x="300" y="20" width="120" height="20" fill="#fff"/><rect x="150" y="60" width="140" height="20" fill="#fff"/><rect x="330" y="60" width="150" height="20" fill="#fff"/><rect x="200" y="100" width="110" height="20" fill="#fff"/><rect x="360" y="100" width="170" height="20" fill="#fff"/></g>
+              <path d="M90 136 H560" stroke="#8F8F87" stroke-width="1.5" stroke-dasharray="4 4"/>
+              <g stroke="#000" stroke-width="2.5"><rect x="110" y="160" width="200" height="34" fill="#000"/><rect x="300" y="160" width="230" height="34" fill="#FFFF00"/></g>
+              <g fill="#000"><path d="M310 206 l8 8 -8 8 -8 -8z"/><path d="M530 206 l8 8 -8 8 -8 -8z"/></g>
+              <g font-family="JetBrains Mono, monospace" font-size="10" fill="#666"><text x="322" y="222">hito 1</text><text x="542" y="222">hito 2</text></g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== I · HITOS ========== -->
+    <section class="slide" id="hitos" data-nav="Hitos de entrega">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Hitos de entrega</span>
+          <h2 class="display">La información llega cuando hay que decidir<span class="dot">.</span></h2>
+          <p class="slide-lead">Los hitos se fijan en los puntos en que el cliente necesita datos para tomar una decisión, no cuando el equipo termina de modelar.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="hitos"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w6 g">
+            <span class="c-label">Puntos de decisión</span>
+            <svg class="draw" viewBox="0 0 640 180" role="img" aria-label="Línea de tiempo con cinco etapas y un rombo de decisión al final de cada una; el tercero, en amarillo">
+              <line x1="20" y1="80" x2="620" y2="80" stroke="#000" stroke-width="3"/>
+              <g stroke="#000" stroke-width="2.5"><path d="M128 64 l16 16 -16 16 -16 -16z" fill="#fff"/><path d="M248 64 l16 16 -16 16 -16 -16z" fill="#fff"/><path d="M368 60 l20 20 -20 20 -20 -20z" fill="#FFFF00"/><path d="M488 64 l16 16 -16 16 -16 -16z" fill="#fff"/><path d="M600 64 l16 16 -16 16 -16 -16z" fill="#000"/></g>
+              <g font-family="JetBrains Mono, monospace" font-size="14" font-weight="700"><text x="40" y="50">Viabilidad</text><text x="170" y="50">Básico</text><text x="276" y="50">Ejecución</text><text x="410" y="50">Obra</text><text x="520" y="50">Entrega</text></g>
+              <g font-family="JetBrains Mono, monospace" font-size="13" fill="#666"><text x="128" y="126" text-anchor="middle">¿seguir?</text><text x="248" y="126" text-anchor="middle">¿licencia?</text><text x="368" y="126" text-anchor="middle" fill="#000" font-weight="700">¿licitar?</text><text x="488" y="126" text-anchor="middle">¿recibir?</text><text x="600" y="126" text-anchor="end">¿operar?</text></g>
+              <text x="20" y="170" font-family="JetBrains Mono, monospace" font-size="12" fill="#666">cada rombo = un intercambio con su nivel de información</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== I · LOIN ========== -->
+    <section class="slide" id="loin" data-nav="Nivel de información necesario">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Nivel de información necesario</span>
+          <h2 class="display">Ni más ni menos<span class="dot">.</span></h2>
+          <p class="slide-lead">Para cada hito y cada propósito se fija cuánta geometría, qué datos y qué documentos. Lo que sobra cuesta tanto como lo que falta.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="loin"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w2">
+            <span class="c-label">Geometría</span>
+            <svg class="ico" viewBox="0 0 40 40" aria-hidden="true"><path d="M8 14 L20 8 L32 14 L32 28 L20 34 L8 28 Z" fill="none" stroke="#000" stroke-width="2.5" stroke-linejoin="round"/><path d="M8 14 L20 20 L32 14 M20 20 V34" fill="none" stroke="#000" stroke-width="2"/></svg>
+            <span class="c-title">Detalle, dimensión, posición</span>
+          </div>
+          <div class="card w2 y">
+            <span class="c-label">Datos</span>
+            <svg class="ico" viewBox="0 0 40 40" aria-hidden="true"><g stroke="#000" stroke-width="2.5"><path d="M6 10h28M6 20h28M6 30h28"/></g><g fill="#000"><circle cx="12" cy="10" r="3"/><circle cx="24" cy="20" r="3"/><circle cx="16" cy="30" r="3"/></g></svg>
+            <span class="c-title">Propiedades y valores</span>
+          </div>
+          <div class="card w2">
+            <span class="c-label">Documentación</span>
+            <svg class="ico" viewBox="0 0 40 40" aria-hidden="true"><path d="M10 4h14l8 8v24H10z" fill="none" stroke="#000" stroke-width="2.5" stroke-linejoin="round"/><path d="M15 20h12M15 26h12" stroke="#000" stroke-width="2"/></svg>
+            <span class="c-title">Fichas, certificados, manuales</span>
+          </div>
+          <div class="card w6 k">
+            <span class="c-label">Se define por</span>
+            <div class="chips"><span class="chip y">Propósito</span><span class="chip">Hito</span><span class="chip">Quién lo pide</span><span class="chip">Objeto</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== I · CDE ========== -->
+    <section class="slide" id="estados" data-nav="Cuatro estados del CDE">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Entorno común de datos</span>
+          <h2 class="display">Cuatro estados por contenedor<span class="dot">.</span></h2>
+          <p class="slide-lead">Cada fichero pasa de trabajo en curso a compartido, publicado y archivado. Cada paso tiene una comprobación y alguien que la firma.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="estados"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w6">
+            <span class="c-label">Estados y transiciones</span>
+            <svg class="draw" viewBox="0 0 640 170" role="img" aria-label="Trabajo en curso pasa a compartido tras comprobar, a publicado tras autorizar y aceptar, y todo queda archivado">
+              <g font-family="Inter, sans-serif" font-weight="900" font-size="15">
+                <rect x="6" y="40" width="130" height="60" rx="6" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="71" y="76" text-anchor="middle">EN CURSO</text>
+                <rect x="172" y="40" width="130" height="60" rx="6" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="237" y="76" text-anchor="middle">COMPARTIDO</text>
+                <rect x="338" y="40" width="130" height="60" rx="6" fill="#FFFF00" stroke="#000" stroke-width="3"/><text x="403" y="76" text-anchor="middle">PUBLICADO</text>
+                <rect x="504" y="40" width="130" height="60" rx="6" fill="#000"/><text x="569" y="76" text-anchor="middle" fill="#fff">ARCHIVADO</text>
+              </g>
+              <g stroke="#000" stroke-width="2.5" fill="none"><path d="M136 70h30"/><path d="M302 70h30"/><path d="M468 70h30"/></g>
+              <g fill="#000"><path d="M166 70l-8-5v10z"/><path d="M332 70l-8-5v10z"/><path d="M498 70l-8-5v10z"/></g>
+              <g font-family="JetBrains Mono, monospace" font-size="12" fill="#666"><text x="151" y="128" text-anchor="middle">comprobar</text><text x="151" y="144" text-anchor="middle">revisar</text><text x="317" y="128" text-anchor="middle">autorizar</text><text x="317" y="144" text-anchor="middle">aceptar</text><text x="483" y="128" text-anchor="middle">registro</text></g>
+              <g font-family="JetBrains Mono, monospace" font-size="12"><text x="71" y="28" text-anchor="middle">WIP</text><text x="237" y="28" text-anchor="middle">SHARED</text><text x="403" y="28" text-anchor="middle">PUBLISHED</text><text x="569" y="28" text-anchor="middle">ARCHIVED</text></g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== I · DOCUMENTO VIVO ========== -->
+    <section class="slide" id="vivo" data-nav="Un documento vivo">
       <div class="bento">
         <div class="b-title">
           <span class="slide-n"></span>
           <span class="kicker-y">Mantenimiento</span>
-          <h2 class="display">Se revisa, no se archiva<span class="dot">.</span></h2>
-          <p class="slide-lead">Una versión por fase y cambios registrados.</p>
+          <h2 class="display">Se actualiza, no se archiva<span class="dot">.</span></h2>
+          <p class="slide-lead">El BEP se ofrece, se confirma al designar y se revisa cada vez que cambia algo que afecta a la información: una fase, un equipo, un programa.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="vivo"><span class="plus">+</span> Ver detalle</button></div>
         </div>
         <div class="b-cards">
-          <div class="card w3 k"><span class="c-label">Revisiones</span><b class="c-num">5<small></small></b><span class="c-foot">Relleno</span></div>
-          <div class="card w3 "><span class="c-label">Disparadores</span><div class="chips"><span class="chip y">Cambio de fase</span><span class="chip">Nuevo agente</span><span class="chip">Nuevo software</span></div></div>
-          <div class="card w6 g"><span class="c-label">Ciclo</span><div class="flow"><span class="chip">Redactar</span><span class="arrow">→</span><span class="chip">Aprobar</span><span class="arrow">→</span><span class="chip y">Aplicar</span><span class="arrow">→</span><span class="chip k">Revisar</span></div></div>
+          <div class="card w3 g">
+            <span class="c-label">Ciclo de vida</span>
+            <svg class="draw" viewBox="0 0 280 230" role="img" aria-label="Ciclo: ofertar, confirmar, aplicar y revisar, que vuelve a aplicar">
+              <circle cx="140" cy="118" r="78" fill="none" stroke="#000" stroke-width="2.5"/>
+              <g font-family="JetBrains Mono, monospace" font-size="11" font-weight="700">
+                <rect x="96" y="26" width="88" height="28" rx="14" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="140" y="45" text-anchor="middle">OFERTAR</text>
+                <rect x="186" y="104" width="88" height="28" rx="14" fill="#000"/><text x="230" y="123" text-anchor="middle" fill="#fff">CONFIRMAR</text>
+                <rect x="96" y="182" width="88" height="28" rx="14" fill="#FFFF00" stroke="#000" stroke-width="2.5"/><text x="140" y="201" text-anchor="middle">APLICAR</text>
+                <rect x="6" y="104" width="88" height="28" rx="14" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="50" y="123" text-anchor="middle">REVISAR</text>
+              </g>
+            </svg>
+          </div>
+          <div class="card w3">
+            <span class="c-label">Lo que obliga a revisarlo</span>
+            <div class="chips"><span class="chip y">Cambio de etapa</span><span class="chip">Nueva parte designada</span><span class="chip">Nuevo programa o versión</span><span class="chip">Cambio del EIR</span><span class="chip k">Lección aprendida</span></div>
+          </div>
         </div>
       </div>
     </section>
 
+    <!-- ========== I · CLAVES ========== -->
+    <section class="slide" id="claves" data-nav="Un BEP útil">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Cómo se reconoce</span>
+          <h2 class="display">Concreto, con nombres y comprobable<span class="dot">.</span></h2>
+          <p class="slide-lead">Un BEP copiado de otro proyecto se nota: habla en general. Uno útil responde a cada requisito con una persona, una fecha y una forma de comprobarlo.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="claves"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w3">
+            <span class="c-label">BEP de relleno</span>
+            <ul class="checklist" style="opacity:.7"><li>«Se usará software BIM»</li><li>«El equipo coordinará los modelos»</li><li>«Se seguirá la norma»</li></ul>
+          </div>
+          <div class="card w3 y">
+            <span class="c-label">BEP útil</span>
+            <ul class="checklist"><li>Programa, versión y formato por equipo</li><li>Federación semanal, responsable con nombre</li><li>IFC4 validado con el IDS del EIR</li></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== II · FAMILIA ISO 19650 ========== -->
+    <section class="slide" id="familia" data-cap="II · Estándares" data-nav="La familia ISO 19650">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">ISO 19650</span>
+          <h2 class="display">Seis partes, un mismo lenguaje<span class="dot">.</span></h2>
+          <p class="slide-lead">Conceptos, fase de desarrollo, operación, intercambio, seguridad y salud. En España se publican como UNE-EN ISO 19650.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="familia"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w6">
+            <span class="c-label">Partes y año de publicación ISO</span>
+            <svg class="draw" viewBox="0 0 640 190" role="img" aria-label="Partes 1 y 2 de 2018, partes 3 y 5 de 2020, parte 4 de 2022 y parte 6 de 2025 sobre una línea de tiempo">
+              <line x1="20" y1="150" x2="620" y2="150" stroke="#000" stroke-width="2.5"/>
+              <g font-family="JetBrains Mono, monospace" font-size="11" fill="#666"><text x="40" y="176">2018</text><text x="200" y="176">2020</text><text x="360" y="176">2022</text><text x="560" y="176">2025</text></g>
+              <g stroke="#000" stroke-width="2.5">
+                <rect x="30" y="86" width="64" height="56" fill="#fff"/><rect x="30" y="22" width="64" height="56" fill="#FFFF00"/>
+                <rect x="190" y="86" width="64" height="56" fill="#fff"/><rect x="190" y="22" width="64" height="56" fill="#fff"/>
+                <rect x="350" y="86" width="64" height="56" fill="#fff"/>
+                <rect x="550" y="86" width="64" height="56" fill="#fff"/>
+              </g>
+              <g font-family="Inter, sans-serif" font-weight="900" font-size="22"><text x="62" y="58" text-anchor="middle">2</text><text x="62" y="122" text-anchor="middle">1</text><text x="222" y="58" text-anchor="middle">5</text><text x="222" y="122" text-anchor="middle">3</text><text x="382" y="122" text-anchor="middle">4</text><text x="582" y="122" text-anchor="middle">6</text></g>
+              <g font-family="JetBrains Mono, monospace" font-size="10"><text x="102" y="52">desarrollo</text><text x="102" y="118">conceptos</text><text x="262" y="52">seguridad</text><text x="262" y="118">operación</text><text x="422" y="118">intercambio</text><text x="582" y="78" text-anchor="middle">salud y seg.</text></g>
+            </svg>
+          </div>
+          <div class="card w3 k"><span class="c-label">Revisión en curso</span><span class="c-title" style="color:#fff">Partes 1 y 2</span><span class="c-foot">la nueva parte 2 absorbe la 3 · borrador en nueva votación</span></div>
+          <div class="card w3"><span class="c-label">Comité español</span><span class="c-title">UNE CTN 332</span><span class="c-foot">espejo de ISO/TC 59/SC 13 y CEN/TC 442</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== II · PROCESO ========== -->
+    <section class="slide" id="proceso" data-nav="Ocho actividades">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">ISO 19650-2</span>
+          <h2 class="display">Ocho actividades, dos BEP<span class="dot">.</span></h2>
+          <p class="slide-lead">La parte 2 ordena cada designación en ocho actividades. El BEP aparece al responder a la licitación y se confirma al designar.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="proceso"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w6 g">
+            <span class="c-label">Proceso de gestión de la información</span>
+            <svg class="draw" viewBox="0 0 640 200" role="img" aria-label="Ocho actividades numeradas en fila; la 3, respuesta a la licitación, y la 4, designación, resaltadas porque en ellas se escribe y confirma el BEP">
+              <line x1="40" y1="70" x2="600" y2="70" stroke="#000" stroke-width="2.5"/>
+              <g stroke="#000" stroke-width="2.5"><circle cx="40" cy="70" r="24" fill="#fff"/><circle cx="120" cy="70" r="24" fill="#fff"/><circle cx="200" cy="70" r="28" fill="#FFFF00"/><circle cx="280" cy="70" r="28" fill="#000"/><circle cx="360" cy="70" r="24" fill="#fff"/><circle cx="440" cy="70" r="24" fill="#fff"/><circle cx="520" cy="70" r="24" fill="#fff"/><circle cx="600" cy="70" r="24" fill="#fff"/></g>
+              <g font-family="Inter, sans-serif" font-weight="900" font-size="18" text-anchor="middle"><text x="40" y="77">1</text><text x="120" y="77">2</text><text x="200" y="77">3</text><text x="280" y="77" fill="#FFFF00">4</text><text x="360" y="77">5</text><text x="440" y="77">6</text><text x="520" y="77">7</text><text x="600" y="77">8</text></g>
+              <g font-family="JetBrains Mono, monospace" font-size="10" text-anchor="middle"><text x="40" y="120">Evaluación</text><text x="40" y="134">y necesidad</text><text x="120" y="120">Invitación</text><text x="120" y="134">a licitar</text><text x="200" y="120" font-weight="700">Respuesta</text><text x="200" y="134" font-weight="700">BEP previo</text><text x="280" y="120" font-weight="700">Designación</text><text x="280" y="134" font-weight="700">BEP · MIDP</text><text x="360" y="120">Movilización</text><text x="440" y="120">Producción</text><text x="440" y="134">colaborativa</text><text x="520" y="120">Entrega del</text><text x="520" y="134">modelo</text><text x="600" y="120">Cierre</text></g>
+              <g font-family="JetBrains Mono, monospace" font-size="10" fill="#666"><text x="20" y="186">cliente: 1-2</text><text x="170" y="186">equipo de desarrollo: 3-7</text><text x="560" y="186">ambos: 8</text></g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== II · HISTORIA ========== -->
+    <section class="slide" id="historia" data-nav="De Employer's a Exchange">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">De dónde viene</span>
+          <h2 class="display">Nació británico, se hizo ISO<span class="dot">.</span></h2>
+          <p class="slide-lead">El BEP y el EIR vienen de las normas del Reino Unido y pasaron a ISO en 2018. La revisión en curso podría cambiar sus nombres.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="historia"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w6">
+            <span class="c-label">Línea de tiempo</span>
+            <svg class="draw" viewBox="0 0 640 150" role="img" aria-label="BS 1192 en 2007, PAS 1192-2 en 2013, ISO 19650 en 2018, UNE-EN ISO 19650 en 2019 y revisión prevista hacia 2027">
+              <line x1="20" y1="60" x2="620" y2="60" stroke="#000" stroke-width="3"/>
+              <g stroke="#000" stroke-width="2.5"><circle cx="40" cy="60" r="10" fill="#fff"/><circle cx="170" cy="60" r="10" fill="#fff"/><circle cx="320" cy="60" r="14" fill="#FFFF00"/><circle cx="440" cy="60" r="10" fill="#000"/><circle cx="600" cy="60" r="10" fill="#fff" stroke-dasharray="4 3"/></g>
+              <g font-family="JetBrains Mono, monospace" font-size="14" font-weight="700" text-anchor="middle"><text x="40" y="30">2007</text><text x="170" y="30">2013</text><text x="320" y="30">2018</text><text x="440" y="30">2019</text><text x="600" y="30">2027?</text></g>
+              <g font-family="JetBrains Mono, monospace" font-size="12" text-anchor="middle"><text x="52" y="96">BS 1192</text><text x="52" y="112" fill="#666">nombres, CDE</text><text x="170" y="96">PAS 1192-2</text><text x="170" y="112" fill="#666">EIR = Employer's</text><text x="320" y="96" font-weight="700">ISO 19650-1/2</text><text x="320" y="112" fill="#666">EIR = Exchange</text><text x="440" y="96">UNE-EN ISO</text><text x="440" y="112" fill="#666">versión española</text><text x="600" y="96">revisión</text><text x="600" y="112" fill="#666">¿otro nombre?</text></g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== II · NOMBRES Y ESTADOS ========== -->
+    <section class="slide" id="nombres" data-nav="Nombres y códigos de estado">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Anexo nacional británico</span>
+          <h2 class="display">Un nombre que se lee solo<span class="dot">.</span></h2>
+          <p class="slide-lead">El anexo del Reino Unido propone nombres por campos y un código de estado para cada fichero. Es el modelo que copian muchos CDE y pliegos.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="nombres"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w6">
+            <span class="c-label">Siete campos separados por guiones</span>
+            <svg class="draw" viewBox="0 0 640 140" role="img" aria-label="Nombre de fichero dividido en proyecto, originador, volumen, nivel, tipo, rol y número">
+              <g font-family="JetBrains Mono, monospace" font-size="20" font-weight="700">
+                <rect x="4" y="24" width="76" height="40" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="42" y="51" text-anchor="middle">HSP</text>
+                <rect x="96" y="24" width="76" height="40" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="134" y="51" text-anchor="middle">ARQ</text>
+                <rect x="188" y="24" width="64" height="40" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="220" y="51" text-anchor="middle">ZZ</text>
+                <rect x="268" y="24" width="64" height="40" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="300" y="51" text-anchor="middle">01</text>
+                <rect x="348" y="24" width="64" height="40" fill="#FFFF00" stroke="#000" stroke-width="3"/><text x="380" y="51" text-anchor="middle">M3</text>
+                <rect x="428" y="24" width="52" height="40" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="454" y="51" text-anchor="middle">A</text>
+                <rect x="496" y="24" width="96" height="40" fill="#000"/><text x="544" y="51" text-anchor="middle" fill="#fff">0001</text>
+              </g>
+              <g font-family="JetBrains Mono, monospace" font-size="18" font-weight="700"><text x="83" y="50">-</text><text x="175" y="50">-</text><text x="255" y="50">-</text><text x="335" y="50">-</text><text x="415" y="50">-</text><text x="483" y="50">-</text></g>
+              <g font-family="JetBrains Mono, monospace" font-size="10" fill="#666" text-anchor="middle"><text x="42" y="86">proyecto</text><text x="134" y="86">originador</text><text x="220" y="86">volumen</text><text x="300" y="86">nivel</text><text x="380" y="86" fill="#000">tipo</text><text x="454" y="86">rol</text><text x="544" y="86">número</text></g>
+              <text x="4" y="124" font-family="JetBrains Mono, monospace" font-size="11">M3 = modelo 3D · A = arquitectura · ZZ = todos los volúmenes</text>
+            </svg>
+          </div>
+          <div class="card w6 g">
+            <span class="c-label">Códigos de estado</span>
+            <div class="chips"><span class="chip">S0 en curso</span><span class="chip">S1 coordinación</span><span class="chip">S2 información</span><span class="chip">S3 revisión</span><span class="chip">S4 aprobación de etapa</span><span class="chip y">A1 autorizado</span><span class="chip">B1 con comentarios</span><span class="chip k">CR registro final</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== II · ESPAÑA ========== -->
+    <section class="slide" id="espana" data-nav="Ejemplo: España">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Ejemplo · España</span>
+          <h2 class="display">El Plan BIM pone fechas<span class="dot">.</span></h2>
+          <p class="slide-lead">El Estado exige un nivel BIM según el valor del contrato. Desde octubre de 2025, nivel Medio en las obras por encima del umbral europeo.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="espana"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w6">
+            <span class="c-label">Nivel exigido · contratos de la Administración General del Estado</span>
+            <svg class="draw" viewBox="0 0 640 190" role="img" aria-label="Calendario: por encima del umbral, Inicial en abril de 2024, Medio en octubre de 2025, Avanzado en octubre de 2027 e Integrado en abril de 2030; entre 2 millones y el umbral, un nivel menos con un paso de retraso">
+              <g font-family="JetBrains Mono, monospace" font-size="11" font-weight="700"><text x="170" y="20">abr 2024</text><text x="286" y="20">oct 2025</text><text x="402" y="20">oct 2027</text><text x="518" y="20">abr 2030</text></g>
+              <g font-family="JetBrains Mono, monospace" font-size="11"><text x="0" y="64">≥ umbral</text><text x="0" y="80" fill="#666">5.404.000 €</text><text x="0" y="140">2 M€ – umbral</text></g>
+              <g stroke="#000" stroke-width="2.5" font-family="Inter, sans-serif" font-weight="900" font-size="13">
+                <rect x="164" y="40" width="108" height="48" fill="#fff"/><rect x="280" y="40" width="108" height="48" fill="#FFFF00" stroke-width="3"/><rect x="396" y="40" width="108" height="48" fill="#fff"/><rect x="512" y="40" width="108" height="48" fill="#000"/>
+                <rect x="164" y="112" width="108" height="48" fill="#EFEFEA" stroke-dasharray="5 4"/><rect x="280" y="112" width="108" height="48" fill="#fff"/><rect x="396" y="112" width="108" height="48" fill="#fff"/><rect x="512" y="112" width="108" height="48" fill="#fff"/>
+              </g>
+              <g font-family="Inter, sans-serif" font-weight="900" font-size="13" text-anchor="middle"><text x="218" y="69">INICIAL</text><text x="334" y="69">MEDIO</text><text x="450" y="69">AVANZADO</text><text x="566" y="69" fill="#fff">INTEGRADO</text><text x="218" y="141" fill="#666">INICIAL*</text><text x="334" y="141">INICIAL</text><text x="450" y="141">MEDIO</text><text x="566" y="141">AVANZADO</text></g>
+              <text x="0" y="184" font-family="JetBrains Mono, monospace" font-size="10" fill="#666">* recomendado · umbral de obras vigente desde el 1/1/2026</text>
+            </svg>
+          </div>
+          <div class="card w2 k"><span class="c-label">Aprobado</span><span class="c-title" style="color:#fff">27/06/2023</span><span class="c-foot">Orden PCM/818/2023</span></div>
+          <div class="card w2"><span class="c-label">Exige</span><span class="c-title">IFC + BCF</span><span class="c-foot">y la serie UNE-EN ISO 19650</span></div>
+          <div class="card w2 y"><span class="c-label">Lo vigila</span><span class="c-title">CIBIM</span><span class="c-foot">creada por el RD 1515/2018</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== II · OTRAS GUÍAS ========== -->
+    <section class="slide" id="guias" data-nav="Otras guías del BEP">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Fuera de ISO</span>
+          <h2 class="display">Otras guías, misma idea<span class="dot">.</span></h2>
+          <p class="slide-lead">Estados Unidos, Singapur o Perú tienen su guía de BEP. Cambian los nombres y el orden; el esquema de pregunta y respuesta se mantiene.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="guias"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w3 y"><span class="c-label">Penn State · EE. UU.</span><b class="c-num">5<small>pasos</small></b><span class="c-foot">guía v3.0 de 2021, por usos BIM</span></div>
+          <div class="card w3"><span class="c-label">NBIMS-US V4 · EE. UU.</span><b class="c-num">3<small>momentos</small></b><span class="c-foot">petición, propuesta y plan completo</span></div>
+          <div class="card w3"><span class="c-label">BCA · Singapur</span><b class="c-num">2013</b><span class="c-foot">BIM Essential Guide for BEP</span></div>
+          <div class="card w3 k"><span class="c-label">Plan BIM Perú</span><b class="c-num" style="color:var(--accent)">2023</b><span class="c-foot">guía nacional basada en NTP-ISO 19650</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== III · CONFIGURAR ========== -->
+    <section class="slide" id="configurar" data-cap="III · Software" data-nav="El BEP, dentro del modelo">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Software de autoría</span>
+          <h2 class="display">Cada decisión acaba en un ajuste<span class="dot">.</span></h2>
+          <p class="slide-lead">Plantilla, propiedades, nombres, coordenadas y exportación: lo que el BEP decide se configura una vez en cada programa y se reparte al equipo.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="configurar"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w6">
+            <span class="c-label">Del documento al programa</span>
+            <svg class="draw" viewBox="0 0 640 200" role="img" aria-label="Cinco apartados del BEP enlazados con su ajuste en el programa: plantilla, propiedades, nombres de vistas y hojas, coordenadas compartidas y configuración de exportación IFC">
+              <g font-family="JetBrains Mono, monospace" font-size="11">
+                <g stroke="#000" stroke-width="2"><rect x="0" y="6" width="220" height="30" fill="#fff"/><rect x="0" y="44" width="220" height="30" fill="#fff"/><rect x="0" y="82" width="220" height="30" fill="#fff"/><rect x="0" y="120" width="220" height="30" fill="#fff"/><rect x="0" y="158" width="220" height="30" fill="#FFFF00"/></g>
+                <text x="10" y="26">Estándar de información</text><text x="10" y="64">Nivel de información</text><text x="10" y="102">Convención de nombres</text><text x="10" y="140">Coordenadas</text><text x="10" y="178" font-weight="700">Formatos de entrega</text>
+                <g stroke="#000" stroke-width="2"><rect x="400" y="6" width="240" height="30" fill="#000"/><rect x="400" y="44" width="240" height="30" fill="#000"/><rect x="400" y="82" width="240" height="30" fill="#000"/><rect x="400" y="120" width="240" height="30" fill="#000"/><rect x="400" y="158" width="240" height="30" fill="#000"/></g>
+                <g fill="#fff"><text x="410" y="26">plantilla de proyecto</text><text x="410" y="64">propiedades · IDS</text><text x="410" y="102">vistas, hojas, ficheros</text><text x="410" y="140">punto de reconocimiento</text><text x="410" y="178" fill="#FFFF00">configuración IFC</text></g>
+              </g>
+              <g stroke="#000" stroke-width="2" stroke-dasharray="4 4"><path d="M220 21H400M220 59H400M220 97H400M220 135H400M220 173H400"/></g>
+            </svg>
+          </div>
+          <div class="card w3 g"><span class="c-label">Archicad</span><span class="c-title">Importa un IDS</span><span class="c-foot">y crea sus propiedades y clasificaciones</span></div>
+          <div class="card w3"><span class="c-label">Revit</span><span class="c-title">Plantilla + parámetros compartidos</span><span class="c-foot">y configuración de exportación IFC guardada</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== III · REDACTAR ========== -->
+    <section class="slide" id="redactar" data-nav="Con qué se escribe">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Redactar el BEP</span>
+          <h2 class="display">De la plantilla al dato<span class="dot">.</span></h2>
+          <p class="slide-lead">Casi todos se escriben en plantillas de texto y hojas de cálculo. Algunas plataformas lo convierten en datos que se enlazan con las comprobaciones.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="redactar"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w2"><span class="c-label">Texto</span><span class="c-title">Plantillas oficiales</span><span class="c-foot">UK BIM Framework · Euskadi · Perú</span></div>
+          <div class="card w2 g"><span class="c-label">Tablas</span><span class="c-title">Hoja de cálculo</span><span class="c-foot">matriz, TIDP y MIDP</span></div>
+          <div class="card w2 y"><span class="c-label">Datos</span><span class="c-title">Plannerly</span><span class="c-foot">BEP, LOIN y verificación</span></div>
+          <div class="card w6 k"><span class="c-label">La diferencia</span><div class="flow"><span class="chip">Documento</span><span class="arrow">→</span><span class="chip">Tabla</span><span class="arrow">→</span><span class="chip y">Requisito comprobable</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== IV · PLATAFORMAS ========== -->
+    <section class="slide" id="cde-plataformas" data-cap="IV · Plataformas" data-nav="El CDE aplica el BEP">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Plataformas CDE</span>
+          <h2 class="display">La plataforma hace cumplir el BEP<span class="dot">.</span></h2>
+          <p class="slide-lead">Un CDE bien configurado aparta los nombres que no cumplen, asigna códigos de estado y no deja publicar sin aprobación.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="cde-plataformas"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w3">
+            <span class="c-label">Autodesk Docs</span>
+            <div class="chips"><span class="chip y">Validador de nombres</span><span class="chip">Zona de espera</span><span class="chip">S0–S7 · A · B · CR</span><span class="chip k">Aprobación en 1–6 pasos</span></div>
+          </div>
+          <div class="card w3 g">
+            <span class="c-label">Bentley</span>
+            <span class="c-title">BCDE Project</span>
+            <span class="c-foot">estados en curso, compartido, publicado y archivado; verificación de nombres</span>
+          </div>
+          <div class="card w3 k"><span class="c-label">Certificación</span><span class="c-title" style="color:#fff">Kitemark BSI</span><span class="c-foot">software ISO 19650, desde 2021</span></div>
+          <div class="card w3"><span class="c-label">Antes de elegir</span><span class="c-title">El BEP manda</span><span class="c-foot">la plataforma se configura a partir de él</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== IV · APROBACIÓN ========== -->
+    <section class="slide" id="aprobacion" data-nav="De S0 a A1">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Flujo de aprobación</span>
+          <h2 class="display">De S0 a A1, con firma<span class="dot">.</span></h2>
+          <p class="slide-lead">Cada cambio de estado es un flujo: quién revisa, quién aprueba y a qué carpeta pasa el fichero. El BEP lo dice; la plataforma lo ejecuta.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="aprobacion"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w6 g">
+            <span class="c-label">Un fichero, cuatro firmas</span>
+            <svg class="draw" viewBox="0 0 640 170" role="img" aria-label="El autor sube en S0, el jefe de equipo comprueba y pasa a S1, el gestor de la información revisa y el cliente autoriza y acepta en A1">
+              <g font-family="JetBrains Mono, monospace" font-size="12">
+                <g stroke="#000" stroke-width="2.5"><rect x="6" y="50" width="120" height="56" rx="6" fill="#fff"/><rect x="170" y="50" width="120" height="56" rx="6" fill="#fff"/><rect x="334" y="50" width="120" height="56" rx="6" fill="#fff"/><rect x="498" y="50" width="136" height="56" rx="6" fill="#FFFF00" stroke-width="3"/></g>
+                <g font-weight="700" text-anchor="middle" font-size="18"><text x="66" y="86">S0</text><text x="230" y="86">S1</text><text x="394" y="86">S3 → S4</text><text x="566" y="86">A1</text></g>
+                <g text-anchor="middle" font-size="10" fill="#666"><text x="66" y="130">autor</text><text x="230" y="130">jefe del equipo</text><text x="230" y="144">comprueba</text><text x="394" y="130">gestor de la información</text><text x="394" y="144">revisa</text><text x="566" y="130">parte que designa</text><text x="566" y="144">autoriza y acepta</text></g>
+              </g>
+              <g stroke="#000" stroke-width="2.5"><path d="M126 78h38M290 78h38M454 78h38"/></g>
+              <g fill="#000"><path d="M166 78l-8-5v10z"/><path d="M330 78l-8-5v10z"/><path d="M494 78l-8-5v10z"/></g>
+              <g font-family="JetBrains Mono, monospace" font-size="10"><text x="6" y="30">EN CURSO</text><text x="170" y="30">COMPARTIDO</text><text x="498" y="30">PUBLICADO</text></g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== V · FORMATOS ========== -->
+    <section class="slide" id="formatos" data-cap="V · Interoperabilidad" data-nav="Formatos abiertos">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Formatos de entrega</span>
+          <h2 class="display">Formatos abiertos, en el contrato<span class="dot">.</span></h2>
+          <p class="slide-lead">El EIR fija en qué formato se entrega cada cosa y el BEP dice con qué programa y configuración se produce. El Plan BIM español exige IFC y BCF.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="formatos"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w2 y"><span class="c-label">IFC</span><span class="c-title">El modelo</span><span class="c-foot">ISO 16739-1:2024 (IFC 4.3)</span></div>
+          <div class="card w2"><span class="c-label">BCF</span><span class="c-title">Las incidencias</span><span class="c-foot">archivo o API</span></div>
+          <div class="card w2"><span class="c-label">IDS</span><span class="c-title">Los requisitos</span><span class="c-foot">1.0, junio de 2024</span></div>
+          <div class="card w3 g"><span class="c-label">COBie</span><span class="c-title">Datos para mantener</span><span class="c-foot">hojas y tablas para la operación</span></div>
+          <div class="card w3 k"><span class="c-label">Y además</span><span class="c-title" style="color:#fff">Nativo + PDF</span><span class="c-foot">si el EIR los pide, con versión</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== V · IDS ========== -->
+    <section class="slide" id="ids" data-nav="El EIR que lee la máquina">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">IDS · buildingSMART</span>
+          <h2 class="display">El EIR que lee la máquina<span class="dot">.</span></h2>
+          <p class="slide-lead">Con IDS, la parte del EIR que pide datos se escribe en un XML que cualquier comprobador lee igual. El BEP dice quién lo pasa y cuándo.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="ids"><span class="plus">+</span> Ver un ejemplo</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w3">
+            <span class="c-label">En el EIR</span>
+            <span class="c-text">«Todas las puertas llevarán su resistencia al fuego.»</span>
+          </div>
+          <div class="card w3 k">
+            <span class="c-label">En el IDS</span>
+            <span class="c-text" style="font-family:'JetBrains Mono',monospace;color:#fff">IfcDoor → Pset_DoorCommon<br><span style="color:var(--accent)">FireRating</span> obligatorio</span>
+          </div>
+          <div class="card w6 g">
+            <span class="c-label">Del texto a la comprobación</span>
+            <div class="flow"><span class="chip">EIR en texto</span><span class="arrow">→</span><span class="chip y">IDS</span><span class="arrow">→</span><span class="chip">IFC entregado</span><span class="arrow">→</span><span class="chip k">Informe y BCF</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== VI · CALIDAD ========== -->
+    <section class="slide" id="calidad" data-cap="VI · Control de calidad" data-nav="Qué comprobar">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Control de calidad</span>
+          <h2 class="display">Cinco preguntas por entrega<span class="dot">.</span></h2>
+          <p class="slide-lead">Antes de compartir o publicar, cada contenedor responde: cómo se llama, en qué estado está, qué datos trae, si coordina y si está en su sitio.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="calidad"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w2 y"><span class="c-label">01 · Nombre</span><span class="c-title">Cumple la convención</span></div>
+          <div class="card w2"><span class="c-label">02 · Estado</span><span class="c-title">Código y revisión</span></div>
+          <div class="card w2"><span class="c-label">03 · Datos</span><span class="c-title">Pasa el IDS</span></div>
+          <div class="card w3"><span class="c-label">04 · Coordinación</span><span class="c-title">Sin interferencias abiertas</span></div>
+          <div class="card w3 k"><span class="c-label">05 · Posición</span><span class="c-title" style="color:#fff">EPSG:<span data-pais="epsg">25830</span></span><span class="c-foot">y punto de control</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== VI · HERRAMIENTAS ========== -->
+    <section class="slide" id="comprobadores" data-nav="Cada control, su herramienta">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Herramientas</span>
+          <h2 class="display">Cada control, su herramienta<span class="dot">.</span></h2>
+          <p class="slide-lead">Los nombres los vigila el CDE; los datos, un IDS; la coordinación, un visor federado. El BEP dice cuál se usa y quién firma el informe.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="comprobadores"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w2"><span class="c-label">IfcTester</span><span class="c-title">IDS gratis</span><span class="c-foot">informe HTML o BCF</span></div>
+          <div class="card w2 y"><span class="c-label">Solibri</span><span class="c-title">Regla 244</span><span class="c-foot">validación IDS</span></div>
+          <div class="card w2"><span class="c-label">BIMcollab</span><span class="c-title">Nexus + Zoom</span><span class="c-foot">IDS e incidencias BCF</span></div>
+          <div class="card w3 g"><span class="c-label">Autodesk Docs</span><span class="c-title">Validador de nombres</span></div>
+          <div class="card w3 k"><span class="c-label">IFC</span><span class="c-title" style="color:#fff">Validation Service</span><span class="c-foot">buildingSMART: que el IFC sea IFC</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== VI · EVALUAR EL BEP ========== -->
+    <section class="slide" id="evaluar" data-nav="Evaluar un BEP">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Evaluar el BEP</span>
+          <h2 class="display">El propio BEP también se revisa<span class="dot">.</span></h2>
+          <p class="slide-lead">Antes de adjudicar, el cliente puntúa el BEP previo: si responde a cada requisito y si el equipo tiene capacidad real para cumplirlo.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="evaluar"><span class="plus">+</span> Ver checklist</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w4">
+            <span class="c-label">Hoja de evaluación</span>
+            <svg class="draw" viewBox="0 0 440 220" role="img" aria-label="Hoja de evaluación con cinco criterios y una barra de puntuación en cada uno">
+              <path d="M10 8 H390 L430 48 V212 H10 Z" fill="#fff" stroke="#000" stroke-width="3" stroke-linejoin="round"/><path d="M390 8 V48 H430" fill="none" stroke="#000" stroke-width="3" stroke-linejoin="round"/>
+              <g font-family="JetBrains Mono, monospace" font-size="11"><text x="28" y="56">Responde a cada EIR</text><text x="28" y="88">Personas con nombre</text><text x="28" y="120">Capacidad y medios</text><text x="28" y="152">Movilización y pruebas</text><text x="28" y="184">Riesgos de información</text></g>
+              <g stroke="#000" stroke-width="2"><rect x="230" y="44" width="150" height="16" fill="#fff"/><rect x="230" y="76" width="150" height="16" fill="#fff"/><rect x="230" y="108" width="150" height="16" fill="#fff"/><rect x="230" y="140" width="150" height="16" fill="#fff"/><rect x="230" y="172" width="150" height="16" fill="#fff"/></g>
+              <g fill="#000"><rect x="230" y="44" width="140" height="16"/><rect x="230" y="76" width="120" height="16"/><rect x="230" y="108" width="80" height="16"/><rect x="230" y="172" width="100" height="16"/></g>
+              <rect x="230" y="140" width="50" height="16" fill="#FFFF00" stroke="#000" stroke-width="2"/>
+            </svg>
+          </div>
+          <div class="card w2 y"><span class="c-label">Señal de alarma</span><span class="c-title">Movilización sin pruebas</span><span class="c-foot">nadie ha probado el flujo antes de empezar</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== CIERRE ========== -->
     <section class="slide" id="cierre" data-nav="En resumen">
       <div class="bento">
         <div class="b-title">
           <span class="slide-n"></span>
           <span class="kicker-y">En resumen</span>
-          <h2 class="display">Tres reglas<span class="dot">.</span></h2>
-          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="fuentes"><span class="plus">+</span> Fuentes</button></div>
+          <h2 class="display">Cuatro reglas<span class="dot">.</span></h2>
+          <div class="slide-actions">
+            <button type="button" class="btn l2-btn" data-l2="glosario"><span class="plus">+</span> Glosario</button>
+            <button type="button" class="btn ghost l2-btn" data-l2="fuentes"><span class="plus">+</span> Fuentes</button>
+          </div>
         </div>
         <div class="b-cards">
-          <div class="card w2 k"><span class="step-n">1</span><span class="c-title">Responde al EIR</span></div>
-          <div class="card w2"><span class="step-n">2</span><span class="c-title">Concreto y medible</span></div>
-          <div class="card w2 y"><span class="step-n">3</span><span class="c-title">Se revisa por fase</span></div>
-          <div class="card w6"><nav id="series-nav" class="series-nav" style="margin-top:0" aria-label="Navegación de la serie"></nav></div>
+          <div class="card w3 y"><span class="c-label">01</span><span class="c-title">Pedir por escrito</span><span class="c-foot">un EIR por contrato</span></div>
+          <div class="card w3"><span class="c-label">02</span><span class="c-title">Responder punto a punto</span><span class="c-foot">el BEP, con nombres</span></div>
+          <div class="card w3 k"><span class="c-label">03</span><span class="c-title">Planificar las entregas</span><span class="c-foot">TIDP, MIDP e hitos</span></div>
+          <div class="card w3"><span class="c-label">04</span><span class="c-title">Comprobar cada una</span><span class="c-foot">CDE, IDS y visor</span></div>
+          <div class="card w6"><nav id="series-nav" class="series-nav" style="margin-top:0;border-top:0;padding-top:0" aria-label="Navegación de la serie"></nav></div>
         </div>
       </div>
     </section>
+
   </main>
 
   <footer class="site">
@@ -156,48 +858,611 @@
     </div>
   </div>
 
-  <!-- ============================== CAPA 2 (relleno) ============================== -->
-  <template id="l2-requisitos">
+  <!-- ============================== CAPA 2 ============================== -->
+  <!-- Capa 2 = ficha «Ver detalle» en tarjetas. Solo añade lo que la slide no dice. -->
+  <template id="l2-problema">
     <div class="b-cards">
-      <div class="card w3"><h4>Qué hay detrás</h4><p>Texto de relleno sobre requisitos. Aquí irá la explicación completa con ejemplos y matices. <span class="tag">Relleno</span></p></div>
-      <div class="card w3 y"><span class="c-label">Idea clave</span><p>Un aviso destacado de relleno para probar la tarjeta amarilla.</p></div>
-      <div class="card w6"><h4>Pasos de ejemplo</h4><ol class="vsteps"><li>Primer paso ficticio.</li><li>Segundo paso ficticio con <span class="ui">Menú › Comando</span>.</li><li>Resultado esperado.</li></ol></div>
-      <div class="card w6"><div class="table-wrap"><table><thead><tr><th>Concepto</th><th>Valor</th><th>Nota</th></tr></thead><tbody><tr><td>Ejemplo A</td><td class="num">10</td><td>Relleno</td></tr><tr class="is-key"><td>Ejemplo B</td><td class="num">20</td><td>Fila clave</td></tr><tr><td>Ejemplo C</td><td class="num">30</td><td>Relleno</td></tr></tbody></table></div></div>
+      <div class="card w3">
+        <h4>Por qué pasa</h4>
+        <p>«BIM» describe una forma de trabajar, no un entregable. Sin una lista de qué información se necesita, para qué decisión y en qué momento, cada equipo rellena el hueco con su costumbre: unos modelan cada tornillo y otros entregan geometría sin un solo dato.</p>
+      </div>
+      <div class="card w3 y">
+        <span class="c-label">La idea del artículo</span>
+        <p>ISO 19650 resuelve el hueco con dos documentos que se contestan: el cliente escribe sus <strong>requisitos de información</strong> y el equipo responde con un <strong>plan de ejecución BIM</strong> que dice cómo los va a cumplir.</p>
+      </div>
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Síntoma</th><th>Causa</th><th>Lo arregla</th></tr></thead>
+          <tbody>
+            <tr><td>Modelos pesados que nadie usa</td><td>No se dijo para qué servía cada modelo</td><td>Usos BIM y nivel de información en el EIR</td></tr>
+            <tr><td>Datos vacíos al recibir la obra</td><td>Nadie era responsable de rellenarlos</td><td>Matriz de responsabilidades del BEP</td></tr>
+            <tr><td>Ficheros que no se pueden abrir</td><td>Formato y versión sin acordar</td><td>Formatos del EIR + software del BEP</td></tr>
+            <tr class="is-key"><td>Entregas tarde o a destiempo</td><td>Fechas ligadas al equipo, no a las decisiones</td><td>Hitos de entrega + MIDP</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://ukbimframework.org/wp-content/uploads/2019/10/Information-Management-according-to-BS-EN-ISO-19650_-Guidance-Part-1_Concepts_2ndEdition.pdf" target="_blank" rel="noopener">UK BIM Framework, guía parte 1</a> · <a href="https://psu.pb.unizin.org/bimprojectexecutionplanning" target="_blank" rel="noopener">Penn State, BIM Project Execution Planning Guide v3.0</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-cascada">
+    <div class="b-cards">
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Sigla</th><th>Nombre</th><th>Responde a</th><th>Alimenta</th></tr></thead>
+          <tbody>
+            <tr><td>OIR</td><td>Requisitos de información de la organización</td><td>Los objetivos estratégicos del dueño de los activos</td><td>PIR y AIR</td></tr>
+            <tr><td>PIR</td><td>Requisitos de información del proyecto</td><td>El propósito, diseño y construcción del activo, en cada punto de decisión</td><td>El modelo de información del proyecto (PIM)</td></tr>
+            <tr><td>AIR</td><td>Requisitos de información del activo</td><td>La operación y el mantenimiento</td><td>El modelo de información del activo (AIM)</td></tr>
+            <tr class="is-key"><td>EIR</td><td>Requisitos de intercambio de información</td><td>Una designación concreta: aspectos de gestión, comerciales y técnicos</td><td>El BEP de quien responde</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w3">
+        <h4>Por qué cambió la E</h4>
+        <p>En PAS 1192-2 el EIR era el <em>Employer's Information Requirements</em>: un documento del cliente para todo el proyecto. ISO 19650-1 lo cambió por <em>Exchange</em> porque se escribe uno para cada designación, también los que la parte designada principal envía a sus subcontratas.</p>
+      </div>
+      <div class="card w3 g">
+        <h4>Al cerrar el proyecto</h4>
+        <p>Lo que el AIR pedía pasa del PIM al AIM: el modelo del proyecto entrega al de explotación solo la información que hará falta para operar.</p>
+      </div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://ukbimframework.org/wp-content/uploads/2019/10/Information-Management-according-to-BS-EN-ISO-19650_-Guidance-Part-1_Concepts_2ndEdition.pdf" target="_blank" rel="noopener">UK BIM Framework, guía parte 1 (2.ª ed., 2019)</a> · <a href="https://bimcorner.com/explaining-information-requirements-in-iso-19650/" target="_blank" rel="noopener">BIM Corner, Explaining Information Requirements</a> · <a href="https://campusvirtual.ull.es/ocw/pluginfile.php/22526/mod_resource/content/1/TEMA%204%20-%20IDS%20-%20REQUISITOS%20DE%20INFORMACION.pdf" target="_blank" rel="noopener">Universidad de La Laguna, tema 4</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-roles">
+    <div class="b-cards">
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Parte</th><th>En inglés</th><th>Qué hace con la información</th></tr></thead>
+          <tbody>
+            <tr class="is-key"><td>Parte que designa</td><td>Appointing party</td><td>Es el cliente o quien gestiona la información en su nombre. Escribe el EIR y recibe la información.</td></tr>
+            <tr><td>Parte designada principal</td><td>Lead appointed party</td><td>Coordina la información entre su equipo y la parte que designa. Escribe el BEP y el MIDP.</td></tr>
+            <tr><td>Parte designada</td><td>Appointed party</td><td>Produce la información. Recibe su propio EIR de la principal y escribe su TIDP.</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w2"><span class="c-label">Equipo de tarea</span><p>Las personas que hacen un paquete de trabajo concreto dentro de una parte designada.</p></div>
+      <div class="card w2 g"><span class="c-label">Equipo de desarrollo</span><p>La parte designada principal y todas sus partes designadas.</p></div>
+      <div class="card w2 k"><span class="c-label">Equipo del proyecto</span><p>La parte que designa y todos los equipos de desarrollo del proyecto.</p></div>
+      <div class="card w6 y"><span class="c-label">Ojo con la traducción</span><p>La versión UNE no es de libre acceso. «Parte que designa», «parte designada principal» y «parte designada» se usan en guías en español (Perú, Junta de Andalucía, Universidad de La Laguna); para <em>delivery team</em> conviven «equipo de desarrollo» y «equipo de ejecución». <span class="tag">Por confirmar</span></p></div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://www.ukbimframework.org/wp-content/uploads/2021/02/Guidance-Part-2_Parties-teams-and-processes-for-the-delivery-phase-of-assets_Edition-6.pdf" target="_blank" rel="noopener">UK BIM Framework, guía parte 2 (ed. 6, 2021)</a> · <a href="https://www.mef.gob.pe/contenidos/inv_publica/anexos/anexo_RD003_2023EF6301.pdf" target="_blank" rel="noopener">Guía Nacional BIM del Perú (2023)</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-bep">
+    <div class="b-cards">
+      <div class="card w3">
+        <h4>BEP previo a la designación</h4>
+        <p>Lo presenta cada candidato a parte designada principal con su oferta. Sirve para que el cliente compare cómo piensa cada equipo cumplir su EIR y si tiene medios para hacerlo. Incluye una matriz de responsabilidades de alto nivel.</p>
+      </div>
+      <div class="card w3 y">
+        <h4>BEP confirmado</h4>
+        <p>Tras la designación, el equipo ganador lo confirma con sus partes designadas: pone nombres a los roles, detalla la matriz de responsabilidades y acuerda métodos y estándar. Pasa a formar parte de los documentos del contrato.</p>
+      </div>
+      <div class="card w6">
+        <div class="quote" style="margin:0"><p>«A baseline document, approved by the Employer, to guide the project team in achieving goals set with regards to BIM deliverables».</p><cite>BCA Singapur · <a href="https://www.globalbim.org/wp-content/uploads/2024/01/Essential-Guide-BEP-2.pdf" target="_blank" rel="noopener">BIM Essential Guide for BEP</a></cite></div>
+      </div>
+      <div class="card w3 g"><h4>En español</h4><p>Se usan BEP y PEB (plan de ejecución BIM). El EIR de la Agencia de Obra Pública de la Junta de Andalucía (2024) pide un «pre-PEB» con la oferta y un PEB tras la adjudicación.</p></div>
+      <div class="card w3 k"><h4>Lo que no es</h4><p>No es un manual de la empresa ni un catálogo de capacidades. Si se puede copiar en otro proyecto sin cambiar nada, no responde a ningún EIR.</p></div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://www.ukbimframework.org/wp-content/uploads/2021/02/Guidance-Part-2_Parties-teams-and-processes-for-the-delivery-phase-of-assets_Edition-6.pdf" target="_blank" rel="noopener">UK BIM Framework, guía parte 2</a> · <a href="https://www.juntadeandalucia.es/sites/default/files/inline-files/2025/01/Requerimientos%20BIM%20%28EIR%29%2C%20tipos%20exigidos%20para%20pliegos%20de%20licitación%20de%20redacción%20de%20proyectos%20%28anexo%201%20del%20PTP%29.pdf" target="_blank" rel="noopener">AOPJA, Requerimientos BIM (EIR), 2024</a>.</p></div>
     </div>
   </template>
 
   <template id="l2-contenido">
     <div class="b-cards">
-      <div class="card w3"><h4>Qué hay detrás</h4><p>Texto de relleno sobre contenido. Aquí irá la explicación completa con ejemplos y matices. <span class="tag">Relleno</span></p></div>
-      <div class="card w3 y"><span class="c-label">Idea clave</span><p>Un aviso destacado de relleno para probar la tarjeta amarilla.</p></div>
-      <div class="card w6"><h4>Pasos de ejemplo</h4><ol class="vsteps"><li>Primer paso ficticio.</li><li>Segundo paso ficticio con <span class="ui">Menú › Comando</span>.</li><li>Resultado esperado.</li></ol></div>
-      <div class="card w6"><div class="table-wrap"><table><thead><tr><th>Concepto</th><th>Valor</th><th>Nota</th></tr></thead><tbody><tr><td>Ejemplo A</td><td class="num">10</td><td>Relleno</td></tr><tr class="is-key"><td>Ejemplo B</td><td class="num">20</td><td>Fila clave</td></tr><tr><td>Ejemplo C</td><td class="num">30</td><td>Relleno</td></tr></tbody></table></div></div>
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Apartado</th><th>Qué responde</th><th>Ejemplo concreto</th></tr></thead>
+          <tbody>
+            <tr><td>1 · Personas</td><td>Quién asume la gestión de la información y con qué experiencia</td><td>Gestor de la información con nombre, CV y dedicación</td></tr>
+            <tr><td>2 · Estrategia de entrega</td><td>Cómo se cumplirá cada punto del EIR, objetivos y organización del equipo</td><td>Tabla requisito del EIR → respuesta → responsable</td></tr>
+            <tr><td>3 · Federación</td><td>Cómo se divide el modelo en contenedores y cómo se juntan</td><td>Un modelo por disciplina y edificio, federado semanalmente</td></tr>
+            <tr><td>4 · Matriz de alto nivel</td><td>Qué equipo produce cada bloque de información</td><td>Ver la idea siguiente</td></tr>
+            <tr><td>5 · Métodos y procedimientos</td><td>Cambios propuestos a cómo se produce, revisa y aprueba</td><td>Revisión interna antes de pasar a compartido</td></tr>
+            <tr class="is-key"><td>6 · Estándar de información</td><td>Cambios propuestos a nombres, unidades, clasificación y coordenadas</td><td>Convención de nombres, metros, EPSG:<span data-pais="epsg">25830</span> y altitudes <span data-pais="alt">Alicante</span></td></tr>
+            <tr><td>7 · Software, hardware e IT</td><td>Con qué medios trabaja cada equipo</td><td>Programa, versión, formato de intercambio y CDE</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w3 g"><h4>Dónde lo dice</h4><p>ISO 19650-2, apartado 5.3.2 (BEP previo). El 5.4.1 pide confirmar los mismos apartados tras la designación. Lo resume la guía parte 2 del UK BIM Framework.</p></div>
+      <div class="card w3 y"><h4>Las coordenadas también</h4><p>La estrategia de coordenadas (EPSG, datum vertical, puntos de control) va en el estándar de información. El artículo 01 tiene su <a href="../coordenadas-compartidas/#bep">página del BEP</a>.</p></div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://www.ukbimframework.org/wp-content/uploads/2021/02/Guidance-Part-2_Parties-teams-and-processes-for-the-delivery-phase-of-assets_Edition-6.pdf" target="_blank" rel="noopener">UK BIM Framework, guía parte 2</a> · <a href="https://www.cdbb.cam.ac.uk/sites/default/files/pre-appointment_bep_template.docx" target="_blank" rel="noopener">plantilla de BEP previo (CDBB)</a> · <a href="https://www.iso.org/standard/68080.html" target="_blank" rel="noopener">ISO 19650-2:2018</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-matriz">
+    <div class="b-cards">
+      <div class="card w3">
+        <h4>Alto nivel</h4>
+        <p>Va con la oferta. Asigna bloques de información a equipos: «la estructura la modela la ingeniería X». Sirve para ver que no queda nada sin dueño.</p>
+      </div>
+      <div class="card w3 k">
+        <h4>Detallada</h4>
+        <p>Se escribe tras la designación. Baja al contenedor: qué información, cuándo y quién la produce. De ella salen los TIDP de cada equipo.</p>
+      </div>
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Contenedor</th><th>Hito</th><th>Nivel</th><th>Produce</th><th>Revisa</th></tr></thead>
+          <tbody>
+            <tr><td>Modelo arquitectura · edificio A</td><td>Proyecto básico</td><td>Geometría media, espacios con superficie</td><td>ARQ</td><td>Gestor de la información</td></tr>
+            <tr><td>Modelo estructura · edificio A</td><td>Proyecto básico</td><td>Elementos portantes, material</td><td>EST</td><td>ARQ (coordinación)</td></tr>
+            <tr class="is-key"><td>Modelo federado</td><td>Cada hito</td><td>Sin interferencias críticas abiertas</td><td>ARQ (coordinador)</td><td>Parte que designa</td></tr>
+          </tbody>
+        </table></div>
+        <p class="table-note">Ejemplo ilustrativo. ISO 19650 no fija el formato de la matriz: muchas guías usan una hoja de cálculo por contenedor y etapa.</p>
+      </div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuente: <a href="https://www.ukbimframework.org/wp-content/uploads/2021/02/Guidance-Part-2_Parties-teams-and-processes-for-the-delivery-phase-of-assets_Edition-6.pdf" target="_blank" rel="noopener">UK BIM Framework, guía parte 2</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-midp">
+    <div class="b-cards">
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Plan</th><th>Lo escribe</th><th>Contiene</th></tr></thead>
+          <tbody>
+            <tr><td>TIDP · plan de entrega de la tarea</td><td>Cada equipo de tarea</td><td>Lista de contenedores con nombre, nivel de información, formato, fecha y responsable</td></tr>
+            <tr class="is-key"><td>MIDP · plan maestro de entrega</td><td>La parte designada principal</td><td>Todos los TIDP del equipo, alineados con los hitos de entrega del cliente</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w3 g"><h4>Para qué sirve juntarlos</h4><p>Ver de un vistazo si dos equipos dependen uno del otro en la misma semana, o si un hito llega sin la información que lo justifica.</p></div>
+      <div class="card w3 y"><h4>Nombres en español</h4><p>Se lee «plan maestro de entrega de información»; la guía peruana usa «programa general de desarrollo de la información». <span class="tag">Por confirmar</span> la forma de la UNE.</p></div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://www.ukbimframework.org/wp-content/uploads/2021/02/Guidance-Part-2_Parties-teams-and-processes-for-the-delivery-phase-of-assets_Edition-6.pdf" target="_blank" rel="noopener">UK BIM Framework, guía parte 2</a> · <a href="https://www.mef.gob.pe/contenidos/inv_publica/anexos/anexo_RD003_2023EF6301.pdf" target="_blank" rel="noopener">Guía Nacional BIM del Perú</a>.</p></div>
     </div>
   </template>
 
   <template id="l2-hitos">
     <div class="b-cards">
-      <div class="card w3"><h4>Qué hay detrás</h4><p>Texto de relleno sobre hitos. Aquí irá la explicación completa con ejemplos y matices. <span class="tag">Relleno</span></p></div>
-      <div class="card w3 y"><span class="c-label">Idea clave</span><p>Un aviso destacado de relleno para probar la tarjeta amarilla.</p></div>
-      <div class="card w6"><h4>Pasos de ejemplo</h4><ol class="vsteps"><li>Primer paso ficticio.</li><li>Segundo paso ficticio con <span class="ui">Menú › Comando</span>.</li><li>Resultado esperado.</li></ol></div>
-      <div class="card w6"><div class="table-wrap"><table><thead><tr><th>Concepto</th><th>Valor</th><th>Nota</th></tr></thead><tbody><tr><td>Ejemplo A</td><td class="num">10</td><td>Relleno</td></tr><tr class="is-key"><td>Ejemplo B</td><td class="num">20</td><td>Fila clave</td></tr><tr><td>Ejemplo C</td><td class="num">30</td><td>Relleno</td></tr></tbody></table></div></div>
+      <div class="card w3">
+        <h4>Hito no es fecha de entrega</h4>
+        <p>Un hito de entrega de información es el momento en que la parte que designa necesita información para decidir. Puede estar al final de una etapa o dentro de ella, por ejemplo antes de pedir una licencia.</p>
+      </div>
+      <div class="card w3 k">
+        <h4>Qué se fija en cada uno</h4>
+        <ul class="checklist"><li>Qué contenedores llegan</li><li>Con qué nivel de información</li><li>En qué formato y estado</li><li>Quién los acepta</li></ul>
+      </div>
+      <div class="card w6 g"><h4>En España</h4><p>Las etapas habituales de edificación (estudio previo, básico, ejecución, obra y entrega) son buenos candidatos a hito. Cada EIR fija las suyas: ISO 19650 no impone un calendario de etapas. <span class="tag">Inferido</span></p></div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuente: <a href="https://www.ukbimframework.org/wp-content/uploads/2021/02/Guidance-Part-2_Parties-teams-and-processes-for-the-delivery-phase-of-assets_Edition-6.pdf" target="_blank" rel="noopener">UK BIM Framework, guía parte 2</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-loin">
+    <div class="b-cards">
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Se decide primero</th><th>Después se describe</th></tr></thead>
+          <tbody>
+            <tr><td>Propósito: para qué se usa la información</td><td>Información geométrica: detalle, dimensionalidad, posición, apariencia y comportamiento paramétrico</td></tr>
+            <tr><td>Hito: en qué intercambio</td><td>Información alfanumérica: identificación y propiedades con sus valores</td></tr>
+            <tr class="is-key"><td>Actor: quién la pide y quién la entrega</td><td>Documentación: fichas, certificados, manuales</td></tr>
+            <tr><td>Objeto: a qué elementos se aplica</td><td>—</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w3 y"><h4>La norma cambió</h4><p>La EN 17412-1 (UNE-EN 17412-1:2021) se anuló el 22/01/2025. La sustituye la ISO 7817-1:2024, publicada en España como UNE-EN ISO 7817-1:2025.</p></div>
+      <div class="card w3 g"><h4>Más a fondo</h4><p>El artículo <a href="../niveles-de-informacion/">02 · Niveles de información</a> desarrolla cómo se especifica y se comprueba.</p></div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://www.iso.org/standard/82914.html" target="_blank" rel="noopener">ISO 7817-1:2024</a> · <a href="https://www.en.une.org/encuentra-tu-norma/busca-tu-norma/norma?c=N0065673" target="_blank" rel="noopener">UNE-EN 17412-1:2021 (anulada)</a> · <a href="https://constructionmanagement.co.uk/new-level-of-information-need-standard-published/" target="_blank" rel="noopener">Construction Management</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-estados">
+    <div class="b-cards">
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Estado</th><th>Quién lo ve</th><th>Para qué sirve</th></tr></thead>
+          <tbody>
+            <tr><td>Trabajo en curso</td><td>Solo el equipo de tarea</td><td>Producir; nadie más debe usarlo</td></tr>
+            <tr><td>Compartido</td><td>Los demás equipos</td><td>Coordinar y revisar; no sirve para construir</td></tr>
+            <tr class="is-key"><td>Publicado</td><td>Todo el proyecto</td><td>Información autorizada para diseñar en detalle, construir u operar</td></tr>
+            <tr><td>Archivado</td><td>Consulta</td><td>Registro histórico de lo compartido y publicado</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w3 g"><h4>Qué dice el BEP</h4><p>Quién comprueba antes de compartir, quién revisa y autoriza antes de publicar y en qué plazo. Sin esas firmas, los estados son solo carpetas.</p></div>
+      <div class="card w3"><h4>Más a fondo</h4><p>El artículo <a href="../entorno-comun-de-datos/">03 · Entorno común de datos</a> trata el CDE completo.</p></div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuente: <a href="https://ukbimframework.org/wp-content/uploads/2019/10/Information-Management-according-to-BS-EN-ISO-19650_-Guidance-Part-1_Concepts_2ndEdition.pdf" target="_blank" rel="noopener">UK BIM Framework, guía parte 1</a>.</p></div>
     </div>
   </template>
 
   <template id="l2-vivo">
     <div class="b-cards">
-      <div class="card w3"><h4>Qué hay detrás</h4><p>Texto de relleno sobre documento vivo. Aquí irá la explicación completa con ejemplos y matices. <span class="tag">Relleno</span></p></div>
-      <div class="card w3 y"><span class="c-label">Idea clave</span><p>Un aviso destacado de relleno para probar la tarjeta amarilla.</p></div>
-      <div class="card w6"><h4>Pasos de ejemplo</h4><ol class="vsteps"><li>Primer paso ficticio.</li><li>Segundo paso ficticio con <span class="ui">Menú › Comando</span>.</li><li>Resultado esperado.</li></ol></div>
-      <div class="card w6"><div class="table-wrap"><table><thead><tr><th>Concepto</th><th>Valor</th><th>Nota</th></tr></thead><tbody><tr><td>Ejemplo A</td><td class="num">10</td><td>Relleno</td></tr><tr class="is-key"><td>Ejemplo B</td><td class="num">20</td><td>Fila clave</td></tr><tr><td>Ejemplo C</td><td class="num">30</td><td>Relleno</td></tr></tbody></table></div></div>
+      <div class="card w6">
+        <ol class="vsteps">
+          <li><strong>Oferta:</strong> BEP previo con la respuesta al EIR y la matriz de alto nivel.</li>
+          <li><strong>Designación:</strong> BEP confirmado con las partes designadas, matriz detallada, TIDP y MIDP.</li>
+          <li><strong>Movilización:</strong> se prueban de verdad el CDE, los programas y los intercambios; lo que falla se corrige en el BEP.</li>
+          <li><strong>Producción:</strong> cada cambio de etapa, de equipo o de programa abre una revisión con su número y su fecha.</li>
+        </ol>
+      </div>
+      <div class="card w3 y"><h4>Control de cambios</h4><p>Cada versión indica qué cambió, por qué y quién lo aprobó. Un BEP sin historial no permite saber qué regía en una entrega concreta.</p></div>
+      <div class="card w3 g"><h4>Lecciones aprendidas</h4><p>En el cierre del proyecto (actividad 8 de ISO 19650-2) se recogen para que el siguiente BEP empiece mejor.</p></div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuente: <a href="https://www.ukbimframework.org/wp-content/uploads/2021/02/Guidance-Part-2_Parties-teams-and-processes-for-the-delivery-phase-of-assets_Edition-6.pdf" target="_blank" rel="noopener">UK BIM Framework, guía parte 2</a>.</p></div>
     </div>
   </template>
 
+  <template id="l2-claves">
+    <div class="b-cards">
+      <div class="card w6">
+        <ol class="errors">
+          <li><strong>Copiar el BEP anterior.</strong> Responde a otro EIR. Se nota porque no cita ningún requisito de este.</li>
+          <li><strong>Roles sin nombre.</strong> «El coordinador BIM» no es responsable de nada si no tiene nombre y dedicación.</li>
+          <li><strong>Software sin versión.</strong> Dos versiones distintas del mismo programa pueden no abrir el mismo fichero.</li>
+          <li><strong>Requisitos que no se pueden comprobar.</strong> «Calidad adecuada» no se mide; «pasa el IDS sin errores» sí.</li>
+          <li><strong>Un BEP que no se revisa.</strong> A mitad de proyecto ya describe un equipo que no existe.</li>
+        </ol>
+      </div>
+      <div class="card w6 y"><span class="c-label">Prueba rápida</span><p>Por cada requisito del EIR, el BEP debe contestar <strong>quién</strong>, <strong>cuándo</strong>, <strong>cómo</strong> y <strong>cómo se comprueba</strong>. Si falta una de las cuatro, ese punto está sin responder. <span class="tag">Inferido</span></p></div>
+    </div>
+  </template>
+
+  <template id="l2-familia">
+    <div class="b-cards">
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Parte</th><th>Edición ISO</th><th>Tema</th><th>En España</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>2018</td><td>Conceptos y principios</td><td>UNE-EN ISO 19650-1:2019</td></tr>
+            <tr class="is-key"><td>2</td><td>2018</td><td>Fase de desarrollo de los activos</td><td>UNE-EN ISO 19650-2:2019</td></tr>
+            <tr><td>3</td><td>2020</td><td>Fase de operación de los activos</td><td>UNE-EN ISO 19650-3:2021</td></tr>
+            <tr><td>4</td><td>2022</td><td>Intercambio de información</td><td>UNE-EN ISO 19650-4:2023</td></tr>
+            <tr><td>5</td><td>2020</td><td>Enfoque de seguridad</td><td>UNE-EN ISO 19650-5:2020</td></tr>
+            <tr><td>6</td><td>2025</td><td>Información de salud y seguridad</td><td>UNE-EN ISO 19650-6:2026</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w3 k"><h4>La revisión</h4><p>Los borradores de las partes 1 y 2 (ISO/DIS) están desde el 18/08/2026 en la etapa 40.93: ISO decidió repetir la votación. La nueva parte 2 sustituirá a la 2 y a la 3 actuales. La publicación se espera hacia 2027. <span class="tag">Por confirmar</span></p></div>
+      <div class="card w3 g"><h4>Quién las hace</h4><p>ISO/TC 59/SC 13 en el ámbito internacional y CEN/TC 442 en el europeo. En España, el comité CTN 332 de UNE, con secretaría en IECA.</p></div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://www.iso.org/standard/68078.html" target="_blank" rel="noopener">ISO 19650-1</a> · <a href="https://www.iso.org/standard/68080.html" target="_blank" rel="noopener">ISO 19650-2</a> · <a href="https://www.iso.org/standard/75109.html" target="_blank" rel="noopener">-3</a> · <a href="https://www.iso.org/standard/78246.html" target="_blank" rel="noopener">-4</a> · <a href="https://www.iso.org/standard/74206.html" target="_blank" rel="noopener">-5</a> · <a href="https://committee.iso.org/standard/82705.html" target="_blank" rel="noopener">-6</a> · <a href="https://www.iso.org/standard/89704.html" target="_blank" rel="noopener">ISO/DIS 19650-2</a> · <a href="https://www.en.une.org/encuentra-tu-norma/comites-tecnicos-de-normalizacion/comite?c=CTN+332" target="_blank" rel="noopener">UNE CTN 332</a> · <a href="https://tienda.aenor.com/en/e/normas-relacionadas/30025/51041501" target="_blank" rel="noopener">catálogo UNE</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-proceso">
+    <div class="b-cards">
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Apdo.</th><th>Actividad</th><th>Qué sale de ella</th></tr></thead>
+          <tbody>
+            <tr><td>5.1</td><td>Evaluación y necesidad</td><td>PIR, hitos, estándar de información, métodos, CDE y protocolo de información</td></tr>
+            <tr><td>5.2</td><td>Invitación a licitar</td><td>EIR, criterios de evaluación y pliego</td></tr>
+            <tr class="is-key"><td>5.3</td><td>Respuesta a la licitación</td><td>BEP previo, evaluación de capacidad, plan de movilización y registro de riesgos</td></tr>
+            <tr class="is-key"><td>5.4</td><td>Designación</td><td>BEP confirmado, matriz detallada, EIR a cada parte designada, TIDP y MIDP</td></tr>
+            <tr><td>5.5</td><td>Movilización</td><td>Recursos y tecnología probados; métodos comprobados</td></tr>
+            <tr><td>5.6</td><td>Producción colaborativa</td><td>Contenedores producidos, comprobados, revisados y compartidos</td></tr>
+            <tr><td>5.7</td><td>Entrega del modelo de información</td><td>Modelo autorizado por la principal y aceptado por quien designa</td></tr>
+            <tr><td>5.8</td><td>Cierre del proyecto</td><td>Archivo del PIM, traspaso al AIM y lecciones aprendidas</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w6 g"><p>Las actividades 1 y 2 se hacen una vez por proyecto (la 1) o por designación (la 2); de la 3 a la 7 se repiten en cada designación; la 8, al terminar el proyecto. Fuente: <a href="https://www.ukbimframework.org/wp-content/uploads/2021/02/Guidance-Part-2_Parties-teams-and-processes-for-the-delivery-phase-of-assets_Edition-6.pdf" target="_blank" rel="noopener">UK BIM Framework, guía parte 2</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-historia">
+    <div class="b-cards">
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Año</th><th>Documento</th><th>Lo que aportó al BEP</th></tr></thead>
+          <tbody>
+            <tr><td>2007</td><td>BS 1192</td><td>Convención de nombres y la idea de un entorno común de datos</td></tr>
+            <tr><td>2013</td><td>PAS 1192-2</td><td>EIR (<em>Employer's</em>), BEP previo y posterior, MIDP y TIDP</td></tr>
+            <tr class="is-key"><td>2018</td><td>ISO 19650-1 y -2</td><td>EIR pasa a <em>Exchange</em>; partes que designan y designadas</td></tr>
+            <tr><td>2019</td><td>UNE-EN ISO 19650-1 y -2</td><td>Versión española (03/07/2019)</td></tr>
+            <tr><td>2026-27</td><td>ISO/DIS 19650-1 y -2</td><td>Fusión de las partes 2 y 3; posibles nombres nuevos</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w6 y"><span class="c-label">¿Se llamará de otra forma?</span><p>Fuentes que han seguido la consulta pública del borrador dicen que el BEP pasaría a llamarse <em>Information Production Plan</em>. No está en ningún texto aprobado. <span class="tag">Por confirmar</span></p></div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://ukbimframework.org/wp-content/uploads/2019/10/Information-Management-according-to-BS-EN-ISO-19650_-Guidance-Part-1_Concepts_2ndEdition.pdf" target="_blank" rel="noopener">UK BIM Framework, guía parte 1</a> · <a href="https://www.une.org/normalizacion_documentos/Revision-of-EN-ISO-19650---David-Churcher.pdf" target="_blank" rel="noopener">D. Churcher, revisión de EN ISO 19650 (UNE, 2025)</a> · <a href="https://digitalconstructionplus.com/the-future-of-19650-is-in-your-hands/" target="_blank" rel="noopener">Digital Construction Plus (2026)</a> · <a href="https://help.plannerly.com/en/article/137-understanding-the-proposed-iso-19650-revisions" target="_blank" rel="noopener">Plannerly (2026)</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-nombres">
+    <div class="b-cards">
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Código</th><th>Estado del CDE</th><th>Significado</th></tr></thead>
+          <tbody>
+            <tr><td>S0</td><td>En curso</td><td>Estado inicial</td></tr>
+            <tr><td>S1</td><td>Compartido</td><td>Apto para coordinación</td></tr>
+            <tr><td>S2</td><td>Compartido</td><td>Apto para información</td></tr>
+            <tr><td>S3</td><td>Compartido</td><td>Apto para revisión y comentarios</td></tr>
+            <tr><td>S4</td><td>Compartido</td><td>Apto para revisión y aprobación de etapa</td></tr>
+            <tr><td>S5</td><td>Compartido</td><td>Retirado</td></tr>
+            <tr><td>S6 · S7</td><td>Compartido</td><td>Apto para autorizar el PIM · el AIM</td></tr>
+            <tr class="is-key"><td>A1…An</td><td>Publicado</td><td>Autorizado y aceptado</td></tr>
+            <tr><td>B1…Bn</td><td>Publicado</td><td>Aceptado en parte, con comentarios</td></tr>
+            <tr><td>CR</td><td>Publicado</td><td>Registro de lo construido</td></tr>
+          </tbody>
+        </table></div>
+        <p class="table-note">Lista del anexo nacional británico de 2021, la que aplica Autodesk Docs. La guía anterior del mismo anexo llegaba solo a S5. <span class="tag">Por confirmar</span> contra el texto de BS EN ISO 19650-2 + A1/NA.</p>
+      </div>
+      <div class="card w3 g"><h4>Revisiones</h4><p>P01, P02… para versiones preliminares y C01, C02… para contractuales; P01.01 para versiones intermedias en curso.</p></div>
+      <div class="card w3 y"><h4>En España</h4><p>No hay anexo nacional: cada EIR fija su convención. Copiar la británica es habitual y funciona si el pliego la define campo a campo. <span class="tag">Inferido</span></p></div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://help.autodesk.com/cloudhelp/ENU/Docs-Files/files/file-naming-standard/Status_Codes.html" target="_blank" rel="noopener">Autodesk Docs, Status Codes</a> · <a href="https://www.cdbb.cam.ac.uk/files/national_annex_guidance.pdf" target="_blank" rel="noopener">CDBB, guía del anexo nacional</a> · <a href="https://www.symetri.co.uk/insights/blog/iso-19650-file-naming-update" target="_blank" rel="noopener">Symetri (2021)</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-espana">
+    <div class="b-cards">
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Valor estimado del contrato</th><th>1/4/2024</th><th>1/10/2025</th><th>1/10/2027</th><th>1/4/2030</th></tr></thead>
+          <tbody>
+            <tr class="is-key"><td>≥ umbral europeo de obras</td><td>Inicial</td><td>Medio</td><td>Avanzado</td><td>Integrado</td></tr>
+            <tr><td>Entre 2 M€ y el umbral</td><td>Inicial (recomendado)</td><td>Inicial</td><td>Medio</td><td>Avanzado</td></tr>
+          </tbody>
+        </table></div>
+        <p class="table-note">El umbral es 5.404.000 € desde el 1/1/2026 (5.538.000 € en 2024-2025; 5.382.000 € en el plan original).</p>
+      </div>
+      <div class="card w3">
+        <h4>Qué es y a quién obliga</h4>
+        <p>El Plan de Incorporación de la Metodología BIM en la contratación pública se aprobó por Acuerdo del Consejo de Ministros (27/06/2023) y se publicó con la Orden PCM/818/2023. No es un real decreto: obliga a la Administración General del Estado como instrucción interna y es una recomendación para el resto del sector público.</p>
+      </div>
+      <div class="card w3 g">
+        <h4>Cinco niveles, cuatro ejes</h4>
+        <p>PreBIM, Inicial, Medio, Avanzado e Integrado, evaluados en estrategia, procesos, tecnología y personas. Cita la serie UNE-EN ISO 19650, exige IFC (UNE-EN ISO 16739) y BCF, y pide IDM (ISO 29481) en el nivel Integrado.</p>
+      </div>
+      <div class="card w3 k"><h4>Un ejemplo sectorial</h4><p>La Orden Circular 1/2025 de la Dirección General de Carreteras regula objetivos y usos BIM, plan de ejecución, CDE y control de calidad en la Red de Carreteras del Estado. <span class="tag">Por confirmar</span> número y fecha en la fuente oficial.</p></div>
+      <div class="card w3 y"><h4>Un EIR real</h4><p>La Agencia de Obra Pública de la Junta de Andalucía publica su EIR tipo (2024): pide pre-PEB con estrategia, equipo, software por uso, mapa de modelos, matriz LOD/LOI, CDE y reuniones de coordinación.</p></div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://cdn.transportes.gob.es/portal-web-drupal/cbim/triptico-es-v11web_nuevos-umbrales-2026_27-(1).pdf" target="_blank" rel="noopener">CIBIM, tríptico con umbrales 2026-27</a> · <a href="https://cdn.mitma.gob.es/portal-web-drupal/cbim/v_26_bis_web_plan_bim_contratacion_publica.pdf" target="_blank" rel="noopener">Plan BIM completo</a> · <a href="https://www.civil-mercantil.com/sites/civil-mercantil.com/files/NCL013234.pdf" target="_blank" rel="noopener">Orden PCM/818/2023</a> · <a href="https://www.boe.es/eli/es/rd/2018/12/28/1515/con" target="_blank" rel="noopener">RD 1515/2018</a> · <a href="https://cibim.transportes.gob.es/sala-de-prensa/noticias/el-plan-bim-en-la-contratacion-publica-en-vigor-desde-el-1-de-abril-instruye" target="_blank" rel="noopener">CIBIM, entrada en vigor</a> · <a href="https://esmartcity.es/2025/04/28/aprobados-requisitos-bim-contratos-red-carreteras-estado" target="_blank" rel="noopener">OC 1/2025</a> · <a href="https://www.juntadeandalucia.es/sites/default/files/inline-files/2025/01/Requerimientos%20BIM%20%28EIR%29%2C%20tipos%20exigidos%20para%20pliegos%20de%20licitación%20de%20redacción%20de%20proyectos%20%28anexo%201%20del%20PTP%29.pdf" target="_blank" rel="noopener">AOPJA, EIR</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-guias">
+    <div class="b-cards">
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Guía</th><th>Año</th><th>Enfoque</th><th>Lo que aporta</th></tr></thead>
+          <tbody>
+            <tr><td>Penn State BIM PxP Guide v3.0</td><td>2021</td><td>Por usos BIM, en 5 pasos</td><td>Objetivos → usos → procesos → intercambios → infraestructura. Licencia libre (CC BY-SA 4.0).</td></tr>
+            <tr class="is-key"><td>NBIMS-US V4 · BIM Execution Planning</td><td>V4 <span class="tag">Por confirmar</span></td><td>Tres momentos: petición del propietario, propuesta y plan completo</td><td>Mapea sus pasos a los procesos de ISO 19650-2 e incluye COBie v3.</td></tr>
+            <tr><td>BCA Singapur · BIM Essential Guide for BEP</td><td>2013</td><td>Guía de contenidos</td><td>Roles, entregables y procesos en un documento base aprobado por el cliente.</td></tr>
+            <tr><td>Guía Nacional BIM del Perú</td><td>2023</td><td>Basada en NTP-ISO 19650</td><td>Glosario y plantillas en español con la terminología de ISO 19650.</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w6 g"><p>Penn State organiza el plan alrededor de los usos BIM; ISO 19650, alrededor de los requisitos de información. Son compatibles: un buen EIR suele empezar por los usos que el cliente quiere. <span class="tag">Inferido</span></p></div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://psu.pb.unizin.org/bimprojectexecutionplanning" target="_blank" rel="noopener">Penn State v3.0</a> · <a href="https://bim.psu.edu/bim-an-introduction/bim-project-execution-planning-procedure-overview" target="_blank" rel="noopener">procedimiento de Penn State</a> · <a href="https://nibs.org/nbims/v4/bep/introduction" target="_blank" rel="noopener">NBIMS-US V4</a> · <a href="https://www.globalbim.org/wp-content/uploads/2024/01/Essential-Guide-BEP-2.pdf" target="_blank" rel="noopener">BCA Singapur</a> · <a href="https://www.mef.gob.pe/contenidos/inv_publica/anexos/anexo_RD003_2023EF6301.pdf" target="_blank" rel="noopener">Plan BIM Perú</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-configurar">
+    <div class="b-cards">
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Programa</th><th>Dónde vive el BEP</th><th>Qué comprobar</th></tr></thead>
+          <tbody>
+            <tr><td>Revit</td><td>Plantilla de proyecto (.rte), parámetros compartidos, configuración de exportación IFC guardada y coordenadas compartidas</td><td>Que todos los equipos usan la misma plantilla y el mismo fichero de parámetros</td></tr>
+            <tr class="is-key"><td>Archicad</td><td>Desde la versión 28 importa un IDS y crea las propiedades y clasificaciones que pide; nunca modifica las existentes</td><td>Que el IDS importado es la versión vigente del EIR</td></tr>
+            <tr><td>Tekla</td><td>Entorno y plantillas del modelo, atributos de usuario y configuración de exportación IFC</td><td>Que la exportación lleva las propiedades que pide el EIR <span class="tag">Por confirmar</span></td></tr>
+            <tr><td>Allplan</td><td>Plantillas de proyecto y atributos</td><td>Igual que en el resto <span class="tag">Por confirmar</span></td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w3 y"><h4>Un paquete por proyecto</h4><p>Plantilla, fichero de parámetros, configuración IFC y lista de nombres van juntos al CDE, con su código de revisión, y el BEP los cita. Así nadie empieza con una versión antigua. <span class="tag">Inferido</span></p></div>
+      <div class="card w3 g"><h4>Coordenadas</h4><p>El sistema y los puntos de control también se configuran una vez: el artículo 01 explica cómo en <a href="../coordenadas-compartidas/#revit">Revit</a> y <a href="../coordenadas-compartidas/#otros">otros programas</a>.</p></div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://help.graphisoft.com/AC/28/INT/_AC28_Help/120_Interoperability/120_Interoperability-17.htm" target="_blank" rel="noopener">Archicad 28: propiedades y clasificaciones desde IDS</a> · <a href="https://www.autodesk.com/blogs/construction/autodesk-workflows-iso-19650/" target="_blank" rel="noopener">Autodesk: flujos ISO 19650</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-redactar">
+    <div class="b-cards">
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Opción</th><th>Ventaja</th><th>Límite</th></tr></thead>
+          <tbody>
+            <tr><td>Plantilla de texto</td><td>Universal; las administraciones las publican</td><td>Lo escrito no se comprueba solo</td></tr>
+            <tr><td>Hoja de cálculo</td><td>Matriz, TIDP y MIDP filtrables y sumables</td><td>Versiones sueltas por correo si no vive en el CDE</td></tr>
+            <tr class="is-key"><td>Plataforma de BEP (p. ej. Plannerly)</td><td>BEP, LOIN y contratos como datos; verificación de modelos y conexión con Autodesk Construction Cloud</td><td>Otra herramienta y otra licencia</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w3 g"><h4>Plantillas que existen</h4><ul class="sources"><li><a href="https://www.cdbb.cam.ac.uk/sites/default/files/pre-appointment_bep_template.docx" target="_blank" rel="noopener">BEP previo (CDBB / UK BIM Framework)</a></li><li><a href="https://www.euskadi.eus/contenidos/informacion/ets_bim/es_def/adjuntos/2024/Plantilla-PEB.docx" target="_blank" rel="noopener">Plantilla PEB (Gobierno Vasco, ETS BIM 2024)</a></li><li><a href="https://www.mef.gob.pe/contenidos/inv_publica/anexos/anexo_RD003_2023EF6301.pdf" target="_blank" rel="noopener">Guía Nacional BIM del Perú</a></li></ul></div>
+      <div class="card w3 y"><h4>Lo que importa</h4><p>Sea cual sea la herramienta, cada requisito del EIR debe tener su fila con respuesta, responsable y forma de comprobarlo.</p></div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuente: <a href="https://www.autodesk.com/integrations/partner/plannerly" target="_blank" rel="noopener">Autodesk, ficha de integración de Plannerly</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-cde-plataformas">
+    <div class="b-cards">
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Plataforma</th><th>Qué aplica del BEP</th></tr></thead>
+          <tbody>
+            <tr class="is-key"><td>Autodesk Construction Cloud (Autodesk Docs)</td><td>Estándar de nombres configurable con plantilla ISO 19650; los ficheros que no cumplen van a una zona de espera. Códigos de estado S0–S7, A, B y CR como atributos. Flujos de aprobación de 1 a 6 pasos que pueden copiar lo aprobado a otra carpeta. Revit y AutoCAD usan el estándar a través de Desktop Connector.</td></tr>
+            <tr><td>Bentley · BCDE Project (GroupBC)</td><td>Estados en curso, compartido, publicado y archivado; numeración automática y verificación de nombres.</td></tr>
+            <tr><td>Trimble Connect · Dalux · Viewpoint</td><td>Se usan en proyectos ISO 19650, pero no hemos encontrado documentación oficial de cómo implementan estados y nombres. <span class="tag">Por confirmar</span></td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w3 k"><h4>Kitemark BSI</h4><p>Desde abril de 2021, BSI certifica software frente a ISO 19650. Las primeras plataformas certificadas fueron Asite, Llewellyn &amp; Partners y Zutec.</p></div>
+      <div class="card w3 g"><h4>Más a fondo</h4><p>El artículo <a href="../entorno-comun-de-datos/">03 · Entorno común de datos</a> compara las plataformas.</p></div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://www.autodesk.com/blogs/construction/autodesk-workflows-iso-19650/" target="_blank" rel="noopener">Autodesk, flujos ISO 19650</a> · <a href="https://construction.autodesk.com/tools/construction-document-management-iso-19650/" target="_blank" rel="noopener">Autodesk, gestión documental ISO 19650</a> · <a href="https://help.autodesk.com/cloudhelp/ENU/Docs-Files/files/file-naming-standard/Status_Codes.html" target="_blank" rel="noopener">Status Codes</a> · <a href="https://www.bentley.com/globalassets/content/PDS-BCDE-Project-LTR-EN-LR.pdf" target="_blank" rel="noopener">Bentley BCDE Project</a> · <a href="https://architecturaltechnology.com/resource/bsi-launches-19650-kitemark-for-bim-software.html" target="_blank" rel="noopener">CIAT, Kitemark BSI</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-aprobacion">
+    <div class="b-cards">
+      <div class="card w6">
+        <ol class="vsteps">
+          <li><strong>Comprobar</strong> (en curso → compartido): el equipo de tarea revisa su propio contenedor contra el estándar y los métodos del proyecto.</li>
+          <li><strong>Revisar</strong> (compartido): el gestor de la información de la parte designada principal comprueba que cumple el EIR y el MIDP.</li>
+          <li><strong>Autorizar</strong>: la parte designada principal da el paquete por bueno para entregarlo.</li>
+          <li><strong>Aceptar</strong> (→ publicado): la parte que designa lo acepta, total (A) o con comentarios (B).</li>
+        </ol>
+      </div>
+      <div class="card w3 y"><h4>En Autodesk Docs</h4><p>Un flujo de aprobación de hasta 6 pasos, con estados propios (por ejemplo «aprobado con comentarios») y copia automática de lo aprobado a la carpeta de publicados.</p></div>
+      <div class="card w3 g"><h4>Lo que fija el BEP</h4><p>Quién firma cada paso, en qué plazo y qué pasa si se rechaza. La plataforma solo ejecuta lo que el BEP decidió. <span class="tag">Inferido</span></p></div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://www.ukbimframework.org/wp-content/uploads/2021/02/Guidance-Part-2_Parties-teams-and-processes-for-the-delivery-phase-of-assets_Edition-6.pdf" target="_blank" rel="noopener">UK BIM Framework, guía parte 2</a> · <a href="https://help.autodesk.com/cloudhelp/ENU/Docs-Reviews/files/getting-started-reviews/Reviews_Create_Edit.html" target="_blank" rel="noopener">Autodesk Docs, flujos de aprobación</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-formatos">
+    <div class="b-cards">
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Formato</th><th>Norma</th><th>En el EIR se concreta</th></tr></thead>
+          <tbody>
+            <tr class="is-key"><td>IFC</td><td>ISO 16739-1:2024 (IFC 4.3); UNE-EN ISO 16739-1:2024</td><td>Versión del esquema, vista de modelo y propiedades obligatorias</td></tr>
+            <tr><td>BCF</td><td>buildingSMART, BCF 3.0</td><td>Cómo se comunican las incidencias de coordinación y revisión</td></tr>
+            <tr><td>IDS</td><td>buildingSMART, IDS 1.0 (4/06/2024)</td><td>Los requisitos de datos en formato comprobable</td></tr>
+            <tr><td>COBie</td><td>Incluido en NBIMS-US V4 (COBie v3)</td><td>Datos de mantenimiento que pasan al AIM</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w3 g"><h4>Y el IDM</h4><p>La ISO 29481 documenta qué información se intercambia en cada proceso. El Plan BIM español la pide en el nivel Integrado.</p></div>
+      <div class="card w3 y"><h4>El IFC no se elige al final</h4><p>La versión de IFC y la configuración de exportación se acuerdan en el BEP y se prueban en la movilización, no la víspera de la entrega.</p></div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://www.buildingsmart.org/?p=29521" target="_blank" rel="noopener">buildingSMART, IFC 4.3 como ISO</a> · <a href="https://www.buildingsmart.org/bim-collaboration-format-bcf-3-0/" target="_blank" rel="noopener">BCF 3.0</a> · <a href="https://www.buildingsmart.org/?p=30065" target="_blank" rel="noopener">IDS 1.0</a> · <a href="https://nibs.org/nbims/v4/bep/introduction" target="_blank" rel="noopener">NBIMS-US V4</a> · <a href="https://www.civil-mercantil.com/sites/civil-mercantil.com/files/NCL013234.pdf" target="_blank" rel="noopener">Plan BIM (Orden PCM/818/2023)</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-ids">
+    <div class="b-cards">
+      <div class="card w4 k">
+        <h4>El requisito de las puertas</h4>
+<pre><code>&lt;specification name="Resistencia al fuego de puertas" ifcVersion="IFC4"&gt;
+  &lt;applicability minOccurs="0" maxOccurs="unbounded"&gt;
+    &lt;entity&gt;&lt;name&gt;&lt;simpleValue&gt;IFCDOOR&lt;/simpleValue&gt;&lt;/name&gt;&lt;/entity&gt;
+  &lt;/applicability&gt;
+  &lt;requirements&gt;
+    &lt;property dataType="IFCLABEL" cardinality="required"&gt;
+      &lt;propertySet&gt;&lt;simpleValue&gt;Pset_DoorCommon&lt;/simpleValue&gt;&lt;/propertySet&gt;
+      &lt;baseName&gt;&lt;simpleValue&gt;FireRating&lt;/simpleValue&gt;&lt;/baseName&gt;
+    &lt;/property&gt;
+  &lt;/requirements&gt;
+&lt;/specification&gt;</code></pre>
+      </div>
+      <div class="card w2 y"><h4>Qué cubre</h4><p>Entidades, atributos, propiedades, clasificaciones, materiales y relaciones de pertenencia: la parte de datos del EIR.</p></div>
+      <div class="card w3"><h4>Qué no cubre</h4><p>Plazos, responsables, nombres de fichero o calidad geométrica. Eso sigue en el EIR y el BEP en texto.</p></div>
+      <div class="card w3 g"><h4>Cuándo entra</h4><p>El cliente adjunta el IDS al EIR; el BEP dice quién lo pasa antes de compartir y antes de entregar, y con qué herramienta.</p></div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://www.buildingsmart.org/?p=30065" target="_blank" rel="noopener">buildingSMART, IDS 1.0 aprobado</a> · <a href="https://www.buildingsmart.org/standards/bsi-standards/information-delivery-specifications-ids/" target="_blank" rel="noopener">buildingSMART IDS</a> · <a href="../coordenadas-compartidas/#ids">IDS de georreferenciación en el artículo 01</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-calidad">
+    <div class="b-cards">
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Pregunta</th><th>Se comprueba contra</th><th>Lo hace</th><th>Cuándo</th></tr></thead>
+          <tbody>
+            <tr><td>Nombre</td><td>Convención del estándar de información</td><td>CDE al subir</td><td>Siempre</td></tr>
+            <tr><td>Estado</td><td>Código de estado y revisión</td><td>Quien sube y quien revisa</td><td>Cada cambio de estado</td></tr>
+            <tr class="is-key"><td>Datos</td><td>IDS del EIR</td><td>Equipo de tarea y gestor de la información</td><td>Antes de compartir y de entregar</td></tr>
+            <tr><td>Coordinación</td><td>Matriz de interferencias acordada</td><td>Coordinador del modelo federado</td><td>Según el MIDP</td></tr>
+            <tr><td>Posición</td><td>EPSG:<span data-pais="epsg">25830</span> y puntos de control</td><td>Topografía y cada disciplina</td><td>Al empezar y en cada hito</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w3 g"><h4>La base normativa</h4><p>ISO 19650-4:2022 fija los criterios de decisión para revisar y aceptar cada intercambio de información. Es el sitio donde mirar al redactar el apartado de control de calidad.</p></div>
+      <div class="card w3"><h4>Más a fondo</h4><p>Coordinación: <a href="../deteccion-de-interferencias/">04 · Detección de interferencias</a>. Posición: <a href="../coordenadas-compartidas/#calidad">01 · Coordenadas</a>.</p></div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://www.iso.org/standard/78246.html" target="_blank" rel="noopener">ISO 19650-4:2022</a> · <a href="https://revista.une.org/58/gestion-de-la-informacion-al-utilizar-bim.-parte-4-intercamb.html" target="_blank" rel="noopener">Revista UNE 58</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-comprobadores">
+    <div class="b-cards">
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Herramienta</th><th>Qué comprueba</th><th>Salida</th><th>Coste</th></tr></thead>
+          <tbody>
+            <tr><td>IfcTester</td><td>IFC contra IDS</td><td>Consola, texto, JSON, HTML, ODS o BCF</td><td>Libre (LGPL)</td></tr>
+            <tr class="is-key"><td>Solibri</td><td>Regla 244 «IDS Validation»: IDS 0.9.6, 0.9.7 y 1.0, con editor integrado</td><td>Resultado por elemento (cumple, no cumple, no aplica)</td><td>Ediciones Advanced y Premium</td></tr>
+            <tr><td>BIMcollab Nexus + Zoom</td><td>La especificación se define en Nexus y se aplica en Zoom</td><td>Incidencias BCF</td><td>Licencia</td></tr>
+            <tr><td>Autodesk Docs</td><td>Nombres de fichero al subir</td><td>Zona de espera para lo que no cumple</td><td>Con la plataforma</td></tr>
+            <tr><td>Validation Service</td><td>Sintaxis, esquema y reglas normativas del IFC</td><td>Informe web</td><td>Gratis</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w6 y"><p>El BEP no tiene que usar todas: tiene que decir cuál se usa para cada pregunta, quién la ejecuta y dónde se guarda el informe.</p></div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://pypi.org/project/ifctester/0.7.10" target="_blank" rel="noopener">IfcTester</a> · <a href="https://help.solibri.com/hc/en-us/articles/19053798036375-244-IDS-Validation" target="_blank" rel="noopener">Solibri, regla 244</a> · <a href="https://helpcenter.bimcollab.com/portal/en/kb/articles/improve-model-quality-with-ids-zoom" target="_blank" rel="noopener">BIMcollab, IDS en Zoom</a> · <a href="https://www.autodesk.com/blogs/construction/autodesk-workflows-iso-19650/" target="_blank" rel="noopener">Autodesk Docs</a> · <a href="https://technical.buildingsmart.org/services/validation-service/" target="_blank" rel="noopener">buildingSMART Validation Service</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-evaluar">
+    <div class="b-cards">
+      <div class="card w6">
+        <div class="callout check">
+          <span class="kicker-y">Checklist para evaluar un BEP previo</span>
+          <ul class="checklist">
+            <li>Cada requisito del EIR tiene respuesta, responsable y forma de comprobarlo.</li>
+            <li>La función de gestión de la información tiene personas con nombre y experiencia acreditada.</li>
+            <li>La estrategia de federación y la división en contenedores encajan con los hitos.</li>
+            <li>La matriz de alto nivel no deja información sin dueño.</li>
+            <li>Programas, versiones y formatos son compatibles con lo que pide el EIR.</li>
+            <li>Hay plan de movilización con pruebas del CDE y de los intercambios.</li>
+            <li>Los riesgos de la entrega de información están identificados.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card w3 g"><h4>De dónde sale</h4><p>ISO 19650-2 pide en la respuesta a la licitación (5.3) el BEP previo, la evaluación de capacidad de cada equipo, el plan de movilización y un registro de riesgos; la invitación a licitar (5.2) fija cómo se puntuarán.</p></div>
+      <div class="card w3 k"><h4>Durante el proyecto</h4><p>En España, los niveles Avanzado e Integrado del Plan BIM contemplan certificar los procedimientos según ISO 19650.</p></div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://www.ukbimframework.org/wp-content/uploads/2021/02/Guidance-Part-2_Parties-teams-and-processes-for-the-delivery-phase-of-assets_Edition-6.pdf" target="_blank" rel="noopener">UK BIM Framework, guía parte 2</a> · <a href="https://www.ukbimframework.org/wp-content/uploads/2021/02/Guidance-Part-E_Tendering-and-appointments_Edition-2.pdf" target="_blank" rel="noopener">guía parte E, licitación</a> · <a href="https://www.civil-mercantil.com/sites/civil-mercantil.com/files/NCL013234.pdf" target="_blank" rel="noopener">Plan BIM</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-glosario">
+<div class="b-cards"><div class="card w6">
+<dl class="glossary">
+      <dt>OIR · PIR · AIR</dt><dd>Requisitos de información de la organización, del proyecto y del activo.</dd>
+      <dt>EIR</dt><dd>Requisitos de intercambio de información: lo que pide cada designación.</dd>
+      <dt>BEP (PEB)</dt><dd>Plan de ejecución BIM: cómo el equipo cumplirá el EIR.</dd>
+      <dt>Parte que designa</dt><dd>El cliente o quien gestiona la información en su nombre.</dd>
+      <dt>Parte designada principal</dt><dd>Quien coordina la información de su equipo ante el cliente.</dd>
+      <dt>Parte designada</dt><dd>Quien produce la información.</dd>
+      <dt>Matriz de responsabilidades</dt><dd>Qué información produce cada equipo, y cuándo.</dd>
+      <dt>TIDP · MIDP</dt><dd>Plan de entregas de cada equipo de tarea y plan maestro que los reúne.</dd>
+      <dt>Hito de entrega</dt><dd>Momento en que el cliente necesita información para decidir.</dd>
+      <dt>LOIN</dt><dd>Nivel de información necesario: geometría, datos y documentación para cada propósito.</dd>
+      <dt>CDE</dt><dd>Entorno común de datos, con estados en curso, compartido, publicado y archivado.</dd>
+      <dt>Código de estado</dt><dd>S0–S7, A, B y CR: para qué es apto un contenedor.</dd>
+      <dt>IDS</dt><dd>Requisitos de datos de un IFC en un XML comprobable.</dd>
+    </dl>
+</div></div>
+  </template>
+
   <template id="l2-fuentes">
-    <div class="b-cards"><div class="card w6 y"><span class="c-label">Sin fuentes</span><p>Artículo ficticio de relleno: no tiene fuentes porque su contenido es inventado.</p></div></div>
+<div class="b-cards"><div class="card w6">
+<p>Prioridad a las normas, a las guías oficiales y a la documentación de cada fabricante. La base completa, con valoración de impacto, está en la base de fuentes del artículo. Lo no confirmado lleva <span class="tag">Por confirmar</span>.</p>
+</div></div>
+<div class="b-cards">
+<div class="card w6">
+<h4>Normas</h4>
+<ul class="sources">
+          <li><a href="https://www.iso.org/standard/68078.html" target="_blank" rel="noopener">ISO 19650-1:2018</a> · <a href="https://www.iso.org/standard/68080.html" target="_blank" rel="noopener">-2:2018</a> · <a href="https://www.iso.org/standard/75109.html" target="_blank" rel="noopener">-3:2020</a> · <a href="https://www.iso.org/standard/78246.html" target="_blank" rel="noopener">-4:2022</a> · <a href="https://www.iso.org/standard/74206.html" target="_blank" rel="noopener">-5:2020</a> · <a href="https://committee.iso.org/standard/82705.html" target="_blank" rel="noopener">-6:2025</a></li>
+          <li><a href="https://www.iso.org/standard/89703.html" target="_blank" rel="noopener">ISO/DIS 19650-1</a> · <a href="https://www.iso.org/standard/89704.html" target="_blank" rel="noopener">ISO/DIS 19650-2</a> · <a href="https://www.une.org/normalizacion_documentos/Revision-of-EN-ISO-19650---David-Churcher.pdf" target="_blank" rel="noopener">D. Churcher, revisión (2025)</a></li>
+          <li><a href="https://www.iso.org/standard/82914.html" target="_blank" rel="noopener">ISO 7817-1:2024</a> · <a href="https://www.en.une.org/encuentra-tu-norma/busca-tu-norma/norma?c=N0065673" target="_blank" rel="noopener">UNE-EN 17412-1:2021</a> · <a href="https://www.en.une.org/encuentra-tu-norma/comites-tecnicos-de-normalizacion/comite?c=CTN+332" target="_blank" rel="noopener">UNE CTN 332</a></li>
+        </ul>
+</div>
+<div class="card w6">
+<h4>Guías</h4>
+<ul class="sources">
+          <li>UK BIM Framework: <a href="https://ukbimframework.org/wp-content/uploads/2019/10/Information-Management-according-to-BS-EN-ISO-19650_-Guidance-Part-1_Concepts_2ndEdition.pdf" target="_blank" rel="noopener">parte 1</a> · <a href="https://www.ukbimframework.org/wp-content/uploads/2021/02/Guidance-Part-2_Parties-teams-and-processes-for-the-delivery-phase-of-assets_Edition-6.pdf" target="_blank" rel="noopener">parte 2</a> · <a href="https://www.ukbimframework.org/wp-content/uploads/2021/02/Guidance-Part-E_Tendering-and-appointments_Edition-2.pdf" target="_blank" rel="noopener">parte E</a> · <a href="https://www.ukbimframework.org/wp-content/uploads/2021/02/InformationProtocolGuidance_Ed1.pdf" target="_blank" rel="noopener">protocolo de información</a> · <a href="https://www.cdbb.cam.ac.uk/files/national_annex_guidance.pdf" target="_blank" rel="noopener">anexo nacional</a></li>
+          <li><a href="https://psu.pb.unizin.org/bimprojectexecutionplanning" target="_blank" rel="noopener">Penn State v3.0</a> · <a href="https://nibs.org/nbims/v4/bep/introduction" target="_blank" rel="noopener">NBIMS-US V4</a> · <a href="https://www.globalbim.org/wp-content/uploads/2024/01/Essential-Guide-BEP-2.pdf" target="_blank" rel="noopener">BCA Singapur</a> · <a href="https://www.mef.gob.pe/contenidos/inv_publica/anexos/anexo_RD003_2023EF6301.pdf" target="_blank" rel="noopener">Plan BIM Perú</a></li>
+          <li><a href="https://bimcorner.com/explaining-information-requirements-in-iso-19650/" target="_blank" rel="noopener">BIM Corner: requisitos de información</a> · <a href="https://www.symetri.co.uk/insights/blog/iso-19650-file-naming-update" target="_blank" rel="noopener">Symetri: nombres</a></li>
+        </ul>
+</div>
+<div class="card w6">
+<h4>España</h4>
+<ul class="sources">
+          <li><a href="https://www.civil-mercantil.com/sites/civil-mercantil.com/files/NCL013234.pdf" target="_blank" rel="noopener">Orden PCM/818/2023</a> · <a href="https://www.boe.es/eli/es/rd/2018/12/28/1515/con" target="_blank" rel="noopener">RD 1515/2018</a> · <a href="https://cibim.transportes.gob.es/" target="_blank" rel="noopener">CIBIM</a> · <a href="https://cdn.transportes.gob.es/portal-web-drupal/cbim/triptico-es-v11web_nuevos-umbrales-2026_27-(1).pdf" target="_blank" rel="noopener">tríptico 2026-27</a> · <a href="https://cdn.mitma.gob.es/portal-web-drupal/cbim/v_26_bis_web_plan_bim_contratacion_publica.pdf" target="_blank" rel="noopener">Plan BIM completo</a></li>
+          <li><a href="https://www.juntadeandalucia.es/sites/default/files/inline-files/2025/01/Requerimientos%20BIM%20%28EIR%29%2C%20tipos%20exigidos%20para%20pliegos%20de%20licitación%20de%20redacción%20de%20proyectos%20%28anexo%201%20del%20PTP%29.pdf" target="_blank" rel="noopener">AOPJA, EIR</a> · <a href="https://www.euskadi.eus/contenidos/informacion/ets_bim/es_def/adjuntos/2024/Plantilla-PEB.docx" target="_blank" rel="noopener">Gobierno Vasco, plantilla PEB</a> · <a href="https://esmartcity.es/2025/04/28/aprobados-requisitos-bim-contratos-red-carreteras-estado" target="_blank" rel="noopener">OC 1/2025 Carreteras</a> · <a href="https://campusvirtual.ull.es/ocw/pluginfile.php/22526/mod_resource/content/1/TEMA%204%20-%20IDS%20-%20REQUISITOS%20DE%20INFORMACION.pdf" target="_blank" rel="noopener">ULL, requisitos de información</a></li>
+        </ul>
+</div>
+<div class="card w6">
+<h4>Plataformas, formatos y control</h4>
+<ul class="sources">
+          <li><a href="https://www.autodesk.com/blogs/construction/autodesk-workflows-iso-19650/" target="_blank" rel="noopener">Autodesk: ISO 19650</a> · <a href="https://help.autodesk.com/cloudhelp/ENU/Docs-Files/files/file-naming-standard/Status_Codes.html" target="_blank" rel="noopener">Status Codes</a> · <a href="https://help.autodesk.com/cloudhelp/ENU/Docs-Reviews/files/getting-started-reviews/Reviews_Create_Edit.html" target="_blank" rel="noopener">aprobaciones</a> · <a href="https://www.bentley.com/globalassets/content/PDS-BCDE-Project-LTR-EN-LR.pdf" target="_blank" rel="noopener">Bentley BCDE</a> · <a href="https://architecturaltechnology.com/resource/bsi-launches-19650-kitemark-for-bim-software.html" target="_blank" rel="noopener">Kitemark BSI</a> · <a href="https://www.autodesk.com/integrations/partner/plannerly" target="_blank" rel="noopener">Plannerly</a></li>
+          <li><a href="https://www.buildingsmart.org/?p=29521" target="_blank" rel="noopener">IFC 4.3</a> · <a href="https://www.buildingsmart.org/?p=30065" target="_blank" rel="noopener">IDS 1.0</a> · <a href="https://www.buildingsmart.org/bim-collaboration-format-bcf-3-0/" target="_blank" rel="noopener">BCF 3.0</a> · <a href="https://help.graphisoft.com/AC/28/INT/_AC28_Help/120_Interoperability/120_Interoperability-17.htm" target="_blank" rel="noopener">Archicad e IDS</a></li>
+          <li><a href="https://pypi.org/project/ifctester/0.7.10" target="_blank" rel="noopener">IfcTester</a> · <a href="https://help.solibri.com/hc/en-us/articles/19053798036375-244-IDS-Validation" target="_blank" rel="noopener">Solibri 244</a> · <a href="https://helpcenter.bimcollab.com/portal/en/kb/articles/improve-model-quality-with-ids-zoom" target="_blank" rel="noopener">BIMcollab</a> · <a href="https://technical.buildingsmart.org/services/validation-service/" target="_blank" rel="noopener">Validation Service</a></li>
+        </ul>
+</div>
+</div>
   </template>
 
   <script src="../../assets/js/serie.js"></script>
+  <script src="../../assets/js/paises.js"></script>
   <script src="../../assets/js/web.js"></script>
   <script src="../../assets/js/precision.js"></script>
 </body>
