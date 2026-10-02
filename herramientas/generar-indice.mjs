@@ -62,6 +62,7 @@ const CC = 'coordenadas-compartidas';
 const NI = 'niveles-de-informacion';
 const DI = 'deteccion-de-interferencias';
 const GD = 'gemelos-digitales';
+const CD = 'entorno-comun-de-datos';
 const MANUAL = {
   C01: [CC, 'problema principio origenes'], C02: [CC, 'coordenadas paises'], C06: [CC, 'coordenadas principio origenes'],
   C11: [CC, 'origenes survey limites'], C12: [CC, 'origenes survey'], C13: [CC, 'survey otros'], C14: [CC, 'revit campus tipologias'],
@@ -78,6 +79,11 @@ const MANUAL = {
   D11: [DI, 'incidencia bcf-dentro'], D12: [DI, 'tipos ruido'], D13: [DI, 'quien-mueve'], D14: [DI, 'bcf bcf-dentro bcf-versiones'],
   D15: [DI, 'bcf-api'], D16: [DI, 'iso19650'], D17: [DI, 'guid ida-vuelta'], D18: [DI, 'navisworks'], D19: [DI, 'navisworks solibri'],
   D20: [DI, 'holguras'], D21: [DI, 'nube'], D22: [DI, 'cerrar'], D23: [DI, 'kpi'], D24: [DI, 'ciclo'], D25: [DI, 'aptitud'], D26: [DI, 'cerrar'],
+  // Artículo 03 · entorno común de datos
+  E01: [CD, 'que-es estados plataformas'], E02: [CD, 'problema que-es'], E04: [CD, 'metadatos contenedor'], E06: [CD, 'puertas calidad'],
+  E07: [CD, 'codigos anejos'], E10: [CD, 'roles'], E11: [CD, 'permisos seguridad'], E12: [CD, 'archivado'], E19: [CD, 'anejos codigos'],
+  E20: [CD, 'seguridad'], E21: [CD, 'icdd'], E22: [CD, 'opencde'], E24: [CD, 'icdd'], E26: [CD, 'flujos'], E27: [CD, 'autoria'],
+  E28: [CD, 'calidad validador'], E31: [CD, 'certificados'], E32: [CD, 'exportar'],
   // Artículo 07 · gemelos digitales
   G01: [GD, 'definicion tres-niveles'], G02: [GD, 'tres-niveles'], G03: [GD, 'tres-niveles'], G05: [GD, 'madurez'], G08: [GD, 'iso19650'], G09: [GD, 'iso19650'],
   G10: [GD, 'iso19650 entrega'], G13: [GD, 'ifc normas'], G14: [GD, 'identificadores ifc'], G15: [GD, 'ifc'], G16: [GD, 'ifc'], G17: [GD, 'entrega'], G18: [GD, 'ids entrega'],

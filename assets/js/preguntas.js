@@ -28,5 +28,10 @@ window.BF_PREGUNTAS = [
   ['¿Qué diferencia hay entre un modelo BIM y un gemelo digital?', 'gemelos-digitales', 'tres-niveles', 'I'],
   ['¿Qué datos tengo que pedir en el pliego para tener un gemelo?', 'gemelos-digitales', 'entrega', 'V'],
   ['¿Cómo enlazo un sensor del edificio con su elemento del modelo?', 'gemelos-digitales', 'identificadores', 'V'],
-  ['¿Cómo compruebo que los datos de un gemelo son fiables?', 'gemelos-digitales', 'calidad', 'VI']
+  ['¿Cómo compruebo que los datos de un gemelo son fiables?', 'gemelos-digitales', 'calidad', 'VI'],
+  ['¿Puedo coordinar con un modelo que aún está en curso?', 'entorno-comun-de-datos', 'estados', 'I'],
+  ['¿Qué significan S1, S2 o A1 en un archivo?', 'entorno-comun-de-datos', 'codigos', 'II'],
+  ['¿Cómo nombro los archivos según ISO 19650?', 'entorno-comun-de-datos', 'nombres', 'I'],
+  ['¿Sincronizar en la nube ya es compartir?', 'entorno-comun-de-datos', 'autoria', 'III'],
+  ['¿Qué exige el Plan BIM sobre el CDE?', 'entorno-comun-de-datos', 'espana', 'II']
 ];

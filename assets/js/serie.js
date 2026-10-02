@@ -24,15 +24,14 @@ window.SERIE = [
     estado: 'borrador'
   },
   {
-    // Artículo ficticio de relleno (arquitectura de la web): sustituir o borrar
     slug: 'entorno-comun-de-datos',
     numero: '03',
-    titulo: 'Entorno común de datos',
-    resumen: 'Un único sitio donde la información tiene estado, versión y dueño.',
-    tema: 'Gestión',
-    fecha: '2026-11',
-    lectura: '6 ideas',
-    estado: 'relleno'
+    titulo: 'Entorno común de datos (CDE)',
+    resumen: 'Qué es un CDE según ISO 19650 y cómo se aplica: contenedores, cuatro estados, puertas de aprobación, metadatos, nombres y roles; después anejos nacionales, programas, plataformas, OpenCDE y control de calidad.',
+    tema: 'Gestión de la información',
+    fecha: '2026-10',
+    lectura: '39 ideas',
+    estado: 'borrador'
   },
   {
     slug: 'deteccion-de-interferencias',

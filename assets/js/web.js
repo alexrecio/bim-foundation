@@ -220,6 +220,8 @@
     ['ReCap', 'Rc', 'p'], ['Plannerly', 'Pl', 'p'], ['Dynamo', 'Dy', 'p', 'dynamo.png'], ['CloudCompare', 'CC', 'p', 'cloudcompare.svg'], ['epsg.io', 'ep', 'p'],
     ['Revizto', 'Rz', 'p'], ['Dalux', 'Dx', 'p'], ['Catenda Hub', 'Ca', 'p'], ['Aconex', 'Ax', 'p'], ['Procore', 'Pc', 'p'], ['MicroStation', 'MS', 'p', 'bentley.svg'],
     ['Autodesk Tandem', 'Td', 'p', 'autodesk.svg'], ['Nemetschek dTwin', 'dT', 'p'], ['3DEXPERIENCE', '3DX', 'p'], ['Willow', 'Wi', 'p'], ['Siemens Building X', 'BX', 'p'], ['Unreal Engine', 'UE', 'p'], ['Unity', 'Un', 'p'], ['NVIDIA Omniverse', 'Ov', 'p'], ['Cesium ion', 'Cs', 'p'], ['Azure Digital Twins', 'ADT', 'p'], ['AWS IoT TwinMaker', 'TM', 'p'], ['Eclipse Ditto', 'Di', 'p'],
+    ['Oracle Aconex', 'Ax', 'p'], ['Asite', 'As', 'p'], ['Catenda', 'Ca', 'p'], ['Viewpoint For Projects', 'VP', 'p', 'trimble.svg'], ['Thinkproject', 'tp', 'p'], ['SharePoint', 'SP', 'p'], ['usBIM', 'us', 'p'], ['ProjectWise', 'PW', 'p', 'bentley.svg'], ['Atvero', 'At', 'p'],
+    ['OpenCDE', 'oC', 'e'], ['ICDD', 'ICDD', 'e'], ['DIN SPEC', 'DIN', 'e'],
     ['COBie', 'CB', 'e'], ['Brick', 'Br', 'e'], ['DTDL', 'DT', 'e'],
     ['IDS', 'IDS', 'e', 'ids.svg'], ['BCF', 'BCF', 'e', 'buildingsmart.png'], ['IFC', 'IFC', 'e', 'buildingsmart.png'], ['DWG', 'DWG', 'f'], ['RVT', 'RVT', 'f'], ['E57', 'E57', 'f'], ['LAS', 'LAS', 'f'], ['NWC', 'NWC', 'f'], ['XML', 'XML', 'f']
   ];

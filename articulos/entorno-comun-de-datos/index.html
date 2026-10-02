@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Borrador: quitar noindex al publicar -->
   <meta name="robots" content="noindex, nofollow">
-  <title>Entorno común de datos (relleno) | kernel</title>
-  <meta name="description" content="Artículo ficticio de relleno.">
+  <title>Entorno común de datos (CDE) | kernel</title>
+  <meta name="description" content="Qué es un entorno común de datos según ISO 19650: contenedores, estados, puertas de aprobación, metadatos, nomenclatura, roles, plataformas, OpenCDE y control de calidad.">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Entorno común de datos (relleno) · kernel">
-  <meta property="og:description" content="Un único sitio donde la información tiene estado, versión y dueño.">
+  <meta property="og:title" content="Entorno común de datos (CDE) · kernel">
+  <meta property="og:description" content="Un CDE no es una plataforma: es un acuerdo sobre dónde vive la información, en qué estado está y quién la deja pasar.">
   <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="../../assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="../../assets/css/estilo.css">
@@ -28,116 +28,1013 @@
     </div>
   </div>
 
-  <!-- ARTÍCULO FICTICIO DE RELLENO para trabajar la arquitectura de la web. Sustituir o borrar antes de publicar. -->
+  <!-- Menú de diapositivas: se rellena con data-nav de cada <section> -->
   <aside id="deck-nav" aria-label="Diapositivas">
-    <span class="kicker-y">CDE · 6 ideas</span>
+    <span class="kicker-y">CDE · 39 ideas</span>
     <ol></ol>
   </aside>
   <div id="deck-bar">
     <div id="deck-sheet"><ol></ol></div>
     <button type="button" id="deck-bar-btn" aria-expanded="false" aria-controls="deck-sheet">
-      <span class="n">01</span><span class="t">Portada</span>
+      <span class="n">01/39</span><span class="t">Portada</span>
       <span class="chev" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M3 9l4-4 4 4" fill="none" stroke="#fff" stroke-width="2"/></svg></span>
     </button>
   </div>
 
+  <!--
+    Regla de capas
+    Capa 1 = una diapositiva por idea, legible en 15 segundos: titular + tarjetas visuales (cifras, diagramas, chips) con rótulos breves.
+    Capa 2 = la ficha que abre «Ver detalle» (<template id="l2-…">), también en tarjetas. Solo añade lo que la diapositiva no dice.
+    Investigación y base de fuentes: /mnt/project-files/fuentes/03-cde/ (no en el repo).
+  -->
   <main class="deck">
 
+    <!-- ========== PORTADA ========== -->
     <section class="slide" id="portada" data-nav="Portada">
       <div class="bento">
         <div class="b-title">
           <p class="hero-id"><a href="../../" style="text-decoration:none">kernel · 03</a></p>
-          <span class="kicker-y lg">ISO 19650 · CDE</span>
-          <h1 class="display">Entorno común<br>de<br><span class="hl-y">datos<span class="dot">.</span></span></h1>
-          <p class="slide-lead">Un único sitio donde la información tiene estado, versión y dueño.</p>
-          <div class="slide-actions"><a class="btn" href="#estados">Empezar <span aria-hidden="true">↓</span></a></div>
+          <span class="kicker-y lg">ISO 19650 · gestión de la información</span>
+          <h1 class="display">Entorno<br>común<br><span class="hl-y">de datos<span class="dot">.</span></span></h1>
+          <p class="slide-lead">Un CDE no es una plataforma. Es un acuerdo: dónde vive cada archivo, en qué estado está y quién lo deja pasar.</p>
+          <div class="slide-actions"><a class="btn" href="#problema">Empezar <span aria-hidden="true">↓</span></a></div>
         </div>
         <div class="b-cards">
           <div class="card w6 ficha" data-ficha></div>
-          <div class="card w6 y"><span class="c-label">Artículo de relleno</span><span class="c-title">Contenido ficticio para probar la arquitectura de la web</span><span class="c-foot">Textos y cifras inventados · no usar como referencia</span></div>
+          <div class="card w6 g">
+            <span class="c-label">El artículo en seis bloques</span>
+            <ol class="mapa">
+              <li class="is-key"><a href="#problema"><b>I</b><span>Conceptos generales</span><em>16 ideas · contenedores, estados, puertas, nombres, roles</em></a></li>
+              <li><a href="#iso19650"><b>II</b><span>Estándares</span><em>8 ideas · ISO 19650, anejos nacionales, Plan BIM</em></a></li>
+              <li><a href="#autoria"><b>III</b><span>Software</span><em>2 ideas · trabajar conectado y exportar</em></a></li>
+              <li><a href="#plataformas"><b>IV</b><span>Plataformas</span><em>4 ideas · carpetas, flujos y sellos</em></a></li>
+              <li><a href="#opencde"><b>V</b><span>Interoperabilidad</span><em>3 ideas · OpenCDE, BCF, ICDD</em></a></li>
+              <li><a href="#calidad"><b>VI</b><span>Control de calidad</span><em>4 ideas · criterios, nombres, IDS, auditoría</em></a></li>
+            </ol>
+          </div>
         </div>
       </div>
     </section>
 
+    <!-- ========== I · EL PROBLEMA ========== -->
+    <section class="slide" id="problema" data-cap="I · Conceptos generales" data-nav="El problema">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">El problema</span>
+          <h2 class="display">¿Cuál es la buena<span class="dot">?</span></h2>
+          <p class="slide-lead">Correos, carpetas y copias locales. Nadie sabe qué versión es la vigente ni quién la dio por buena.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="problema"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w4">
+            <span class="c-label">La carpeta de siempre</span>
+            <svg class="draw" viewBox="0 0 420 200" role="img" aria-label="Cinco archivos con nombres casi iguales: final, final2, definitivo, revisado y bueno">
+              <g font-family="JetBrains Mono, monospace" font-size="13">
+                <rect x="10" y="10" width="400" height="30" rx="4" fill="#fff" stroke="#000" stroke-width="2"/><text x="24" y="30">planta_final.pdf</text>
+                <rect x="10" y="48" width="400" height="30" rx="4" fill="#fff" stroke="#000" stroke-width="2"/><text x="24" y="68">planta_final2.pdf</text>
+                <rect x="10" y="86" width="400" height="30" rx="4" fill="#fff" stroke="#000" stroke-width="2"/><text x="24" y="106">planta_DEFINITIVO.pdf</text>
+                <rect x="10" y="124" width="400" height="30" rx="4" fill="#fff" stroke="#000" stroke-width="2"/><text x="24" y="144">planta_def_revJM.pdf</text>
+                <rect x="10" y="162" width="400" height="30" rx="4" fill="#FFFF00" stroke="#000" stroke-width="3"/><text x="24" y="182" font-weight="700">planta_def_BUENO (2).pdf</text>
+                <text x="330" y="182" font-weight="700">¿?</text>
+              </g>
+            </svg>
+          </div>
+          <div class="card w2 k">
+            <span class="c-label">Tiempo perdido</span>
+            <b class="c-num xl">35<small>%</small></b>
+            <span class="c-text">del tiempo se va en buscar, corregir y rehacer</span>
+            <span class="c-foot">FMI 2018 · EE. UU.</span>
+          </div>
+          <div class="card w3"><span class="c-label">01</span><span class="c-title">Sin versión vigente</span></div>
+          <div class="card w3 y"><span class="c-label">02</span><span class="c-title">Sin quién lo aprobó</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== I · QUÉ ES ========== -->
+    <section class="slide" id="que-es" data-nav="Qué es un CDE">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">La definición</span>
+          <h2 class="display">Una fuente acordada<span class="dot">.</span></h2>
+          <p class="slide-lead">El entorno común de datos es el sitio acordado donde se reúne, gestiona y difunde la información, siempre con un proceso controlado.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="que-es"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w6 g">
+            <span class="c-label">Dos piezas, un CDE</span>
+            <div class="flow"><span class="chip">Flujo de trabajo</span><span class="arrow">+</span><span class="chip">Solución tecnológica</span><span class="arrow">=</span><span class="chip y">CDE</span></div>
+          </div>
+          <div class="card w2"><span class="step-n">1</span><span class="c-title">Reunir</span><span class="c-foot">todo en un sitio</span></div>
+          <div class="card w2"><span class="step-n">2</span><span class="c-title">Gestionar</span><span class="c-foot">estado y versión</span></div>
+          <div class="card w2 k"><span class="step-n">3</span><span class="c-title">Difundir</span><span class="c-foot">a quien toca</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== I · CONTENEDOR ========== -->
+    <section class="slide" id="contenedor" data-nav="Contenedor de información">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">La unidad</span>
+          <h2 class="display">Todo es un contenedor<span class="dot">.</span></h2>
+          <p class="slide-lead">Un modelo, un plano o una tabla: cualquier conjunto de información con nombre propio que se puede recuperar. Viaja con sus metadatos.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="contenedor"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w4">
+            <span class="c-label">Un contenedor y sus etiquetas</span>
+            <svg class="draw" viewBox="0 0 420 210" role="img" aria-label="Una caja con nombre y tres etiquetas colgadas: estado, revisión y clasificación">
+              <path d="M30 60 L130 30 L230 60 L230 170 L130 200 L30 170 Z" fill="#fff" stroke="#000" stroke-width="3" stroke-linejoin="round"/>
+              <path d="M30 60 L130 90 L230 60 M130 90 V200" fill="none" stroke="#000" stroke-width="3" stroke-linejoin="round"/>
+              <path d="M30 60 L130 90 L130 200 L30 170 Z" fill="#FFFF00" stroke="#000" stroke-width="3" stroke-linejoin="round"/>
+              <g font-family="JetBrains Mono, monospace" font-size="13">
+                <path d="M230 80 H270" stroke="#000" stroke-width="2"/><rect x="270" y="66" width="140" height="28" rx="4" fill="#000"/><text x="282" y="85" fill="#fff">ESTADO · S2</text>
+                <path d="M230 120 H270" stroke="#000" stroke-width="2"/><rect x="270" y="106" width="140" height="28" rx="4" fill="#fff" stroke="#000" stroke-width="2"/><text x="282" y="125">REVISIÓN · P03</text>
+                <path d="M230 160 H270" stroke="#000" stroke-width="2"/><rect x="270" y="146" width="140" height="28" rx="4" fill="#fff" stroke="#000" stroke-width="2"/><text x="282" y="165">CLASE · Ss_25</text>
+              </g>
+            </svg>
+          </div>
+          <div class="card w2 k"><span class="c-label">Puede ser</span><span class="c-title">Un archivo</span><span class="c-title">Una parte</span><span class="c-title">Una tabla</span></div>
+          <div class="card w3"><span class="c-label">Nombre</span><span class="c-title">Único y persistente</span></div>
+          <div class="card w3 g"><span class="c-label">Metadatos</span><span class="c-title">Dicen su estado</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== I · CUATRO ESTADOS ========== -->
     <section class="slide" id="estados" data-nav="Cuatro estados">
       <div class="bento">
         <div class="b-title">
           <span class="slide-n"></span>
           <span class="kicker-y">El flujo</span>
-          <h2 class="display">Trabajo, compartido, publicado, archivo<span class="dot">.</span></h2>
-          <p class="slide-lead">Cada archivo pasa por estados con una revisión en cada salto.</p>
+          <h2 class="display">Cuatro estados<span class="dot">.</span></h2>
+          <p class="slide-lead">Cada contenedor está siempre en uno: se trabaja, se comparte para coordinar, se publica para usarlo y todo queda registrado.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="estados"><span class="plus">+</span> Ver detalle</button></div>
         </div>
         <div class="b-cards">
-          <div class="card w6 g"><span class="c-label">Estados del CDE</span><div class="flow"><span class="chip">En curso</span><span class="arrow">→</span><span class="chip">Compartido</span><span class="arrow">→</span><span class="chip y">Publicado</span><span class="arrow">→</span><span class="chip k">Archivo</span></div></div>
-          <div class="card w3 k"><span class="c-label">Estados</span><b class="c-num">4<small></small></b><span class="c-foot">ISO 19650-1 (relleno)</span></div>
-          <div class="card w3 g"><span class="c-label">Cada salto</span><span class="c-title">Revisión y aprobación</span><span class="badge y">Control</span></div>
+          <div class="card w6">
+            <span class="c-label">El ciclo de un contenedor</span>
+            <svg class="draw" viewBox="0 0 640 200" role="img" aria-label="Cuatro cajas en fila: trabajo en curso, compartido y publicado, unidas por puertas, y debajo una banda de archivado que lo registra todo">
+              <g stroke="#000" stroke-width="3" stroke-linejoin="round">
+                <rect x="10" y="20" width="170" height="90" rx="6" fill="#fff"/>
+                <rect x="235" y="20" width="170" height="90" rx="6" fill="#fff"/>
+                <rect x="460" y="20" width="170" height="90" rx="6" fill="#FFFF00"/>
+                <rect x="10" y="150" width="620" height="40" rx="6" fill="#000"/>
+              </g>
+              <g stroke="#000" stroke-width="2.5" fill="none"><path d="M180 65 H222"/><path d="M405 65 H447"/></g>
+              <polygon points="232,65 220,58 220,72" fill="#000"/><polygon points="457,65 445,58 445,72" fill="#000"/>
+              <g stroke="#000" stroke-width="1.5" stroke-dasharray="4 4"><path d="M95 110 V150"/><path d="M320 110 V150"/><path d="M545 110 V150"/></g>
+              <g font-family="Inter, sans-serif" font-weight="900" font-size="17">
+                <text x="26" y="58">TRABAJO</text><text x="26" y="80">EN CURSO</text>
+                <text x="251" y="70">COMPARTIDO</text>
+                <text x="476" y="70">PUBLICADO</text>
+                <text x="26" y="176" fill="#fff">ARCHIVADO</text>
+              </g>
+              <g font-family="JetBrains Mono, monospace" font-size="11">
+                <text x="26" y="100">el equipo</text><text x="251" y="100">para coordinar</text><text x="476" y="100">para usar</text>
+                <text x="160" y="176" fill="#FFFF00">registro de cada paso · auditoría</text>
+              </g>
+            </svg>
+          </div>
+          <div class="card w2 g"><span class="c-label">Visibles fuera</span><b class="c-num">2<small>&nbsp;de 4</small></b></div>
+          <div class="card w2"><span class="c-label">Puertas</span><b class="c-num">2<small>&nbsp;con control</small></b></div>
+          <div class="card w2 k"><span class="c-label">Se borra</span><b class="c-num">0<small>&nbsp;todo queda</small></b></div>
         </div>
       </div>
     </section>
 
+    <!-- ========== I · TRABAJO EN CURSO ========== -->
+    <section class="slide" id="en-curso" data-nav="Trabajo en curso">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Estado 1</span>
+          <h2 class="display">Trabajo en curso<span class="dot">.</span></h2>
+          <p class="slide-lead">El taller del equipo. Lo produce su autor y nadie de fuera lo ve: se puede equivocar, borrar y rehacer.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="en-curso"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w3">
+            <svg class="ico" viewBox="0 0 44 44" aria-hidden="true"><rect x="6" y="18" width="32" height="22" rx="3" fill="#FFFF00" stroke="#000" stroke-width="2.5"/><path d="M13 18 V12 a9 9 0 0 1 18 0 V18" fill="none" stroke="#000" stroke-width="2.5"/><circle cx="22" cy="29" r="3" fill="#000"/></svg>
+            <span class="c-title">Privado</span><span class="c-foot">solo su equipo de trabajo</span>
+          </div>
+          <div class="card w3 g">
+            <span class="c-label">Versiones internas</span>
+            <div class="chips"><span class="chip">P01.01</span><span class="chip">P01.02</span><span class="chip">P01.03</span><span class="chip y">…</span></div>
+          </div>
+          <div class="card w6 k"><span class="c-label">Regla</span><span class="c-title">Nadie construye ni coordina con trabajo en curso ajeno</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== I · COMPARTIDO ========== -->
+    <section class="slide" id="compartido" data-nav="Compartido">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Estado 2</span>
+          <h2 class="display">Compartido<span class="dot">.</span></h2>
+          <p class="slide-lead">Aprobado para que otros equipos lo vean. Sirve para coordinar y comentar, no para construir.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="compartido"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w4">
+            <span class="c-label">Todos lo ven, nadie lo cambia</span>
+            <svg class="draw" viewBox="0 0 420 170" role="img" aria-label="Un contenedor en el centro con cuatro equipos alrededor que lo leen pero no lo modifican">
+              <rect x="170" y="55" width="80" height="60" rx="6" fill="#FFFF00" stroke="#000" stroke-width="3"/>
+              <g fill="#fff" stroke="#000" stroke-width="2.5"><circle cx="50" cy="40" r="24"/><circle cx="370" cy="40" r="24"/><circle cx="50" cy="130" r="24"/><circle cx="370" cy="130" r="24"/></g>
+              <g stroke="#000" stroke-width="2" stroke-dasharray="5 5"><path d="M74 46 L170 74"/><path d="M346 46 L250 74"/><path d="M74 124 L170 98"/><path d="M346 124 L250 98"/></g>
+              <g font-family="JetBrains Mono, monospace" font-size="12" text-anchor="middle"><text x="50" y="44">ARQ</text><text x="370" y="44">EST</text><text x="50" y="134">INS</text><text x="370" y="134">CLI</text><text x="210" y="90" font-weight="700">S1</text></g>
+            </svg>
+          </div>
+          <div class="card w2 k"><span class="c-label">Revisión</span><b class="c-num">P01<small></small></b><span class="c-foot">sin decimales</span></div>
+          <div class="card w3"><span class="c-label">Uso</span><span class="c-title">Coordinar · revisar</span></div>
+          <div class="card w3 g"><span class="c-label">No vale para</span><span class="c-title">Obra · contrato</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== I · PUBLICADO ========== -->
+    <section class="slide" id="publicado" data-nav="Publicado">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Estado 3</span>
+          <h2 class="display">Publicado<span class="dot">.</span></h2>
+          <p class="slide-lead">Autorizado para usarse: en el diseño de detalle, en la obra o en la explotación. Es la versión contractual.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="publicado"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w3 y">
+            <svg class="ico" viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="17" fill="#fff" stroke="#000" stroke-width="2.5"/><path d="M14 22 l6 6 l11 -12" fill="none" stroke="#000" stroke-width="3"/></svg>
+            <span class="c-title">Autorizado</span><span class="c-foot">y aceptado por el cliente</span>
+          </div>
+          <div class="card w3 k"><span class="c-label">Revisión</span><b class="c-num">C01<small></small></b><span class="c-foot">contractual</span></div>
+          <div class="card w2"><span class="c-label">Para</span><span class="c-title">Detalle</span></div>
+          <div class="card w2"><span class="c-label">Para</span><span class="c-title">Obra</span></div>
+          <div class="card w2 g"><span class="c-label">Para</span><span class="c-title">Activo</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== I · ARCHIVADO ========== -->
+    <section class="slide" id="archivado" data-nav="Archivado">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Estado 4</span>
+          <h2 class="display">Archivado<span class="dot">.</span></h2>
+          <p class="slide-lead">No es el final del camino: es el diario. Guarda cada versión superada y cada cambio de estado, con quién y cuándo.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="archivado"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w6">
+            <span class="c-label">El diario de un contenedor</span>
+            <svg class="draw" viewBox="0 0 640 120" role="img" aria-label="Línea de tiempo con cinco anotaciones: P01.01, P01, P02, C01 y C02">
+              <path d="M20 60 H620" stroke="#000" stroke-width="3"/>
+              <g fill="#fff" stroke="#000" stroke-width="2.5"><circle cx="70" cy="60" r="10"/><circle cx="190" cy="60" r="10"/><circle cx="310" cy="60" r="10"/><circle cx="430" cy="60" r="10"/></g>
+              <circle cx="560" cy="60" r="12" fill="#FFFF00" stroke="#000" stroke-width="3"/>
+              <g font-family="JetBrains Mono, monospace" font-size="12" text-anchor="middle">
+                <text x="70" y="36">P01.01</text><text x="190" y="36">P01</text><text x="310" y="36">P02</text><text x="430" y="36">C01</text><text x="560" y="36" font-weight="700">C02</text>
+                <text x="70" y="96" fill="#666">en curso</text><text x="190" y="96" fill="#666">compartido</text><text x="310" y="96" fill="#666">compartido</text><text x="430" y="96" fill="#666">publicado</text><text x="560" y="96">vigente</text>
+              </g>
+            </svg>
+          </div>
+          <div class="card w2 k"><span class="c-label">Quién</span><span class="c-title">Usuario</span></div>
+          <div class="card w2 k"><span class="c-label">Cuándo</span><span class="c-title">Fecha y hora</span></div>
+          <div class="card w2 y"><span class="c-label">Qué</span><span class="c-title">Estado y revisión</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== I · LAS PUERTAS ========== -->
+    <section class="slide" id="puertas" data-nav="Las puertas">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Las transiciones</span>
+          <h2 class="display">Nada pasa sin permiso<span class="dot">.</span></h2>
+          <p class="slide-lead">Entre estados hay puertas. La primera la abre el propio equipo; la segunda, el responsable del encargo y, después, el cliente.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="puertas"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w6 g">
+            <span class="c-label">Dos decisiones</span>
+            <div class="flow"><span class="chip">En curso</span><span class="arrow">→</span><span class="chip k">Comprobar · revisar · aprobar</span><span class="arrow">→</span><span class="chip">Compartido</span><span class="arrow">→</span><span class="chip k">Revisar · autorizar · aceptar</span><span class="arrow">→</span><span class="chip y">Publicado</span></div>
+          </div>
+          <div class="card w3"><span class="c-label">Puerta A</span><span class="c-title">Aprobar para compartir</span><span class="c-foot">el equipo de trabajo</span></div>
+          <div class="card w3 y"><span class="c-label">Puerta B</span><span class="c-title">Autorizar para publicar</span><span class="c-foot">contratado principal + cliente</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== I · METADATOS ========== -->
+    <section class="slide" id="metadatos" data-nav="Metadatos">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">La etiqueta</span>
+          <h2 class="display">El estado no es la carpeta<span class="dot">.</span></h2>
+          <p class="slide-lead">Cada contenedor lleva tres datos obligatorios: código de estado, de revisión y de clasificación. Las carpetas ayudan, pero no sustituyen a la etiqueta.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="metadatos"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w2 k"><span class="c-label">Estado</span><b class="c-num">S2<small></small></b><span class="c-foot">para qué sirve</span></div>
+          <div class="card w2"><span class="c-label">Revisión</span><b class="c-num">P03<small></small></b><span class="c-foot">qué versión es</span></div>
+          <div class="card w2 y"><span class="c-label">Clase</span><b class="c-num" style="font-size:clamp(28px,3vw,40px)">Ss_25<small></small></b><span class="c-foot">de qué trata</span></div>
+          <div class="card w6 g"><span class="c-label">Si se mueve el archivo</span><span class="c-title">La carpeta cambia, la etiqueta viaja con él</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== I · REVISIONES ========== -->
+    <section class="slide" id="revisiones" data-nav="Revisiones y versiones">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">El contador</span>
+          <h2 class="display">P de preliminar, C de contrato<span class="dot">.</span></h2>
+          <p class="slide-lead">Las versiones de trabajo llevan decimales, lo compartido no y lo publicado cambia de letra.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="revisiones"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w6">
+            <span class="c-label">Una revisión de principio a fin</span>
+            <div class="flow"><span class="chip">P01.01</span><span class="arrow">→</span><span class="chip">P01.02</span><span class="arrow">→</span><span class="chip k">P01</span><span class="arrow">→</span><span class="chip">P02.01</span><span class="arrow">→</span><span class="chip k">P02</span><span class="arrow">→</span><span class="chip y">C01</span></div>
+          </div>
+          <div class="card w2"><span class="c-label">.01 .02</span><span class="c-title">En curso</span></div>
+          <div class="card w2 k"><span class="c-label">P01 P02</span><span class="c-title">Compartido</span></div>
+          <div class="card w2 y"><span class="c-label">C01 C02</span><span class="c-title">Publicado</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== I · NOMENCLATURA ========== -->
     <section class="slide" id="nombres" data-nav="Nomenclatura">
       <div class="bento">
         <div class="b-title">
           <span class="slide-n"></span>
-          <span class="kicker-y">Convención</span>
+          <span class="kicker-y">El nombre</span>
           <h2 class="display">Un nombre que se lee solo<span class="dot">.</span></h2>
-          <p class="slide-lead">Proyecto, autor, volumen, nivel, tipo, disciplina y número.</p>
+          <p class="slide-lead">Campos fijos separados por guiones: qué proyecto, quién lo hace, dónde está, qué es, de qué disciplina y qué número lleva.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="nombres"><span class="plus">+</span> Ver detalle</button></div>
         </div>
         <div class="b-cards">
-          <div class="card w6 "><span class="c-label">Campos del nombre</span><div class="chips"><span class="chip k">PRY</span><span class="chip">AUT</span><span class="chip">VOL</span><span class="chip">NIV</span><span class="chip">TIP</span><span class="chip y">DIS</span><span class="chip">0001</span></div></div>
-          <div class="card w3 y"><span class="c-label">Campos</span><b class="c-num">7<small></small></b><span class="c-foot">Relleno</span></div>
-          <div class="card w3 "><span class="c-label">Caracteres</span><b class="c-num">≈30<small></small></b><span class="c-foot">Relleno</span></div>
+          <div class="card w6">
+            <span class="c-label">Anatomía de un nombre</span>
+            <svg class="draw" viewBox="0 0 660 150" role="img" aria-label="El nombre BFD-ARQ-ZZ-02-M3-A-0001 partido en siete campos: proyecto, autor, volumen, nivel, tipo, disciplina y número">
+              <g font-family="JetBrains Mono, monospace" font-weight="700" font-size="26" text-anchor="middle">
+                <rect x="6" y="20" width="84" height="48" rx="4" fill="#000"/><text x="48" y="54" fill="#fff">BFD</text>
+                <rect x="104" y="20" width="84" height="48" rx="4" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="146" y="54">ARQ</text>
+                <rect x="202" y="20" width="64" height="48" rx="4" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="234" y="54">ZZ</text>
+                <rect x="280" y="20" width="64" height="48" rx="4" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="312" y="54">02</text>
+                <rect x="358" y="20" width="64" height="48" rx="4" fill="#FFFF00" stroke="#000" stroke-width="2.5"/><text x="390" y="54">M3</text>
+                <rect x="436" y="20" width="52" height="48" rx="4" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="462" y="54">A</text>
+                <rect x="502" y="20" width="110" height="48" rx="4" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="557" y="54">0001</text>
+              </g>
+              <g font-family="JetBrains Mono, monospace" font-size="12" text-anchor="middle" fill="#444">
+                <text x="48" y="96">proyecto</text><text x="146" y="96">autor</text><text x="234" y="96">volumen</text><text x="312" y="96">nivel</text><text x="390" y="96">tipo</text><text x="462" y="96">disc.</text><text x="557" y="96">número</text>
+                <text x="48" y="116" fill="#888">obra</text><text x="146" y="116" fill="#888">empresa</text><text x="234" y="116" fill="#888">todos</text><text x="312" y="116" fill="#888">planta 2</text><text x="390" y="116" fill="#888">modelo 3D</text><text x="462" y="116" fill="#888">arq.</text><text x="557" y="116" fill="#888">correlativo</text>
+              </g>
+            </svg>
+          </div>
+          <div class="card w2 k"><span class="c-label">Campos</span><b class="c-num">7<small></small></b></div>
+          <div class="card w2"><span class="c-label">Separador</span><b class="c-num">-<small>&nbsp;guion</small></b></div>
+          <div class="card w2 y"><span class="c-label">Fuera del nombre</span><span class="c-title">Estado y revisión</span></div>
         </div>
       </div>
     </section>
 
+    <!-- ========== I · ROLES ========== -->
+    <section class="slide" id="roles" data-nav="Quién es quién">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Los roles</span>
+          <h2 class="display">Quién pide, quién entrega<span class="dot">.</span></h2>
+          <p class="slide-lead">El cliente encarga. Una empresa principal responde por todo el equipo de desarrollo, y cada equipo de trabajo produce su parte.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="roles"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w6">
+            <span class="c-label">La cadena de encargos</span>
+            <svg class="draw" viewBox="0 0 640 210" role="img" aria-label="Organigrama: la parte contratante arriba, debajo la parte contratada principal y debajo tres partes contratadas con sus equipos de trabajo">
+              <g stroke="#000" stroke-width="2.5" fill="none"><path d="M320 52 V80"/><path d="M320 118 V138 M110 138 H530 M110 138 V156 M320 138 V156 M530 138 V156"/></g>
+              <rect x="210" y="10" width="220" height="42" rx="6" fill="#000"/>
+              <rect x="190" y="80" width="260" height="38" rx="6" fill="#FFFF00" stroke="#000" stroke-width="3"/>
+              <g fill="#fff" stroke="#000" stroke-width="2.5"><rect x="30" y="156" width="160" height="42" rx="6"/><rect x="240" y="156" width="160" height="42" rx="6"/><rect x="450" y="156" width="160" height="42" rx="6"/></g>
+              <g font-family="Inter, sans-serif" font-weight="900" font-size="14" text-anchor="middle">
+                <text x="320" y="37" fill="#fff">PARTE CONTRATANTE</text>
+                <text x="320" y="104">CONTRATADA PRINCIPAL</text>
+                <text x="110" y="182">ARQUITECTURA</text><text x="320" y="182">ESTRUCTURA</text><text x="530" y="182">INSTALACIONES</text>
+              </g>
+              <path d="M18 72 H622 V206 H18 Z" fill="none" stroke="#000" stroke-width="1.5" stroke-dasharray="6 5"/>
+              <text x="26" y="90" font-family="JetBrains Mono, monospace" font-size="11">equipo de desarrollo</text>
+            </svg>
+          </div>
+          <div class="card w2 k"><span class="c-label">Encarga</span><span class="c-title">Cliente</span></div>
+          <div class="card w2 y"><span class="c-label">Responde</span><span class="c-title">Principal</span></div>
+          <div class="card w2"><span class="c-label">Produce</span><span class="c-title">Equipos de trabajo</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== I · PERMISOS ========== -->
     <section class="slide" id="permisos" data-nav="Permisos">
       <div class="bento">
         <div class="b-title">
           <span class="slide-n"></span>
-          <span class="kicker-y">Quién hace qué</span>
-          <h2 class="display">Cada rol ve lo que necesita<span class="dot">.</span></h2>
-          <p class="slide-lead">Lectura, edición y aprobación separadas por carpeta y estado.</p>
+          <span class="kicker-y">Quién ve qué</span>
+          <h2 class="display">El permiso depende del estado<span class="dot">.</span></h2>
+          <p class="slide-lead">El autor edita su trabajo en curso. Los demás equipos leen lo compartido. Lo publicado, solo se lee.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="permisos"><span class="plus">+</span> Ver detalle</button></div>
         </div>
         <div class="b-cards">
-          <div class="card w6"><span class="c-label">Accesos por rol</span><div class="bars"><div class="bar"><span>LEC</span><i style="width:90%">lectura</i></div><div class="bar"><span>EDI</span><i style="width:50%">edición</i></div><div class="bar is-key"><span>APR</span><i style="width:15%">aprobación</i></div></div></div>
-          <div class="card w6 g"><span class="c-label">Capas de acceso</span><svg class="draw" viewBox="0 0 620 140" aria-hidden="true"><rect x="10" y="48" width="184" height="82" rx="6" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="22" y="118" font-family="Inter, sans-serif" font-weight="900" font-size="14">Proyecto</text><rect x="210" y="34" width="184" height="96" rx="6" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="222" y="118" font-family="Inter, sans-serif" font-weight="900" font-size="14">Disciplina</text><rect x="410" y="20" width="184" height="110" rx="6" fill="#FFFF00" stroke="#000" stroke-width="2.5"/><text x="422" y="118" font-family="Inter, sans-serif" font-weight="900" font-size="14">Carpeta</text></svg></div>
+          <div class="card w6">
+            <div class="table-wrap"><table>
+              <thead><tr><th>Quién</th><th>En curso</th><th>Compartido</th><th>Publicado</th></tr></thead>
+              <tbody>
+                <tr class="is-key"><td>Su equipo de trabajo</td><td>Edita</td><td>Lee</td><td>Lee</td></tr>
+                <tr><td>Otros equipos</td><td>—</td><td>Lee</td><td>Lee</td></tr>
+                <tr><td>Contratada principal</td><td>—</td><td>Lee y revisa</td><td>Autoriza</td></tr>
+                <tr><td>Cliente</td><td>—</td><td>Lee si se le comparte</td><td>Acepta</td></tr>
+              </tbody>
+            </table></div>
+          </div>
+          <div class="card w3 k"><span class="c-label">Nadie</span><span class="c-title">Edita lo publicado</span><span class="c-foot">se crea una revisión nueva</span></div>
+          <div class="card w3 g"><span class="c-label">Por</span><span class="c-title">Rol, no por persona</span></div>
         </div>
       </div>
     </section>
 
-    <section class="slide" id="plataformas" data-nav="Plataformas">
+    <!-- ========== I · FEDERACIÓN ========== -->
+    <section class="slide" id="federacion" data-nav="Federar lo compartido">
       <div class="bento">
         <div class="b-title">
           <span class="slide-n"></span>
-          <span class="kicker-y">El mercado</span>
-          <h2 class="display">Muchas herramientas, mismo método<span class="dot">.</span></h2>
-          <p class="slide-lead">Da igual la marca si los estados y nombres están definidos.</p>
-          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="plataformas"><span class="plus">+</span> Ver detalle</button></div>
+          <span class="kicker-y">La coordinación</span>
+          <h2 class="display">Se vincula, no se copia<span class="dot">.</span></h2>
+          <p class="slide-lead">Cada equipo trabaja con su modelo y referencia los de los demás desde el estado compartido. Así todos coordinan contra la misma versión.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="federacion"><span class="plus">+</span> Ver detalle</button></div>
         </div>
         <div class="b-cards">
-          <div class="card w6 "><span class="c-label">Ejemplos (relleno)</span><div class="chips"><span class="chip">Plataforma A</span><span class="chip">Plataforma B</span><span class="chip y">Plataforma C</span></div></div>
-          <div class="card w6 k"><span class="c-label">Lo importante</span><span class="c-title">El método, no la marca</span></div>
+          <div class="card w4">
+            <span class="c-label">Tres modelos, una federación</span>
+            <svg class="draw" viewBox="0 0 420 190" role="img" aria-label="Tres modelos en trabajo en curso suben a compartido y desde ahí se combinan en un modelo federado">
+              <g fill="#fff" stroke="#000" stroke-width="2.5"><rect x="10" y="10" width="110" height="44" rx="5"/><rect x="155" y="10" width="110" height="44" rx="5"/><rect x="300" y="10" width="110" height="44" rx="5"/></g>
+              <rect x="10" y="84" width="400" height="34" rx="5" fill="#EFEFEA" stroke="#000" stroke-width="2"/>
+              <rect x="135" y="140" width="150" height="44" rx="5" fill="#FFFF00" stroke="#000" stroke-width="3"/>
+              <g stroke="#000" stroke-width="2"><path d="M65 54 V84"/><path d="M210 54 V84"/><path d="M355 54 V84"/><path d="M210 118 V140"/></g>
+              <g font-family="JetBrains Mono, monospace" font-size="12" text-anchor="middle"><text x="65" y="37">ARQ · en curso</text><text x="210" y="37">EST · en curso</text><text x="355" y="37">INS · en curso</text><text x="210" y="106">compartido · S1</text><text x="210" y="167" font-weight="700">federado</text></g>
+            </svg>
+          </div>
+          <div class="card w2 k"><span class="c-label">Se referencia</span><span class="c-title">Lo compartido</span><span class="c-foot">nunca el trabajo ajeno</span></div>
+          <div class="card w6 g"><span class="c-label">Si un modelo cambia</span><span class="c-title">Nueva revisión compartida y todos se actualizan</span></div>
         </div>
       </div>
     </section>
 
+    <!-- ========== I · DEL PROYECTO AL ACTIVO ========== -->
+    <section class="slide" id="activo" data-nav="Del proyecto al activo">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Al terminar</span>
+          <h2 class="display">Del proyecto al activo<span class="dot">.</span></h2>
+          <p class="slide-lead">Lo publicado y aceptado forma el modelo de información del proyecto. Al cerrar, se archiva y alimenta el modelo del activo, el que usará el propietario.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="activo"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w6 g">
+            <span class="c-label">Dos modelos de información</span>
+            <div class="flow"><span class="chip">PIM · proyecto</span><span class="arrow">→</span><span class="chip k">Aceptación</span><span class="arrow">→</span><span class="chip y">AIM · activo</span></div>
+          </div>
+          <div class="card w3"><span class="c-label">PIM</span><span class="c-title">Diseño y obra</span></div>
+          <div class="card w3 y"><span class="c-label">AIM</span><span class="c-title">Uso y mantenimiento</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== II · LA SERIE ISO 19650 ========== -->
+    <section class="slide" id="iso19650" data-cap="II · Estándares" data-nav="La serie ISO 19650">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">La norma</span>
+          <h2 class="display">Seis partes, un método<span class="dot">.</span></h2>
+          <p class="slide-lead">La serie ISO 19650 ordena la gestión de la información en todo el ciclo de vida. El CDE nace en la parte 1.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="iso19650"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w6">
+            <span class="c-label">Las partes y su año</span>
+            <svg class="draw" viewBox="0 0 640 150" role="img" aria-label="Línea de tiempo de 2018 a 2025 con las seis partes de ISO 19650">
+              <path d="M20 80 H620" stroke="#000" stroke-width="3"/>
+              <g font-family="JetBrains Mono, monospace" font-size="11" fill="#666" text-anchor="middle"><text x="40" y="140">2018</text><text x="190" y="140">2020</text><text x="340" y="140">2022</text><text x="565" y="140">2025</text></g>
+              <g stroke="#000" stroke-width="1.5"><path d="M40 80 V125"/><path d="M190 80 V125"/><path d="M340 80 V125"/><path d="M565 80 V125"/></g>
+              <rect x="10" y="20" width="60" height="44" rx="4" fill="#FFFF00" stroke="#000" stroke-width="2.5"/>
+              <rect x="80" y="20" width="60" height="44" rx="4" fill="#fff" stroke="#000" stroke-width="2.5"/>
+              <rect x="160" y="20" width="60" height="44" rx="4" fill="#fff" stroke="#000" stroke-width="2.5"/>
+              <rect x="230" y="20" width="60" height="44" rx="4" fill="#fff" stroke="#000" stroke-width="2.5"/>
+              <rect x="310" y="20" width="60" height="44" rx="4" fill="#fff" stroke="#000" stroke-width="2.5"/>
+              <rect x="535" y="20" width="60" height="44" rx="4" fill="#000"/>
+              <g font-family="Inter, sans-serif" font-weight="900" font-size="20" text-anchor="middle"><text x="40" y="50">1</text><text x="110" y="50">2</text><text x="190" y="50">5</text><text x="260" y="50">3</text><text x="340" y="50">4</text><text x="565" y="50" fill="#fff">6</text></g>
+            </svg>
+          </div>
+          <div class="card w2 y"><span class="c-label">Parte 1</span><span class="c-title">Conceptos</span></div>
+          <div class="card w2"><span class="c-label">Partes 2 · 3</span><span class="c-title">Proyecto · explotación</span></div>
+          <div class="card w2 k"><span class="c-label">Partes 4 · 5 · 6</span><span class="c-title">Intercambio · seguridad · salud</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== II · OCHO ACTIVIDADES ========== -->
+    <section class="slide" id="proceso" data-nav="Ocho actividades">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">ISO 19650-2</span>
+          <h2 class="display">El CDE se monta antes de licitar<span class="dot">.</span></h2>
+          <p class="slide-lead">La parte 2 describe ocho actividades. El cliente establece el CDE en la primera, antes de invitar a nadie.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="proceso"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w6">
+            <span class="c-label">Del encargo al cierre</span>
+            <div class="flow"><span class="chip y">1 Necesidad</span><span class="arrow">→</span><span class="chip">2 Licitación</span><span class="arrow">→</span><span class="chip">3 Oferta</span><span class="arrow">→</span><span class="chip">4 Contrato</span><span class="arrow">→</span><span class="chip">5 Movilización</span><span class="arrow">→</span><span class="chip k">6 Producción</span><span class="arrow">→</span><span class="chip">7 Entrega</span><span class="arrow">→</span><span class="chip">8 Cierre</span></div>
+          </div>
+          <div class="card w2 y"><span class="c-label">5.1.7</span><span class="c-title">Se establece</span></div>
+          <div class="card w2"><span class="c-label">5.5</span><span class="c-title">Se prueba</span></div>
+          <div class="card w2 k"><span class="c-label">5.8.1</span><span class="c-title">Se archiva</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== II · REQUISITOS Y PLANES ========== -->
+    <section class="slide" id="requisitos" data-nav="Requisitos y planes">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Lo que se pide</span>
+          <h2 class="display">Del requisito al plan<span class="dot">.</span></h2>
+          <p class="slide-lead">El cliente dice qué información necesita. El equipo responde cómo, quién y cuándo. El CDE es donde se cumple esa promesa.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="requisitos"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w3">
+            <span class="c-label">Lo pide el cliente</span>
+            <div class="chips"><span class="chip">OIR</span><span class="chip">AIR</span><span class="chip">PIR</span><span class="chip k">EIR</span></div>
+          </div>
+          <div class="card w3 y">
+            <span class="c-label">Lo responde el equipo</span>
+            <div class="chips"><span class="chip k">BEP</span><span class="chip">MIDP</span><span class="chip">TIDP</span></div>
+          </div>
+          <div class="card w6 g"><span class="c-label">Cada entrega planificada</span><span class="c-title">Un contenedor con fecha, autor y estado esperado</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== II · ANEJOS NACIONALES ========== -->
+    <section class="slide" id="anejos" data-nav="Anejos nacionales">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">La letra pequeña</span>
+          <h2 class="display">Los códigos no son ISO<span class="dot">.</span></h2>
+          <p class="slide-lead">ISO 19650 pide códigos de estado y de revisión, pero no los fija. Cada país los define en su anejo nacional, y no coinciden.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="anejos"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w2 k"><span class="c-label">Reino Unido</span><b class="c-num">S0–S7<small></small></b><span class="c-foot">A · B · CR</span></div>
+          <div class="card w2"><span class="c-label">Irlanda</span><b class="c-num">P1–P10<small></small></b><span class="c-foot">S · A · B · C · D</span></div>
+          <div class="card w2 y"><span class="c-label">España</span><b class="c-num">—<small></small></b><span class="c-foot">sin anejo nacional</span></div>
+          <div class="card w6 g"><span class="c-label">Consecuencia</span><span class="c-title">El BEP de cada proyecto tiene que elegir y escribir sus códigos</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== II · CÓDIGOS DE IDONEIDAD ========== -->
+    <section class="slide" id="codigos" data-nav="Códigos de idoneidad">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Anejo británico</span>
+          <h2 class="display">Para qué sirve, en dos letras<span class="dot">.</span></h2>
+          <p class="slide-lead">El código de idoneidad dice para qué se puede usar un contenedor compartido o publicado. El anejo británico es el más copiado, y cambió en 2021.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="codigos"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w6">
+            <div class="table-wrap"><table>
+              <thead><tr><th>Código</th><th>Estado</th><th>Apto para</th></tr></thead>
+              <tbody>
+                <tr><td>S0</td><td>En curso</td><td>Trabajo del equipo</td></tr>
+                <tr class="is-key"><td>S1</td><td>Compartido</td><td>Coordinación</td></tr>
+                <tr><td>S2</td><td>Compartido</td><td>Información</td></tr>
+                <tr><td>S3</td><td>Compartido</td><td>Revisión y comentarios</td></tr>
+                <tr><td>S4</td><td>Compartido</td><td>Aprobación de etapa</td></tr>
+                <tr class="is-key"><td>A1…An</td><td>Publicado</td><td>Autorizado y aceptado</td></tr>
+              </tbody>
+            </table></div>
+          </div>
+          <div class="card w3 k"><span class="c-label">2018</span><span class="c-title">S6 · S7 · CR</span><span class="c-foot">PIM, AIM y as-built</span></div>
+          <div class="card w3 y"><span class="c-label">2021</span><span class="c-title">S6 y S7 retirados</span><span class="c-foot">CR pasa a A6</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== II · EJEMPLO: ESPAÑA ========== -->
+    <section class="slide" id="espana" data-nav="Ejemplo: España">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Plan BIM</span>
+          <h2 class="display">España lo pide por fases<span class="dot">.</span></h2>
+          <p class="slide-lead">El Plan BIM de la contratación pública define el CDE y lo exige conforme a la UNE-EN ISO 19650 desde el nivel avanzado.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="espana"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w6">
+            <span class="c-label">Contratos de 5,382 M€ o más</span>
+            <svg class="draw" viewBox="0 0 640 130" role="img" aria-label="Calendario: nivel inicial en abril de 2024, medio en octubre de 2025, avanzado con CDE ISO 19650 en octubre de 2027 e integrado en abril de 2030">
+              <path d="M20 60 H620" stroke="#000" stroke-width="3"/>
+              <g fill="#fff" stroke="#000" stroke-width="2.5"><circle cx="70" cy="60" r="11"/><circle cx="230" cy="60" r="11"/><circle cx="550" cy="60" r="11"/></g>
+              <circle cx="390" cy="60" r="15" fill="#FFFF00" stroke="#000" stroke-width="3"/>
+              <g font-family="Inter, sans-serif" font-weight="900" font-size="15" text-anchor="middle"><text x="70" y="30">INICIAL</text><text x="230" y="30">MEDIO</text><text x="390" y="28">AVANZADO</text><text x="550" y="30">INTEGRADO</text></g>
+              <g font-family="JetBrains Mono, monospace" font-size="12" text-anchor="middle"><text x="70" y="96">04-2024</text><text x="230" y="96">10-2025</text><text x="390" y="96" font-weight="700">10-2027</text><text x="550" y="96">04-2030</text><text x="390" y="118">CDE ISO 19650</text></g>
+            </svg>
+          </div>
+          <div class="card w3 k"><span class="c-label">Orden</span><span class="c-title">PCM/818/2023</span><span class="c-foot">BOE 20-07-2023</span></div>
+          <div class="card w3 g"><span class="c-label">Además</span><span class="c-title">ENS y ENI</span><span class="c-foot">seguridad e interoperabilidad</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== II · SEGURIDAD ========== -->
+    <section class="slide" id="seguridad" data-nav="Seguridad">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">ISO 19650-5</span>
+          <h2 class="display">No todo se comparte<span class="dot">.</span></h2>
+          <p class="slide-lead">Una comisaría, un aeropuerto o una red eléctrica revelan demasiado. La parte 5 obliga a valorar la sensibilidad antes de decidir quién accede.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="seguridad"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w3">
+            <svg class="ico" viewBox="0 0 44 44" aria-hidden="true"><path d="M22 4 L38 10 V22 C38 32 30 38 22 41 C14 38 6 32 6 22 V10 Z" fill="#FFFF00" stroke="#000" stroke-width="2.5" stroke-linejoin="round"/><path d="M15 22 l5 5 l9 -10" fill="none" stroke="#000" stroke-width="3"/></svg>
+            <span class="c-title">Valorar la sensibilidad</span><span class="c-foot">antes del primer archivo</span>
+          </div>
+          <div class="card w3 k"><span class="c-label">Si es sensible</span><span class="c-title">Estrategia y plan de seguridad</span></div>
+          <div class="card w6 g"><span class="c-label">En el CDE se traduce en</span><span class="c-title">Permisos por necesidad · registro · cifrado · alojamiento</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== II · LA NORMA CAMBIA ========== -->
+    <section class="slide" id="revision" data-nav="La norma cambia">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Revisión 2026</span>
+          <h2 class="display">Segunda edición en camino<span class="dot">.</span></h2>
+          <p class="slide-lead">Las partes 1 y 2 están en revisión. La nueva parte 2 unirá proyecto y explotación en un solo proceso. Mientras, siguen vigentes las de 2018.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="revision"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w6 g">
+            <span class="c-label">Partes 2 y 3 se funden</span>
+            <div class="flow"><span class="chip">2 · Proyecto</span><span class="arrow">+</span><span class="chip">3 · Explotación</span><span class="arrow">=</span><span class="chip y">Nueva 2 · Proceso de gestión</span></div>
+          </div>
+          <div class="card w3 k"><span class="c-label">Estado ISO</span><span class="c-title">40.93</span><span class="c-foot">nueva votación DIS · 18-08-2026</span></div>
+          <div class="card w3"><span class="c-label">Vigentes</span><span class="c-title">Ediciones 2018</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== III · PROGRAMA CONECTADO ========== -->
+    <section class="slide" id="autoria" data-cap="III · Software" data-nav="Trabajar conectado">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">El programa de autoría</span>
+          <h2 class="display">Sincronizar no es compartir<span class="dot">.</span></h2>
+          <p class="slide-lead">El modelo central en la nube es trabajo en curso del equipo. Solo un paso explícito lo saca de ahí para que lo vean los demás.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="autoria"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w3"><span class="c-label">Revit</span><span class="c-title">Sincronizar → Publicar</span><span class="c-foot">Cloud Worksharing</span></div>
+          <div class="card w3 g"><span class="c-label">Archicad</span><span class="c-title">Teamwork en BIMcloud</span><span class="c-foot">reserva de elementos</span></div>
+          <div class="card w3 g"><span class="c-label">Tekla Structures</span><span class="c-title">Read in → Write out</span><span class="c-foot">Tekla Model Sharing</span></div>
+          <div class="card w3"><span class="c-label">Vectorworks</span><span class="c-title">Project Sharing</span><span class="c-foot">.vwxp y .vwxw</span></div>
+          <div class="card w6 y"><span class="c-label">Todos ellos</span><span class="c-title">Son el taller: trabajo en curso, no compartido</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== III · EXPORTAR ========== -->
+    <section class="slide" id="exportar" data-nav="Versión no es revisión">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Guardar y exportar</span>
+          <h2 class="display">Versión no es revisión<span class="dot">.</span></h2>
+          <p class="slide-lead">La plataforma numera cada guardado. La revisión ISO la decide una persona al pasar una puerta. Y el IFC es un contenedor distinto del nativo.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="exportar"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w3 k"><span class="c-label">Civil 3D en la nube</span><b class="c-num">V1…V47<small></small></b><span class="c-foot">una versión por guardado</span></div>
+          <div class="card w3 y"><span class="c-label">Revisión ISO</span><b class="c-num">P03<small></small></b><span class="c-foot">una por decisión</span></div>
+          <div class="card w6 g">
+            <span class="c-label">Dos contenedores, dos nombres</span>
+            <div class="chips"><span class="chip">BFD-ARQ-ZZ-02-M3-A-0001 · RVT</span><span class="chip y">BFD-ARQ-ZZ-02-M3-A-0002 · IFC</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== IV · EL MERCADO ========== -->
+    <section class="slide" id="plataformas" data-cap="IV · Plataformas" data-nav="El mercado">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Las soluciones</span>
+          <h2 class="display">Muchas marcas, mismos estados<span class="dot">.</span></h2>
+          <p class="slide-lead">Cada plataforma resuelve los cuatro estados a su manera. Primero se define el flujo; después se elige la herramienta.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="plataformas"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w2"><span class="c-label">Autodesk Docs</span><span class="c-title">Carpetas + atributos</span></div>
+          <div class="card w2 g"><span class="c-label">Trimble Connect</span><span class="c-title">Sin estados nativos</span></div>
+          <div class="card w2"><span class="c-label">Bentley ProjectWise</span><span class="c-title">Configuración ISO</span></div>
+          <div class="card w2 g"><span class="c-label">Oracle Aconex</span><span class="c-title">Estados configurables</span></div>
+          <div class="card w2"><span class="c-label">Dalux</span><span class="c-title">Áreas compartida y publicada</span></div>
+          <div class="card w2 y"><span class="c-label">Catenda Hub</span><span class="c-title">Flujo ISO a demanda</span></div>
+          <div class="card w6 k"><span class="c-label">La norma lo dice así</span><span class="c-title">Primero el flujo, después la solución</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== IV · CARPETAS O METADATOS ========== -->
+    <section class="slide" id="carpetas" data-nav="Carpetas o metadatos">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Dos maneras</span>
+          <h2 class="display">Estado en carpeta o en etiqueta<span class="dot">.</span></h2>
+          <p class="slide-lead">Unas plataformas mueven el archivo de carpeta al cambiar de estado; otras le cambian la etiqueta y lo dejan quieto. Las dos funcionan si los permisos acompañan.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="carpetas"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w3">
+            <span class="c-label">Por carpetas</span>
+            <svg class="draw" viewBox="0 0 220 150" role="img" aria-label="Cuatro carpetas numeradas: 01 en curso, 02 compartido, 03 publicado y archivo">
+              <g stroke="#000" stroke-width="2.5" stroke-linejoin="round" fill="#fff"><path d="M10 10 h40 l8 8 h60 v24 h-108z"/><path d="M10 46 h40 l8 8 h60 v24 h-108z"/><path d="M10 82 h40 l8 8 h60 v24 h-108z" fill="#FFFF00"/><path d="M10 118 h40 l8 8 h60 v20 h-108z"/></g>
+              <g font-family="JetBrains Mono, monospace" font-size="11"><text x="128" y="34">01-WIP</text><text x="128" y="70">02-SHARED</text><text x="128" y="106">03-PUBLISHED</text><text x="128" y="140">ARCHIVED</text></g>
+            </svg>
+          </div>
+          <div class="card w3 g">
+            <span class="c-label">Por metadatos</span>
+            <svg class="draw" viewBox="0 0 220 150" role="img" aria-label="Un único archivo con una etiqueta de estado que cambia de compartido a publicado">
+              <path d="M30 20 h70 l24 24 v86 h-94z" fill="#fff" stroke="#000" stroke-width="2.5" stroke-linejoin="round"/><path d="M100 20 v24 h24" fill="none" stroke="#000" stroke-width="2.5"/>
+              <rect x="120" y="70" width="90" height="26" rx="4" fill="#000"/><text x="130" y="88" font-family="JetBrains Mono, monospace" font-size="12" fill="#fff">SHARED</text>
+              <rect x="120" y="104" width="90" height="26" rx="4" fill="#FFFF00" stroke="#000" stroke-width="2"/><text x="130" y="122" font-family="JetBrains Mono, monospace" font-size="12">PUBLISHED</text>
+              <path d="M165 96 v8" stroke="#000" stroke-width="2"/>
+            </svg>
+          </div>
+          <div class="card w3 k"><span class="c-label">Si mueve carpeta</span><span class="c-title">Cuidado con los vínculos</span></div>
+          <div class="card w3 y"><span class="c-label">En los dos casos</span><span class="c-title">La etiqueta manda</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== IV · FLUJOS DE APROBACIÓN ========== -->
+    <section class="slide" id="flujos" data-nav="Flujos de aprobación">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Las puertas, automatizadas</span>
+          <h2 class="display">La puerta tiene un botón<span class="dot">.</span></h2>
+          <p class="slide-lead">Un flujo de revisión asigna revisores, recoge su decisión y mueve o reetiqueta el contenedor. No todas las funciones lo permiten.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="flujos"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w6 g">
+            <span class="c-label">Un flujo típico</span>
+            <div class="flow"><span class="chip">Subir</span><span class="arrow">→</span><span class="chip">Revisor 1</span><span class="arrow">→</span><span class="chip">Revisor 2</span><span class="arrow">→</span><span class="chip k">Aprobar</span><span class="arrow">→</span><span class="chip y">Copiar a publicado</span></div>
+          </div>
+          <div class="card w2 k"><span class="c-label">Autodesk Docs</span><b class="c-num">1–6<small>&nbsp;pasos</small></b></div>
+          <div class="card w2"><span class="c-label">Dalux</span><span class="c-title">Lo dispara el estado</span></div>
+          <div class="card w2 y"><span class="c-label">Trimble Connect</span><span class="c-title">Releases sin aprobación</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== IV · SELLOS ========== -->
+    <section class="slide" id="certificados" data-nav="Sellos ISO 19650">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Certificaciones</span>
+          <h2 class="display">No todos los sellos pesan igual<span class="dot">.</span></h2>
+          <p class="slide-lead">«Cumple ISO 19650» puede ser una auditoría externa o una frase del folleto. Conviene leer quién lo certifica y frente a qué partes.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="certificados"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w6">
+            <div class="bars">
+              <div class="bar is-key"><span>BSI</span><i style="width:100%">Kitemark · Asite, Autodesk, Aconex</i></div>
+              <div class="bar"><span>TÜV</span><i style="width:80%">Atestación · Thinkproject</i></div>
+              <div class="bar"><span>bSI</span><i style="width:55%">Solo IFC, no ISO 19650</i></div>
+              <div class="bar"><span>Propio</span><i style="width:30%">«Compatible» sin auditor</i></div>
+            </div>
+          </div>
+          <div class="card w3 k"><span class="c-label">Preguntar</span><span class="c-title">¿Quién? ¿Qué partes?</span></div>
+          <div class="card w3 y"><span class="c-label">Y recordar</span><span class="c-title">Se certifica la herramienta, no tu flujo</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== V · OPENCDE ========== -->
+    <section class="slide" id="opencde" data-cap="V · Interoperabilidad" data-nav="OpenCDE">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">buildingSMART</span>
+          <h2 class="display">Que los CDE se hablen<span class="dot">.</span></h2>
+          <p class="slide-lead">Las API OpenCDE permiten abrir y guardar contenedores de un CDE desde cualquier programa, sin descargar a mano.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="opencde"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w6">
+            <span class="c-label">Tres API, una base</span>
+            <svg class="draw" viewBox="0 0 640 150" role="img" aria-label="Foundation API como base, y encima Documents API y BCF API">
+              <rect x="10" y="100" width="620" height="40" rx="6" fill="#000"/>
+              <rect x="10" y="20" width="300" height="64" rx="6" fill="#FFFF00" stroke="#000" stroke-width="3"/>
+              <rect x="330" y="20" width="300" height="64" rx="6" fill="#fff" stroke="#000" stroke-width="3"/>
+              <g font-family="Inter, sans-serif" font-weight="900" font-size="18" text-anchor="middle"><text x="160" y="50">DOCUMENTS API</text><text x="480" y="50">BCF API</text><text x="320" y="127" fill="#fff">FOUNDATION API</text></g>
+              <g font-family="JetBrains Mono, monospace" font-size="12" text-anchor="middle"><text x="160" y="72">subir y bajar contenedores · 1.0</text><text x="480" y="72">incidencias · 3.0</text></g>
+            </svg>
+          </div>
+          <div class="card w3 k"><span class="c-label">Documents API</span><span class="c-title">Estándar final</span><span class="c-foot">21-12-2023</span></div>
+          <div class="card w3 y"><span class="c-label">Certificación</span><span class="c-title">No existe</span><span class="c-foot">listas autodeclaradas</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== V · BCF ========== -->
+    <section class="slide" id="bcf" data-nav="Incidencias BCF">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Las incidencias</span>
+          <h2 class="display">Un comentario con coordenadas<span class="dot">.</span></h2>
+          <p class="slide-lead">BCF guarda cada incidencia con su vista, su captura y los elementos afectados. Viaja entre programas y el CDE sin tocar el modelo.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="bcf"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w3">
+            <span class="c-label">Dentro de un .bcfzip</span>
+            <div class="chips"><span class="chip k">markup.bcf</span><span class="chip">viewpoint.bcfv</span><span class="chip y">snapshot.png</span></div>
+          </div>
+          <div class="card w3 g"><span class="c-label">Dos formas</span><span class="c-title">Archivo o API</span><span class="c-foot">BCF-XML · BCF API</span></div>
+          <div class="card w6 k"><span class="c-label">En España</span><span class="c-title">BCF se exige desde el nivel avanzado del Plan BIM</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== V · ICDD Y DIN SPEC ========== -->
+    <section class="slide" id="icdd" data-nav="ICDD y DIN SPEC 91391">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Contenedores enlazados</span>
+          <h2 class="display">Entregar con los vínculos<span class="dot">.</span></h2>
+          <p class="slide-lead">ICDD empaqueta modelos, planos y tablas con los enlaces entre ellos. DIN SPEC 91391 fija qué funciones debe tener un CDE y cómo intercambiar entre dos.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="icdd"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w4">
+            <span class="c-label">Un paquete ICDD</span>
+            <svg class="draw" viewBox="0 0 420 170" role="img" aria-label="Un paquete con un modelo, un plano y una tabla unidos por enlaces">
+              <rect x="10" y="10" width="400" height="150" rx="8" fill="#EFEFEA" stroke="#000" stroke-width="2.5" stroke-dasharray="8 6"/>
+              <g stroke="#000" stroke-width="2.5" fill="#fff"><rect x="40" y="40" width="90" height="60" rx="4"/><rect x="290" y="40" width="90" height="60" rx="4"/></g>
+              <rect x="165" y="100" width="90" height="46" rx="4" fill="#FFFF00" stroke="#000" stroke-width="2.5"/>
+              <g stroke="#000" stroke-width="2"><path d="M130 70 H290"/><path d="M110 100 L165 123"/><path d="M310 100 L255 123"/></g>
+              <g font-family="JetBrains Mono, monospace" font-size="12" text-anchor="middle"><text x="85" y="75">IFC</text><text x="335" y="75">PDF</text><text x="210" y="128">tabla</text><text x="210" y="62">enlace</text></g>
+            </svg>
+          </div>
+          <div class="card w2 k"><span class="c-label">ISO 21597</span><b class="c-num">2020<small></small></b><span class="c-foot">ICDD · partes 1 y 2</span></div>
+          <div class="card w3"><span class="c-label">DIN SPEC 91391-1</span><span class="c-title">Funciones del CDE</span></div>
+          <div class="card w3 g"><span class="c-label">DIN SPEC 91391-2</span><span class="c-title">Intercambio entre CDE</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== VI · QUÉ COMPROBAR ========== -->
+    <section class="slide" id="calidad" data-cap="VI · Control de calidad" data-nav="Qué comprobar">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">ISO 19650-4</span>
+          <h2 class="display">Seis preguntas en cada puerta<span class="dot">.</span></h2>
+          <p class="slide-lead">Antes de compartir o publicar se revisa el contenedor con seis criterios. El primero es el propio CDE: nombre y metadatos correctos.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="calidad"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w2 y"><span class="step-n">1</span><span class="c-title">CDE</span><span class="c-foot">nombre y metadatos</span></div>
+          <div class="card w2"><span class="step-n">2</span><span class="c-title">Conformidad</span><span class="c-foot">con el estándar</span></div>
+          <div class="card w2"><span class="step-n">3</span><span class="c-title">Continuidad</span><span class="c-foot">con lo anterior</span></div>
+          <div class="card w2 g"><span class="step-n">4</span><span class="c-title">Comunicación</span><span class="c-foot">se entiende</span></div>
+          <div class="card w2 g"><span class="step-n">5</span><span class="c-title">Consistencia</span><span class="c-foot">sin contradicciones</span></div>
+          <div class="card w2 k"><span class="step-n">6</span><span class="c-title">Completitud</span><span class="c-foot">está todo lo pedido</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== VI · VALIDAR UN NOMBRE ========== -->
+    <section class="slide" id="validador" data-nav="Validar un nombre">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Pruébalo</span>
+          <h2 class="display">¿Pasa la puerta<span class="dot">?</span></h2>
+          <p class="slide-lead">Escribe un nombre de contenedor y comprueba campo a campo si cumple la convención británica de 2018, la más extendida.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="validador"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w6">
+            <span class="c-label">Comprobador de nomenclatura <span class="tag">Inferido</span></span>
+            <div class="cde-nombre" data-nombre="BFD-ARQ-ZZ-02-M3-A-0001" style="display:grid;gap:10px"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== VI · IDS ========== -->
+    <section class="slide" id="ids" data-nav="IDS en la puerta">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">El contenido</span>
+          <h2 class="display">El nombre no basta<span class="dot">.</span></h2>
+          <p class="slide-lead">El CDE comprueba el contenedor; el IDS comprueba lo que hay dentro del IFC. Juntos convierten la puerta en una prueba automática.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="ids"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w6 g">
+            <span class="c-label">Antes de compartir</span>
+            <div class="flow"><span class="chip">IFC</span><span class="arrow">+</span><span class="chip k">IDS</span><span class="arrow">→</span><span class="chip">Informe BCF</span><span class="arrow">→</span><span class="chip y">Aprobar o devolver</span></div>
+          </div>
+          <div class="card w2 k"><span class="c-label">IDS</span><b class="c-num">1.0<small></small></b><span class="c-foot">junio de 2024</span></div>
+          <div class="card w2"><span class="c-label">IfcTester</span><span class="c-title">HTML · JSON · BCF</span></div>
+          <div class="card w2 y"><span class="c-label">Solibri</span><span class="c-title">Regla 244</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== VI · AUDITAR EL CDE ========== -->
+    <section class="slide" id="auditoria" data-nav="Auditar el CDE">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">La prueba de uso</span>
+          <h2 class="display">Un CDE que nadie usa no existe<span class="dot">.</span></h2>
+          <p class="slide-lead">El fallo más común no es técnico: equipos que siguen enviando por correo. Se audita con muestras, no con el manual.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="auditoria"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w3 k"><span class="c-label">Metro real, 2025</span><b class="c-num">5<small>&nbsp;sistemas</small></b><span class="c-foot">en paralelo para lo mismo</span></div>
+          <div class="card w3 g"><span class="c-label">Seis metros de Estambul</span><span class="c-title">«La mayoría no usa activamente el CDE»</span></div>
+          <div class="card w2"><span class="c-label">Muestra</span><span class="c-title">10 contenedores</span></div>
+          <div class="card w2"><span class="c-label">Mira</span><span class="c-title">Nombre · estado · registro</span></div>
+          <div class="card w2 y"><span class="c-label">Y pregunta</span><span class="c-title">¿Llegó por correo?</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== CIERRE ========== -->
     <section class="slide" id="cierre" data-nav="En resumen">
       <div class="bento">
         <div class="b-title">
           <span class="slide-n"></span>
           <span class="kicker-y">En resumen</span>
-          <h2 class="display">Tres reglas<span class="dot">.</span></h2>
-          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="fuentes"><span class="plus">+</span> Fuentes</button></div>
+          <h2 class="display">Cuatro reglas<span class="dot">.</span></h2>
+          <div class="slide-actions">
+            <button type="button" class="btn l2-btn" data-l2="glosario"><span class="plus">+</span> Glosario</button>
+            <button type="button" class="btn ghost l2-btn" data-l2="fuentes"><span class="plus">+</span> Fuentes</button>
+          </div>
         </div>
         <div class="b-cards">
-          <div class="card w2 k"><span class="step-n">1</span><span class="c-title">Estados claros</span></div>
-          <div class="card w2"><span class="step-n">2</span><span class="c-title">Nombres legibles</span></div>
-          <div class="card w2 y"><span class="step-n">3</span><span class="c-title">Permisos por rol</span></div>
-          <div class="card w6"><nav id="series-nav" class="series-nav" style="margin-top:0" aria-label="Navegación de la serie"></nav></div>
+          <div class="card w3 y"><span class="c-label">01</span><span class="c-title">Un sitio</span><span class="c-foot">fuera de él no existe</span></div>
+          <div class="card w3"><span class="c-label">02</span><span class="c-title">Un estado</span><span class="c-foot">en la etiqueta, no en la carpeta</span></div>
+          <div class="card w3 k"><span class="c-label">03</span><span class="c-title">Una puerta</span><span class="c-foot">con alguien que la abre</span></div>
+          <div class="card w3"><span class="c-label">04</span><span class="c-title">Un registro</span><span class="c-foot">quién, qué y cuándo</span></div>
+          <div class="card w6"><nav id="series-nav" class="series-nav" style="margin-top:0;border-top:0;padding-top:0" aria-label="Navegación de la serie"></nav></div>
         </div>
       </div>
     </section>
@@ -156,49 +1053,925 @@
     </div>
   </div>
 
-  <!-- ============================== CAPA 2 (relleno) ============================== -->
+
+  <!-- ============================== CAPA 2 ============================== -->
+  <!-- Capa 2 = ficha «Ver detalle» en tarjetas. Solo añade lo que la slide no dice. -->
+
+  <template id="l2-problema">
+    <div class="b-cards">
+      <div class="card w6">
+        <span class="c-label">Lo que cuesta no saber cuál es la buena</span>
+        <div class="bars">
+          <div class="bar is-key"><span>2018</span><i style="width:100%">177.000 M$ en tareas no productivas · EE. UU.</i></div>
+          <div class="bar"><span>2018</span><i style="width:48%">48 % del retrabajo: datos malos y mala comunicación</i></div>
+          <div class="bar"><span>2021</span><i style="width:80%">80 % de las empresas: al menos un 25 % de datos inútiles</i></div>
+        </div>
+        <p class="table-note">Encuestas de FMI con PlanGrid (2018, unos 600 encuestados) y con Autodesk (2021, más de 3.900). Son de Norteamérica y miden datos y comunicación en general, no solo el CDE.</p>
+      </div>
+      <div class="card w3">
+        <h4>Catorce horas a la semana</h4>
+        <p>El 35 % del tiempo de los profesionales, unas 14 horas semanales, se iba en buscar información, resolver conflictos y corregir errores, según <a href="https://www.autodesk.com/blogs/construction/construction-disconnected-fmi-report/" target="_blank" rel="noopener">Construction Disconnected</a>.</p>
+      </div>
+      <div class="card w3">
+        <h4>1,84 billones de dólares</h4>
+        <p>Es lo que <a href="https://fmicorp.com/insights/quick-reads/harnessing-the-data-advantage-in-engineering-and-construction" target="_blank" rel="noopener">FMI</a> estimó que costaron los datos deficientes en la construcción mundial en 2020; 88.700 millones solo en retrabajo.</p>
+      </div>
+      <div class="card w6 y"><span class="c-label">La idea del artículo</span><p>Un entorno común de datos no elimina los errores; hace que cada archivo tenga un estado, una revisión y alguien que respondió por él. Primero el concepto (bloque I), después la norma, los programas, las plataformas, el intercambio y la comprobación.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-que-es">
+    <div class="b-cards">
+      <div class="card w6">
+        <div class="quote" style="margin:0"><p>«Agreed source of information for any given project or asset, for collecting, managing and disseminating each information container through a managed process».</p><cite>ISO 19650-1:2018, definición 3.3.15 · citada por <a href="https://bimcorner.com/cde-within-iso-19650-a-process-or-a-solution/" target="_blank" rel="noopener">BIM Corner</a></cite></div>
+      </div>
+      <div class="card w3">
+        <h4>Proceso y tecnología</h4>
+        <p>La nota 1 de la definición separa las dos piezas: el <em>flujo</em> del CDE describe los procesos y la <em>solución</em> aporta la tecnología. La guía británica lo resume: primero los flujos, después las herramientas.</p>
+      </div>
+      <div class="card w3">
+        <h4>Puede haber varias herramientas</h4>
+        <p>La norma admite que el CDE de un proyecto se apoye en más de una tecnología, siempre que el flujo sea uno y esté acordado. Cada parte puede tener su propia solución dentro del flujo común.</p>
+      </div>
+      <div class="card w3 g">
+        <h4>Lo que no es</h4>
+        <ul class="checklist"><li>Una carpeta compartida sin estados.</li><li>Un correo con adjuntos.</li><li>Una marca comercial concreta.</li></ul>
+      </div>
+      <div class="card w3 y"><span class="c-label">Trampa</span><p>Decir «nuestro CDE es tal programa» confunde la herramienta con el acuerdo. Si mañana cambia la herramienta, el flujo, los estados y los nombres deberían seguir valiendo.</p></div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://www.ukbimframework.org/wp-content/uploads/2021/02/Guidance-Part-C_Facilitating-the-common-data-environment-workflow-and-technical-solutions_Edition-1.pdf" target="_blank" rel="noopener">UK BIM Framework, Guidance Part C (2020)</a> · <a href="https://www.cdbb.cam.ac.uk/system/files/documents/InformationManagementaccordingtoBSENISO19650GuidancePart1Concepts.pdf" target="_blank" rel="noopener">Guidance Part 1</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-contenedor">
+    <div class="b-cards">
+      <div class="card w6">
+        <div class="quote" style="margin:0"><p>«Named persistent set of information retrievable from within a file, system or application storage hierarchy».</p><cite>ISO 19650-1:2018, definición 3.3.12</cite></div>
+      </div>
+      <div class="card w3">
+        <h4>Persistente y con nombre</h4>
+        <p>No es un dato suelto: es algo que se puede volver a pedir por su nombre mañana y devolver exactamente lo mismo. Si cambia el contenido, cambia la revisión.</p>
+      </div>
+      <div class="card w3">
+        <h4>Archivo o parte de un sistema</h4>
+        <p>Suele ser un archivo (un modelo, un plano, un informe), pero también una vista de una base de datos o un conjunto de registros. La norma piensa en información, no en formatos.</p>
+      </div>
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Ejemplo</th><th>¿Contenedor?</th><th>Por qué</th></tr></thead>
+          <tbody>
+            <tr><td>Un modelo 3D de arquitectura</td><td>Sí</td><td>Nombre propio, versión y autor</td></tr>
+            <tr><td>Un plano en PDF</td><td>Sí</td><td>Igual que el modelo</td></tr>
+            <tr class="is-key"><td>Un correo con un plano adjunto</td><td>No</td><td>El adjunto no tiene estado ni registro</td></tr>
+            <tr><td>Una tabla de equipos exportada</td><td>Sí</td><td>Si se nombra y se sube al CDE</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w6 y"><span class="c-label">Ejemplo de clasificación</span><p>La etiqueta «Ss_25» de la slide sigue Uniclass 2015 (sistemas de muros), la clasificación que pide el anejo británico. Cada país usa la suya: ISO 19650 remite a ISO 12006-2. <span class="tag">Inferido</span> El código concreto es un ejemplo de este artículo.</p></div>
+    </div>
+  </template>
+
   <template id="l2-estados">
     <div class="b-cards">
-      <div class="card w3"><h4>Qué hay detrás</h4><p>Texto de relleno sobre cuatro estados. Aquí irá la explicación completa con ejemplos y matices. <span class="tag">Relleno</span></p></div>
-      <div class="card w3 y"><span class="c-label">Idea clave</span><p>Un aviso destacado de relleno para probar la tarjeta amarilla.</p></div>
-      <div class="card w6"><h4>Pasos de ejemplo</h4><ol class="vsteps"><li>Primer paso ficticio.</li><li>Segundo paso ficticio con <span class="ui">Menú › Comando</span>.</li><li>Resultado esperado.</li></ol></div>
-      <div class="card w6"><div class="table-wrap"><table><thead><tr><th>Concepto</th><th>Valor</th><th>Nota</th></tr></thead><tbody><tr><td>Ejemplo A</td><td class="num">10</td><td>Relleno</td></tr><tr class="is-key"><td>Ejemplo B</td><td class="num">20</td><td>Fila clave</td></tr><tr><td>Ejemplo C</td><td class="num">30</td><td>Relleno</td></tr></tbody></table></div></div>
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Estado</th><th>Qué contiene (guía británica)</th><th>Quién lo ve</th></tr></thead>
+          <tbody>
+            <tr><td>Trabajo en curso</td><td>Información que desarrolla su autor o su equipo de trabajo</td><td>Solo ese equipo</td></tr>
+            <tr><td>Compartido</td><td>Información aprobada para compartirla con otros equipos o con el cliente</td><td>Los equipos que la necesitan</td></tr>
+            <tr class="is-key"><td>Publicado</td><td>Información autorizada para el diseño de detalle, la obra o la gestión del activo</td><td>Quien deba usarla</td></tr>
+            <tr><td>Archivado</td><td>Diario de las transacciones de información: traza de auditoría</td><td>Según permisos</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w3">
+        <h4>Siempre en uno</h4>
+        <p>Un contenedor no puede estar a la vez en dos estados. Si se necesita en dos, son dos revisiones distintas: la anterior sigue compartida mientras la nueva se trabaja.</p>
+      </div>
+      <div class="card w3">
+        <h4>La figura 10</h4>
+        <p>El esquema de los estados es la figura 10 de ISO 19650-1, en su cláusula 12. La numeración de los apartados de cada estado <span class="tag">Por confirmar</span> con el texto de la norma.</p>
+      </div>
+      <div class="card w6 g"><p class="table-note" style="margin:0">Fuentes: <a href="https://www.ukbimframework.org/wp-content/uploads/2021/02/Guidance-Part-C_Facilitating-the-common-data-environment-workflow-and-technical-solutions_Edition-1.pdf" target="_blank" rel="noopener">Guidance Part C</a> · <a href="https://www.cdbb.cam.ac.uk/system/files/documents/InformationManagementaccordingtoBSENISO19650GuidancePart1Concepts.pdf" target="_blank" rel="noopener">Guidance Part 1</a> · <a href="https://www.dinmedia.de/de/technische-regel/din-spec-91391-1/302483139" target="_blank" rel="noopener">DIN SPEC 91391-1</a>, que usa los mismos cuatro estados.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-en-curso">
+    <div class="b-cards">
+      <div class="card w3">
+        <h4>Por qué es privado</h4>
+        <p>Para que el equipo pueda equivocarse sin que nadie construya sobre un error. Si otro equipo necesita algo, se le comparte una revisión; no se le abre la carpeta de trabajo.</p>
+      </div>
+      <div class="card w3">
+        <h4>Código S0</h4>
+        <p>En el anejo británico, todo lo que está en curso lleva el código de idoneidad S0 y una revisión con decimales (P01.01, P01.02…). Los decimales cuentan versiones internas, no entregas.</p>
+      </div>
+      <div class="card w6">
+        <h4>Qué hace el equipo antes de salir</h4>
+        <ol class="vsteps"><li>Comprueba el contenido contra el estándar y los métodos del proyecto.</li><li>Revisa nombre, estado, revisión y clasificación del contenedor.</li><li>Lo aprueba quien el equipo haya designado y pasa a compartido sin decimales: P01.</li></ol>
+      </div>
+      <div class="card w6 y"><span class="c-label">Error típico</span><p>Dar acceso de lectura a la carpeta de trabajo de otro equipo «para ir adelantando». Se coordina contra algo que puede cambiar en cualquier momento y sin registro.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-compartido">
+    <div class="b-cards">
+      <div class="card w3">
+        <h4>Para qué es apto</h4>
+        <p>Lo dice su código de idoneidad: coordinación, información, revisión y comentarios o aprobación de etapa. El código lo pone quien comparte, no quien recibe.</p>
+      </div>
+      <div class="card w3">
+        <h4>No se modifica</h4>
+        <p>Si hay que cambiarlo, el autor vuelve a trabajo en curso con una revisión nueva (P02.01) y, al aprobarla, sustituye a la anterior en compartido.</p>
+      </div>
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Código</th><th>Uso en compartido (anejo británico 2018)</th></tr></thead>
+          <tbody>
+            <tr class="is-key"><td>S1</td><td>Coordinación: base para que otros equipos referencien</td></tr>
+            <tr><td>S2</td><td>Información: referencia, sin coordinación formal</td></tr>
+            <tr><td>S3</td><td>Revisión y comentarios</td></tr>
+            <tr><td>S4</td><td>Aprobación de etapa</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w6 g"><span class="c-label">Por qué importa</span><p>El cliente puede ver lo compartido, pero no es una entrega contractual. Una oferta, una medición o un replanteo deben basarse en información publicada.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-publicado">
+    <div class="b-cards">
+      <div class="card w3">
+        <h4>Dos firmas</h4>
+        <p>La parte contratada principal revisa y autoriza el modelo de información de su equipo; después, la parte contratante lo revisa y lo acepta. Solo entonces es publicado.</p>
+      </div>
+      <div class="card w3">
+        <h4>De P a C</h4>
+        <p>En el anejo británico la revisión pasa de preliminar a contractual (P02 → C01) y el código de idoneidad a A1, A2… Si se acepta con comentarios, B.</p>
+      </div>
+      <div class="card w6">
+        <h4>Usos de la información publicada</h4>
+        <div class="chips"><span class="chip">Diseño de detalle</span><span class="chip">Contratación de obra</span><span class="chip y">Construcción</span><span class="chip">Gestión del activo</span></div>
+      </div>
+      <div class="card w6 k"><span class="c-label">Si se rechaza</span><p>Vuelve al equipo con los comentarios: nueva revisión en curso, nueva comprobación y nueva aprobación. El rechazo queda en el archivo.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-archivado">
+    <div class="b-cards">
+      <div class="card w3">
+        <h4>Un diario, no un trastero</h4>
+        <p>La guía británica lo define como el diario de transacciones que da la traza de auditoría. Guarda las revisiones superadas y los cambios de estado, no solo «lo viejo».</p>
+      </div>
+      <div class="card w3">
+        <h4>Al cerrar el proyecto</h4>
+        <p>ISO 19650-2 manda archivar el modelo de información del proyecto en el cierre (5.8.1), con lo que se haya acordado conservar para la explotación y por obligaciones legales.</p>
+      </div>
+      <div class="card w6 y"><span class="c-label">Trampa</span><p>Algunos pliegos describen el archivado como «datos validados y verificados», como si fuera un quinto estado tras publicado. No lo es: lo vigente sigue publicado y el archivo registra cómo se llegó ahí.</p></div>
+      <div class="card w6 g"><span class="c-label">Hilo dorado</span><p>Tras el incendio de la torre Grenfell (Londres, 2017), el informe Hackitt propuso un «golden thread» de información de seguridad del edificio, recogido en la Building Safety Act 2022: un archivo fiable y trazable es ya una exigencia legal en el Reino Unido. Fuente: <a href="https://www.designingbuildings.co.uk/wiki/Golden_thread_of_building_information" target="_blank" rel="noopener">Designing Buildings</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-puertas">
+    <div class="b-cards">
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Puerta</th><th>Pasos</th><th>Quién</th><th>ISO 19650-2</th></tr></thead>
+          <tbody>
+            <tr><td>En curso → compartido</td><td>Comprobar, revisar, aprobar</td><td>El equipo de trabajo</td><td class="num">5.6.3 · 5.6.4</td></tr>
+            <tr class="is-key"><td>Compartido → publicado</td><td>Revisar, autorizar</td><td>Parte contratada principal</td><td class="num">5.7.1 · 5.7.2</td></tr>
+            <tr><td>Aceptación</td><td>Revisar, aceptar</td><td>Parte contratante</td><td class="num">5.7.3 · 5.7.4</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w3">
+        <h4>Decisión A y decisión B</h4>
+        <p>ISO 19650-4 (2022) llama a la primera «aprobar para compartir» y a la segunda «autorizar y aceptar para publicar», y fija los criterios de revisión de cada una (bloque VI).</p>
+      </div>
+      <div class="card w3">
+        <h4>Comprobar no es revisar</h4>
+        <p>Comprobar mira el contenedor: nombre, metadatos, formato. Revisar mira el contenido: si responde a lo pedido. Aprobar es la decisión que firma alguien con nombre.</p>
+      </div>
+      <div class="card w6 g"><p class="table-note" style="margin:0">Fuentes: <a href="https://ukbimframework.org/wp-content/uploads/2020/02/ISO_19650_Guidance_Part_2_Processes_for_Project_Delivery_ThirdEdition.pdf" target="_blank" rel="noopener">Guidance Part 2</a> · <a href="https://committee.iso.org/es/sites/isoorg/contents/data/standard/07/82/78246.html" target="_blank" rel="noopener">ISO 19650-4:2022</a>. La numeración de las decisiones A y B sale de un borrador de la parte 4 <span class="tag">Por confirmar</span>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-metadatos">
+    <div class="b-cards">
+      <div class="card w3">
+        <h4>Lo exige la norma</h4>
+        <p>ISO 19650-2, en 5.1.7, pide que el CDE permita asignar a cada contenedor un código de revisión, uno de estado y uno de clasificación. La parte 1 (12.1) ya recomendaba los dos primeros.</p>
+      </div>
+      <div class="card w3">
+        <h4>Carpetas que complementan</h4>
+        <p>La guía británica es clara: la estructura de carpetas debe complementar a los metadatos, no duplicarlos. Si el estado vive solo en la carpeta, se pierde al descargar el archivo.</p>
+      </div>
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Metadato</th><th>Responde a</th><th>Ejemplo</th></tr></thead>
+          <tbody>
+            <tr class="is-key"><td>Estado (idoneidad)</td><td>¿Para qué lo puedo usar?</td><td>S1 · coordinación</td></tr>
+            <tr><td>Revisión</td><td>¿Qué versión es?</td><td>P03</td></tr>
+            <tr><td>Clasificación</td><td>¿De qué trata?</td><td>Ss_25 · sistemas de muros</td></tr>
+            <tr><td>Otros acordados</td><td>Autor, fecha, descripción, seguridad…</td><td>Según el protocolo</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w6 y"><span class="c-label">Trampa</span><p>Meter estado y revisión en el nombre del archivo (…-S2-P03). Cada cambio crea un archivo «nuevo» y la plataforma ya no apila las revisiones del mismo contenedor.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-revisiones">
+    <div class="b-cards">
+      <div class="card w6">
+        <span class="c-label">Cómo avanza el contador (anejo británico)</span>
+        <svg class="draw" viewBox="0 0 640 170" role="img" aria-label="Escalera de revisiones: P01.01 y P01.02 en curso, P01 compartido, P02.01 en curso, P02 compartido y C01 publicado">
+          <g font-family="JetBrains Mono, monospace" font-size="13" text-anchor="middle">
+            <rect x="10" y="120" width="90" height="34" rx="4" fill="#fff" stroke="#000" stroke-width="2"/><text x="55" y="142">P01.01</text>
+            <rect x="110" y="120" width="90" height="34" rx="4" fill="#fff" stroke="#000" stroke-width="2"/><text x="155" y="142">P01.02</text>
+            <rect x="210" y="70" width="90" height="34" rx="4" fill="#000"/><text x="255" y="92" fill="#fff">P01</text>
+            <rect x="310" y="120" width="90" height="34" rx="4" fill="#fff" stroke="#000" stroke-width="2"/><text x="355" y="142">P02.01</text>
+            <rect x="410" y="70" width="90" height="34" rx="4" fill="#000"/><text x="455" y="92" fill="#fff">P02</text>
+            <rect x="530" y="20" width="100" height="34" rx="4" fill="#FFFF00" stroke="#000" stroke-width="3"/><text x="580" y="42" font-weight="700">C01</text>
+          </g>
+          <g font-family="JetBrains Mono, monospace" font-size="11" fill="#666"><text x="10" y="112">en curso</text><text x="210" y="62">compartido</text><text x="530" y="12">publicado</text></g>
+        </svg>
+      </div>
+      <div class="card w3">
+        <h4>Preliminar y contractual</h4>
+        <p>P marca lo que aún no tiene valor contractual; C, lo publicado. Dos dígitos para la revisión y, en curso, dos decimales para la versión interna.</p>
+      </div>
+      <div class="card w3">
+        <h4>Otros países, otras reglas</h4>
+        <p>El anejo irlandés usa revisiones numéricas sin prefijo P o C. Lo importante no es la letra, sino que el BEP la fije y todos la usen igual.</p>
+      </div>
+      <div class="card w6 g"><p class="table-note" style="margin:0">Fuentes: <a href="https://www.ukbimframework.org/wp-content/uploads/2021/02/Guidance-Part-C_Facilitating-the-common-data-environment-workflow-and-technical-solutions_Edition-1.pdf" target="_blank" rel="noopener">Guidance Part C</a> · <a href="https://www.cdbb.cam.ac.uk/files/national_annex_guidance.pdf" target="_blank" rel="noopener">guía del anejo nacional británico</a> · <a href="https://www.cita.ie/wp-content/uploads/2021/03/CWO_CitAPresentation_IrishNA19650_2021.03.18.pdf" target="_blank" rel="noopener">CitA, anejo irlandés</a>.</p></div>
     </div>
   </template>
 
   <template id="l2-nombres">
     <div class="b-cards">
-      <div class="card w3"><h4>Qué hay detrás</h4><p>Texto de relleno sobre nomenclatura. Aquí irá la explicación completa con ejemplos y matices. <span class="tag">Relleno</span></p></div>
-      <div class="card w3 y"><span class="c-label">Idea clave</span><p>Un aviso destacado de relleno para probar la tarjeta amarilla.</p></div>
-      <div class="card w6"><h4>Pasos de ejemplo</h4><ol class="vsteps"><li>Primer paso ficticio.</li><li>Segundo paso ficticio con <span class="ui">Menú › Comando</span>.</li><li>Resultado esperado.</li></ol></div>
-      <div class="card w6"><div class="table-wrap"><table><thead><tr><th>Concepto</th><th>Valor</th><th>Nota</th></tr></thead><tbody><tr><td>Ejemplo A</td><td class="num">10</td><td>Relleno</td></tr><tr class="is-key"><td>Ejemplo B</td><td class="num">20</td><td>Fila clave</td></tr><tr><td>Ejemplo C</td><td class="num">30</td><td>Relleno</td></tr></tbody></table></div></div>
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Campo (2018)</th><th>Desde 2021</th><th>Longitud</th><th>Ejemplo</th></tr></thead>
+          <tbody>
+            <tr><td>Proyecto</td><td>Proyecto</td><td class="num">2–6</td><td>BFD</td></tr>
+            <tr><td>Originador (autor)</td><td>Originador</td><td class="num">2–6</td><td>ARQ</td></tr>
+            <tr><td>Volumen / sistema</td><td>Desglose funcional</td><td class="num">2</td><td>ZZ (todos)</td></tr>
+            <tr><td>Nivel / ubicación</td><td>Desglose espacial</td><td class="num">2</td><td>02</td></tr>
+            <tr class="is-key"><td>Tipo</td><td>Forma</td><td class="num">2</td><td>M3 (modelo 3D)</td></tr>
+            <tr><td>Rol</td><td>Disciplina</td><td class="num">1–2</td><td>A (arquitectura)</td></tr>
+            <tr><td>Número</td><td>Número</td><td class="num">4–6</td><td>0001</td></tr>
+          </tbody>
+        </table></div>
+        <p class="table-note">Longitudes del anejo británico de 2018; el de 2021 renombró campos y quitó las longitudes recomendadas («lo más cortos posible»). Algunas fuentes dan 3–6 para el originador.</p>
+      </div>
+      <div class="card w3">
+        <h4>Códigos de tipo frecuentes</h4>
+        <div class="chips"><span class="chip y">M3 modelo 3D</span><span class="chip">DR plano</span><span class="chip">SP especificación</span><span class="chip">CM modelo combinado</span><span class="chip">CR informe de interferencias</span><span class="chip">CA cálculo</span></div>
+      </div>
+      <div class="card w3">
+        <h4>Códigos de rol</h4>
+        <div class="chips"><span class="chip y">A arquitectura</span><span class="chip">S estructuras</span><span class="chip">M mecánicas</span><span class="chip">E eléctricas</span><span class="chip">P fontanería</span><span class="chip">C civil</span><span class="chip">K cliente</span><span class="chip">Z general</span></div>
+      </div>
+      <div class="card w6 g"><p class="table-note" style="margin:0">Fuentes: <a href="https://www.cdbb.cam.ac.uk/files/national_annex_guidance.pdf" target="_blank" rel="noopener">guía del anejo nacional británico</a> · <a href="https://symetri.co.uk/insights/blog/iso-19650-file-naming-update" target="_blank" rel="noopener">Symetri: cambios de 2021</a> · <a href="https://globalcad.co.uk/iso-19650-the-uk-national-annex-updates/" target="_blank" rel="noopener">GlobalCAD</a>. El proyecto «BFD» del ejemplo es inventado.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-roles">
+    <div class="b-cards">
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Término en español</th><th>En inglés</th><th>Quién suele ser</th></tr></thead>
+          <tbody>
+            <tr><td>Parte contratante</td><td>Appointing party</td><td>Cliente, promotor, administración</td></tr>
+            <tr class="is-key"><td>Parte contratada principal</td><td>Lead appointed party</td><td>Ingeniería principal, constructora</td></tr>
+            <tr><td>Parte contratada</td><td>Appointed party</td><td>Cada consultor o subcontrata</td></tr>
+            <tr><td>Equipo de desarrollo</td><td>Delivery team</td><td>La principal y todas sus contratadas</td></tr>
+            <tr><td>Equipo de trabajo</td><td>Task team</td><td>Quien produce una tarea concreta</td></tr>
+          </tbody>
+        </table></div>
+        <p class="table-note">Términos tal como los recogen las fuentes en español consultadas (UNE-EN ISO 19650 según Zigurat; IRAM-ISO 19650-1 en Argentina). Otras traducciones usan «parte que designa» y «parte designada». <span class="tag">Por confirmar</span> con el texto UNE.</p>
+      </div>
+      <div class="card w3">
+        <h4>Quién monta el CDE</h4>
+        <p>La parte contratante lo establece al principio (ISO 19650-2, 5.1.7), aunque puede encargar a un tercero que lo aloje o lo gestione.</p>
+      </div>
+      <div class="card w3 y"><span class="c-label">Nuevo en la revisión</span><p>El borrador de la segunda edición añade un «equipo de gestión de la información» (information management team). Ver «La norma cambia».</p></div>
     </div>
   </template>
 
   <template id="l2-permisos">
     <div class="b-cards">
-      <div class="card w3"><h4>Qué hay detrás</h4><p>Texto de relleno sobre permisos. Aquí irá la explicación completa con ejemplos y matices. <span class="tag">Relleno</span></p></div>
-      <div class="card w3 y"><span class="c-label">Idea clave</span><p>Un aviso destacado de relleno para probar la tarjeta amarilla.</p></div>
-      <div class="card w6"><h4>Pasos de ejemplo</h4><ol class="vsteps"><li>Primer paso ficticio.</li><li>Segundo paso ficticio con <span class="ui">Menú › Comando</span>.</li><li>Resultado esperado.</li></ol></div>
-      <div class="card w6"><div class="table-wrap"><table><thead><tr><th>Concepto</th><th>Valor</th><th>Nota</th></tr></thead><tbody><tr><td>Ejemplo A</td><td class="num">10</td><td>Relleno</td></tr><tr class="is-key"><td>Ejemplo B</td><td class="num">20</td><td>Fila clave</td></tr><tr><td>Ejemplo C</td><td class="num">30</td><td>Relleno</td></tr></tbody></table></div></div>
+      <div class="card w3">
+        <h4>Por rol y por estado</h4>
+        <p>Los permisos se dan a roles o empresas, no a personas sueltas, y cambian con el estado del contenedor. Así una baja o un relevo no rompen el flujo.</p>
+      </div>
+      <div class="card w3">
+        <h4>Necesidad de conocer</h4>
+        <p>Si la información es sensible (ISO 19650-5), el acceso se limita a quien lo necesita para su tarea, aunque sea del mismo equipo de desarrollo.</p>
+      </div>
+      <div class="card w6">
+        <h4>Matriz mínima para el BEP</h4>
+        <ol class="vsteps"><li>Una fila por rol o empresa y una columna por estado.</li><li>En cada cruce: ninguno, leer, comentar, editar, aprobar o autorizar.</li><li>Quién puede cambiar el estado y quién puede borrar (normalmente, nadie).</li></ol>
+      </div>
+      <div class="card w6 k"><span class="c-label">Error típico</span><p>Dar a todos «editor» al principio para no tener problemas. El primer archivo sobrescrito por error se lleva por delante la trazabilidad.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-federacion">
+    <div class="b-cards">
+      <div class="card w3">
+        <h4>Referencia, no copia</h4>
+        <p>Cada equipo enlaza la revisión compartida de los demás. Si alguien copia el modelo ajeno dentro del suyo, deja de recibir sus cambios y duplica información.</p>
+      </div>
+      <div class="card w3">
+        <h4>Información de referencia</h4>
+        <p>ISO 19650-2 (5.1.6) pide al cliente reunir la información de partida y los recursos compartidos (plantillas, bibliotecas, topografía) para que todos trabajen sobre la misma base desde el CDE.</p>
+      </div>
+      <div class="card w6 y"><span class="c-label">Relación con el artículo 01</span><p>Federar solo funciona si los modelos comparten sistema de coordenadas: ver <a href="../coordenadas-compartidas/#problema">Coordenadas compartidas</a>. El CDE garantiza que se coordina contra la misma versión; las coordenadas, que encaja en el mismo sitio.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-activo">
+    <div class="b-cards">
+      <div class="card w3">
+        <h4>PIM</h4>
+        <p>El modelo de información del proyecto: todo lo que se produce en diseño y obra. Se va formando con los contenedores publicados y aceptados.</p>
+      </div>
+      <div class="card w3">
+        <h4>AIM</h4>
+        <p>El modelo de información del activo: lo que necesita quien explota el edificio o la infraestructura. ISO 19650-3 trata su gestión durante la operación.</p>
+      </div>
+      <div class="card w6">
+        <h4>COBie y la entrega</h4>
+        <p>COBie es una forma habitual de entregar datos de equipos al mantenimiento. Ojo: su norma británica, BS 1192-4:2014, se retiró el 16-09-2022 y COBie v3 se redefine como una vista de IFC, con formato JSON. Fuentes: <a href="https://knowledge.bsigroup.com/products/collaborative-production-of-information-fulfilling-employer-s-information-exchange-requirements-using-cobie-code-of-practice" target="_blank" rel="noopener">BSI</a> · <a href="https://www.buildingsmart.org/wp-content/uploads/2022/11/COBie-v3-Standard_Executive-Summary_DRAFT061322.pdf" target="_blank" rel="noopener">buildingSMART</a>.</p>
+      </div>
+      <div class="card w6 g"><span class="c-label">En el CDE</span><p>El paso de PIM a AIM es otra puerta: la parte contratante acepta lo que entra en el modelo del activo. El anejo británico de 2018 tenía para ello los códigos S6 y S7; el de 2021 los retiró.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-iso19650">
+    <div class="b-cards">
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Parte</th><th>Título</th><th>ISO</th><th>UNE-EN ISO</th></tr></thead>
+          <tbody>
+            <tr class="is-key"><td>1</td><td>Conceptos y principios</td><td class="num">2018</td><td class="num">2019</td></tr>
+            <tr><td>2</td><td>Fase de desarrollo de los activos</td><td class="num">2018</td><td class="num">2019</td></tr>
+            <tr><td>3</td><td>Fase de operación de los activos</td><td class="num">2020</td><td class="num">2021</td></tr>
+            <tr><td>4</td><td>Intercambio de información</td><td class="num">2022</td><td class="num">2023</td></tr>
+            <tr><td>5</td><td>Enfoque de seguridad en la gestión de la información</td><td class="num">2020</td><td class="num">2020</td></tr>
+            <tr><td>6</td><td>Información de seguridad y salud</td><td class="num">2025</td><td><span class="tag">Por confirmar</span></td></tr>
+          </tbody>
+        </table></div>
+        <p class="table-note">Título común en España: «Organización y digitalización de la información en obras de edificación e ingeniería civil que utilizan BIM». La parte 6 se publicó el 13-01-2025 y CEN la adoptó el 3-02-2025; no figuraba aún en el catálogo de AENOR consultado.</p>
+      </div>
+      <div class="card w3">
+        <h4>De dónde viene</h4>
+        <p>De las normas británicas BS 1192 y PAS 1192. La parte 6 sustituye a PAS 1192-6:2018.</p>
+      </div>
+      <div class="card w3">
+        <h4>Dónde está el CDE</h4>
+        <p>Concepto y estados: parte 1, cláusula 12. Cuándo se monta: parte 2, 5.1.7. Cómo se decide en cada puerta: parte 4.</p>
+      </div>
+      <div class="card w6 g"><p class="table-note" style="margin:0">Fuentes: fichas ISO de las partes <a href="https://committee.iso.org/es/sites/isoorg/contents/data/standard/06/80/68078.html" target="_blank" rel="noopener">1</a>, <a href="https://committee.iso.org/es/sites/isoorg/contents/data/standard/06/80/68080.html" target="_blank" rel="noopener">2</a>, <a href="https://committee.iso.org/es/sites/isoorg/contents/data/standard/07/51/75109.html" target="_blank" rel="noopener">3</a>, <a href="https://committee.iso.org/es/sites/isoorg/contents/data/standard/07/82/78246.html" target="_blank" rel="noopener">4</a>, <a href="https://iso.org/standard/74206.html" target="_blank" rel="noopener">5</a> y <a href="https://www.iso.org/standard/82705.html" target="_blank" rel="noopener">6</a> · <a href="https://tienda.aenor.com/en/e/normas-relacionadas/30025/51041501" target="_blank" rel="noopener">AENOR</a> · <a href="https://knowledge.bsigroup.com/articles/bridging-safety-and-technology-the-role-of-bs-en-iso-19650-6-2025-in-the-built-environment" target="_blank" rel="noopener">BSI, parte 6</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-proceso">
+    <div class="b-cards">
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Actividad</th><th>Qué pasa con el CDE</th></tr></thead>
+          <tbody>
+            <tr class="is-key"><td>5.1 Evaluación y necesidad</td><td>La parte contratante establece el CDE (5.1.7) y el protocolo de información (5.1.8)</td></tr>
+            <tr><td>5.2 Invitación a licitar</td><td>Los requisitos (EIR) dicen qué se entregará al CDE</td></tr>
+            <tr><td>5.3 Oferta</td><td>El BEP previo explica cómo lo usará el equipo</td></tr>
+            <tr><td>5.4 Contrato</td><td>MIDP y TIDP fijan cada contenedor, su autor y su fecha</td></tr>
+            <tr><td>5.5 Movilización</td><td>Se prueba la tecnología, incluido el CDE (5.5.2)</td></tr>
+            <tr><td>5.6 Producción colaborativa</td><td>Control de calidad, revisión y aprobación para compartir (5.6.3–5.6.4)</td></tr>
+            <tr><td>5.7 Entrega del modelo</td><td>Autorización y aceptación para publicar (5.7.1–5.7.4)</td></tr>
+            <tr><td>5.8 Cierre</td><td>Archivo del modelo del proyecto (5.8.1) y lecciones aprendidas</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w6 g"><p class="table-note" style="margin:0">Fuente: <a href="https://ukbimframework.org/wp-content/uploads/2020/02/ISO_19650_Guidance_Part_2_Processes_for_Project_Delivery_ThirdEdition.pdf" target="_blank" rel="noopener">UK BIM Framework, Guidance Part 2 (3.ª ed.)</a>. Los títulos de las actividades son traducción propia del inglés.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-requisitos">
+    <div class="b-cards">
+      <div class="card w6">
+        <span class="c-label">Cómo baja un requisito hasta un contenedor</span>
+        <svg class="draw" viewBox="0 0 640 200" role="img" aria-label="Pirámide invertida: requisitos de la organización y del activo, requisitos del proyecto, requisitos de intercambio, BEP, planes de entrega y contenedor">
+          <g stroke="#000" stroke-width="2.5" stroke-linejoin="round">
+            <path d="M10 10 H630 L590 46 H50 Z" fill="#fff"/>
+            <path d="M50 52 H590 L550 88 H90 Z" fill="#fff"/>
+            <path d="M90 94 H550 L510 130 H130 Z" fill="#000"/>
+            <path d="M130 136 H510 L470 172 H170 Z" fill="#FFFF00"/>
+          </g>
+          <g font-family="JetBrains Mono, monospace" font-size="13" text-anchor="middle">
+            <text x="320" y="33">OIR · AIR — la organización y el activo</text>
+            <text x="320" y="75">PIR — el proyecto</text>
+            <text x="320" y="117" fill="#fff">EIR — cada encargo</text>
+            <text x="320" y="159">BEP · MIDP · TIDP — la respuesta</text>
+          </g>
+          <rect x="270" y="178" width="100" height="20" rx="3" fill="#fff" stroke="#000" stroke-width="2"/><text x="320" y="193" font-family="JetBrains Mono, monospace" font-size="11" text-anchor="middle">contenedor</text>
+        </svg>
+      </div>
+      <div class="card w3">
+        <h4>Los planes de entrega</h4>
+        <p>El TIDP es la lista de cada equipo de trabajo; el MIDP, la suma de todos. Cada fila es un contenedor con nombre, autor, nivel de información y fecha: lo que el CDE debe acabar mostrando como publicado.</p>
+      </div>
+      <div class="card w3 y"><span class="c-label">Más en la serie</span><p>El BEP tiene su propio artículo, <a href="../bep-plan-de-ejecucion/">Plan de ejecución BIM</a>. En la revisión de la norma pasaría a llamarse «plan de producción de la información».</p></div>
+    </div>
+  </template>
+
+  <template id="l2-anejos">
+    <div class="b-cards">
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>País</th><th>Documento</th><th>Códigos</th></tr></thead>
+          <tbody>
+            <tr><td>Reino Unido</td><td>Anejo a BS EN ISO 19650-2 (2018, rev. 2021)</td><td>S0–S7, A, B, CR · P/C</td></tr>
+            <tr><td>Irlanda</td><td>Anejo a I.S. EN ISO 19650-2 (8-02-2021)</td><td>Propósito P1–P10, aceptación S, A, B, C, D</td></tr>
+            <tr><td>Canadá</td><td>Anejo de buildingSMART Canada (2021)</td><td>S0–S6, A, B, CR · OmniClass o Uniclass</td></tr>
+            <tr><td>Alemania</td><td>DIN SPEC 91391 (2019)</td><td>Funciones del CDE, sin códigos propios</td></tr>
+            <tr><td>EE. UU.</td><td>NBIMS-US v4</td><td>Se alinea con ISO 19650, no la adopta</td></tr>
+            <tr class="is-key"><td>España</td><td>Sin anejo nacional</td><td>Los fija cada BEP o pliego</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w3">
+        <h4>Latinoamérica</h4>
+        <p>Perú basa su Guía Nacional BIM (RD 0003-2023-EF/63.01) en NTP-ISO 19650; Argentina publicó IRAM-ISO 19650-1 en 2020; Chile tiene el Estándar BIM para Proyectos Públicos de Planbim (2019) y Costa Rica, el estándar del CFIA (2025).</p>
+      </div>
+      <div class="card w3 y"><span class="c-label">Qué hacer en España</span><p>Elegir una convención (muchos usan la británica de 2018) y escribirla en el protocolo de información del proyecto, con la lista cerrada de códigos. <span class="tag">Inferido</span></p></div>
+      <div class="card w6 g"><p class="table-note" style="margin:0">Fuentes: <a href="https://www.cita.ie/wp-content/uploads/2021/03/CWO_CitAPresentation_IrishNA19650_2021.03.18.pdf" target="_blank" rel="noopener">CitA</a> · <a href="https://buildingsmartcanada.ca/wp-content/uploads/2023/02/ISO-19650-2-Canadian-National-Annex_V1.0.pdf" target="_blank" rel="noopener">buildingSMART Canada</a> · <a href="https://www.nibs.org/nbims/v4/introduction" target="_blank" rel="noopener">NBIMS-US v4</a> · <a href="https://andina.pe/ingles/noticia-mef-aprueba-guia-bim-para-gestionar-informacion-inversiones-934231.aspx" target="_blank" rel="noopener">Perú</a> · <a href="https://bimforum.org.ar/ya-publicada-la-norma-iram-iso-19650-1/" target="_blank" rel="noopener">IRAM</a> · <a href="https://globalbim.org/info-collection/bim-standard-for-public-projects/" target="_blank" rel="noopener">Planbim</a> · <a href="https://cfia.or.cr/site/wp-content/uploads/2025/pdf/bim/anexos/estandar-bim.pdf" target="_blank" rel="noopener">CFIA</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-codigos">
+    <div class="b-cards">
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Código</th><th>2018</th><th>2021</th></tr></thead>
+          <tbody>
+            <tr><td>S0</td><td>Estado inicial, en curso</td><td>Desarrollo dentro del equipo</td></tr>
+            <tr><td>S1</td><td>Apto para coordinación</td><td>Igual</td></tr>
+            <tr><td>S2</td><td>Apto para información</td><td>Información o referencia</td></tr>
+            <tr><td>S3</td><td>Apto para revisión y comentarios</td><td>Igual</td></tr>
+            <tr><td>S4</td><td>Apto para aprobación de etapa</td><td>Revisión y autorización</td></tr>
+            <tr><td>S5</td><td>Retirado</td><td>Revisión y aceptación</td></tr>
+            <tr><td>S6 · S7</td><td>Autorización del PIM · del AIM</td><td>Retirados</td></tr>
+            <tr class="is-key"><td>A1…An</td><td>Autorizado y aceptado</td><td>A0–A7 ligados a etapas</td></tr>
+            <tr><td>B1…Bn</td><td>Aceptado con comentarios</td><td>Desaconsejado</td></tr>
+            <tr><td>CR</td><td>Registro de lo construido</td><td>Sustituido por A6</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w3 y"><span class="c-label">Trampa</span><p>Muchas plantillas de plataformas y guías (también fuera del Reino Unido) siguen con la tabla de 2018. En el BEP hay que escribir cuál de las dos se usa.</p></div>
+      <div class="card w3"><p class="table-note" style="margin:0">Fuentes: <a href="https://www.ukbimframework.org/wp-content/uploads/2021/02/Guidance-Part-C_Facilitating-the-common-data-environment-workflow-and-technical-solutions_Edition-1.pdf" target="_blank" rel="noopener">Guidance Part C</a> (tabla de 2018) · <a href="https://projectdesign.io/comparison-of-status-codes-between-uk-national-annex-na-2018-vs-uk-na-2021/" target="_blank" rel="noopener">comparativa 2018 / 2021</a>. Traducción propia de los nombres.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-espana">
+    <div class="b-cards">
+      <div class="card w6">
+        <div class="quote" style="margin:0"><p>«Solución tecnológica que integra un flujo de trabajo para gestionar, entregar y revisar la información, por parte de todos los agentes involucrados».</p><cite>Definición de CDE del Plan BIM · <a href="https://www.civil-mercantil.com/sites/civil-mercantil.com/files/NCL013234.pdf" target="_blank" rel="noopener">Orden PCM/818/2023</a>, apartado 4.9</cite></div>
+      </div>
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Importe del contrato</th><th>Inicial</th><th>Medio</th><th>Avanzado</th><th>Integrado</th></tr></thead>
+          <tbody>
+            <tr class="is-key"><td>≥ 5.382.000 €</td><td class="num">1-04-2024</td><td class="num">1-10-2025</td><td class="num">1-10-2027</td><td class="num">1-04-2030</td></tr>
+            <tr><td>2.000.000–5.382.000 €</td><td class="num">1-10-2025</td><td class="num">1-04-2030</td><td>—</td><td>—</td></tr>
+          </tbody>
+        </table></div>
+        <p class="table-note">Apartado 4.3 de la orden. En el tramo inferior el nivel inicial es recomendado desde el 1-04-2024.</p>
+      </div>
+      <div class="card w3">
+        <h4>Qué pide en cada nivel</h4>
+        <p>Desde el inicial, entregas en IFC; en el avanzado, un CDE «diseñado específicamente como entorno común de datos según la serie de Normas UNE-EN ISO 19650» y BCF para las incidencias.</p>
+      </div>
+      <div class="card w3">
+        <h4>Un CDE para la Administración</h4>
+        <p>El plan (5.4) estudia un CDE común para la Administración General del Estado que cumpla ENS y ENI. El Ministerio de Transportes estrenó el suyo en abril de 2024, y la <a href="https://esmartcity.es/2025/04/28/aprobados-requisitos-bim-contratos-red-carreteras-estado" target="_blank" rel="noopener">OC 1/2025</a> lo aplica a la Red de Carreteras del Estado.</p>
+      </div>
+      <div class="card w6 g"><p class="table-note" style="margin:0">Aprobado por el Consejo de Ministros el 27-06-2023 y publicado por la Orden PCM/818/2023, de 18 de julio (BOE de 20-07-2023). Fuentes: <a href="https://www.civil-mercantil.com/sites/civil-mercantil.com/files/NCL013234.pdf" target="_blank" rel="noopener">texto de la orden</a> · <a href="https://public-buyers-community.ec.europa.eu/communities/bim-and-public-procurement/news/spanish-ministry-transport-and-sustainable-mobility-has" target="_blank" rel="noopener">Comisión Europea</a> · <a href="https://www.buildingsmart.org/wp-content/uploads/2025/03/IFC-Mandate_2025.pdf" target="_blank" rel="noopener">buildingSMART, mandatos IFC 2025</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-seguridad">
+    <div class="b-cards">
+      <div class="card w6">
+        <h4>Cómo se aplica la parte 5</h4>
+        <ol class="vsteps"><li>Evaluar la sensibilidad del activo y de su información, al inicio.</li><li>Si es sensible: estrategia de seguridad y plan de gestión, con un responsable.</li><li>Trasladarlo a los requisitos de cada encargo y a los permisos del CDE.</li><li>Prever qué hacer ante una brecha y revisarlo periódicamente.</li></ol>
+      </div>
+      <div class="card w3">
+        <h4>Qué entra en el CDE</h4>
+        <p>Accesos por necesidad de conocer, registro de quién descarga qué, dónde se alojan los datos y cómo se comparten con terceros. En España, además, el Esquema Nacional de Seguridad para la Administración.</p>
+      </div>
+      <div class="card w3"><p class="table-note" style="margin:0">ISO 19650-5:2020, «Enfoque de seguridad en la gestión de la información», confirmada en 2025. Fuente: <a href="https://iso.org/standard/74206.html" target="_blank" rel="noopener">ficha ISO</a>. Los pasos son un resumen propio de su estructura. <span class="tag">Inferido</span></p></div>
+    </div>
+  </template>
+
+  <template id="l2-revision">
+    <div class="b-cards">
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Documento</th><th>Votación</th><th>Estado (2-10-2026)</th></tr></thead>
+          <tbody>
+            <tr class="is-key"><td>ISO/DIS 19650-1 (ed. 2)</td><td class="num">10-03 a 3-06-2026</td><td>40.93 · decisión sobre nueva votación DIS</td></tr>
+            <tr><td>ISO/DIS 19650-2 «Proceso de gestión de la información»</td><td class="num">10-03 a 3-06-2026</td><td>40.93 · sustituirá a las partes 2 y 3</td></tr>
+            <tr><td>ISO/DIS 19650-3 (ed. 2, directrices)</td><td class="num">13-05 a 6-08-2026</td><td>En votación cerrada</td></tr>
+          </tbody>
+        </table></div>
+        <p class="table-note">La publicación estaba prevista para finales de 2026; con una nueva votación DIS puede retrasarse. <span class="tag">Inferido</span></p>
+      </div>
+      <div class="card w3">
+        <h4>Cambios anunciados</h4>
+        <p>El «plan de ejecución BIM» pasa a «plan de producción de la información» y aparece el «equipo de gestión de la información» (webinar BSI/nima, febrero de 2026). La palabra BIM pierde peso frente a «gestión de la información».</p>
+      </div>
+      <div class="card w3 y"><span class="c-label">Sin confirmar</span><p>Un blog afirma que el borrador redefine el CDE como «marco operativo» y añade un estado «Submitted» entre compartido y publicado. No aparece en fuentes oficiales. <span class="tag">Por confirmar</span></p></div>
+      <div class="card w6 g"><p class="table-note" style="margin:0">Fuentes: fichas ISO de <a href="https://committee.iso.org/es/sites/isoorg/contents/data/standard/08/97/89703.html" target="_blank" rel="noopener">DIS 19650-1</a>, <a href="https://committee.iso.org/es/sites/isoorg/contents/data/standard/08/97/89704.html" target="_blank" rel="noopener">DIS 19650-2</a> y <a href="https://committee.iso.org/es/sites/isoorg/contents/data/standard/09/03/90358.html" target="_blank" rel="noopener">DIS 19650-3</a> · <a href="https://www.en.une.org/normalizacion_documentos/Revision-of-EN-ISO-19650---David-Churcher.pdf" target="_blank" rel="noopener">UNE, presentación de la revisión</a> · <a href="https://wearenima.im/proposed-changes-to-iso-19650-outlined-in-bsi-nima-webinar/" target="_blank" rel="noopener">nima</a> · <a href="https://www.shelidon.it/iso-19650-2026/" target="_blank" rel="noopener">Shelidon</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-autoria">
+    <div class="b-cards">
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Programa</th><th>Cómo se trabaja en equipo</th><th>Qué lo saca de en curso</th></tr></thead>
+          <tbody>
+            <tr class="is-key"><td>Revit</td><td>Cloud Worksharing: modelo central en la nube; sincronizar solo actualiza a los usuarios de Revit</td><td>Publicar: crea la versión visible en Autodesk Docs</td></tr>
+            <tr><td>Archicad</td><td>Teamwork sobre BIMcloud (también BIMcloud SaaS); se reservan elementos</td><td>Exportar o publicar al CDE del proyecto</td></tr>
+            <tr><td>Tekla Structures</td><td>Tekla Model Sharing: copia local por usuario; read in antes de write out; baselines</td><td>Compartir en Trimble Connect u otro CDE</td></tr>
+            <tr><td>Vectorworks</td><td>Project Sharing: archivo de proyecto .vwxp y de trabajo .vwxw, con reservas</td><td>Exportar al CDE</td></tr>
+            <tr><td>Civil 3D</td><td>Desktop Connector con Autodesk Docs; bloquea el dibujo abierto</td><td>Cambio de estado en la plataforma</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w3">
+        <h4>Lo que dice Autodesk</h4>
+        <p>«When you publish a model, the selected views and sheets are visible to external stakeholders». Sincronizar no cambia lo que ven los demás en la plataforma. <a href="https://help.autodesk.com/cloudhelp/2026/ENU/Revit-Cloud/files/GUID-ABFFFEE6-2C6D-4779-B508-A1C4BC0C4885.htm" target="_blank" rel="noopener">Ayuda de Revit 2026</a>.</p>
+      </div>
+      <div class="card w3 y"><span class="c-label">Ojo</span><p>Que el modelo esté «en la nube» no lo convierte en compartido. Publicar desde Revit tampoco: deja una versión en la carpeta de trabajo, que alguien tiene que aprobar y pasar a compartido. <span class="tag">Inferido</span></p></div>
+      <div class="card w6 g"><p class="table-note" style="margin:0">Fuentes: <a href="https://support.tekla.com/doc/tekla-structures/2022/ms_work_with_tekla_model_sharing" target="_blank" rel="noopener">Tekla Model Sharing</a> · <a href="https://app-help.vectorworks.net/2025/eng/VW2025_Guide/ProjectSharing/Concept_Project_sharing.htm" target="_blank" rel="noopener">Vectorworks Project Sharing</a> · <a href="https://help.autodesk.com/cloudhelp/2027/ENG/Civil3D-UserGuide/files/GUID-150A307C-8206-4B82-8D2C-3C4FF1A7608D.htm" target="_blank" rel="noopener">Civil 3D 2027</a> · <a href="https://graphisoft-se.mynewsdesk.com/pressreleases/graphisoft-announces-shift-to-future-proof-subscription-model-3313972.pdf" target="_blank" rel="noopener">Graphisoft, BIMcloud SaaS</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-exportar">
+    <div class="b-cards">
+      <div class="card w3">
+        <h4>Versión de plataforma</h4>
+        <p>En Autodesk Docs cada guardado de un DWG de Civil 3D crea una versión nueva. Es útil para recuperar, pero no dice nada del estado ni de quién aprobó.</p>
+      </div>
+      <div class="card w3">
+        <h4>Revisión ISO</h4>
+        <p>Cambia cuando el contenedor cruza una puerta o se reabre para corregirlo. Diez guardados pueden ser la misma revisión P01.03.</p>
+      </div>
+      <div class="card w6">
+        <h4>El IFC es otro contenedor</h4>
+        <p>La guía británica pide que el IFC exportado tenga un nombre de contenedor distinto del modelo nativo: es otra información, con otro uso y quizá otro estado. En la slide, el número cambia de 0001 a 0002. <a href="https://www.ukbimframework.org/wp-content/uploads/2021/02/Guidance-Part-C_Facilitating-the-common-data-environment-workflow-and-technical-solutions_Edition-1.pdf" target="_blank" rel="noopener">Guidance Part C</a>.</p>
+      </div>
+      <div class="card w6 y"><span class="c-label">Error típico</span><p>Confiar en la columna «versión» de la plataforma como si fuera la revisión del plano. En la carátula del plano manda la revisión acordada, no el contador automático.</p></div>
     </div>
   </template>
 
   <template id="l2-plataformas">
     <div class="b-cards">
-      <div class="card w3"><h4>Qué hay detrás</h4><p>Texto de relleno sobre plataformas. Aquí irá la explicación completa con ejemplos y matices. <span class="tag">Relleno</span></p></div>
-      <div class="card w3 y"><span class="c-label">Idea clave</span><p>Un aviso destacado de relleno para probar la tarjeta amarilla.</p></div>
-      <div class="card w6"><h4>Pasos de ejemplo</h4><ol class="vsteps"><li>Primer paso ficticio.</li><li>Segundo paso ficticio con <span class="ui">Menú › Comando</span>.</li><li>Resultado esperado.</li></ol></div>
-      <div class="card w6"><div class="table-wrap"><table><thead><tr><th>Concepto</th><th>Valor</th><th>Nota</th></tr></thead><tbody><tr><td>Ejemplo A</td><td class="num">10</td><td>Relleno</td></tr><tr class="is-key"><td>Ejemplo B</td><td class="num">20</td><td>Fila clave</td></tr><tr><td>Ejemplo C</td><td class="num">30</td><td>Relleno</td></tr></tbody></table></div></div>
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Plataforma</th><th>Estados ISO</th><th>Nombres</th><th>Aprobación</th><th>BCF · OpenCDE</th></tr></thead>
+          <tbody>
+            <tr><td>Autodesk Docs</td><td>Carpetas + atributo de estado</td><td>Sí, por carpeta</td><td>1–6 pasos</td><td>—</td></tr>
+            <tr><td>Asite</td><td>Códigos que disparan flujos</td><td>Metadatos</td><td>Sí</td><td>—</td></tr>
+            <tr><td>Oracle Aconex</td><td>Estados configurables</td><td>—</td><td>Sí</td><td>—</td></tr>
+            <tr class="is-key"><td>Catenda Hub</td><td>Compartido y publicado; en curso, en local</td><td>—</td><td>Permiso de publicar</td><td>BCF API 3.0 · Documents API</td></tr>
+            <tr><td>Dalux</td><td>Áreas compartida y publicada</td><td>Obligatoria u opcional</td><td>Por estado</td><td>BCF</td></tr>
+            <tr><td>Trimble Connect</td><td>No nativos</td><td>—</td><td>No en Releases</td><td>BCF API 2.1 y 3.0</td></tr>
+            <tr><td>Viewpoint For Projects</td><td>WIP, Shared, Client Shared, Published, Client Published, Archive</td><td>—</td><td>Sí, ligado a TIDP y MIDP</td><td>—</td></tr>
+            <tr><td>BIMcollab</td><td>Compartido, publicado, archivado</td><td>Sí</td><td>Sí</td><td>BCF</td></tr>
+            <tr><td>usBIM</td><td>Estados a medida y «gates»</td><td>—</td><td>Gates</td><td>BCF</td></tr>
+            <tr><td>SharePoint</td><td>No nativos</td><td>—</td><td>Borrador, pendiente, aprobado</td><td>—</td></tr>
+          </tbody>
+        </table></div>
+        <p class="table-note">Según la documentación oficial de cada fabricante consultada en octubre de 2026; un guion indica que no se encontró dato, no que no exista. El 24-03-2026 Autodesk Construction Cloud pasó a llamarse Autodesk Forma y Autodesk Docs, Forma Data Management.</p>
+      </div>
+      <div class="card w3"><h4>Bentley ProjectWise</h4><p>El paquete My ProjectWise Bundle (20-08-2026) incluye «an ISO 19650-based configuration». <a href="https://www.bentley.com/en/blog/a-simpler-way-to-get-started-with-projectwise/" target="_blank" rel="noopener">Bentley</a>.</p></div>
+      <div class="card w3 y"><span class="c-label">Hueco</span><p>No hay cifras públicas de cuota de mercado de CDE en España. Una encuesta británica pequeña (IET, 26 respuestas, 2026) situaba SharePoint por delante de BIM 360. <span class="tag">Por confirmar</span></p></div>
     </div>
   </template>
 
+  <template id="l2-carpetas">
+    <div class="b-cards">
+      <div class="card w3">
+        <h4>Autodesk Docs</h4>
+        <p>No trae los estados ISO de serie: se modelan con carpetas (01-WIP, 02-SHARED, 03-PUBLISHED, ARCHIVED), permisos por carpeta y el atributo de estado de la convención de nombres. Un flujo de revisión puede copiar lo aprobado a la carpeta de destino.</p>
+      </div>
+      <div class="card w3">
+        <h4>Catenda Hub y BIMcollab</h4>
+        <p>El estado es un metadato del archivo. Catenda numera las revisiones compartidas como #0.1 y las publicadas como #1; BIMcollab sube por defecto en compartido y pasa a publicado tras aprobar.</p>
+      </div>
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th></th><th>Por carpetas</th><th>Por metadatos</th></tr></thead>
+          <tbody>
+            <tr><td>Se entiende a la primera</td><td>Sí</td><td>Necesita filtros</td></tr>
+            <tr class="is-key"><td>El estado viaja con el archivo</td><td>Solo si hay atributo</td><td>Sí</td></tr>
+            <tr><td>Vínculos entre modelos</td><td>Pueden romperse al copiar</td><td>Estables</td></tr>
+            <tr><td>Permisos</td><td>Por carpeta, sencillos</td><td>Por estado, si la plataforma lo admite</td></tr>
+          </tbody>
+        </table></div>
+        <p class="table-note">Comparativa propia a partir de la documentación de cada plataforma. <span class="tag">Inferido</span></p>
+      </div>
+      <div class="card w6 g"><p class="table-note" style="margin:0">Fuentes: <a href="https://help.autodesk.com/cloudhelp/ENU/Docs-Reviews/files/Reviews_Review_and_Approve.html" target="_blank" rel="noopener">Autodesk Docs, revisiones</a> · <a href="https://www.autodesk.com/autodesk-university/article/ISO-19650-Common-Data-Environment-and-Autodesk-Construction-Cloud-2021" target="_blank" rel="noopener">Autodesk University 2021</a> · <a href="https://support.catenda.com/en/articles/9874698-new-status-workflow-iso-19650" target="_blank" rel="noopener">Catenda</a> · <a href="https://helpcenter.bimcollab.com/articles/351149" target="_blank" rel="noopener">BIMcollab</a> · <a href="https://forums.autodesk.com/t5/forma-for-construction-ideas/enable-custom-attributes-on-folders-in-acc-docs/m-p/13959087" target="_blank" rel="noopener">foro de Autodesk: atributos en carpetas</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-flujos">
+    <div class="b-cards">
+      <div class="card w3">
+        <h4>Autodesk Docs</h4>
+        <p>Plantillas de revisión de 1 a 6 pasos, en serie o en paralelo, asignadas a personas, roles o empresas. Al terminar pueden copiar lo aprobado a otra carpeta y exigir atributos en el último paso.</p>
+      </div>
+      <div class="card w3">
+        <h4>Dalux</h4>
+        <p>Áreas compartida y publicada con flujos de aprobación que se disparan al cambiar el estado. Su convención de nombres puede ser obligatoria (rechaza al subir) u opcional (avisa).</p>
+      </div>
+      <div class="card w3">
+        <h4>Trimble Connect</h4>
+        <p>Las Releases (borrador y enviado) no admiten flujos de aprobación: «Approval workflows are not supported for this feature». La aprobación se resuelve por otra vía.</p>
+      </div>
+      <div class="card w3">
+        <h4>SharePoint</h4>
+        <p>Con aprobación de contenido, estados Draft, Pending, Approved y Rejected; oculta lo pendiente hasta aprobarlo. Faltan los códigos de idoneidad y de revisión.</p>
+      </div>
+      <div class="card w6 y"><span class="c-label">Antes de configurar</span><p>Dibujar el flujo en papel: quién aprueba cada puerta, en cuántos días, qué pasa si rechaza y qué metadatos se exigen. Después se busca la función de la plataforma que lo reproduce. <span class="tag">Inferido</span></p></div>
+      <div class="card w6 g"><p class="table-note" style="margin:0">Fuentes: <a href="https://www.autodesk.com/autodesk-university/article/ISO-19650-Common-Data-Environment-and-Autodesk-Construction-Cloud-2021" target="_blank" rel="noopener">Autodesk University</a> · <a href="https://support.dalux.com/hc/en-us/articles/11401889645340-File-naming-templates" target="_blank" rel="noopener">Dalux</a> · <a href="https://help.trimble.com/doc/trimble-connect/trimble-connect/connect-for-browser/releases/releases-listing" target="_blank" rel="noopener">Trimble Connect</a> · <a href="https://learn.microsoft.com/fi-fi/sharepoint/dev/business-apps/power-automate/guidance/require-doc-approval" target="_blank" rel="noopener">Microsoft</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-certificados">
+    <div class="b-cards">
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Plataforma</th><th>Sello</th><th>Frente a</th><th>Fecha</th></tr></thead>
+          <tbody>
+            <tr class="is-key"><td>Asite</td><td>BSI Kitemark KM 740457</td><td>ISO 19650-1, -2 y -5</td><td class="num">2021 · caduca 23-03-2027</td></tr>
+            <tr><td>Autodesk Construction Cloud</td><td>BSI Kitemark</td><td>ISO 19650-1, -2, -5 y -6</td><td class="num">11-12-2025</td></tr>
+            <tr><td>Oracle Aconex</td><td>BSI Kitemark</td><td>ISO 19650 y DIN SPEC 91391</td><td class="num">02-2022</td></tr>
+            <tr><td>Thinkproject</td><td>Atestación TÜV SÜD</td><td>ISO 19650-1, -2 y -3</td><td class="num">06-02-2024</td></tr>
+            <tr><td>usBIM</td><td>Certificación buildingSMART</td><td>Solo IFC</td><td>—</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w3">
+        <h4>Qué mide el Kitemark</h4>
+        <p>BSI lo lanzó para software BIM en abril de 2021: evalúa que las funciones respondan a ISO 19650, el enfoque de seguridad y el soporte al cliente. Los primeros fueron Asite, Llewellyn &amp; Partners y Zutec.</p>
+      </div>
+      <div class="card w3">
+        <h4>Y las organizaciones</h4>
+        <p>Una empresa se certifica aparte: BSI emite certificados de verificación frente a ISO 19650-2 para partes contratantes o contratadas. Una herramienta certificada no certifica tu proceso.</p>
+      </div>
+      <div class="card w6 g"><p class="table-note" style="margin:0">Fuentes: <a href="https://www.asite.com/hubfs/Security%20certfications/ISO%2019650%20Certificate%20KM%20740457%2005082024.pdf" target="_blank" rel="noopener">certificado de Asite</a> · <a href="https://www.autodesk.com/blogs/construction/driving-digital-standards-autodesk-construction-cloud-achieves-bsi-kitemark-certification-for-iso-19650/" target="_blank" rel="noopener">Autodesk</a> · <a href="https://channeldrive.in/europe/oracle-aconex-achieves-bsi-certification/" target="_blank" rel="noopener">Aconex</a> · <a href="https://www.thinkproject.com/news/thinkproject-receives-level-2-bim-attestation/" target="_blank" rel="noopener">Thinkproject</a> · <a href="https://constructionmanagement.co.uk/bsi-launches-kitemark-bim-software/" target="_blank" rel="noopener">Construction Management</a> · <a href="https://www.accasoftware.com/en/common-data-environment" target="_blank" rel="noopener">ACCA</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-opencde">
+    <div class="b-cards">
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>API</th><th>Versión</th><th>Para qué</th></tr></thead>
+          <tbody>
+            <tr><td>Foundation API</td><td class="num">1.1</td><td>Descubrir qué API ofrece el CDE (GET /foundation/versions), autenticación OAuth2 y usuario actual; TLS 1.2 mínimo</td></tr>
+            <tr class="is-key"><td>Documents API</td><td class="num">1.0</td><td>Subir y bajar contenedores desde el programa del usuario</td></tr>
+            <tr><td>BCF API</td><td class="num">3.0</td><td>Leer y escribir incidencias en un servidor BCF</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w3">
+        <h4>El apretón de manos</h4>
+        <p>En Documents API el usuario elige el contenedor y rellena los metadatos en la web del CDE; el programa solo transfiere el archivo. Así los metadatos los valida siempre el CDE.</p>
+      </div>
+      <div class="card w3">
+        <h4>Quién lo implementa</h4>
+        <p>Catenda declara Foundation, Documents y BCF API; Trimble Connect, BCF API 2.1 y 3.0. Desde Solibri 25.12.0 se puede conectar a cualquier CDE privado con OpenCDE. buildingSMART «does not check the validity of the claims».</p>
+      </div>
+      <div class="card w6 y"><span class="c-label">Trampa</span><p>Algún proveedor dice que ISO 19650 «recomienda» OpenCDE. La norma no lo menciona; el antecedente es la «openCDE Interface» de DIN SPEC 91391-2 (2019).</p></div>
+      <div class="card w6 g"><p class="table-note" style="margin:0">Fuentes: <a href="https://www.buildingsmart.org/documents-api-receives-final-standard-approval/" target="_blank" rel="noopener">buildingSMART, aprobación de Documents API</a> · <a href="https://github.com/buildingSMART/documents-API" target="_blank" rel="noopener">documents-API</a> · <a href="https://github.com/buildingSMART/foundation-API" target="_blank" rel="noopener">foundation-API</a> · <a href="https://technical.buildingsmart.org/resources/software-implementations/entry/545/" target="_blank" rel="noopener">Catenda</a> · <a href="https://developer.trimble.com/docs/connect/topics" target="_blank" rel="noopener">Trimble</a> · <a href="https://society.solibri.com/topic/3311/how-to-connect-to-a-local-cde-using-the-opencde-documents-api" target="_blank" rel="noopener">Solibri Society</a> · <a href="https://www.buildingsmart.org/compliance/software-certification/" target="_blank" rel="noopener">certificación buildingSMART</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-bcf">
+    <div class="b-cards">
+      <div class="card w6">
+        <span class="c-label">Un tema BCF</span>
+        <svg class="draw" viewBox="0 0 640 160" role="img" aria-label="Carpeta de un tema BCF con tres archivos: markup con el texto, viewpoint con la cámara y los elementos, y snapshot con la imagen">
+          <path d="M10 20 h120 l14 14 h486 v116 h-620z" fill="#EFEFEA" stroke="#000" stroke-width="2.5" stroke-linejoin="round"/>
+          <g stroke="#000" stroke-width="2.5" fill="#fff"><rect x="40" y="56" width="170" height="76" rx="4"/><rect x="235" y="56" width="170" height="76" rx="4"/></g>
+          <rect x="430" y="56" width="170" height="76" rx="4" fill="#FFFF00" stroke="#000" stroke-width="2.5"/>
+          <g font-family="JetBrains Mono, monospace" font-size="13"><text x="20" y="40">tema-0b7f…/</text><text x="52" y="82" font-weight="700">markup.bcf</text><text x="247" y="82" font-weight="700">viewpoint.bcfv</text><text x="442" y="82" font-weight="700">snapshot.png</text></g>
+          <g font-family="JetBrains Mono, monospace" font-size="11" fill="#444"><text x="52" y="104">título, estado,</text><text x="52" y="120">comentarios</text><text x="247" y="104">cámara y</text><text x="247" y="120">elementos (GUID)</text><text x="442" y="104">la captura</text></g>
+        </svg>
+      </div>
+      <div class="card w3">
+        <h4>Archivo o servidor</h4>
+        <p>BCF-XML viaja como .bcfzip; BCF API guarda los temas en un servidor y cada programa los lee y escribe en vivo. BCF 3.0, presentado en 2021, añade una carpeta de documentos.</p>
+      </div>
+      <div class="card w3">
+        <h4>Por qué encaja en el CDE</h4>
+        <p>La incidencia apunta a elementos de un contenedor compartido, no a una copia. Cuando el autor sube la revisión corregida, se cierra el tema y queda en el registro.</p>
+      </div>
+      <div class="card w6 g"><p class="table-note" style="margin:0">Fuentes: <a href="https://docs.safe.com/fme/html/FME-Form-Documentation/FME-ReadersWriters/bcf/bcf.htm" target="_blank" rel="noopener">FME, lector BCF</a> · <a href="https://www.buildingsmart.org/bim-collaboration-format-bcf-3-0/" target="_blank" rel="noopener">buildingSMART, BCF 3.0</a> · <a href="https://help.trimble.com/doc/trimble-connect/trimble-connect/connect-for-browser/bcf-topics" target="_blank" rel="noopener">Trimble Connect</a> · <a href="https://technical.buildingsmart.org/bcf-software-implementations/?pagenum=6" target="_blank" rel="noopener">listado de 135 implementaciones autodeclaradas</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-icdd">
+    <div class="b-cards">
+      <div class="card w3">
+        <h4>ISO 21597 · ICDD</h4>
+        <p>La parte 1 (14-04-2020, confirmada en 2025) define el contenedor; la parte 2 (2020, UNE-EN en 2021), los tipos de enlace con semántica de datos enlazados. Sirve para entregar un paquete coherente, no archivos sueltos.</p>
+      </div>
+      <div class="card w3">
+        <h4>DIN SPEC 91391</h4>
+        <p>La parte 1 (abril de 2019) lista funciones obligatorias y opcionales de un CDE a partir de la cláusula 12 de ISO 19650-1. La parte 2 define la interfaz «openCDE» para intercambiar contenedores y metadatos entre plataformas.</p>
+      </div>
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Necesidad</th><th>Estándar</th></tr></thead>
+          <tbody>
+            <tr><td>Abrir y guardar desde el programa</td><td>OpenCDE Documents API</td></tr>
+            <tr><td>Incidencias entre programas</td><td>BCF</td></tr>
+            <tr class="is-key"><td>Entregar un paquete con vínculos</td><td>ICDD (ISO 21597)</td></tr>
+            <tr><td>Exigir funciones a una plataforma</td><td>DIN SPEC 91391-1</td></tr>
+            <tr><td>Pasar de un CDE a otro</td><td>DIN SPEC 91391-2</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w6 g"><p class="table-note" style="margin:0">Fuentes: <a href="https://www.iso.org/standard/74389.html" target="_blank" rel="noopener">ISO 21597-1</a> · <a href="https://www.en-standard.eu/une-en-iso-21597-2-2020-information-container-for-linked-document-delivery-exchange-specification-part-2-link-types-iso-21597-2-2020-endorsed-by-asociacion-espa-ola-de-normalizacion-in-january-of-2021/" target="_blank" rel="noopener">UNE-EN ISO 21597-2</a> · <a href="https://www.dinmedia.de/de/technische-regel/din-spec-91391-1/302483139" target="_blank" rel="noopener">DIN SPEC 91391-1</a> · <a href="https://www.din.de/en/wdc-beuth:din21:302483177/toc-3048508/download" target="_blank" rel="noopener">DIN SPEC 91391-2</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-calidad">
+    <div class="b-cards">
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Criterio</th><th>La pregunta</th><th>Cómo se comprueba</th></tr></thead>
+          <tbody>
+            <tr class="is-key"><td>CDE</td><td>¿Nombre y metadatos correctos?</td><td>Validador de nombres, campos obligatorios</td></tr>
+            <tr><td>Conformidad</td><td>¿Sigue el estándar y los métodos del proyecto?</td><td>Lista del protocolo, IDS</td></tr>
+            <tr><td>Continuidad</td><td>¿Encaja con la revisión anterior y con los demás?</td><td>Comparar revisiones, federar</td></tr>
+            <tr><td>Comunicación</td><td>¿Se entiende sin explicaciones?</td><td>Revisión por otra persona</td></tr>
+            <tr><td>Consistencia</td><td>¿Planos, modelo y tablas dicen lo mismo?</td><td>Cruces entre contenedores</td></tr>
+            <tr><td>Completitud</td><td>¿Está todo lo que pedía el plan de entrega?</td><td>Cotejo con el TIDP</td></tr>
+          </tbody>
+        </table></div>
+        <p class="table-note">La columna «cómo» es propia. <span class="tag">Inferido</span></p>
+      </div>
+      <div class="card w3">
+        <h4>Cinco o seis</h4>
+        <p>BSI resume cinco criterios (conformidad, continuidad, comunicación, consistencia y completitud); la guía británica de la parte 4 cuenta seis, con el CDE el primero. La numeración (7.1 a 7.6) sale de un borrador. <span class="tag">Por confirmar</span></p>
+      </div>
+      <div class="card w3">
+        <h4>El contenedor, no su contenido</h4>
+        <p>La guía del CDE recuerda que el control de calidad del CDE mira el contenedor frente al estándar de información, «not its contents»; el contenido lo revisa el equipo.</p>
+      </div>
+      <div class="card w6 g"><p class="table-note" style="margin:0">Fuentes: <a href="https://committee.iso.org/ru/standard/78246.html" target="_blank" rel="noopener">ISO 19650-4</a> · <a href="https://knowledge.bsigroup.com/articles/harmonize-digitize-and-rationalize-exchange-information-confidently-with-bs" target="_blank" rel="noopener">BSI</a> · <a href="https://nottingham-repository.worktribe.com/OutputFile/21112102" target="_blank" rel="noopener">Guidance 4 (2023)</a> · <a href="https://www.cibse.org/media/5jnjr43j/b_555_21_0177-iso-19650-4-draft.pdf" target="_blank" rel="noopener">borrador de la parte 4</a> · <a href="https://www.ukbimframework.org/wp-content/uploads/2021/02/Guidance-Part-C_Facilitating-the-common-data-environment-workflow-and-technical-solutions_Edition-1.pdf" target="_blank" rel="noopener">Guidance Part C</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-validador">
+    <div class="b-cards">
+      <div class="card w6">
+        <span class="c-label">La regla que usa el comprobador</span>
+        <pre><code>^[A-Z0-9]{2,6}-[A-Z0-9]{2,6}-[A-Z0-9]{2}-[A-Z0-9]{2}-[A-Z0-9]{2}-[A-Z]{1,2}-[0-9]{4,6}$</code></pre>
+        <p class="table-note">Expresión regular de elaboración propia a partir de las longitudes del anejo británico de 2018; ninguna fuente oficial publica una. <span class="tag">Inferido</span></p>
+      </div>
+      <div class="card w3">
+        <h4>Lo que no puede saber</h4>
+        <p>Una expresión regular comprueba la forma, no el significado. Que «ARQ» sea un originador dado de alta o «M3» un tipo de la lista cerrada exige comparar con las listas del protocolo del proyecto. Este comprobador valida tipo y rol contra las listas británicas.</p>
+      </div>
+      <div class="card w3">
+        <h4>En las plataformas</h4>
+        <p>No validan con expresiones regulares sino por campos. Autodesk Docs aparta los archivos mal nombrados en una «holding area»; Dalux puede rechazarlos al subir; Atvero bloquea la subida.</p>
+      </div>
+      <div class="card w6 g"><p class="table-note" style="margin:0">Fuentes: <a href="https://www.cdbb.cam.ac.uk/files/national_annex_guidance.pdf" target="_blank" rel="noopener">guía del anejo británico</a> · <a href="https://help.autodesk.com/cloudhelp/ENU/CONNECT-Docs-Connector/files/File_Naming_Standard_Docs.htm" target="_blank" rel="noopener">Autodesk Docs</a> · <a href="https://support.dalux.com/hc/en-us/articles/11401889645340-File-naming-templates" target="_blank" rel="noopener">Dalux</a> · <a href="https://www.cmap.io/blog/guaranteeing-strict-file-naming-to-become-iso-19650-compliant" target="_blank" rel="noopener">Atvero</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-ids">
+    <div class="b-cards">
+      <div class="card w3">
+        <h4>Qué es IDS</h4>
+        <p>Information Delivery Specification: los requisitos de un IFC (qué elementos, qué propiedades, qué valores) en un XML legible por máquina. Es estándar de buildingSMART desde junio de 2024 y no cubre geometría.</p>
+      </div>
+      <div class="card w3">
+        <h4>Dónde se valida</h4>
+        <p>IfcTester (IfcOpenShell) genera informes en HTML, JSON y BCF; Solibri tiene la regla 244 «IDS Validation»; BIMcollab lo integra en Zoom. El Validation Service de buildingSMART valida el IFC, pero no el IDS.</p>
+      </div>
+      <div class="card w6">
+        <h4>Un flujo de puerta con IDS</h4>
+        <ol class="vsteps"><li>El EIR adjunta el IDS de cada entrega.</li><li>Antes de pedir la aprobación, el equipo pasa su IFC por el IDS.</li><li>El informe BCF se adjunta al contenedor; si hay fallos, no se comparte.</li><li>El revisor repite la prueba en la puerta B y la guarda en el registro.</li></ol>
+      </div>
+      <div class="card w6 y"><span class="c-label">Relación con el artículo 01</span><p>El mismo método sirve para comprobar la georreferenciación: ver <a href="../coordenadas-compartidas/#ids">IDS en Coordenadas compartidas</a>.</p></div>
+      <div class="card w6 g"><p class="table-note" style="margin:0">Fuentes: <a href="https://www.buildingsmart.org/standards/bsi-standards/information-delivery-specification-ids/" target="_blank" rel="noopener">buildingSMART IDS</a> (dice 1-06-2024; la nota de aprobación es del 4-06-2024) · <a href="https://technical.buildingsmart.org/services/validation-service/" target="_blank" rel="noopener">Validation Service</a> · <a href="https://pypi.org/project/ifctester/0.0.240318/" target="_blank" rel="noopener">IfcTester</a> · <a href="https://www.solibri.com/news/everything-you-need-to-know-about-information-delivery-specifications" target="_blank" rel="noopener">Solibri</a> · <a href="https://www.bimcollab.com/en/resources/news/ids-release/" target="_blank" rel="noopener">BIMcollab</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-auditoria">
+    <div class="b-cards">
+      <div class="card w6">
+        <div class="callout check">
+          <span class="kicker-y">Auditoría rápida del CDE</span>
+          <ul class="checklist">
+            <li>Diez contenedores al azar: nombre válido y metadatos completos.</li>
+            <li>Cada uno en un solo estado y con la revisión que le toca.</li>
+            <li>El registro dice quién aprobó cada paso a compartido y a publicado.</li>
+            <li>Nadie fuera del equipo ve su trabajo en curso.</li>
+            <li>Los vínculos de la federación apuntan a lo compartido.</li>
+            <li>Lo publicado coincide con el plan de entrega (MIDP).</li>
+            <li>Ningún plano de obra circula por correo sin su contenedor publicado.</li>
+          </ul>
+        </div>
+        <p class="table-note">Lista propia a partir de ISO 19650-2 y las guías británicas. <span class="tag">Inferido</span></p>
+      </div>
+      <div class="card w3">
+        <h4>Un metro norteamericano</h4>
+        <p>Da Silva y Boton (2025) encontraron cinco sistemas en paralelo (Aconex, SharePoint, ACC, Unifier y correo), sin garantía de versión vigente, y metadatos mal introducidos que rompían el paso de uno a otro. <a href="https://espace2.etsmtl.ca/32585/1/Boton-C-2025-32585.pdf" target="_blank" rel="noopener">ÉTS Montréal</a>.</p>
+      </div>
+      <div class="card w3">
+        <h4>Seis metros de Estambul</h4>
+        <p>Con 37 entrevistas y 164 encuestas, el estudio de la ITU (2023) concluye que la mayoría de los profesionales no usa activamente el CDE. <a href="https://research.itu.edu.tr/en/publications/investigation-of-effectiveness-of-common-data-environments-cdes-u/" target="_blank" rel="noopener">ITU</a>.</p>
+      </div>
+    </div>
+  </template>
+
+  <template id="l2-glosario">
+    <div class="b-cards"><div class="card w6">
+      <dl class="glossary">
+        <dt>CDE</dt><dd>Entorno común de datos: fuente acordada de información con un proceso controlado.</dd>
+        <dt>Contenedor de información</dt><dd>Conjunto de información con nombre propio que se puede recuperar.</dd>
+        <dt>Trabajo en curso</dt><dd>Estado privado del equipo que produce la información.</dd>
+        <dt>Compartido</dt><dd>Estado para coordinar y comentar, no para construir.</dd>
+        <dt>Publicado</dt><dd>Estado autorizado y aceptado para su uso.</dd>
+        <dt>Archivado</dt><dd>Registro de cada transacción: la traza de auditoría.</dd>
+        <dt>Código de idoneidad</dt><dd>Para qué se puede usar un contenedor (S1, S2, A1…).</dd>
+        <dt>Código de revisión</dt><dd>Qué versión es (P01.01, P01, C01).</dd>
+        <dt>Parte contratante</dt><dd>Quien encarga la información; normalmente el cliente.</dd>
+        <dt>Parte contratada principal</dt><dd>Quien responde por todo el equipo de desarrollo.</dd>
+        <dt>PIM · AIM</dt><dd>Modelo de información del proyecto y del activo.</dd>
+        <dt>OpenCDE</dt><dd>API de buildingSMART para conectar programas y CDE.</dd>
+        <dt>BCF</dt><dd>Formato de incidencias con vista, captura y elementos.</dd>
+        <dt>ICDD</dt><dd>Contenedor de documentos enlazados (ISO 21597).</dd>
+      </dl>
+    </div></div>
+  </template>
+
   <template id="l2-fuentes">
-    <div class="b-cards"><div class="card w6 y"><span class="c-label">Sin fuentes</span><p>Artículo ficticio de relleno: no tiene fuentes porque su contenido es inventado.</p></div></div>
+    <div class="b-cards"><div class="card w6">
+      <p>Prioridad a las normas, a las guías oficiales y a la documentación de cada fabricante. La base completa (más de 200 fuentes valoradas) está en la carpeta de investigación del proyecto. Lo no confirmado lleva <span class="tag">Por confirmar</span> y lo que es lectura propia, <span class="tag">Inferido</span>.</p>
+    </div></div>
+    <div class="b-cards">
+      <div class="card w6">
+        <h4>Normas</h4>
+        <ul class="sources">
+          <li>ISO 19650, partes <a href="https://committee.iso.org/es/sites/isoorg/contents/data/standard/06/80/68078.html" target="_blank" rel="noopener">1</a> · <a href="https://committee.iso.org/es/sites/isoorg/contents/data/standard/06/80/68080.html" target="_blank" rel="noopener">2</a> · <a href="https://committee.iso.org/es/sites/isoorg/contents/data/standard/07/51/75109.html" target="_blank" rel="noopener">3</a> · <a href="https://committee.iso.org/es/sites/isoorg/contents/data/standard/07/82/78246.html" target="_blank" rel="noopener">4</a> · <a href="https://iso.org/standard/74206.html" target="_blank" rel="noopener">5</a> · <a href="https://www.iso.org/standard/82705.html" target="_blank" rel="noopener">6</a> · <a href="https://tienda.aenor.com/en/e/normas-relacionadas/30025/51041501" target="_blank" rel="noopener">UNE-EN ISO 19650 (AENOR)</a></li>
+          <li>Revisión: <a href="https://committee.iso.org/es/sites/isoorg/contents/data/standard/08/97/89703.html" target="_blank" rel="noopener">ISO/DIS 19650-1</a> · <a href="https://committee.iso.org/es/sites/isoorg/contents/data/standard/08/97/89704.html" target="_blank" rel="noopener">ISO/DIS 19650-2</a> · <a href="https://www.en.une.org/normalizacion_documentos/Revision-of-EN-ISO-19650---David-Churcher.pdf" target="_blank" rel="noopener">UNE</a></li>
+          <li><a href="https://www.dinmedia.de/de/technische-regel/din-spec-91391-1/302483139" target="_blank" rel="noopener">DIN SPEC 91391-1</a> · <a href="https://www.iso.org/standard/74389.html" target="_blank" rel="noopener">ISO 21597-1</a> · <a href="https://www.en-standard.eu/une-cen-tr-18093-2024-framework-and-implementation-of-common-data-environment-solutions-and-workflow-in-accordance-with-en-iso-19650-endorsed-by-asociacion-espa-ola-de-normalizacion-in-december-of-2024/" target="_blank" rel="noopener">UNE CEN/TR 18093:2024</a></li>
+          <li><a href="https://www.civil-mercantil.com/sites/civil-mercantil.com/files/NCL013234.pdf" target="_blank" rel="noopener">Orden PCM/818/2023 (Plan BIM)</a></li>
+        </ul>
+      </div>
+      <div class="card w6">
+        <h4>Guías</h4>
+        <ul class="sources">
+          <li>UK BIM Framework (hoy IMI Framework): <a href="https://www.cdbb.cam.ac.uk/system/files/documents/InformationManagementaccordingtoBSENISO19650GuidancePart1Concepts.pdf" target="_blank" rel="noopener">Guidance Part 1</a> · <a href="https://ukbimframework.org/wp-content/uploads/2020/02/ISO_19650_Guidance_Part_2_Processes_for_Project_Delivery_ThirdEdition.pdf" target="_blank" rel="noopener">Part 2</a> · <a href="https://www.ukbimframework.org/wp-content/uploads/2021/02/Guidance-Part-C_Facilitating-the-common-data-environment-workflow-and-technical-solutions_Edition-1.pdf" target="_blank" rel="noopener">Part C (CDE)</a></li>
+          <li>Anejos: <a href="https://www.cdbb.cam.ac.uk/files/national_annex_guidance.pdf" target="_blank" rel="noopener">británico</a> · <a href="https://projectdesign.io/comparison-of-status-codes-between-uk-national-annex-na-2018-vs-uk-na-2021/" target="_blank" rel="noopener">2018 frente a 2021</a> · <a href="https://www.cita.ie/wp-content/uploads/2021/03/CWO_CitAPresentation_IrishNA19650_2021.03.18.pdf" target="_blank" rel="noopener">irlandés</a> · <a href="https://buildingsmartcanada.ca/wp-content/uploads/2023/02/ISO-19650-2-Canadian-National-Annex_V1.0.pdf" target="_blank" rel="noopener">canadiense</a></li>
+          <li><a href="https://camacol.co/sites/default/files/descargables/Gestion%20de%20la%20Informaci%C3%B3n%20BIM%20V2.pdf" target="_blank" rel="noopener">Camacol (Colombia)</a> · <a href="https://www.e-zigurat.com/es/blog/normalizacion-bim-normas-une-iso-19650-1-iso-19650-2/" target="_blank" rel="noopener">Zigurat: terminología UNE</a></li>
+        </ul>
+      </div>
+      <div class="card w6">
+        <h4>Plataformas y programas</h4>
+        <ul class="sources">
+          <li><a href="https://help.autodesk.com/cloudhelp/ENG/Docs-Files/files/files-naming-standard/Set_Up_Naming_Standard.html" target="_blank" rel="noopener">Autodesk Docs: nomenclatura</a> · <a href="https://help.autodesk.com/cloudhelp/ENU/Docs-Files/files/files-naming-standard/Status_Codes.html" target="_blank" rel="noopener">códigos de estado</a> · <a href="https://help.autodesk.com/cloudhelp/ENU/Docs-Reviews/files/Reviews_Review_and_Approve.html" target="_blank" rel="noopener">revisiones</a> · <a href="https://help.autodesk.com/cloudhelp/2026/ENU/Revit-Cloud/files/GUID-ABFFFEE6-2C6D-4779-B508-A1C4BC0C4885.htm" target="_blank" rel="noopener">Revit Cloud Worksharing</a></li>
+          <li><a href="https://support.catenda.com/en/articles/9874698-new-status-workflow-iso-19650" target="_blank" rel="noopener">Catenda</a> · <a href="https://support.dalux.com/hc/en-us/articles/11401889645340-File-naming-templates" target="_blank" rel="noopener">Dalux</a> · <a href="https://help.trimble.com/doc/trimble-connect/trimble-connect/connect-for-browser/releases/releases-listing" target="_blank" rel="noopener">Trimble Connect</a> · <a href="https://www.oracle.com/ce-help/playbook/pl05-setting-up-your-document-statuses/" target="_blank" rel="noopener">Aconex</a> · <a href="https://helpcenter.bimcollab.com/articles/351149" target="_blank" rel="noopener">BIMcollab</a> · <a href="https://v2.support.procore.com/es-es/process-guides/document-management-getting-started-guide/naming-standard-overview" target="_blank" rel="noopener">Procore</a></li>
+          <li><a href="https://support.tekla.com/doc/tekla-structures/2022/ms_work_with_tekla_model_sharing" target="_blank" rel="noopener">Tekla Model Sharing</a> · <a href="https://app-help.vectorworks.net/2025/eng/VW2025_Guide/ProjectSharing/Concept_Project_sharing.htm" target="_blank" rel="noopener">Vectorworks</a> · <a href="https://cdn-resources.accasoftware.com/accasoftware/pdf/usBIM.platform_CDE_Manuale_Ed2_rev19_FR.pdf" target="_blank" rel="noopener">usBIM</a></li>
+        </ul>
+      </div>
+      <div class="card w6">
+        <h4>Interoperabilidad, calidad y casos</h4>
+        <ul class="sources">
+          <li><a href="https://github.com/buildingSMART/documents-API" target="_blank" rel="noopener">OpenCDE Documents API</a> · <a href="https://github.com/buildingSMART/foundation-API" target="_blank" rel="noopener">Foundation API</a> · <a href="https://www.buildingsmart.org/bim-collaboration-format-bcf-3-0/" target="_blank" rel="noopener">BCF 3.0</a> · <a href="https://www.buildingsmart.org/standards/bsi-standards/information-delivery-specification-ids/" target="_blank" rel="noopener">IDS</a></li>
+          <li><a href="https://www.autodesk.com/blogs/construction/construction-disconnected-fmi-report/" target="_blank" rel="noopener">FMI 2018</a> · <a href="https://fmicorp.com/insights/quick-reads/harnessing-the-data-advantage-in-engineering-and-construction" target="_blank" rel="noopener">FMI 2021</a> · <a href="https://espace2.etsmtl.ca/32585/1/Boton-C-2025-32585.pdf" target="_blank" rel="noopener">Da Silva y Boton (2025)</a> · <a href="https://research.itu.edu.tr/en/publications/investigation-of-effectiveness-of-common-data-environments-cdes-u/" target="_blank" rel="noopener">ITU (2023)</a></li>
+        </ul>
+      </div>
+    </div>
   </template>
 
   <script src="../../assets/js/serie.js"></script>
   <script src="../../assets/js/web.js"></script>
   <script src="../../assets/js/precision.js"></script>
+  <script src="cde.js"></script>
 </body>
 </html>

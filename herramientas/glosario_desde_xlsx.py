@@ -47,7 +47,7 @@ ALIAS = {
     'C27': ['topografía', 'replanteo', 'GNSS', 'estación total'],
     'C28': ['BIM-GIS', 'GIS', 'GeoBIM'],
     'C29': ['geolocalización', 'ubicación del proyecto'],
-    'C30': ['CDE', 'entorno común de datos'],
+    'C30': ['coordinación en la nube'],  # «CDE» y «entorno común de datos» son del artículo 03 (E01)
     'C31': ['SCU', 'SCP', 'DWG', 'DGN'],
     'C32': ['control de calidad', 'QA/QC'],
     'C33': ['ETRS89', 'REGCAN95', 'RD 1071/2007'],
