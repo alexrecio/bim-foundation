@@ -809,3 +809,11 @@ kbd { display: inline-block; min-width: 1.6em; padding: 1px 5px; border: 1px sol
 .gl-rel > div { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
 .gl-rel .chip { font-size: 12px; padding: 4px 8px; text-decoration: none; }
 .gl-rel .chip:hover { background: var(--accent); }
+
+/* ---------- Idiomas: selector ES · EN · DE en el menú del cartucho (assets/js/idioma.js) ---------- */
+.bf-lang { display: inline-flex; align-items: center; gap: 2px; margin-left: 6px; padding-left: 8px; border-left: 1px solid var(--s200); font-family: var(--mono); font-size: 11px; font-weight: 700; letter-spacing: .06em; }
+.bf-lang a, .bf-lang span { display: inline-flex; align-items: center; justify-content: center; min-width: 32px; height: 32px; padding: 0 6px; border-radius: 9999px; text-decoration: none; color: var(--s500); }
+.bf-lang a:hover { background: var(--accent); color: var(--black); }
+.bf-lang .is-current { background: var(--black); color: var(--white); }
+/* En móvil el menú no cabe entero: se desliza en horizontal para llegar al idioma */
+@media (max-width: 767px) { #nav-capsule.menu-open #menu-content { max-width: calc(100vw - 32px - 58px); overflow-x: auto; scrollbar-width: none; } #menu-content::-webkit-scrollbar { display: none; } }

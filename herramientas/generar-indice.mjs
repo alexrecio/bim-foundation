@@ -2,12 +2,17 @@
 // y, para cada término del glosario, las diapositivas donde se explica.
 // Uso (desde la raíz del repo, sin dependencias): node herramientas/generar-indice.mjs
 // Ejecutarlo cada vez que se añade o cambia un artículo o el glosario.
+// Otros idiomas: node herramientas/generar-indice.mjs en → lee en/articulos/ y assets/i18n/en/glosario.js y
+// escribe assets/i18n/en/indice.js (lo hace herramientas/i18n.mjs).
 import fs from 'node:fs';
 import vm from 'node:vm';
 
+const LANG = process.argv[2] || 'es';
+const PRE = LANG === 'es' ? '' : LANG + '/';
+const DATOS = LANG === 'es' ? 'assets/js/' : `assets/i18n/${LANG}/`;
 const ctx = { window: {} };
 vm.runInNewContext(fs.readFileSync('assets/js/serie.js', 'utf8'), ctx);
-vm.runInNewContext(fs.readFileSync('assets/js/glosario.js', 'utf8'), ctx);
+if (fs.existsSync(DATOS + 'glosario.js')) vm.runInNewContext(fs.readFileSync(DATOS + 'glosario.js', 'utf8'), ctx);
 const SERIE = ctx.window.SERIE, GLOS = ctx.window.BF_GLOSARIO || [];
 
 const ENT = { amp: '&', lt: '<', gt: '>', quot: '"', nbsp: ' ', middot: '·', rarr: '→', larr: '←', harr: '↔', times: '×', minus: '−', deg: '°' };
@@ -22,7 +27,7 @@ const attr = (tag, a) => { const m = tag.match(new RegExp(`${a}="([^"]*)"`)); re
 
 const ideas = [];
 for (const art of SERIE) {
-  const f = `articulos/${art.slug}/index.html`;
+  const f = `${PRE}articulos/${art.slug}/index.html`;
   if (!fs.existsSync(f)) continue;
   const html = fs.readFileSync(f, 'utf8');
   const tpls = {};
@@ -79,12 +84,12 @@ for (const g of GLOS) {
     return [s, x];
   }).filter(([s]) => s >= 3).sort((p, q) => q[0] - p[0]).slice(0, 4);
   const fijas = MANUAL[g.id] ? MANUAL[g.id][1].split(' ').map((id) => [MANUAL[g.id][0], id]) : [];
-  const L = [...fijas, ...sc.map(([, x]) => [x.a, x.id])].filter((d, k, arr) => arr.findIndex((e) => e[0] === d[0] && e[1] === d[1]) === k);
-  for (const [a, id] of fijas) if (!ideas.some((x) => x.a === a && x.id === id)) throw new Error(`MANUAL ${g.id}: no existe ${a}#${id}`);
+  const L = [...fijas.filter(([a, id]) => ideas.some((x) => x.a === a && x.id === id)), ...sc.map(([, x]) => [x.a, x.id])].filter((d, k, arr) => arr.findIndex((e) => e[0] === d[0] && e[1] === d[1]) === k);
+  for (const [a, id] of fijas) if (fs.existsSync(`${PRE}articulos/${a}/index.html`) && !ideas.some((x) => x.a === a && x.id === id)) throw new Error(`MANUAL ${g.id}: no existe ${a}#${id}`);
   donde[g.id] = L.slice(0, 4);
 }
 
-fs.writeFileSync('assets/js/indice.js',
+fs.writeFileSync(DATOS + 'indice.js',
   '// Índice de búsqueda de la serie. GENERADO por herramientas/generar-indice.mjs: no editar a mano.\n' +
   '// ideas: a artículo · n número · i posición · id slide · t menú · k antetítulo · h titular · l frase · c tarjetas · b/bn bloque · l2 ficha · d texto de la capa 2\n' +
   '// donde: término del glosario → diapositivas donde se explica\n' +

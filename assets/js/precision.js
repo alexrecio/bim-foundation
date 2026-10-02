@@ -103,14 +103,14 @@
   // ---------- Pie como cajetín de plano: proyecto, documento, hoja, escala, fecha, revisión ----------
   const pie = document.querySelector('footer.site .wrap');
   if (pie && !pie.querySelector('.pz-cajetin')) {
-    const autor = (pie.textContent.match(/Diseñada y desarrollada por ([^·]+)/) || [])[1] || 'Alejandro García Nicolás';
+    const autor = (pie.textContent.match(/(?:Diseñada y desarrollada por|Designed and developed by|entwickelt von) ([^·]+)/) || [])[1] || 'Alejandro García Nicolás';
     const doc_ = art ? art.titulo : (document.title.split('|').map((t) => t.trim()).find((t) => t && t !== 'BIM Foundation') || 'Índice de la serie');
     const meses = ['ENE','FEB','MAR','ABR','MAY','JUN','JUL','AGO','SEP','OCT','NOV','DIC'];
     const f = art && art.fecha ? art.fecha.split('-') : null;
     const fecha = f ? `${meses[+f[1] - 1]} ${f[0]}` : String(new Date().getFullYear());
     const celda = (k, v, cls = '') => `<div class="${cls}"><span>${k}</span><b>${v}</b></div>`;
     // Sustituye solo la línea de autoría original; lo demás que haya en el pie se conserva
-    [...pie.children].filter((el) => el.matches('span') && (/Diseñada|BIM Foundation ·/.test(el.textContent) || el.classList.contains('sep'))).forEach((el) => el.remove());
+    [...pie.children].filter((el) => el.matches('span') && (/Diseñada|Designed|entwickelt von|BIM Foundation ·/.test(el.textContent) || el.classList.contains('sep'))).forEach((el) => el.remove());
     pie.insertAdjacentHTML('afterbegin', `<div class="pz-cajetin">` +
       celda('Proyecto', 'BIM Foundation', 'c-proy') +
       celda('Documento', doc_, 'c-doc') +

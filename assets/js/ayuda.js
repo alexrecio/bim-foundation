@@ -3,6 +3,9 @@
 // Se carga desde web.js; los datos (indice.js, glosario.js, preguntas.js) se cargan solo cuando hacen falta.
 (function () {
   const root = document.documentElement.dataset.root || './';
+  // Idioma (assets/js/idioma.js): enlaces a la página del idioma del lector y datos traducidos en assets/i18n/<lang>/
+  const lang = document.documentElement.dataset.lang || 'es';
+  const url = (p) => (window.BF_I18N ? window.BF_I18N.url(p) : root + p);
   const slugActual = document.documentElement.dataset.slug || '';
   const esArticulo = !!document.querySelector('main.deck');
   const serie = window.SERIE || [];
@@ -24,14 +27,14 @@
   const cargas = {};
   const cargar = (f) => cargas[f] || (cargas[f] = new Promise((ok) => {
     const s = document.createElement('script');
-    s.src = `${root}assets/js/${f}`; s.onload = ok; s.onerror = ok;
+    s.src = `${root}assets/${lang === 'es' ? 'js' : 'i18n/' + lang}/${f}`; s.onload = ok; s.onerror = ok;
     document.head.appendChild(s);
   }));
   const datos = () => Promise.all(['indice.js', 'glosario.js', 'preguntas.js'].map(cargar));
 
   // ---------- Enlaces ----------
-  const urlIdea = (a, id) => `${root}articulos/${a}/#${id}`;
-  const urlTermino = (g) => `${root}glosario/#${g.slug}`;
+  const urlIdea = (a, id) => url(`articulos/${a}/#${id}`);
+  const urlTermino = (g) => url(`glosario/#${g.slug}`);
   // En el mismo artículo no se recarga la página: se baja a la diapositiva (y se abre la capa 2 si toca)
   const ir = (href) => {
     const u = new URL(href, location.href);
@@ -72,7 +75,7 @@
       });
     });
     serie.filter((a) => a.estado !== 'proximamente').forEach((a) => R.push({
-      tipo: 'articulo', b: '', a: a.slug, href: `${root}articulos/${a.slug}/`, titulo: `${a.numero} · ${a.titulo}`, sub: `${a.tema} · ${a.lectura}`, texto: a.resumen,
+      tipo: 'articulo', b: '', a: a.slug, href: url(`articulos/${a.slug}/`), titulo: `${a.numero} · ${a.titulo}`, sub: `${a.tema} · ${a.lectura}`, texto: a.resumen,
       campos: [[a.titulo + ' ' + a.tema + ' ' + (a.etiquetas || []).join(' '), 6], [a.resumen, 2]]
     }));
     R.forEach((r) => { r.n = r.campos.map(([t, w]) => [norm(t), w]); });
@@ -141,7 +144,7 @@
       const G = (window.BF_GLOSARIO || []).slice(0, 12);
       resultados = P.map(([t, a, id, b]) => ({ href: urlIdea(a, id), titulo: t, tipo: 'pregunta', b }));
       out.innerHTML = `<p class="bfb-sec">Dudas frecuentes</p><ul>${resultados.map((r, k) => `<li><a href="${r.href}" data-k="${k}" class="bfb-item is-q"><span class="bfb-ico">?</span><span class="bfb-txt"><b>${esc(r.titulo)}</b></span>${r.b ? `<span class="bfb-b">${r.b}</span>` : ''}</a></li>`).join('')}</ul>` +
-        `<p class="bfb-sec">Conceptos clave</p><div class="bfb-terms">${G.map((g) => `<a class="chip" href="${urlTermino(g)}">${esc(g.t.split(' (')[0])}</a>`).join('')}<a class="chip k" href="${root}glosario/">Glosario completo →</a></div>`;
+        `<p class="bfb-sec">Conceptos clave</p><div class="bfb-terms">${G.map((g) => `<a class="chip" href="${urlTermino(g)}">${esc(g.t.split(' (')[0])}</a>`).join('')}<a class="chip k" href="${url('glosario/')}">Glosario completo →</a></div>`;
     } else {
       resultados = buscar(q);
       const n = resultados.length;
@@ -149,7 +152,7 @@
           <span class="bfb-ico" title="${ETQ[r.tipo]}">${ICONO[r.tipo]}</span>
           <span class="bfb-txt"><span class="bfb-sub">${ETQ[r.tipo]} · ${esc(r.sub)}${ficticio(r.a) ? ' <span class="tag">Ficticio</span>' : ''}</span><b>${resaltar(r.titulo, q, 90)}</b><span class="bfb-snip">${resaltar(r.texto, q)}</span></span>
           ${r.b ? `<span class="bfb-b">${r.b}</span>` : ''}</a></li>`).join('')}</ul>`
-        : `<div class="bfb-vacio"><b>Nada con «${esc(q)}»${filtroBloque ? ' en el bloque ' + filtroBloque : ''}.</b><p>Prueba con otra palabra (también vale en inglés: «survey point», «shared coordinates»), quita los filtros o mira el <a href="${root}glosario/">glosario</a>.</p></div>`;
+        : `<div class="bfb-vacio"><b>Nada con «${esc(q)}»${filtroBloque ? ' en el bloque ' + filtroBloque : ''}.</b><p>Prueba con otra palabra (también vale en inglés: «survey point», «shared coordinates»), quita los filtros o mira el <a href="${url('glosario/')}">glosario</a>.</p></div>`;
     }
     sel = 0; marcar();
   };
@@ -173,7 +176,7 @@
           <div role="group" aria-label="Bloque"><span class="label">Bloque</span><button type="button" class="bfb-f" data-bloque="">Todos</button>${BLOQUES.map(([r, n]) => `<button type="button" class="bfb-f" data-bloque="${r}" title="${n}">${r}</button>`).join('')}</div>
         </div>
         <div class="bfb-res custom-scroll" aria-live="polite"><p class="bfb-sec">Cargando…</p></div>
-        <div class="bfb-pie"><span><kbd>↑</kbd><kbd>↓</kbd> moverse</span><span><kbd>↵</kbd> abrir</span><span><kbd>/</kbd> buscar desde cualquier sitio</span><a href="${root}glosario/">Glosario</a></div>
+        <div class="bfb-pie"><span><kbd>↑</kbd><kbd>↓</kbd> moverse</span><span><kbd>↵</kbd> abrir</span><span><kbd>/</kbd> buscar desde cualquier sitio</span><a href="${url('glosario/')}">Glosario</a></div>
       </div>`;
       document.body.appendChild(dlg);
       const inp = dlg.querySelector('input');
@@ -229,7 +232,7 @@
               <dl class="bfg-keys"><dt><kbd>/</kbd> o <kbd>Ctrl</kbd><kbd>K</kbd></dt><dd>Buscar en toda la serie</dd><dt><kbd>↓</kbd> <kbd>↑</kbd></dt><dd>Idea siguiente / anterior</dd><dt><kbd>Esc</kbd></dt><dd>Cerrar el detalle o un panel</dd><dt><kbd>?</kbd></dt><dd>Esta ayuda</dd></dl></div>
             ${P.length ? `<div><span class="c-label">Dudas frecuentes${slugActual ? ' de este artículo' : ''}</span><ul class="bfg-q">${P.map(([t, a, id, b]) => `<li><a href="${urlIdea(a, id)}"><span class="bfb-b">${b}</span>${esc(t)}</a></li>`).join('')}</ul></div>` : ''}
           </div>
-          <div class="bfg-acc"><button type="button" class="btn" data-buscar>Buscar en la serie</button><a class="btn ghost" href="${root}glosario/">Glosario</a></div>
+          <div class="bfg-acc"><button type="button" class="btn" data-buscar>Buscar en la serie</button><a class="btn ghost" href="${url('glosario/')}">Glosario</a></div>
         </div>`;
         document.body.appendChild(guia);
         guia.addEventListener('click', (e) => {
@@ -266,7 +269,7 @@
   const menu = document.querySelector('#menu-content nav');
   if (menu && !menu.querySelector('[data-buscar]')) {
     const enGlosario = /\/glosario\/?$/.test(location.pathname);
-    if (!menu.querySelector('a[href$="glosario/"]')) menu.insertAdjacentHTML('beforeend', `<a class="menu-link${enGlosario ? ' is-current' : ''}" href="${root}glosario/">Glosario</a>`);
+    if (!menu.querySelector('a[href$="glosario/"]')) menu.insertAdjacentHTML('beforeend', `<a class="menu-link${enGlosario ? ' is-current' : ''}" href="${url('glosario/')}">Glosario</a>`);
     menu.insertAdjacentHTML('beforeend', `<button type="button" class="menu-link bf-menu-btn" data-buscar>Buscar <kbd>/</kbd></button><button type="button" class="menu-link bf-menu-btn" data-guia aria-label="Ayuda">?</button>`);
   }
 

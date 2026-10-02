@@ -2,6 +2,8 @@
 // barra de progreso de lectura y navegación entre artículos de la serie.
 (function () {
   const root = document.documentElement.dataset.root || './';
+  // Enlaces a páginas: en el idioma del lector si existe (assets/js/idioma.js); en ES, igual que root + ruta
+  const url = (p) => (window.BF_I18N ? window.BF_I18N.url(p) : root + p);
 
   // El punto amarillo de los titulares no se queda solo en una línea: se une a la última palabra
   document.querySelectorAll('.display > .dot, .display .hl-y > .dot').forEach((dot) => {
@@ -83,7 +85,7 @@
     list.innerHTML = serie.map((a) => {
       const soon = a.estado === 'proximamente';
       const estado = ESTADOS[a.estado];
-      return `<li class="article-item${soon ? ' is-soon' : ''}"><a href="${root}articulos/${a.slug}/">
+      return `<li class="article-item${soon ? ' is-soon' : ''}"><a href="${url(`articulos/${a.slug}/`)}">
         ${cover(a)}
         <div class="article-body"><h3>${a.titulo}</h3>
           <div class="meta">${fmtFecha(a.fecha)} · ${a.lectura}${estado ? ` <span class="soon">${estado}</span>` : ''}</div>
@@ -113,7 +115,7 @@
     const pub = serie.filter((a) => a.estado !== 'proximamente');
     const i = pub.findIndex((a) => a.slug === slug);
     const card = (a, cls, label) => a
-      ? `<a class="${cls}" href="${root}articulos/${a.slug}/"><span class="label">${label} · ${a.numero}</span><b>${a.titulo}</b></a>`
+      ? `<a class="${cls}" href="${url(`articulos/${a.slug}/`)}"><span class="label">${label} · ${a.numero}</span><b>${a.titulo}</b></a>`
       : `<div class="empty ${cls}"><span class="label">${label}</span><b>${cls === 'next' ? 'Próximamente' : 'Primer artículo'}</b></div>`;
     nav.innerHTML = card(pub[i - 1], 'prev', '← Anterior') + card(pub[i + 1], 'next', 'Siguiente →');
   }
@@ -484,8 +486,14 @@
 })();
 
 // Navegación y ayuda al lector (buscador, glosario, dudas frecuentes, guía): assets/js/ayuda.js
+// Idiomas (selector ES · EN · DE): assets/js/idioma.js, que las páginas traducidas cargan antes de web.js
 (function () {
   const s = document.createElement('script');
   s.src = (document.documentElement.dataset.root || './') + 'assets/js/ayuda.js';
   document.body.appendChild(s);
+  if (!window.BF_I18N) {
+    const i = document.createElement('script');
+    i.src = (document.documentElement.dataset.root || './') + 'assets/js/idioma.js';
+    document.body.appendChild(i);
+  }
 })();

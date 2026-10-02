@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en" data-root="../">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Draft: remove noindex on publishing -->
+  <meta name="robots" content="noindex, nofollow">
+  <!-- Translation of index.html at this git blob (herramientas/i18n.mjs flags it when the Spanish page changes) -->
+  <meta name="bf-fuente" content="index.html@fb276d0537b51511a765c0a861240e572cb31ff3">
+  <title>BIM Foundation | Articles about BIM</title>
+  <meta name="description" content="A series of explanatory articles about BIM: the fundamentals everybody uses and almost nobody explains.">
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="../assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../assets/css/estilo.css">
+  <link rel="stylesheet" href="../assets/css/precision.css">
+</head>
+<body>
+  <div id="nav-capsule">
+    <button id="menu-trigger" aria-label="Menu" aria-expanded="false">BF</button>
+    <div id="menu-content">
+      <nav>
+        <a class="menu-link is-current" href="./">Home</a>
+        <a class="menu-link" href="#articulos">Articles</a>
+        <a class="menu-link" href="glosario/">Glossary</a>
+      </nav>
+    </div>
+  </div>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <div class="hero-grid">
+          <div>
+            <p class="hero-id">BIM Foundation</p>
+            <span class="kicker-y lg">Article series · BIM explained</span>
+            <h1 class="display">The foundations<br>of BIM, properly<br><span class="hl-y">explained<span class="dot">.</span></span></h1>
+          </div>
+          <div class="hero-side">
+            <p class="hero-lead">Explanatory articles on what everybody uses in BIM and almost nobody explains: concepts, workflows between programs and real mistakes, with sources and examples in the reader's own coordinate system.</p>
+            <button type="button" class="bf-search-trigger" data-buscar><svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="6" fill="none" stroke="currentColor" stroke-width="2.5"/><path d="M13 13l5 5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg><span>Search for a concept, a question or a program…</span><kbd>/</kbd></button>
+            <div class="hero-acc"><a class="btn" href="#dudas">Start with your question <span aria-hidden="true">↓</span></a><a class="btn ghost" href="#articulos">See articles</a></div>
+            <div class="hero-meta"><button type="button" data-buscar data-buscar-q="Revit">Revit</button><button type="button" data-buscar data-buscar-q="Civil 3D">Civil 3D</button><button type="button" data-buscar data-buscar-q="IFC">IFC</button><a href="glosario/">Glossary</a></div>
+            <dl class="pz-spec">
+              <dt>Format</dt><dd>15-second sheets + detail</dd>
+              <dt>Sources</dt><dd>Official and cited</dd>
+              <dt>Scope</dt><dd>International · openBIM</dd>
+              <dt>Status</dt><dd>Draft v0.1</dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="dudas">
+      <div class="wrap">
+        <div class="series-head">
+          <span class="kicker-y" style="margin-bottom:16px">Shortcuts</span>
+          <h2 class="display">Start with your question<span class="dot">.</span></h2>
+          <p>The questions that come up most often, one click away from the idea that answers them.</p>
+        </div>
+        <ol id="bf-dudas" class="bf-dudas"></ol>
+      </div>
+    </section>
+
+    <section id="articulos">
+      <div class="wrap">
+        <div class="series-head">
+          <span class="kicker-y" style="margin-bottom:16px">Articles</span>
+          <h2 class="display">One by one<span class="dot">.</span></h2>
+          <p>Each article can be read on its own and cites its sources. Data we have not been able to confirm is flagged. Articles not yet translated open in Spanish.</p>
+        </div>
+        <div id="bf-filtros" class="bf-filtros"></div>
+        <ol id="article-list" class="article-list"></ol>
+      </div>
+    </section>
+
+    <section id="bloques">
+      <div class="wrap">
+        <div class="series-head">
+          <span class="kicker-y" style="margin-bottom:16px">By block</span>
+          <h2 class="display">From the general to the specific<span class="dot">.</span></h2>
+          <p>Every article follows the same six blocks. Pick one and you will see its ideas across the whole series.</p>
+        </div>
+        <ol id="bf-bloques" class="bf-bloques"></ol>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site">
+    <div class="wrap">
+      <span>Designed and developed by Alejandro García Nicolás</span><span class="sep">·</span><span class="mono">BIM Foundation · 2026</span>
+    </div>
+  </footer>
+
+  <script src="../assets/js/serie.js"></script>
+  <script src="../assets/i18n/paginas.js"></script>
+  <script src="../assets/i18n/en/ui.js"></script>
+  <script src="../assets/js/idioma.js"></script>
+  <script src="../assets/js/web.js"></script>
+  <script src="../assets/js/precision.js"></script>
+</body>
+</html>

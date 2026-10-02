@@ -1,0 +1,12 @@
+{
+ "coordenadas-compartidas#problema": "Why do models arrive out of place when federated?",
+ "coordenadas-compartidas#paises": "Which EPSG code do I put in the BEP and in the IFC?",
+ "coordenadas-compartidas#limite": "Why does geometry jitter far from the origin?",
+ "coordenadas-compartidas#nortes": "Project north or true north?",
+ "coordenadas-compartidas#ifc": "How do you georeference an IFC properly?",
+ "coordenadas-compartidas#survey": "Is the Survey Point the coordinate origin?",
+ "coordenadas-compartidas#revit": "Acquire or publish coordinates in Revit?",
+ "coordenadas-compartidas#nubes": "How do I bring a point cloud in UTM into the model?",
+ "coordenadas-compartidas#coordinacion": "Do I move the model in the viewer or in the original?",
+ "coordenadas-compartidas#calidad": "How do I check that a model is where it should be?"
+}
