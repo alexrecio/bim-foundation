@@ -5,7 +5,7 @@
 (function () {
   const t = {
     // Navigation and states
-    'Inicio': 'Home', 'Artículos': 'Articles', 'Glosario': 'Glossary', 'Buscar': 'Search', 'Ayuda': 'Help', 'Menú': 'Menu', 'Cerrar': 'Close',
+    'Inicio': 'Home', 'Idioma': 'Language', 'Artículos': 'Articles', 'Glosario': 'Glossary', 'Buscar': 'Search', 'Ayuda': 'Help', 'Menú': 'Menu', 'Cerrar': 'Close',
     'Borrador': 'Draft', 'Próximamente': 'Coming soon', 'Relleno ficticio': 'Fictitious filler', 'Ficticio': 'Fictitious',
     'Serie BIM Foundation': 'BIM Foundation series', 'Tema': 'Topic', 'Primer artículo': 'First article',
     '← Anterior': '← Previous', 'Siguiente →': 'Next →', 'Por confirmar': 'To be confirmed', 'Inferido': 'Inferred',
