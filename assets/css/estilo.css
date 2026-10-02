@@ -328,12 +328,11 @@ main.deck { padding-left: var(--side); overflow-x: clip; }
 body:has(.deck) footer.site { padding-left: var(--side); }
 
 .slide {
+  background: var(--white);
   position: relative; min-height: 100vh; min-height: 100svh; display: flex; flex-direction: column; justify-content: center;
   padding: 92px var(--pad) 84px; scroll-snap-align: start; border-bottom: 1px solid var(--s100);
 }
 @media (min-width: 1200px) { .slide { padding: 40px var(--pad); } }
-.slide:nth-child(even) { background: var(--s50); }
-.slide:nth-child(even) .card:not(.k):not(.y) { background: var(--white); }
 
 /* Rejilla de bloques: titular a la izquierda, tarjetas a la derecha */
 .bento { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; width: 100%; }
