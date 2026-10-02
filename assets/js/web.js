@@ -4,7 +4,7 @@
   const root = document.documentElement.dataset.root || './';
 
   // El punto amarillo de los titulares no se queda solo en una línea: se une a la última palabra
-  document.querySelectorAll('.display > .dot').forEach((dot) => {
+  document.querySelectorAll('.display > .dot, .display .hl-y > .dot').forEach((dot) => {
     const prev = dot.previousSibling;
     if (!prev || prev.nodeType !== 3) return;
     const m = prev.textContent.match(/^([\s\S]*?)(\S+)$/);
@@ -75,11 +75,11 @@
   if (list) {
     list.innerHTML = serie.map((a) => {
       const soon = a.estado === 'proximamente';
-      const estado = a.estado === 'borrador' ? '<span class="soon">Borrador</span>' : soon ? '<span class="soon">Próximamente</span>' : '';
+      const estado = { borrador: 'Borrador', proximamente: 'Próximamente', relleno: 'Relleno ficticio' }[a.estado];
       return `<li class="article-item${soon ? ' is-soon' : ''}"><a href="${root}articulos/${a.slug}/">
         <span class="n">${a.numero}</span>
         <div><h3>${a.titulo}</h3><p>${a.resumen}</p></div>
-        <div class="meta">${a.tema}<br>${fmtFecha(a.fecha)} · ${a.lectura}<br>${estado}</div>
+        <div class="meta">${a.tema}<br>${fmtFecha(a.fecha)} · ${a.lectura}${estado ? `<br><span class="soon">${estado}</span>` : ''}</div>
       </a></li>`;
     }).join('');
   }
@@ -103,6 +103,13 @@
   if (!slides.length) return;
   const pad = (n) => String(n).padStart(2, '0');
   const total = pad(slides.length);
+  // Titular de portada: reduce el tamaño si una palabra larga no cabe en su columna
+  const fit = () => document.querySelectorAll('.slide h1.display').forEach((h) => {
+    h.style.fontSize = '';
+    let size = parseFloat(getComputedStyle(h).fontSize);
+    while (h.scrollWidth > h.clientWidth + 1 && size > 24) { size -= 2; h.style.fontSize = size + 'px'; }
+  });
+  fit(); addEventListener('resize', fit); if (document.fonts) document.fonts.ready.then(fit);
   const titleOf = (s) => s.dataset.nav || ((s.querySelector('h1, h2') || {}).textContent || '').replace(/\.$/, '');
 
   // Numeración y menú con los títulos de cada diapositiva (lateral en escritorio, hoja inferior en móvil)
