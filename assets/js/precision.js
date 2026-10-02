@@ -65,17 +65,7 @@
     return innerWidth >= 1280 ? [s.left - r.left - 36, Math.min(s.bottom - r.top + 28, r.height - 130)] : [r.width * 0.86, r.height * 0.86];
   }, { pieza: true });
 
-  // Portada de cada artículo: el origen es el del sistema del lector
-  const portada = slides[0] && !slides[0].dataset.cap ? slides[0] : null;
-  if (portada && portada.querySelector('.b-cards')) {
-    const crs = () => { const b = document.querySelector('[data-crs-chip] b'); const m = b && b.textContent.match(/EPSG\s*\d+/); return m ? m[0] : 'EPSG ····'; };
-    const o = origen(portada, (r) => {
-      const c = portada.querySelector('.b-cards').getBoundingClientRect();
-      const t = portada.querySelector('.b-title').getBoundingClientRect();
-      return innerWidth >= 1000 ? [c.left - r.left - 8, Math.min(t.bottom - r.top + 40, r.height - 60)] : [r.width - 28, t.top - r.top - 24];
-    }, { xy: `${crs()} · E 0,000 · N 0,000`, papel: true });
-    document.addEventListener('bf-crs', () => { o.querySelector('.lbl.xy').textContent = `${crs()} · E 0,000 · N 0,000`; });
-  }
+  // Portada de cada artículo: sin origen ni ejes (Álex: ya está en la portada de la web)
 
   // Primera lámina de cada bloque (I–VI): papel milimetrado en la esquina (sin numeral: Álex, no aporta)
   slides.filter((s) => s.dataset.cap).forEach((s) => {
