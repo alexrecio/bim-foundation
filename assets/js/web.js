@@ -242,6 +242,38 @@
   slides.forEach((s, i) => { s.dataset.capI = String(caps.slice(0, i + 1).filter((c, j) => slides[j].dataset.cap).length - 1); });
   swDecorate(document);
 
+  // Selector de país: marco geodésico oficial de cada país (datos en assets/js/paises.js)
+  const PROY_SVG = {
+    utm: '<path d="M20 50 a60 40 0 0 1 120 0 a60 40 0 0 1 -120 0Z" fill="none" stroke="#000" stroke-width="3"/>' + [40, 60, 80, 100, 120].map((x) => `<path d="M${x} ${14 + Math.abs(80 - x) / 6} V${86 - Math.abs(80 - x) / 6}" stroke="#000" stroke-width="2"/>`).join('') + '<rect x="80" y="14" width="20" height="72" fill="#FFFF00" stroke="#000" stroke-width="2.5"/>',
+    tm: '<path d="M20 50 a60 40 0 0 1 120 0 a60 40 0 0 1 -120 0Z" fill="none" stroke="#000" stroke-width="3"/><rect x="62" y="12" width="36" height="76" fill="#FFFF00" stroke="#000" stroke-width="2.5"/>',
+    lcc: '<path d="M20 70 a60 22 0 0 0 120 0" fill="none" stroke="#000" stroke-width="3"/><path d="M80 6 L28 66 M80 6 L132 66" stroke="#000" stroke-width="3" fill="none"/><path d="M45 47 a40 12 0 0 0 70 0" fill="none" stroke="#000" stroke-width="2"/><path d="M36 57 a48 14 0 0 0 88 0 L115 47 a40 12 0 0 1 -70 0Z" fill="#FFFF00" stroke="#000" stroke-width="2"/>',
+    est: '<circle cx="80" cy="62" r="34" fill="none" stroke="#000" stroke-width="3"/><path d="M30 28 H130" stroke="#000" stroke-width="2"/><rect x="50" y="20" width="60" height="10" fill="#FFFF00" stroke="#000" stroke-width="2.5"/><circle cx="80" cy="28" r="4" fill="#000"/>',
+    zonas: '<g stroke="#000" stroke-width="2.5" fill="#fff"><rect x="14" y="16" width="44" height="30"/><rect x="58" y="16" width="38" height="30"/><rect x="96" y="16" width="50" height="30"/><rect x="14" y="46" width="60" height="38"/><rect x="74" y="46" width="34" height="38" fill="#FFFF00"/><rect x="108" y="46" width="38" height="38"/></g>'
+  };
+  // Tabla completa para la capa 2 (<div class="paises-tabla"></div>)
+  const paisesTabla = (el) => {
+    const P = window.BF_PAISES || [];
+    el.innerHTML = `<div class="table-wrap"><table><thead><tr><th>País</th><th>Datum</th><th>Proyección</th><th>EPSG habitual</th><th>Altitudes</th><th>Organismo</th></tr></thead><tbody>${P.map((p) => `<tr${p.id === 'ES' ? ' class="is-key"' : ''}><td>${p.nombre}</td><td>${p.datum} <span class="mono">${p.datumEpsg}</span></td><td>${p.proy}</td><td class="mono">${p.epsg.map(([c]) => c).join(' · ')}</td><td>${p.alt ? `${p.alt} <span class="mono">${p.altEpsg}</span>` : '<span class="tag">Por confirmar</span>'}</td><td><a href="${p.url}" target="_blank" rel="noopener">${p.org}</a></td></tr>`).join('')}</tbody></table></div>`;
+  };
+  document.querySelectorAll('.paises').forEach((el) => {
+    const P = window.BF_PAISES || [];
+    if (!P.length) return;
+    const pc = () => '<span class="tag">Por confirmar</span>';
+    const draw = (id) => {
+      const p = P.find((x) => x.id === id) || P[0];
+      el.querySelectorAll('.paises-bar .chip').forEach((c) => c.classList.toggle('is-on', c.dataset.p === p.id));
+      el.querySelector('.paises-out').innerHTML = `
+        <div class="paises-proy"><svg viewBox="0 0 160 100" class="draw" aria-hidden="true">${PROY_SVG[p.tipo]}</svg><span class="c-label">Proyección</span><b>${p.proy}</b></div>
+        <div><span class="c-label">Datum</span><b>${p.datum}</b><span class="mono">EPSG ${p.datumEpsg}</span></div>
+        <div><span class="c-label">Altitudes</span>${p.alt ? `<b>${p.alt}</b><span class="mono">EPSG ${p.altEpsg}</span>` : `<b>Red nacional</b>${pc()}`}</div>
+        <div><span class="c-label">Organismo</span><b><a href="${p.url}" target="_blank" rel="noopener">${p.org}</a></b></div>
+        <div class="paises-codes"><span class="c-label">Códigos EPSG para el BEP y el IFC</span><div>${p.epsg.map(([c, t]) => `<span class="paises-code${c === p.key ? ' is-key' : ''}"><b>${c}</b>${t}</span>`).join('')}</div>${p.nota || p.revisar ? `<p>${p.nota}${p.revisar ? ' ' + pc() : ''}</p>` : ''}</div>`;
+    };
+    el.innerHTML = `<div class="paises-bar" role="group" aria-label="Elegir país">${P.map((p) => `<button type="button" class="chip" data-p="${p.id}">${p.nombre}</button>`).join('')}</div><div class="paises-out" aria-live="polite"></div>`;
+    el.querySelectorAll('.paises-bar .chip').forEach((c) => c.addEventListener('click', () => draw(c.dataset.p)));
+    draw(el.dataset.def || P[0].id);
+  });
+
   // Lector de coordenadas: un cursor que se arrastra y se lee en tres sistemas
   document.querySelectorAll('.lector').forEach((el) => {
     const E0 = +el.dataset.e0, N0 = +el.dataset.n0, S = 10; // 10 px = 1 m
@@ -304,6 +336,7 @@
     const kicker = (slide.querySelector('.kicker-y') || {}).textContent || '';
     body.innerHTML = `<div class="l2-head"><span class="kicker-y">${kicker}</span><span class="label">Capa 2 · ${pad(i + 1)} / ${total}${i >= 0 && caps[i] ? ' · ' + caps[i] : ''}</span><h3>${tpl.dataset.title || titleOf(slide)}</h3></div>`;
     body.appendChild(tpl.content.cloneNode(true));
+    body.querySelectorAll('.paises-tabla').forEach(paisesTabla);
     if (slide.dataset.capI !== '0') swDecorate(body);
     opener = btn || null;
     modal.classList.add('is-visible');

@@ -31,14 +31,14 @@
 
   <!-- Menú de diapositivas: se rellena con data-nav de cada <section> -->
   <aside id="deck-nav" aria-label="Diapositivas">
-    <span class="kicker-y">Coordenadas · 37 ideas</span>
+    <span class="kicker-y">Coordenadas · 38 ideas</span>
     <ol></ol>
     <div id="deck-progress" aria-hidden="true"><i></i></div>
   </aside>
   <div id="deck-bar">
     <div id="deck-sheet"><ol></ol></div>
     <button type="button" id="deck-bar-btn" aria-expanded="false" aria-controls="deck-sheet">
-      <span class="n">01/37</span><span class="t">Portada</span>
+      <span class="n">01/38</span><span class="t">Portada</span>
       <span class="chev" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M3 9l4-4 4 4" fill="none" stroke="#fff" stroke-width="2"/></svg></span>
     </button>
   </div>
@@ -66,7 +66,7 @@
             <span class="c-label">El artículo en seis bloques</span>
             <ol class="mapa">
               <li class="is-key"><a href="#problema"><b>I</b><span>Conceptos generales</span><em>14 ideas · para cualquier programa</em></a></li>
-              <li><a href="#espana"><b>II</b><span>Estándares</span><em>3 ideas · EPSG, IFC, ISO 19650</em></a></li>
+              <li><a href="#paises"><b>II</b><span>Estándares</span><em>4 ideas · cada país, EPSG, IFC, ISO 19650</em></a></li>
               <li><a href="#limites"><b>III</b><span>Software</span><em>7 ideas · Revit, Survey Point, campus y tipologías</em></a></li>
               <li><a href="#coordinacion"><b>IV</b><span>Plataformas</span><em>2 ideas · visores y nube</em></a></li>
               <li><a href="#civil3d"><b>V</b><span>Interoperabilidad</span><em>2 ideas · intercambio y errores</em></a></li>
@@ -643,11 +643,28 @@
     </section>
 
     <!-- ========== ESPAÑA ========== -->
-    <section class="slide" id="espana" data-cap="II · Estándares" data-nav="Marco español">
+    <!-- ========== PAÍSES ========== -->
+    <section class="slide" id="paises" data-cap="II · Estándares" data-nav="Cada país, su marco">
       <div class="bento">
         <div class="b-title">
           <span class="slide-n"></span>
-          <span class="kicker-y">Geodesia en España</span>
+          <span class="kicker-y">Geodesia por país</span>
+          <h2 class="display">Cada país, su marco<span class="dot">.</span></h2>
+          <p class="slide-lead">Datum, proyección y altitudes los fija el organismo cartográfico de cada país. Elige el tuyo y copia su código EPSG.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="paises"><span class="plus">+</span> Ver todos</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w6"><div class="paises" data-def="ES"></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== ESPAÑA ========== -->
+    <section class="slide" id="espana" data-nav="Ejemplo: España">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Ejemplo · España</span>
           <h2 class="display">ETRS89, UTM y Alicante<span class="dot">.</span></h2>
           <p class="slide-lead">Es el marco oficial. En el BEP, en Civil 3D y en el IFC se escribe con un código EPSG.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="espana"><span class="plus">+</span> Ver detalle</button></div>
@@ -1758,6 +1775,34 @@
 </div>
   </template>
 
+  <template id="l2-paises">
+    <div class="b-cards">
+      <div class="card w6">
+        <h4>Dieciséis marcos oficiales</h4>
+        <div class="paises-tabla"></div>
+        <p class="table-note">En los países con varios husos o zonas, el código depende de dónde está la obra. Fila resaltada: el ejemplo que sigue el artículo.</p>
+      </div>
+      <div class="card w3 g">
+        <h4>Cómo elegir el código</h4>
+        <ol class="vsteps">
+          <li>Buscar el sistema que publica el organismo cartográfico del país.</li>
+          <li>Si hay husos o zonas, tomar el de la obra, aunque la obra toque dos.</li>
+          <li>Comprobar el código y sus parámetros en el registro EPSG.</li>
+          <li>Escribirlo en el BEP y en el IfcProjectedCRS, junto al de altitudes.</li>
+        </ol>
+      </div>
+      <div class="card w3 k">
+        <h4>Lo que cambia de un país a otro</h4>
+        <ul>
+          <li>La unidad: metros en casi todos, pies topográficos en parte de Estados Unidos.</li>
+          <li>El orden de los ejes: algunos registros dan norte antes que este.</li>
+          <li>El datum: los marcos continentales (ETRS89, SIRGAS, NAD83, GDA2020) se mueven con su placa; los antiguos, como OSGB36, necesitan una transformación desde el GNSS.</li>
+        </ul>
+      </div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://epsg.org" target="_blank" rel="noopener">registro EPSG</a> (códigos comprobados con la base de datos PROJ, versión EPSG 11.022) y el organismo enlazado en cada fila.</p></div>
+    </div>
+  </template>
+
   <template id="l2-espana">
 <div class="b-cards">
 <div class="card w3">
@@ -2562,6 +2607,7 @@ print("OK" if error &lt; 0.01 else f"Desvío de {error:.3f} m")</code></pre>
   </template>
 
   <script src="../../assets/js/serie.js"></script>
+  <script src="../../assets/js/paises.js"></script>
   <script src="../../assets/js/web.js"></script>
 </body>
 </html>
