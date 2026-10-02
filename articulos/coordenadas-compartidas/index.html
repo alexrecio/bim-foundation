@@ -31,14 +31,14 @@
 
   <!-- Menú de diapositivas: se rellena con data-nav de cada <section> -->
   <aside id="deck-nav" aria-label="Diapositivas">
-    <span class="kicker-y">Coordenadas · 28 ideas</span>
+    <span class="kicker-y">Coordenadas · 34 ideas</span>
     <ol></ol>
     <div id="deck-progress" aria-hidden="true"><i></i></div>
   </aside>
   <div id="deck-bar">
     <div id="deck-sheet"><ol></ol></div>
     <button type="button" id="deck-bar-btn" aria-expanded="false" aria-controls="deck-sheet">
-      <span class="n">01/28</span><span class="t">Portada</span>
+      <span class="n">01/34</span><span class="t">Portada</span>
       <span class="chev" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M3 9l4-4 4 4" fill="none" stroke="#fff" stroke-width="2"/></svg></span>
     </button>
   </div>
@@ -63,13 +63,14 @@
         <div class="b-cards">
           <div class="card w6 ficha" data-ficha></div>
           <div class="card w6 g">
-            <span class="c-label">El artículo en cinco bloques</span>
+            <span class="c-label">El artículo en seis bloques</span>
             <ol class="mapa">
               <li class="is-key"><a href="#problema"><b>I</b><span>Conceptos generales</span><em>14 ideas · para cualquier programa</em></a></li>
               <li><a href="#espana"><b>II</b><span>Estándares</span><em>3 ideas · EPSG, IFC, ISO 19650</em></a></li>
               <li><a href="#limites"><b>III</b><span>Software</span><em>4 ideas · Revit y equivalencias</em></a></li>
               <li><a href="#coordinacion"><b>IV</b><span>Plataformas</span><em>2 ideas · visores y nube</em></a></li>
-              <li><a href="#civil3d"><b>V</b><span>Interoperabilidad</span><em>4 ideas · intercambio y control</em></a></li>
+              <li><a href="#civil3d"><b>V</b><span>Interoperabilidad</span><em>2 ideas · intercambio y errores</em></a></li>
+            <li><a href="#calidad"><b>VI</b><span>Control de calidad</span><em>8 ideas · IDS, IfcOpenShell, Model Checker, Solibri</em></a></li>
             </ol>
           </div>
         </div>
@@ -994,29 +995,239 @@
       </div>
     </section>
 
-    <!-- ========== VERIFICACIÓN ========== -->
-    <section class="slide" id="herramientas" data-nav="Comprobar antes de entregar">
+    <!-- ========== QA · QUÉ COMPROBAR ========== -->
+    <section class="slide" id="calidad" data-cap="VI · Control de calidad" data-nav="Qué comprobar">
       <div class="bento">
         <div class="b-title">
           <span class="slide-n"></span>
-          <span class="kicker-y">Verificación</span>
-          <h2 class="display">Comprueba antes de entregar<span class="dot">.</span></h2>
-          <p class="slide-lead">Un cubo testigo y un visor neutro descubren los errores en minutos.</p>
-          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="herramientas"><span class="plus">+</span> Ver herramientas</button></div>
+          <span class="kicker-y">Control de calidad</span>
+          <h2 class="display">Cuatro preguntas por modelo<span class="dot">.</span></h2>
+          <p class="slide-lead">Un modelo puede verse perfecto y estar a cien metros. Antes de federarlo, que responda dónde está, hacia dónde mira, a qué cota y en qué sistema.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="calidad"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w3 y">
+            <span class="c-label">01 · Dónde</span>
+            <svg class="ico" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 4 C12 4 8 10 8 16 C8 25 20 36 20 36 C20 36 32 25 32 16 C32 10 28 4 20 4 Z" fill="none" stroke="#000" stroke-width="2.5"/><circle cx="20" cy="16" r="4" fill="#000"/></svg>
+            <span class="c-title">Este y Norte</span>
+            <span class="c-foot">del punto de control</span>
+          </div>
+          <div class="card w3">
+            <span class="c-label">02 · Hacia dónde</span>
+            <svg class="ico" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="22" r="14" fill="none" stroke="#000" stroke-width="2.5"/><polygon points="20,6 25,24 20,20 15,24" fill="#000"/><text x="16" y="5" font-family="JetBrains Mono, monospace" font-size="7" font-weight="700">N</text></svg>
+            <span class="c-title">Giro al norte</span>
+            <span class="c-foot">cuadrícula, no geográfico</span>
+          </div>
+          <div class="card w3">
+            <span class="c-label">03 · A qué cota</span>
+            <svg class="ico" viewBox="0 0 40 40" aria-hidden="true"><path d="M4 34 L36 34" stroke="#000" stroke-width="2.5"/><path d="M20 30 L20 8" stroke="#000" stroke-width="2.5"/><polygon points="14,12 20,4 26,12" fill="#000"/><path d="M4 26 Q12 22 20 26 T36 26" fill="none" stroke="#000" stroke-width="2" stroke-dasharray="3 3"/></svg>
+            <span class="c-title">Altitud ortométrica</span>
+            <span class="c-foot">sobre el nivel del mar</span>
+          </div>
+          <div class="card w3 k">
+            <span class="c-label">04 · En qué sistema</span>
+            <b class="c-num" style="color:var(--accent)">25830</b>
+            <span class="c-foot">un código EPSG, no un nombre</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== QA · OPCIONES ========== -->
+    <section class="slide" id="opciones" data-nav="Las opciones">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Las opciones</span>
+          <h2 class="display">Cinco formas de revisar<span class="dot">.</span></h2>
+          <p class="slide-lead">Unas miran el modelo nativo y otras el IFC; unas se configuran y otras se programan.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="opciones"><span class="plus">+</span> Comparar</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w6">
+            <span class="c-label">Qué miran · cómo se definen</span>
+            <svg class="draw" viewBox="0 0 440 250" aria-hidden="true">
+              <line x1="220" y1="30" x2="220" y2="240" stroke="#000" stroke-width="2" stroke-dasharray="5 5"/>
+              <line x1="0" y1="135" x2="440" y2="135" stroke="#000" stroke-width="2" stroke-dasharray="5 5"/>
+              <text x="0" y="16" font-family="JetBrains Mono, monospace" font-size="13" font-weight="700">← MODELO NATIVO</text>
+              <text x="440" y="16" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="13" font-weight="700">IFC →</text>
+              <text x="0" y="126" font-family="JetBrains Mono, monospace" font-size="12" fill="#666">↑ se configura</text>
+              <text x="0" y="154" font-family="JetBrains Mono, monospace" font-size="12" fill="#666">↓ se programa o se mira</text>
+              <rect x="20" y="52" width="180" height="46" rx="23" fill="#fff" stroke="#000" stroke-width="3"/><text x="110" y="81" text-anchor="middle" font-family="Inter, sans-serif" font-weight="900" font-size="16">MODEL CHECKER</text>
+              <rect x="20" y="178" width="180" height="46" rx="23" fill="#fff" stroke="#000" stroke-width="3"/><text x="110" y="207" text-anchor="middle" font-family="Inter, sans-serif" font-weight="900" font-size="15">CADA PROGRAMA</text>
+              <rect x="236" y="52" width="80" height="46" rx="23" fill="#FFFF00" stroke="#000" stroke-width="3"/><text x="276" y="81" text-anchor="middle" font-family="Inter, sans-serif" font-weight="900" font-size="16">IDS</text>
+              <rect x="326" y="52" width="114" height="46" rx="23" fill="#fff" stroke="#000" stroke-width="3"/><text x="383" y="81" text-anchor="middle" font-family="Inter, sans-serif" font-weight="900" font-size="16">SOLIBRI</text>
+              <rect x="236" y="178" width="204" height="46" rx="23" fill="#000"/><text x="338" y="207" text-anchor="middle" font-family="Inter, sans-serif" font-weight="900" font-size="16" fill="#fff">IFCOPENSHELL</text>
+            </svg>
+            <span class="c-foot">IDS es el único estándar: lo leen Solibri e IfcOpenShell</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== QA · IDS ========== -->
+    <section class="slide" id="ids" data-nav="IDS">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">IDS</span>
+          <h2 class="display">El requisito, en un fichero<span class="dot">.</span></h2>
+          <p class="slide-lead">Un XML de buildingSMART dice qué tiene que traer el IFC. Va con el contrato y cualquier comprobador lo lee igual.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="ids"><span class="plus">+</span> Ver un ejemplo</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w2 y">
+            <span class="c-label">IDS 1.0</span>
+            <b class="c-num">2024</b>
+            <span class="c-foot">estándar final</span>
+          </div>
+          <div class="card w4 g">
+            <span class="c-label">Seis facetas</span>
+            <div class="chips"><span class="chip">Entidad</span><span class="chip">Atributo</span><span class="chip">Propiedad</span><span class="chip">Clasificación</span><span class="chip">Material</span><span class="chip">Parte de</span></div>
+          </div>
+          <div class="card w3">
+            <span class="c-label">Sí puede</span>
+            <span class="c-title">Exigir EPSG:25830</span>
+            <span class="c-foot">y que exista la conversión</span>
+          </div>
+          <div class="card w3 k">
+            <span class="c-label">No puede</span>
+            <span class="c-title">Calcular dónde cae un punto</span>
+            <span class="c-foot">compara valores, no los combina</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== QA · IFCOPENSHELL ========== -->
+    <section class="slide" id="ifcopenshell" data-nav="IfcOpenShell">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">IfcOpenShell</span>
+          <h2 class="display">Comprobar con código<span class="dot">.</span></h2>
+          <p class="slide-lead">Una librería abierta de Python pasa el IDS y además hace la cuenta que el IDS no hace: lleva el punto testigo a UTM y lo compara con el topógrafo.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="ifcopenshell"><span class="plus">+</span> Ver el script</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w4">
+            <span class="c-label">Flujo</span>
+            <svg class="draw" viewBox="0 0 400 130" aria-hidden="true">
+              <rect x="0" y="44" width="90" height="62" rx="6" fill="#fff" stroke="#000" stroke-width="3"/><text x="45" y="82" text-anchor="middle" font-family="Inter, sans-serif" font-weight="900" font-size="18">IFC</text>
+              <rect x="0" y="4" width="90" height="30" rx="15" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="45" y="24" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="13" font-weight="700">.ids</text>
+              <path d="M96 75 L128 75" stroke="#000" stroke-width="3"/><polygon points="128,68 138,75 128,82" fill="#000"/>
+              <rect x="142" y="30" width="120" height="90" rx="6" fill="#000"/><text x="154" y="64" font-family="JetBrains Mono, monospace" font-size="13" fill="#fff">import</text><text x="154" y="84" font-family="JetBrains Mono, monospace" font-size="13" fill="#fff">ifcopenshell</text><text x="154" y="106" font-family="JetBrains Mono, monospace" font-size="12" fill="#999">python</text>
+              <path d="M268 75 L292 75" stroke="#000" stroke-width="3"/><polygon points="292,68 302,75 292,82" fill="#000"/>
+              <rect x="306" y="30" width="94" height="90" rx="6" fill="#FFFF00" stroke="#000" stroke-width="3"/><text x="353" y="62" text-anchor="middle" font-family="Inter, sans-serif" font-weight="900" font-size="15">INFORME</text><text x="353" y="86" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="12">HTML · BCF</text><text x="353" y="104" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="12">JSON</text>
+            </svg>
+          </div>
+          <div class="card w2 k">
+            <span class="c-label">IfcTester</span>
+            <span class="c-title" style="color:var(--accent)">Pasa el IDS</span>
+            <span class="c-foot">línea de comandos o web</span>
+          </div>
+          <div class="card w3">
+            <span class="c-label">Calcula</span>
+            <span class="c-title">Local → UTM</span>
+            <span class="c-foot">con la conversión del propio IFC</span>
+          </div>
+          <div class="card w3">
+            <span class="c-label">Coste</span>
+            <b class="c-num">0 €</b>
+            <span class="c-foot">código abierto</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== QA · MODEL CHECKER ========== -->
+    <section class="slide" id="model-checker" data-nav="Model Checker">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Model Checker</span>
+          <h2 class="display">Revisar dentro de Revit<span class="dot">.</span></h2>
+          <p class="slide-lead">Antes de exportar, un juego de reglas revisa el modelo nativo y lleva a cada elemento que no cumple.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="model-checker"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w2 y">
+            <span class="c-label">Precio</span>
+            <b class="c-num">0 €</b>
+            <span class="c-foot">con licencia de Revit</span>
+          </div>
+          <div class="card w2">
+            <span class="c-label">Reglas</span>
+            <span class="c-title">Checksets</span>
+            <span class="c-foot">se editan con el Configurator</span>
+          </div>
+          <div class="card w2 k">
+            <span class="c-label">Salida</span>
+            <span class="c-title" style="color:var(--accent)">Excel · Power BI</span>
+            <span class="c-foot">salud del modelo en el tiempo</span>
+          </div>
+          <div class="card w6 g">
+            <span class="c-label">Dónde encaja</span>
+            <div class="flow"><span class="chip">Configurator</span><span class="arrow">→</span><span class="chip">Checkset</span><span class="arrow">→</span><span class="chip y">Revit</span><span class="arrow">→</span><span class="chip">Informe</span><span class="arrow">→</span><span class="chip k">IFC</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== QA · SOLIBRI ========== -->
+    <section class="slide" id="solibri" data-nav="Solibri">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Solibri</span>
+          <h2 class="display">Reglas sobre el modelo federado<span class="dot">.</span></h2>
+          <p class="slide-lead">Revisa los IFC de todos con reglas y, desde la 25.12, lee la georreferenciación como propiedades del proyecto.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="solibri"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w2 y">
+            <span class="c-label">Versión</span>
+            <b class="c-num">25.12</b>
+            <span class="c-foot">IfcMapConversion legible</span>
+          </div>
+          <div class="card w2 k">
+            <span class="c-label">Regla 244</span>
+            <span class="c-title" style="color:var(--accent)">Valida IDS</span>
+            <span class="c-foot">incluido IDS 1.0</span>
+          </div>
+          <div class="card w2">
+            <span class="c-label">Coordenadas grandes</span>
+            <span class="c-title">Parpadeo</span>
+            <span class="c-foot">geometría cerca del origen</span>
+          </div>
+          <div class="card w6 g">
+            <span class="c-label">Una regla de georreferenciación</span>
+            <div class="flow"><span class="chip">Proyecto</span><span class="arrow">→</span><span class="chip y">Name = EPSG:25830</span><span class="arrow">→</span><span class="chip k">Pasa o falla</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== QA · CADA PROGRAMA ========== -->
+    <section class="slide" id="herramientas" data-nav="En cada programa">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">En cada programa</span>
+          <h2 class="display">Lo que ya trae tu programa<span class="dot">.</span></h2>
+          <p class="slide-lead">Sin instalar nada: un cubo testigo en cada punto de control y leer sus coordenadas en el programa y en un visor neutro.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="herramientas"><span class="plus">+</span> Ver dónde mirar</button></div>
         </div>
         <div class="b-cards">
           <div class="card w3 y">
             <span class="c-label">Objeto testigo</span>
-            <svg class="draw" viewBox="0 0 200 120" aria-hidden="true"><polygon points="60,40 110,20 160,40 110,60" fill="#fff" stroke="#000" stroke-width="2.5"/><polygon points="60,40 110,60 110,110 60,90" fill="#EFEFEA" stroke="#000" stroke-width="2.5"/><polygon points="110,60 160,40 160,90 110,110" fill="#D5D5CB" stroke="#000" stroke-width="2.5"/><text x="2" y="116" font-family="JetBrains Mono, monospace" font-size="11">1 m³ en cada punto</text></svg>
+            <svg class="draw" viewBox="0 0 200 120" aria-hidden="true"><polygon points="60,40 110,20 160,40 110,60" fill="#fff" stroke="#000" stroke-width="2.5"/><polygon points="60,40 110,60 110,110 60,90" fill="#EFEFEA" stroke="#000" stroke-width="2.5"/><polygon points="110,60 160,40 160,90 110,110" fill="#D5D5CB" stroke="#000" stroke-width="2.5"/><text x="2" y="116" font-family="JetBrains Mono, monospace" font-size="11">1 m³ por punto</text></svg>
           </div>
-          <div class="card w3 k">
-            <span class="c-label">Informe automático</span>
-            <span class="c-title" style="color:var(--accent)">IFCGeoRefChecker</span>
-            <span class="c-foot">nivel LoGeoRef de cada IFC</span>
-          </div>
-          <div class="card w2"><span class="c-label">Editar</span><span class="c-title">IfcOpenShell</span></div>
-          <div class="card w2"><span class="c-label">Calcular</span><span class="c-title">IfcGref</span></div>
-          <div class="card w2"><span class="c-label">Consultar</span><span class="c-title">epsg.io</span></div>
+          <div class="card w3"><span class="c-label">Revit</span><span class="c-title">Coordenada</span><span class="c-foot">cota con N, E y elevación</span></div>
+          <div class="card w3"><span class="c-label">Archicad</span><span class="c-title">Survey Point</span><span class="c-foot">muestra sus coordenadas</span></div>
+          <div class="card w3"><span class="c-label">Civil 3D</span><span class="c-title">Unidades y zona</span><span class="c-foot">el EPSG del dibujo</span></div>
+          <div class="card w3"><span class="c-label">BIMcollab Zoom</span><span class="c-title">Georreferencia</span><span class="c-foot">opción apagada por defecto</span></div>
+          <div class="card w3 k"><span class="c-label">IFCGeoRefChecker</span><span class="c-title" style="color:var(--accent)">LoGeoRef</span><span class="c-foot">informe de 10 a 50</span></div>
         </div>
       </div>
     </section>
@@ -1027,16 +1238,17 @@
         <div class="b-title">
           <span class="slide-n"></span>
           <span class="kicker-y">En resumen</span>
-          <h2 class="display">Tres reglas<span class="dot">.</span></h2>
+          <h2 class="display">Cuatro reglas<span class="dot">.</span></h2>
           <div class="slide-actions">
             <button type="button" class="btn l2-btn" data-l2="glosario"><span class="plus">+</span> Glosario</button>
             <button type="button" class="btn ghost l2-btn" data-l2="fuentes"><span class="plus">+</span> Fuentes</button>
           </div>
         </div>
         <div class="b-cards">
-          <div class="card w2 y"><span class="c-label">01</span><span class="c-title">Un origen</span><span class="c-foot">modelar cerca de él</span></div>
-          <div class="card w2"><span class="c-label">02</span><span class="c-title">Un maestro</span><span class="c-foot">los demás adquieren</span></div>
-          <div class="card w2 k"><span class="c-label">03</span><span class="c-title">Un EPSG</span><span class="c-foot">IFC4 + MapConversion</span></div>
+          <div class="card w3 y"><span class="c-label">01</span><span class="c-title">Un origen</span><span class="c-foot">modelar cerca de él</span></div>
+          <div class="card w3"><span class="c-label">02</span><span class="c-title">Un maestro</span><span class="c-foot">los demás adquieren</span></div>
+          <div class="card w3 k"><span class="c-label">03</span><span class="c-title">Un EPSG</span><span class="c-foot">IFC4 + MapConversion</span></div>
+          <div class="card w3"><span class="c-label">04</span><span class="c-title">Un control</span><span class="c-foot">IDS + punto testigo</span></div>
           <div class="card w6"><nav id="series-nav" class="series-nav" style="margin-top:0;border-top:0;padding-top:0" aria-label="Navegación de la serie"></nav></div>
         </div>
       </div>
@@ -1760,22 +1972,238 @@
 </div>
   </template>
 
+  <template id="l2-calidad">
+    <div class="b-cards">
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Pregunta</th><th>En el IFC4</th><th>Valor esperado</th></tr></thead>
+          <tbody>
+            <tr><td>Dónde</td><td><code>IfcMapConversion</code> · <code>Eastings</code>, <code>Northings</code></td><td>Coordenadas UTM del origen local</td></tr>
+            <tr><td>Hacia dónde</td><td><code>XAxisAbscissa</code>, <code>XAxisOrdinate</code></td><td>Coseno y seno del giro respecto a la cuadrícula</td></tr>
+            <tr><td>A qué cota</td><td><code>OrthogonalHeight</code></td><td>Altitud del ±0,00 sobre REDNAP</td></tr>
+            <tr class="is-key"><td>En qué sistema</td><td><code>IfcProjectedCRS</code> · <code>Name</code></td><td><code>EPSG:25830</code> (o el huso que toque)</td></tr>
+            <tr><td>Unidades</td><td><code>Scale</code></td><td>1 en metros; 0,001 si el modelo va en milímetros</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w3 g">
+        <h4>La prueba de verdad</h4>
+        <ol class="vsteps">
+          <li>El topógrafo da una lista con dos o más puntos de control.</li>
+          <li>Cada disciplina coloca un cubo de 1 m³ en cada punto.</li>
+          <li>Se leen sus coordenadas en el programa, en el IFC y en el visor federado.</li>
+          <li>Las tres lecturas coinciden con la lista, o el modelo vuelve.</li>
+        </ol>
+      </div>
+      <div class="card w3">
+        <h4>Nivel mínimo del IFC</h4>
+        <div class="bars">
+          <div class="bar"><span>20</span><i style="width:40%">Latitud y longitud en el sitio</i></div>
+          <div class="bar"><span>40</span><i style="width:70%">Origen y norte del proyecto</i></div>
+          <div class="bar is-key"><span>50</span><i style="width:100%">Conversión al mapa con EPSG</i></div>
+        </div>
+        <p style="margin-top:10px">La guía de <a href="https://cibim.transportes.gob.es/recursos_cbim/bb_gt3_procesos_sg3.6_guia_uso_arquitectura.pdf" target="_blank" rel="noopener">es.BIM</a> pide al menos dos puntos de control documentados.</p>
+      </div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://standards.buildingsmart.org/IFC/RELEASE/IFC4/ADD2_TC1/HTML/schema/ifcrepresentationresource/lexical/ifcmapconversion.htm" target="_blank" rel="noopener">IfcMapConversion (IFC4)</a> · <a href="https://github.com/dd-bim/City2BIM/wiki/IFCGeoRefChecker" target="_blank" rel="noopener">niveles LoGeoRef (HTW Dresden)</a> · <a href="https://www.buildingsmart.org/wp-content/uploads/2020/02/User-Guide-for-Geo-referencing-in-IFC-v2.0.pdf" target="_blank" rel="noopener">guía de georreferenciación de buildingSMART</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-opciones">
+    <div class="b-cards">
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Opción</th><th>Lee</th><th>La regla se escribe en</th><th>Coste</th><th>Georreferenciación</th></tr></thead>
+          <tbody>
+            <tr class="is-key"><td>IDS</td><td>IFC</td><td>XML estándar</td><td>Abierto</td><td>Exige valores; no los combina</td></tr>
+            <tr><td>IfcOpenShell</td><td>IFC</td><td>Python</td><td>Gratis</td><td>Calcula dónde cae cada punto</td></tr>
+            <tr><td>Model Checker</td><td>RVT</td><td>Checkset del Configurator</td><td>Con Revit</td><td>Parámetros del modelo nativo <span class="tag">Inferido</span></td></tr>
+            <tr><td>Solibri</td><td>IFC</td><td>Reglas configurables; IDS</td><td>Licencia</td><td>Propiedades del proyecto desde 25.12</td></tr>
+            <tr><td>Cada programa</td><td>Nativo</td><td>Nada: se mira</td><td>Incluido</td><td>Lectura manual de coordenadas</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w3 g">
+        <h4>Cuándo usar cada una</h4>
+        <ol class="vsteps">
+          <li><strong>Al contratar:</strong> el IDS va con el BEP.</li>
+          <li><strong>Al modelar:</strong> la cota de coordenada sobre el cubo testigo.</li>
+          <li><strong>Antes de exportar:</strong> Model Checker en Revit.</li>
+          <li><strong>Al recibir:</strong> IDS con IfcTester o Solibri, y el script del punto testigo.</li>
+        </ol>
+      </div>
+      <div class="card w3 k">
+        <h4>Y antes de todo: que el IFC sea IFC</h4>
+        <p>El <a href="https://technical.buildingsmart.org/services/validation-service/" target="_blank" rel="noopener">Validation Service de buildingSMART</a> es gratuito y comprueba la sintaxis, el esquema y las reglas normativas. Lo propio de cada proyecto lo deja expresamente al IDS.</p>
+      </div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://www.buildingsmart.org/standards/bsi-standards/information-delivery-specifications-ids/" target="_blank" rel="noopener">buildingSMART IDS</a> · <a href="https://docs.ifcopenshell.org/ifctester.html" target="_blank" rel="noopener">IfcTester</a> · <a href="https://interoperability.autodesk.com/modelchecker.php" target="_blank" rel="noopener">Autodesk Model Checker</a> · <a href="https://www.solibri.com/articles/solibri-25-12-0-release-notes" target="_blank" rel="noopener">Solibri 25.12</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-ids">
+    <div class="b-cards">
+      <div class="card w4 k">
+        <h4>Dos requisitos de georreferenciación</h4>
+<pre><code>&lt;specification name="CRS del proyecto" ifcVersion="IFC4"&gt;
+  &lt;applicability minOccurs="1" maxOccurs="unbounded"&gt;
+    &lt;entity&gt;&lt;name&gt;&lt;simpleValue&gt;IFCPROJECTEDCRS&lt;/simpleValue&gt;&lt;/name&gt;&lt;/entity&gt;
+  &lt;/applicability&gt;
+  &lt;requirements&gt;
+    &lt;attribute&gt;
+      &lt;name&gt;&lt;simpleValue&gt;Name&lt;/simpleValue&gt;&lt;/name&gt;
+      &lt;value&gt;&lt;simpleValue&gt;EPSG:25830&lt;/simpleValue&gt;&lt;/value&gt;
+    &lt;/attribute&gt;
+  &lt;/requirements&gt;
+&lt;/specification&gt;
+&lt;specification name="Conversión al mapa" ifcVersion="IFC4"&gt;
+  &lt;applicability minOccurs="1" maxOccurs="unbounded"&gt;
+    &lt;entity&gt;&lt;name&gt;&lt;simpleValue&gt;IFCMAPCONVERSION&lt;/simpleValue&gt;&lt;/name&gt;&lt;/entity&gt;
+  &lt;/applicability&gt;
+  &lt;requirements&gt;
+    &lt;attribute&gt;&lt;name&gt;&lt;simpleValue&gt;Eastings&lt;/simpleValue&gt;&lt;/name&gt;&lt;/attribute&gt;
+  &lt;/requirements&gt;
+&lt;/specification&gt;</code></pre>
+      </div>
+      <div class="card w2">
+        <h4>Resultado</h4>
+        <div class="table-wrap"><table>
+          <thead><tr><th>IFC</th><th>CRS</th><th>Conv.</th></tr></thead>
+          <tbody>
+            <tr class="is-key"><td>Bien</td><td>✓</td><td>✓</td></tr>
+            <tr><td>Huso 29</td><td>✗</td><td>✓</td></tr>
+            <tr><td>Sin georref.</td><td>✗</td><td>✗</td></tr>
+          </tbody>
+        </table></div>
+        <p class="table-note"><code>minOccurs="1"</code> convierte «si existe» en «tiene que existir». Probado con IfcTester 0.9.0 sobre tres IFC de prueba.</p>
+      </div>
+      <div class="card w3 g">
+        <h4>El límite</h4>
+        <p>Cada requisito mira un valor. Un IFC con el EPSG correcto y un Este desplazado 300 m pasa el IDS, porque nada en el fichero dice dónde debe caer el punto testigo. <span class="tag">Inferido</span></p>
+        <p>Tampoco existe un IDS oficial de georreferenciación: cada proyecto escribe el suyo.</p>
+      </div>
+      <div class="card w3">
+        <h4>Quién lo lee</h4>
+        <ul>
+          <li>IfcTester, de IfcOpenShell, en consola, web o Python.</li>
+          <li>Solibri, con la regla 244 (IDS 0.9.6, 0.9.7 y 1.0).</li>
+        </ul>
+      </div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://www.buildingsmart.org/?p=30065" target="_blank" rel="noopener">IDS 1.0, estándar final (4 de junio de 2024)</a> · <a href="https://github.com/buildingSMART/IDS/tree/development/Documentation/UserManual" target="_blank" rel="noopener">manual de IDS: facetas</a> · <a href="https://help.solibri.com/hc/en-us/articles/19053798036375-244-IDS-Validation" target="_blank" rel="noopener">Solibri, regla 244</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-ifcopenshell">
+    <div class="b-cards">
+      <div class="card w4 k">
+        <h4>El punto testigo, en siete líneas</h4>
+<pre><code>import ifcopenshell
+from ifcopenshell.util.geolocation import auto_xyz2enh
+
+modelo = ifcopenshell.open("modelo.ifc")
+e, n, h = auto_xyz2enh(modelo, 10.0, 20.0, 0.0)   # testigo, en local
+topo = (440010.000, 4474020.000, 650.000)          # lista del topógrafo
+error = max(abs(a - b) for a, b in zip((e, n, h), topo))
+print("OK" if error &lt; 0.01 else f"Desvío de {error:.3f} m")</code></pre>
+        <p class="table-note">Probado con IfcOpenShell 0.9.0. La función aplica la <code>IfcMapConversion</code> del fichero (o <code>ePSet_MapConversion</code> en IFC2x3).</p>
+      </div>
+      <div class="card w2 y">
+        <h4>Y el IDS</h4>
+<pre><code>python -m ifctester \
+  geo.ids modelo.ifc \
+  -r Html -o informe.html</code></pre>
+        <p class="table-note">Informes en consola, JSON, HTML, ODS, BCF o SQLite.</p>
+      </div>
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Herramienta del mismo entorno</th><th>Para qué sirve</th></tr></thead>
+          <tbody>
+            <tr><td><a href="https://docs.ifcopenshell.org/autoapi/ifcopenshell/api/georeference/index.html" target="_blank" rel="noopener">API de georreferenciación</a> · Bonsai · IfcPatch</td><td>Añadir o corregir la conversión cuando falla</td></tr>
+            <tr><td><a href="https://github.com/dd-bim/City2BIM/wiki/IFCGeoRefChecker" target="_blank" rel="noopener">IFCGeoRefChecker</a></td><td>Informe del nivel LoGeoRef (HTW Dresden)</td></tr>
+            <tr><td><a href="https://ifcgref.bk.tudelft.nl/templates/guid.html" target="_blank" rel="noopener">IfcGref</a></td><td>Calcular la conversión desde puntos y un EPSG (TU Delft)</td></tr>
+            <tr><td><a href="https://osarch.org/2026/06/04/ifc-georeferencer-browser-based-georeferencing/" target="_blank" rel="noopener">IFC Georeferencer</a></td><td>Ajuste Helmert en el navegador (2026)</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://docs.ifcopenshell.org/ifctester.html" target="_blank" rel="noopener">documentación de IfcTester</a> · <a href="https://docs.ifcopenshell.org/autoapi/ifcopenshell/util/geolocation/index.html" target="_blank" rel="noopener">ifcopenshell.util.geolocation</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-model-checker">
+    <div class="b-cards">
+      <div class="card w3">
+        <h4>Qué es</h4>
+        <ul>
+          <li>Parte de las BIM Interoperability Tools de Autodesk, gratis para usuarios con licencia de Revit.</li>
+          <li>Versión 10.0 con Revit 2026; la 9.2 sigue disponible para Revit 2022 a 2025.</li>
+          <li>Desde el informe se hace zoom al elemento que falla.</li>
+        </ul>
+      </div>
+      <div class="card w3 g">
+        <h4>Una regla de coordenadas</h4>
+        <ol class="vsteps">
+          <li>Filtrar la categoría del punto de reconocimiento.</li>
+          <li>Comparar sus parámetros con los valores del BEP.</li>
+          <li>Repetirlo en cada vínculo antes de exportar.</li>
+        </ol>
+        <p class="table-note">Ejemplo propio; no hay un checkset oficial de georreferenciación. <span class="tag">Inferido</span></p>
+      </div>
+      <div class="card w6 k">
+        <h4>Lo que no ve</h4>
+        <p>Revisa el RVT, no el IFC que sale de él. Una configuración de exportación equivocada (sin conversión al mapa, o en coordenadas internas) solo aparece al revisar el IFC con un IDS o un visor.</p>
+      </div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://interoperability.autodesk.com/modelchecker.php" target="_blank" rel="noopener">Autodesk Model Checker</a> · <a href="https://interoperability.autodesk.com/modelcheckerconfigurator.php" target="_blank" rel="noopener">Model Checker Configurator</a> · <a href="https://www.autodesk.com/learn/ondemand/module/check-standards-compliance-on-building-projects-using-revit/unit/1l5dHwxx6XAQeiltaSDnec" target="_blank" rel="noopener">Autodesk Learning</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-solibri">
+    <div class="b-cards">
+      <div class="card w3">
+        <h4>Entidades que pasan a propiedades</h4>
+        <div class="chips"><span class="chip y">IfcMapConversion</span><span class="chip y">IfcProjectedCRS</span><span class="chip">IfcGeographicCRS</span><span class="chip">IfcMapConversionScaled</span><span class="chip">IfcRigidOperation</span><span class="chip">IfcCoordinateReferenceSystem</span><span class="chip">IfcUnitAssignment</span></div>
+        <p style="margin-top:10px">Se usan en reglas, filtros, clasificaciones e Information Takeoff.</p>
+      </div>
+      <div class="card w3 g">
+        <h4>La regla 244 por dentro</h4>
+        <div class="table-wrap"><table>
+          <tbody>
+            <tr class="is-key"><td>Pasa</td><td>Cumple el IDS</td></tr>
+            <tr><td>Falla</td><td>Falta o no coincide un valor</td></tr>
+            <tr><td>Irrelevante</td><td>No hay elementos a los que aplicar</td></tr>
+          </tbody>
+        </table></div>
+        <p class="table-note">El IDS se edita dentro de la regla y se vuelve a pasar sin salir.</p>
+      </div>
+      <div class="card w6 k">
+        <h4>Antes de la 25.12</h4>
+        <p>En foros de 2023 se decía que Solibri ignoraba <code>IfcMapConversion</code> y colocaba los modelos por <code>IfcSite</code> o por su origen. Con IFC de versiones anteriores, conviene revisar que todos lleguen en el mismo origen.</p>
+      </div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://www.solibri.com/articles/solibri-25-12-0-release-notes" target="_blank" rel="noopener">Solibri 25.12, notas de versión</a> · <a href="https://help.solibri.com/hc/en-us/articles/19053798036375-244-IDS-Validation" target="_blank" rel="noopener">regla 244</a> · <a href="https://society.solibri.com/post/2993" target="_blank" rel="noopener">Solibri Society: coordenadas grandes</a> · <a href="https://community.osarch.org/discussion/comment/16881/" target="_blank" rel="noopener">OSArch</a>.</p></div>
+    </div>
+  </template>
+
   <template id="l2-herramientas">
-<div class="b-cards"><div class="card w6">
-<div class="table-wrap"><table>
-      <thead><tr><th>Herramienta</th><th>Para qué sirve</th></tr></thead>
-      <tbody>
-        <tr><td><a href="https://github.com/dd-bim/City2BIM/wiki/IFCGeoRefChecker" target="_blank" rel="noopener">IFCGeoRefChecker</a></td><td>Informe del nivel LoGeoRef de un IFC (HTW Dresden).</td></tr>
-        <tr><td><a href="https://docs.ifcopenshell.org/autoapi/ifcopenshell/api/georeference/index.html" target="_blank" rel="noopener">IfcOpenShell / Bonsai / IfcPatch</a></td><td>Editar y parchear la georreferenciación.</td></tr>
-        <tr><td><a href="https://ifcgref.bk.tudelft.nl/templates/guid.html" target="_blank" rel="noopener">IfcGref</a></td><td>Calcular IfcMapConversion desde puntos y un EPSG (TU Delft).</td></tr>
-        <tr><td><a href="https://osarch.org/2026/06/04/ifc-georeferencer-browser-based-georeferencing/" target="_blank" rel="noopener">IFC Georeferencer</a></td><td>Ajuste Helmert en el navegador (2026).</td></tr>
-        <tr><td><a href="https://epsg.io" target="_blank" rel="noopener">epsg.io</a></td><td>Consultar códigos y parámetros.</td></tr>
-      </tbody>
-    </table></div>
-</div></div>
-<div class="b-cards"><div class="card w6">
-<p>No hay un IDS oficial para la georreferenciación. IDS 1.0 puede exigir atributos de IfcProjectedCRS o IfcMapConversion, pero no comprobar que estén bien relacionados, así que conviene completarlo con estas herramientas.</p>
-</div></div>
+    <div class="b-cards">
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Programa</th><th>Dónde mirar</th><th>Qué comprobar</th></tr></thead>
+          <tbody>
+            <tr><td>Revit</td><td>Anotación <span class="ui">Cota de coordenada</span> con origen en el punto de reconocimiento</td><td>Este, Norte y elevación del cubo testigo</td></tr>
+            <tr><td>Archicad</td><td><span class="ui">Mostrar coordenadas del Survey Point</span></td><td>Las coordenadas del punto, junto a él</td></tr>
+            <tr><td>Civil 3D</td><td><span class="ui">Configuración del dibujo › Unidades y zona</span></td><td>El sistema de coordenadas asignado</td></tr>
+            <tr><td>Bonsai</td><td>Panel de georreferenciación</td><td>Conversión de local a global de un punto</td></tr>
+            <tr class="is-key"><td>BIMcollab Zoom</td><td>Opción <span class="ui">Use georeferencing</span></td><td>Que los IFC se coloquen por su conversión</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w3 g">
+        <h4>Para consultar</h4>
+        <p><a href="https://epsg.io" target="_blank" rel="noopener">epsg.io</a> da los parámetros de cada código y convierte un punto entre sistemas: útil para contrastar la lista del topógrafo.</p>
+      </div>
+      <div class="card w3 k">
+        <h4>Un orden que funciona</h4>
+        <p>Primero en el programa que crea el modelo, después en el IFC y por último en el federado. Un error detectado arriba no viaja.</p>
+      </div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://help.autodesk.com/cloudhelp/2026/ENU/Revit-DocumentPresent/files/GUID-2B5BF400-45F9-4475-8783-1D57D1E8DBEC.htm" target="_blank" rel="noopener">Revit: cotas de coordenada</a> · <a href="https://help.graphisoft.com/AC/28/INT/_AC28_Help/020_Configuration/020_Configuration-36.htm" target="_blank" rel="noopener">Archicad: Survey Point</a> · <a href="https://help.autodesk.com/cloudhelp/2026/ENU/Civil3D-UserGuide/files/GUID-75B8A4F1-CB5E-4D11-9504-4F16690A5825.htm" target="_blank" rel="noopener">Civil 3D: sistema de coordenadas</a> · <a href="https://docs-unstable.bonsaibim.org/guides/authoring/advanced_modeling/georeferencing.html" target="_blank" rel="noopener">Bonsai</a> · <a href="https://helpcenter.bimcollab.com/en/articles/326917-coordinating-ifc-models-with-world-coordinate-system-information" target="_blank" rel="noopener">BIMcollab</a>.</p></div>
+    </div>
   </template>
 
   <template id="l2-glosario">
@@ -1790,6 +2218,7 @@
       <dt>Convergencia</dt><dd>Ángulo entre el norte geográfico y el de cuadrícula.</dd>
       <dt>Factor combinado</dt><dd>Factor de escala de la proyección por el de elevación.</dd>
       <dt>Adquirir / Publicar</dt><dd>Tomar las coordenadas de un vínculo, o imponerle las propias.</dd>
+      <dt>IDS</dt><dd>Information Delivery Specification: requisitos de un IFC en un XML que se comprueba de forma automática.</dd>
       <dt>LoGeoRef</dt><dd>Nivel de georreferenciación de un IFC, de 10 a 50.</dd>
     </dl>
 </div></div>
@@ -1825,6 +2254,14 @@
           <li><a href="https://github.com/dd-bim/City2BIM/wiki/IFCGeoRefChecker" target="_blank" rel="noopener">HTW Dresden: LoGeoRef</a> · <a href="https://www.buildingsmart.de/sites/default/files/2025-02/BIMFitCheck_Info.pdf" target="_blank" rel="noopener">BIM Fit Check 2025</a></li>
           <li><a href="https://3d.bk.tudelft.nl/pdfs/18_georeferencing.pdf" target="_blank" rel="noopener">TU Delft: georreferenciación en IFC</a> · <a href="https://wiki.osarch.org/revit-setup-for-openbim-revit-ifc-geolocation/" target="_blank" rel="noopener">OSArch</a> · <a href="https://github.com/autodesk/revit-ifc/issues/784" target="_blank" rel="noopener">revit-ifc #784</a></li>
           <li><a href="https://epsg.io/5180-datum" target="_blank" rel="noopener">EPSG:5180</a> · <a href="https://epsg.io/6258-datum" target="_blank" rel="noopener">EPSG:6258</a> · <a href="https://ucm.buildingsmart.org/use-case-details/2047/en" target="_blank" rel="noopener">buildingSMART UCM</a></li>
+        </ul>
+</div>
+<div class="card w6">
+<h4>Control de calidad</h4>
+<ul class="sources">
+          <li><a href="https://www.buildingsmart.org/standards/bsi-standards/information-delivery-specifications-ids/" target="_blank" rel="noopener">buildingSMART IDS</a> · <a href="https://technical.buildingsmart.org/services/validation-service/" target="_blank" rel="noopener">Validation Service</a></li>
+          <li><a href="https://docs.ifcopenshell.org/ifctester.html" target="_blank" rel="noopener">IfcTester</a> · <a href="https://docs.ifcopenshell.org/autoapi/ifcopenshell/util/geolocation/index.html" target="_blank" rel="noopener">ifcopenshell.util.geolocation</a></li>
+          <li><a href="https://interoperability.autodesk.com/modelchecker.php" target="_blank" rel="noopener">Autodesk Model Checker</a> · <a href="https://help.solibri.com/hc/en-us/articles/19053798036375-244-IDS-Validation" target="_blank" rel="noopener">Solibri, regla 244</a></li>
         </ul>
 </div>
 <div class="card w6">

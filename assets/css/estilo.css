@@ -531,3 +531,4 @@ body.l2-lock { overflow: hidden; }
 .card { min-width: 0; overflow-wrap: break-word; } .card .c-title { hyphens: auto; }
 .badge { max-width: 100%; }
 .card.k code { background: rgba(255,255,255,.14); color: var(--white); border-color: transparent; }
+.card.k pre code, .card pre code { background: none; border: 0; padding: 0; color: inherit; }
