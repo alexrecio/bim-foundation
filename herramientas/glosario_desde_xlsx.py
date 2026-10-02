@@ -1,6 +1,9 @@
 """Genera assets/js/glosario.js a partir de la hoja «Glosario» de la base de fuentes.
 
-Uso: python3 herramientas/glosario_desde_xlsx.py /mnt/project-files/fuentes/coordenadas_bim_fuentes_y_glosario.xlsx
+Uso: python3 herramientas/glosario_desde_xlsx.py /mnt/project-files/fuentes/coordenadas_bim_fuentes_y_glosario.xlsx [otra_base.xlsx ...]
+Admite varias bases (una por artículo, p. ej. /mnt/project-files/fuentes/05-clasificacion/*.xlsx): se concatenan
+en el orden dado; cada una usa sus propios ID (el artículo 05 usa K01, K02...) y no pueden repetirse.
+Si la hoja «Glosario» tiene una columna «Alias» (separados por «;»), sus alias se usan en lugar de los de ALIAS.
 Después: node herramientas/generar-indice.mjs (calcula en qué diapositivas se explica cada término).
 
 ALIAS: formas en que el término aparece en el texto de los artículos. Sirven para el buscador
@@ -54,21 +57,31 @@ def slug(s):
     return re.sub(r'[^a-z0-9]+', '-', s).strip('-')
 
 
-def main(path):
+def leer(path, out):
     ws = openpyxl.load_workbook(path, read_only=True)['Glosario']
-    rows = list(ws.iter_rows(values_only=True))[1:]
-    out = []
-    for r in rows:
+    rows = list(ws.iter_rows(values_only=True))
+    cab = [str(c or '').strip() for c in rows[0]]
+    ia = cab.index('Alias') if 'Alias' in cab else None
+    for r in rows[1:]:
         if not r[0]:
             continue
         cid = r[0]
+        if any(g['id'] == cid for g in out):
+            raise SystemExit(f'ID repetido en el glosario: {cid} ({path})')
+        al = [a.strip() for a in str(r[ia] or '').split(';') if a.strip()] if ia is not None else []
         out.append({
             'id': cid, 'slug': slug(r[1]), 't': r[1], 'en': r[2] or '',
             'b': (r[3] or '').split(' ')[0], 'd': r[4] or '', 'ej': r[5] or '',
             'eq': r[6] or '', 'err': r[7] or '',
             'rel': [x.strip() for x in (r[8] or '').split(',') if x.strip()],
-            'al': ALIAS.get(cid, []),
+            'al': al or ALIAS.get(cid, []),
         })
+
+
+def main(paths):
+    out = []
+    for path in paths:
+        leer(path, out)
     js = ('// Glosario de la serie. GENERADO por herramientas/glosario_desde_xlsx.py: no editar a mano.\n'
           '// id · slug · t término · en inglés · b bloque · d definición · ej ejemplo (España) · eq equivalentes por programa\n'
           '// err error típico · rel relacionados · al alias (cómo aparece en el texto)\n'
@@ -78,4 +91,4 @@ def main(path):
 
 
 if __name__ == '__main__':
-    main(sys.argv[1])
+    main(sys.argv[1:])
