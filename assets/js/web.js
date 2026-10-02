@@ -125,8 +125,8 @@
   if (!slides.length) return;
   const pad = (n) => String(n).padStart(2, '0');
   const total = pad(slides.length);
-  // Titular de portada: reduce el tamaño si una palabra larga no cabe en su columna
-  const fit = () => document.querySelectorAll('.slide h1.display').forEach((h) => {
+  // Titulares: reducen el tamaño si una palabra larga no cabe en su columna (en vez de partirla)
+  const fit = () => document.querySelectorAll('.slide .b-title .display').forEach((h) => {
     h.style.fontSize = '';
     // Medir sin cortes de palabra: si una palabra no cabe, se reduce el tamaño en vez de partirla
     Object.assign(h.style, { overflowWrap: 'normal', wordBreak: 'normal', hyphens: 'manual' });

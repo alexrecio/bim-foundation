@@ -7,10 +7,10 @@ window.SERIE = [
     slug: 'coordenadas-compartidas',
     numero: '01',
     titulo: 'Coordenadas compartidas en BIM',
-    resumen: 'Origen interno, punto base y punto de reconocimiento; Revit, Civil 3D, IFC y el resto del software BIM, con los códigos EPSG y el marco geodésico español.',
+    resumen: 'Primero los conceptos que valen para cualquier programa (origen, precisión, transformación, nortes y alturas); después estándares, software, plataformas e interoperabilidad.',
     tema: 'Georreferenciación',
     fecha: '2026-10',
-    lectura: '22 ideas',
+    lectura: '24 ideas',
     estado: 'borrador' // borrador | publicado | proximamente | relleno (ficticio)
   },
   {

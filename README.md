@@ -21,7 +21,7 @@ Mismo patrón que el portfolio:
 - **Capa 1 · regla de los 15 segundos.** Cada idea es una diapositiva a pantalla completa que se lee en unos 15 s: antetítulo, titular (unas 6 palabras), una frase (unas 20) y un visual (cifra, chips, flujo, barras, iconos o SVG). Unas 40 palabras en total.
 - **Capa 2 · detalle.** El botón «Ver detalle» de cada diapositiva abre una ficha (`<template id="l2-…">`) con los pasos, tablas, matices y fuentes. **Ningún texto se repite entre capas**: la ficha solo añade lo que la diapositiva no dice (los datos sí pueden repetirse cuando aportan).
 - **Bloques a ancho completo.** Cada diapositiva es un `.bento`: a la izquierda el titular (`.b-title`) y a la derecha una rejilla de tarjetas (`.b-cards`) con cifras, esquemas y dibujos SVG. En móvil se apila y las tarjetas pasan a dos columnas.
-- **Capítulos.** `data-cap="I · El problema"` en la primera slide de cada capítulo agrupa el menú y rotula la numeración: el artículo se lee como una historia.
+- **Bloques.** `data-cap` en la primera slide de cada bloque agrupa el menú y rotula la numeración. Orden fijo: I · Conceptos generales (sin software), II · Estándares, III · Software, IV · Plataformas, V · Interoperabilidad.
 - **Menú de diapositivas.** Lateral en escritorio y barra inferior desplegable en móvil, con el título de cada slide (`data-nav`) y la slide actual marcada.
 - Navegación: rueda, flechas o el menú; Esc cierra la ficha, y `#detalle-<id>` enlaza directamente a una ficha.
 

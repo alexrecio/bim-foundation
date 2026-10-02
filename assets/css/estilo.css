@@ -515,3 +515,19 @@ body.l2-lock { overflow: hidden; }
 .l2-body .card .step-n + .c-title { margin-top: 10px; display: block; }
 .l2-body .card .c-title + p { margin-top: 6px; }
 .l2-head .label { font-family: var(--mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: .1em; color: var(--s500); }
+
+/* Mapa del artículo por bloques (portada) */
+.mapa { list-style: none; margin: 6px 0 0; padding: 0; display: grid; gap: 6px; }
+.mapa a { display: grid; grid-template-columns: 34px minmax(0, 1fr); align-items: center; gap: 2px 12px; padding: 8px 10px; background: var(--white); border: 1px solid var(--s200); border-radius: 6px; text-decoration: none; transition: border-color .2s, background .2s; }
+.mapa a:hover { border-color: var(--black); }
+.mapa b { grid-row: span 2; width: 34px; height: 34px; border-radius: 9999px; background: var(--black); color: var(--white); display: flex; align-items: center; justify-content: center; font-family: var(--mono); font-size: 11px; }
+.mapa span { font-weight: 900; text-transform: uppercase; letter-spacing: -.01em; font-size: 14px; line-height: 1.1; }
+.mapa em { font-style: normal; font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: .08em; color: var(--s500); }
+.mapa .is-key a { background: var(--accent); border-color: var(--black); }
+.mapa .is-key b { background: var(--black); color: var(--accent); }
+.mapa .is-key em { color: var(--black); }
+@media (min-width: 1200px) { .mapa { grid-template-columns: repeat(2, minmax(0, 1fr)); } .mapa li.is-key { grid-column: 1 / -1; } }
+.w2 .c-num { font-size: clamp(2rem, 3.4vw, 3.2rem); }
+.card { min-width: 0; overflow-wrap: break-word; } .card .c-title { hyphens: auto; }
+.badge { max-width: 100%; }
+.card.k code { background: rgba(255,255,255,.14); color: var(--white); border-color: transparent; }
