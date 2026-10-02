@@ -1,6 +1,12 @@
 // Dudas frecuentes (en). GENERADO por herramientas/i18n.mjs desde assets/i18n/en/preguntas.json: no editar a mano.
 window.BF_PREGUNTAS = [
  [
+  "What is a coordinate system for in a BIM project?",
+  "coordenadas-compartidas",
+  "porque",
+  "I"
+ ],
+ [
   "Why do models arrive out of place when federated?",
   "coordenadas-compartidas",
   "problema",

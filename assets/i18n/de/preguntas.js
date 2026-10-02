@@ -1,6 +1,12 @@
 // Dudas frecuentes (de). GENERADO por herramientas/i18n.mjs desde assets/i18n/de/preguntas.json: no editar a mano.
 window.BF_PREGUNTAS = [
  [
+  "Wozu dient ein Koordinatensystem in einem BIM-Projekt?",
+  "coordenadas-compartidas",
+  "porque",
+  "I"
+ ],
+ [
   "Warum liegen Modelle beim Föderieren an der falschen Stelle?",
   "coordenadas-compartidas",
   "problema",
