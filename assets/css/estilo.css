@@ -412,7 +412,7 @@ body:has(.deck) footer.site { padding-left: var(--side); }
   #deck-nav .kicker-y { margin-bottom: 12px; }
   #deck-nav ol { list-style: none; margin: 0; padding: 0; overflow-y: auto; flex: 1; }
   /* Sin barra de desplazamiento visible: el menú se mueve con la rueda del ratón */
-  #deck-nav ol { scrollbar-width: none; -ms-overflow-style: none; }
+  #deck-nav ol { scrollbar-width: none; -ms-overflow-style: none; overscroll-behavior: contain; }
   #deck-nav ol::-webkit-scrollbar { display: none; }
 }
 .nav-item a {

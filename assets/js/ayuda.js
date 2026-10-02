@@ -486,4 +486,15 @@
     const av = document.getElementById('bf-lang-aviso');
     av.querySelector('button').addEventListener('click', () => { ls('bf-lang', I18N.lang); ls('bf-lang-aviso', pref + '>' + I18N.lang); av.remove(); });
   });
+
+  // ---------- Rueda del ratón: sobre la banda del menú solo se mueve el menú; sobre las slides, las slides ----------
+  const banda = document.getElementById('deck-nav');
+  if (banda) banda.addEventListener('wheel', (e) => {
+    if (e.ctrlKey) return; // zoom del navegador
+    e.preventDefault();
+    const ol = banda.querySelector(':scope > ol');
+    if (!ol) return;
+    const k = e.deltaMode === 1 ? 16 : e.deltaMode === 2 ? ol.clientHeight : 1;
+    ol.scrollTop += e.deltaY * k;
+  }, { passive: false });
 })();
