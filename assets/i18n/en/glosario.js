@@ -608,7 +608,9 @@ window.BF_GLOSARIO = [
    "EIR",
    "exchange information requirements",
    "ISO 19650",
-   "coordinate strategy"
+   "coordinate strategy",
+   "estrategia de coordenadas",
+   "requisitos de coordenadas"
   ]
  },
  {
@@ -854,13 +856,13 @@ window.BF_GLOSARIO = [
  {
   "id": "N01",
   "slug": "nivel-de-informacion-necesario",
-  "t": "Nivel de información necesario (LOIN)",
-  "en": "Level of information need (LOIN)",
+  "t": "Level of information need (LOIN)",
+  "en": "Nivel de información necesario (LOIN)",
   "b": "I",
-  "d": "Marco que define la extensión y la granularidad de la información que se pide de cada objeto: qué información geométrica, alfanumérica y documental hace falta para un propósito, en un hito y entre unos actores concretos (ISO 7817-1).",
-  "ej": "Una puerta cortafuegos en proyecto de ejecución, para justificar la seguridad en caso de incendio: paso libre y sentido de apertura; clase EI2 60-C5; certificado de ensayo.",
-  "eq": "Revit/Archicad: no existe como objeto; se traduce en parámetros, plantillas y un IDS. Gestores como Cobuilder Require, BIMQ o Plannerly lo guardan en una base de datos.",
-  "err": "Tratarlo como un número único para todo el modelo («modelo LOIN 3») o como la suma LOD + LOI.",
+  "d": "Framework that defines the extent and granularity of the information required for each object: which geometrical information, alphanumerical information and documentation is needed for a purpose, at an information delivery milestone and between specific actors (ISO 7817-1).",
+  "ej": "A fire door at detailed design stage, to demonstrate fire safety: clear opening width and swing direction; class EI2 60-C5; test certificate.",
+  "eq": "Revit/Archicad: not an object in its own right; it becomes parameters, templates and an IDS. Platforms such as Cobuilder Require, BIMQ or Plannerly store it in a database.",
+  "err": "Treating it as a single number for the whole model (“LOIN 3 model”) or as the sum LOD + LOI.",
   "rel": [
    "N02",
    "N03",
@@ -871,28 +873,32 @@ window.BF_GLOSARIO = [
    "N13"
   ],
   "al": [
-   "nivel de información necesario",
+   "level of information need",
    "LOIN",
    "LoIN",
-   "level of information need"
+   "nivel de información necesario"
   ]
  },
  {
   "id": "N02",
   "slug": "informacion-geometrica",
-  "t": "Información geométrica",
-  "en": "Geometrical information",
+  "t": "Geometrical information",
+  "en": "Información geométrica",
   "b": "I",
-  "d": "Parte del nivel de información que describe la forma del objeto mediante cinco aspectos: detalle, dimensionalidad, ubicación, apariencia y comportamiento paramétrico.",
-  "ej": "Puerta en ejecución: detalle bajo, 3D, ubicación absoluta, apariencia simbólica, sin comportamiento paramétrico.",
-  "eq": "Se materializa en la geometría de la familia (Revit), el objeto GDL (Archicad) o la representación IFC.",
-  "err": "Confundirla con el nivel de detalle de la vista (grueso, medio, fino), que solo decide qué se dibuja a cada escala.",
+  "d": "Part of the level of information need that describes the shape of the object through five aspects: detail, dimensionality, location, appearance and parametric behaviour.",
+  "ej": "Door at detailed design: low detail, 3D, absolute location, symbolic appearance, no parametric behaviour.",
+  "eq": "Embodied in the family geometry (Revit), the GDL object (Archicad) or the IFC representation.",
+  "err": "Confusing it with the view detail level (coarse, medium, fine), which only decides what is drawn at each scale.",
   "rel": [
    "N01",
    "N10",
    "N23"
   ],
   "al": [
+   "geometrical information",
+   "dimensionality",
+   "parametric behaviour",
+   "appearance",
    "información geométrica",
    "dimensionalidad",
    "comportamiento paramétrico",
@@ -902,51 +908,55 @@ window.BF_GLOSARIO = [
  {
   "id": "N03",
   "slug": "informacion-alfanumerica",
-  "t": "Información alfanumérica",
-  "en": "Alphanumerical information",
+  "t": "Alphanumerical information",
+  "en": "Información alfanumérica",
   "b": "I",
-  "d": "Parte del nivel de información formada por la identificación del objeto (nombre, tipo, código, clasificación) y su contenido (propiedades con nombre, valor, unidad y valores admitidos).",
-  "ej": "Pset_DoorCommon.FireRating = «EI2 60-C5»; IsExternal = falso.",
-  "eq": "Revit: parámetros (compartidos); Archicad: propiedades; Allplan: atributos; Tekla: UDA y property sets; IFC: atributos y Psets.",
-  "err": "Pedir propiedades sin nombre normalizado ni tipo de dato: llegan «60 min», «EI60» y «sí» para la misma pregunta.",
+  "d": "Part of the level of information need made up of the object's identification (name, type, code, classification) and its information content (properties with name, value, unit and allowed values).",
+  "ej": "Pset_DoorCommon.FireRating = “EI2 60-C5”; IsExternal = false.",
+  "eq": "Revit: (shared) parameters; Archicad: properties; Allplan: attributes; Tekla: UDAs and property sets; IFC: attributes and Psets.",
+  "err": "Requesting properties without a standardised name or data type: “60 min”, “EI60” and “yes” all arrive for the same question.",
   "rel": [
    "N01",
    "N20",
    "N26"
   ],
   "al": [
+   "alphanumerical information",
+   "alphanumeric information",
+   "non-graphical information",
    "información alfanumérica"
   ]
  },
  {
   "id": "N04",
   "slug": "documentacion",
-  "t": "Documentación",
-  "en": "Documentation",
+  "t": "Documentation",
+  "en": "Documentación",
   "b": "I",
-  "d": "Conjunto de documentos que acompañan a un objeto o entrega y no forman parte del modelo: fichas técnicas, certificados, fotografías, manuales, planos de taller.",
-  "ej": "Certificado de ensayo de resistencia al fuego de la puerta, en PDF, enlazado al tipo.",
-  "eq": "IFC: IfcDocumentReference asociado con IfcRelAssociatesDocument; en los CDE, documentos vinculados al elemento.",
-  "err": "Pedir «documentación técnica» sin decir qué documento, en qué formato y para qué hito.",
+  "d": "Set of documents that accompany an object or delivery and are not part of the model: data sheets, certificates, photographs, manuals, shop drawings.",
+  "ej": "Fire resistance test certificate for the door, as a PDF, linked to the type.",
+  "eq": "IFC: IfcDocumentReference associated through IfcRelAssociatesDocument; in CDEs, documents linked to the element.",
+  "err": "Requesting “technical documentation” without saying which document, in which format and for which milestone.",
   "rel": [
    "N01",
    "N28"
   ],
   "al": [
-   "documentación",
-   "IfcDocumentReference"
+   "documentation",
+   "IfcDocumentReference",
+   "documentación"
   ]
  },
  {
   "id": "N05",
   "slug": "proposito",
-  "t": "Propósito",
-  "en": "Purpose",
+  "t": "Purpose",
+  "en": "Propósito",
   "b": "I",
-  "d": "Uso que se va a dar a la información (coordinar, medir, justificar el incendio, mantener...). Es la primera condición para fijar el nivel de información necesario.",
-  "ej": "Propósito «justificar la seguridad en caso de incendio» para la licencia de obra.",
-  "eq": "IDS: campo purpose de la cabecera <info>.",
-  "err": "Pedir información «por si acaso», sin propósito: genera sobremodelado.",
+  "d": "The use the information will be put to (coordinating, quantity take-off, demonstrating fire safety, maintenance...). It is the first condition for setting the level of information need.",
+  "ej": "Purpose “demonstrate fire safety” for the building permit.",
+  "eq": "IDS: purpose field in the <info> header.",
+  "err": "Requesting information “just in case”, with no purpose: it leads to over-modelling.",
   "rel": [
    "N01",
    "N06",
@@ -954,48 +964,54 @@ window.BF_GLOSARIO = [
    "N29"
   ],
   "al": [
+   "purpose",
+   "use case",
    "propósito",
-   "caso de uso",
-   "purpose"
+   "caso de uso"
   ]
  },
  {
   "id": "N06",
   "slug": "hito-de-entrega-de-informacion-n06",
-  "t": "Hito de entrega de información",
-  "en": "Information delivery milestone",
+  "t": "Information delivery milestone",
+  "en": "Hito de entrega de información",
   "b": "I",
-  "d": "Momento acordado en el que se intercambia información: fin de fase, licitación, licencia, recepción. El nivel necesario se fija para cada hito.",
-  "ej": "Anteproyecto, proyecto básico, proyecto de ejecución, obra y entrega final.",
-  "eq": "IDS: campo milestone de la cabecera; ISO 19650: plan de entregas (MIDP).",
-  "err": "Pedir en proyecto datos que solo se conocen al contratar (fabricante, nº de serie).",
+  "d": "Agreed point in time at which information is exchanged: end of a stage, tender, permit, handover. The level of information need is set for each milestone.",
+  "ej": "Concept design, basic design, detailed design, construction and final handover.",
+  "eq": "IDS: milestone field in the header; ISO 19650: delivery plan (MIDP).",
+  "err": "Requesting at design stage data that are only known once the contract is let (manufacturer, serial number).",
   "rel": [
    "N01",
    "N05",
    "N16"
   ],
   "al": [
+   "information delivery milestone",
+   "milestone",
+   "milestones",
    "hito",
-   "hitos",
-   "milestone"
+   "hitos"
   ]
  },
  {
   "id": "N07",
   "slug": "actores",
-  "t": "Actores (parte que designa / parte designada)",
-  "en": "Actors (appointing / appointed party)",
+  "t": "Actors (appointing / appointed party)",
+  "en": "Actores (parte que designa / parte designada)",
   "b": "I",
-  "d": "Quien pide la información (parte que designa: el cliente o el contratista principal) y quien la produce (parte designada). Cada requisito los identifica.",
-  "ej": "El cliente pide; el equipo de arquitectura entrega las puertas en ejecución y el carpintero en obra.",
-  "eq": "Matriz de responsabilidades del BEP; gestores de requisitos con un IDS por actor.",
-  "err": "No asignar responsable: el dato queda en tierra de nadie entre dos disciplinas.",
+  "d": "Who requests the information (appointing party: the client or the lead contractor) and who produces it (appointed party). Every requirement identifies them.",
+  "ej": "The client requests; the architecture team delivers the doors at detailed design and the joiner during construction.",
+  "eq": "Responsibility matrix in the BEP; requirements management platforms with one IDS per actor.",
+  "err": "Not assigning a responsible party: the data falls into no man's land between two disciplines.",
   "rel": [
    "N01",
    "N15",
    "N16"
   ],
   "al": [
+   "actors",
+   "appointing party",
+   "appointed party",
    "actores",
    "parte que designa",
    "parte designada"
@@ -1004,19 +1020,22 @@ window.BF_GLOSARIO = [
  {
   "id": "N08",
   "slug": "sobremodelado",
-  "t": "Sobremodelado",
-  "en": "Over-modelling / information waste",
+  "t": "Over-modelling / information waste",
+  "en": "Sobremodelado",
   "b": "I",
-  "d": "Producir más geometría o más datos de los que necesita algún propósito. Cuesta crearlos, comprobarlos y mantenerlos, y añade ruido.",
-  "ej": "Modelar herrajes y tornillería de todas las puertas en anteproyecto.",
-  "eq": "BIMForum 2025 refuerza sus párrafos «Expansion» para responder a peticiones de LOD excesivos.",
-  "err": "Pensar que un modelo más detallado es siempre mejor.",
+  "d": "Producing more geometry or more data than any purpose needs. It costs effort to create, check and maintain, and it adds noise.",
+  "ej": "Modelling ironmongery and fixings for every door at concept design.",
+  "eq": "BIMForum 2025 strengthens its “Expansion” paragraphs to respond to requests for excessive LODs.",
+  "err": "Thinking a more detailed model is always better.",
   "rel": [
    "N01",
    "N05",
    "N09"
   ],
   "al": [
+   "over-modelling",
+   "information waste",
+   "over-specification",
    "sobremodelado",
    "sobreespecificación"
   ]
@@ -1024,13 +1043,13 @@ window.BF_GLOSARIO = [
  {
   "id": "N09",
   "slug": "nivel-de-desarrollo",
-  "t": "Nivel de desarrollo (LOD)",
-  "en": "Level of Development (LOD)",
+  "t": "Level of Development (LOD)",
+  "en": "Nivel de desarrollo (LOD)",
   "b": "I",
-  "d": "Escala de 100 a 500 (más el 350) que indica cuánto se puede confiar en la geometría y la información de un elemento. Nació hacia 2004-2005 (Vico) y la adoptó el AIA en E202-2008.",
-  "ej": "LOD 300: cantidad, tamaño, forma, ubicación y orientación medibles en el modelo.",
-  "eq": "BIMForum LOD Specification (definiciones por elemento); matrices de elementos del BEP.",
-  "err": "Aplicarlo al modelo entero («modelo LOD 300»); BIMForum: «There is no such thing as an LOD ### model».",
+  "d": "Scale from 100 to 500 (plus 350) indicating how far the geometry and information of an element can be relied on. It emerged around 2004-2005 (Vico) and the AIA adopted it in E202-2008.",
+  "ej": "LOD 300: quantity, size, shape, location and orientation measurable in the model.",
+  "eq": "BIMForum LOD Specification (definitions per element); BEP element matrices.",
+  "err": "Applying it to the whole model (“LOD 300 model”); BIMForum: “There is no such thing as an LOD ### model”.",
   "rel": [
    "N10",
    "N17",
@@ -1038,73 +1057,75 @@ window.BF_GLOSARIO = [
    "N22"
   ],
   "al": [
-   "LOD",
-   "nivel de desarrollo",
    "level of development",
+   "LOD",
    "LOD 300",
-   "LOD 350"
+   "LOD 350",
+   "nivel de desarrollo"
   ]
  },
  {
   "id": "N10",
   "slug": "nivel-de-detalle",
-  "t": "Nivel de detalle (Level of Detail)",
-  "en": "Level of Detail",
+  "t": "Level of Detail",
+  "en": "Nivel de detalle (Level of Detail)",
   "b": "I",
-  "d": "Cuánto detalle gráfico contiene un elemento. BIMForum lo distingue del desarrollo: el detalle es entrada; el desarrollo, salida fiable.",
-  "ej": "Una puerta de catálogo con manilla y bisagras dibujadas, pero sin producto decidido: mucho detalle, poco desarrollo.",
-  "eq": "Reino Unido (NBS): LOD = level of detail (gráfico). No confundir con el nivel de detalle de la vista.",
-  "err": "Tomar el detalle gráfico como prueba de que el elemento está decidido.",
+  "d": "How much graphical detail an element contains. BIMForum distinguishes it from development: detail is the input; development, the reliable output.",
+  "ej": "A catalogue door with handle and hinges drawn but no product chosen: plenty of detail, little development.",
+  "eq": "United Kingdom (NBS): LOD = level of detail (graphical). Not to be confused with the view detail level.",
+  "err": "Taking graphical detail as proof that the element has been decided.",
   "rel": [
    "N09",
    "N02",
    "N23"
   ],
   "al": [
-   "nivel de detalle",
-   "level of detail"
+   "level of detail",
+   "graphical detail",
+   "nivel de detalle"
   ]
  },
  {
   "id": "N11",
   "slug": "nivel-de-informacion",
-  "t": "Nivel de información (LOI)",
-  "en": "Level of Information (LOI)",
+  "t": "Level of Information (LOI)",
+  "en": "Nivel de información (LOI)",
   "b": "I",
-  "d": "Nivel de la información no gráfica (alfanumérica) de un elemento. Usado en Reino Unido (NBS BIM Toolkit) y Alemania (junto a LOG), hoy integrado en el nivel de información necesario.",
-  "ej": "LOI de una puerta en ejecución: tipo, resistencia al fuego, transmitancia, acústica.",
-  "eq": "Alemania: LOG (geometría) + LOI; Perú: matriz con LOD y LOI.",
-  "err": "Usar LOD y LOI como dos números sueltos sin propósito ni hito.",
+  "d": "Level of the non-graphical (alphanumerical) information of an element. Used in the United Kingdom (NBS BIM Toolkit) and Germany (alongside LOG), now absorbed into the level of information need.",
+  "ej": "LOI of a door at detailed design: type, fire resistance, thermal transmittance, acoustics.",
+  "eq": "Germany: LOG (geometry) + LOI; Peru: matrix with LOD and LOI.",
+  "err": "Using LOD and LOI as two loose numbers with no purpose or milestone.",
   "rel": [
    "N01",
    "N03",
    "N19"
   ],
   "al": [
+   "level of information",
    "LOI",
    "LOG",
-   "level of information",
    "level of geometry"
   ]
  },
  {
   "id": "N12",
   "slug": "nivel-de-exactitud",
-  "t": "Nivel de exactitud (LOA)",
-  "en": "Level of Accuracy (LOA)",
+  "t": "Level of Accuracy (LOA)",
+  "en": "Nivel de exactitud (LOA)",
   "b": "I",
-  "d": "Escala de la USIBD (LOA10 a LOA50) que fija, al 95 % de confianza, la desviación admisible de lo medido y de lo representado respecto a la realidad.",
-  "ej": "LOA30 (5-15 mm) para el levantamiento de un edificio existente que se va a reformar.",
-  "eq": "Escaneado y nubes de puntos (ReCap, CloudCompare); guías como la de Metrolinx la combinan con el LOIN.",
-  "err": "Pedir un LOD alto a un modelo de edificio existente sin fijar la exactitud del levantamiento.",
+  "d": "USIBD scale (LOA10 to LOA50) that sets, at 95 % confidence, the permissible deviation of what is measured and what is represented from reality.",
+  "ej": "LOA30 (5-15 mm) for the survey of an existing building that is going to be refurbished.",
+  "eq": "Laser scanning and point clouds (ReCap, CloudCompare); guides such as Metrolinx's combine it with LOIN.",
+  "err": "Requesting a high LOD for an existing building model without setting the accuracy of the survey.",
   "rel": [
    "N02",
    "N09"
   ],
   "al": [
+   "level of accuracy",
    "LOA",
-   "nivel de exactitud",
-   "level of accuracy"
+   "LOA30",
+   "nivel de exactitud"
   ]
  },
  {
@@ -1113,10 +1134,10 @@ window.BF_GLOSARIO = [
   "t": "ISO 7817-1",
   "en": "ISO 7817-1",
   "b": "II",
-  "d": "Norma internacional (2024) «Building information modelling — Level of information need — Part 1: Concepts and principles». Sustituye a la EN 17412-1 sin cambios de fondo; en España, UNE-EN ISO 7817-1:2025.",
-  "ej": "UNE-EN ISO 7817-1:2025 sustituye a la UNE-EN 17412-1:2021, anulada el 22-01-2025.",
-  "eq": "BIMForum 2025 describe cada LOD con los aspectos de la ISO 7817-1.",
-  "err": "Seguir citando la UNE-EN 17412-1 en pliegos posteriores a 2025.",
+  "d": "International standard (2024) “Building information modelling — Level of information need — Part 1: Concepts and principles”. It supersedes EN 17412-1 with no substantive changes; in Spain, UNE-EN ISO 7817-1:2025.",
+  "ej": "UNE-EN ISO 7817-1:2025 supersedes UNE-EN 17412-1:2021, withdrawn on 2025-01-22.",
+  "eq": "BIMForum 2025 describes each LOD using the aspects of ISO 7817-1.",
+  "err": "Still citing UNE-EN 17412-1 in tender documents issued after 2025.",
   "rel": [
    "N01",
    "N14",
@@ -1125,6 +1146,7 @@ window.BF_GLOSARIO = [
   "al": [
    "ISO 7817",
    "ISO 7817-1",
+   "EN ISO 7817-1",
    "UNE-EN ISO 7817-1"
   ]
  },
@@ -1134,37 +1156,41 @@ window.BF_GLOSARIO = [
   "t": "EN 17412-1",
   "en": "EN 17412-1",
   "b": "II",
-  "d": "Primera norma europea (CEN, 2020) del nivel de información necesario. Anulada y sustituida por la EN ISO 7817-1:2024.",
-  "ej": "UNE-EN 17412-1:2021, publicada el 28-04-2021 y anulada el 22-01-2025.",
+  "d": "First European standard (CEN, 2020) on the level of information need. Withdrawn and superseded by EN ISO 7817-1:2024.",
+  "ej": "UNE-EN 17412-1:2021, published on 2021-04-28 and withdrawn on 2025-01-22.",
   "eq": "—",
-  "err": "Citarla como vigente.",
+  "err": "Citing it as current.",
   "rel": [
    "N13"
   ],
   "al": [
    "EN 17412-1",
+   "EN 17412",
    "UNE-EN 17412-1"
   ]
  },
  {
   "id": "N15",
   "slug": "requisitos-de-informacion",
-  "t": "Requisitos de información (OIR, AIR, PIR, EIR)",
-  "en": "Information requirements (OIR, AIR, PIR, EIR)",
+  "t": "Information requirements (OIR, AIR, PIR, EIR)",
+  "en": "Requisitos de información (OIR, AIR, PIR, EIR)",
   "b": "II",
-  "d": "Cadena de requisitos de ISO 19650: de la organización (OIR) y del activo (AIR) al proyecto (PIR) y a cada intercambio (EIR), donde se fija el nivel de información necesario.",
-  "ej": "El EIR de un contrato de arquitectura pide las puertas con su resistencia al fuego en el proyecto de ejecución.",
-  "eq": "Plataformas de requisitos (BIMQ, Plannerly, Cobuilder Require); IDS adjunto al EIR.",
-  "err": "Escribir el EIR con niveles genéricos («LOD 300») sin propósito ni hito.",
+  "d": "ISO 19650 chain of requirements: from the organization (OIR) and the asset (AIR) to the project (PIR) and each exchange (EIR), where the level of information need is set.",
+  "ej": "The EIR of an architecture appointment requires the doors with their fire resistance at detailed design.",
+  "eq": "Requirements platforms (BIMQ, Plannerly, Cobuilder Require); IDS attached to the EIR.",
+  "err": "Writing the EIR with generic levels (“LOD 300”) and no purpose or milestone.",
   "rel": [
    "N01",
    "N07",
    "N16"
   ],
   "al": [
+   "information requirements",
+   "exchange information requirements",
    "OIR",
    "AIR",
    "PIR",
+   "EIR",
    "requisitos de información",
    "requisitos de intercambio"
   ]
@@ -1172,19 +1198,22 @@ window.BF_GLOSARIO = [
  {
   "id": "N16",
   "slug": "plan-de-entregas",
-  "t": "Plan de entregas (MIDP / TIDP)",
-  "en": "Master / task information delivery plan",
+  "t": "Master / task information delivery plan (MIDP / TIDP)",
+  "en": "Plan de entregas (MIDP / TIDP)",
   "b": "II",
-  "d": "Planes de ISO 19650 que dicen qué contenedor de información entrega cada equipo, quién y cuándo. Llevan a la práctica los hitos y el nivel necesario.",
-  "ej": "TIDP del equipo de estructuras: modelo de estructura en LOD 350 para el hito de ejecución.",
-  "eq": "Hojas de cálculo o módulos de planificación de los CDE.",
-  "err": "Planificar entregas sin enlazarlas con los requisitos de cada hito.",
+  "d": "ISO 19650 plans stating which information container each team delivers, who delivers it and when. They put milestones and the level of information need into practice.",
+  "ej": "Structural team TIDP: structural model at LOD 350 for the detailed design milestone.",
+  "eq": "Spreadsheets or the planning modules of CDEs.",
+  "err": "Planning deliveries without linking them to the requirements of each milestone.",
   "rel": [
    "N06",
    "N07",
    "N15"
   ],
   "al": [
+   "master information delivery plan",
+   "task information delivery plan",
+   "information delivery plan",
    "MIDP",
    "TIDP",
    "plan de entregas"
@@ -1196,10 +1225,10 @@ window.BF_GLOSARIO = [
   "t": "BIMForum LOD Specification",
   "en": "BIMForum LOD Specification",
   "b": "II",
-  "d": "Especificación (desde 2013, casi anual) que define qué significa cada LOD para cada tipo de elemento, con ilustraciones. Añadió el LOD 350; la edición 2025 incorpora los aspectos de ISO 7817-1. Hay versión oficial en español de 2024 y 2025.",
-  "ej": "Edición 2025 en español, traducida con BIMForum Ecuador (febrero de 2026).",
-  "eq": "Referencia para matrices de elementos en cualquier programa.",
-  "err": "Creer que dice qué LOD toca en cada fase: «esa determinación se deja a cada equipo de proyecto».",
+  "d": "Specification (since 2013, almost yearly) that defines what each LOD means for each element type, with illustrations. It added LOD 350; the 2025 edition incorporates the aspects of ISO 7817-1. There is an official Spanish version for 2024 and 2025.",
+  "ej": "2025 edition in Spanish, translated with BIMForum Ecuador (February 2026).",
+  "eq": "Reference for element matrices in any authoring tool.",
+  "err": "Believing it says which LOD applies at each stage: “that determination is left to each project team”.",
   "rel": [
    "N09",
    "N18",
@@ -1216,16 +1245,17 @@ window.BF_GLOSARIO = [
   "t": "AIA E202 / G202",
   "en": "AIA E202 / G202",
   "b": "II",
-  "d": "Documentos contractuales del American Institute of Architects: E202-2008 introdujo las definiciones de Level of Development; en 2013 se revisaron en E203, G201 y G202.",
+  "d": "Contract documents of the American Institute of Architects: E202-2008 introduced the Level of Development definitions; in 2013 they were revised in E203, G201 and G202.",
   "ej": "—",
   "eq": "—",
-  "err": "Usar el anexo E202 de 2008 como si fuera la versión vigente.",
+  "err": "Using the 2008 E202 exhibit as if it were the current version.",
   "rel": [
    "N09",
    "N17"
   ],
   "al": [
    "AIA E202",
+   "E202",
    "G202",
    "E203"
   ]
@@ -1233,13 +1263,13 @@ window.BF_GLOSARIO = [
  {
   "id": "N19",
   "slug": "lod-y-loi-britanicos",
-  "t": "LOD y LOI británicos (PAS 1192 / NBS BIM Toolkit)",
-  "en": "UK LOD and LOI (PAS 1192 / NBS BIM Toolkit)",
+  "t": "UK LOD and LOI (PAS 1192 / NBS BIM Toolkit)",
+  "en": "LOD y LOI británicos (PAS 1192 / NBS BIM Toolkit)",
   "b": "II",
-  "d": "Escalas británicas de nivel gráfico (LOD) y no gráfico (LOI) por etapas. NBS las da por sustituidas por ISO 19650, la EN 17412-1 y el nivel de información necesario.",
+  "d": "British scales of graphical (LOD) and non-graphical (LOI) level by stage. NBS considers them superseded by ISO 19650, EN 17412-1 and the level of information need.",
   "ej": "—",
   "eq": "—",
-  "err": "Mezclar la escala británica (1-7) con la estadounidense (100-500).",
+  "err": "Mixing the British scale (1-7) with the US scale (100-500).",
   "rel": [
    "N10",
    "N11",
@@ -1254,18 +1284,20 @@ window.BF_GLOSARIO = [
  {
   "id": "N20",
   "slug": "plantillas-de-datos",
-  "t": "Plantillas de datos (ISO 23386 / ISO 23387)",
-  "en": "Data templates (ISO 23386 / ISO 23387)",
+  "t": "Data templates (ISO 23386 / ISO 23387)",
+  "en": "Plantillas de datos (ISO 23386 / ISO 23387)",
   "b": "II",
-  "d": "ISO 23386 fija cómo describir propiedades y mantener diccionarios interconectados; ISO 23387 define plantillas de datos que agrupan las propiedades de cada tipo de objeto.",
-  "ej": "Plantilla de datos de puerta cortafuegos con su clase de resistencia al fuego y valores admitidos.",
-  "eq": "bSDD; gestores de requisitos; importación de propiedades en Allplan y Archicad.",
-  "err": "Inventar nombres de propiedades distintos en cada proyecto.",
+  "d": "ISO 23386 sets out how to describe properties and maintain interconnected dictionaries; ISO 23387 defines data templates that group the properties of each object type.",
+  "ej": "Fire door data template with its fire resistance class and allowed values.",
+  "eq": "bSDD; requirements management platforms; property import in Allplan and Archicad.",
+  "err": "Inventing different property names on every project.",
   "rel": [
    "N03",
    "N21"
   ],
   "al": [
+   "data template",
+   "data templates",
    "ISO 23386",
    "ISO 23387",
    "plantilla de datos",
@@ -1275,13 +1307,13 @@ window.BF_GLOSARIO = [
  {
   "id": "N21",
   "slug": "bsdd",
-  "t": "bSDD (buildingSMART Data Dictionary)",
-  "en": "buildingSMART Data Dictionary (bSDD)",
+  "t": "buildingSMART Data Dictionary (bSDD)",
+  "en": "bSDD (buildingSMART Data Dictionary)",
   "b": "II",
-  "d": "Servicio en línea de buildingSMART que publica diccionarios de clases y propiedades según ISO 23386, enlazados con entidades IFC y con valores admitidos.",
-  "ej": "Propiedad de resistencia al fuego con valores REI30 a REI120 en un diccionario nacional.",
-  "eq": "Allplan 2026 integra más de 300 diccionarios; Bonsai 0.8.5 admite la API v5; editores IDS consultan el bSDD.",
-  "err": "Crear un Pset propio para algo que ya existe en un diccionario o en IFC.",
+  "d": "buildingSMART online service that publishes dictionaries of classes and properties according to ISO 23386, linked to IFC entities and with allowed values.",
+  "ej": "Fire resistance property with values REI30 to REI120 in a national dictionary.",
+  "eq": "Allplan 2026 integrates more than 300 dictionaries; Bonsai 0.8.5 supports API v5; IDS editors query the bSDD.",
+  "err": "Creating a custom Pset for something that already exists in a dictionary or in IFC.",
   "rel": [
    "N20",
    "N26",
@@ -1289,25 +1321,31 @@ window.BF_GLOSARIO = [
   ],
   "al": [
    "bSDD",
+   "buildingSMART Data Dictionary",
+   "data dictionary",
    "diccionario de datos"
   ]
  },
  {
   "id": "N22",
   "slug": "matriz-de-elementos",
-  "t": "Matriz de elementos",
-  "en": "Model element table / LOD matrix",
+  "t": "Model element table / LOD matrix",
+  "en": "Matriz de elementos",
   "b": "II",
-  "d": "Tabla de elementos por hitos con el nivel pedido en cada celda y su responsable. En Estados Unidos, Model Element Table; en otros países, matriz de progresión o matriz LOIN.",
-  "ej": "Estructura 350 en ejecución, puertas 300, mobiliario 100.",
-  "eq": "Hoja de cálculo del BEP o gestores como Plannerly y BIMQ.",
-  "err": "Una sola columna «LOD del modelo».",
+  "d": "Table of elements by milestone with the required level in each cell and who is responsible. In the United States, Model Element Table; in other countries, progression matrix or LOIN matrix.",
+  "ej": "Structure 350 at detailed design, doors 300, furniture 100.",
+  "eq": "BEP spreadsheet or platforms such as Plannerly and BIMQ.",
+  "err": "A single “model LOD” column.",
   "rel": [
    "N09",
    "N16",
    "N25"
   ],
   "al": [
+   "model element table",
+   "LOD matrix",
+   "LOIN matrix",
+   "progression matrix",
    "matriz de elementos",
    "matriz LOIN",
    "matriz LOD"
@@ -1316,37 +1354,41 @@ window.BF_GLOSARIO = [
  {
   "id": "N23",
   "slug": "nivel-de-detalle-de-vista",
-  "t": "Nivel de detalle de vista",
-  "en": "View detail level",
+  "t": "View detail level",
+  "en": "Nivel de detalle de vista",
   "b": "III",
-  "d": "Ajuste gráfico de los programas (grueso/medio/fino, esquemático/simplificado/completo) que decide qué geometría se dibuja a cada escala. No es un nivel contractual.",
+  "d": "Graphical setting in authoring tools (coarse/medium/fine, schematic/simplified/detailed) that decides which geometry is drawn at each scale. It is not a contractual level.",
   "ej": "—",
-  "eq": "Revit: Detail Level (Coarse, Medium, Fine) por vista; Archicad: Opciones de vista del modelo; exportador IFC de Revit: «Level of Detail» = teselación.",
-  "err": "Creer que una vista en «fino» equivale a LOD 400.",
+  "eq": "Revit: Detail Level (Coarse, Medium, Fine) per view; Archicad: Model View Options; Revit IFC exporter: “Level of Detail” = tessellation.",
+  "err": "Believing that a view set to “Fine” equals LOD 400.",
   "rel": [
    "N02",
    "N10"
   ],
   "al": [
-   "nivel de detalle de vista",
-   "Detail Level"
+   "view detail level",
+   "Detail Level",
+   "nivel de detalle de vista"
   ]
  },
  {
   "id": "N24",
   "slug": "parametros-y-propiedades-del-programa",
-  "t": "Parámetros y propiedades del programa",
-  "en": "Authoring tool parameters and properties",
+  "t": "Authoring tool parameters and properties",
+  "en": "Parámetros y propiedades del programa",
   "b": "III",
-  "d": "Contenedores nativos de la información alfanumérica en cada programa de autoría. Deben definirse una vez y con el nombre que pide el requisito.",
+  "d": "Native containers for alphanumerical information in each authoring tool. They should be defined once and with the name the requirement asks for.",
   "ej": "—",
-  "eq": "Revit: parámetros compartidos (TXT); Archicad: Administrador de propiedades y expresiones; Allplan: atributos; Tekla: property sets de Trimble Connect.",
-  "err": "Rellenar el dato en un parámetro que el exportador IFC no lleva a ningún Pset.",
+  "eq": "Revit: shared parameters (TXT); Archicad: Property Manager and expressions; Allplan: attributes; Tekla: Trimble Connect property sets.",
+  "err": "Entering the data in a parameter that the IFC exporter does not map to any Pset.",
   "rel": [
    "N03",
    "N26"
   ],
   "al": [
+   "shared parameters",
+   "parameters",
+   "attributes",
    "parámetros compartidos",
    "parámetros",
    "atributos"
@@ -1355,19 +1397,22 @@ window.BF_GLOSARIO = [
  {
   "id": "N25",
   "slug": "gestor-de-requisitos-de-informacion",
-  "t": "Gestor de requisitos de información",
-  "en": "Information requirements management platform",
+  "t": "Information requirements management platform",
+  "en": "Gestor de requisitos de información",
   "b": "IV",
-  "d": "Plataforma que guarda los requisitos por objeto, hito, propósito y actor, y los exporta a plantillas, reglas o IDS.",
+  "d": "Platform that stores requirements by object, milestone, purpose and actor, and exports them to templates, rules or IDS.",
   "ej": "—",
-  "eq": "dRofus, Plannerly, BIMQ, Cobuilder Require (exporta un IDS por hito y propósito).",
-  "err": "Gestionar cientos de requisitos en una hoja de cálculo sin control de versiones.",
+  "eq": "dRofus, Plannerly, BIMQ, Cobuilder Require (exports one IDS per milestone and purpose).",
+  "err": "Managing hundreds of requirements in a spreadsheet with no version control.",
   "rel": [
    "N15",
    "N22",
    "N27"
   ],
   "al": [
+   "requirements management platform",
+   "requirements management platforms",
+   "requirements manager",
    "gestor de requisitos",
    "gestores de requisitos"
   ]
@@ -1375,22 +1420,23 @@ window.BF_GLOSARIO = [
  {
   "id": "N26",
   "slug": "conjunto-de-propiedades-ifc",
-  "t": "Conjunto de propiedades IFC (Pset)",
-  "en": "IFC property set (Pset)",
+  "t": "IFC property set (Pset)",
+  "en": "Conjunto de propiedades IFC (Pset)",
   "b": "V",
-  "d": "Agrupación de propiedades de un objeto IFC. Los Pset_ estándar de buildingSMART (p. ej. Pset_DoorCommon) tienen nombres y tipos fijos; los conjuntos de cantidades (Qto_) guardan medidas.",
+  "d": "Grouping of properties of an IFC object. The standard buildingSMART Pset_ sets (e.g. Pset_DoorCommon) have fixed names and types; quantity sets (Qto_) store measurements.",
   "ej": "Pset_DoorCommon.FireRating (IfcLabel), IsExternal (IfcBoolean).",
-  "eq": "Revit: pestaña Property Sets del exportador y TXT de conjuntos de usuario; Archicad: Traductores IFC.",
-  "err": "Crear conjuntos propios que empiezan por «Pset_» o duplicar una propiedad estándar.",
+  "eq": "Revit: Property Sets tab of the exporter and user-defined property set TXT files; Archicad: IFC Translators.",
+  "err": "Creating custom sets whose names start with “Pset_” or duplicating a standard property.",
   "rel": [
    "N03",
    "N24",
    "N27"
   ],
   "al": [
+   "property set",
+   "property sets",
    "Pset",
    "Psets",
-   "property set",
    "Pset_DoorCommon",
    "Qto"
   ]
@@ -1398,56 +1444,58 @@ window.BF_GLOSARIO = [
  {
   "id": "N27",
   "slug": "ids-n27",
-  "t": "IDS (Information Delivery Specification)",
-  "en": "Information Delivery Specification (IDS)",
+  "t": "Information Delivery Specification (IDS)",
+  "en": "IDS (Information Delivery Specification)",
   "b": "V",
-  "d": "Estándar de buildingSMART (1.0, junio de 2024): fichero XML con requisitos comprobables de un IFC, en aplicabilidad y requisitos, con seis facetas. Su cabecera admite purpose y milestone; no puede pedir geometría.",
-  "ej": "IDS de puertas: FireRating con patrón «EI2? \\d+(-C\\d)?» e IsExternal booleano.",
-  "eq": "Importan IDS: Archicad 28+, Allplan 2026, Vectorworks 2024+, BricsCAD V25; validan: IfcTester, Solibri (regla 244), BIMcollab Zoom; Revit con complementos.",
-  "err": "Pensar que el IDS cubre todo el nivel de información necesario: deja fuera la geometría y los documentos.",
+  "d": "buildingSMART standard (1.0, June 2024): an XML file with checkable requirements for an IFC, split into applicability and requirements, with six facets. Its header accepts purpose and milestone; it cannot require geometry.",
+  "ej": "Door IDS: FireRating with pattern “EI2? \\d+(-C\\d)?” and IsExternal as a boolean.",
+  "eq": "Import IDS: Archicad 28+, Allplan 2026, Vectorworks 2024+, BricsCAD V25; validate: IfcTester, Solibri (rule 244), BIMcollab Zoom; Revit with add-ins.",
+  "err": "Thinking IDS covers the whole level of information need: it leaves out geometry and documents.",
   "rel": [
    "N01",
    "N26",
    "N30"
   ],
   "al": [
-   "IDS",
-   "Information Delivery Specification"
+   "Information Delivery Specification",
+   "IDS"
   ]
  },
  {
   "id": "N28",
   "slug": "cobie-n28",
-  "t": "COBie",
-  "en": "Construction Operations Building information exchange (COBie)",
+  "t": "Construction Operations Building information exchange (COBie)",
+  "en": "COBie",
   "b": "V",
-  "d": "Subconjunto de datos para explotación y mantenimiento (instalaciones, espacios, tipos, componentes, garantías). COBie v3 (2023) forma parte de NBIMS-US V4 y añade JSON.",
+  "d": "Subset of data for operation and maintenance (facilities, spaces, types, components, warranties). COBie v3 (2023) is part of NBIMS-US V4 and adds JSON.",
   "ej": "—",
-  "eq": "Exportadores COBie de los programas de autoría; hojas de cálculo y IFC.",
-  "err": "Pedir COBie completo en fases de diseño.",
+  "eq": "COBie exporters in authoring tools; spreadsheets and IFC.",
+  "err": "Requesting full COBie at design stages.",
   "rel": [
    "N04",
    "N06"
   ],
   "al": [
-   "COBie"
+   "COBie",
+   "COBie v3"
   ]
  },
  {
   "id": "N29",
   "slug": "idm",
-  "t": "IDM (ISO 29481)",
-  "en": "Information Delivery Manual (IDM)",
+  "t": "Information Delivery Manual (IDM) (ISO 29481)",
+  "en": "IDM (ISO 29481)",
   "b": "V",
-  "d": "Método para describir los procesos y los intercambios de información de un caso de uso. ISO 29481-3:2022 da un esquema de datos legible por máquina.",
+  "d": "Method for describing the processes and information exchanges of a use case. ISO 29481-3:2022 provides a machine-readable data schema.",
   "ej": "—",
-  "eq": "buildingSMART Use Case Management; IDS como parte técnica comprobable.",
-  "err": "Escribir requisitos sin el proceso que los justifica.",
+  "eq": "buildingSMART Use Case Management; IDS as the checkable technical part.",
+  "err": "Writing requirements without the process that justifies them.",
   "rel": [
    "N05",
    "N27"
   ],
   "al": [
+   "Information Delivery Manual",
    "IDM",
    "ISO 29481"
   ]
@@ -1455,39 +1503,42 @@ window.BF_GLOSARIO = [
  {
   "id": "N30",
   "slug": "comprobacion-de-requisitos",
-  "t": "Comprobación de requisitos",
-  "en": "Requirements checking",
+  "t": "Requirements checking",
+  "en": "Comprobación de requisitos",
   "b": "VI",
-  "d": "Verificación de que una entrega cumple su nivel de información: que existan las propiedades, que tengan valor y que sea válido; la geometría se revisa con reglas y muestreo.",
-  "ej": "IfcTester 0.9.0: 1 de 3 puertas cumple el IDS de prueba.",
-  "eq": "IfcTester, Solibri, BIMcollab Zoom, usBIM.IDS, xbim; el Validation Service de buildingSMART no comprueba IDS.",
-  "err": "Comprobar solo al recibir, cuando corregir es más caro.",
+  "d": "Verifying that a delivery meets its level of information need: that the properties exist, have a value and that the value is valid; geometry is reviewed with rules and sampling.",
+  "ej": "IfcTester 0.9.0: 1 of 3 doors passes the test IDS.",
+  "eq": "IfcTester, Solibri, BIMcollab Zoom, usBIM.IDS, xbim; the buildingSMART Validation Service does not check IDS.",
+  "err": "Checking only on receipt, when fixing is more expensive.",
   "rel": [
    "N27",
    "N26"
   ],
   "al": [
-   "comprobación de requisitos",
+   "requirements checking",
+   "IDS validation",
    "IfcTester",
+   "comprobación de requisitos",
    "validación IDS"
   ]
  },
  {
   "id": "N31",
   "slug": "guias-nacionales-de-niveles-de-informacion",
-  "t": "Guías nacionales de niveles de información",
-  "en": "National level of information guidance",
+  "t": "National level of information guidance",
+  "en": "Guías nacionales de niveles de información",
   "b": "II",
-  "d": "Documentos de cada país que concretan cómo pedir niveles de información: siglas, escalas, plantillas de matriz y ejemplos. Unos siguen la escala LOD 100-500 y otros el nivel de información necesario.",
-  "ej": "España: UNE-EN ISO 7817-1:2025 y guías de la CBIM; Chile: NDI del MINVU y Planbim; Perú: matriz de nivel de información necesaria del Plan BIM; Alemania: Arbeitshilfe LOIN-Konzept.",
+  "d": "Each country's documents that specify how to request levels of information: acronyms, scales, matrix templates and examples. Some follow the LOD 100-500 scale and others the level of information need.",
+  "ej": "Spain: UNE-EN ISO 7817-1:2025 and CBIM guides; Chile: MINVU NDI and Planbim; Peru: Plan BIM level of information need matrix; Germany: Arbeitshilfe LOIN-Konzept.",
   "eq": "—",
-  "err": "Copiar la matriz de otro país sin adaptar los propósitos ni los hitos.",
+  "err": "Copying another country's matrix without adapting the purposes or milestones.",
   "rel": [
    "N01",
    "N09",
    "N13"
   ],
   "al": [
+   "national guidance",
    "NDI",
    "Plan BIM",
    "Planbim"
@@ -1496,13 +1547,13 @@ window.BF_GLOSARIO = [
  {
   "id": "N32",
   "slug": "iso-7817-2-e-iso-7817-3",
-  "t": "ISO 7817-2 e ISO 7817-3",
-  "en": "ISO 7817-2 and ISO 7817-3",
+  "t": "ISO 7817-2 and ISO 7817-3",
+  "en": "ISO 7817-2 e ISO 7817-3",
   "b": "II",
-  "d": "Partes en preparación: la 2 (ISO/DTS) es una guía de aplicación con ejemplos y plantillas; la 3 (ISO/DIS) define un modelo de datos UML y un esquema XSD para intercambiar el nivel de información necesario.",
+  "d": "Parts in preparation: Part 2 (ISO/DTS) is an application guide with examples and templates; Part 3 (ISO/DIS) defines a UML data model and an XSD schema for exchanging the level of information need.",
   "ej": "—",
-  "eq": "Bibliotecas que leen borradores de la parte 3 (p. ej. openbim-loin).",
-  "err": "Implementar el borrador de la parte 3 como si fuera definitivo.",
+  "eq": "Libraries that read drafts of Part 3 (e.g. openbim-loin).",
+  "err": "Implementing the Part 3 draft as if it were final.",
   "rel": [
    "N13",
    "N27"
@@ -1515,13 +1566,13 @@ window.BF_GLOSARIO = [
  {
   "id": "D01",
   "slug": "interferencia-colision",
-  "t": "Interferencia / colisión",
-  "en": "Clash / conflict",
+  "t": "Clash / conflict",
+  "en": "Interferencia / colisión",
   "b": "I",
-  "d": "Incompatibilidad entre elementos de uno o varios modelos (espacial, de holgura o temporal) que impediría construir, operar o mantener como está diseñado; se detecta comparando conjuntos de elementos con unas reglas y tolerancias.",
-  "ej": "Un conducto de climatización atraviesa una viga de hormigón.",
-  "eq": "Navisworks: Clash; Solibri: Issue/Clash (regla de intersección de componentes); Revit: Interference Check; ACC Model Coordination: Clash; IfcClash: clash; BCF: Topic (tipo Clash)",
-  "err": "Confundir un resultado geométrico con un problema real: muchos resultados son irrelevantes o duplicados.",
+  "d": "Incompatibility between elements of one or more models (spatial, clearance or time-based) that would prevent building, operating or maintaining the asset as designed; it is detected by comparing sets of elements against agreed rules and tolerances.",
+  "ej": "An HVAC duct runs through a concrete beam.",
+  "eq": "Navisworks: Clash; Solibri: Issue/Clash (component intersection rule); Revit: Interference Check; ACC Model Coordination: Clash; IfcClash: clash; BCF: Topic (type Clash)",
+  "err": "Mistaking a geometric result for a real problem: many results are irrelevant or duplicated.",
   "rel": [
    "D02",
    "D03",
@@ -1530,6 +1581,12 @@ window.BF_GLOSARIO = [
    "D10"
   ],
   "al": [
+   "clash",
+   "clashes",
+   "conflict",
+   "conflicts",
+   "interference",
+   "interferences",
    "interferencia",
    "interferencias",
    "choque",
@@ -1541,92 +1598,106 @@ window.BF_GLOSARIO = [
  {
   "id": "D02",
   "slug": "interferencia-dura",
-  "t": "Interferencia dura",
-  "en": "Hard clash",
+  "t": "Hard clash",
+  "en": "Interferencia dura",
   "b": "I",
-  "d": "Dos elementos ocupan el mismo espacio físico: sus geometrías se intersecan más allá de la tolerancia de penetración admitida.",
-  "ej": "Tubería de saneamiento que atraviesa un pilar.",
+  "d": "Two elements occupy the same physical space: their geometries intersect beyond the accepted penetration tolerance.",
+  "ej": "A drainage pipe passing through a column.",
   "eq": "Navisworks: Hard / Hard (Conservative); Solibri: Intersection; ACC: Hard clash; IfcClash: intersection/collision",
-  "err": "Reportar como duros los pasos previstos (pasatubos) o los contactos tangentes sin tolerancia.",
+  "err": "Reporting planned penetrations (sleeves) or tangential contacts without tolerance as hard clashes.",
   "rel": [
    "D05",
    "D12"
   ],
   "al": [
+   "hard clash",
+   "hard clashes",
+   "physical clash",
    "interferencia dura",
-   "choque duro",
-   "hard clash"
+   "choque duro"
   ]
  },
  {
   "id": "D03",
   "slug": "interferencia-blanda-o-de-holgura",
-  "t": "Interferencia blanda o de holgura",
-  "en": "Soft / clearance clash",
+  "t": "Soft / clearance clash",
+  "en": "Interferencia blanda o de holgura",
   "b": "I",
-  "d": "Un elemento invade la distancia mínima o el volumen libre exigido alrededor de otro (aislamiento, montaje, acceso, seguridad) aunque no lo toque.",
-  "ej": "Bandeja eléctrica a 5 cm de un conducto cuando se exigen 30 cm de separación.",
-  "eq": "Navisworks: Clearance; Solibri: Clearance / regla de distancia; Revizto: Clearance (con desfases H/V); IfcClash: clearance",
-  "err": "Aplicar una holgura única a todo el modelo; la holgura depende del sistema y debería modelarse como volumen cuando es de mantenimiento.",
+  "d": "An element intrudes into the minimum distance or free volume required around another (insulation, installation, access, safety) even though it does not touch it.",
+  "ej": "A cable tray 5 cm from a duct where 30 cm of separation is required.",
+  "eq": "Navisworks: Clearance; Solibri: Clearance / distance rule; Revizto: Clearance (with H/V offsets); IfcClash: clearance",
+  "err": "Applying a single clearance to the whole model; clearance depends on the system and should be modelled as a volume when it is for maintenance.",
   "rel": [
    "D05",
    "D20"
   ],
   "al": [
+   "clearance",
+   "soft clash",
+   "clearance clash",
+   "soft clashes",
+   "clearance clashes",
    "holgura",
-   "interferencia de holgura",
-   "clearance"
+   "interferencia de holgura"
   ]
  },
  {
   "id": "D04",
   "slug": "interferencia-de-flujo-de-trabajo-4d",
-  "t": "Interferencia de flujo de trabajo / 4D",
-  "en": "Workflow / 4D / time-space clash",
+  "t": "Workflow / 4D / time-space clash",
+  "en": "Interferencia de flujo de trabajo / 4D",
   "b": "I",
-  "d": "Conflicto que surge al vincular el modelo con la planificación: dos actividades, equipos o espacios de trabajo coinciden en lugar y tiempo, o la secuencia impide montar algo.",
-  "ej": "El radio de giro de la grúa invade la zona de montaje de fachada en la semana 32.",
-  "eq": "Navisworks: Clash Detective con TimeLiner; Synchro: conflictos 4D; ACC/Revizto: limitados",
-  "err": "Tratarla con las mismas reglas que una interferencia espacial estática.",
+  "d": "Conflict that arises when the model is linked to the schedule: two activities, crews or workspaces coincide in place and time, or the sequence makes it impossible to install something.",
+  "ej": "The crane's slewing radius encroaches on the façade installation zone in week 32.",
+  "eq": "Navisworks: Clash Detective with TimeLiner; Synchro: 4D conflicts; ACC/Revizto: limited",
+  "err": "Treating it with the same rules as a static spatial clash.",
   "rel": [
    "D01",
    "D24"
   ],
   "al": [
+   "4D clash",
+   "workflow clash",
+   "time-space clash",
+   "sequencing clash",
+   "4D",
    "secuencia",
-   "interferencia de flujo",
-   "4D"
+   "interferencia de flujo"
   ]
  },
  {
   "id": "D05",
   "slug": "tolerancia-de-deteccion",
-  "t": "Tolerancia de detección",
-  "en": "Clash tolerance",
+  "t": "Clash tolerance",
+  "en": "Tolerancia de detección",
   "b": "I",
-  "d": "Valor numérico que define qué se reporta: en choques duros, la penetración mínima a partir de la cual se informa; en holgura, la distancia máxima por debajo de la cual se informa. Suele ajustarse por fase y disciplina.",
-  "ej": "Duro con 10 mm para ignorar contactos de modelado; holgura de 50 mm entre conductos.",
-  "eq": "Navisworks: Tolerance; Solibri: tolerancia en reglas; Revizto: Tolerance; IfcClash: tolerance/clearance",
-  "err": "Confundir tolerancia de detección con tolerancia de ejecución de obra, o subirla tanto que oculte choques reales.",
+  "d": "Numerical value that defines what gets reported: for hard clashes, the minimum penetration from which a clash is reported; for clearance, the maximum distance below which it is reported. It is usually adjusted by stage and discipline.",
+  "ej": "Hard with 10 mm to ignore modelling contacts; 50 mm clearance between ducts.",
+  "eq": "Navisworks: Tolerance; Solibri: tolerance in rules; Revizto: Tolerance; IfcClash: tolerance/clearance",
+  "err": "Confusing detection tolerance with construction tolerance, or raising it so far that it hides real clashes.",
   "rel": [
    "D02",
    "D03",
    "D06"
   ],
   "al": [
+   "tolerance",
+   "clash tolerance",
+   "detection tolerance",
+   "tolerances",
    "tolerancia"
   ]
  },
  {
   "id": "D06",
   "slug": "matriz-de-deteccion",
-  "t": "Matriz de detección (plan de pruebas)",
-  "en": "Clash matrix / clash test plan",
+  "t": "Clash matrix / clash test plan",
+  "en": "Matriz de detección (plan de pruebas)",
   "b": "I",
-  "d": "Tabla, acordada en el BEP, que define qué pares de disciplinas o sistemas se comprueban, con qué tipo de prueba y tolerancia, en qué fase, con qué prioridad y quién es responsable.",
-  "ej": "ARQ vs EST duro 0 mm; SAN vs CLIM holgura 25 mm; ELE vs todo, fase de ejecución.",
-  "eq": "Navisworks: lista de Tests; Solibri: Ruleset; ACC: Clash test (automático); BIMcollab/Revizto: Clash sets",
-  "err": "Probar 'todo contra todo' sin matriz y obtener miles de resultados inútiles.",
+  "d": "Table, agreed in the BEP, that defines which pairs of disciplines or systems are checked, with which type of test and tolerance, at which stage, with which priority and who is responsible.",
+  "ej": "ARC vs STR hard 0 mm; DRN vs HVAC clearance 25 mm; ELE vs all, construction stage.",
+  "eq": "Navisworks: list of Tests; Solibri: Ruleset; ACC: Clash test (automatic); BIMcollab/Revizto: Clash sets",
+  "err": "Testing 'everything against everything' without a matrix and getting thousands of useless results.",
   "rel": [
    "D05",
    "D13",
@@ -1634,6 +1705,10 @@ window.BF_GLOSARIO = [
    "D07"
   ],
   "al": [
+   "clash matrix",
+   "clash test plan",
+   "test matrix",
+   "detection matrix",
    "matriz de detección",
    "matriz de pruebas",
    "matriz"
@@ -1642,19 +1717,23 @@ window.BF_GLOSARIO = [
  {
   "id": "D07",
   "slug": "agrupacion-de-interferencias",
-  "t": "Agrupación de interferencias",
-  "en": "Clash grouping",
+  "t": "Clash grouping",
+  "en": "Agrupación de interferencias",
   "b": "I",
-  "d": "Reunir resultados con una causa o solución común (mismo elemento, sistema, nivel, zona o responsable) para gestionarlos como una sola incidencia.",
-  "ej": "40 choques de una misma bandeja contra 40 viguetas se tratan como una incidencia.",
-  "eq": "Navisworks: Clash groups/Group; Solibri: agrupación de resultados en Issues; BIM Track: Clash grouper; Revizto: Grouping; IfcClash: smart grouping",
-  "err": "Agrupar solo por nivel o rejilla, mezclando problemas de distintos responsables.",
+  "d": "Bringing together results with a common cause or solution (same element, system, level, zone or person responsible) to manage them as a single issue.",
+  "ej": "40 clashes between the same cable tray and 40 joists are handled as one issue.",
+  "eq": "Navisworks: Clash groups/Group; Solibri: grouping of results into Issues; BIM Track: Clash grouper; Revizto: Grouping; IfcClash: smart grouping",
+  "err": "Grouping only by level or grid, mixing problems that belong to different people.",
   "rel": [
    "D08",
    "D10",
    "D12"
   ],
   "al": [
+   "clash grouping",
+   "grouping",
+   "clash groups",
+   "grouped",
    "agrupación",
    "agrupar"
   ]
@@ -1662,19 +1741,23 @@ window.BF_GLOSARIO = [
  {
   "id": "D08",
   "slug": "falso-positivo-interferencia-irrelevante",
-  "t": "Falso positivo / interferencia irrelevante",
-  "en": "False positive / irrelevant clash",
+  "t": "False positive / irrelevant clash",
+  "en": "Falso positivo / interferencia irrelevante",
   "b": "I",
-  "d": "Resultado que la herramienta marca como choque pero no requiere acción: contacto intencionado, elemento sin modelar a nivel suficiente, solución resoluble en obra o elemento ya resuelto.",
-  "ej": "Choque entre aislamiento de tubería y su abrazadera.",
-  "eq": "Navisworks: Approved/Resolved; Solibri: Accepted/Rejected; ACC: Not an issue; BCF: TopicStatus cerrado",
-  "err": "Aprobar en bloque sin criterio o, al revés, mandar todo a las disciplinas.",
+  "d": "Result that the tool flags as a clash but needs no action: an intentional contact, an element not modelled in enough detail, a problem that can be solved on site or an element already resolved.",
+  "ej": "A clash between pipe insulation and its clamp.",
+  "eq": "Navisworks: Approved/Resolved; Solibri: Accepted/Rejected; ACC: Not an issue; BCF: closed TopicStatus",
+  "err": "Approving in bulk without criteria or, conversely, sending everything to the disciplines.",
   "rel": [
    "D05",
    "D07",
    "D12"
   ],
   "al": [
+   "false positive",
+   "false positives",
+   "irrelevant clash",
+   "irrelevant clashes",
    "falso positivo",
    "falsos positivos"
   ]
@@ -1682,19 +1765,23 @@ window.BF_GLOSARIO = [
  {
   "id": "D09",
   "slug": "coordinacion-espacial-modelo-federado-de-coordinacion",
-  "t": "Coordinación espacial / modelo federado de coordinación",
-  "en": "Spatial coordination / federated coordination model",
+  "t": "Spatial coordination / federated coordination model",
+  "en": "Coordinación espacial / modelo federado de coordinación",
   "b": "I",
-  "d": "Proceso de integrar los modelos de cada disciplina, sin fusionarlos ni perder su autoría, en un modelo federado georreferenciado sobre el que se detectan y resuelven incompatibilidades.",
-  "ej": "Arquitectura, estructura y MEP en IFC federados en un visor común con origen compartido.",
-  "eq": "Navisworks: NWF/NWD; Solibri: SMC con varios IFC; ACC: Coordination space; Revizto/BIMcollab Zoom; Trimble Connect",
-  "err": "Federar modelos con distinto origen o versión, o coordinar sobre un modelo 'fusionado' que borra la autoría.",
+  "d": "Process of bringing together each discipline's models, without merging them or losing their authorship, into a georeferenced federated model on which incompatibilities are detected and resolved.",
+  "ej": "Architecture, structure and MEP in IFC federated in a common viewer with a shared origin.",
+  "eq": "Navisworks: NWF/NWD; Solibri: SMC with several IFC files; ACC: Coordination space; Revizto/BIMcollab Zoom; Trimble Connect",
+  "err": "Federating models with different origins or versions, or coordinating on a 'merged' model that erases authorship.",
   "rel": [
    "C17",
    "D16",
    "D24"
   ],
   "al": [
+   "spatial coordination",
+   "3D coordination",
+   "federated coordination model",
+   "coordination model",
    "coordinación espacial",
    "coordinación 3D"
   ]
@@ -1702,19 +1789,23 @@ window.BF_GLOSARIO = [
  {
   "id": "D10",
   "slug": "incidencia",
-  "t": "Incidencia (issue / topic)",
-  "en": "Issue / topic",
+  "t": "Issue (topic)",
+  "en": "Incidencia (issue / topic)",
   "b": "I",
-  "d": "Registro gestionable de un problema detectado, con título, descripción, tipo, estado, prioridad, responsable, fecha límite, comentarios y vistas asociadas; en BCF se denomina Topic.",
-  "ej": "Topic 'Conducto C-12 contra viga V-3, planta 2', asignado a MEP, fecha límite viernes.",
+  "d": "Manageable record of a detected problem, with title, description, type, status, priority, assignee, due date, comments and associated views; in BCF it is called a Topic.",
+  "ej": "Topic 'Duct C-12 against beam V-3, level 2', assigned to MEP, due Friday.",
   "eq": "BCF: Topic; Navisworks: Clash result/Issue; Solibri: Issue; ACC: Issue; Revizto: Issue; Trimble Connect: ToDo",
-  "err": "Usar la incidencia como captura sin responsable ni estado.",
+  "err": "Using the issue as a screenshot with no assignee or status.",
   "rel": [
    "D11",
    "D14",
    "D22"
   ],
   "al": [
+   "issue",
+   "issues",
+   "topic",
+   "topics",
    "incidencia",
    "incidencias"
   ]
@@ -1722,19 +1813,23 @@ window.BF_GLOSARIO = [
  {
   "id": "D11",
   "slug": "punto-de-vista-y-captura",
-  "t": "Punto de vista y captura",
-  "en": "Viewpoint and snapshot",
+  "t": "Viewpoint and snapshot",
+  "en": "Punto de vista y captura",
   "b": "I",
-  "d": "Estado de visualización asociado a una incidencia: cámara (ortogonal o perspectiva), planos de corte, componentes seleccionados, visibles o coloreados (por GUID IFC) y una imagen de referencia.",
-  "ej": "viewpoint.bcfv con cámara, dos componentes seleccionados por IfcGuid y snapshot.png.",
-  "eq": "BCF: .bcfv + snapshot PNG/JPEG; Navisworks: Viewpoint; Solibri: Slide; ACC/Revizto: vista de la incidencia",
-  "err": "Compartir solo la imagen sin componentes: el receptor no puede seleccionar los elementos en su software.",
+  "d": "Display state associated with an issue: camera (orthogonal or perspective), clipping planes, selected, visible or coloured components (by IFC GUID) and a reference image.",
+  "ej": "viewpoint.bcfv with camera, two components selected by IfcGuid and snapshot.png.",
+  "eq": "BCF: .bcfv + PNG/JPEG snapshot; Navisworks: Viewpoint; Solibri: Slide; ACC/Revizto: issue view",
+  "err": "Sharing only the image without components: the recipient cannot select the elements in their own software.",
   "rel": [
    "D10",
    "D14",
    "D17"
   ],
   "al": [
+   "viewpoint",
+   "viewpoints",
+   "snapshot",
+   "snapshots",
    "punto de vista",
    "puntos de vista"
   ]
@@ -1742,18 +1837,22 @@ window.BF_GLOSARIO = [
  {
   "id": "D12",
   "slug": "duplicados",
-  "t": "Duplicados",
-  "en": "Duplicates",
+  "t": "Duplicates",
+  "en": "Duplicados",
   "b": "I",
-  "d": "Elementos repetidos o superpuestos de geometría idéntica (o casi) en el mismo lugar, en un mismo modelo o entre modelos; inflan mediciones y resultados de choques.",
-  "ej": "Pilar modelado en arquitectura y en estructura, o un muro copiado dos veces.",
-  "eq": "Navisworks: Duplicates; Solibri: regla de componentes duplicados; Revit: advertencia 'instancias idénticas'",
-  "err": "No ejecutarla antes de los cruces entre disciplinas, multiplicando los resultados.",
+  "d": "Repeated or overlapping elements with identical (or nearly identical) geometry in the same place, within one model or across models; they inflate quantities and clash results.",
+  "ej": "A column modelled in both architecture and structure, or a wall copied twice.",
+  "eq": "Navisworks: Duplicates; Solibri: duplicate components rule; Revit: 'identical instances' warning",
+  "err": "Not running it before cross-discipline tests, multiplying the results.",
   "rel": [
    "D08",
    "D25"
   ],
   "al": [
+   "duplicate",
+   "duplicates",
+   "duplicated elements",
+   "duplicate elements",
    "duplicado",
    "duplicados"
   ]
@@ -1761,19 +1860,23 @@ window.BF_GLOSARIO = [
  {
   "id": "D13",
   "slug": "jerarquia-de-resolucion",
-  "t": "Jerarquía de resolución (quién se mueve)",
-  "en": "Clash resolution hierarchy / right of way",
+  "t": "Clash resolution hierarchy / right of way",
+  "en": "Jerarquía de resolución (quién se mueve)",
   "b": "I",
-  "d": "Orden, pactado en el BEP, que decide qué sistema cede ante un choque según su flexibilidad: los elementos más grandes, permanentes o restringidos (estructura, saneamiento por gravedad) tienen prioridad.",
-  "ej": "Saneamiento por gravedad > conductos > tuberías a presión/PCI > bandejas y tubos eléctricos.",
-  "eq": "Matriz de prioridades del BEP; ETS: gravedad A/B/C; Ashghal: prioridad A-C y severidad 1-4",
-  "err": "Aplicarla sin excepciones (p. ej. un conducto pequeño frente a un colector principal).",
+  "d": "Order, agreed in the BEP, that decides which system gives way in a clash according to its flexibility: larger, permanent or constrained elements (structure, gravity drainage) take priority.",
+  "ej": "Gravity drainage > ducts > pressurised pipes/fire protection > cable trays and electrical conduits.",
+  "eq": "BEP priority matrix; ETS: severity A/B/C; Ashghal: priority A-C and severity 1-4",
+  "err": "Applying it without exceptions (e.g. a small duct against a main sewer).",
   "rel": [
    "D06",
    "D24",
    "D20"
   ],
   "al": [
+   "resolution hierarchy",
+   "right of way",
+   "who moves",
+   "clash resolution hierarchy",
    "quién se mueve",
    "jerarquía de resolución",
    "derecho de paso"
@@ -1783,12 +1886,12 @@ window.BF_GLOSARIO = [
   "id": "D14",
   "slug": "bcf",
   "t": "BCF (BIM Collaboration Format)",
-  "en": "BIM Collaboration Format",
+  "en": "BCF (BIM Collaboration Format)",
   "b": "II",
-  "d": "Estándar abierto de buildingSMART para intercambiar incidencias sobre modelos (IFC u otros) sin enviar el modelo: XML (BCF-XML, contenedor .bcfzip/.bcf) o servicios web (BCF API). Versiones 1.0 (2011), 2.0, 2.1 y 3.0.",
-  "ej": "Exportar 25 topics de Solibri en BCF 2.1 e importarlos en Revit con BCF Manager.",
-  "eq": "BCF-XML 2.1/3.0; BCF API 2.1/3.0; complementos en Revit/Archicad/Tekla; BIMcollab; Revizto; Trimble Connect; Catenda; Bonsai",
-  "err": "Mezclar versiones (3.0 vs 2.1) o perder campos (prioridad, id del servidor) en la exportación.",
+  "d": "Open buildingSMART standard for exchanging issues about models (IFC or others) without sending the model: XML (BCF-XML, .bcfzip/.bcf container) or web services (BCF API). Versions 1.0 (2011), 2.0, 2.1 and 3.0.",
+  "ej": "Exporting 25 topics from Solibri in BCF 2.1 and importing them into Revit with BCF Manager.",
+  "eq": "BCF-XML 2.1/3.0; BCF API 2.1/3.0; add-ins for Revit/Archicad/Tekla; BIMcollab; Revizto; Trimble Connect; Catenda; Bonsai",
+  "err": "Mixing versions (3.0 vs 2.1) or losing fields (priority, server id) on export.",
   "rel": [
    "D10",
    "D11",
@@ -1797,19 +1900,21 @@ window.BF_GLOSARIO = [
   ],
   "al": [
    "BCF",
-   "BIM Collaboration Format"
+   "BIM Collaboration Format",
+   "BCF-XML",
+   "BCF file"
   ]
  },
  {
   "id": "D15",
   "slug": "bcf-api-opencde",
-  "t": "BCF API / OpenCDE",
-  "en": "BCF API / OpenCDE APIs",
+  "t": "BCF API / OpenCDE APIs",
+  "en": "BCF API / OpenCDE",
   "b": "II",
-  "d": "Especificación REST/JSON para sincronizar incidencias BCF entre aplicaciones y servidores; forma parte de la familia OpenCDE junto con la Foundation API (descubrimiento, OAuth 2.0, usuario) y la Documents API (descarga/subida al CDE).",
-  "ej": "Un complemento de Revit consulta GET /bcf/3.0/projects/{id}/topics y actualiza el estado sin pasar archivos.",
+  "d": "REST/JSON specification for synchronising BCF issues between applications and servers; it belongs to the OpenCDE family together with the Foundation API (discovery, OAuth 2.0, user) and the Documents API (download/upload to the CDE).",
+  "ej": "A Revit add-in calls GET /bcf/3.0/projects/{id}/topics and updates the status without passing files around.",
   "eq": "BCF API 2.1/3.0; OpenCDE Foundation API 1.0/1.1; Documents API 1.0",
-  "err": "Creer que 'soporta BCF' implica soportar la API (muchas herramientas solo leen/escriben archivos).",
+  "err": "Assuming that 'supports BCF' means supporting the API (many tools only read/write files).",
   "rel": [
    "D14",
    "C30"
@@ -1817,19 +1922,21 @@ window.BF_GLOSARIO = [
   "al": [
    "BCF API",
    "OpenCDE",
-   "Foundation API"
+   "OpenCDE APIs",
+   "Foundation API",
+   "Documents API"
   ]
  },
  {
   "id": "D16",
   "slug": "iso-19650-y-coordinacion",
-  "t": "ISO 19650 y coordinación",
-  "en": "ISO 19650 and coordination",
+  "t": "ISO 19650 and coordination",
+  "en": "ISO 19650 y coordinación",
   "b": "II",
-  "d": "Marco de gestión de la información (UNE-EN ISO 19650) que asigna la coordinación: cada equipo de tarea revisa y coordina su información antes de compartirla; la parte adjudicataria principal define la estrategia de federación, la estructura de contenedores, la matriz de responsabilidades y compila los TIDP en el MIDP.",
-  "ej": "El BEP fija la estrategia de federación por edificio y disciplina y la matriz que asigna la detección al coordinador del equipo de desarrollo.",
-  "eq": "ISO 19650-1/-2 (2018; revisión 2026); UNE-EN ISO 19650; UK BIM Framework; Plan BIM (Orden PCM/818/2023)",
-  "err": "Creer que ISO 19650 define cargos (BIM Manager) o el procedimiento de detección: define funciones y procesos.",
+  "d": "Information management framework (EN ISO 19650) that allocates coordination: each task team reviews and coordinates its information before sharing it; the lead appointed party defines the federation strategy, the container breakdown structure and the responsibility matrix, and compiles the TIDPs into the MIDP.",
+  "ej": "The BEP sets the federation strategy by building and discipline, and the matrix that assigns clash detection to the delivery team's coordinator.",
+  "eq": "ISO 19650-1/-2 (2018; 2026 revision); UNE-EN ISO 19650; UK BIM Framework; Plan BIM (Orden PCM/818/2023)",
+  "err": "Believing that ISO 19650 defines job titles (BIM Manager) or the clash detection procedure: it defines functions and processes.",
   "rel": [
    "C25",
    "C17",
@@ -1837,21 +1944,24 @@ window.BF_GLOSARIO = [
    "D06"
   ],
   "al": [
-   "estrategia de federación",
+   "federation strategy",
    "TIDP",
-   "MIDP"
+   "MIDP",
+   "lead appointed party",
+   "task team",
+   "estrategia de federación"
   ]
  },
  {
   "id": "D17",
   "slug": "identificador-de-objeto-ifc",
-  "t": "Identificador de objeto IFC (GlobalId)",
-  "en": "IFC GlobalId / IfcGloballyUniqueId",
+  "t": "IFC GlobalId (IfcGloballyUniqueId)",
+  "en": "Identificador de objeto IFC (GlobalId)",
   "b": "II",
-  "d": "Identificador único de 128 bits de cada objeto IFC, codificado en 22 caracteres (alfabeto 0-9A-Za-z_$); BCF lo usa (IfcGuid) para referenciar componentes, por lo que debe mantenerse estable entre exportaciones.",
-  "ej": "2O2Fr$t4X7Zf8NOew3FLOH identifica la misma puerta en todas las versiones del IFC.",
-  "eq": "IFC: GlobalId; BCF: IfcGuid; Revit: parámetro IfcGUID/IFC GUID (derivado del UniqueId); Archicad: IFC GlobalId; Tekla: GUID",
-  "err": "Regenerar GUID al exportar (copiar/pegar, borrar y rehacer) rompe la trazabilidad de las incidencias.",
+  "d": "Unique 128-bit identifier of each IFC object, encoded in 22 characters (alphabet 0-9A-Za-z_$); BCF uses it (IfcGuid) to reference components, so it must remain stable between exports.",
+  "ej": "2O2Fr$t4X7Zf8NOew3FLOH identifies the same door in every version of the IFC file.",
+  "eq": "IFC: GlobalId; BCF: IfcGuid; Revit: IfcGUID/IFC GUID parameter (derived from the UniqueId); Archicad: IFC GlobalId; Tekla: GUID",
+  "err": "Regenerating GUIDs on export (copy/paste, delete and redraw) breaks issue traceability.",
   "rel": [
    "D11",
    "D14"
@@ -1859,19 +1969,21 @@ window.BF_GLOSARIO = [
   "al": [
    "GlobalId",
    "IfcGloballyUniqueId",
-   "IFC GUID"
+   "IFC GUID",
+   "IfcGuid",
+   "GUID"
   ]
  },
  {
   "id": "D18",
   "slug": "conjunto-de-seleccion-conjunto-de-busqueda",
-  "t": "Conjunto de selección / conjunto de búsqueda",
-  "en": "Selection set / Search set (Navisworks); Smart View (BIMcollab Zoom); Search set (Revizto); grupo de criterios (Archicad)",
+  "t": "Selection set / search set",
+  "en": "Conjunto de selección / conjunto de búsqueda",
   "b": "III",
-  "d": "Agrupación guardada de elementos del modelo federado que se usa como lado A o B de una prueba de interferencias. El conjunto de selección guarda elementos concretos (estático); el de búsqueda guarda criterios (propiedad, categoría, sistema) y se reevalúa cuando el modelo cambia (dinámico).",
-  "ej": "Search set 'MEP – Saneamiento' = elementos cuyo 'System Type' contiene 'Sanitary'; se prueba contra el search set 'EST – Vigas'. Al cargar la nueva versión del modelo, el conjunto incluye automáticamente las tuberías nuevas.",
-  "eq": "Navisworks: Selection Set / Search Set (ventana Sets, Find Items); BIMcollab Zoom: Smart Views como source/target set; Revizto: search sets A/B; Solibri: filtros de componentes de la regla; Archicad: Grupo 1 / Grupo 2 por criterios; IfcClash: selectores del grupo A/B; MicroStation: niveles/referencias/Named Groups.",
-  "err": "Usar conjuntos de selección estáticos en pruebas que se repiten: los elementos nuevos de la siguiente entrega quedan fuera y la prueba da un falso 'cero interferencias'. También: criterios basados en nombres no normalizados.",
+  "d": "Saved grouping of elements of the federated model used as side A or B of a clash test. A selection set stores specific elements (static); a search set stores criteria (property, category, system) and is re-evaluated when the model changes (dynamic).",
+  "ej": "Search set 'MEP – Drainage' = elements whose 'System Type' contains 'Sanitary'; it is tested against the search set 'STR – Beams'. When the new model version is loaded, the set automatically includes the new pipes.",
+  "eq": "Navisworks: Selection Set / Search Set (Sets window, Find Items); BIMcollab Zoom: Smart Views as source/target set; Revizto: search sets A/B; Solibri: rule component filters; Archicad: Group 1 / Group 2 by criteria; IfcClash: group A/B selectors; MicroStation: levels/references/Named Groups.",
+  "err": "Using static selection sets in repeated tests: new elements from the next delivery are left out and the test gives a false 'zero clashes'. Also: criteria based on non-standardised names.",
   "rel": [
    "D06",
    "D19",
@@ -1879,21 +1991,24 @@ window.BF_GLOSARIO = [
    "C17"
   ],
   "al": [
+   "selection set",
+   "selection sets",
+   "search set",
+   "search sets",
    "conjunto de selección",
-   "conjuntos de búsqueda",
-   "search sets"
+   "conjuntos de búsqueda"
   ]
  },
  {
   "id": "D19",
   "slug": "reglas-de-exclusion-y-conjuntos-de-reglas",
-  "t": "Reglas de exclusión y conjuntos de reglas",
-  "en": "Clash rules / ignore rules / suppression rules; rulesets",
+  "t": "Clash rules / ignore rules and rulesets",
+  "en": "Reglas de exclusión y conjuntos de reglas",
   "b": "III",
-  "d": "Condiciones que hacen que el programa no informe de ciertas interferencias (reglas de exclusión) y agrupaciones de reglas de comprobación guardadas y reutilizables (conjuntos de reglas). Sirven para eliminar falsos positivos sistemáticos y estandarizar la comprobación.",
-  "ej": "En Navisworks, activar 'Items in Same File' para no informar de choques internos de cada disciplina y la plantilla 'Insulation Thickness' para tuberías aisladas; en Solibri, un ruleset 'Coordinación MEP-EST' con General Intersection Rule y excepciones de 'conducto atraviesa muro'.",
-  "eq": "Navisworks: pestaña Rules (6 reglas por defecto + plantillas); Solibri: Ruleset / Intersection Exceptions; Revizto: Ignore rules; Bentley: Suppression rules; Trimble Connect: 'Ignore clashes within the same file/type'; Archicad: 'Participa en Detección de Colisiones' por material; BIMcollab Zoom: conjuntos de reglas Local/Shared.",
-  "err": "Reglas demasiado amplias (p. ej. 'Same File' en un modelo federado en un solo NWD) que ocultan interferencias reales; o no documentar las reglas en el BEP, de modo que cada coordinador obtiene resultados distintos.",
+  "d": "Conditions that stop the program from reporting certain clashes (ignore rules) and saved, reusable groupings of checking rules (rulesets). They remove systematic false positives and standardise checking.",
+  "ej": "In Navisworks, enabling 'Items in Same File' to skip clashes within each discipline and the 'Insulation Thickness' template for insulated pipes; in Solibri, an 'MEP-STR Coordination' ruleset with the General Intersection Rule and 'duct passes through wall' exceptions.",
+  "eq": "Navisworks: Rules tab (6 default rules + templates); Solibri: Ruleset / Intersection Exceptions; Revizto: Ignore rules; Bentley: Suppression rules; Trimble Connect: 'Ignore clashes within the same file/type'; Archicad: 'Participates in Collision Detection' by material; BIMcollab Zoom: Local/Shared rulesets.",
+  "err": "Rules that are too broad (e.g. 'Same File' on a model federated into a single NWD) that hide real clashes; or not documenting the rules in the BEP, so each coordinator gets different results.",
   "rel": [
    "D08",
    "D18",
@@ -1902,6 +2017,11 @@ window.BF_GLOSARIO = [
    "C32"
   ],
   "al": [
+   "ignore rules",
+   "clash rules",
+   "suppression rules",
+   "ruleset",
+   "rulesets",
    "reglas de exclusión",
    "conjunto de reglas"
   ]
@@ -1909,18 +2029,23 @@ window.BF_GLOSARIO = [
  {
   "id": "D20",
   "slug": "zona-libre-espacio-de-mantenimiento-y-acceso",
-  "t": "Zona libre / espacio de mantenimiento y acceso",
-  "en": "Clearance / maintenance and access zone",
+  "t": "Clearance / maintenance and access zone",
+  "en": "Zona libre / espacio de mantenimiento y acceso",
   "b": "I",
-  "d": "Volumen que debe quedar libre alrededor de equipos o elementos para operar, mantener, sustituir o acceder con seguridad; se modela como sólido auxiliar y se comprueba con pruebas de holgura o duras contra ese volumen.",
-  "ej": "Zona frontal de 1 m delante de un cuadro eléctrico o de apertura del registro de una UTA.",
-  "eq": "Familias/objetos de 'clearance' en Revit; Solibri: regla de espacio libre; Navisworks: prueba contra sólidos de holgura",
-  "err": "No modelarla y confiar en la tolerancia global; o modelarla como sólido que luego se mide o se exporta como elemento real.",
+  "d": "Volume that must be kept free around equipment or elements in order to operate, maintain, replace or access them safely; it is modelled as an auxiliary solid and checked with clearance or hard tests against that volume.",
+  "ej": "A 1 m zone in front of an electrical panel, or the access-panel opening zone of an AHU.",
+  "eq": "'Clearance' families/objects in Revit; Solibri: free space rule; Navisworks: test against clearance solids",
+  "err": "Not modelling it and relying on the global tolerance; or modelling it as a solid that is then measured or exported as a real element.",
   "rel": [
    "D03",
    "D13"
   ],
   "al": [
+   "clearance zone",
+   "maintenance zone",
+   "access zone",
+   "free space",
+   "maintenance space",
    "zona libre",
    "espacio libre",
    "espacio de mantenimiento"
@@ -1929,13 +2054,13 @@ window.BF_GLOSARIO = [
  {
   "id": "D21",
   "slug": "deteccion-automatica-en-la-nube",
-  "t": "Detección automática en la nube",
-  "en": "Automated cloud clash detection",
+  "t": "Automated cloud clash detection",
+  "en": "Detección automática en la nube",
   "b": "IV",
-  "d": "Cálculo de interferencias que ejecuta un servicio en el CDE sin intervención manual cuando se publica o actualiza un modelo en un espacio de coordinación, o según una programación, y deja los resultados accesibles a todo el equipo.",
-  "ej": "Al subir la nueva versión del IFC de climatización al espacio de coordinación, Forma Model Coordination recalcula los choques contra estructura y arquitectura y los muestra agrupados.",
-  "eq": "Model Coordination (Autodesk Forma/BIM Collaborate Pro), Clash Automation (Revizto), clash spaces (Aconex), clash sets en la nube (Trimble Connect).",
-  "err": "Creer que 'automática' significa configurable como Navisworks: en Model Coordination no hay tolerancia ni matriz de pruebas en el cálculo, solo filtros posteriores; o dejar activados los modelos contenedor y multiplicar ruido y tiempos.",
+  "d": "Clash calculation run by a service in the CDE without manual intervention when a model is published or updated in a coordination space, or on a schedule, leaving the results accessible to the whole team.",
+  "ej": "When the new version of the HVAC IFC file is uploaded to the coordination space, Forma Model Coordination recalculates the clashes against structure and architecture and shows them grouped.",
+  "eq": "Model Coordination (Autodesk Forma/BIM Collaborate Pro), Clash Automation (Revizto), clash spaces (Aconex), cloud clash sets (Trimble Connect).",
+  "err": "Assuming that 'automated' means as configurable as Navisworks: Model Coordination has no tolerance or test matrix in the calculation, only filters afterwards; or leaving container models switched on and multiplying noise and processing time.",
   "rel": [
    "D05",
    "D06",
@@ -1944,19 +2069,22 @@ window.BF_GLOSARIO = [
    "C30"
   ],
   "al": [
+   "automated clash detection",
+   "automatic clash detection",
+   "cloud clash detection",
    "detección automática"
   ]
  },
  {
   "id": "D22",
   "slug": "estado-y-ciclo-de-vida-de-la-incidencia",
-  "t": "Estado y ciclo de vida de la incidencia",
-  "en": "Issue status and lifecycle",
+  "t": "Issue status and lifecycle",
+  "en": "Estado y ciclo de vida de la incidencia",
   "b": "V",
-  "d": "Secuencia de estados por los que pasa una incidencia desde que se crea hasta que se verifica su cierre (p. ej. Nueva → Activa/Asignada → Resuelta por el autor → Verificada/Cerrada, o Descartada), con responsable, fechas e historial.",
-  "ej": "El coordinador crea la incidencia 'Conducto vs viga P3' (Open), la asigna a MEP; MEP la marca Resuelta; tras reejecutar la prueba el coordinador la pasa a Cerrada.",
+  "d": "Sequence of statuses an issue goes through from creation until its closure is verified (e.g. New → Active/Assigned → Resolved by the author → Verified/Closed, or Dismissed), with assignee, dates and history.",
+  "ej": "The coordinator creates the issue 'Duct vs beam L3' (Open) and assigns it to MEP; MEP marks it Resolved; after re-running the test the coordinator moves it to Closed.",
   "eq": "Topic status (BCF), New/Active/Reviewed/Approved/Resolved (Navisworks), Open/Closed (ACC Issues).",
-  "err": "Mapear mal los estados entre programas: BCF no fija valores, cada servidor los define en extensions; al importar a ACC todo llega como 'Open' salvo 'Closed'; confundir 'Resuelta' con 'Cerrada'.",
+  "err": "Mapping statuses incorrectly between programs: BCF does not fix values, each server defines them in extensions; on import into ACC everything arrives as 'Open' except 'Closed'; confusing 'Resolved' with 'Closed'.",
   "rel": [
    "D10",
    "D14",
@@ -1965,6 +2093,10 @@ window.BF_GLOSARIO = [
    "D26"
   ],
   "al": [
+   "issue status",
+   "issue lifecycle",
+   "lifecycle",
+   "life cycle",
    "estado de la incidencia",
    "ciclo de vida"
   ]
@@ -1972,13 +2104,13 @@ window.BF_GLOSARIO = [
  {
   "id": "D23",
   "slug": "indicadores-de-coordinacion",
-  "t": "Indicadores de coordinación (KPI)",
-  "en": "Coordination KPIs",
+  "t": "Coordination KPIs",
+  "en": "Indicadores de coordinación (KPI)",
   "b": "VI",
-  "d": "Métricas que miden la salud del proceso de coordinación: incidencias abiertas/cerradas, nuevas por ciclo, tiempo medio de cierre, antigüedad, reabiertas, tendencia por disciplina o zona y ratio identificadas/resueltas.",
-  "ej": "Cuadro semanal: 42 abiertas (−15 %), tiempo medio de cierre 9 días, 6 reabiertas; MEP-estructura concentra el 60 % de las abiertas en P2.",
+  "d": "Metrics that measure the health of the coordination process: open/closed issues, new issues per cycle, mean time to close, age, reopened issues, trend by discipline or zone and the identified/resolved ratio.",
+  "ej": "Weekly dashboard: 42 open (−15 %), mean time to close 9 days, 6 reopened; MEP-structure accounts for 60 % of the open issues on L2.",
   "eq": "Clash metrics, coordination dashboard, clash aging.",
-  "err": "Medir el número bruto de choques (dominado por falsos positivos y duplicados) en lugar de incidencias agrupadas; comparar ciclos con pruebas o tolerancias distintas.",
+  "err": "Measuring the raw number of clashes (dominated by false positives and duplicates) instead of grouped issues; comparing cycles with different tests or tolerances.",
   "rel": [
    "D07",
    "D08",
@@ -1987,60 +2119,70 @@ window.BF_GLOSARIO = [
    "C32"
   ],
   "al": [
-   "indicadores",
-   "KPI"
+   "KPI",
+   "KPIs",
+   "coordination KPIs",
+   "indicators",
+   "coordination metrics",
+   "indicadores"
   ]
  },
  {
   "id": "D24",
   "slug": "reunion-de-coordinacion",
-  "t": "Reunión de coordinación",
-  "en": "Coordination meeting",
+  "t": "Coordination meeting",
+  "en": "Reunión de coordinación",
   "b": "I",
-  "d": "Sesión periódica (habitualmente semanal o quincenal) en torno al modelo federado donde se revisan los grupos de incidencias priorizadas, se deciden soluciones y se asignan responsables y plazos, registrándose en BCF/CDE.",
-  "ej": "Reunión semanal: revisión de 15 incidencias prioritarias de la planta 3 con MEP y estructura.",
-  "eq": "ACC/BIM 360 Coordination; Revizto; BIMcollab; Navisworks en sala; Teams + BCF",
-  "err": "Revisar choque a choque sin preparación previa ni asignar tareas al terminar.",
+  "d": "Regular session (usually weekly or fortnightly) around the federated model in which prioritised issue groups are reviewed, solutions are agreed and owners and deadlines are assigned, recorded in BCF/CDE.",
+  "ej": "Weekly meeting: review of 15 priority issues on level 3 with MEP and structure.",
+  "eq": "ACC/BIM 360 Coordination; Revizto; BIMcollab; Navisworks in the meeting room; Teams + BCF",
+  "err": "Reviewing clash by clash without preparation and without assigning tasks at the end.",
   "rel": [
    "D09",
    "D10",
    "D13"
   ],
   "al": [
+   "coordination meeting",
+   "coordination meetings",
+   "clash review meeting",
    "reunión de coordinación"
   ]
  },
  {
   "id": "D25",
   "slug": "nivel-de-informacion-y-aptitud-del-modelo-para-detectar",
-  "t": "Nivel de información y aptitud del modelo para detectar",
-  "en": "Level of information need / LOD",
+  "t": "Level of information need / LOD",
+  "en": "Nivel de información y aptitud del modelo para detectar",
   "b": "I",
-  "d": "Grado de desarrollo geométrico y alfanumérico que debe tener cada elemento para un propósito; para coordinar hace falta geometría con tamaño, posición e interfaces (p. ej. LOD 350 de BIMForum), definida conforme al LOIN (EN ISO 7817-1:2024).",
-  "ej": "Conductos con aislamiento y soportes modelados antes de la coordinación de oficios.",
-  "eq": "BIMForum LOD 100-500 (350 para coordinación); EN ISO 7817-1 (LOIN); IDS para comprobar requisitos",
-  "err": "Detectar sobre modelos LOD 200 y tomar decisiones sobre geometría genérica.",
+  "d": "Degree of geometric and alphanumeric development each element must have for a purpose; coordination needs geometry with size, position and interfaces (e.g. BIMForum LOD 350), defined according to the LOIN (EN ISO 7817-1:2024).",
+  "ej": "Ducts with insulation and supports modelled before trade coordination.",
+  "eq": "BIMForum LOD 100-500 (350 for coordination); EN ISO 7817-1 (LOIN); IDS to check requirements",
+  "err": "Running clash detection on LOD 200 models and making decisions on generic geometry.",
   "rel": [
    "D01",
    "D08",
    "C32"
   ],
   "al": [
-   "nivel de desarrollo",
+   "level of information need",
+   "level of development",
    "LOD",
+   "LOIN",
+   "nivel de desarrollo",
    "nivel de información necesario"
   ]
  },
  {
   "id": "D26",
   "slug": "verificacion-de-cierre",
-  "t": "Verificación de cierre",
-  "en": "Closure verification / clash re-run",
+  "t": "Closure verification / clash re-run",
+  "en": "Verificación de cierre",
   "b": "VI",
-  "d": "Comprobación de que una incidencia marcada como resuelta lo está realmente: se reejecuta la misma prueba (mismas reglas y tolerancia) sobre la nueva versión de los modelos y se confirma que el choque desaparece sin crear otros, antes de cerrarla.",
-  "ej": "Tras la nueva versión del modelo de fontanería, el coordinador relanza la prueba FON_v_EST; el choque desaparece y la incidencia pasa de Resuelta a Cerrada; un nuevo choque con el falso techo genera otra incidencia.",
-  "eq": "Re-run, verify fix, Approved/Resolved en Clash Detective, choques en rojo por desactualizados (Trimble Connect).",
-  "err": "Cerrar por declaración del autor sin reejecutar, o reejecutar con otra tolerancia o modelo y dar por buena la desaparición.",
+  "d": "Check that an issue marked as resolved really is: the same test (same rules and tolerance) is re-run on the new version of the models and it is confirmed that the clash disappears without creating others, before the issue is closed.",
+  "ej": "After the new version of the plumbing model, the coordinator re-runs the PLU_v_STR test; the clash disappears and the issue moves from Resolved to Closed; a new clash with the suspended ceiling generates another issue.",
+  "eq": "Re-run, verify fix, Approved/Resolved in Clash Detective, clashes shown in red as out of date (Trimble Connect).",
+  "err": "Closing on the author's word without re-running, or re-running with a different tolerance or model and accepting the disappearance as valid.",
   "rel": [
    "D22",
    "D23",
@@ -2048,19 +2190,23 @@ window.BF_GLOSARIO = [
    "D05"
   ],
   "al": [
+   "closure verification",
+   "clash re-run",
+   "re-run",
+   "verify fix",
    "verificación de cierre"
   ]
  },
  {
   "id": "P01",
   "slug": "plan-de-ejecucion-bim",
-  "t": "Plan de ejecución BIM (BEP)",
-  "en": "BIM execution plan (BEP)",
+  "t": "BIM execution plan (BEP)",
+  "en": "Plan de ejecución BIM (BEP)",
   "b": "I",
-  "d": "Plan que explica cómo el equipo de desarrollo gestionará y entregará la información de una designación para cumplir el EIR: personas, estrategia, federación, responsabilidades, métodos, estándar y medios.",
-  "ej": "La Junta de Andalucía (AOPJA) lo llama PEB y pide un pre-PEB con la oferta y el PEB tras la adjudicación.",
-  "eq": "ISO 19650-2: BIM execution plan; Penn State: BIM Project Execution Plan (PxP); NBIMS-US V4: BIM Execution Plan; revisión ISO en curso: posible «Information Production Plan».",
-  "err": "Escribir un manual de empresa genérico que no responde a ningún requisito concreto del EIR.",
+  "d": "Plan explaining how the delivery team will manage and deliver the information for an appointment to meet the EIR: people, strategy, federation, responsibilities, methods, standard and resources.",
+  "ej": "The Andalusian regional government (AOPJA) calls it PEB and asks for a pre-PEB with the tender and the PEB after award.",
+  "eq": "ISO 19650-2: BIM execution plan; Penn State: BIM Project Execution Plan (PxP); NBIMS-US V4: BIM Execution Plan; ISO revision in progress: possibly «Information Production Plan».",
+  "err": "Writing a generic company manual that answers no specific requirement of the EIR.",
   "rel": [
    "P02",
    "P03",
@@ -2069,23 +2215,25 @@ window.BF_GLOSARIO = [
    "P21"
   ],
   "al": [
+   "BIM execution plan",
+   "BIM execution plans",
+   "BEP",
+   "execution plan",
    "plan de ejecución BIM",
    "planes de ejecución BIM",
-   "BEP",
-   "PEB",
-   "BIM execution plan"
+   "PEB"
   ]
  },
  {
   "id": "P02",
   "slug": "bep-previo-a-la-designacion",
-  "t": "BEP previo a la designación",
-  "en": "Pre-appointment BEP",
+  "t": "Pre-appointment BEP",
+  "en": "BEP previo a la designación",
   "b": "I",
-  "d": "Versión del BEP que cada candidato a parte designada principal entrega con su oferta (ISO 19650-2, 5.3.2) para mostrar cómo cumplirá el EIR; incluye una matriz de responsabilidades de alto nivel.",
-  "ej": "pre-PEB del EIR tipo de la AOPJA (2024).",
-  "eq": "PAS 1192-2: pre-contract BEP; Penn State: propuesta.",
-  "err": "Presentarlo como un catálogo comercial en lugar de una respuesta punto por punto al EIR.",
+  "d": "Version of the BEP that each prospective lead appointed party submits with its tender (ISO 19650-2, 5.3.2) to show how it will meet the EIR; it includes a high-level responsibility matrix.",
+  "ej": "pre-PEB in the AOPJA model EIR (2024).",
+  "eq": "PAS 1192-2: pre-contract BEP; Penn State: proposal.",
+  "err": "Presenting it as a sales brochure instead of a point-by-point response to the EIR.",
   "rel": [
    "P01",
    "P03",
@@ -2093,22 +2241,24 @@ window.BF_GLOSARIO = [
    "P29"
   ],
   "al": [
-   "BEP previo",
+   "pre-appointment BEP",
+   "pre-appointment BIM execution plan",
    "pre-BEP",
-   "pre-PEB",
-   "pre-appointment BEP"
+   "pre-contract BEP",
+   "BEP previo",
+   "pre-PEB"
   ]
  },
  {
   "id": "P03",
   "slug": "bep-confirmado",
-  "t": "BEP confirmado (posterior a la designación)",
-  "en": "Post-appointment BEP",
+  "t": "Post-appointment BEP",
+  "en": "BEP confirmado (posterior a la designación)",
   "b": "I",
-  "d": "BEP que el equipo designado confirma y detalla tras la designación (ISO 19650-2, 5.4.1): nombres de las personas, matriz detallada, métodos y estándar acordados. Forma parte de los documentos del contrato.",
-  "ej": "PEB tras la adjudicación en los pliegos de la AOPJA.",
+  "d": "BEP that the appointed delivery team confirms and details after the appointment (ISO 19650-2, 5.4.1): names of the people, detailed matrix, agreed methods and standard. It forms part of the contract documents.",
+  "ej": "PEB after award in the AOPJA tender documents.",
   "eq": "PAS 1192-2: post-contract award BEP.",
-  "err": "No actualizarlo después de firmar: a mitad de proyecto ya describe un equipo que no existe.",
+  "err": "Not updating it after signing: halfway through the project it describes a team that no longer exists.",
   "rel": [
    "P01",
    "P02",
@@ -2116,20 +2266,23 @@ window.BF_GLOSARIO = [
    "P18"
   ],
   "al": [
-   "BEP confirmado",
-   "post-appointment BEP"
+   "post-appointment BEP",
+   "post-appointment BIM execution plan",
+   "confirmed BEP",
+   "post-contract BEP",
+   "BEP confirmado"
   ]
  },
  {
   "id": "P04",
   "slug": "requisitos-de-intercambio-de-informacion",
-  "t": "Requisitos de intercambio de información (EIR)",
-  "en": "Exchange information requirements (EIR)",
+  "t": "Exchange information requirements (EIR)",
+  "en": "Requisitos de intercambio de información (EIR)",
   "b": "I",
-  "d": "Requisitos de información de una designación concreta (aspectos de gestión, comerciales y técnicos). Los escribe la parte que designa y la parte designada principal los traslada a cada parte designada.",
-  "ej": "Anexo «Requerimientos BIM (EIR)» de los pliegos de la AOPJA.",
-  "eq": "PAS 1192-2: Employer's Information Requirements; Plan BIM español: requisitos BIM en las prescripciones técnicas.",
-  "err": "Seguir leyendo EIR como «Employer's»: en ISO 19650 hay un EIR por cada designación, también hacia las subcontratas.",
+  "d": "Information requirements for a specific appointment (management, commercial and technical aspects). The appointing party writes them and the lead appointed party passes them on to each appointed party.",
+  "ej": "«BIM Requirements (EIR)» annex of the AOPJA tender documents.",
+  "eq": "PAS 1192-2: Employer's Information Requirements; Spanish BIM Plan: BIM requirements in the technical specifications.",
+  "err": "Still reading EIR as «Employer's»: under ISO 19650 there is an EIR for every appointment, including those to subcontractors.",
   "rel": [
    "P05",
    "P06",
@@ -2137,42 +2290,46 @@ window.BF_GLOSARIO = [
    "P01"
   ],
   "al": [
-   "requisitos de intercambio de información",
-   "requisitos de intercambio",
+   "exchange information requirements",
    "EIR",
-   "exchange information requirements"
+   "EIRs",
+   "information requirements",
+   "requisitos de intercambio de información",
+   "requisitos de intercambio"
   ]
  },
  {
   "id": "P05",
   "slug": "requisitos-de-informacion-de-la-organizacion",
-  "t": "Requisitos de información de la organización (OIR)",
-  "en": "Organizational information requirements (OIR)",
+  "t": "Organizational information requirements (OIR)",
+  "en": "Requisitos de información de la organización (OIR)",
   "b": "I",
-  "d": "Requisitos de información ligados a los objetivos estratégicos de la organización respecto a sus activos; alimentan los PIR y los AIR.",
-  "ej": "Un ayuntamiento que necesita conocer el consumo energético de todos sus edificios.",
+  "d": "Information requirements linked to the organization's strategic objectives for its assets; they feed the PIR and the AIR.",
+  "ej": "A city council that needs to know the energy consumption of all its buildings.",
   "eq": "ISO 19650-1.",
-  "err": "Saltárselos y escribir el EIR sin saber para qué decisiones se pide la información.",
+  "err": "Skipping them and writing the EIR without knowing which decisions the information is for.",
   "rel": [
    "P06",
    "P07",
    "P04"
   ],
   "al": [
+   "organizational information requirements",
    "OIR",
+   "organisational information requirements",
    "requisitos de información de la organización"
   ]
  },
  {
   "id": "P06",
   "slug": "requisitos-de-informacion-del-proyecto",
-  "t": "Requisitos de información del proyecto (PIR)",
-  "en": "Project information requirements (PIR)",
+  "t": "Project information requirements (PIR)",
+  "en": "Requisitos de información del proyecto (PIR)",
   "b": "I",
-  "d": "Requisitos relativos al propósito, diseño y construcción del activo, ligados a los puntos de decisión clave del proyecto; determinan el modelo de información del proyecto (PIM).",
-  "ej": "Información para decidir si se licita la obra al final del proyecto de ejecución.",
+  "d": "Requirements relating to the purpose, design and construction of the asset, linked to the project's key decision points; they determine the project information model (PIM).",
+  "ej": "Information to decide whether to tender the works at the end of the detailed design.",
   "eq": "ISO 19650-1.",
-  "err": "Confundirlos con el EIR: el PIR es del proyecto; el EIR, de cada designación.",
+  "err": "Confusing them with the EIR: the PIR belongs to the project; the EIR, to each appointment.",
   "rel": [
    "P05",
    "P04",
@@ -2180,6 +2337,7 @@ window.BF_GLOSARIO = [
    "P19"
   ],
   "al": [
+   "project information requirements",
    "PIR",
    "requisitos de información del proyecto"
   ]
@@ -2187,19 +2345,20 @@ window.BF_GLOSARIO = [
  {
   "id": "P07",
   "slug": "requisitos-de-informacion-del-activo-p07",
-  "t": "Requisitos de información del activo (AIR)",
-  "en": "Asset information requirements (AIR)",
+  "t": "Asset information requirements (AIR)",
+  "en": "Requisitos de información del activo (AIR)",
   "b": "I",
-  "d": "Requisitos de la información necesaria para operar y mantener el activo; determinan el contenido del modelo de información del activo (AIM).",
-  "ej": "Datos de mantenimiento de equipos de climatización que pide el gestor del edificio.",
-  "eq": "ISO 19650-1 y -3; COBie como formato habitual.",
-  "err": "Pedirlos al final de la obra en lugar de incluirlos desde el primer EIR.",
+  "d": "Requirements for the information needed to operate and maintain the asset; they determine the content of the asset information model (AIM).",
+  "ej": "Maintenance data for HVAC equipment requested by the facility manager.",
+  "eq": "ISO 19650-1 and -3; COBie as the usual format.",
+  "err": "Asking for them at the end of construction instead of including them from the first EIR.",
   "rel": [
    "P05",
    "P09",
    "P04"
   ],
   "al": [
+   "asset information requirements",
    "AIR",
    "requisitos de información del activo"
   ]
@@ -2207,19 +2366,20 @@ window.BF_GLOSARIO = [
  {
   "id": "P08",
   "slug": "modelo-de-informacion-del-proyecto-p08",
-  "t": "Modelo de información del proyecto (PIM)",
-  "en": "Project information model (PIM)",
+  "t": "Project information model (PIM)",
+  "en": "Modelo de información del proyecto (PIM)",
   "b": "I",
-  "d": "Modelo de información (contenedores estructurados y no estructurados) que se desarrolla en la fase de desarrollo y transfiere al AIM lo que pide el AIR.",
-  "ej": "Modelos, planos y documentos del proyecto y la obra de un hospital.",
+  "d": "Information model (structured and unstructured containers) developed during the delivery phase that transfers to the AIM what the AIR requires.",
+  "ej": "Models, drawings and documents for the design and construction of a hospital.",
   "eq": "ISO 19650-1.",
-  "err": "Pensar que es solo el modelo 3D federado.",
+  "err": "Thinking it is only the federated 3D model.",
   "rel": [
    "P09",
    "P06",
    "P24"
   ],
   "al": [
+   "project information model",
    "PIM",
    "modelo de información del proyecto"
   ]
@@ -2227,18 +2387,19 @@ window.BF_GLOSARIO = [
  {
   "id": "P09",
   "slug": "modelo-de-informacion-del-activo-p09",
-  "t": "Modelo de información del activo (AIM)",
-  "en": "Asset information model (AIM)",
+  "t": "Asset information model (AIM)",
+  "en": "Modelo de información del activo (AIM)",
   "b": "I",
-  "d": "Modelo de información de la fase de operación; recibe del PIM la información pertinente al cierre del proyecto.",
-  "ej": "Base de datos de mantenimiento del edificio entregado.",
-  "eq": "ISO 19650-1 y -3.",
-  "err": "Entregar el PIM completo como AIM sin filtrar lo que de verdad sirve para operar.",
+  "d": "Information model of the operational phase; it receives the relevant information from the PIM at project close-out.",
+  "ej": "Maintenance database of the handed-over building.",
+  "eq": "ISO 19650-1 and -3.",
+  "err": "Handing over the whole PIM as the AIM without filtering what is actually useful for operation.",
   "rel": [
    "P08",
    "P07"
   ],
   "al": [
+   "asset information model",
    "AIM",
    "modelo de información del activo"
   ]
@@ -2246,33 +2407,34 @@ window.BF_GLOSARIO = [
  {
   "id": "P10",
   "slug": "parte-que-designa",
-  "t": "Parte que designa",
-  "en": "Appointing party",
+  "t": "Appointing party",
+  "en": "Parte que designa",
   "b": "I",
-  "d": "Receptor de la información sobre trabajos o servicios: normalmente el cliente o quien gestiona la información en su nombre. Escribe el EIR y acepta la información.",
-  "ej": "Un ministerio o una agencia de obra pública que licita un proyecto.",
+  "d": "Receiver of information concerning works, goods or services: usually the client or whoever manages information on its behalf. It writes the EIR and accepts the information.",
+  "ej": "A ministry or a public works agency tendering a project.",
   "eq": "ISO 19650: appointing party; PAS 1192: employer.",
-  "err": "Llamarla «el cliente» sin más cuando en realidad actúa un gestor de la información delegado.",
+  "err": "Simply calling it «the client» when in fact a delegated information manager is acting.",
   "rel": [
    "P11",
    "P12",
    "P04"
   ],
   "al": [
-   "parte que designa",
-   "appointing party"
+   "appointing party",
+   "appointing parties",
+   "parte que designa"
   ]
  },
  {
   "id": "P11",
   "slug": "parte-designada-principal",
-  "t": "Parte designada principal",
-  "en": "Lead appointed party",
+  "t": "Lead appointed party",
+  "en": "Parte designada principal",
   "b": "I",
-  "d": "Parte designada por la parte que designa que coordina y gestiona la información entre su equipo de desarrollo y la parte que designa. Escribe el BEP y el MIDP.",
-  "ej": "El estudio de arquitectura que gana el concurso y subcontrata estructura e instalaciones.",
+  "d": "Party appointed by the appointing party that coordinates and manages information between its delivery team and the appointing party. It writes the BEP and the MIDP.",
+  "ej": "The architecture practice that wins the competition and subcontracts structures and building services.",
   "eq": "ISO 19650: lead appointed party.",
-  "err": "Suponer que solo hay una por proyecto: hay una por cada equipo de desarrollo.",
+  "err": "Assuming there is only one per project: there is one for every delivery team.",
   "rel": [
    "P10",
    "P12",
@@ -2280,80 +2442,84 @@ window.BF_GLOSARIO = [
    "P18"
   ],
   "al": [
-   "parte designada principal",
-   "lead appointed party"
+   "lead appointed party",
+   "lead appointed parties",
+   "parte designada principal"
   ]
  },
  {
   "id": "P12",
   "slug": "parte-designada",
-  "t": "Parte designada",
-  "en": "Appointed party",
+  "t": "Appointed party",
+  "en": "Parte designada",
   "b": "I",
-  "d": "Proveedor de información designado por la parte designada principal; recibe su propio EIR y escribe el TIDP de sus equipos de tarea.",
-  "ej": "La ingeniería de estructuras subcontratada por el estudio de arquitectura.",
+  "d": "Provider of information appointed by the lead appointed party; it receives its own EIR and writes the TIDP for its task teams.",
+  "ej": "The structural engineering firm subcontracted by the architecture practice.",
   "eq": "ISO 19650: appointed party.",
-  "err": "No pasarle un EIR propio: entonces no sabe qué debe entregar.",
+  "err": "Not passing it its own EIR: it then does not know what it must deliver.",
   "rel": [
    "P11",
    "P14",
    "P17"
   ],
   "al": [
+   "appointed party",
+   "appointed parties",
    "parte designada",
-   "partes designadas",
-   "appointed party"
+   "partes designadas"
   ]
  },
  {
   "id": "P13",
   "slug": "equipo-de-desarrollo",
-  "t": "Equipo de desarrollo",
-  "en": "Delivery team",
+  "t": "Delivery team",
+  "en": "Equipo de desarrollo",
   "b": "I",
-  "d": "Conjunto formado por una parte designada principal y sus partes designadas.",
-  "ej": "Arquitectura + estructura + instalaciones bajo un mismo contrato principal.",
-  "eq": "ISO 19650: delivery team. En español también «equipo de ejecución» (traducción UNE por confirmar).",
-  "err": "Confundirlo con el equipo del proyecto, que incluye además a la parte que designa y a otros equipos de desarrollo.",
+  "d": "Group made up of a lead appointed party and its appointed parties.",
+  "ej": "Architecture + structures + building services under one main contract.",
+  "eq": "ISO 19650: delivery team. In Spanish also «equipo de ejecución» (UNE translation to be confirmed).",
+  "err": "Confusing it with the project team, which also includes the appointing party and other delivery teams.",
   "rel": [
    "P11",
    "P12",
    "P15"
   ],
   "al": [
+   "delivery team",
+   "delivery teams",
    "equipo de desarrollo",
-   "equipos de desarrollo",
-   "delivery team"
+   "equipos de desarrollo"
   ]
  },
  {
   "id": "P14",
   "slug": "equipo-de-tarea",
-  "t": "Equipo de tarea",
-  "en": "Task team",
+  "t": "Task team",
+  "en": "Equipo de tarea",
   "b": "I",
-  "d": "Grupo de personas que realiza un paquete de trabajo concreto dentro de una parte designada.",
-  "ej": "El equipo de instalaciones eléctricas dentro de la ingeniería.",
+  "d": "Group of people carrying out a specific package of work within an appointed party.",
+  "ej": "The electrical services team within the engineering firm.",
   "eq": "ISO 19650: task team.",
-  "err": "Tratar a la empresa entera como un solo equipo de tarea y perder el detalle del TIDP.",
+  "err": "Treating the whole company as a single task team and losing the detail of the TIDP.",
   "rel": [
    "P12",
    "P17"
   ],
   "al": [
+   "task team",
+   "task teams",
    "equipo de tarea",
-   "equipos de tarea",
-   "task team"
+   "equipos de tarea"
   ]
  },
  {
   "id": "P15",
   "slug": "equipo-del-proyecto",
-  "t": "Equipo del proyecto",
-  "en": "Project team",
+  "t": "Project team",
+  "en": "Equipo del proyecto",
   "b": "I",
-  "d": "La parte que designa más todos los equipos de desarrollo del proyecto.",
-  "ej": "Promotor, equipo de diseño y constructora de una misma obra.",
+  "d": "The appointing party plus all the project's delivery teams.",
+  "ej": "Developer, design team and contractor of the same project.",
   "eq": "ISO 19650: project team.",
   "err": "—",
   "rel": [
@@ -2361,26 +2527,31 @@ window.BF_GLOSARIO = [
    "P13"
   ],
   "al": [
-   "equipo del proyecto",
-   "project team"
+   "project team",
+   "project teams",
+   "equipo del proyecto"
   ]
  },
  {
   "id": "P16",
   "slug": "matriz-de-responsabilidades",
-  "t": "Matriz de responsabilidades",
-  "en": "Responsibility matrix",
+  "t": "Responsibility matrix",
+  "en": "Matriz de responsabilidades",
   "b": "I",
-  "d": "Tabla que asigna quién produce cada información: de alto nivel en el BEP previo y detallada (por contenedor, hito y responsable) tras la designación.",
-  "ej": "Hoja de cálculo con contenedores en filas y equipos en columnas.",
-  "eq": "ISO 19650-2: high-level / detailed responsibility matrix; RACI en gestión de proyectos.",
-  "err": "Filas con dos «responsables»: si todos lo son, nadie lo es.",
+  "d": "Table assigning who produces each piece of information: high-level in the pre-appointment BEP and detailed (by container, milestone and responsible party) after the appointment.",
+  "ej": "Spreadsheet with containers in rows and teams in columns.",
+  "eq": "ISO 19650-2: high-level / detailed responsibility matrix; RACI in project management.",
+  "err": "Rows with two «responsible» parties: if everyone is responsible, no one is.",
   "rel": [
    "P02",
    "P17",
    "P18"
   ],
   "al": [
+   "responsibility matrix",
+   "responsibility matrices",
+   "detailed responsibility matrix",
+   "high-level responsibility matrix",
    "matriz de responsabilidades",
    "matriz de responsabilidad"
   ]
@@ -2388,40 +2559,44 @@ window.BF_GLOSARIO = [
  {
   "id": "P17",
   "slug": "plan-de-entrega-de-informacion-de-la-tarea",
-  "t": "Plan de entrega de información de la tarea (TIDP)",
-  "en": "Task information delivery plan (TIDP)",
+  "t": "Task information delivery plan (TIDP)",
+  "en": "Plan de entrega de información de la tarea (TIDP)",
   "b": "I",
-  "d": "Lista de contenedores que entregará cada equipo de tarea, con nivel de información, formato, fecha y responsable.",
-  "ej": "TIDP del equipo de estructuras para el proyecto básico.",
+  "d": "List of the containers each task team will deliver, with level of information need, format, date and responsible party.",
+  "ej": "TIDP of the structures team for the scheme design.",
   "eq": "ISO 19650-2.",
-  "err": "Hacerlo una vez y no actualizarlo cuando cambia el calendario.",
+  "err": "Doing it once and not updating it when the programme changes.",
   "rel": [
    "P18",
    "P14",
    "P16"
   ],
   "al": [
+   "task information delivery plan",
    "TIDP",
+   "TIDPs",
    "plan de entrega de información de la tarea"
   ]
  },
  {
   "id": "P18",
   "slug": "plan-maestro-de-entrega-de-informacion",
-  "t": "Plan maestro de entrega de información (MIDP)",
-  "en": "Master information delivery plan (MIDP)",
+  "t": "Master information delivery plan (MIDP)",
+  "en": "Plan maestro de entrega de información (MIDP)",
   "b": "I",
-  "d": "Plan que reúne los TIDP de todo el equipo de desarrollo, alineado con los hitos de entrega de la parte que designa.",
-  "ej": "MIDP del equipo ganador de un concurso de hospital.",
-  "eq": "ISO 19650-2; Perú: «programa general de desarrollo de la información» (traducción UNE por confirmar).",
-  "err": "Usarlo como diagrama de Gantt de obra en lugar de como plan de información.",
+  "d": "Plan bringing together the TIDPs of the whole delivery team, aligned with the appointing party's information delivery milestones.",
+  "ej": "MIDP of the team that won a hospital competition.",
+  "eq": "ISO 19650-2; Peru: «programa general de desarrollo de la información» (UNE translation to be confirmed).",
+  "err": "Using it as a construction Gantt chart instead of as an information plan.",
   "rel": [
    "P17",
    "P19",
    "P11"
   ],
   "al": [
+   "master information delivery plan",
    "MIDP",
+   "MIDPs",
    "plan maestro de entrega de información",
    "plan maestro de entrega"
   ]
@@ -2429,18 +2604,22 @@ window.BF_GLOSARIO = [
  {
   "id": "P19",
   "slug": "hito-de-entrega-de-informacion-p19",
-  "t": "Hito de entrega de información",
-  "en": "Information delivery milestone",
+  "t": "Information delivery milestone",
+  "en": "Hito de entrega de información",
   "b": "I",
-  "d": "Momento en que la parte que designa necesita información para decidir; puede estar al final de una etapa o dentro de ella.",
-  "ej": "Entrega antes de pedir la licencia de obras.",
+  "d": "Point at which the appointing party needs information to make a decision; it may fall at the end of a stage or within it.",
+  "ej": "Delivery before applying for the building permit.",
   "eq": "ISO 19650-1/2; key decision points.",
-  "err": "Fijar los hitos por la comodidad del equipo y no por las decisiones del cliente.",
+  "err": "Setting milestones for the team's convenience rather than around the client's decisions.",
   "rel": [
    "P06",
    "P18"
   ],
   "al": [
+   "information delivery milestone",
+   "information delivery milestones",
+   "delivery milestone",
+   "delivery milestones",
    "hito de entrega",
    "hitos de entrega",
    "hito de entrega de información"
@@ -2449,37 +2628,42 @@ window.BF_GLOSARIO = [
  {
   "id": "P20",
   "slug": "estrategia-de-federacion",
-  "t": "Estrategia de federación",
-  "en": "Federation strategy",
+  "t": "Federation strategy",
+  "en": "Estrategia de federación",
   "b": "I",
-  "d": "Cómo se divide la información en contenedores (por disciplina, volumen, nivel…) y cómo se juntan para coordinar.",
-  "ej": "Un modelo por disciplina y edificio, federado cada semana.",
-  "eq": "ISO 19650-2 (BEP previo); estructura de desglose de contenedores.",
-  "err": "Dividir el modelo según la costumbre de cada programa sin pensar en quién lo produce.",
+  "d": "How information is split into containers (by discipline, volume, level…) and how they are brought together for coordination.",
+  "ej": "One model per discipline and building, federated every week.",
+  "eq": "ISO 19650-2 (pre-appointment BEP); information container breakdown structure.",
+  "err": "Splitting the model according to each program's habits without thinking about who produces it.",
   "rel": [
    "P01",
    "P24"
   ],
   "al": [
+   "federation strategy",
+   "federation strategies",
    "estrategia de federación"
   ]
  },
  {
   "id": "P21",
   "slug": "estandar-de-informacion-del-proyecto",
-  "t": "Estándar de información del proyecto",
-  "en": "Project's information standard",
+  "t": "Project's information standard",
+  "en": "Estándar de información del proyecto",
   "b": "I",
-  "d": "Reglas comunes de la información: nombres, clasificación, unidades, niveles de información, sistema de coordenadas y formatos. El BEP propone cambios y el BEP confirmado los fija.",
-  "ej": "Convención de nombres + metros + EPSG:25830 + altitudes Alicante.",
+  "d": "Common rules for information: naming, classification, units, levels of information need, coordinate reference system and formats. The BEP proposes changes and the post-appointment BEP fixes them.",
+  "ej": "Naming convention + metres + EPSG:25830 + Alicante heights.",
   "eq": "ISO 19650-2, 5.1.4.",
-  "err": "Dejar las coordenadas fuera: cada disciplina elige su origen.",
+  "err": "Leaving coordinates out: each discipline picks its own origin.",
   "rel": [
    "P28",
    "P22",
    "P01"
   ],
   "al": [
+   "project's information standard",
+   "information standard",
+   "project information standard",
    "estándar de información",
    "estándar de información del proyecto"
   ]
@@ -2487,18 +2671,21 @@ window.BF_GLOSARIO = [
  {
   "id": "P22",
   "slug": "metodos-y-procedimientos-de-produccion-de-la-informacion",
-  "t": "Métodos y procedimientos de producción de la información",
-  "en": "Information production methods and procedures",
+  "t": "Information production methods and procedures",
+  "en": "Métodos y procedimientos de producción de la información",
   "b": "I",
-  "d": "Cómo se produce, comprueba, revisa, aprueba y comparte la información en el proyecto.",
-  "ej": "Revisión interna antes de pasar un fichero a compartido.",
+  "d": "How information is produced, checked, reviewed, approved and shared on the project.",
+  "ej": "Internal review before moving a file to shared.",
   "eq": "ISO 19650-2, 5.1.5.",
-  "err": "Confundirlos con el estándar: el estándar dice cómo es la información; los métodos, cómo se trabaja.",
+  "err": "Confusing them with the standard: the standard says what information looks like; the methods, how the work is done.",
   "rel": [
    "P21",
    "P25"
   ],
   "al": [
+   "information production methods and procedures",
+   "production methods and procedures",
+   "production methods",
    "métodos y procedimientos de producción",
    "métodos de producción"
   ]
@@ -2506,37 +2693,43 @@ window.BF_GLOSARIO = [
  {
   "id": "P23",
   "slug": "protocolo-de-informacion",
-  "t": "Protocolo de información",
-  "en": "Information protocol",
+  "t": "Information protocol",
+  "en": "Protocolo de información",
   "b": "II",
-  "d": "Anexo contractual que incorpora la gestión de la información a la designación: responsabilidades, licencias y uso de la información.",
+  "d": "Contractual annex that brings information management into the appointment: responsibilities, licences and use of the information.",
   "ej": "—",
   "eq": "UK BIM Framework: Information Protocol (2021).",
-  "err": "Firmar el contrato sin él: entonces el BEP no obliga a nada.",
+  "err": "Signing the contract without it: the BEP then binds no one.",
   "rel": [
    "P04",
    "P01"
   ],
   "al": [
+   "information protocol",
+   "Information Protocol",
    "protocolo de información"
   ]
  },
  {
   "id": "P24",
   "slug": "contenedor-de-informacion",
-  "t": "Contenedor de información",
-  "en": "Information container",
+  "t": "Information container",
+  "en": "Contenedor de información",
   "b": "I",
-  "d": "Conjunto de información con nombre propio, recuperable de un sistema de ficheros o aplicación: un plano, un modelo, una tabla, un documento.",
+  "d": "Named persistent set of information retrievable from a file system or application: a drawing, a model, a schedule, a document.",
   "ej": "HSP-ARQ-ZZ-01-M3-A-0001.ifc",
   "eq": "ISO 19650-1.",
-  "err": "Pensar solo en modelos: un PDF o una hoja de cálculo también son contenedores.",
+  "err": "Thinking only of models: a PDF or a spreadsheet is a container too.",
   "rel": [
    "P28",
    "P25",
    "P08"
   ],
   "al": [
+   "information container",
+   "information containers",
+   "container",
+   "containers",
    "contenedor de información",
    "contenedores de información",
    "contenedor",
@@ -2546,60 +2739,68 @@ window.BF_GLOSARIO = [
  {
   "id": "P25",
   "slug": "estados-del-cde",
-  "t": "Estados del CDE",
-  "en": "CDE states",
+  "t": "CDE states",
+  "en": "Estados del CDE",
   "b": "I",
-  "d": "Situación de cada contenedor en el entorno común de datos: trabajo en curso, compartido, publicado y archivado. Cada transición exige una comprobación, revisión o autorización.",
-  "ej": "Carpeta WIP de cada equipo y carpeta de publicados del proyecto.",
-  "eq": "ISO 19650-1; Autodesk Docs y BCDE Project los implementan con estados y flujos.",
-  "err": "Tener las cuatro carpetas sin nadie que firme las transiciones.",
+  "d": "Status of each container in the common data environment: work in progress, shared, published and archived. Each transition requires a check, review or authorization.",
+  "ej": "A WIP folder for each team and a published folder for the project.",
+  "eq": "ISO 19650-1; Autodesk Docs and BCDE Project implement them with statuses and workflows.",
+  "err": "Having the four folders with no one signing off the transitions.",
   "rel": [
    "P26",
    "P24",
    "P22"
   ],
   "al": [
+   "CDE states",
+   "CDE state",
+   "work in progress",
+   "WIP",
    "estados del CDE",
-   "trabajo en curso",
-   "work in progress"
+   "trabajo en curso"
   ]
  },
  {
   "id": "P26",
   "slug": "codigo-de-estado",
-  "t": "Código de estado",
-  "en": "Status code",
+  "t": "Status code",
+  "en": "Código de estado",
   "b": "II",
-  "d": "Metadato que indica para qué es apto un contenedor: S0 en curso; S1–S7 compartido; A, B y CR publicado (anexo nacional británico de 2021).",
-  "ej": "S1 apto para coordinación; A1 autorizado y aceptado.",
-  "eq": "BS EN ISO 19650-2 NA; Autodesk Docs (atributo); otros CDE con listas propias.",
-  "err": "Usar S para «sin revisar» y A para «aprobado» sin definir la lista en el estándar del proyecto.",
+  "d": "Metadata indicating what a container is suitable for: S0 work in progress; S1–S7 shared; A, B and CR published (2021 UK National Annex).",
+  "ej": "S1 suitable for coordination; A1 authorized and accepted.",
+  "eq": "BS EN ISO 19650-2 NA; Autodesk Docs (attribute); other CDEs with their own lists.",
+  "err": "Using S for «unchecked» and A for «approved» without defining the list in the project's information standard.",
   "rel": [
    "P25",
    "P27",
    "P28"
   ],
   "al": [
+   "status code",
+   "status codes",
+   "suitability code",
+   "suitability codes",
    "código de estado",
-   "códigos de estado",
-   "status code"
+   "códigos de estado"
   ]
  },
  {
   "id": "P27",
   "slug": "codigo-de-revision",
-  "t": "Código de revisión",
-  "en": "Revision code",
+  "t": "Revision code",
+  "en": "Código de revisión",
   "b": "II",
-  "d": "Identificador de versión del contenedor: P01, P02… preliminar; C01, C02… contractual; P01.01 para versiones intermedias.",
-  "ej": "P03 en compartido; C01 al publicar.",
+  "d": "Version identifier of the container: P01, P02… preliminary; C01, C02… contractual; P01.01 for interim versions.",
+  "ej": "P03 in shared; C01 on publishing.",
   "eq": "BS EN ISO 19650-2 NA.",
-  "err": "Reiniciar la numeración al cambiar de estado.",
+  "err": "Restarting the numbering when the state changes.",
   "rel": [
    "P26",
    "P28"
   ],
   "al": [
+   "revision code",
+   "revision codes",
    "código de revisión",
    "códigos de revisión"
   ]
@@ -2607,19 +2808,23 @@ window.BF_GLOSARIO = [
  {
   "id": "P28",
   "slug": "convencion-de-nomenclatura",
-  "t": "Convención de nomenclatura",
-  "en": "Naming convention",
+  "t": "Naming convention",
+  "en": "Convención de nomenclatura",
   "b": "II",
-  "d": "Regla de identificación de contenedores por campos separados por guiones: proyecto-originador-volumen-nivel-tipo-rol-número (anexo nacional británico).",
+  "d": "Rule for identifying containers by fields separated by hyphens: project-originator-volume-level-type-role-number (UK National Annex).",
   "ej": "HSP-ARQ-ZZ-01-M3-A-0001",
-  "eq": "BS EN ISO 19650-2 NA; validador de nombres de Autodesk Docs.",
-  "err": "Copiar la convención británica sin definir los códigos de cada campo para el proyecto.",
+  "eq": "BS EN ISO 19650-2 NA; Autodesk Docs naming standard validator.",
+  "err": "Copying the UK convention without defining the codes of each field for the project.",
   "rel": [
    "P24",
    "P26",
    "P21"
   ],
   "al": [
+   "naming convention",
+   "naming conventions",
+   "file naming",
+   "container naming",
    "convención de nombres",
    "convención de nomenclatura",
    "nomenclatura"
@@ -2628,18 +2833,22 @@ window.BF_GLOSARIO = [
  {
   "id": "P29",
   "slug": "plan-de-movilizacion",
-  "t": "Plan de movilización",
-  "en": "Mobilization plan",
+  "t": "Mobilization plan",
+  "en": "Plan de movilización",
   "b": "I",
-  "d": "Cómo el equipo pondrá en marcha y probará recursos, tecnología y métodos antes de producir (ISO 19650-2, 5.3.5 y 5.5).",
-  "ej": "Prueba de exportación IFC y subida al CDE en la primera semana.",
+  "d": "How the team will set up and test resources, technology and methods before producing information (ISO 19650-2, 5.3.5 and 5.5).",
+  "ej": "IFC export test and upload to the CDE in the first week.",
   "eq": "ISO 19650-2.",
-  "err": "Empezar a producir sin haber probado el flujo completo.",
+  "err": "Starting production without having tested the whole workflow.",
   "rel": [
    "P02",
    "P30"
   ],
   "al": [
+   "mobilization plan",
+   "mobilization",
+   "mobilisation plan",
+   "mobilisation",
    "plan de movilización",
    "movilización"
   ]
@@ -2647,13 +2856,13 @@ window.BF_GLOSARIO = [
  {
   "id": "P30",
   "slug": "proceso-de-gestion-de-la-informacion",
-  "t": "Proceso de gestión de la información",
-  "en": "Information management process",
+  "t": "Information management process",
+  "en": "Proceso de gestión de la información",
   "b": "II",
-  "d": "Las ocho actividades de ISO 19650-2 para cada designación: evaluación y necesidad, invitación a licitar, respuesta, designación, movilización, producción colaborativa, entrega y cierre.",
+  "d": "The eight ISO 19650-2 activities for each appointment: assessment and need, invitation to tender, tender response, appointment, mobilization, collaborative production of information, information model delivery and project close-out.",
   "ej": "—",
-  "eq": "ISO 19650-2, cláusula 5; ISO 19650-3 para la operación.",
-  "err": "Leer el BEP como un documento suelto y no como parte de ese proceso.",
+  "eq": "ISO 19650-2, clause 5; ISO 19650-3 for the operational phase.",
+  "err": "Reading the BEP as a standalone document rather than as part of that process.",
   "rel": [
    "P01",
    "P02",
@@ -2661,6 +2870,8 @@ window.BF_GLOSARIO = [
    "P29"
   ],
   "al": [
+   "information management process",
+   "information management",
    "gestión de la información",
    "proceso de gestión de la información"
   ]
@@ -2668,37 +2879,40 @@ window.BF_GLOSARIO = [
  {
   "id": "P31",
   "slug": "serie-iso-19650",
-  "t": "Serie ISO 19650",
-  "en": "ISO 19650 series",
+  "t": "ISO 19650 series",
+  "en": "Serie ISO 19650",
   "b": "II",
-  "d": "Normas internacionales de gestión de la información con BIM: 1 conceptos, 2 desarrollo, 3 operación, 4 intercambio, 5 seguridad, 6 salud y seguridad. En España, UNE-EN ISO 19650.",
-  "ej": "UNE-EN ISO 19650-1:2019 y -2:2019.",
-  "eq": "BS 1192 y PAS 1192-2 (antecedentes británicos).",
-  "err": "Citar «ISO 19650» sin la parte: el BEP está en la parte 2.",
+  "d": "International standards for information management using BIM: 1 concepts, 2 delivery phase, 3 operational phase, 4 information exchange, 5 security, 6 health and safety. In Spain, UNE-EN ISO 19650.",
+  "ej": "UNE-EN ISO 19650-1:2019 and -2:2019.",
+  "eq": "BS 1192 and PAS 1192-2 (UK predecessors).",
+  "err": "Citing «ISO 19650» without the part: the BEP is in part 2.",
   "rel": [
    "P30",
    "P01"
   ],
   "al": [
    "ISO 19650",
+   "BS EN ISO 19650",
    "UNE-EN ISO 19650"
   ]
  },
  {
   "id": "P32",
   "slug": "usos-bim",
-  "t": "Usos BIM",
-  "en": "BIM uses",
+  "t": "BIM uses",
+  "en": "Usos BIM",
   "b": "I",
-  "d": "Formas concretas de aplicar BIM para conseguir un objetivo (coordinación 3D, mediciones, simulación…); eje de la guía de Penn State y de NBIMS-US.",
-  "ej": "Coordinación 3D y extracción de planos, exigidos en el nivel Inicial del Plan BIM.",
-  "eq": "Penn State BIM PxP Guide; NBIMS-US V4; Plan BIM español.",
-  "err": "Pedir «todos los usos» en el EIR sin decir para qué decisión sirve cada uno.",
+  "d": "Specific ways of applying BIM to achieve an objective (3D coordination, quantity take-off, simulation…); the backbone of the Penn State guide and NBIMS-US.",
+  "ej": "3D coordination and drawing extraction, required at the Initial level of the Spanish BIM Plan.",
+  "eq": "Penn State BIM PxP Guide; NBIMS-US V4; Spanish BIM Plan.",
+  "err": "Asking for «all uses» in the EIR without saying which decision each one serves.",
   "rel": [
    "P01",
    "P04"
   ],
   "al": [
+   "BIM uses",
+   "BIM use",
    "usos BIM",
    "uso BIM"
   ]
@@ -2706,19 +2920,22 @@ window.BF_GLOSARIO = [
  {
   "id": "P33",
   "slug": "plan-bim-en-la-contratacion-publica",
-  "t": "Plan BIM en la contratación pública",
-  "en": "Spanish BIM plan for public procurement",
+  "t": "Spanish BIM plan for public procurement (Plan BIM)",
+  "en": "Plan BIM en la contratación pública",
   "b": "II",
-  "d": "Plan de Incorporación de la Metodología BIM en la contratación pública (Acuerdo del Consejo de Ministros de 27/06/2023, Orden PCM/818/2023): calendario de niveles BIM exigidos por valor de contrato.",
-  "ej": "Nivel Medio en obras ≥ 5.404.000 € desde el 1/10/2025.",
-  "eq": "Instrucción interna para la AGE; recomendación para el resto del sector público.",
-  "err": "Llamarlo «real decreto»: no lo es.",
+  "d": "Plan for the Incorporation of the BIM Methodology in public procurement (Council of Ministers Agreement of 27/06/2023, Order PCM/818/2023): timetable of BIM levels required by contract value.",
+  "ej": "Medium level for works ≥ €5 404 000 from 1/10/2025.",
+  "eq": "Internal instruction for the General State Administration (AGE); recommendation for the rest of the public sector.",
+  "err": "Calling it a «royal decree»: it is not one.",
   "rel": [
    "P34",
    "P35"
   ],
   "al": [
+   "Spanish BIM Plan",
    "Plan BIM",
+   "Order PCM/818/2023",
+   "BIM Plan",
    "Orden PCM/818/2023",
    "Plan de Incorporación de la Metodología BIM"
   ]
@@ -2726,17 +2943,19 @@ window.BF_GLOSARIO = [
  {
   "id": "P34",
   "slug": "nivel-bim",
-  "t": "Nivel BIM (Plan BIM español)",
-  "en": "BIM level (Spanish BIM plan)",
+  "t": "BIM level (Spanish BIM plan)",
+  "en": "Nivel BIM (Plan BIM español)",
   "b": "II",
-  "d": "Escala de madurez del Plan BIM: PreBIM, Inicial, Medio, Avanzado e Integrado, evaluada en estrategia, procesos, tecnología y personas.",
-  "ej": "Nivel Inicial: modelos para planos y coordinación 3D, CDE como repositorio y formatos abiertos.",
-  "eq": "UK: «BIM Level 2» (término retirado con ISO 19650).",
-  "err": "Confundirlo con los «niveles de desarrollo» (LOD) de los elementos.",
+  "d": "Maturity scale of the Spanish BIM Plan: PreBIM, Initial, Medium, Advanced and Integrated, assessed across strategy, processes, technology and people.",
+  "ej": "Initial level: models for drawings and 3D coordination, the CDE as a repository and open formats.",
+  "eq": "UK: «BIM Level 2» (term retired with ISO 19650).",
+  "err": "Confusing it with the «levels of development» (LOD) of elements.",
   "rel": [
    "P33"
   ],
   "al": [
+   "BIM level",
+   "BIM levels",
    "nivel BIM",
    "niveles BIM"
   ]
@@ -2744,18 +2963,19 @@ window.BF_GLOSARIO = [
  {
   "id": "P35",
   "slug": "comision-interministerial-bim",
-  "t": "Comisión Interministerial BIM (CIBIM)",
-  "en": "Interministerial BIM Commission",
+  "t": "Interministerial BIM Commission (CIBIM)",
+  "en": "Comisión Interministerial BIM (CIBIM)",
   "b": "II",
-  "d": "Órgano creado por el RD 1515/2018 para coordinar la incorporación de BIM en la contratación de la Administración General del Estado; elaboró el Plan BIM.",
+  "d": "Body created by Royal Decree 1515/2018 to coordinate the incorporation of BIM into procurement by the General State Administration; it drew up the Spanish BIM Plan.",
   "ej": "cibim.transportes.gob.es",
-  "eq": "Antes: Comisión es.BIM (2015).",
-  "err": "Atribuirle el Plan BIM como norma propia: lo aprobó el Consejo de Ministros.",
+  "eq": "Previously: es.BIM Commission (2015).",
+  "err": "Attributing the BIM Plan to it as its own regulation: it was approved by the Council of Ministers.",
   "rel": [
    "P33",
    "P34"
   ],
   "al": [
+   "Interministerial BIM Commission",
    "CIBIM",
    "CBIM",
    "Comisión Interministerial BIM"
@@ -2764,19 +2984,22 @@ window.BF_GLOSARIO = [
  {
   "id": "P36",
   "slug": "anexo-nacional-britanico",
-  "t": "Anexo nacional británico",
-  "en": "UK National Annex",
+  "t": "UK National Annex",
+  "en": "Anexo nacional británico",
   "b": "II",
-  "d": "Anexo de BS EN ISO 19650-2 que concreta para el Reino Unido la convención de nombres, los códigos de estado y los de revisión.",
-  "ej": "Muchos pliegos españoles copian su convención.",
+  "d": "Annex to BS EN ISO 19650-2 that specifies for the United Kingdom the naming convention, status codes and revision codes.",
+  "ej": "Many Spanish tender documents copy its convention.",
   "eq": "BS EN ISO 19650-2:2018 + A1 / NA (2021).",
-  "err": "Darlo por norma española: España no tiene anexo nacional.",
+  "err": "Treating it as a Spanish standard: Spain has no national annex.",
   "rel": [
    "P28",
    "P26",
    "P27"
   ],
   "al": [
+   "UK National Annex",
+   "National Annex",
+   "national annex",
    "anexo nacional",
    "anexo nacional británico"
   ]
@@ -2784,49 +3007,53 @@ window.BF_GLOSARIO = [
  {
   "id": "P37",
   "slug": "registro-de-riesgos-de-informacion",
-  "t": "Registro de riesgos de información",
-  "en": "Information risk register",
+  "t": "Information risk register",
+  "en": "Registro de riesgos de información",
   "b": "I",
-  "d": "Riesgos que pueden impedir entregar la información en plazo y forma, con su tratamiento; acompaña a la respuesta a la licitación (ISO 19650-2, 5.3.6).",
-  "ej": "Riesgo: versión de software distinta entre arquitectura y estructura.",
+  "d": "Risks that may prevent the information being delivered on time and as required, with their treatment; it accompanies the tender response (ISO 19650-2, 5.3.6).",
+  "ej": "Risk: different software versions between architecture and structures.",
   "eq": "ISO 19650-2.",
-  "err": "Confundirlo con el registro de riesgos de obra.",
+  "err": "Confusing it with the construction risk register.",
   "rel": [
    "P02",
    "P29"
   ],
   "al": [
+   "information risk register",
+   "risk register",
+   "risk registers",
    "registro de riesgos"
   ]
  },
  {
   "id": "P38",
   "slug": "plan-de-produccion-de-informacion",
-  "t": "Plan de producción de información (propuesto)",
-  "en": "Information Production Plan (proposed)",
+  "t": "Information Production Plan (proposed)",
+  "en": "Plan de producción de información (propuesto)",
   "b": "II",
-  "d": "Nombre que, según fuentes que siguieron la consulta pública, podría sustituir al BEP en la revisión de ISO 19650 (borrador en nueva votación desde el 18/08/2026). No es definitivo.",
+  "d": "Name that, according to sources that followed the public consultation, could replace the BEP in the ISO 19650 revision (draft back to ballot since 18/08/2026). It is not final.",
   "ej": "—",
   "eq": "ISO/DIS 19650-2.",
-  "err": "Usarlo ya como término oficial.",
+  "err": "Already using it as an official term.",
   "rel": [
    "P01",
    "P31"
   ],
   "al": [
-   "Information Production Plan"
+   "Information Production Plan",
+   "information production plan"
   ]
  },
  {
   "id": "G01",
   "slug": "gemelo-digital",
-  "t": "Gemelo digital",
-  "en": "Digital twin",
+  "t": "Digital twin",
+  "en": "Gemelo digital",
   "b": "I",
-  "d": "Representación virtual integrada y basada en datos de entidades y procesos reales, con interacción sincronizada a una frecuencia y fidelidad especificadas.",
-  "ej": "Gemelo urbano del Ayuntamiento de Madrid, que integra cartografía 3D y datos de sensores municipales.",
-  "eq": "ISO/IEC 30173:2023 (término normalizado); 'operational twin' en AWS IoT TwinMaker; 'twin graph' en Azure Digital Twins; 'facility twin' en Autodesk Tandem; 'iTwin' en Bentley; 'virtual twin' en Dassault.",
-  "err": "Llamar gemelo a cualquier modelo BIM o render 3D: sin conexión de datos con el activo real no hay gemelo.",
+  "d": "Integrated, data-driven virtual representation of real-world entities and processes, with synchronised interaction at a specified frequency and fidelity.",
+  "ej": "The Madrid City Council urban twin, which integrates 3D mapping and data from municipal sensors.",
+  "eq": "ISO/IEC 30173:2023 (standardised term); 'operational twin' in AWS IoT TwinMaker; 'twin graph' in Azure Digital Twins; 'facility twin' in Autodesk Tandem; 'iTwin' in Bentley; 'virtual twin' in Dassault.",
+  "err": "Calling any BIM model or 3D render a twin: without a data connection to the real asset there is no twin.",
   "rel": [
    "G02",
    "G03",
@@ -2835,149 +3062,160 @@ window.BF_GLOSARIO = [
    "G43"
   ],
   "al": [
-   "gemelo digital",
-   "gemelos digitales",
    "digital twin",
    "digital twins",
+   "gemelo digital",
+   "gemelos digitales",
    "réplica digital"
   ]
  },
  {
   "id": "G02",
   "slug": "modelo-digital",
-  "t": "Modelo digital",
-  "en": "Digital model",
+  "t": "Digital model",
+  "en": "Modelo digital",
   "b": "I",
-  "d": "Representación digital de un objeto físico sin intercambio automático de datos: cualquier actualización entre objeto y modelo se hace manualmente (Kritzinger et al., 2018).",
-  "ej": "Modelo BIM 'as built' entregado al final de obra y que nadie actualiza tras reformas.",
-  "eq": "Nivel 1 'Digital model' de Arup (2019); modelo de información del activo estático (ISO 19650).",
-  "err": "Creer que un modelo BIM 'as built' ya es un gemelo digital.",
+  "d": "Digital representation of a physical object with no automatic data exchange: any update between object and model is made manually (Kritzinger et al., 2018).",
+  "ej": "An as-built BIM model handed over at the end of construction and never updated after refurbishments.",
+  "eq": "Level 1 'Digital model' in Arup (2019); static asset information model (ISO 19650).",
+  "err": "Believing that an as-built BIM model is already a digital twin.",
   "rel": [
    "G01",
    "G03",
    "G08"
   ],
   "al": [
-   "modelo digital",
    "digital model",
+   "digital models",
+   "static BIM model",
+   "modelo digital",
    "modelo BIM estático"
   ]
  },
  {
   "id": "G03",
   "slug": "sombra-digital",
-  "t": "Sombra digital",
-  "en": "Digital shadow",
+  "t": "Digital shadow",
+  "en": "Sombra digital",
   "b": "I",
-  "d": "Representación digital que recibe datos automáticamente del objeto físico, pero cuyos cambios no vuelven automáticamente al objeto (flujo unidireccional) (Kritzinger et al., 2018).",
-  "ej": "Cuadro de mando que muestra en un modelo 3D las temperaturas de las salas enviadas por la gestión técnica del edificio (BMS), sin enviar consignas.",
-  "eq": "Muchos productos comerciales 'digital twin' de operación funcionan en la práctica como sombra digital (monitorización sin actuación).",
-  "err": "Pensar que todo gemelo debe actuar sobre el activo: en construcción la mayoría de casos reales son sombras digitales y es legítimo decirlo.",
+  "d": "Digital representation that receives data automatically from the physical object, but whose changes do not flow back to the object automatically (one-way flow) (Kritzinger et al., 2018).",
+  "ej": "A dashboard that shows room temperatures sent by the building management system (BMS) on a 3D model, without sending setpoints.",
+  "eq": "Many commercial operational 'digital twin' products work in practice as a digital shadow (monitoring without actuation).",
+  "err": "Thinking every twin must act on the asset: in construction most real cases are digital shadows, and it is legitimate to say so.",
   "rel": [
    "G01",
    "G02",
    "G37"
   ],
   "al": [
-   "sombra digital",
    "digital shadow",
+   "digital shadows",
+   "sombra digital",
    "sombras digitales"
   ]
  },
  {
   "id": "G04",
   "slug": "activo-fisico",
-  "t": "Activo físico",
-  "en": "Physical asset / physical twin",
+  "t": "Physical asset / physical twin",
+  "en": "Activo físico",
   "b": "I",
-  "d": "Elemento real (edificio, puente, equipo, red) que el gemelo representa y del que recibe datos; ISO 55000 lo define como elemento con valor potencial o real para una organización.",
-  "ej": "Una enfriadora de un hospital, una pila de un viaducto o una estación de bombeo del Canal de Isabel II.",
-  "eq": "IfcProduct/IfcElement en IFC; 'Asset' en AAS (IEC 63278); 'Equipment' en Brick; 'Entity' en AWS IoT TwinMaker.",
-  "err": "Confundir el activo con su modelo: el gemelo debe identificar cada activo de forma única y estable.",
+  "d": "Real item (building, bridge, equipment, network) that the twin represents and receives data from; ISO 55000 defines an asset as an item that has potential or actual value to an organisation.",
+  "ej": "A hospital chiller, a viaduct pier or a Canal de Isabel II pumping station.",
+  "eq": "IfcProduct/IfcElement in IFC; 'Asset' in AAS (IEC 63278); 'Equipment' in Brick; 'Entity' in AWS IoT TwinMaker.",
+  "err": "Confusing the asset with its model: the twin must identify each asset uniquely and stably.",
   "rel": [
    "G01",
    "G08",
    "G14"
   ],
   "al": [
+   "physical asset",
+   "physical assets",
+   "physical twin",
    "activo físico",
-   "gemelo físico",
-   "physical twin"
+   "gemelo físico"
   ]
  },
  {
   "id": "G05",
   "slug": "nivel-de-madurez-del-gemelo",
-  "t": "Nivel de madurez del gemelo",
-  "en": "Digital twin maturity level",
+  "t": "Digital twin maturity level",
+  "en": "Nivel de madurez del gemelo",
   "b": "I",
-  "d": "Escala que clasifica un gemelo según su capacidad: Arup (2019) propone 5 niveles, del modelo digital al razonamiento autónomo, valorando autonomía, inteligencia, aprendizaje y fidelidad.",
-  "ej": "Un sistema de alertas de temperatura en un edificio sería nivel 2 (realimentación y control) en la escala de Arup.",
+  "d": "Scale that classifies a twin by its capability: Arup (2019) proposes 5 levels, from digital model to autonomous reasoning, assessing autonomy, intelligence, learning and fidelity.",
+  "ej": "A temperature alert system in a building would be level 2 (feedback and control) on the Arup scale.",
   "eq": "Arup 1-5 (2019); ISO/IEC 30186:2025 'Digital twin — Maturity model and guidance for maturity assessment'.",
-  "err": "Tratar la madurez como un objetivo en sí: el nivel adecuado depende del caso de uso, no siempre del más alto.",
+  "err": "Treating maturity as a goal in itself: the right level depends on the use case, and is not always the highest.",
   "rel": [
    "G01",
    "G43",
    "G35"
   ],
   "al": [
+   "maturity level",
+   "maturity levels",
+   "digital twin maturity",
+   "twin maturity",
    "nivel de madurez",
    "madurez del gemelo digital",
-   "maturity level",
    "niveles de madurez"
   ]
  },
  {
   "id": "G06",
   "slug": "gemelo-digital-nacional",
-  "t": "Gemelo digital nacional",
-  "en": "National digital twin (NDT)",
+  "t": "National digital twin (NDT)",
+  "en": "Gemelo digital nacional",
   "b": "II",
-  "d": "Ecosistema de gemelos digitales conectados mediante intercambio seguro de datos, propuesto en Reino Unido por el CDBB y hoy desarrollado por el National Digital Twin Programme (NDTP).",
-  "ej": "Programa británico que pretende conectar gemelos de agua, energía y transporte mediante un marco común de gestión de información.",
-  "eq": "Information Management Framework (IMF) del CDBB; Gemini Principles; Integration Architecture del NDTP.",
-  "err": "Imaginarlo como un único modelo gigante del país: es una federación de gemelos interoperables.",
+  "d": "Ecosystem of digital twins connected through secure data sharing, proposed in the UK by the CDBB and now developed by the National Digital Twin Programme (NDTP).",
+  "ej": "UK programme that aims to connect water, energy and transport twins through a common information management framework.",
+  "eq": "CDBB Information Management Framework (IMF); Gemini Principles; NDTP Integration Architecture.",
+  "err": "Picturing it as a single giant model of the country: it is a federation of interoperable twins.",
   "rel": [
    "G07",
    "G01",
    "G42"
   ],
   "al": [
-   "gemelo digital nacional",
+   "national digital twin",
    "National Digital Twin",
-   "NDTP"
+   "NDT",
+   "NDTP",
+   "gemelo digital nacional"
   ]
  },
  {
   "id": "G07",
   "slug": "principios-gemini",
-  "t": "Principios Gemini",
-  "en": "Gemini Principles",
+  "t": "Gemini Principles",
+  "en": "Principios Gemini",
   "b": "II",
-  "d": "Nueve principios (CDBB, diciembre 2018) para gemelos del entorno construido agrupados en propósito, confianza y función: bien público, valor, visión, seguridad, apertura, calidad, federación, curaduría y evolución.",
-  "ej": "Usarlos como lista de verificación al redactar el pliego de un gemelo para una red pública.",
-  "eq": "Base del Information Management Framework británico; citados en ISO/IEC 30173 y literatura AEC.",
-  "err": "Tomarlos como norma técnica: son principios rectores, no requisitos verificables.",
+  "d": "Nine principles (CDBB, December 2018) for built-environment twins grouped into purpose, trust and function: public good, value creation, insight, security, openness, quality, federation, curation and evolution.",
+  "ej": "Using them as a checklist when drafting the tender specification for a twin of a public network.",
+  "eq": "Basis of the UK Information Management Framework; cited in ISO/IEC 30173 and AEC literature.",
+  "err": "Taking them as a technical standard: they are guiding principles, not verifiable requirements.",
   "rel": [
    "G06",
    "G01"
   ],
   "al": [
-   "principios Gemini",
    "Gemini Principles",
-   "The Gemini Principles"
+   "The Gemini Principles",
+   "Gemini principles",
+   "principios Gemini"
   ]
  },
  {
   "id": "G08",
   "slug": "modelo-de-informacion-del-activo-g08",
-  "t": "Modelo de información del activo (AIM)",
-  "en": "Asset information model (AIM)",
+  "t": "Asset information model (AIM)",
+  "en": "Modelo de información del activo (AIM)",
   "b": "II",
-  "d": "Modelo de información (geometría, datos y documentos) que sostiene la gestión del activo durante la operación, según ISO 19650-1 y 19650-3.",
-  "ej": "Base de datos de activos de mantenimiento alimentada con COBie al recibir un edificio público.",
-  "eq": "ISO 19650-3:2020 (fase de operación); 'Facility' en Autodesk Tandem; iModel en Bentley; AIM ≈ capa estática del gemelo.",
-  "err": "Confundir AIM con gemelo: el AIM es la base de datos de referencia; el gemelo añade conexión dinámica y analítica.",
+  "d": "Information model (geometry, data and documents) that supports asset management during operation, according to ISO 19650-1 and 19650-3.",
+  "ej": "A maintenance asset database populated with COBie when a public building is handed over.",
+  "eq": "ISO 19650-3:2020 (operational phase); 'Facility' in Autodesk Tandem; iModel in Bentley; AIM ≈ static layer of the twin.",
+  "err": "Confusing the AIM with the twin: the AIM is the reference database; the twin adds a live connection and analytics.",
   "rel": [
    "G09",
    "G10",
@@ -2986,40 +3224,43 @@ window.BF_GLOSARIO = [
   ],
   "al": [
    "AIM",
-   "modelo de información del activo",
-   "asset information model"
+   "asset information model",
+   "asset information models",
+   "modelo de información del activo"
   ]
  },
  {
   "id": "G09",
   "slug": "modelo-de-informacion-del-proyecto-g09",
-  "t": "Modelo de información del proyecto (PIM)",
-  "en": "Project information model (PIM)",
+  "t": "Project information model (PIM)",
+  "en": "Modelo de información del proyecto (PIM)",
   "b": "II",
-  "d": "Modelo de información desarrollado durante diseño y construcción (ISO 19650-2); al terminar, la parte relevante se traspasa al AIM.",
-  "ej": "Modelos federados de una obra hospitalaria gestionados en un CDE hasta la recepción.",
-  "eq": "ISO 19650-2:2018; contenedores de información en el CDE.",
-  "err": "Entregar el PIM completo como si fuera el AIM, con datos de obra que no sirven para operar.",
+  "d": "Information model developed during design and construction (ISO 19650-2); at completion, the relevant part is transferred to the AIM.",
+  "ej": "Federated models of a hospital project managed in a CDE until handover.",
+  "eq": "ISO 19650-2:2018; information containers in the CDE.",
+  "err": "Handing over the full PIM as if it were the AIM, with construction data that is useless for operation.",
   "rel": [
    "G08",
    "C30",
    "G41"
   ],
   "al": [
-   "modelo de información del proyecto",
-   "project information model"
+   "PIM",
+   "project information model",
+   "project information models",
+   "modelo de información del proyecto"
   ]
  },
  {
   "id": "G10",
   "slug": "requisitos-de-informacion-del-activo-g10",
-  "t": "Requisitos de información del activo (AIR)",
-  "en": "Asset information requirements (AIR)",
+  "t": "Asset information requirements (AIR)",
+  "en": "Requisitos de información del activo (AIR)",
   "b": "V",
-  "d": "Requisitos del propietario sobre qué información del activo debe entregarse para su gestión, derivados de los requisitos organizacionales (OIR) según ISO 19650.",
-  "ej": "Lista de atributos obligatorios (fabricante, nº serie, garantía, intervalo de mantenimiento) para cada bomba de un edificio.",
-  "eq": "ISO 19650-1/-3; se pueden expresar de forma verificable con IDS (buildingSMART) o plantillas COBie.",
-  "err": "Redactar AIR genéricos en PDF que nadie puede comprobar automáticamente.",
+  "d": "Owner's requirements on what asset information must be delivered for its management, derived from the organisational information requirements (OIR) according to ISO 19650.",
+  "ej": "List of mandatory attributes (manufacturer, serial number, warranty, maintenance interval) for each pump in a building.",
+  "eq": "ISO 19650-1/-3; can be expressed in a verifiable way with IDS (buildingSMART) or COBie templates.",
+  "err": "Writing generic AIR in a PDF that nobody can check automatically.",
   "rel": [
    "G08",
    "C25",
@@ -3028,20 +3269,20 @@ window.BF_GLOSARIO = [
   ],
   "al": [
    "AIR",
-   "requisitos de información del activo",
-   "asset information requirements"
+   "asset information requirements",
+   "requisitos de información del activo"
   ]
  },
  {
   "id": "G13",
   "slug": "ifc",
-  "t": "IFC",
-  "en": "Industry Foundation Classes",
+  "t": "Industry Foundation Classes (IFC)",
+  "en": "IFC",
   "b": "II",
-  "d": "Esquema abierto de buildingSMART para describir datos de construcción e infraestructura; la versión IFC 4.3 se publicó como ISO 16739-1:2024 (abril 2024).",
-  "ej": "Exportar el modelo de un viaducto en IFC 4.3 con IfcBridge para cargarlo en una plataforma de gemelo.",
-  "eq": "Importado por Autodesk Tandem, Bentley iTwin (conector IFC), Nemetschek dTwin, Dalux; convertible a grafo (ifcOWL, Brick).",
-  "err": "Pensar que IFC transmite datos de sensores en tiempo real: IFC describe el activo, no el flujo de telemetría.",
+  "d": "Open buildingSMART schema for describing construction and infrastructure data; IFC 4.3 was published as ISO 16739-1:2024 (April 2024).",
+  "ej": "Exporting a viaduct model in IFC 4.3 with IfcBridge to load it into a twin platform.",
+  "eq": "Imported by Autodesk Tandem, Bentley iTwin (IFC connector), Nemetschek dTwin, Dalux; convertible to a graph (ifcOWL, Brick).",
+  "err": "Thinking IFC carries real-time sensor data: IFC describes the asset, not the telemetry stream.",
   "rel": [
    "G14",
    "G15",
@@ -3057,13 +3298,13 @@ window.BF_GLOSARIO = [
  {
   "id": "G14",
   "slug": "guid-ifc",
-  "t": "GUID IFC (GlobalId)",
-  "en": "IFC GlobalId (GUID)",
+  "t": "IFC GlobalId (GUID)",
+  "en": "GUID IFC (GlobalId)",
   "b": "V",
-  "d": "Identificador único global de 128 bits (codificado en 22 caracteres) de cada objeto IFC; permite trazar un elemento del modelo al registro del gemelo.",
-  "ej": "Vincular la etiqueta de mantenimiento de una climatizadora con el GlobalId del IfcUnitaryEquipment.",
-  "eq": "IfcRoot.GlobalId en IFC; 'externalId' en Autodesk Tandem; 'federationGuid' en iModel (⚠); propiedad de mapeo en DTDL.",
-  "err": "Asumir que el GUID es estable: algunas herramientas lo regeneran al reexportar, rompiendo la trazabilidad.",
+  "d": "128-bit globally unique identifier (encoded in 22 characters) of each IFC object; it allows an element to be traced from the model to the twin record.",
+  "ej": "Linking an air handling unit's maintenance tag to the GlobalId of the IfcUnitaryEquipment.",
+  "eq": "IfcRoot.GlobalId in IFC; 'externalId' in Autodesk Tandem; 'federationGuid' in iModel (⚠); mapping property in DTDL.",
+  "err": "Assuming the GUID is stable: some tools regenerate it on re-export, breaking traceability.",
   "rel": [
    "G13",
    "G04",
@@ -3073,6 +3314,7 @@ window.BF_GLOSARIO = [
    "GUID",
    "GlobalId",
    "IfcGloballyUniqueId",
+   "persistent identifier",
    "identificador persistente"
   ]
  },
@@ -3082,10 +3324,10 @@ window.BF_GLOSARIO = [
   "t": "IfcSensor",
   "en": "IfcSensor",
   "b": "II",
-  "d": "Clase IFC (subtipo de IfcDistributionControlElement) que representa un dispositivo que mide una magnitud física (temperatura, caudal, deformación) y forma parte de un sistema de control.",
-  "ej": "Sensor de humedad modelado en Revit y exportado como IfcSensor con PredefinedType HUMIDITYSENSOR.",
+  "d": "IFC class (subtype of IfcDistributionControlElement) that represents a device measuring a physical quantity (temperature, flow, strain) and forming part of a control system.",
+  "ej": "A humidity sensor modelled in Revit and exported as IfcSensor with PredefinedType HUMIDITYSENSOR.",
   "eq": "IfcSensor (IFC); brick:Sensor (Brick); sosa:Sensor (SSN/SOSA); Sensor (SensorThings API).",
-  "err": "Modelar el sensor solo como geometría genérica (IfcBuildingElementProxy), perdiendo su semántica.",
+  "err": "Modelling the sensor only as generic geometry (IfcBuildingElementProxy), losing its semantics.",
   "rel": [
    "G13",
    "G16",
@@ -3094,20 +3336,21 @@ window.BF_GLOSARIO = [
   ],
   "al": [
    "IfcSensor",
-   "sensor IFC",
-   "IfcDistributionControlElement"
+   "IFC sensor",
+   "IfcDistributionControlElement",
+   "sensor IFC"
   ]
  },
  {
   "id": "G16",
   "slug": "historial-de-rendimiento",
-  "t": "Historial de rendimiento (IfcPerformanceHistory)",
-  "en": "IfcPerformanceHistory / IfcTimeSeries",
+  "t": "IfcPerformanceHistory / IfcTimeSeries",
+  "en": "Historial de rendimiento (IfcPerformanceHistory)",
   "b": "II",
-  "d": "Entidades IFC para registrar datos de comportamiento de un elemento a lo largo del tiempo (series temporales); poco usadas en la práctica frente a bases de datos de series temporales.",
-  "ej": "Guardar en IFC un resumen mensual de consumo de una bomba al entregar el AIM.",
-  "eq": "IfcPerformanceHistory + IfcTimeSeries (IFC); series temporales en InfluxDB/Azure Data Explorer en la práctica.",
-  "err": "Intentar meter telemetría de alta frecuencia en ficheros IFC.",
+  "d": "IFC entities for recording an element's performance data over time (time series); rarely used in practice compared with time-series databases.",
+  "ej": "Storing a monthly summary of a pump's consumption in IFC when handing over the AIM.",
+  "eq": "IfcPerformanceHistory + IfcTimeSeries (IFC); time series in InfluxDB/Azure Data Explorer in practice.",
+  "err": "Trying to put high-frequency telemetry into IFC files.",
   "rel": [
    "G13",
    "G15",
@@ -3116,19 +3359,20 @@ window.BF_GLOSARIO = [
   "al": [
    "IfcPerformanceHistory",
    "IfcTimeSeries",
+   "IFC time series",
    "series temporales IFC"
   ]
  },
  {
   "id": "G17",
   "slug": "cobie-g17",
-  "t": "COBie",
-  "en": "Construction Operations Building information exchange",
+  "t": "Construction Operations Building information exchange (COBie)",
+  "en": "COBie",
   "b": "II",
-  "d": "Especificación de intercambio (normalmente hoja de cálculo o IFC) con espacios, sistemas, componentes, tipos y documentos para la entrega a mantenimiento; nacida en USACE en 2007.",
-  "ej": "Entregar a la propiedad un libro COBie con todas las unidades terminales y su garantía.",
-  "eq": "NBIMS-US (COBie v3 en elaboración, borrador 2023); BS 1192-4:2014 en Reino Unido; exportadores COBie de Revit, Archicad.",
-  "err": "Rellenar COBie al final de la obra 'a mano' sin vincularlo con los GUID del modelo.",
+  "d": "Exchange specification (usually a spreadsheet or IFC) with spaces, systems, components, types and documents for handover to maintenance; created by USACE in 2007.",
+  "ej": "Handing the owner a COBie workbook with all terminal units and their warranties.",
+  "eq": "NBIMS-US (COBie v3 in development, 2023 draft); BS 1192-4:2014 in the UK; COBie exporters in Revit, Archicad.",
+  "err": "Filling in COBie 'by hand' at the end of construction without linking it to the model GUIDs.",
   "rel": [
    "G08",
    "G10",
@@ -3137,19 +3381,21 @@ window.BF_GLOSARIO = [
   "al": [
    "COBie",
    "Construction Operations Building information exchange",
+   "COBie spreadsheet",
+   "COBie workbook",
    "hoja COBie"
   ]
  },
  {
   "id": "G18",
   "slug": "ids-g18",
-  "t": "IDS",
-  "en": "Information Delivery Specification",
+  "t": "Information Delivery Specification (IDS)",
+  "en": "IDS",
   "b": "VI",
-  "d": "Estándar de buildingSMART (v1.0 aprobado el 4-6-2024) para definir requisitos de información en XML legible por humanos y verificable automáticamente contra modelos IFC.",
-  "ej": "Fichero IDS que exige que todo IfcPump tenga 'Manufacturer' y 'SerialNumber' antes de cargarlo al gemelo.",
-  "eq": "IfcTester (IfcOpenShell), Solibri, BIMcollab Zoom, usBIM.IDS y otros validadores; seis facetas: entity, attribute, property, classification, material, partOf.",
-  "err": "Confundir IDS con IFC: IDS describe qué datos se exigen, no el modelo.",
+  "d": "buildingSMART standard (v1.0 approved on 4 June 2024) for defining information requirements in human-readable XML that can be checked automatically against IFC models.",
+  "ej": "An IDS file requiring every IfcPump to have 'Manufacturer' and 'SerialNumber' before it is loaded into the twin.",
+  "eq": "IfcTester (IfcOpenShell), Solibri, BIMcollab Zoom, usBIM.IDS and other validators; six facets: entity, attribute, property, classification, material, partOf.",
+  "err": "Confusing IDS with IFC: IDS describes which data are required, not the model.",
   "rel": [
    "G10",
    "G13",
@@ -3164,13 +3410,13 @@ window.BF_GLOSARIO = [
  {
   "id": "G19",
   "slug": "brick",
-  "t": "Brick",
-  "en": "Brick Schema",
+  "t": "Brick Schema",
+  "en": "Brick",
   "b": "II",
-  "d": "Ontología abierta (RDF/OWL) para describir equipos, puntos, espacios y relaciones de sistemas de edificios (climatización, iluminación, contadores) de forma legible por máquinas.",
-  "ej": "Grafo Brick de un edificio donde un 'Supply_Air_Temperature_Sensor' alimenta una 'AHU'.",
-  "eq": "brick:Equipment/Point/Location; equivalencias con Haystack, RealEstateCore y ASHRAE 223P; validación SHACL con la librería brickschema.",
-  "err": "Usar Brick para geometría: Brick describe relaciones de sistemas y puntos, no forma ni posición.",
+  "d": "Open ontology (RDF/OWL) for describing equipment, points, spaces and system relationships in buildings (HVAC, lighting, meters) in a machine-readable way.",
+  "ej": "A Brick graph of a building in which a 'Supply_Air_Temperature_Sensor' feeds an 'AHU'.",
+  "eq": "brick:Equipment/Point/Location; alignments with Haystack, RealEstateCore and ASHRAE 223P; SHACL validation with the brickschema library.",
+  "err": "Using Brick for geometry: Brick describes system and point relationships, not shape or position.",
   "rel": [
    "G20",
    "G21",
@@ -3180,6 +3426,7 @@ window.BF_GLOSARIO = [
   "al": [
    "Brick",
    "Brick Schema",
+   "Brick ontology",
    "ontología Brick"
   ]
  },
@@ -3189,10 +3436,10 @@ window.BF_GLOSARIO = [
   "t": "Project Haystack",
   "en": "Project Haystack",
   "b": "II",
-  "d": "Iniciativa abierta de etiquetado semántico de datos IoT de edificios (tags como 'ahu', 'temp', 'sensor'); Haystack 5 (2025) añade el lenguaje de esquemas Xeto e integración RDF.",
-  "ej": "Puntos del BMS etiquetados 'discharge air temp sensor point' para que una analítica los encuentre.",
-  "eq": "Haystack 4 (tags y defs); Haystack 5 con Xeto; usado en SkySpark y numerosos BMS.",
-  "err": "Creer que Haystack y Brick compiten sin solución: trabajan en convergencia con ASHRAE 223P.",
+  "d": "Open initiative for semantic tagging of building IoT data (tags such as 'ahu', 'temp', 'sensor'); Haystack 5 (2025) adds the Xeto schema language and RDF integration.",
+  "ej": "BMS points tagged 'discharge air temp sensor point' so that analytics can find them.",
+  "eq": "Haystack 4 (tags and defs); Haystack 5 with Xeto; used in SkySpark and many BMSs.",
+  "err": "Believing Haystack and Brick are locked in competition: they are converging through ASHRAE 223P.",
   "rel": [
    "G19",
    "G21",
@@ -3208,13 +3455,13 @@ window.BF_GLOSARIO = [
  {
   "id": "G21",
   "slug": "realestatecore",
-  "t": "RealEstateCore",
-  "en": "RealEstateCore (REC)",
+  "t": "RealEstateCore (REC)",
+  "en": "RealEstateCore",
   "b": "II",
-  "d": "Ontología modular abierta (licencia MIT) para inmuebles que enlaza BIM/IFC, control de edificios e IoT; base de las ontologías DTDL de edificios para Azure Digital Twins.",
-  "ej": "Modelar espacios, plantas y equipos de una cartera de oficinas como gemelos REC en Azure Digital Twins.",
-  "eq": "REC en DTDL (Azure), WillowTwin (extensión de REC), versión RDF/OWL.",
-  "err": "Pensarla como norma ISO: es un consorcio abierto que explícitamente 'puentea' normas existentes.",
+  "d": "Open modular ontology (MIT licence) for real estate that links BIM/IFC, building control and IoT; basis of the DTDL building ontologies for Azure Digital Twins.",
+  "ej": "Modelling the spaces, floors and equipment of an office portfolio as REC twins in Azure Digital Twins.",
+  "eq": "REC in DTDL (Azure), WillowTwin (REC extension), RDF/OWL version.",
+  "err": "Thinking of it as an ISO standard: it is an open consortium that explicitly 'bridges' existing standards.",
   "rel": [
    "G19",
    "G25",
@@ -3222,6 +3469,8 @@ window.BF_GLOSARIO = [
   ],
   "al": [
    "RealEstateCore",
+   "RealEstateCore ontology",
+   "REC",
    "ontología RealEstateCore"
   ]
  },
@@ -3229,12 +3478,12 @@ window.BF_GLOSARIO = [
   "id": "G22",
   "slug": "ssn-sosa",
   "t": "SSN/SOSA",
-  "en": "Semantic Sensor Network / Sensor, Observation, Sample, Actuator",
+  "en": "SSN/SOSA",
   "b": "II",
-  "d": "Ontología W3C-OGC (Recomendación, octubre 2017) para describir sensores, observaciones, procedimientos y actuadores; SOSA es su núcleo ligero.",
-  "ej": "Describir que un extensómetro (sosa:Sensor) observa la deformación de una viga (sosa:FeatureOfInterest).",
-  "eq": "sosa:Sensor ≈ IfcSensor ≈ brick:Sensor; base conceptual de SensorThings API.",
-  "err": "Usarla para modelar el edificio entero: se centra en la observación, se combina con otras ontologías.",
+  "d": "W3C-OGC ontology (Recommendation, October 2017) for describing sensors, observations, procedures and actuators; SOSA is its lightweight core.",
+  "ej": "Describing that a strain gauge (sosa:Sensor) observes the deformation of a beam (sosa:FeatureOfInterest).",
+  "eq": "sosa:Sensor ≈ IfcSensor ≈ brick:Sensor; conceptual basis of SensorThings API.",
+  "err": "Using it to model the whole building: it focuses on observation and is combined with other ontologies.",
   "rel": [
    "G15",
    "G23",
@@ -3244,19 +3493,20 @@ window.BF_GLOSARIO = [
    "SSN",
    "SOSA",
    "Semantic Sensor Network",
+   "SSN ontology",
    "ontología SSN"
   ]
  },
  {
   "id": "G23",
   "slug": "sensorthings-api",
-  "t": "SensorThings API",
-  "en": "OGC SensorThings API",
+  "t": "OGC SensorThings API",
+  "en": "SensorThings API",
   "b": "II",
-  "d": "Norma OGC de API web abierta y geoespacial para interconectar dispositivos, sensores y observaciones IoT (Parte 1 Sensing v1.0 2016, v1.1 2021; Parte 2 Tasking).",
-  "ej": "Publicar las lecturas de piezómetros de una presa como entidades Thing/Datastream/Observation consultables vía REST y MQTT.",
-  "eq": "Entidades Thing, Location, Datastream, Sensor, ObservedProperty, Observation, FeatureOfInterest; implementaciones FROST-Server.",
-  "err": "Confundirla con un protocolo de bajo nivel: define modelo de datos y API, y usa HTTP/MQTT por debajo.",
+  "d": "Open geospatial web API standard from OGC for interconnecting IoT devices, sensors and observations (Part 1 Sensing v1.0 2016, v1.1 2021; Part 2 Tasking).",
+  "ej": "Publishing a dam's piezometer readings as Thing/Datastream/Observation entities queryable via REST and MQTT.",
+  "eq": "Thing, Location, Datastream, Sensor, ObservedProperty, Observation and FeatureOfInterest entities; FROST-Server implementations.",
+  "err": "Confusing it with a low-level protocol: it defines a data model and an API, and uses HTTP/MQTT underneath.",
   "rel": [
    "G22",
    "G32",
@@ -3271,13 +3521,13 @@ window.BF_GLOSARIO = [
  {
   "id": "G24",
   "slug": "dynamizer",
-  "t": "Dynamizer (CityGML 3.0)",
-  "en": "CityGML Dynamizer",
+  "t": "CityGML Dynamizer",
+  "en": "Dynamizer (CityGML 3.0)",
   "b": "II",
-  "d": "Módulo de CityGML 3.0 (OGC, 2021) que asocia a objetos urbanos valores variables en el tiempo y enlaza sensores IoT con el modelo 3D de ciudad.",
-  "ej": "Atribuir a la fachada de un edificio la irradiación solar horaria o enlazar un sensor de tráfico a un tramo de calle.",
-  "eq": "CityGML 3.0 Dynamizer; puede apuntar a series de SensorThings API.",
-  "err": "Pensar que CityGML 3.0 sustituye a IFC: trabajan a escalas distintas (ciudad vs. edificio).",
+  "d": "CityGML 3.0 module (OGC, 2021) that attaches time-varying values to city objects and links IoT sensors to the 3D city model.",
+  "ej": "Assigning hourly solar irradiation to a building façade, or linking a traffic sensor to a street segment.",
+  "eq": "CityGML 3.0 Dynamizer; can point to SensorThings API series.",
+  "err": "Thinking CityGML 3.0 replaces IFC: they work at different scales (city vs. building).",
   "rel": [
    "G23",
    "G42"
@@ -3285,19 +3535,20 @@ window.BF_GLOSARIO = [
   "al": [
    "Dynamizer",
    "CityGML 3.0",
+   "Dynamizer module",
    "módulo Dynamizer"
   ]
  },
  {
   "id": "G25",
   "slug": "dtdl",
-  "t": "DTDL",
-  "en": "Digital Twins Definition Language",
+  "t": "Digital Twins Definition Language (DTDL)",
+  "en": "DTDL",
   "b": "II",
-  "d": "Lenguaje abierto de Microsoft basado en JSON-LD para definir modelos de gemelos (interfaces con propiedades, telemetría, relaciones y componentes); versiones v2, v3 y v4.",
-  "ej": "Interfaz 'Room' con propiedad humidity y relación 'hasSensors', usada para un campus universitario.",
-  "eq": "Azure Digital Twins (soporta v2/v3), ontologías RealEstateCore y WillowTwin, Azure IoT Plug and Play.",
-  "err": "Creer que DTDL es una norma ISO/IEC: es especificación abierta de Microsoft.",
+  "d": "Open Microsoft language based on JSON-LD for defining twin models (interfaces with properties, telemetry, relationships and components); versions v2, v3 and v4.",
+  "ej": "A 'Room' interface with a humidity property and a 'hasSensors' relationship, used for a university campus.",
+  "eq": "Azure Digital Twins (supports v2/v3), RealEstateCore and WillowTwin ontologies, Azure IoT Plug and Play.",
+  "err": "Believing DTDL is an ISO/IEC standard: it is an open Microsoft specification.",
   "rel": [
    "G21",
    "G30",
@@ -3314,12 +3565,12 @@ window.BF_GLOSARIO = [
   "id": "G26",
   "slug": "asset-administration-shell",
   "t": "Asset Administration Shell (AAS)",
-  "en": "Asset Administration Shell",
+  "en": "Asset Administration Shell (AAS)",
   "b": "II",
-  "d": "Representación digital normalizada (IEC 63278-1:2023) que da acceso uniforme a la información y servicios de un activo industrial mediante submodelos.",
-  "ej": "Placa de características digital de una enfriadora entregada por el fabricante como AAS.",
-  "eq": "IEC 63278; Industrie 4.0 / IDTA; Eclipse BaSyx; submodelos 'Digital Nameplate', 'Technical Data'.",
-  "err": "Considerarla ajena a la construcción: se empieza a usar para equipos MEP y productos.",
+  "d": "Standardised digital representation (IEC 63278-1:2023) that gives uniform access to the information and services of an industrial asset through submodels.",
+  "ej": "A chiller's digital nameplate delivered by the manufacturer as an AAS.",
+  "eq": "IEC 63278; Industrie 4.0 / IDTA; Eclipse BaSyx; 'Digital Nameplate' and 'Technical Data' submodels.",
+  "err": "Considering it unrelated to construction: it is starting to be used for MEP equipment and products.",
   "rel": [
    "G04",
    "G26",
@@ -3327,27 +3578,29 @@ window.BF_GLOSARIO = [
   ],
   "al": [
    "Asset Administration Shell",
-   "administración del activo",
-   "IEC 63278"
+   "AAS",
+   "IEC 63278",
+   "administración del activo"
   ]
  },
  {
   "id": "G27",
   "slug": "openusd",
-  "t": "OpenUSD",
-  "en": "Universal Scene Description",
+  "t": "Universal Scene Description (OpenUSD)",
+  "en": "OpenUSD",
   "b": "V",
-  "d": "Formato y API abiertos para describir y componer escenas 3D, originado en Pixar; la Alliance for OpenUSD publicó la Core Specification 1.0 el 17-12-2025.",
-  "ej": "Componer en NVIDIA Omniverse el modelo de una fábrica a partir de capas USD procedentes de Revit y de datos de sensores.",
-  "eq": "NVIDIA Omniverse; conectores USD de Autodesk, Bentley; Cesium for Omniverse.",
-  "err": "Pensar que USD sustituye a IFC: USD es escena/visualización; IFC lleva la semántica de construcción.",
+  "d": "Open format and API for describing and composing 3D scenes, originating at Pixar; the Alliance for OpenUSD published Core Specification 1.0 on 17 December 2025.",
+  "ej": "Composing a factory model in NVIDIA Omniverse from USD layers coming from Revit and from sensor data.",
+  "eq": "NVIDIA Omniverse; Autodesk and Bentley USD connectors; Cesium for Omniverse.",
+  "err": "Thinking USD replaces IFC: USD is scene/visualisation; IFC carries construction semantics.",
   "rel": [
    "G28",
    "G13"
   ],
   "al": [
    "OpenUSD",
-   "Universal Scene Description"
+   "Universal Scene Description",
+   "USD"
   ]
  },
  {
@@ -3356,18 +3609,19 @@ window.BF_GLOSARIO = [
   "t": "3D Tiles",
   "en": "3D Tiles",
   "b": "IV",
-  "d": "Formato abierto creado por Cesium (Community Standard OGC) para transmitir por teselas grandes conjuntos 3D (ciudades, nubes de puntos, modelos BIM) a la web.",
-  "ej": "Mostrar en navegador un gemelo de una autopista con terreno, ortofoto y modelo BIM teselado.",
+  "d": "Open format created by Cesium (OGC Community Standard) for streaming large 3D datasets (cities, point clouds, BIM models) to the web in tiles.",
+  "ej": "Displaying in a browser a twin of a motorway with terrain, orthophoto and a tiled BIM model.",
   "eq": "Cesium ion, CesiumJS, Cesium for Unreal/Unity/Omniverse, Bentley iTwin.",
-  "err": "Esperar semántica BIM completa en 3D Tiles: lleva metadatos, pero su objetivo es la visualización eficiente.",
+  "err": "Expecting full BIM semantics in 3D Tiles: it carries metadata, but its aim is efficient visualisation.",
   "rel": [
    "G27",
    "G42"
   ],
   "al": [
    "3D Tiles",
-   "teselas 3D",
-   "OGC 3D Tiles"
+   "OGC 3D Tiles",
+   "3D tiles",
+   "teselas 3D"
   ]
  },
  {
@@ -3376,10 +3630,10 @@ window.BF_GLOSARIO = [
   "t": "iModel",
   "en": "iModel",
   "b": "III",
-  "d": "Base de datos distribuida (sobre SQLite) de la plataforma Bentley iTwin que alinea datos de diversas fuentes de ingeniería en un esquema común y registra cambios ('changesets').",
-  "ej": "Sincronizar modelos IFC, DGN y Revit de una línea de metro en un iModel común.",
-  "eq": "iTwin.js (código abierto); conectores IFC/Revit/DGN; esquemas BIS (⚠ detalle técnico no verificado en esta sesión).",
-  "err": "Confundir iModel con un archivo: es un repositorio con historial de cambios.",
+  "d": "Distributed database (built on SQLite) of the Bentley iTwin platform that aligns data from various engineering sources in a common schema and records changes ('changesets').",
+  "ej": "Synchronising IFC, DGN and Revit models of a metro line into a common iModel.",
+  "eq": "iTwin.js (open source); IFC/Revit/DGN connectors; BIS schemas (⚠ technical detail not verified in this session).",
+  "err": "Confusing an iModel with a file: it is a repository with a change history.",
   "rel": [
    "G13",
    "G30"
@@ -3392,35 +3646,37 @@ window.BF_GLOSARIO = [
  {
   "id": "G30",
   "slug": "grafo-de-gemelos",
-  "t": "Grafo de gemelos",
-  "en": "Twin graph / knowledge graph",
+  "t": "Twin graph / knowledge graph",
+  "en": "Grafo de gemelos",
   "b": "IV",
-  "d": "Red de gemelos (nodos) conectados por relaciones tipadas (contiene, alimenta, sirve a) que permite consultar el estado del sistema y su contexto.",
-  "ej": "Consulta: 'todas las salas de la planta 3 servidas por la UTA-2 con CO2 > 1000 ppm'.",
-  "eq": "Azure Digital Twins (twin graph), AWS IoT TwinMaker (knowledge graph), grafo RDF Brick.",
-  "err": "Pensar que el modelo 3D es el gemelo: el grafo de relaciones suele aportar más valor que la geometría.",
+  "d": "Network of twins (nodes) connected by typed relationships (contains, feeds, serves) that allows the state of the system and its context to be queried.",
+  "ej": "Query: 'all rooms on level 3 served by AHU-2 with CO2 > 1000 ppm'.",
+  "eq": "Azure Digital Twins (twin graph), AWS IoT TwinMaker (knowledge graph), Brick RDF graph.",
+  "err": "Thinking the 3D model is the twin: the relationship graph usually adds more value than the geometry.",
   "rel": [
    "G25",
    "G19",
    "G40"
   ],
   "al": [
-   "grafo de gemelos",
    "twin graph",
-   "grafo de conocimiento",
-   "knowledge graph"
+   "twin graphs",
+   "knowledge graph",
+   "knowledge graphs",
+   "grafo de gemelos",
+   "grafo de conocimiento"
   ]
  },
  {
   "id": "G31",
   "slug": "internet-de-las-cosas",
-  "t": "Internet de las cosas (IoT)",
-  "en": "Internet of Things",
+  "t": "Internet of Things (IoT)",
+  "en": "Internet de las cosas (IoT)",
   "b": "I",
-  "d": "Red de dispositivos con sensores y conectividad que envían datos a sistemas informáticos; en un gemelo, es la vía de actualización del estado del activo.",
-  "ej": "Sensores LoRaWAN de ocupación en las aulas de un edificio universitario.",
-  "eq": "Azure IoT Hub, AWS IoT Core, Eclipse Ditto; normalizado en ISO/IEC JTC 1/SC 41.",
-  "err": "Pensar que más sensores es mejor gemelo: sin modelo semántico los datos son difíciles de usar.",
+  "d": "Network of devices with sensors and connectivity that send data to computer systems; in a twin, it is the channel through which the asset's state is updated.",
+  "ej": "LoRaWAN occupancy sensors in the classrooms of a university building.",
+  "eq": "Azure IoT Hub, AWS IoT Core, Eclipse Ditto; standardised in ISO/IEC JTC 1/SC 41.",
+  "err": "Thinking more sensors make a better twin: without a semantic model the data are hard to use.",
   "rel": [
    "G32",
    "G33",
@@ -3428,8 +3684,10 @@ window.BF_GLOSARIO = [
   ],
   "al": [
    "IoT",
-   "Internet de las cosas",
    "Internet of Things",
+   "IoT sensors",
+   "IoT devices",
+   "Internet de las cosas",
    "sensores IoT"
   ]
  },
@@ -3439,10 +3697,10 @@ window.BF_GLOSARIO = [
   "t": "MQTT",
   "en": "MQTT",
   "b": "V",
-  "d": "Protocolo ligero de mensajería publicación/suscripción (OASIS; ISO/IEC 20922) muy usado para enviar telemetría de sensores a plataformas de gemelos.",
-  "ej": "Gateway del edificio que publica 'edificio/p3/sala12/co2' cada minuto a un broker.",
-  "eq": "Soportado por Eclipse Ditto (MQTT 3.1.1 y 5), Azure IoT Hub, AWS IoT Core, SensorThings API.",
-  "err": "Creer que MQTT da semántica: solo transporta mensajes; el significado lo da el modelo (Brick, DTDL...).",
+  "d": "Lightweight publish/subscribe messaging protocol (OASIS; ISO/IEC 20922) widely used to send sensor telemetry to twin platforms.",
+  "ej": "A building gateway publishing 'building/l3/room12/co2' to a broker every minute.",
+  "eq": "Supported by Eclipse Ditto (MQTT 3.1.1 and 5), Azure IoT Hub, AWS IoT Core, SensorThings API.",
+  "err": "Believing MQTT provides semantics: it only carries messages; the meaning comes from the model (Brick, DTDL...).",
   "rel": [
    "G31",
    "G33",
@@ -3450,6 +3708,8 @@ window.BF_GLOSARIO = [
   ],
   "al": [
    "MQTT",
+   "MQTT protocol",
+   "MQTT broker",
    "protocolo MQTT",
    "broker MQTT"
   ]
@@ -3457,13 +3717,13 @@ window.BF_GLOSARIO = [
  {
   "id": "G33",
   "slug": "opc-ua",
-  "t": "OPC UA",
-  "en": "OPC Unified Architecture",
+  "t": "OPC Unified Architecture (OPC UA)",
+  "en": "OPC UA",
   "b": "V",
-  "d": "Arquitectura de comunicación industrial (IEC 62541) con modelo de información propio; existe un mapeo publicado entre BACnet (ISO 16484-5) y OPC UA.",
-  "ej": "Leer datos de una planta de tratamiento de agua (SCADA) hacia el gemelo de la red.",
-  "eq": "IEC 62541; companion specifications; conectores OPC UA en AWS IoT SiteWise, Azure IoT.",
-  "err": "Asumir que OPC UA es solo industria: aparece en infraestructuras y grandes instalaciones.",
+  "d": "Industrial communication architecture (IEC 62541) with its own information model; a published mapping exists between BACnet (ISO 16484-5) and OPC UA.",
+  "ej": "Reading data from a water treatment plant (SCADA) into the network twin.",
+  "eq": "IEC 62541; companion specifications; OPC UA connectors in AWS IoT SiteWise, Azure IoT.",
+  "err": "Assuming OPC UA is industry-only: it appears in infrastructure and large facilities.",
   "rel": [
    "G34",
    "G32",
@@ -3472,6 +3732,7 @@ window.BF_GLOSARIO = [
   "al": [
    "OPC UA",
    "OPC-UA",
+   "OPC Unified Architecture",
    "IEC 62541"
   ]
  },
@@ -3481,10 +3742,10 @@ window.BF_GLOSARIO = [
   "t": "BACnet",
   "en": "BACnet",
   "b": "V",
-  "d": "Protocolo de comunicación para automatización y control de edificios (ASHRAE 135 / ISO 16484-5), fuente habitual de datos operacionales de climatización e iluminación.",
-  "ej": "Integrar los puntos BACnet del BMS de un hospital en Autodesk Tandem o Willow mediante un conector.",
-  "eq": "ISO 16484-5; mapeo a OPC UA; puntos etiquetables con Haystack/Brick.",
-  "err": "Pensar que los nombres de puntos BACnet son comprensibles: suelen ser códigos que hay que mapear.",
+  "d": "Communication protocol for building automation and control (ASHRAE 135 / ISO 16484-5), a common source of operational HVAC and lighting data.",
+  "ej": "Integrating the BACnet points of a hospital BMS into Autodesk Tandem or Willow through a connector.",
+  "eq": "ISO 16484-5; mapping to OPC UA; points can be tagged with Haystack/Brick.",
+  "err": "Thinking BACnet point names are self-explanatory: they are usually codes that need mapping.",
   "rel": [
    "G20",
    "G19",
@@ -3499,34 +3760,34 @@ window.BF_GLOSARIO = [
  {
   "id": "G35",
   "slug": "mantenimiento-predictivo",
-  "t": "Mantenimiento predictivo",
-  "en": "Predictive maintenance",
+  "t": "Predictive maintenance (PdM)",
+  "en": "Mantenimiento predictivo",
   "b": "I",
-  "d": "Estrategia que anticipa fallos a partir de datos de estado y modelos analíticos para intervenir antes de la avería; nivel 3 en la escala de Arup.",
-  "ej": "Detectar por vibración y consumo que una bomba de impulsión se degrada y programar su sustitución.",
-  "eq": "AWS IoT TwinMaker + SiteWise; Azure Digital Twins + analítica; Autodesk Tandem (alertas de umbral).",
-  "err": "Confundirlo con mantenimiento preventivo (por calendario).",
+  "d": "Strategy that anticipates failures from condition data and analytical models in order to intervene before a breakdown; level 3 on the Arup scale.",
+  "ej": "Detecting from vibration and power consumption that a booster pump is degrading, and scheduling its replacement.",
+  "eq": "AWS IoT TwinMaker + SiteWise; Azure Digital Twins + analytics; Autodesk Tandem (threshold alerts).",
+  "err": "Confusing it with preventive (calendar-based) maintenance.",
   "rel": [
    "G05",
    "G31",
    "G38"
   ],
   "al": [
-   "mantenimiento predictivo",
    "predictive maintenance",
-   "PdM"
+   "PdM",
+   "mantenimiento predictivo"
   ]
  },
  {
   "id": "G36",
   "slug": "monitorizacion-de-la-salud-estructural",
-  "t": "Monitorización de la salud estructural (SHM)",
-  "en": "Structural health monitoring",
+  "t": "Structural health monitoring (SHM)",
+  "en": "Monitorización de la salud estructural (SHM)",
   "b": "I",
-  "d": "Medición continua (deformación, vibración, inclinación, temperatura) del comportamiento de una estructura para detectar daños y apoyar decisiones de mantenimiento.",
-  "ej": "Sistema de monitorización del puente Queensferry Crossing (Escocia) con cientos de sensores.",
-  "eq": "Bentley iTwin IoT / partners SHM; SensorThings para publicación; IfcSensor para modelar sensores.",
-  "err": "Llamar gemelo a un SHM sin modelo del puente asociado: es monitorización, no necesariamente gemelo.",
+  "d": "Continuous measurement (strain, vibration, tilt, temperature) of a structure's behaviour to detect damage and support maintenance decisions.",
+  "ej": "The monitoring system of the Queensferry Crossing bridge (Scotland), with hundreds of sensors.",
+  "eq": "Bentley iTwin IoT / SHM partners; SensorThings for publication; IfcSensor for modelling sensors.",
+  "err": "Calling an SHM system a twin when there is no associated bridge model: it is monitoring, not necessarily a twin.",
   "rel": [
    "G36",
    "G15",
@@ -3534,27 +3795,32 @@ window.BF_GLOSARIO = [
   ],
   "al": [
    "SHM",
-   "monitorización estructural",
    "structural health monitoring",
+   "structural monitoring",
+   "monitorización estructural",
    "auscultación"
   ]
  },
  {
   "id": "G37",
   "slug": "latencia-y-frecuencia-de-sincronizacion",
-  "t": "Latencia y frecuencia de sincronización",
-  "en": "Latency / synchronisation frequency",
+  "t": "Latency / synchronisation frequency",
+  "en": "Latencia y frecuencia de sincronización",
   "b": "VI",
-  "d": "Tiempo entre un cambio en el activo y su reflejo en el gemelo, y cadencia de actualización; la definición del DTC exige una frecuencia especificada según el caso de uso.",
-  "ej": "Ocupación de salas: cada 5 min basta; vibración de un puente: muestreo de cientos de Hz con agregación.",
-  "eq": "Parámetro de diseño en cualquier plataforma (IoT Hub, SiteWise, Tandem streams).",
-  "err": "Exigir 'tiempo real' para todo, encareciendo sin aportar valor.",
+  "d": "Time between a change in the asset and its reflection in the twin, and the update rate; the DTC definition requires a frequency specified according to the use case.",
+  "ej": "Room occupancy: every 5 min is enough; bridge vibration: sampling at hundreds of Hz with aggregation.",
+  "eq": "Design parameter in any platform (IoT Hub, SiteWise, Tandem streams).",
+  "err": "Demanding 'real time' for everything, raising cost without adding value.",
   "rel": [
    "G01",
    "G03",
    "G38"
   ],
   "al": [
+   "latency",
+   "synchronisation frequency",
+   "update frequency",
+   "update rate",
    "latencia",
    "frecuencia de actualización"
   ]
@@ -3562,53 +3828,55 @@ window.BF_GLOSARIO = [
  {
   "id": "G38",
   "slug": "deriva-y-calibracion-del-sensor",
-  "t": "Deriva y calibración del sensor",
-  "en": "Sensor drift and calibration",
+  "t": "Sensor drift and calibration",
+  "en": "Deriva y calibración del sensor",
   "b": "VI",
-  "d": "Desviación progresiva de la medida de un sensor respecto al valor real; la calibración periódica y la detección de valores anómalos son parte del control de calidad del gemelo.",
-  "ej": "Sonda de CO2 que tras dos años mide 150 ppm de más y dispara la ventilación sin necesidad.",
-  "eq": "Metadatos de calibración en SSN/SOSA (procedimiento), Brick (propiedades), registros de mantenimiento.",
-  "err": "Fiarse del dato porque 'viene del sensor' sin plan de calibración.",
+  "d": "Progressive deviation of a sensor's reading from the true value; periodic calibration and anomaly detection are part of the twin's quality control.",
+  "ej": "A CO2 probe that after two years reads 150 ppm too high and triggers ventilation unnecessarily.",
+  "eq": "Calibration metadata in SSN/SOSA (procedure), Brick (properties), maintenance records.",
+  "err": "Trusting the data because 'it comes from the sensor' without a calibration plan.",
   "rel": [
    "G37",
    "G36",
    "G22"
   ],
   "al": [
-   "deriva del sensor",
-   "sensor drift"
+   "sensor drift",
+   "sensor calibration",
+   "deriva del sensor"
   ]
  },
  {
   "id": "G39",
   "slug": "shacl",
-  "t": "SHACL",
-  "en": "Shapes Constraint Language",
+  "t": "Shapes Constraint Language (SHACL)",
+  "en": "SHACL",
   "b": "VI",
-  "d": "Lenguaje W3C para validar grafos RDF contra 'formas' (restricciones); se usa para comprobar que un modelo Brick cumple la ontología.",
-  "ej": "Validar con la librería Python brickschema que todo sensor tiene 'isPointOf' a un equipo.",
-  "eq": "brickschema (Python), pySHACL, TopBraid; ASHRAE 223P también se define con SHACL.",
-  "err": "Validar solo la sintaxis RDF y no la coherencia semántica.",
+  "d": "W3C language for validating RDF graphs against 'shapes' (constraints); used to check that a Brick model conforms to the ontology.",
+  "ej": "Validating with the brickschema Python library that every sensor has 'isPointOf' to a piece of equipment.",
+  "eq": "brickschema (Python), pySHACL, TopBraid; ASHRAE 223P is also defined with SHACL.",
+  "err": "Validating only RDF syntax and not semantic consistency.",
   "rel": [
    "G19",
    "G40"
   ],
   "al": [
    "SHACL",
-   "validación SHACL",
-   "Shapes Constraint Language"
+   "SHACL validation",
+   "Shapes Constraint Language",
+   "validación SHACL"
   ]
  },
  {
   "id": "G40",
   "slug": "ontologia",
-  "t": "Ontología",
-  "en": "Ontology",
+  "t": "Ontology",
+  "en": "Ontología",
   "b": "V",
-  "d": "Modelo formal de conceptos y relaciones de un dominio que permite que distintos sistemas interpreten los datos del gemelo del mismo modo.",
-  "ej": "Usar Brick + IFC + SOSA para que analítica, mantenimiento y BIM hablen del mismo 'equipo'.",
-  "eq": "Brick, RealEstateCore, ifcOWL, SSN/SOSA, ASHRAE 223P; DTDL como lenguaje de modelado.",
-  "err": "Inventar una ontología propia para cada proyecto en lugar de extender una existente.",
+  "d": "Formal model of the concepts and relationships of a domain that allows different systems to interpret the twin's data in the same way.",
+  "ej": "Using Brick + IFC + SOSA so that analytics, maintenance and BIM all talk about the same 'equipment'.",
+  "eq": "Brick, RealEstateCore, ifcOWL, SSN/SOSA, ASHRAE 223P; DTDL as a modelling language.",
+  "err": "Inventing a bespoke ontology for every project instead of extending an existing one.",
   "rel": [
    "G19",
    "G21",
@@ -3616,21 +3884,22 @@ window.BF_GLOSARIO = [
    "G25"
   ],
   "al": [
+   "ontology",
+   "ontologies",
    "ontología",
-   "ontologías",
-   "ontology"
+   "ontologías"
   ]
  },
  {
   "id": "G41",
   "slug": "traspaso-de-informacion",
-  "t": "Traspaso de información (handover)",
-  "en": "Information handover",
+  "t": "Information handover",
+  "en": "Traspaso de información (handover)",
   "b": "V",
-  "d": "Entrega estructurada de la información del proyecto (PIM) al propietario para formar el AIM y alimentar el gemelo, verificando los requisitos acordados.",
-  "ej": "Crossrail entregó a TfL la información de activos del Elizabeth line como parte del traspaso.",
-  "eq": "ISO 19650-2/-3; COBie; IDS; 'Soft Landings' británico.",
-  "err": "Dejar el traspaso para el final: la información debe acumularse y validarse durante toda la obra.",
+  "d": "Structured delivery of the project information (PIM) to the owner to form the AIM and feed the twin, verifying the agreed requirements.",
+  "ej": "Crossrail handed over the Elizabeth line asset information to TfL as part of handover.",
+  "eq": "ISO 19650-2/-3; COBie; IDS; UK 'Soft Landings'.",
+  "err": "Leaving handover until the end: information must be accumulated and validated throughout construction.",
   "rel": [
    "G08",
    "G09",
@@ -3639,49 +3908,54 @@ window.BF_GLOSARIO = [
   ],
   "al": [
    "handover",
+   "information handover",
+   "asset handover",
    "traspaso de información"
   ]
  },
  {
   "id": "G42",
   "slug": "gemelo-digital-urbano",
-  "t": "Gemelo digital urbano",
-  "en": "Urban digital twin",
+  "t": "Urban digital twin",
+  "en": "Gemelo digital urbano",
   "b": "I",
-  "d": "Gemelo a escala de ciudad que integra modelo 3D, datos geoespaciales, sensores y simulaciones para planificación y gestión urbana.",
-  "ej": "Virtual Singapore (NRF, desde 2014) o el gemelo digital del Ayuntamiento de Madrid.",
+  "d": "City-scale twin that integrates a 3D model, geospatial data, sensors and simulations for urban planning and management.",
+  "ej": "Virtual Singapore (NRF, since 2014) or the Madrid City Council digital twin.",
   "eq": "CityGML 3.0, 3D Tiles/Cesium, Dassault 3DEXPERIENCE (Virtual Singapore), Esri.",
-  "err": "Equiparar un visor 3D de la ciudad con un gemelo sin datos dinámicos ni simulación.",
+  "err": "Equating a 3D city viewer with a twin that has no live data or simulation.",
   "rel": [
    "G24",
    "G28",
    "G06"
   ],
   "al": [
+   "urban digital twin",
+   "urban twin",
+   "city twin",
+   "city digital twin",
    "gemelo urbano",
    "gemelo digital urbano",
-   "urban digital twin",
    "gemelo de ciudad"
   ]
  },
  {
   "id": "G43",
   "slug": "fidelidad",
-  "t": "Fidelidad",
-  "en": "Fidelity",
+  "t": "Fidelity",
+  "en": "Fidelidad",
   "b": "I",
-  "d": "Grado de detalle y exactitud con que el gemelo reproduce el activo (geometría, datos y comportamiento); debe ser la suficiente para el caso de uso.",
-  "ej": "Para gestionar ocupación basta un modelo de espacios; para SHM se necesita un modelo estructural calibrado.",
-  "eq": "Métrica 'Fidelity' de Arup; 'fidelity' en la definición del DTC; nivel de información necesario (ISO 7817-1).",
-  "err": "Buscar máxima fidelidad geométrica cuando el valor está en los datos.",
+  "d": "Degree of detail and accuracy with which the twin reproduces the asset (geometry, data and behaviour); it should be sufficient for the use case.",
+  "ej": "Managing occupancy only needs a space model; SHM needs a calibrated structural model.",
+  "eq": "Arup 'Fidelity' metric; 'fidelity' in the DTC definition; level of information need (ISO 7817-1).",
+  "err": "Chasing maximum geometric fidelity when the value lies in the data.",
   "rel": [
    "G05",
    "G01",
    "G37"
   ],
   "al": [
-   "fidelidad",
-   "fidelity"
+   "fidelity",
+   "fidelidad"
   ]
  }
 ];

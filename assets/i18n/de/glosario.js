@@ -682,7 +682,9 @@ window.BF_GLOSARIO = [
    "BEP",
    "EIR",
    "ISO 19650",
-   "DIN EN ISO 19650"
+   "DIN EN ISO 19650",
+   "estrategia de coordenadas",
+   "requisitos de coordenadas"
   ]
  },
  {
