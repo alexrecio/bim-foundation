@@ -593,3 +593,11 @@ body.l2-lock { overflow: hidden; }
 .paises-codes p { margin: 6px 0 0; font-size: 13px; color: var(--s600); }
 @media (min-width: 1200px) { .paises-out { grid-template-columns: 1.2fr 1fr 1fr 1fr; } .paises-proy { grid-row: auto; } }
 .table-wrap td > .sw, .table-wrap th > .sw { float: left; margin: 0 10px 2px 0; }
+.paises-desc { font-size: 12.5px; line-height: 1.35; color: var(--s600); margin-top: 4px; }
+.paises-out b.paises-red { font-size: 13px; text-transform: none; letter-spacing: 0; font-weight: 800; }
+.paises-out b { font-size: 14px; hyphens: auto; overflow-wrap: break-word; }
+.paises-proy b { font-size: 13px; }
+.paises-sel .label { white-space: nowrap; }
+@media (max-width: 1199px) { .paises-proy { grid-column: 1 / -1; grid-row: auto; } .paises-proy svg { max-width: 120px; } }
+@media (min-width: 1200px) { .paises-out b { font-size: 13px; } .paises-out { grid-template-columns: 1.3fr 1fr 1fr 1.2fr; } }
+@media (min-width: 1200px) { .paises-out { grid-template-columns: 1fr 1.1fr; } .paises-out .paises-proy { grid-row: span 3; } .paises-out b { font-size: 14px; } }

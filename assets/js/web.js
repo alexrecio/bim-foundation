@@ -271,12 +271,13 @@
     'alt-epsg': (p) => p.altEpsg || '—', red: (p) => p.red || 'su red geodésica nacional', org: (p) => p.org
   };
   const paisTexts = () => { const p = byId(paisId); if (!p) return; document.querySelectorAll('[data-pais]').forEach((el) => { const f = CAMPOS[el.dataset.pais]; if (f) el.textContent = f(p); }); };
+  const dEpsg = (c) => (c ? 'EPSG ' + c : 'sin código EPSG');
   const paisCard = (p) => `
-        <div class="paises-proy"><svg viewBox="0 0 160 100" class="draw" aria-hidden="true">${PROY_SVG[p.tipo] || PROY_SVG.utm}</svg><span class="c-label">Proyección</span><b>${p.proy}</b></div>
-        <div><span class="c-label">Datum</span><b>${p.datum}</b><span class="mono">EPSG ${p.datumEpsg}</span></div>
-        <div><span class="c-label">Altitudes</span>${p.alt ? `<b>${p.alt}</b><span class="mono">${p.altEpsg ? 'EPSG ' + p.altEpsg : 'sin código EPSG'}</span>` : `<b>Red nacional</b>${pc()}`}</div>
-        <div><span class="c-label">Red geodésica</span><b>${p.red || '—'}</b><span class="mono"><a href="${p.url}" target="_blank" rel="noopener">${p.org}</a></span></div>
-        <div class="paises-codes"><span class="c-label">Códigos EPSG para el BEP y el IFC</span><div>${p.epsg.map(([c, t]) => `<span class="paises-code${c === p.key ? ' is-key' : ''}"><b>${c}</b>${t}</span>`).join('')}</div>${p.obra || p.nota || p.revisar ? `<p>${p.obra || p.nota}${p.revisar ? ' ' + pc() : ''}</p>` : ''}</div>`;
+        <div class="paises-proy"><svg viewBox="0 0 160 100" class="draw" aria-hidden="true">${PROY_SVG[p.tipo] || PROY_SVG.utm}</svg><span class="c-label">Proyección habitual</span><b>${keyOf(p)[1]}</b><span class="paises-desc">${p.proy}</span></div>
+        <div><span class="c-label">Datum</span><b>${p.datum}</b><span class="mono">${dEpsg(p.datumEpsg)}</span></div>
+        <div><span class="c-label">Altitudes</span>${p.alt ? `<b>${p.alt}</b><span class="mono">${dEpsg(p.altEpsg)}</span>` : `<b>Red nacional</b>${pc()}`}</div>
+        <div><span class="c-label">Red geodésica</span><b class="paises-red">${p.red || '—'}</b><span class="mono"><a href="${p.url}" target="_blank" rel="noopener">${p.org}</a></span></div>
+        <div class="paises-codes"><span class="c-label">Códigos EPSG para el BEP y el IFC</span><div>${p.epsg.map(([c, t]) => `<span class="paises-code${c === p.key ? ' is-key' : ''}"><b>${c}</b>${t}</span>`).join('')}</div><p>${p.obra ? p.obra + ' ' : ''}${p.revisar ? pc() + ' ' : ''}${(p.fuentes || []).length ? `Fuentes: ${p.fuentes.map((u, k) => `<a href="${u}" target="_blank" rel="noopener">${k + 1}</a>`).join(' · ')}` : ''}</p></div>`;
   const paisDraw = () => {
     const p = byId(paisId); if (!p) return;
     document.querySelectorAll('.paises').forEach((el) => { el.querySelector('select').value = p.id; el.querySelector('.paises-out').innerHTML = paisCard(p); });
@@ -291,7 +292,7 @@
   // Tabla completa para la capa 2 (<div class="paises-tabla"></div>)
   const paisesTabla = (el) => {
     const L = [...P].sort((x, y) => x.nombre.localeCompare(y.nombre, 'es'));
-    el.innerHTML = `<div class="table-wrap"><table><thead><tr><th>País</th><th>Datum</th><th>Proyección</th><th>EPSG habitual</th><th>Altitudes</th><th>Red geodésica</th></tr></thead><tbody>${L.map((p) => `<tr data-p="${p.id}"${p.id === paisId ? ' class="is-key"' : ''}><td>${p.nombre}</td><td>${p.datum} <span class="mono">${p.datumEpsg}</span></td><td>${p.proy}</td><td class="mono">${p.epsg.map(([c]) => c).join(' · ')}</td><td>${p.alt ? `${p.alt}${p.altEpsg ? ` <span class="mono">${p.altEpsg}</span>` : ''}` : pc()}</td><td>${p.red || '—'} · <a href="${p.url}" target="_blank" rel="noopener">${p.org}</a></td></tr>`).join('')}</tbody></table></div>`;
+    el.innerHTML = `<div class="table-wrap"><table><thead><tr><th>País</th><th>Datum</th><th>Proyección</th><th>EPSG habitual</th><th>Altitudes</th><th>Red geodésica</th></tr></thead><tbody>${L.map((p) => `<tr data-p="${p.id}"${p.id === paisId ? ' class="is-key"' : ''}><td>${p.nombre}${p.revisar ? ' ' + pc() : ''}</td><td>${p.datum}${p.datumEpsg ? ` <span class="mono">${p.datumEpsg}</span>` : ''}</td><td>${p.proy}</td><td class="mono">${p.epsg.map(([c]) => c).join(' · ')}</td><td>${p.alt ? `${p.alt}${p.altEpsg ? ` <span class="mono">${p.altEpsg}</span>` : ''}` : pc()}</td><td>${p.red || '—'} · <a href="${p.url}" target="_blank" rel="noopener">${p.org}</a></td></tr>`).join('')}</tbody></table></div>`;
   };
   if (P.length) {
     document.querySelectorAll('.paises').forEach((el) => {
