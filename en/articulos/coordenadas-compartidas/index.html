@@ -6,7 +6,7 @@
   <!-- Draft: remove noindex on publishing -->
   <meta name="robots" content="noindex, nofollow">
   <!-- Translation of articulos/coordenadas-compartidas/index.html at this git blob (herramientas/i18n.mjs flags it when the Spanish page changes) -->
-  <meta name="bf-fuente" content="articulos/coordenadas-compartidas/index.html@7a84d1f2a95891dd2b9a736e50ac3a1ff1ace1c8">
+  <meta name="bf-fuente" content="articulos/coordenadas-compartidas/index.html@a9d7dd342a941dfc8fd859c96e3bcabc34e0327e">
   <title>Coordinate systems in BIM | bimkernel</title>
   <meta name="description" content="How shared coordinates work in Revit, Civil 3D, IFC and the rest of BIM software, with the Spanish geodetic framework (ETRS89, EPSG, Alicante heights).">
   <meta property="og:type" content="article">
@@ -33,13 +33,13 @@
 
   <!-- Slide menu: filled from each <section> data-nav -->
   <aside id="deck-nav" aria-label="Slides">
-    <span class="kicker-y">Coordinates · 41 ideas</span>
+    <span class="kicker-y">Coordinates · 40 ideas</span>
     <ol></ol>
   </aside>
   <div id="deck-bar">
     <div id="deck-sheet"><ol></ol></div>
     <button type="button" id="deck-bar-btn" aria-expanded="false" aria-controls="deck-sheet">
-      <span class="n">01/41</span><span class="t">Cover</span>
+      <span class="n">01/40</span><span class="t">Cover</span>
       <span class="chev" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M3 9l4-4 4 4" fill="none" stroke="#fff" stroke-width="2"/></svg></span>
     </button>
   </div>
@@ -66,7 +66,7 @@
           <div class="card w6 g">
             <span class="c-label">The article in six blocks</span>
             <ol class="mapa">
-              <li class="is-key"><a href="#porque"><b>I</b><span>General concepts</span><em>17 ideas · the why, the Earth and the computer</em></a></li>
+              <li class="is-key"><a href="#porque"><b>I</b><span>General concepts</span><em>16 ideas · the why, the Earth and the computer</em></a></li>
               <li><a href="#espana"><b>II</b><span>Standards</span><em>3 ideas · EPSG, IFC, ISO 19650</em></a></li>
               <li><a href="#limites"><b>III</b><span>Software</span><em>7 ideas · Revit, Survey Point, campuses and building types</em></a></li>
               <li><a href="#coordinacion"><b>IV</b><span>Platforms</span><em>2 ideas · viewers and cloud</em></a></li>
@@ -113,7 +113,7 @@
       </div>
     </section>
 
-    <!-- ========== THE PROBLEM ========== -->
+    <!-- ========== NO COMMON SYSTEM (hidden by Álex's decision, 2026-10-02) ==========
     <section class="slide" id="problema" data-nav="No common system">
       <div class="bento">
         <div class="b-title">
@@ -152,15 +152,16 @@
         </div>
       </div>
     </section>
+    -->
 
     <!-- ========== THE SHAPE OF THE EARTH ========== -->
-    <section class="slide" id="tierra" data-nav="The shape of the Earth">
+    <section class="slide" id="tierra" data-nav="Datum">
       <div class="bento">
         <div class="b-title">
           <span class="slide-n"></span>
-          <span class="kicker-y">B · Geodesy</span>
-          <h2 class="display">The Earth is not a sphere<span class="dot">.</span></h2>
-          <p class="slide-lead">Calculations use an ellipsoid, a mathematical shape. Sea level, the geoid, is irregular.</p>
+          <span class="kicker-y">B · How we measure the Earth</span>
+          <h2 class="display">The datum, the key<span class="dot">.</span></h2>
+          <p class="slide-lead">To measure the Earth you have to give it a shape and fix that shape to it. That is a datum, and you need two: one for position and one for height.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="tierra"><span class="plus">+</span> See detail</button></div>
         </div>
         <div class="b-cards">
@@ -180,20 +181,20 @@
               </g>
             </svg>
           </div>
-          <div class="card w2 k">
-            <span class="c-label">Flattening</span>
-            <b class="c-num">1/298</b>
-            <span class="c-foot">GRS80 ellipsoid</span>
+          <div class="card w2 y">
+            <span class="c-label">Position</span>
+            <span class="c-title">Geodetic datum</span>
+            <span class="c-foot">anchored ellipsoid · <span data-pais="datum">ETRS89</span></span>
+          </div>
+          <div class="card w3 k">
+            <span class="c-label">Height</span>
+            <span class="c-title">Vertical datum</span>
+            <span class="c-foot">mean sea level · <span data-pais="alt">Alicante</span></span>
           </div>
           <div class="card w3">
-            <span class="c-label">Semi-major axis (a)</span>
-            <b class="c-num">6 378<small>km</small></b>
-            <span class="c-foot">GRS80 · 6 378 137 m</span>
-          </div>
-          <div class="card w3 y">
-            <span class="c-label">Datum</span>
-            <span class="c-title">Ellipsoid tied to the real Earth</span>
-            <span class="c-foot">example: <span data-pais="datum">ETRS89</span></span>
+            <span class="c-label">Changing datum</span>
+            <span class="c-title">Hundreds of metres</span>
+            <span class="c-foot">how far the same point can move</span>
           </div>
         </div>
       </div>
@@ -1525,7 +1526,7 @@
 <tr><td>Measure</td><td>Surveyor</td><td>Those of the official geodetic network</td><td>Delivering in a local system without saying which (<a href="#topografia">from the field to the model</a>)</td></tr>
 <tr><td>Encode</td><td>Surveyor and BIM team</td><td>Points, clouds and terrain in that system</td><td>Numbers so large that the program loses precision (<a href="#limite">far from the origin</a>)</td></tr>
 <tr class="is-key"><td>Design</td><td>Each discipline</td><td>A local origin close to the building and a transformation to the official system</td><td>Everyone choosing their own origin (<a href="#principio">the golden rule</a>)</td></tr>
-<tr><td>Coordinate</td><td>BIM coordinator</td><td>The same ones for every model</td><td>Models shifted, rotated or at another elevation (<a href="#problema">no common system</a>)</td></tr>
+<tr><td>Coordinate</td><td>BIM coordinator</td><td>The same ones for every model</td><td>Models shifted, rotated or at another elevation</td></tr>
 <tr><td>Set out</td><td>Contractor</td><td>The site's setting-out control points</td><td>Mixing up grid and ground distances (<a href="#escala">scale</a>)</td></tr>
 <tr><td>Operate</td><td>Owner</td><td>Those of the delivered model</td><td>Losing the georeference in the final model (<a href="#ifc">IFC</a>)</td></tr>
 </tbody>
@@ -1595,8 +1596,8 @@
         </ul>
       </div>
       <div class="card w3 g">
-        <h4>What a datum is</h4>
-        <p>It is the ellipsoid positioned and oriented with respect to the real Earth. The same point has different coordinates in each datum: between ED50 and ETRS89 the difference in Spain is of the order of 200 m.</p>
+        <h4>Why it is the key</h4>
+        <p>Everything that follows hangs from it: geographic coordinates, the projection, the networks that realise it on the ground and the EPSG code that names it. An example: between ED50 and ETRS89, in Spain, the same point moves about 200 m.</p>
       </div>
       <div class="card w6">
         <div class="table-wrap"><table>
