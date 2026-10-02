@@ -378,8 +378,9 @@ body:has(.deck) footer.site { padding-left: var(--side); }
 .card.k .c-foot { color: var(--s300); }
 .card svg.draw { display: block; width: 100%; height: auto; max-height: 300px; }
 .card .ico { width: 40px; height: 40px; display: block; }
+.card .ico.wide { width: 120px; height: 60px; }
 .badge { display: inline-block; width: max-content; padding: 3px 8px; border-radius: 9999px; font-family: var(--mono); font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; border: 1px solid var(--black); }
-.badge.y { background: var(--accent); }
+.badge.y { background: var(--accent); color: var(--black); }
 .badge.k { background: var(--black); color: var(--white); }
 .badge.n { border-color: var(--s300); color: var(--s500); }
 
