@@ -350,8 +350,8 @@ window.BF_GLOSARIO = [
   "t": "Vermessungspunkt / Survey Point (und Entsprechungen)",
   "en": "Punto de reconocimiento / Survey Point (y equivalentes)",
   "b": "III",
-  "d": "Punkt, der im Modell den Ursprung des realen bzw. gemeinsamen Koordinatensystems verkörpert. Er definiert die Verschiebung (und zusammen mit der Nordrichtung die Drehung) zwischen dem lokalen System und dem Vermessungssystem.",
-  "ej": "Fällt mit einem Absteckpunkt mit bekannten Koordinaten in ETRS89 / UTM 30N zusammen.",
+  "d": "Markierung, die Koordinaten des gemeinsamen bzw. des Vermessungssystems anzeigt. Beschnitten liegt sie im Ursprung dieses Systems, und ihr Verschieben versetzt das System gegenüber dem Modell; unbeschnitten wird sie auf einen bekannten Punkt (einen Absteckpunkt) gesetzt, ohne etwas zu verändern, nur um Koordinaten abzulesen oder zu prüfen.",
+  "ej": "Unbeschnitten auf einen Absteckpunkt mit bekannten Koordinaten in ETRS89 / UTM 30N gesetzt, um zu prüfen, ob das Modell sie richtig liest.",
   "eq": "Revit: Vermessungspunkt (beschnitten oder unbeschnitten); Archicad (AC25+): Survey Point; Allplan 2026 und Vectorworks: Survey Point; BricsCAD: Survey Location; Tekla: base point mit E/N; IFC: IfcMapConversion.",
   "err": "Den beschnittenen Punkt verschieben, obwohl der unbeschnittene gemeint war (oder umgekehrt), und damit das gesamte gemeinsame System versetzen.",
   "rel": [
