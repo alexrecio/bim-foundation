@@ -870,10 +870,10 @@ window.BF_GLOSARIO = [
  {
   "id": "N07",
   "slug": "actores",
-  "t": "Actores (parte que designa / parte designada)",
+  "t": "Actores (parte contratante / parte contratada)",
   "en": "Actors (appointing / appointed party)",
   "b": "I",
-  "d": "Quien pide la información (parte que designa: el cliente o el contratista principal) y quien la produce (parte designada). Cada requisito los identifica.",
+  "d": "Quien pide la información y quien la produce. En la terminología UNE-EN ISO 19650: parte contratante (el cliente), parte contratada principal y parte contratada. Cada requisito los identifica.",
   "ej": "El cliente pide; el equipo de arquitectura entrega las puertas en ejecución y el carpintero en obra.",
   "eq": "Matriz de responsabilidades del BEP; gestores de requisitos con un IDS por actor.",
   "err": "No asignar responsable: el dato queda en tierra de nadie entre dos disciplinas.",
@@ -884,8 +884,9 @@ window.BF_GLOSARIO = [
   ],
   "al": [
    "actores",
-   "parte que designa",
-   "parte designada"
+   "parte contratante",
+   "parte contratada principal",
+   "parte contratada"
   ]
  },
  {
@@ -914,7 +915,7 @@ window.BF_GLOSARIO = [
   "t": "Nivel de desarrollo (LOD)",
   "en": "Level of Development (LOD)",
   "b": "I",
-  "d": "Escala de 100 a 500 (más el 350) que indica cuánto se puede confiar en la geometría y la información de un elemento. Nació hacia 2004-2005 (Vico) y la adoptó el AIA en E202-2008.",
+  "d": "Escala de 100 a 500 (más el 350) que indica cuánto se puede confiar en la geometría y la información de un elemento. Nació hacia 2004-2005 en un equipo de Graphisoft (Vico Software desde 2007) y la adoptó el AIA en E202-2008.",
   "ej": "LOD 300: cantidad, tamaño, forma, ubicación y orientación medibles en el modelo.",
   "eq": "BIMForum LOD Specification (definiciones por elemento); matrices de elementos del BEP.",
   "err": "Aplicarlo al modelo entero («modelo LOD 300»); BIMForum: «There is no such thing as an LOD ### model».",
@@ -1144,7 +1145,7 @@ window.BF_GLOSARIO = [
   "t": "Plantillas de datos (ISO 23386 / ISO 23387)",
   "en": "Data templates (ISO 23386 / ISO 23387)",
   "b": "II",
-  "d": "ISO 23386 fija cómo describir propiedades y mantener diccionarios interconectados; ISO 23387 define plantillas de datos que agrupan las propiedades de cada tipo de objeto.",
+  "d": "ISO 23386 fija cómo describir propiedades y mantener diccionarios interconectados; ISO 23387 (edición vigente de 2025) define plantillas de datos que agrupan las propiedades de cada tipo de objeto.",
   "ej": "Plantilla de datos de puerta cortafuegos con su clase de resistencia al fuego y valores admitidos.",
   "eq": "bSDD; gestores de requisitos; importación de propiedades en Allplan y Archicad.",
   "err": "Inventar nombres de propiedades distintos en cada proyecto.",
@@ -2945,7 +2946,7 @@ window.BF_GLOSARIO = [
   "t": "BEP previo a la designación",
   "en": "Pre-appointment BEP",
   "b": "I",
-  "d": "Versión del BEP que cada candidato a parte designada principal entrega con su oferta (ISO 19650-2, 5.3.2) para mostrar cómo cumplirá el EIR; incluye una matriz de responsabilidades de alto nivel.",
+  "d": "Versión del BEP que cada candidato a parte contratada principal entrega con su oferta (ISO 19650-2, 5.3.2) para mostrar cómo cumplirá el EIR; incluye una matriz de responsabilidades de alto nivel.",
   "ej": "pre-PEB del EIR tipo de la AOPJA (2024).",
   "eq": "PAS 1192-2: pre-contract BEP; Penn State: propuesta.",
   "err": "Presentarlo como un catálogo comercial en lugar de una respuesta punto por punto al EIR.",
@@ -2989,7 +2990,7 @@ window.BF_GLOSARIO = [
   "t": "Requisitos de intercambio de información (EIR)",
   "en": "Exchange information requirements (EIR)",
   "b": "I",
-  "d": "Requisitos de información de una designación concreta (aspectos de gestión, comerciales y técnicos). Los escribe la parte que designa y la parte designada principal los traslada a cada parte designada.",
+  "d": "Requisitos de información de una designación concreta (aspectos de gestión, comerciales y técnicos). Los escribe la parte contratante y la parte contratada principal los traslada a cada parte contratada.",
   "ej": "Anexo «Requerimientos BIM (EIR)» de los pliegos de la AOPJA.",
   "eq": "PAS 1192-2: Employer's Information Requirements; Plan BIM español: requisitos BIM en las prescripciones técnicas.",
   "err": "Seguir leyendo EIR como «Employer's»: en ISO 19650 hay un EIR por cada designación, también hacia las subcontratas.",
@@ -3108,8 +3109,8 @@ window.BF_GLOSARIO = [
  },
  {
   "id": "P10",
-  "slug": "parte-que-designa",
-  "t": "Parte que designa",
+  "slug": "parte-contratante",
+  "t": "Parte contratante",
   "en": "Appointing party",
   "b": "I",
   "d": "Receptor de la información sobre trabajos o servicios: normalmente el cliente o quien gestiona la información en su nombre. Escribe el EIR y acepta la información.",
@@ -3122,17 +3123,19 @@ window.BF_GLOSARIO = [
    "P04"
   ],
   "al": [
+   "parte contratante",
+   "appointing party",
    "parte que designa",
    "appointing party"
   ]
  },
  {
   "id": "P11",
-  "slug": "parte-designada-principal",
-  "t": "Parte designada principal",
+  "slug": "parte-contratada-principal",
+  "t": "Parte contratada principal",
   "en": "Lead appointed party",
   "b": "I",
-  "d": "Parte designada por la parte que designa que coordina y gestiona la información entre su equipo de desarrollo y la parte que designa. Escribe el BEP y el MIDP.",
+  "d": "Parte contratada por la parte contratante que coordina y gestiona la información entre su equipo de desarrollo y la parte contratante. Escribe el BEP y el MIDP.",
   "ej": "El estudio de arquitectura que gana el concurso y subcontrata estructura e instalaciones.",
   "eq": "ISO 19650: lead appointed party.",
   "err": "Suponer que solo hay una por proyecto: hay una por cada equipo de desarrollo.",
@@ -3143,17 +3146,19 @@ window.BF_GLOSARIO = [
    "P18"
   ],
   "al": [
+   "parte contratada principal",
+   "lead appointed party",
    "parte designada principal",
    "lead appointed party"
   ]
  },
  {
   "id": "P12",
-  "slug": "parte-designada",
-  "t": "Parte designada",
+  "slug": "parte-contratada",
+  "t": "Parte contratada",
   "en": "Appointed party",
   "b": "I",
-  "d": "Proveedor de información designado por la parte designada principal; recibe su propio EIR y escribe el TIDP de sus equipos de tarea.",
+  "d": "Proveedor de información designado por la parte contratada principal; recibe su propio EIR y escribe el TIDP de sus equipos de tarea.",
   "ej": "La ingeniería de estructuras subcontratada por el estudio de arquitectura.",
   "eq": "ISO 19650: appointed party.",
   "err": "No pasarle un EIR propio: entonces no sabe qué debe entregar.",
@@ -3163,8 +3168,10 @@ window.BF_GLOSARIO = [
    "P17"
   ],
   "al": [
+   "parte contratada",
+   "partes contratadas",
+   "appointed party",
    "parte designada",
-   "partes designadas",
    "appointed party"
   ]
  },
@@ -3174,10 +3181,10 @@ window.BF_GLOSARIO = [
   "t": "Equipo de desarrollo",
   "en": "Delivery team",
   "b": "I",
-  "d": "Conjunto formado por una parte designada principal y sus partes designadas.",
+  "d": "Conjunto formado por una parte contratada principal y sus partes contratadas.",
   "ej": "Arquitectura + estructura + instalaciones bajo un mismo contrato principal.",
   "eq": "ISO 19650: delivery team. En español también «equipo de ejecución» (traducción UNE por confirmar).",
-  "err": "Confundirlo con el equipo del proyecto, que incluye además a la parte que designa y a otros equipos de desarrollo.",
+  "err": "Confundirlo con el equipo del proyecto, que incluye además a la parte contratante y a otros equipos de desarrollo.",
   "rel": [
    "P11",
    "P12",
@@ -3195,7 +3202,7 @@ window.BF_GLOSARIO = [
   "t": "Equipo de tarea",
   "en": "Task team",
   "b": "I",
-  "d": "Grupo de personas que realiza un paquete de trabajo concreto dentro de una parte designada.",
+  "d": "Grupo de personas que realiza un paquete de trabajo concreto dentro de una parte contratada.",
   "ej": "El equipo de instalaciones eléctricas dentro de la ingeniería.",
   "eq": "ISO 19650: task team.",
   "err": "Tratar a la empresa entera como un solo equipo de tarea y perder el detalle del TIDP.",
@@ -3215,7 +3222,7 @@ window.BF_GLOSARIO = [
   "t": "Equipo del proyecto",
   "en": "Project team",
   "b": "I",
-  "d": "La parte que designa más todos los equipos de desarrollo del proyecto.",
+  "d": "La parte contratante más todos los equipos de desarrollo del proyecto.",
   "ej": "Promotor, equipo de diseño y constructora de una misma obra.",
   "eq": "ISO 19650: project team.",
   "err": "—",
@@ -3274,7 +3281,7 @@ window.BF_GLOSARIO = [
   "t": "Plan maestro de entrega de información (MIDP)",
   "en": "Master information delivery plan (MIDP)",
   "b": "I",
-  "d": "Plan que reúne los TIDP de todo el equipo de desarrollo, alineado con los hitos de entrega de la parte que designa.",
+  "d": "Plan que reúne los TIDP de todo el equipo de desarrollo, alineado con los hitos de entrega de la parte contratante.",
   "ej": "MIDP del equipo ganador de un concurso de hospital.",
   "eq": "ISO 19650-2; Perú: «programa general de desarrollo de la información» (traducción UNE por confirmar).",
   "err": "Usarlo como diagrama de Gantt de obra en lugar de como plan de información.",
@@ -3295,7 +3302,7 @@ window.BF_GLOSARIO = [
   "t": "Hito de entrega de información",
   "en": "Information delivery milestone",
   "b": "I",
-  "d": "Momento en que la parte que designa necesita información para decidir; puede estar al final de una etapa o dentro de ella.",
+  "d": "Momento en que la parte contratante necesita información para decidir; puede estar al final de una etapa o dentro de ella.",
   "ej": "Entrega antes de pedir la licencia de obras.",
   "eq": "ISO 19650-1/2; key decision points.",
   "err": "Fijar los hitos por la comodidad del equipo y no por las decisiones del cliente.",
@@ -3990,7 +3997,7 @@ window.BF_GLOSARIO = [
   "b": "II",
   "d": "Especificación de intercambio (normalmente hoja de cálculo o IFC) con espacios, sistemas, componentes, tipos y documentos para la entrega a mantenimiento; nacida en USACE en 2007.",
   "ej": "Entregar a la propiedad un libro COBie con todas las unidades terminales y su garantía.",
-  "eq": "NBIMS-US (COBie v3 en elaboración, borrador 2023); BS 1192-4:2014 en Reino Unido; exportadores COBie de Revit, Archicad.",
+  "eq": "NBIMS-US V4 (COBie 3, publicada en 2023; la 2.4 de NBIMS-US V3 sigue muy extendida); BS 1192-4:2014 en Reino Unido (retirada en 2022); exportadores COBie de Revit, Archicad.",
   "err": "Rellenar COBie al final de la obra 'a mano' sin vincularlo con los GUID del modelo.",
   "rel": [
    "G08",
