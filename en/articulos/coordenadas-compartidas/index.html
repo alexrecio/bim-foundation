@@ -6,7 +6,7 @@
   <!-- Draft: remove noindex on publishing -->
   <meta name="robots" content="noindex, nofollow">
   <!-- Translation of articulos/coordenadas-compartidas/index.html at this git blob (herramientas/i18n.mjs flags it when the Spanish page changes) -->
-  <meta name="bf-fuente" content="articulos/coordenadas-compartidas/index.html@496bd582b0cdabf2dabb8c9bd0ef5695369df67a">
+  <meta name="bf-fuente" content="articulos/coordenadas-compartidas/index.html@ca456b20422e572e775e1ad765b4a12164b5ce4d">
   <title>Shared coordinates in BIM | BIM Foundation</title>
   <meta name="description" content="How shared coordinates work in Revit, Civil 3D, IFC and the rest of BIM software, with the Spanish geodetic framework (ETRS89, EPSG, Alicante heights).">
   <meta property="og:type" content="article">
@@ -32,14 +32,14 @@
 
   <!-- Slide menu: filled from each <section> data-nav -->
   <aside id="deck-nav" aria-label="Slides">
-    <span class="kicker-y">Coordinates · 39 ideas</span>
+    <span class="kicker-y">Coordinates · 40 ideas</span>
     <ol></ol>
     <div id="deck-progress" aria-hidden="true"><i></i></div>
   </aside>
   <div id="deck-bar">
     <div id="deck-sheet"><ol></ol></div>
     <button type="button" id="deck-bar-btn" aria-expanded="false" aria-controls="deck-sheet">
-      <span class="n">01/39</span><span class="t">Cover</span>
+      <span class="n">01/40</span><span class="t">Cover</span>
       <span class="chev" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M3 9l4-4 4 4" fill="none" stroke="#fff" stroke-width="2"/></svg></span>
     </button>
   </div>
@@ -70,7 +70,7 @@
               <li><a href="#espana"><b>II</b><span>Standards</span><em>3 ideas · EPSG, IFC, ISO 19650</em></a></li>
               <li><a href="#limites"><b>III</b><span>Software</span><em>7 ideas · Revit, Survey Point, campuses and building types</em></a></li>
               <li><a href="#coordinacion"><b>IV</b><span>Platforms</span><em>2 ideas · viewers and cloud</em></a></li>
-              <li><a href="#civil3d"><b>V</b><span>Interoperability</span><em>2 ideas · exchange and errors</em></a></li>
+              <li><a href="#civil3d"><b>V</b><span>Interoperability</span><em>3 ideas · exchange and errors</em></a></li>
             <li><a href="#calidad"><b>VI</b><span>Quality control</span><em>8 ideas · IDS, IfcOpenShell, Model Checker, Solibri</em></a></li>
             </ol>
           </div>
@@ -1118,6 +1118,44 @@
           <div class="card w3">
             <span class="c-label">Both points</span>
             <span class="c-title">At the same elevation</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" id="dwg" data-nav="DWG in Revit">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">DWG in Revit</span>
+          <h2 class="display">The floating CAD<span class="dot">.</span></h2>
+          <p class="slide-lead">A plain CAD DWG only brings an origin and a rotation; a Civil 3D DWG with an assigned coordinate system also brings its EPSG. In both, the drawing's elevation is added to the level's.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="dwg"><span class="plus">+</span> See detail</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w3">
+            <span class="c-label">What each DWG brings</span>
+            <svg class="draw" viewBox="0 0 250 320" role="img" aria-label="A CAD DWG brings origin and rotation; a Civil 3D DWG with an assigned coordinate system brings origin, rotation, latitude and longitude, and its EPSG">
+              <path d="M10 10 H50 L66 26 V86 H10 Z" fill="#fff" stroke="#000" stroke-width="3" stroke-linejoin="round"/><path d="M50 10 V26 H66" fill="none" stroke="#000" stroke-width="2"/><text x="18" y="70" font-family="JetBrains Mono, monospace" font-size="13" font-weight="700">DWG</text>
+              <text x="82" y="40" font-family="Inter, sans-serif" font-weight="900" font-size="15">CAD</text><text x="82" y="58" font-family="JetBrains Mono, monospace" font-size="11" fill="#666">no CRS</text>
+              <g font-family="JetBrains Mono, monospace" font-size="13"><rect x="10" y="100" width="80" height="28" rx="14" fill="#fff" stroke="#000" stroke-width="2"/><text x="50" y="119" text-anchor="middle">origin</text><rect x="98" y="100" width="64" height="28" rx="14" fill="#fff" stroke="#000" stroke-width="2"/><text x="130" y="119" text-anchor="middle">angle</text></g>
+              <path d="M10 152 H240" stroke="#000" stroke-width="1" stroke-dasharray="3 4"/>
+              <path d="M10 170 H50 L66 186 V246 H10 Z" fill="#000" stroke="#000" stroke-width="3" stroke-linejoin="round"/><text x="18" y="204" font-family="JetBrains Mono, monospace" font-size="10" fill="#fff">EPSG</text><text x="18" y="230" font-family="JetBrains Mono, monospace" font-size="13" font-weight="700" fill="#FFFF00">DWG</text>
+              <text x="82" y="200" font-family="Inter, sans-serif" font-weight="900" font-size="15">CIVIL 3D</text><text x="82" y="218" font-family="JetBrains Mono, monospace" font-size="11" fill="#666">CRS assigned</text>
+              <g font-family="JetBrains Mono, monospace" font-size="13"><rect x="10" y="258" width="80" height="28" rx="14" fill="#fff" stroke="#000" stroke-width="2"/><text x="50" y="277" text-anchor="middle">origin</text><rect x="98" y="258" width="64" height="28" rx="14" fill="#fff" stroke="#000" stroke-width="2"/><text x="130" y="277" text-anchor="middle">angle</text><rect x="170" y="258" width="76" height="28" rx="14" fill="#fff" stroke="#000" stroke-width="2"/><text x="208" y="277" text-anchor="middle">lat·lon</text>
+              <rect x="10" y="290" width="140" height="28" rx="14" fill="#FFFF00" stroke="#000" stroke-width="2"/><text x="80" y="309" text-anchor="middle" font-weight="700">EPSG <tspan data-pais="epsg">25830</tspan></text></g>
+            </svg>
+          </div>
+          <div class="card w3">
+            <span class="c-label">The double elevation</span>
+            <svg class="draw" viewBox="0 0 250 320" role="img" aria-label="A level at +650 plus terrain drawn at Z 650 leaves the terrain at +1300, floating">
+              <path d="M90 64 L130 48 L170 56 L210 40 L246 48 V72 H90 Z" fill="#FFFF00" stroke="#000" stroke-width="3" stroke-linejoin="round"/><text x="96" y="96" font-family="JetBrains Mono, monospace" font-size="14" font-weight="700">+1 300</text>
+              <path d="M4 180 H246" stroke="#000" stroke-width="2" stroke-dasharray="6 5"/><text x="96" y="200" font-family="JetBrains Mono, monospace" font-size="12">Level 0 = +650</text>
+              <path d="M90 180 L130 164 L170 172 L210 156 L246 164 V180" fill="none" stroke="#000" stroke-width="1.5" stroke-dasharray="4 4"/><text x="96" y="148" font-family="JetBrains Mono, monospace" font-size="11" fill="#666">should be here</text>
+              <path d="M4 300 H246" stroke="#000" stroke-width="2"/><text x="96" y="292" font-family="JetBrains Mono, monospace" font-size="11" fill="#666">internal origin · 0</text>
+              <g stroke="#000" stroke-width="1.5"><path d="M40 298 V184 M32 298 H48 M32 184 H48"/><path d="M40 176 V72 M32 176 H48 M32 72 H48"/></g>
+              <g font-family="JetBrains Mono, monospace" font-size="11"><text x="48" y="236">level</text><text x="48" y="250" font-weight="700">+650</text><text x="48" y="118">DWG Z</text><text x="48" y="132" font-weight="700">+650</text></g>
+            </svg>
           </div>
         </div>
       </div>
@@ -2208,6 +2246,41 @@
 <h4>EPSG in Revit</h4>
 <p>Today, an EPSG code cannot be assigned directly in the Revit interface; only the API supports it.</p>
 </div>
+</div>
+  </template>
+
+  <template id="l2-dwg">
+<div class="b-cards">
+<div class="card w6">
+<div class="table-wrap"><table>
+<thead><tr><th>Positioning when linking</th><th>CAD DWG</th><th>Civil 3D DWG with an assigned coordinate system</th></tr></thead>
+<tbody>
+<tr><td>Auto - Center to Center</td><td>Places it at the centre of the model; its coordinates do not count.</td><td>The same. It is the first step Autodesk suggests before acquiring.</td></tr>
+<tr><td>Auto - Origin to Origin</td><td>The drawing's 0,0 lands on the internal origin. If it was drawn in real coordinates, the geometry appears kilometres away.</td><td>Always happens: the drawing is in projected coordinates.</td></tr>
+<tr><td>Auto - By Shared Coordinates</td><td>Only works if Revit already has its shared coordinates set.</td><td>Revit warns that the coordinate systems differ and, with <span class="ui">Align</span>, matches the DWG's reference point to the Survey Point or the Project Base Point.</td></tr>
+<tr><td>Acquire Coordinates</td><td>The drawing's World Coordinate System (WCS) becomes the shared one: its origin is the origin and its Y axis is north.</td><td>In addition, the GIS coordinate system, latitude and longitude appear under <span class="ui">Location</span>.</td></tr>
+</tbody>
+</table></div>
+</div>
+<div class="card w3">
+<h4>Why it floats</h4>
+<p>The <span class="ui">Place at</span> option puts the drawing's origin on the chosen level. Anything with a Z rises from there.</p>
+<div class="formula">final elevation = level elevation + DWG Z<br><span class="y">650 + 650 = 1 300</span></div>
+<p>It happens when levels are written as absolute elevations and the surveyor also delivered real Z values: the height is counted twice.</p>
+</div>
+<div class="card w3">
+<h4>How to avoid it</h4>
+<ol class="vsteps">
+<li>Agree in the BEP who carries the elevation: the drawing (real Z) or the model (levels).</li>
+<li>If the drawing carries real Z values, link it on a level whose internal elevation is 0.</li>
+<li>Place a spot elevation on a known point of the DWG and compare it with the surveyor's value.</li>
+</ol>
+</div>
+<div class="card w6">
+<h4>2D drawings float too</h4>
+<p>Contours, survey points or lines copied from a 3D drawing keep their Z. In plan you cannot tell, but in 3D and in section they hang in the air. Two ways out: flatten the drawing before linking it (<code>FLATTEN</code> in AutoCAD) or link it with <span class="ui">Current View Only</span>, which treats it as annotation and keeps it out of 3D views.</p>
+</div>
+<div class="card w6"><p class="table-note" style="margin:0">Sources: <a href="https://help.autodesk.com/cloudhelp/2021/ENU/Revit-Model/files/GUID-C922A152-0A30-4E27-BED2-BCE9FF2E5E30.htm" target="_blank" rel="noopener">Revit: positioning when importing and linking</a> · <a href="https://help.autodesk.com/cloudhelp/2024/ENU/Revit-Model/files/GUID-D184A004-D0BF-44D1-9C02-99480B129CAD.htm" target="_blank" rel="noopener">CAD import and link options</a> · <a href="https://help.autodesk.com/cloudhelp/2014/ENU/Revit/files/GUID-651EE8A9-FCFC-4999-91C6-4628FBCED902.htm" target="_blank" rel="noopener">acquire coordinates from a DWG</a> · <a href="https://help.autodesk.com/cloudhelp/2027/ENU/Revit-Model/files/GUID-77BBFD78-8389-4FD4-8C95-929D92AAC590.htm" target="_blank" rel="noopener">link a DWG and acquire</a> · <a href="https://help.autodesk.com/cloudhelp/2027/ENU/Revit-Model/files/GUID-0C6D8890-73D9-4DAC-A0A6-84C45E54C6A8.htm" target="_blank" rel="noopener">link by shared coordinates</a> · <a href="https://forums.autodesk.com/t5/revit-architecture-forum/shared-reference-point-wrong-elevation/td-p/11451665" target="_blank" rel="noopener">Autodesk forum: wrong elevation</a>.</p></div>
 </div>
   </template>
 
