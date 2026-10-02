@@ -490,3 +490,28 @@ body.l2-lock { overflow: hidden; }
 @media (max-width: 767px) { .l2-body .b-cards > .card { grid-column: 1 / -1; } }
 .l2-body .diagram { margin: 0; }
 .l2-body .diagram svg { display: block; width: 100%; height: auto; max-height: 340px; }
+
+/* ---------- Hilo narrativo: capítulos ---------- */
+/* data-cap="I · El problema" en la primera slide de cada capítulo: cabecera en el menú y rótulo junto a la numeración */
+.nav-cap { margin: 12px 0 4px; padding: 0 8px; font-family: var(--mono); font-size: 9.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--black); display: flex; align-items: center; gap: 8px; }
+.nav-cap::after { content: ""; flex: 1; height: 1px; background: var(--s200); }
+.nav-cap:first-child { margin-top: 0; }
+#deck-sheet .nav-cap { margin: 14px 0 4px; }
+.slide-cap { display: inline-block; margin-left: 10px; padding-left: 10px; border-left: 1px solid var(--s300); color: var(--black); font-weight: 700; }
+.slide.is-cap-start .slide-cap { background: var(--black); color: var(--accent); border: 0; padding: 2px 8px; }
+
+/* ---------- Capa 2 más visual ---------- */
+.l2-body .card h4 { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+.l2-body .card h4::before { content: ""; width: 10px; height: 10px; flex-shrink: 0; background: var(--accent); border: 1.5px solid var(--black); }
+.l2-body .card.y h4::before { background: var(--black); }
+.l2-body .card.k h4::before { border-color: var(--accent); }
+.l2-body .card.k h4 { color: var(--white); }
+.l2-body .card ul { list-style: none; padding: 0; display: grid; gap: 8px; }
+.l2-body .card ul li { position: relative; padding-left: 18px; margin: 0; }
+.l2-body .card ul li::before { content: ""; position: absolute; left: 2px; top: .6em; width: 7px; height: 7px; background: var(--black); }
+.l2-body .card.k ul li::before { background: var(--accent); }
+.l2-body .card ul.sources li::before, .l2-body .card ul.checklist li::before { content: none; }
+.l2-body .card p + p { margin-top: 8px; }
+.l2-body .card .step-n + .c-title { margin-top: 10px; display: block; }
+.l2-body .card .c-title + p { margin-top: 6px; }
+.l2-head .label { font-family: var(--mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: .1em; color: var(--s500); }

@@ -138,15 +138,27 @@
   const titleOf = (s) => s.dataset.nav || ((s.querySelector('h1, h2') || {}).textContent || '').replace(/\.$/, '');
 
   // Numeración y menú con los títulos de cada diapositiva (lateral en escritorio, hoja inferior en móvil)
-  const list = () => slides.map((s, i) => `<li class="nav-item"><a href="#${s.id}" data-i="${i}"><span>${pad(i + 1)}</span>${titleOf(s)}</a></li>`).join('');
-  slides.forEach((s, i) => { const n = s.querySelector('.slide-n'); if (n) n.textContent = `${pad(i + 1)} / ${total}`; });
+  // Capítulos (hilo narrativo): data-cap en la primera slide de cada capítulo
+  let cap = '';
+  const caps = slides.map((s) => (cap = s.dataset.cap || cap));
+  const list = () => slides.map((s, i) => (s.dataset.cap ? `<li class="nav-cap">${s.dataset.cap}</li>` : '') +
+    `<li class="nav-item"><a href="#${s.id}" data-i="${i}"><span>${pad(i + 1)}</span>${titleOf(s)}</a></li>`).join('');
+  slides.forEach((s, i) => {
+    const n = s.querySelector('.slide-n');
+    if (n) n.innerHTML = `${pad(i + 1)} / ${total}` + (caps[i] ? `<b class="slide-cap">${caps[i]}</b>` : '');
+    if (s.dataset.cap) s.classList.add('is-cap-start');
+  });
   const side = document.querySelector('#deck-nav ol');
   const sheet = document.querySelector('#deck-sheet ol');
   if (side) side.innerHTML = list();
   if (sheet) sheet.innerHTML = list();
   const bar = document.getElementById('deck-bar');
   const barBtn = document.getElementById('deck-bar-btn');
-  if (barBtn) barBtn.addEventListener('click', (e) => { e.stopPropagation(); bar.classList.toggle('is-open'); barBtn.setAttribute('aria-expanded', bar.classList.contains('is-open')); });
+  if (barBtn) barBtn.addEventListener('click', (e) => {
+    e.stopPropagation(); bar.classList.toggle('is-open'); barBtn.setAttribute('aria-expanded', bar.classList.contains('is-open'));
+    const cur = sheet && sheet.querySelector('a.is-current');
+    if (cur) sheet.parentElement.scrollTop = cur.offsetTop - sheet.parentElement.clientHeight / 2;
+  });
   document.addEventListener('click', (e) => { if (bar && !bar.contains(e.target)) bar.classList.remove('is-open'); });
   if (sheet) sheet.addEventListener('click', () => bar.classList.remove('is-open'));
 
@@ -182,7 +194,7 @@
     const slide = (btn || document.querySelector(`.slide [data-l2="${id}"]`)).closest('.slide');
     const i = slides.indexOf(slide);
     const kicker = (slide.querySelector('.kicker-y') || {}).textContent || '';
-    body.innerHTML = `<div class="l2-head"><span class="kicker-y">${kicker}</span><span class="label">Capa 2 · ${pad(i + 1)} / ${total}</span><h3>${tpl.dataset.title || titleOf(slide)}</h3></div>`;
+    body.innerHTML = `<div class="l2-head"><span class="kicker-y">${kicker}</span><span class="label">Capa 2 · ${pad(i + 1)} / ${total}${i >= 0 && caps[i] ? ' · ' + caps[i] : ''}</span><h3>${tpl.dataset.title || titleOf(slide)}</h3></div>`;
     body.appendChild(tpl.content.cloneNode(true));
     opener = btn || null;
     modal.classList.add('is-visible');

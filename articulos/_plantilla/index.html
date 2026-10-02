@@ -47,7 +47,9 @@
     Plantilla de artículo en dos capas. Copiar esta carpeta a articulos/<slug>/, sustituir SLUG y los textos en MAYÚSCULAS
     y añadir la ficha del artículo en assets/js/serie.js.
 
-    Cada diapositiva = <section class="slide" id="…" data-nav="Título corto del menú"> con un .bento:
+    Cada diapositiva = <section class="slide" id="…" data-nav="Título corto del menú"> con un .bento.
+    Hilo narrativo: data-cap="I · Capítulo" en la primera slide de cada capítulo (cabecera en el menú y rótulo en la numeración).
+    Estructura del .bento:
       .b-title  → numeración (sola), antetítulo, titular, una frase y botón «Ver detalle».
       .b-cards  → rejilla de 6 columnas (2 en móvil) con tarjetas .card w2 | w3 | w4 | w6 y variantes g (gris), k (negra), y (amarilla).
                   Dentro: c-label, c-num (xl), c-title, c-text, c-foot, badge, chips/chip, flow, bars/bar, row, step-n, ico, svg.draw.
@@ -75,7 +77,7 @@
     </section>
 
     <!-- Tipo: cifras y tarjetas -->
-    <section class="slide" id="idea-1" data-nav="Idea 1">
+    <section class="slide" id="idea-1" data-cap="I · Nombre del capítulo" data-nav="Idea 1">
       <div class="bento">
         <div class="b-title">
           <span class="slide-n"></span>
@@ -93,7 +95,7 @@
       </div>
     </section>
 
-    <section class="slide" id="cierre" data-nav="En resumen">
+    <section class="slide" id="cierre" data-cap="II · Cierre" data-nav="En resumen">
       <div class="bento">
         <div class="b-title">
           <span class="slide-n"></span>

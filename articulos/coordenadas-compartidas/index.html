@@ -31,14 +31,14 @@
 
   <!-- Menú de diapositivas: se rellena con data-nav de cada <section> -->
   <aside id="deck-nav" aria-label="Diapositivas">
-    <span class="kicker-y">Coordenadas · 18 ideas</span>
+    <span class="kicker-y">Coordenadas · 22 ideas</span>
     <ol></ol>
     <div id="deck-progress" aria-hidden="true"><i></i></div>
   </aside>
   <div id="deck-bar">
     <div id="deck-sheet"><ol></ol></div>
     <button type="button" id="deck-bar-btn" aria-expanded="false" aria-controls="deck-sheet">
-      <span class="n">01/18</span><span class="t">Portada</span>
+      <span class="n">01/22</span><span class="t">Portada</span>
       <span class="chev" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M3 9l4-4 4 4" fill="none" stroke="#fff" stroke-width="2"/></svg></span>
     </button>
   </div>
@@ -50,7 +50,7 @@
   -->
   <main class="deck">
 
-    <!-- ========== 01 · PORTADA ========== -->
+    <!-- ========== PORTADA ========== -->
     <section class="slide" id="portada" data-nav="Portada">
       <div class="bento">
         <div class="b-title">
@@ -82,8 +82,8 @@
       </div>
     </section>
 
-    <!-- ========== 02 · EL PROBLEMA ========== -->
-    <section class="slide" id="problema" data-nav="El problema">
+    <!-- ========== EL PROBLEMA ========== -->
+    <section class="slide" id="problema" data-cap="I · El problema" data-nav="El problema">
       <div class="bento">
         <div class="b-title">
           <span class="slide-n"></span>
@@ -122,7 +122,7 @@
       </div>
     </section>
 
-    <!-- ========== 03 · LÍMITE ========== -->
+    <!-- ========== LÍMITE ========== -->
     <section class="slide" id="limite" data-nav="Lejos del origen">
       <div class="bento">
         <div class="b-title">
@@ -164,7 +164,123 @@
       </div>
     </section>
 
-    <!-- ========== 04 · PRINCIPIO ========== -->
+    <!-- ========== LOS DECIMALES ========== -->
+    <section class="slide" id="decimales" data-nav="Cifras y decimales">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Por qué pasa</span>
+          <h2 class="display">Las cifras no dan para todo<span class="dot">.</span></h2>
+          <p class="slide-lead">Un número en coma flotante tiene cifras contadas. Si la parte entera se las come, no quedan decimales.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="decimales"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w6 g">
+            <span class="c-label">Precisión simple: unas 7 cifras útiles</span>
+            <svg class="draw" viewBox="0 0 640 210" role="img" aria-label="Con una coordenada UTM las siete cifras se gastan en la parte entera; con una coordenada local sobran cifras para los decimales">
+              <g font-family="JetBrains Mono, monospace" font-size="22" font-weight="700" text-anchor="middle">
+                <text x="14" y="26" font-size="11" text-anchor="start" font-weight="400" fill="#666">UTM · Y = 4 474 310,800 m</text>
+                <g stroke="#000" stroke-width="2"><rect x="14" y="38" width="40" height="48" fill="#000"/><rect x="58" y="38" width="40" height="48" fill="#000"/><rect x="102" y="38" width="40" height="48" fill="#000"/><rect x="146" y="38" width="40" height="48" fill="#000"/><rect x="190" y="38" width="40" height="48" fill="#000"/><rect x="234" y="38" width="40" height="48" fill="#000"/><rect x="278" y="38" width="40" height="48" fill="#000"/></g>
+                <g fill="#fff"><text x="34" y="70">4</text><text x="78" y="70">4</text><text x="122" y="70">7</text><text x="166" y="70">4</text><text x="210" y="70">3</text><text x="254" y="70">1</text><text x="298" y="70">1</text></g>
+                <text x="332" y="72">,</text>
+                <g fill="#fff" stroke="#D5D5CB" stroke-width="2" stroke-dasharray="4 4"><rect x="344" y="38" width="40" height="48"/><rect x="388" y="38" width="40" height="48"/><rect x="432" y="38" width="40" height="48"/></g>
+                <g fill="#B9B9B0"><text x="364" y="70">?</text><text x="408" y="70">?</text><text x="452" y="70">?</text></g>
+                <text x="492" y="58" font-size="12" text-anchor="start" font-weight="700">sin cifras</text><text x="492" y="74" font-size="12" text-anchor="start" font-weight="700">para decimales</text>
+                <text x="14" y="128" font-size="11" text-anchor="start" font-weight="400" fill="#666">Local · y = 310,800 m</text>
+                <g stroke="#000" stroke-width="2"><rect x="14" y="140" width="40" height="48" fill="#000"/><rect x="58" y="140" width="40" height="48" fill="#000"/><rect x="102" y="140" width="40" height="48" fill="#000"/></g>
+                <g fill="#fff"><text x="34" y="172">3</text><text x="78" y="172">1</text><text x="122" y="172">0</text></g>
+                <text x="156" y="174">,</text>
+                <g stroke="#000" stroke-width="2" fill="#FFFF00"><rect x="168" y="140" width="40" height="48"/><rect x="212" y="140" width="40" height="48"/><rect x="256" y="140" width="40" height="48"/><rect x="300" y="140" width="40" height="48"/></g>
+                <text x="188" y="172">8</text><text x="232" y="172">0</text><text x="276" y="172">0</text><text x="320" y="172">0</text>
+                <text x="360" y="160" font-size="12" text-anchor="start" font-weight="700">sobran cifras:</text><text x="360" y="176" font-size="12" text-anchor="start" font-weight="700">décimas de milímetro</text>
+              </g>
+            </svg>
+          </div>
+          <div class="card w3 k">
+            <span class="c-label">Salto mínimo a 4 474 km</span>
+            <b class="c-num">0,5<small>m</small></b>
+            <span class="c-foot">precisión simple</span>
+          </div>
+          <div class="card w3 y">
+            <span class="c-label">Salto mínimo a 310 m</span>
+            <b class="c-num">0,03<small>mm</small></b>
+            <span class="c-foot">precisión simple</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== BYTES ========== -->
+    <section class="slide" id="bytes" data-nav="Precisión y bytes">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">El coste</span>
+          <h2 class="display">Más cifras, más bytes<span class="dot">.</span></h2>
+          <p class="slide-lead">La doble precisión duplica lo que pesa cada coordenada. En un modelo apenas se nota; en una nube de puntos, sí.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="bytes"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w3">
+            <span class="c-label">Simple · float32</span>
+            <b class="c-num">4<small>bytes</small></b>
+            <div class="row" style="gap:4px"><span class="badge k">≈ 7 cifras</span></div>
+          </div>
+          <div class="card w3 k">
+            <span class="c-label">Doble · float64</span>
+            <b class="c-num">8<small>bytes</small></b>
+            <div class="row" style="gap:4px"><span class="badge y">≈ 15–16 cifras</span></div>
+          </div>
+          <div class="card w6 g">
+            <span class="c-label">Nube de mil millones de puntos (solo X, Y, Z)</span>
+            <div class="bars">
+              <div class="bar"><span>f64</span><i style="width:100%">24 GB · sin pérdida</i></div>
+              <div class="bar"><span>f32</span><i style="width:50%">12 GB · pierde 0,5 m</i></div>
+              <div class="bar is-key"><span>LAS</span><i style="width:50%">12 GB · al milímetro</i></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== CRIBAR LAS CIFRAS GRANDES ========== -->
+    <section class="slide" id="cribar" data-cap="II · La solución" data-nav="Cribar las cifras grandes">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">El truco</span>
+          <h2 class="display">Resta lo grande, guarda lo pequeño<span class="dot">.</span></h2>
+          <p class="slide-lead">El desplazamiento se guarda una sola vez. Cada vértice solo lleva la parte pequeña y aprovecha todos sus decimales.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="cribar"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w6 g">
+            <span class="c-label">Una coordenada, dos partes</span>
+            <svg class="draw" viewBox="0 0 640 170" role="img" aria-label="4 474 310,800 se descompone en 4 474 000 guardado una vez más 310,800 en cada vértice">
+              <g font-family="Inter, sans-serif" font-weight="900">
+                <text x="14" y="52" font-size="40" letter-spacing="-1">4 474 310,800</text>
+                <text x="328" y="52" font-size="40">=</text>
+                <rect x="364" y="14" width="186" height="52" rx="6" fill="#000"/><text x="378" y="52" font-size="34" fill="#fff">4 474 000</text>
+                <text x="560" y="52" font-size="40">+</text>
+              </g>
+              <rect x="364" y="94" width="150" height="52" rx="6" fill="#FFFF00" stroke="#000" stroke-width="2.5"/>
+              <text x="378" y="132" font-family="Inter, sans-serif" font-weight="900" font-size="34">310,800</text>
+              <path d="M598 44 C 630 70 600 110 520 120" fill="none" stroke="#000" stroke-width="2"/><polygon points="514,120 528,112 526,128" fill="#000"/>
+              <g font-family="JetBrains Mono, monospace" font-size="11">
+                <text x="14" y="92" fill="#666">coordenada real</text>
+                <text x="14" y="122">una vez: punto de reconocimiento,</text>
+                <text x="14" y="138">IfcMapConversion, offset de la nube</text>
+                <text x="526" y="138">cada vértice</text>
+              </g>
+            </svg>
+          </div>
+          <div class="card w3 y"><span class="c-label">Precisión ganada</span><b class="c-num">× 16 000</b><span class="c-foot">de 0,5 m a 0,03 mm</span></div>
+          <div class="card w3 k"><span class="c-label">Bytes extra</span><b class="c-num">0</b><span class="c-foot">el mismo float32</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== PRINCIPIO ========== -->
     <section class="slide" id="principio" data-nav="La regla de oro">
       <div class="bento">
         <div class="b-title">
@@ -208,7 +324,7 @@
       </div>
     </section>
 
-    <!-- ========== 05 · ESPAÑA ========== -->
+    <!-- ========== ESPAÑA ========== -->
     <section class="slide" id="espana" data-nav="Marco español">
       <div class="bento">
         <div class="b-title">
@@ -239,7 +355,7 @@
       </div>
     </section>
 
-    <!-- ========== 06 · ESCALA Y ALTURAS ========== -->
+    <!-- ========== ESCALA Y ALTURAS ========== -->
     <section class="slide" id="escala" data-nav="Alturas y escala">
       <div class="bento">
         <div class="b-title">
@@ -284,7 +400,7 @@
       </div>
     </section>
 
-    <!-- ========== 07 · NORTES ========== -->
+    <!-- ========== NORTES ========== -->
     <section class="slide" id="nortes" data-nav="Cuatro nortes">
       <div class="bento">
         <div class="b-title">
@@ -321,7 +437,7 @@
       </div>
     </section>
 
-    <!-- ========== 08 · TRES ORÍGENES ========== -->
+    <!-- ========== TRES ORÍGENES ========== -->
     <section class="slide" id="origenes" data-nav="Tres orígenes">
       <div class="bento">
         <div class="b-title">
@@ -361,8 +477,8 @@
       </div>
     </section>
 
-    <!-- ========== 09 · REVIT ========== -->
-    <section class="slide" id="revit" data-nav="Revit: adquirir o publicar">
+    <!-- ========== REVIT ========== -->
+    <section class="slide" id="revit" data-cap="III · En cada programa" data-nav="Revit: adquirir o publicar">
       <div class="bento">
         <div class="b-title">
           <span class="slide-n"></span>
@@ -400,7 +516,7 @@
       </div>
     </section>
 
-    <!-- ========== 10 · CIVIL 3D ========== -->
+    <!-- ========== CIVIL 3D ========== -->
     <section class="slide" id="civil3d" data-nav="Civil 3D ↔ Revit">
       <div class="bento">
         <div class="b-title">
@@ -435,7 +551,7 @@
       </div>
     </section>
 
-    <!-- ========== 11 · COORDINACIÓN ========== -->
+    <!-- ========== COORDINACIÓN ========== -->
     <section class="slide" id="coordinacion" data-nav="Visores y federación">
       <div class="bento">
         <div class="b-title">
@@ -458,7 +574,7 @@
       </div>
     </section>
 
-    <!-- ========== 12 · IFC ========== -->
+    <!-- ========== IFC ========== -->
     <section class="slide" id="ifc" data-nav="IFC y LoGeoRef">
       <div class="bento">
         <div class="b-title">
@@ -499,7 +615,7 @@
       </div>
     </section>
 
-    <!-- ========== 13 · OTROS PROGRAMAS ========== -->
+    <!-- ========== OTROS PROGRAMAS ========== -->
     <section class="slide" id="otros" data-nav="Otros programas">
       <div class="bento">
         <div class="b-title">
@@ -523,7 +639,42 @@
       </div>
     </section>
 
-    <!-- ========== 14 · NUBES ========== -->
+    <!-- ========== EL BAILE DE LOS PLOMOS ========== -->
+    <section class="slide" id="plomos" data-cap="IV · Nubes de puntos" data-nav="El baile de los plomos">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Nubes de puntos</span>
+          <h2 class="display">Plomos que bailan<span class="dot">.</span></h2>
+          <p class="slide-lead">Una nube en UTM vinculada sin más dibuja aristas que tiemblan. No es el escáner: es la precisión.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="plomos"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w3 g">
+            <span class="c-label">En UTM, sin mover</span>
+            <svg class="draw" viewBox="0 0 200 220" role="img" aria-label="Esquina de muro escaneada: los puntos forman una línea quebrada">
+              <g fill="#000">
+                <rect x="96" y="14" width="5" height="5"/><rect x="104" y="26" width="5" height="5"/><rect x="92" y="38" width="5" height="5"/><rect x="104" y="50" width="5" height="5"/><rect x="96" y="62" width="5" height="5"/><rect x="88" y="74" width="5" height="5"/><rect x="104" y="86" width="5" height="5"/><rect x="96" y="98" width="5" height="5"/><rect x="108" y="110" width="5" height="5"/><rect x="92" y="122" width="5" height="5"/><rect x="100" y="134" width="5" height="5"/><rect x="88" y="146" width="5" height="5"/><rect x="104" y="158" width="5" height="5"/><rect x="96" y="170" width="5" height="5"/><rect x="108" y="182" width="5" height="5"/><rect x="92" y="194" width="5" height="5"/>
+              </g>
+              <polyline points="98,16 106,28 94,40 106,52 98,64 90,76 106,88 98,100 110,112 94,124 102,136 90,148 106,160 98,172 110,184 94,196" fill="none" stroke="#8F8F87" stroke-width="1.5" stroke-dasharray="3 3"/>
+            </svg>
+          </div>
+          <div class="card w3 y">
+            <span class="c-label">Movida a local</span>
+            <svg class="draw" viewBox="0 0 200 220" role="img" aria-label="La misma esquina en coordenadas locales: los puntos forman una vertical limpia">
+              <g fill="#000">
+                <rect x="98" y="14" width="5" height="5"/><rect x="98" y="26" width="5" height="5"/><rect x="98" y="38" width="5" height="5"/><rect x="98" y="50" width="5" height="5"/><rect x="98" y="62" width="5" height="5"/><rect x="98" y="74" width="5" height="5"/><rect x="98" y="86" width="5" height="5"/><rect x="98" y="98" width="5" height="5"/><rect x="98" y="110" width="5" height="5"/><rect x="98" y="122" width="5" height="5"/><rect x="98" y="134" width="5" height="5"/><rect x="98" y="146" width="5" height="5"/><rect x="98" y="158" width="5" height="5"/><rect x="98" y="170" width="5" height="5"/><rect x="98" y="182" width="5" height="5"/><rect x="98" y="194" width="5" height="5"/>
+              </g>
+              <line x1="100.5" y1="10" x2="100.5" y2="204" stroke="#000" stroke-width="1"/>
+            </svg>
+          </div>
+          <div class="card w4 k"><span class="c-label">Se nota a partir de</span><b class="c-num">&gt; 30<small>km</small></b><span class="c-foot">del origen interno · Modelical</span></div>
+          <div class="card w2"><span class="c-label">Síntomas</span><div class="chips"><span class="chip">Verticales en zigzag</span><span class="chip">Cortes que saltan</span><span class="chip y">Medidas que no cuadran</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== NUBES ========== -->
     <section class="slide" id="nubes" data-nav="Nubes de puntos">
       <div class="bento">
         <div class="b-title">
@@ -548,14 +699,14 @@
               <g stroke="#000" stroke-width="2"><line x1="106" y1="60" x2="122" y2="60"/><line x1="238" y1="60" x2="254" y2="60"/><line x1="390" y1="60" x2="406" y2="60"/><line x1="522" y1="60" x2="538" y2="60"/></g>
             </svg>
           </div>
-          <div class="card w3 k"><span class="c-label">Baile de puntos</span><b class="c-num">&gt; 30<small>km</small></b><span class="c-foot">del origen interno</span></div>
+          <div class="card w3 k"><span class="c-label">Herramientas</span><b class="c-num">3</b><span class="c-foot">ReCap · Dynamo · CloudCompare</span></div>
           <div class="card w3 y"><span class="c-label">Obra pequeña (≤ 100 m)</span><span class="c-title">Pide la nube en local</span></div>
         </div>
       </div>
     </section>
 
-    <!-- ========== 15 · ERRORES ========== -->
-    <section class="slide" id="errores" data-nav="Errores comunes">
+    <!-- ========== ERRORES ========== -->
+    <section class="slide" id="errores" data-cap="V · Que no falle" data-nav="Errores comunes">
       <div class="bento">
         <div class="b-title">
           <span class="slide-n"></span>
@@ -595,7 +746,7 @@
       </div>
     </section>
 
-    <!-- ========== 16 · BEP ========== -->
+    <!-- ========== BEP ========== -->
     <section class="slide" id="bep" data-nav="Estrategia en el BEP">
       <div class="bento">
         <div class="b-title">
@@ -618,7 +769,7 @@
       </div>
     </section>
 
-    <!-- ========== 17 · VERIFICACIÓN ========== -->
+    <!-- ========== VERIFICACIÓN ========== -->
     <section class="slide" id="herramientas" data-nav="Comprobar antes de entregar">
       <div class="bento">
         <div class="b-title">
@@ -645,7 +796,7 @@
       </div>
     </section>
 
-    <!-- ========== 18 · CIERRE ========== -->
+    <!-- ========== CIERRE ========== -->
     <section class="slide" id="cierre" data-nav="En resumen">
       <div class="bento">
         <div class="b-title">
@@ -723,6 +874,119 @@
 <p class="table-note" style="margin-top:0">Fuentes: <a href="https://help.autodesk.com/cloudhelp/2026/ENU/Revit-Model/files/GUID-3F79BF5A-F051-49F3-951E-D3E86F51BECC.htm" target="_blank" rel="noopener">ayuda de Revit</a> · <a href="https://docs-unstable.bonsaibim.org/guides/authoring/advanced_modeling/georeferencing.html" target="_blank" rel="noopener">documentación de Bonsai</a>.</p>
 </div>
 </div>
+  </template>
+
+  <template id="l2-decimales">
+    <div class="b-cards">
+      <div class="card w6">
+        <span class="c-label">Salto mínimo entre dos valores según la distancia al origen</span>
+        <svg class="draw" viewBox="0 0 640 230" role="img" aria-label="Escala logarítmica del salto mínimo en precisión simple: de centésimas de milímetro cerca del origen a medio metro en la Y UTM">
+          <g font-family="JetBrains Mono, monospace" font-size="11">
+            <line x1="120" y1="20" x2="120" y2="210" stroke="#D5D5CB"/>
+            <g fill="#000">
+              <text x="0" y="38">125 m</text><rect x="120" y="26" width="40" height="18" fill="#EFEFEA" stroke="#000"/><text x="170" y="40">0,008 mm</text>
+              <text x="0" y="74">1 km</text><rect x="120" y="62" width="110" height="18" fill="#EFEFEA" stroke="#000"/><text x="240" y="76">0,06 mm</text>
+              <text x="0" y="110">16 km</text><rect x="120" y="98" width="230" height="18" fill="#FFFF00" stroke="#000"/><text x="360" y="112" font-weight="700">1 mm · radio de Revit</text>
+              <text x="0" y="146">440 km · X</text><rect x="120" y="134" width="330" height="18" fill="#000"/><text x="460" y="148">3 cm</text>
+              <text x="0" y="182">4 474 km · Y</text><rect x="120" y="170" width="440" height="18" fill="#000"/><text x="570" y="184" font-weight="700">0,5 m</text>
+            </g>
+            <text x="120" y="226" fill="#666">escala logarítmica · precisión simple (float32)</text>
+          </g>
+        </svg>
+      </div>
+      <div class="card w3">
+        <h4>Simple y doble</h4>
+        <p>El estándar IEEE 754 guarda cada número como signo, exponente y mantisa. La simple tiene 24 bits de mantisa (unas 7 cifras decimales); la doble, 53 bits (15 o 16 cifras). El exponente decide dónde va la coma, pero las cifras son siempre las mismas.</p>
+      </div>
+      <div class="card w3 g">
+        <h4>Dónde está el cuello de botella</h4>
+        <p>Revit almacena la geometría en doble precisión (la API trabaja con <code>double</code>, en pies). Las tarjetas gráficas, en cambio, dibujan normalmente en precisión simple: el modelo puede estar bien guardado y aun así verse mal.</p>
+      </div>
+      <div class="card w6 y">
+        <span class="c-label">Lectura nuestra <span class="tag">Inferido</span></span>
+        <p>A 16 km la precisión simple todavía resuelve el milímetro. Encaja con el radio que Autodesk fija para Revit, aunque Autodesk no publica el cálculo.</p>
+      </div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://en.wikipedia.org/wiki/IEEE_754" target="_blank" rel="noopener">IEEE 754</a> · <a href="https://www.revitapidocs.com/2024/c2fd995c-95c0-58fb-f5de-f3246cbc5600.htm" target="_blank" rel="noopener">Revit API, clase XYZ</a> · <a href="https://help.autodesk.com/cloudhelp/2026/ENU/Revit-Model/files/GUID-3F79BF5A-F051-49F3-951E-D3E86F51BECC.htm" target="_blank" rel="noopener">ayuda de Revit</a>. Saltos calculados con la norma IEEE 754.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-bytes">
+    <div class="b-cards">
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Formato</th><th>Bytes por valor</th><th>Cifras</th><th>Una coordenada UTM</th></tr></thead>
+          <tbody>
+            <tr><td>float32</td><td class="num">4</td><td>≈ 7</td><td>Y redondeada a medio metro</td></tr>
+            <tr><td>float64</td><td class="num">8</td><td>≈ 15–16</td><td>Sin pérdida práctica</td></tr>
+            <tr class="is-key"><td>int32 + escala + desplazamiento</td><td class="num">4</td><td>fijas</td><td>Milímetro con escala 0,001</td></tr>
+            <tr><td>Texto (IFC en STEP)</td><td class="num">1 por carácter</td><td>las escritas</td><td><code>4474310.800</code> = 11 bytes; <code>310.800</code> = 7</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w3 g">
+        <h4>Cómo lo hace LAS</h4>
+        <div class="formula" style="font-size:13px">X = X<sub>entero</sub> × escala + desplazamiento</div>
+        <p style="margin-top:10px">Cada punto guarda un entero de 4 bytes; la escala y el desplazamiento van una sola vez en la cabecera. Con escala 0,001 el entero cubre ±2 147 km alrededor del desplazamiento.</p>
+      </div>
+      <div class="card w3 g">
+        <h4>Y E57</h4>
+        <p>Admite coordenadas en doble precisión o como enteros escalados. Al exportar desde ReCap o el software del escáner conviene revisar cuál se usa y qué origen lleva.</p>
+        <h4 style="margin-top:12px">Y el IFC</h4>
+        <p>Un IFC en STEP es texto: cada cifra ocupa un byte. Modelar en UTM engorda el archivo además de restar precisión.</p>
+      </div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://github.com/ASPRSorg/LAS" target="_blank" rel="noopener">especificación LAS (ASPRS)</a> · <a href="https://www.libe57.org/" target="_blank" rel="noopener">libE57 (ASTM E2807)</a> · <a href="https://en.wikipedia.org/wiki/ISO_10303-21" target="_blank" rel="noopener">ISO 10303-21 (STEP)</a>. Tamaños de nube calculados solo con X, Y y Z.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-cribar">
+    <div class="b-cards">
+      <div class="card w6 g">
+        <span class="c-label">Dónde guarda cada programa la parte grande</span>
+        <div class="flow" style="margin-top:10px"><span class="chip">Revit · punto de reconocimiento</span><span class="chip">IFC · IfcMapConversion</span><span class="chip">LAS · desplazamiento de cabecera</span><span class="chip">CloudCompare · Global Shift</span><span class="chip y">Civil 3D · sistema de coordenadas del dibujo</span></div>
+      </div>
+      <div class="card w3">
+        <h4>Cómo elegir el desplazamiento</h4>
+        <ol class="vsteps">
+          <li>Un número redondo cerca de la obra (por ejemplo, 440 000 · 4 474 000).</li>
+          <li>Pactado en el BEP y el mismo para todas las disciplinas.</li>
+          <li>Anotado con su EPSG, para poder deshacerlo.</li>
+        </ol>
+      </div>
+      <div class="card w3 k">
+        <h4>La limitación del software</h4>
+        <p>El truco solo funciona si el programa mantiene la transformación aparte. Si suma la parte grande a la geometría para dibujar o federar (un visor que coloca el IFC con coordenadas grandes, una nube vinculada origen a origen), el problema vuelve.</p>
+      </div>
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Dónde está la geometría</th><th>Salto mínimo en float32</th><th>Salto en float64</th></tr></thead>
+          <tbody>
+            <tr><td>Y UTM (4 474 km)</td><td class="num">0,5 m</td><td class="num">0,000 001 mm</td></tr>
+            <tr class="is-key"><td>Cribada (310 m)</td><td class="num">0,03 mm</td><td class="num">≈ 0</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+    </div>
+  </template>
+
+  <template id="l2-plomos">
+    <div class="b-cards">
+      <div class="card w3">
+        <h4>Por qué pasa</h4>
+        <p>La nube se dibuja punto a punto en la tarjeta gráfica. Si llega con coordenadas UTM, cada punto se redondea al salto de la precisión simple y una vertical perfecta se convierte en una escalera. <span class="tag">Inferido</span></p>
+      </div>
+      <div class="card w3 g">
+        <h4>Cómo detectarlo</h4>
+        <ul>
+          <li>Una sección fina de un pilar se ve como una nube dispersa.</li>
+          <li>Al hacer zoom, los puntos saltan en lugar de acercarse.</li>
+          <li>Dos medidas iguales sobre la nube dan valores distintos.</li>
+        </ul>
+      </div>
+      <div class="card w2 y"><span class="step-n">A</span><span class="c-title">Nube en local</span><p>Pedirla así al topógrafo. Lo más simple en obras de unos 100 m.</p></div>
+      <div class="card w2"><span class="step-n">B</span><span class="c-title">Desplazar antes</span><p>Trasladar y girar fuera de Revit (siguiente slide).</p></div>
+      <div class="card w2 k"><span class="step-n">C</span><span class="c-title">Nunca origen a origen</span><p>Con una nube en UTM, vincularla así la deja a cientos de km.</p></div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://www.modelical.com/es/gdocs/nubes-de-puntos-coordenadas-georreferenciadas-locales/" target="_blank" rel="noopener">Modelical</a> · <a href="https://forums.autodesk.com/t5/revit-architecture-forum/pont-cloud-making-problems-in-revit/m-p/8171352" target="_blank" rel="noopener">foro de Autodesk</a>. La causa gráfica es una lectura nuestra: Autodesk no la documenta.</p></div>
+    </div>
   </template>
 
   <template id="l2-principio">
@@ -1037,7 +1301,7 @@
     </ol>
 </div></div>
 <div class="b-cards"><div class="card w6">
-<p>El «baile de puntos» aparece a más de unos 30 km del origen. En obras de unos 100 m o menos, lo más sencillo es pedir la nube al topógrafo en coordenadas locales. Fuente: <a href="https://www.modelical.com/es/gdocs/nubes-de-puntos-coordenadas-georreferenciadas-locales/" target="_blank" rel="noopener">Modelical</a>.</p>
+<p>Fuente del flujo: <a href="https://www.modelical.com/es/gdocs/nubes-de-puntos-coordenadas-georreferenciadas-locales/" target="_blank" rel="noopener">Modelical</a>.</p>
 </div></div>
   </template>
 
