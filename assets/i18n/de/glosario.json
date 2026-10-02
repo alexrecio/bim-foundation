@@ -2551,7 +2551,8 @@
    "Klassifikationssysteme",
    "Klassifikationssystemen",
    "classification system"
-  ]
+  ],
+  "h": "0336fcc826"
  },
  "K02": {
   "t": "Klassifikationstabelle",
@@ -2564,7 +2565,8 @@
    "Klassifikationstabellen",
    "Tabelle",
    "Tabellen"
-  ]
+  ],
+  "h": "a27fe4f9b8"
  },
  "K03": {
   "t": "Facette",
@@ -2575,7 +2577,8 @@
   "al": [
    "Facette",
    "Facetten"
-  ]
+  ],
+  "h": "53873a4a63"
  },
  "K04": {
   "t": "Facettierte Klassifikation",
@@ -2590,7 +2593,8 @@
    "facettierte",
    "facettierten",
    "faceted classification"
-  ]
+  ],
+  "h": "cbfad96f8d"
  },
  "K05": {
   "t": "Enumerative Klassifikation",
@@ -2604,7 +2608,8 @@
    "enumerativ",
    "enumerative",
    "enumerativen"
-  ]
+  ],
+  "h": "1b34d6321b"
  },
  "K06": {
   "t": "Klassifikationscode",
@@ -2616,7 +2621,8 @@
    "Klassifikationscode",
    "Klassifikationscodes",
    "ClassificationCode"
-  ]
+  ],
+  "h": "423f9f4298"
  },
  "K07": {
   "t": "Identifikator",
@@ -2630,7 +2636,8 @@
    "Identifikatoren",
    "Kennung",
    "GUID"
-  ]
+  ],
+  "h": "c55b1ce9e4"
  },
  "K08": {
   "t": "Referenzkennzeichen",
@@ -2643,7 +2650,8 @@
    "Referenzkennzeichens",
    "Referenzkennzeichnung",
    "reference designation"
-  ]
+  ],
+  "h": "1dbd19cb15"
  },
  "K09": {
   "t": "IfcClassification",
@@ -2653,7 +2661,8 @@
   "err": "System ohne Namen: „Default Classification“.",
   "al": [
    "IfcClassification"
-  ]
+  ],
+  "h": "6b67a8d2d5"
  },
  "K10": {
   "t": "IfcClassificationReference",
@@ -2666,7 +2675,8 @@
    "ItemReference",
    "Klassifikationsreferenz",
    "Klassifikationsreferenzen"
-  ]
+  ],
+  "h": "a40f6f2b8e"
  },
  "K11": {
   "t": "IfcRelAssociatesClassification",
@@ -2676,7 +2686,8 @@
   "err": "Nur Instanzen klassifizieren, obwohl sie es schon vom Typ erben, oder umgekehrt, ohne es zu dokumentieren.",
   "al": [
    "IfcRelAssociatesClassification"
-  ]
+  ],
+  "h": "b5e3924a38"
  },
  "K12": {
   "t": "Leichte / vollständige Klassifikation",
@@ -2690,7 +2701,8 @@
    "vollständige Klassifikation",
    "vollständigen Klassifikation",
    "lightweight classification"
-  ]
+  ],
+  "h": "c688f447b5"
  },
  "K13": {
   "t": "bSDD",
@@ -2705,7 +2717,8 @@
    "Datenkatalogs",
    "Datenkataloge",
    "Datenwörterbuch"
-  ]
+  ],
+  "h": "4b82faa8b8"
  },
  "K14": {
   "t": "URI",
@@ -2716,7 +2729,8 @@
   "al": [
    "URI",
    "URIs"
-  ]
+  ],
+  "h": "506a4e6e09"
  },
  "K15": {
   "t": "IDS",
@@ -2729,7 +2743,8 @@
    "IDS-Datei",
    "IDS-Dateien",
    "Information Delivery Specification"
-  ]
+  ],
+  "h": "638e85edff"
  },
  "K16": {
   "t": "Klassifikationsfacette (IDS)",
@@ -2741,7 +2756,8 @@
    "Klassifikationsfacette",
    "Klassifikationsfacetten",
    "classification facet"
-  ]
+  ],
+  "h": "bb6cc47b0f"
  },
  "K17": {
   "t": "Uniclass",
@@ -2752,7 +2768,8 @@
   "al": [
    "Uniclass",
    "Uniclass 2015"
-  ]
+  ],
+  "h": "3ce86e2e40"
  },
  "K18": {
   "t": "OmniClass",
@@ -2762,7 +2779,8 @@
   "err": "Die Tabellen ohne Datum verwenden: Jede stammt aus einem anderen Jahr.",
   "al": [
    "OmniClass"
-  ]
+  ],
+  "h": "8acc353170"
  },
  "K19": {
   "t": "MasterFormat",
@@ -2772,7 +2790,8 @@
   "err": "",
   "al": [
    "MasterFormat"
-  ]
+  ],
+  "h": "031deae963"
  },
  "K20": {
   "t": "UniFormat",
@@ -2785,7 +2804,8 @@
    "Uniformat",
    "UNIFORMAT II",
    "Assembly Code"
-  ]
+  ],
+  "h": "546c9240b8"
  },
  "K21": {
   "t": "CCI",
@@ -2796,7 +2816,8 @@
   "al": [
    "CCI",
    "Construction Classification International"
-  ]
+  ],
+  "h": "94d15b82c7"
  },
  "K22": {
   "t": "CoClass",
@@ -2806,7 +2827,8 @@
   "err": "",
   "al": [
    "CoClass"
-  ]
+  ],
+  "h": "07dd082a65"
  },
  "K23": {
   "t": "NL-SfB",
@@ -2816,7 +2838,8 @@
   "err": "",
   "al": [
    "NL-SfB"
-  ]
+  ],
+  "h": "11fd053338"
  },
  "K24": {
   "t": "GuBIMclass",
@@ -2828,7 +2851,8 @@
    "GuBIMclass",
    "GuBIMClass",
    "GuBIMCat"
-  ]
+  ],
+  "h": "f875a2edc9"
  },
  "K25": {
   "t": "FIEBDC-3 / BC3",
@@ -2841,7 +2865,8 @@
    "FIEBDC",
    "FIEBDC-3",
    "BC3-Format"
-  ]
+  ],
+  "h": "020ebc9212"
  },
  "K26": {
   "t": "ISO 12006-2",
@@ -2852,7 +2877,8 @@
   "al": [
    "ISO 12006-2",
    "DIN EN ISO 12006-2"
-  ]
+  ],
+  "h": "b43fb97b7c"
  },
  "K27": {
   "t": "ISO 12006-3",
@@ -2863,7 +2889,8 @@
   "al": [
    "ISO 12006-3",
    "DIN EN ISO 12006-3"
-  ]
+  ],
+  "h": "a0be78c450"
  },
  "K28": {
   "t": "ISO/IEC 81346",
@@ -2876,7 +2903,8 @@
    "ISO/IEC 81346",
    "ISO 81346-12",
    "DIN EN 81346"
-  ]
+  ],
+  "h": "f82309db11"
  },
  "K29": {
   "t": "COBie",
@@ -2886,7 +2914,8 @@
   "err": "",
   "al": [
    "COBie"
-  ]
+  ],
+  "h": "cb8030c21e"
  },
  "K30": {
   "t": "Mapping / Zuordnungstabelle",
@@ -2900,7 +2929,8 @@
    "Zuordnungstabelle",
    "Zuordnungstabellen",
    "crosswalk"
-  ]
+  ],
+  "h": "d82a6334a9"
  },
  "K31": {
   "t": "Ausgabe (einer Tabelle)",
@@ -2913,7 +2943,8 @@
    "Tabellenausgabe",
    "Tabellenversion",
    "Edition"
-  ]
+  ],
+  "h": "202a0598b5"
  },
  "E01": {
   "t": "Gemeinsame Datenumgebung (CDE)",
@@ -2928,7 +2959,8 @@
    "gemeinsamen Datenumgebungen",
    "Gemeinsame Datenumgebung",
    "common data environment"
-  ]
+  ],
+  "h": "7f1084a06a"
  },
  "E02": {
   "t": "Vereinbarte Informationsquelle",
@@ -2943,7 +2975,8 @@
    "einzigen Informationsquelle",
    "Single Source of Truth",
    "single source of truth"
-  ]
+  ],
+  "h": "58125da454"
  },
  "E04": {
   "t": "Metadaten des Containers",
@@ -2956,7 +2989,8 @@
    "Metadatum",
    "Metadaten des Containers",
    "metadata"
-  ]
+  ],
+  "h": "a63fec6186"
  },
  "E06": {
   "t": "Freigabe, Autorisierung und Annahme",
@@ -2971,7 +3005,8 @@
    "Autorisierung und Annahme",
    "Prüfpunkt A",
    "Prüfpunkt B"
-  ]
+  ],
+  "h": "9b702caa61"
  },
  "E07": {
   "t": "Statuscode (Eignung)",
@@ -2987,7 +3022,8 @@
    "Eignung",
    "suitability code",
    "suitability"
-  ]
+  ],
+  "h": "9c90ac5597"
  },
  "E10": {
   "t": "Auftraggeber und Auftragnehmer",
@@ -3004,7 +3040,8 @@
    "Auftragnehmer",
    "Auftragnehmers",
    "Auftragnehmern"
-  ]
+  ],
+  "h": "5f118c0f32"
  },
  "E11": {
   "t": "Statusabhängige Berechtigungen",
@@ -3018,7 +3055,8 @@
    "Zugriffskontrolle",
    "Zugriffsrechte",
    "Need-to-know-Prinzip"
-  ]
+  ],
+  "h": "85a885e5ce"
  },
  "E12": {
   "t": "Archivierung und Prüfpfad",
@@ -3035,7 +3073,8 @@
    "Audit-Trail",
    "audit trail",
    "golden thread"
-  ]
+  ],
+  "h": "d0f6d7ba02"
  },
  "E19": {
   "t": "Nationaler Anhang",
@@ -3050,7 +3089,8 @@
    "nationale Anhänge",
    "nationalen Anhänge",
    "National Annex"
-  ]
+  ],
+  "h": "b45d115ef9"
  },
  "E20": {
   "t": "Sicherheitsorientierter Ansatz (ISO 19650-5)",
@@ -3065,7 +3105,8 @@
    "sicherheitsorientierten Ansatzes",
    "Esquema Nacional de Seguridad",
    "ENS"
-  ]
+  ],
+  "h": "730c346795"
  },
  "E21": {
   "t": "DIN SPEC 91391",
@@ -3077,7 +3118,8 @@
    "DIN SPEC 91391",
    "DIN SPEC 91391-1",
    "DIN SPEC 91391-2"
-  ]
+  ],
+  "h": "29878df6cd"
  },
  "E22": {
   "t": "OpenCDE Documents API",
@@ -3089,7 +3131,8 @@
    "Documents API",
    "OpenCDE Documents API",
    "OpenCDE"
-  ]
+  ],
+  "h": "9c64e00b95"
  },
  "E24": {
   "t": "ICDD (ISO 21597)",
@@ -3101,7 +3144,8 @@
    "ICDD",
    "ISO 21597",
    "DIN EN ISO 21597"
-  ]
+  ],
+  "h": "bdf0028efb"
  },
  "E26": {
   "t": "Prüf-Workflow",
@@ -3116,7 +3160,8 @@
    "Freigabe-Workflows",
    "Prüfworkflow",
    "Freigabeworkflow"
-  ]
+  ],
+  "h": "19d0a4fdb7"
  },
  "E27": {
   "t": "Gemeinsames Arbeiten in der Cloud",
@@ -3132,7 +3177,8 @@
    "Teamwork",
    "Tekla Model Sharing",
    "Project Sharing"
-  ]
+  ],
+  "h": "a412d2f0e0"
  },
  "E28": {
   "t": "Prüfkriterien (ISO 19650-4)",
@@ -3146,7 +3192,8 @@
    "Prüfkriterium",
    "Vollständigkeit",
    "Konsistenz"
-  ]
+  ],
+  "h": "ae20e126c5"
  },
  "E31": {
   "t": "BSI-Kitemark für CDE",
@@ -3159,7 +3206,8 @@
    "Kitemarks",
    "BSI Kitemark",
    "BSI-Kitemark"
-  ]
+  ],
+  "h": "285bdbd836"
  },
  "E32": {
   "t": "Plattformversion",
@@ -3171,6 +3219,7 @@
    "Plattformversion",
    "Plattformversionen",
    "Versionsnummer der Plattform"
-  ]
+  ],
+  "h": "8111cf8b00"
  }
 }
