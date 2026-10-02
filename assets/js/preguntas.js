@@ -3,7 +3,7 @@
 // [pregunta, artículo, id de la diapositiva, bloque]. Revisar al añadir artículos: cada una debe llevar a una respuesta real.
 window.BF_PREGUNTAS = [
   ['¿Para qué sirve un sistema de coordenadas en un proyecto BIM?', 'coordenadas-compartidas', 'porque', 'I'],
-  ['¿Por qué los modelos llegan desplazados al federar?', 'coordenadas-compartidas', 'problema', 'I'],
+  ['¿Por qué los modelos llegan desplazados al federar?', 'coordenadas-compartidas', 'principio', 'I'],
   ['¿Qué código EPSG pongo en el BEP y en el IFC?', 'coordenadas-compartidas', 'paises', 'I'],
   ['¿Por qué la geometría tiembla lejos del origen?', 'coordenadas-compartidas', 'limite', 'I'],
   ['¿Norte de proyecto o norte verdadero?', 'coordenadas-compartidas', 'nortes', 'I'],

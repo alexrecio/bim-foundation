@@ -34,7 +34,7 @@ for (const art of SERIE) {
   for (const m of html.matchAll(/<template id="l2-([^"]+)"([^>]*)>([\s\S]*?)<\/template>/g)) {
     tpls[m[1]] = { title: attr(m[2], 'data-title'), text: txt(m[3]) };
   }
-  const main = html.split(/<main[^>]*>/)[1]?.split('</main>')[0] || '';
+  const main = (html.split(/<main[^>]*>/)[1]?.split('</main>')[0] || '').replace(/<!--[\s\S]*?-->/g, ''); // las slides comentadas (ocultas) no entran
   const parts = main.split(/(?=<section class="slide)/).filter((p) => p.startsWith('<section class="slide'));
   let cap = '';
   parts.forEach((p, i) => {
@@ -65,7 +65,7 @@ const GD = 'gemelos-digitales';
 const CD = 'entorno-comun-de-datos';
 const CL = 'clasificacion-bim';
 const MANUAL = {
-  C01: [CC, 'problema principio origenes'], C02: [CC, 'coordenadas paises'], C06: [CC, 'coordenadas principio origenes'],
+  C01: [CC, 'principio origenes'], C02: [CC, 'coordenadas paises'], C06: [CC, 'coordenadas principio origenes'],
   C11: [CC, 'origenes survey limites'], C12: [CC, 'origenes survey'], C13: [CC, 'survey otros'], C14: [CC, 'revit campus tipologias'],
   C15: [CC, 'limite decimales bytes cribar'], C16: [CC, 'cribar principio nubes'], C18: [CC, 'ifc'], C19: [CC, 'ifc errores'],
   C20: [CC, 'ifc espana'], C21: [CC, 'ifc nortes'], C23: [CC, 'ifc'], C24: [CC, 'errores civil3d'], C28: [CC, 'plataformas'],
