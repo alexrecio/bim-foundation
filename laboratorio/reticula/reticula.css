@@ -11,9 +11,6 @@
   background:
     radial-gradient(circle 420px at 78% 32%, rgba(255,255,0,.55), rgba(255,255,0,0) 70%),
     radial-gradient(circle 360px at 18% 82%, rgba(0,0,0,.06), rgba(0,0,0,0) 70%),
-    var(--cross-g) calc(var(--g) / -2) calc(var(--g) / -2) / var(--g) var(--g),
-    repeating-linear-gradient(90deg, rgba(0,0,0,.07) 0 1px, transparent 1px var(--g)),
-    repeating-linear-gradient(0deg, rgba(0,0,0,.07) 0 1px, transparent 1px var(--g)),
     radial-gradient(circle, rgba(0,0,0,.14) .8px, transparent 1.2px) 0 0 / 24px 24px; }
 .rt .slide { background: transparent; border-bottom: 0; }
 .rt .slide::before { content: none; }                  /* fuera las marcas de esquina: mandan las cruces */
@@ -21,16 +18,8 @@
 .rt .pz-block { display: none; }
 .rt footer.site { background: rgba(255,255,255,.6); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); }
 
-/* Regla discontinua con cruces en los extremos, arriba y abajo de cada lámina */
-.rt .bento, .rt-frame { position: relative; padding: 44px 0; }
-.rt .bento::before, .rt-frame::before {
-  content: ""; position: absolute; left: -8.5px; right: -8.5px; top: 0; bottom: 0; pointer-events: none;
-  background:
-    var(--cross) top left / 17px 17px no-repeat, var(--cross) top right / 17px 17px no-repeat,
-    var(--cross) bottom left / 17px 17px no-repeat, var(--cross) bottom right / 17px 17px no-repeat,
-    repeating-linear-gradient(90deg, var(--line) 0 4px, transparent 4px 8px) 0 8px / 100% 1px no-repeat,
-    repeating-linear-gradient(90deg, var(--line) 0 4px, transparent 4px 8px) 0 calc(100% - 8px) / 100% 1px no-repeat;
-}
+/* Un solo nivel de retícula: líneas de puntos y cruces solo en los paquetes de información (tarjetas) */
+.rt .bento, .rt-frame { position: relative; }
 
 /* La rejilla de tarjetas es una retícula: sin huecos, líneas discontinuas y una cruz en cada cruce */
 .rt .b-cards { gap: 0; position: relative; }

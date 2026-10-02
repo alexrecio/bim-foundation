@@ -382,4 +382,4 @@ body.l2-lock .pz-hud { display: none; }
 .rt-switch a { padding: 7px 10px; text-decoration: none; color: var(--black); }
 .rt-switch a.is-on { background: var(--black); color: var(--accent); }
 @media (max-width: 1199px) { body:has(.deck) .rt-switch { bottom: 76px; } }
-@media (min-width: 1200px) { body:has(#deck-nav) .rt-switch { left: auto; right: 16px; bottom: 60px; } }
+@media (min-width: 1200px) { body:has(#deck-nav) .rt-switch { left: auto; right: 16px; bottom: auto; top: 16px; } }
