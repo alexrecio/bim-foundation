@@ -214,7 +214,7 @@
   // [nombre, monograma, tipo (p programa · e estándar abierto · f formato), logotipo opcional en assets/img/sw]
   const SW = [
     ['Autodesk Construction Cloud', 'ACC', 'p', 'autodesk.svg'], ['Autodesk Docs', 'Do', 'p', 'autodesk.svg'], ['Trimble Connect', 'TC', 'p', 'trimble.svg'], ['BIMcollab Zoom', 'Zm', 'p'], ['BIMcollab', 'BC', 'p'],
-    ['Model Checker', 'MC', 'p'], ['IFCGeoRefChecker', 'GR', 'p'], ['IfcOpenShell', 'IOS', 'p'], ['IfcTester', 'IT', 'p', 'ifctester.svg'], ['IfcGref', 'Gf', 'p'], ['IFC Georeferencer', 'Gr', 'p'],
+    ['Model Checker', 'MC', 'p'], ['IFCGeoRefChecker', 'GR', 'p'], ['IfcOpenShell', 'IOS', 'p', 'ifcopenshell.png'], ['IfcTester', 'IT', 'p', 'ifctester.svg'], ['IfcGref', 'Gf', 'p'], ['IFC Georeferencer', 'Gr', 'p'],
     ['Civil 3D', 'C3D', 'p'], ['Navisworks', 'Nw', 'p'], ['Revit', 'Rv', 'p', 'revit.svg'], ['Archicad', 'Ac', 'p', 'archicad.svg'], ['Tekla', 'Tk', 'p'], ['Allplan', 'Al', 'p'], ['Vectorworks', 'Vw', 'p', 'vectorworks.svg'],
     ['BricsCAD', 'Bc', 'p'], ['Bentley iTwin', 'iT', 'p'], ['Bentley', 'Bn', 'p'], ['Bonsai', 'Bo', 'p', 'bonsai.png'], ['Solibri', 'Sb', 'p'], ['ArcGIS', 'Ag', 'p', 'arcgis.svg'], ['Forma', 'Fo', 'p'],
     ['ReCap', 'Rc', 'p'], ['Dynamo', 'Dy', 'p', 'dynamo.png'], ['CloudCompare', 'CC', 'p', 'cloudcompare.svg'], ['epsg.io', 'ep', 'p'],
@@ -250,29 +250,56 @@
     est: '<circle cx="80" cy="62" r="34" fill="none" stroke="#000" stroke-width="3"/><path d="M30 28 H130" stroke="#000" stroke-width="2"/><rect x="50" y="20" width="60" height="10" fill="#FFFF00" stroke="#000" stroke-width="2.5"/><circle cx="80" cy="28" r="4" fill="#000"/>',
     zonas: '<g stroke="#000" stroke-width="2.5" fill="#fff"><rect x="14" y="16" width="44" height="30"/><rect x="58" y="16" width="38" height="30"/><rect x="96" y="16" width="50" height="30"/><rect x="14" y="46" width="60" height="38"/><rect x="74" y="46" width="34" height="38" fill="#FFFF00"/><rect x="108" y="46" width="38" height="38"/></g>'
   };
+  // País del lector: se recuerda entre artículos (localStorage) y, la primera vez, se deduce del idioma del navegador
+  const P = window.BF_PAISES || [];
+  const REG = [['EU', 'Europa'], ['AM', 'América'], ['AP', 'Asia y Oceanía'], ['MA', 'Oriente Medio y África']];
+  const byId = (id) => P.find((x) => x.id === id);
+  const paisGuess = () => {
+    for (const l of navigator.languages || [navigator.language || '']) {
+      const r = (l.split('-')[1] || '').toUpperCase();
+      if (byId(r)) return r;
+    }
+    return 'ES';
+  };
+  let paisId = (() => { try { const v = localStorage.getItem('bf-pais'); if (byId(v)) return v; } catch (e) { /* sin almacenamiento */ } return paisGuess(); })();
+  const pc = () => '<span class="tag">Por confirmar</span>';
+  const keyOf = (p) => (p.epsg.find(([c]) => c === p.key) || p.epsg[0]);
+  // <span data-pais="campo"> muestra el dato del país del lector en cualquier texto
+  const CAMPOS = {
+    nombre: (p) => p.nombre, datum: (p) => p.datum, 'datum-epsg': (p) => p.datumEpsg, proy: (p) => p.proy,
+    epsg: (p) => keyOf(p)[0], 'epsg-nombre': (p) => keyOf(p)[1], alt: (p) => p.alt || 'su sistema de altitudes',
+    'alt-epsg': (p) => p.altEpsg || '—', red: (p) => p.red || 'su red geodésica nacional', org: (p) => p.org
+  };
+  const paisTexts = () => { const p = byId(paisId); if (!p) return; document.querySelectorAll('[data-pais]').forEach((el) => { const f = CAMPOS[el.dataset.pais]; if (f) el.textContent = f(p); }); };
+  const paisCard = (p) => `
+        <div class="paises-proy"><svg viewBox="0 0 160 100" class="draw" aria-hidden="true">${PROY_SVG[p.tipo] || PROY_SVG.utm}</svg><span class="c-label">Proyección</span><b>${p.proy}</b></div>
+        <div><span class="c-label">Datum</span><b>${p.datum}</b><span class="mono">EPSG ${p.datumEpsg}</span></div>
+        <div><span class="c-label">Altitudes</span>${p.alt ? `<b>${p.alt}</b><span class="mono">${p.altEpsg ? 'EPSG ' + p.altEpsg : 'sin código EPSG'}</span>` : `<b>Red nacional</b>${pc()}`}</div>
+        <div><span class="c-label">Red geodésica</span><b>${p.red || '—'}</b><span class="mono"><a href="${p.url}" target="_blank" rel="noopener">${p.org}</a></span></div>
+        <div class="paises-codes"><span class="c-label">Códigos EPSG para el BEP y el IFC</span><div>${p.epsg.map(([c, t]) => `<span class="paises-code${c === p.key ? ' is-key' : ''}"><b>${c}</b>${t}</span>`).join('')}</div>${p.obra || p.nota || p.revisar ? `<p>${p.obra || p.nota}${p.revisar ? ' ' + pc() : ''}</p>` : ''}</div>`;
+  const paisDraw = () => {
+    const p = byId(paisId); if (!p) return;
+    document.querySelectorAll('.paises').forEach((el) => { el.querySelector('select').value = p.id; el.querySelector('.paises-out').innerHTML = paisCard(p); });
+    document.querySelectorAll('.paises-tabla tr[data-p]').forEach((tr) => tr.classList.toggle('is-key', tr.dataset.p === p.id));
+    paisTexts();
+  };
+  const setPais = (id) => { if (!byId(id)) return; paisId = id; try { localStorage.setItem('bf-pais', id); } catch (e) { /* sin almacenamiento */ } paisDraw(); };
+  const paisSelect = () => `<label class="paises-sel"><span class="label">Tu país</span><select aria-label="Elegir país">${REG.map(([r, n]) => {
+    const L = P.filter((p) => p.reg === r).sort((x, y) => x.nombre.localeCompare(y.nombre, 'es'));
+    return L.length ? `<optgroup label="${n}">${L.map((p) => `<option value="${p.id}">${p.nombre}</option>`).join('')}</optgroup>` : '';
+  }).join('')}</select></label>`;
   // Tabla completa para la capa 2 (<div class="paises-tabla"></div>)
   const paisesTabla = (el) => {
-    const P = window.BF_PAISES || [];
-    el.innerHTML = `<div class="table-wrap"><table><thead><tr><th>País</th><th>Datum</th><th>Proyección</th><th>EPSG habitual</th><th>Altitudes</th><th>Organismo</th></tr></thead><tbody>${P.map((p) => `<tr${p.id === 'ES' ? ' class="is-key"' : ''}><td>${p.nombre}</td><td>${p.datum} <span class="mono">${p.datumEpsg}</span></td><td>${p.proy}</td><td class="mono">${p.epsg.map(([c]) => c).join(' · ')}</td><td>${p.alt ? `${p.alt} <span class="mono">${p.altEpsg}</span>` : '<span class="tag">Por confirmar</span>'}</td><td><a href="${p.url}" target="_blank" rel="noopener">${p.org}</a></td></tr>`).join('')}</tbody></table></div>`;
+    const L = [...P].sort((x, y) => x.nombre.localeCompare(y.nombre, 'es'));
+    el.innerHTML = `<div class="table-wrap"><table><thead><tr><th>País</th><th>Datum</th><th>Proyección</th><th>EPSG habitual</th><th>Altitudes</th><th>Red geodésica</th></tr></thead><tbody>${L.map((p) => `<tr data-p="${p.id}"${p.id === paisId ? ' class="is-key"' : ''}><td>${p.nombre}</td><td>${p.datum} <span class="mono">${p.datumEpsg}</span></td><td>${p.proy}</td><td class="mono">${p.epsg.map(([c]) => c).join(' · ')}</td><td>${p.alt ? `${p.alt}${p.altEpsg ? ` <span class="mono">${p.altEpsg}</span>` : ''}` : pc()}</td><td>${p.red || '—'} · <a href="${p.url}" target="_blank" rel="noopener">${p.org}</a></td></tr>`).join('')}</tbody></table></div>`;
   };
-  document.querySelectorAll('.paises').forEach((el) => {
-    const P = window.BF_PAISES || [];
-    if (!P.length) return;
-    const pc = () => '<span class="tag">Por confirmar</span>';
-    const draw = (id) => {
-      const p = P.find((x) => x.id === id) || P[0];
-      el.querySelectorAll('.paises-bar .chip').forEach((c) => c.classList.toggle('is-on', c.dataset.p === p.id));
-      el.querySelector('.paises-out').innerHTML = `
-        <div class="paises-proy"><svg viewBox="0 0 160 100" class="draw" aria-hidden="true">${PROY_SVG[p.tipo]}</svg><span class="c-label">Proyección</span><b>${p.proy}</b></div>
-        <div><span class="c-label">Datum</span><b>${p.datum}</b><span class="mono">EPSG ${p.datumEpsg}</span></div>
-        <div><span class="c-label">Altitudes</span>${p.alt ? `<b>${p.alt}</b><span class="mono">EPSG ${p.altEpsg}</span>` : `<b>Red nacional</b>${pc()}`}</div>
-        <div><span class="c-label">Organismo</span><b><a href="${p.url}" target="_blank" rel="noopener">${p.org}</a></b></div>
-        <div class="paises-codes"><span class="c-label">Códigos EPSG para el BEP y el IFC</span><div>${p.epsg.map(([c, t]) => `<span class="paises-code${c === p.key ? ' is-key' : ''}"><b>${c}</b>${t}</span>`).join('')}</div>${p.nota || p.revisar ? `<p>${p.nota}${p.revisar ? ' ' + pc() : ''}</p>` : ''}</div>`;
-    };
-    el.innerHTML = `<div class="paises-bar" role="group" aria-label="Elegir país">${P.map((p) => `<button type="button" class="chip" data-p="${p.id}">${p.nombre}</button>`).join('')}</div><div class="paises-out" aria-live="polite"></div>`;
-    el.querySelectorAll('.paises-bar .chip').forEach((c) => c.addEventListener('click', () => draw(c.dataset.p)));
-    draw(el.dataset.def || P[0].id);
-  });
+  if (P.length) {
+    document.querySelectorAll('.paises').forEach((el) => {
+      el.innerHTML = `<div class="paises-bar">${paisSelect()}<span class="paises-hint">Se recuerda en todos los artículos</span></div><div class="paises-out" aria-live="polite"></div>`;
+      el.querySelector('select').addEventListener('change', (e) => setPais(e.target.value));
+    });
+    paisDraw();
+  }
 
   // Lector de coordenadas: un cursor que se arrastra y se lee en tres sistemas
   document.querySelectorAll('.lector').forEach((el) => {
@@ -337,6 +364,7 @@
     body.innerHTML = `<div class="l2-head"><span class="kicker-y">${kicker}</span><span class="label">Capa 2 · ${pad(i + 1)} / ${total}${i >= 0 && caps[i] ? ' · ' + caps[i] : ''}</span><h3>${tpl.dataset.title || titleOf(slide)}</h3></div>`;
     body.appendChild(tpl.content.cloneNode(true));
     body.querySelectorAll('.paises-tabla').forEach(paisesTabla);
+    paisTexts();
     if (slide.dataset.capI !== '0') swDecorate(body);
     opener = btn || null;
     modal.classList.add('is-visible');
