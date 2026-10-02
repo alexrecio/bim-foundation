@@ -196,6 +196,15 @@
   if (sheet) sheet.addEventListener('click', (e) => { if (e.target.closest('a')) bar.classList.remove('is-open'); });
 
   let current = -1;
+  // El menú lateral arranca a la altura del bloque de contenidos de la slide en pantalla
+  const alinearMenu = () => {
+    const s = slides[current];
+    const b = s && (s.querySelector('.bento') || s.firstElementChild);
+    if (!side || !b) return;
+    const top = b.getBoundingClientRect().top - s.getBoundingClientRect().top;
+    side.parentElement.style.setProperty('--nav-top', Math.max(100, Math.round(top)) + 'px');
+  };
+  addEventListener('resize', alinearMenu);
   const setCurrent = (i) => {
     if (i === current) return;
     if (current < 0 || groupOf(i) !== groupOf(current)) openGroup(groupOf(i));
@@ -206,6 +215,7 @@
       a.classList.toggle('is-done', k < i);
       if (k === i) a.setAttribute('aria-current', 'step'); else a.removeAttribute('aria-current');
     });
+    alinearMenu();
     const cur = side && side.querySelector('a.is-current');
     if (cur) cur.scrollIntoView({ block: 'nearest' });
     if (barBtn) barBtn.querySelector('.n').textContent = `${pad(i + 1)}/${total}`, barBtn.querySelector('.t').textContent = titleOf(slides[i]);
