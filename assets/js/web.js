@@ -434,7 +434,7 @@
     if (!tpl || !modal) return;
     const slide = (btn || document.querySelector(`.slide [data-l2="${id}"]`)).closest('.slide');
     const i = slides.indexOf(slide);
-    const kicker = (slide.querySelector('.kicker-y') || {}).textContent || '';
+    const kEl = slide.querySelector('.kicker-y'), kicker = kEl ? [...kEl.childNodes].filter((n) => !(n.classList && n.classList.contains('sw'))).map((n) => n.textContent).join('').trim() : '';
     body.innerHTML = `<div class="l2-head"><span class="kicker-y">${kicker}</span><span class="label">Capa 2 · ${pad(i + 1)} / ${total}${i >= 0 && caps[i] ? ' · ' + caps[i] : ''}</span><h3>${tpl.dataset.title || titleOf(slide)}</h3></div>`;
     body.appendChild(tpl.content.cloneNode(true));
     body.querySelectorAll('.paises-tabla').forEach(paisesTabla);
