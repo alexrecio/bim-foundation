@@ -334,3 +334,4 @@ body.l2-lock .pz-hud { display: none; }
 .pz-wait.pz-cover-svg .pz-fill { opacity: 0; }
 .pz-in.pz-cover-svg .pz-fill { opacity: 1; transition: opacity .5s ease .8s; }
 @media (prefers-reduced-motion: reduce) { .slide .bento.pz-scan::after { display: none; } }
+.sis-mark img { display: block; margin: auto; } .sis-mark { min-height: 200px; justify-content: space-between; } .sis-lockup .display { margin: 0; }
