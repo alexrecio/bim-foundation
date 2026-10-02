@@ -303,8 +303,8 @@ window.BF_GLOSARIO = [
   "t": "Survey point",
   "en": "Punto de reconocimiento / Survey Point (y equivalentes)",
   "b": "III",
-  "d": "The point that represents in the model the origin of the real-world or shared coordinate system. It defines the translation (and, together with north, the rotation) between the local system and the survey system.",
-  "ej": "Coincident with a setting-out control point with known ETRS89 / UTM zone 30N coordinates.",
+  "d": "Marker that shows coordinates of the shared or survey system. Clipped, it sits at the origin of that system and moving it relocates the system relative to the model; unclipped, it is moved to a known point (a setting-out control point) without changing anything, only to read or check coordinates.",
+  "ej": "Unclipped, placed on a setting-out control point with known ETRS89 / UTM 30N coordinates to check that the model reads them correctly.",
   "eq": "Revit: Survey Point (clipped or unclipped); Archicad (AC25+): Survey Point; Allplan 2026 and Vectorworks: Survey Point; BricsCAD: Survey Location; Tekla: base point with E/N; IFC: IfcMapConversion.",
   "err": "Moving the point while clipped when you meant unclipped (or vice versa), shifting the whole shared coordinate system.",
   "rel": [

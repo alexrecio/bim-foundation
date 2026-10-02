@@ -14,14 +14,23 @@ import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
 import { execFileSync } from 'node:child_process';
+import { createHash } from 'node:crypto';
 
 const blob = (f) => execFileSync('git', ['hash-object', f], { encoding: 'utf8' }).trim();
 const leer = (f) => { const ctx = { window: {} }; vm.runInNewContext(fs.readFileSync(f, 'utf8'), ctx); return ctx.window; };
 const json = (f) => (fs.existsSync(f) ? JSON.parse(fs.readFileSync(f, 'utf8')) : null);
 const META = /<meta name="bf-fuente" content="([^"@]+)@([0-9a-f]*)">/;
 
+// Huella del texto ES de cada término del glosario: si cambia, la traducción está desfasada
+const huella = (g) => createHash('sha1').update([g.t, g.d, g.ej, g.eq, g.err].join('\u0001')).digest('hex').slice(0, 10);
+
 if (process.argv[2] === '--sellar') {
   for (const f of process.argv.slice(3)) {
+    if (f.endsWith('glosario.json')) {
+      const G0 = leer('assets/js/glosario.js').BF_GLOSARIO; const T = JSON.parse(fs.readFileSync(f, 'utf8'));
+      G0.forEach((g) => { if (T[g.id]) T[g.id].h = huella(g); });
+      fs.writeFileSync(f, JSON.stringify(T, null, 1) + '\n'); console.log('al día:', f); continue;
+    }
     const h = fs.readFileSync(f, 'utf8'); const m = h.match(META);
     if (!m) { console.error('sin <meta name="bf-fuente">:', f); process.exitCode = 1; continue; }
     fs.writeFileSync(f, h.replace(META, `<meta name="bf-fuente" content="${m[1]}@${blob(m[1])}">`));
@@ -73,6 +82,11 @@ for (const l of LANGS) {
     fs.writeFileSync(dir + 'glosario.js',
       `// Glosario (${l}). GENERADO por herramientas/i18n.mjs desde ${dir}glosario.json y assets/js/glosario.js: no editar a mano.\n` +
       `window.BF_GLOSARIO = ${JSON.stringify(out, null, 1)};\n`);
+    // Huella del ES con que se tradujo cada término (se añade la primera vez; luego, si el ES cambia, aviso)
+    let nuevas = false; const viejos = [];
+    GLOS.forEach((g) => { const x = G[g.id]; if (!x) return; if (!x.h) { x.h = huella(g); nuevas = true; } else if (x.h !== huella(g)) viejos.push(g.id); });
+    if (nuevas) fs.writeFileSync(dir + 'glosario.json', JSON.stringify(G, null, 1) + '\n');
+    if (viejos.length) avisos.push(`${l} · glosario DESFASADO (el ES cambió): ${viejos.join(', ')}; al terminar: node herramientas/i18n.mjs --sellar ${dir}glosario.json`);
     console.log(`glosario: ${GLOS.length - falta.length}/${GLOS.length} términos traducidos`);
     if (falta.length) avisos.push(`${l} · glosario sin traducir (sale en ES): ${falta.join(', ')}`);
   }

@@ -10,7 +10,8 @@
    "georeferenced",
    "georeference",
    "geo-referencing"
-  ]
+  ],
+  "h": "6776dfbdaa"
  },
  "C02": {
   "t": "Coordinate Reference System (CRS)",
@@ -23,7 +24,8 @@
    "CRS",
    "reference system",
    "coordinate system"
-  ]
+  ],
+  "h": "738127c136"
  },
  "C03": {
   "t": "Geodetic datum",
@@ -34,7 +36,8 @@
   "al": [
    "geodetic datum",
    "datum"
-  ]
+  ],
+  "h": "709abee390"
  },
  "C04": {
   "t": "EPSG code / Well-Known Text (WKT)",
@@ -47,7 +50,8 @@
    "EPSG code",
    "WKT",
    "Well-Known Text"
-  ]
+  ],
+  "h": "ae10b07a35"
  },
  "C05": {
   "t": "Map projection / UTM / zone",
@@ -61,7 +65,8 @@
    "UTM",
    "UTM zone",
    "Mercator"
-  ]
+  ],
+  "h": "4462504513"
  },
  "C06": {
   "t": "Local site coordinates vs projected coordinates",
@@ -76,7 +81,8 @@
    "grid coordinates",
    "local system",
    "low distortion projection"
-  ]
+  ],
+  "h": "9f896cb56a"
  },
  "C07": {
   "t": "Ellipsoidal height, orthometric height, geoid, vertical datum",
@@ -90,7 +96,8 @@
    "orthometric height",
    "vertical datum",
    "elevation"
-  ]
+  ],
+  "h": "081e3c4399"
  },
  "C08": {
   "t": "Scale factor (grid, elevation, combined) / grid vs ground",
@@ -104,7 +111,8 @@
    "grid scale factor",
    "grid distortion",
    "grid vs ground"
-  ]
+  ],
+  "h": "7139bc1de3"
  },
  "C09": {
   "t": "True north, grid north, magnetic north, project north",
@@ -117,7 +125,8 @@
    "grid north",
    "magnetic north",
    "project north"
-  ]
+  ],
+  "h": "b67be9714a"
  },
  "C10": {
   "t": "Grid convergence (W) / rotation angle",
@@ -130,7 +139,8 @@
    "meridian convergence",
    "convergence angle",
    "rotation angle"
-  ]
+  ],
+  "h": "95e52a65e2"
  },
  "C11": {
   "t": "Internal origin / model origin",
@@ -142,7 +152,8 @@
    "internal origin",
    "Internal Origin",
    "model origin"
-  ]
+  ],
+  "h": "c490342250"
  },
  "C12": {
   "t": "Project base point",
@@ -154,18 +165,20 @@
    "project base point",
    "Project Base Point",
    "base point"
-  ]
+  ],
+  "h": "7d60c91dad"
  },
  "C13": {
   "t": "Survey point",
-  "d": "The point that represents in the model the origin of the real-world or shared coordinate system. It defines the translation (and, together with north, the rotation) between the local system and the survey system.",
-  "ej": "Coincident with a setting-out control point with known ETRS89 / UTM zone 30N coordinates.",
+  "d": "Marker that shows coordinates of the shared or survey system. Clipped, it sits at the origin of that system and moving it relocates the system relative to the model; unclipped, it is moved to a known point (a setting-out control point) without changing anything, only to read or check coordinates.",
+  "ej": "Unclipped, placed on a setting-out control point with known ETRS89 / UTM 30N coordinates to check that the model reads them correctly.",
   "eq": "Revit: Survey Point (clipped or unclipped); Archicad (AC25+): Survey Point; Allplan 2026 and Vectorworks: Survey Point; BricsCAD: Survey Location; Tekla: base point with E/N; IFC: IfcMapConversion.",
   "err": "Moving the point while clipped when you meant unclipped (or vice versa), shifting the whole shared coordinate system.",
   "al": [
    "survey point",
    "Survey Point"
-  ]
+  ],
+  "h": "8106a0feca"
  },
  "C14": {
   "t": "Shared coordinates (acquire / publish)",
@@ -179,7 +192,8 @@
    "publish coordinates",
    "Acquire Coordinates",
    "Publish Coordinates"
-  ]
+  ],
+  "h": "44d37c8346"
  },
  "C15": {
   "t": "Floating-point precision / large coordinates / false origin",
@@ -194,7 +208,8 @@
    "false origin",
    "large coordinates",
    "float32"
-  ]
+  ],
+  "h": "fca5efe5ea"
  },
  "C16": {
   "t": "Coordinate transformation (Helmert, datum shift, NTv2)",
@@ -209,7 +224,8 @@
    "Helmert",
    "NTv2",
    "reprojection"
-  ]
+  ],
+  "h": "5539c54bff"
  },
  "C17": {
   "t": "Model federation and alignment",
@@ -223,7 +239,8 @@
    "federate",
    "federated",
    "model alignment"
-  ]
+  ],
+  "h": "0a023a0408"
  },
  "C18": {
   "t": "IfcSite RefLatitude / RefLongitude / RefElevation",
@@ -236,7 +253,8 @@
    "RefLatitude",
    "RefLongitude",
    "RefElevation"
-  ]
+  ],
+  "h": "b104d81d2e"
  },
  "C19": {
   "t": "IfcMapConversion",
@@ -249,7 +267,8 @@
    "IfcMapConversionScaled",
    "IfcRigidOperation",
    "map conversion"
-  ]
+  ],
+  "h": "9e3085bbe3"
  },
  "C20": {
   "t": "IfcProjectedCRS / IfcGeographicCRS",
@@ -261,7 +280,8 @@
    "IfcProjectedCRS",
    "IfcGeographicCRS",
    "IfcCoordinateReferenceSystem"
-  ]
+  ],
+  "h": "bc29d654f2"
  },
  "C21": {
   "t": "Geometric context: WorldCoordinateSystem and TrueNorth",
@@ -274,7 +294,8 @@
    "WorldCoordinateSystem",
    "IfcGeometricRepresentationContext",
    "geometric representation context"
-  ]
+  ],
+  "h": "05ed89e4da"
  },
  "C22": {
   "t": "Level of Georeferencing (LoGeoRef)",
@@ -286,7 +307,8 @@
    "LoGeoRef",
    "level of georeferencing",
    "georeferencing validation"
-  ]
+  ],
+  "h": "ba84b8eba7"
  },
  "C23": {
   "t": "IFC 4.3 alignment / linear referencing",
@@ -301,7 +323,8 @@
    "linear referencing",
    "chainage",
    "stationing"
-  ]
+  ],
+  "h": "b03ea29e59"
  },
  "C24": {
   "t": "IFC export/import coordinate settings",
@@ -315,7 +338,8 @@
    "IFC exporter",
    "IFC import",
    "Coordinate Base"
-  ]
+  ],
+  "h": "9f4bffb13c"
  },
  "C25": {
   "t": "Coordinate strategy in EIR/BEP (ISO 19650)",
@@ -330,7 +354,8 @@
    "exchange information requirements",
    "ISO 19650",
    "coordinate strategy"
-  ]
+  ],
+  "h": "e42d756e61"
  },
  "C26": {
   "t": "Georeferenced point clouds",
@@ -343,7 +368,8 @@
    "point clouds",
    "georeferenced point cloud",
    "laser scan"
-  ]
+  ],
+  "h": "471c78d5fa"
  },
  "C27": {
   "t": "Surveying, setting out and GNSS",
@@ -358,7 +384,8 @@
    "total station",
    "survey",
    "site calibration"
-  ]
+  ],
+  "h": "52d6205e9a"
  },
  "C28": {
   "t": "BIM-GIS integration (GeoBIM)",
@@ -371,7 +398,8 @@
    "BIM-GIS integration",
    "GeoBIM",
    "GIS"
-  ]
+  ],
+  "h": "943506a83c"
  },
  "C29": {
   "t": "Project location / geolocation",
@@ -384,7 +412,8 @@
    "geolocation",
    "geolocating",
    "geolocated"
-  ]
+  ],
+  "h": "072359d235"
  },
  "C30": {
   "t": "Cloud coordination (CDE)",
@@ -396,7 +425,8 @@
    "common data environment",
    "CDE",
    "cloud coordination"
-  ]
+  ],
+  "h": "39ba546912"
  },
  "C31": {
   "t": "CAD coordinate systems (WCS/UCS, DWG, DGN GCS, global origin)",
@@ -411,7 +441,8 @@
    "DGN",
    "world coordinate system",
    "user coordinate system"
-  ]
+  ],
+  "h": "b6ffe39ef5"
  },
  "C32": {
   "t": "Coordinate QA/QC checklists",
@@ -424,7 +455,8 @@
    "QA/QC",
    "coordinate checks",
    "common mistakes"
-  ]
+  ],
+  "h": "d2825d73c0"
  },
  "C33": {
   "t": "Spanish geodetic and legal framework",
@@ -437,7 +469,8 @@
    "REGCAN95",
    "RD 1071/2007",
    "official geodetic system"
-  ]
+  ],
+  "h": "33c893651c"
  },
  "C34": {
   "t": "Units and unit conversion",
@@ -449,7 +482,8 @@
    "model units",
    "unit conversion",
    "units"
-  ]
+  ],
+  "h": "c334871208"
  },
  "C35": {
   "t": "Reference epoch / plate motion / dynamic datum",
@@ -464,6 +498,7 @@
    "dynamic datum",
    "ITRF",
    "epoch"
-  ]
+  ],
+  "h": "3ad07c7352"
  }
 }
