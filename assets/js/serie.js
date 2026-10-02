@@ -45,15 +45,14 @@ window.SERIE = [
     estado: 'borrador'
   },
   {
-    // Artículo ficticio de relleno (arquitectura de la web): sustituir o borrar
     slug: 'clasificacion-bim',
     numero: '05',
     titulo: 'Sistemas de clasificación',
-    resumen: 'Un código común para que cada elemento se entienda en todas las fases.',
+    resumen: 'Qué es clasificar y para qué; Uniclass, OmniClass, CCI y GuBIMclass; cómo se lleva el código al IFC y cómo se comprueba con IDS.',
     tema: 'Datos',
-    fecha: '2026-12',
-    lectura: '6 ideas',
-    estado: 'relleno'
+    fecha: '2026-10',
+    lectura: '28 ideas',
+    estado: 'borrador'
   },
   {
     slug: 'bep-plan-de-ejecucion',

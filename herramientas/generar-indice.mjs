@@ -62,6 +62,7 @@ const CC = 'coordenadas-compartidas';
 const NI = 'niveles-de-informacion';
 const DI = 'deteccion-de-interferencias';
 const GD = 'gemelos-digitales';
+const CL = 'clasificacion-bim';
 const MANUAL = {
   C01: [CC, 'problema principio origenes'], C02: [CC, 'coordenadas paises'], C06: [CC, 'coordenadas principio origenes'],
   C11: [CC, 'origenes survey limites'], C12: [CC, 'origenes survey'], C13: [CC, 'survey otros'], C14: [CC, 'revit campus tipologias'],
@@ -83,7 +84,14 @@ const MANUAL = {
   G10: [GD, 'iso19650 entrega'], G13: [GD, 'ifc normas'], G14: [GD, 'identificadores ifc'], G15: [GD, 'ifc'], G16: [GD, 'ifc'], G17: [GD, 'entrega'], G18: [GD, 'ids entrega'],
   G19: [GD, 'ontologias shacl'], G21: [GD, 'ontologias'], G25: [GD, 'grafo plataformas'], G29: [GD, 'itwin'], G30: [GD, 'grafo'], G31: [GD, 'componentes'],
   G32: [GD, 'protocolos'], G34: [GD, 'protocolos'], G35: [GD, 'usos'], G36: [GD, 'usos casos'], G37: [GD, 'frecuencia datos-sensor'], G38: [GD, 'datos-sensor'],
-  G39: [GD, 'shacl'], G40: [GD, 'ontologias'], G41: [GD, 'entrega'], G42: [GD, 'casos mapa'], G43: [GD, 'frecuencia']
+  G39: [GD, 'shacl'], G40: [GD, 'ontologias'], G41: [GD, 'entrega'], G42: [GD, 'casos mapa'], G43: [GD, 'frecuencia'],
+  // Artículo 05 · sistemas de clasificación
+  K01: [CL, 'clasificar problema usos'], K02: [CL, 'facetas elegir'], K03: [CL, 'facetas'], K04: [CL, 'facetas uniclass'], K05: [CL, 'facetas espana'],
+  K06: [CL, 'jerarquia clasificar'], K07: [CL, 'clasificar'], K08: [CL, 'cci'], K09: [CL, 'ifc revit'], K10: [CL, 'ifc'], K11: [CL, 'ifc'],
+  K12: [CL, 'ifc'], K13: [CL, 'bsdd diccionario'], K14: [CL, 'bsdd diccionario'], K15: [CL, 'ids calidad'], K16: [CL, 'ids'], K17: [CL, 'uniclass mapa'],
+  K18: [CL, 'omniclass'], K19: [CL, 'omniclass'], K20: [CL, 'omniclass revit'], K21: [CL, 'cci'], K22: [CL, 'cci mapa'], K23: [CL, 'mapa'],
+  K24: [CL, 'espana archicad'], K25: [CL, 'espana mapeo otros'], K26: [CL, 'iso'], K27: [CL, 'diccionario bsdd'], K28: [CL, 'cci'], K29: [CL, 'mapeo'],
+  K30: [CL, 'mapeo'], K31: [CL, 'regla uniclass ifcopenshell']
 };
 // Dónde se explica cada término: puntuación por campo (titular > antetítulo/frase > tarjetas > capa 2)
 const norm = (s) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
