@@ -55,7 +55,7 @@
       svg: muro + marco + hoja + cota + muroP(true) + giro +
         '<path d="M178 128 h-14" stroke="#000" stroke-width="4"/><circle cx="510" cy="60" r="26" fill="#FFFF00" stroke="#000" stroke-width="3"/><path d="M497 60 l9 9 17 -19" fill="none" stroke="#000" stroke-width="4"/>' +
         `<text x="510" y="104" ${M} font-size="10" text-anchor="middle">verificada en obra</text>`,
-      g: 'La de lo construido', i: 'Nº de serie, garantía, manual', u: 'Explotación y mantenimiento', f: 'Comprobada en obra'
+      g: 'La de lo construido (no más detalle)', i: 'Nº de serie, garantía, manual', u: 'Explotación y mantenimiento', f: 'Verificada en obra'
     }
   };
   document.querySelectorAll('.niv-lod').forEach((el) => {
