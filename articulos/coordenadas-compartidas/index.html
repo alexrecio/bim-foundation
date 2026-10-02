@@ -31,14 +31,14 @@
 
   <!-- Menú de diapositivas: se rellena con data-nav de cada <section> -->
   <aside id="deck-nav" aria-label="Diapositivas">
-    <span class="kicker-y">Coordenadas · 24 ideas</span>
+    <span class="kicker-y">Coordenadas · 28 ideas</span>
     <ol></ol>
     <div id="deck-progress" aria-hidden="true"><i></i></div>
   </aside>
   <div id="deck-bar">
     <div id="deck-sheet"><ol></ol></div>
     <button type="button" id="deck-bar-btn" aria-expanded="false" aria-controls="deck-sheet">
-      <span class="n">01/24</span><span class="t">Portada</span>
+      <span class="n">01/28</span><span class="t">Portada</span>
       <span class="chev" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M3 9l4-4 4 4" fill="none" stroke="#fff" stroke-width="2"/></svg></span>
     </button>
   </div>
@@ -65,7 +65,7 @@
           <div class="card w6 g">
             <span class="c-label">El artículo en cinco bloques</span>
             <ol class="mapa">
-              <li class="is-key"><a href="#problema"><b>I</b><span>Conceptos generales</span><em>10 ideas · para cualquier programa</em></a></li>
+              <li class="is-key"><a href="#problema"><b>I</b><span>Conceptos generales</span><em>14 ideas · para cualquier programa</em></a></li>
               <li><a href="#espana"><b>II</b><span>Estándares</span><em>3 ideas · EPSG, IFC, ISO 19650</em></a></li>
               <li><a href="#limites"><b>III</b><span>Software</span><em>4 ideas · Revit y equivalencias</em></a></li>
               <li><a href="#coordinacion"><b>IV</b><span>Plataformas</span><em>2 ideas · visores y nube</em></a></li>
@@ -115,6 +115,171 @@
         </div>
       </div>
     </section>
+    <!-- ========== LA FORMA DE LA TIERRA ========== -->
+    <section class="slide" id="tierra" data-nav="La forma de la Tierra">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Geodesia</span>
+          <h2 class="display">La Tierra no es una esfera<span class="dot">.</span></h2>
+          <p class="slide-lead">Para calcular se usa un elipsoide, una forma matemática. El nivel del mar, el geoide, es irregular.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="tierra"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w4 g">
+            <span class="c-label">Tres formas para la misma Tierra</span>
+            <svg class="draw" viewBox="0 0 400 230" role="img" aria-label="Sección de la Tierra: esfera, elipsoide achatado y geoide ondulado">
+              <circle cx="150" cy="115" r="96" fill="none" stroke="#B9B9B0" stroke-width="2" stroke-dasharray="6 6"/>
+              <ellipse cx="150" cy="115" rx="104" ry="86" fill="#fff" stroke="#000" stroke-width="3"/>
+              <path d="M46 115 C 56 70, 92 40, 120 33 C 142 26, 158 36, 176 30 C 210 22, 240 58, 252 84 C 262 108, 250 128, 256 146 C 246 178, 214 200, 178 200 C 150 206, 130 194, 108 200 C 72 196, 52 160, 46 115 Z" fill="none" stroke="#000" stroke-width="6"/><path d="M46 115 C 56 70, 92 40, 120 33 C 142 26, 158 36, 176 30 C 210 22, 240 58, 252 84 C 262 108, 250 128, 256 146 C 246 178, 214 200, 178 200 C 150 206, 130 194, 108 200 C 72 196, 52 160, 46 115 Z" fill="none" stroke="#FFFF00" stroke-width="3"/>
+              <line x1="150" y1="115" x2="254" y2="115" stroke="#000" stroke-width="1.5"/><circle cx="150" cy="115" r="4" fill="#000"/>
+              <text x="186" y="109" font-family="JetBrains Mono, monospace" font-size="11">a</text>
+              <g font-family="JetBrains Mono, monospace" font-size="11">
+                <line x1="270" y1="40" x2="292" y2="40" stroke="#B9B9B0" stroke-width="2" stroke-dasharray="4 4"/><text x="300" y="44" fill="#666">esfera</text>
+                <line x1="270" y1="70" x2="292" y2="70" stroke="#000" stroke-width="3"/><text x="300" y="74">elipsoide</text>
+                <line x1="270" y1="100" x2="292" y2="100" stroke="#000" stroke-width="6"/><line x1="270" y1="100" x2="292" y2="100" stroke="#FFFF00" stroke-width="3"/><text x="300" y="104">geoide</text>
+                <text x="270" y="200" fill="#666">exagerado</text>
+              </g>
+            </svg>
+          </div>
+          <div class="card w2 k">
+            <span class="c-label">Achatamiento</span>
+            <b class="c-num">1/298</b>
+            <span class="c-foot">elipsoide GRS80</span>
+          </div>
+          <div class="card w3">
+            <span class="c-label">Semieje mayor (a)</span>
+            <b class="c-num">6 378<small>km</small></b>
+            <span class="c-foot">GRS80 · 6 378 137 m</span>
+          </div>
+          <div class="card w3 y">
+            <span class="c-label">Datum</span>
+            <span class="c-title">Elipsoide anclado a la Tierra real</span>
+            <span class="c-foot">ejemplo: ETRS89</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== TIPOS DE COORDENADAS ========== -->
+    <section class="slide" id="coordenadas" data-nav="Tipos de coordenadas">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Sistemas de referencia</span>
+          <h2 class="display">Un punto, cuatro maneras de escribirlo<span class="dot">.</span></h2>
+          <p class="slide-lead">Un sistema de referencia dice qué tipo de coordenadas se usan y sobre qué datum. Sin él, los números no significan nada.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="coordenadas"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w3">
+            <svg class="ico" viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="18" fill="#fff" stroke="#000" stroke-width="2.5"/><ellipse cx="22" cy="22" rx="8" ry="18" fill="none" stroke="#000" stroke-width="1.5"/><line x1="4" y1="22" x2="40" y2="22" stroke="#000" stroke-width="1.5"/><circle cx="29" cy="14" r="3" fill="#FFFF00" stroke="#000" stroke-width="1.5"/></svg>
+            <span class="c-title">Geográficas</span>
+            <span class="c-text mono" style="font-size:13px">φ · λ · h</span>
+            <span class="badge n">grados</span>
+          </div>
+          <div class="card w3">
+            <svg class="ico" viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="18" fill="#fff" stroke="#000" stroke-width="2.5"/><line x1="22" y1="22" x2="38" y2="30" stroke="#000" stroke-width="2"/><line x1="22" y1="22" x2="22" y2="4" stroke="#000" stroke-width="2"/><line x1="22" y1="22" x2="8" y2="32" stroke="#000" stroke-width="2"/><circle cx="22" cy="22" r="3" fill="#FFFF00" stroke="#000" stroke-width="1.5"/></svg>
+            <span class="c-title">Geocéntricas</span>
+            <span class="c-text mono" style="font-size:13px">X · Y · Z</span>
+            <span class="badge n">desde el centro</span>
+          </div>
+          <div class="card w3 y">
+            <svg class="ico" viewBox="0 0 44 44" aria-hidden="true"><rect x="4" y="4" width="36" height="36" fill="#fff" stroke="#000" stroke-width="2.5"/><path d="M4 16h36M4 28h36M16 4v36M28 4v36" stroke="#000" stroke-width="1"/><circle cx="28" cy="16" r="3" fill="#000"/></svg>
+            <span class="c-title">Proyectadas</span>
+            <span class="c-text mono" style="font-size:13px">E · N (+ H)</span>
+            <span class="badge k">metros en un plano</span>
+          </div>
+          <div class="card w3">
+            <svg class="ico" viewBox="0 0 44 44" aria-hidden="true"><path d="M8 36V8M8 36h28" stroke="#000" stroke-width="2.5"/><rect x="16" y="14" width="16" height="14" fill="#EFEFEA" stroke="#000" stroke-width="2"/><rect x="5" y="33" width="6" height="6" fill="#FFFF00" stroke="#000" stroke-width="1.5"/></svg>
+            <span class="c-title">Locales</span>
+            <span class="c-text mono" style="font-size:13px">x · y · z</span>
+            <span class="badge n">origen de la obra</span>
+          </div>
+          <div class="card w6 k">
+            <span class="c-label">Sistema de referencia de coordenadas</span>
+            <div class="flow"><span class="chip">Datum</span><span class="arrow" style="color:#fff">+</span><span class="chip">Tipo de coordenadas</span><span class="arrow" style="color:#fff">+</span><span class="chip">Alturas</span><span class="arrow" style="color:#fff">=</span><span class="chip y">Un código EPSG</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== PROYECCIÓN ========== -->
+    <section class="slide" id="proyeccion" data-nav="De la esfera al plano">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Proyección</span>
+          <h2 class="display">Aplanar la Tierra deforma algo<span class="dot">.</span></h2>
+          <p class="slide-lead">Una proyección pasa del elipsoide al plano. UTM la corta en husos estrechos para que la deformación sea pequeña.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="proyeccion"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w4 g">
+            <span class="c-label">Un huso, desenrollado</span>
+            <svg class="draw" viewBox="0 0 400 220" role="img" aria-label="Globo dividido en husos con uno resaltado y el mismo huso aplanado en una cuadrícula">
+              <circle cx="100" cy="110" r="90" fill="#fff" stroke="#000" stroke-width="3"/>
+              <g fill="none" stroke="#B9B9B0" stroke-width="1.5"><ellipse cx="100" cy="110" rx="70" ry="90"/><ellipse cx="100" cy="110" rx="45" ry="90"/><ellipse cx="100" cy="110" rx="20" ry="90"/></g>
+              <path d="M100 20 C 113 50, 120 80, 120 110 C 120 140, 113 170, 100 200 C 87 170, 80 140, 80 110 C 80 80, 87 50, 100 20 Z" fill="#FFFF00" stroke="#000" stroke-width="2"/>
+              <path d="M200 110 h40" stroke="#000" stroke-width="2"/><polygon points="244,110 234,104 234,116" fill="#000"/>
+              <rect x="262" y="20" width="76" height="180" fill="#FFFF00" stroke="#000" stroke-width="2.5"/>
+              <g stroke="#000" stroke-width="1" opacity=".5"><path d="M262 50h76M262 80h76M262 110h76M262 140h76M262 170h76M287 20v180M313 20v180"/></g>
+              <line x1="300" y1="20" x2="300" y2="200" stroke="#000" stroke-width="2" stroke-dasharray="5 4"/>
+              <text x="346" y="104" font-family="JetBrains Mono, monospace" font-size="10">meridiano</text><text x="346" y="117" font-family="JetBrains Mono, monospace" font-size="10">central</text>
+            </svg>
+          </div>
+          <div class="card w2 k">
+            <span class="c-label">Husos</span>
+            <b class="c-num">60</b>
+            <span class="c-foot">de 6° cada uno</span>
+          </div>
+          <div class="card w3">
+            <span class="c-label">Falso Este</span>
+            <b class="c-num" style="font-size:clamp(2rem,3.4vw,3rem)">500 000<small>m</small></b>
+            <span class="c-foot">en el meridiano central</span>
+          </div>
+          <div class="card w3 y">
+            <span class="c-label">Lo que conserva UTM</span>
+            <span class="c-title">Los ángulos, no las distancias</span>
+            <span class="c-foot">proyección conforme</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== TOPOGRAFÍA ========== -->
+    <section class="slide" id="topografia" data-nav="Del campo al modelo">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Topografía</span>
+          <h2 class="display">Del campo al modelo<span class="dot">.</span></h2>
+          <p class="slide-lead">El topógrafo se apoya en la red geodésica y entrega coordenadas en un sistema conocido. Ese sistema es el que hereda el modelo.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="topografia"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w6 g">
+            <span class="c-label">La cadena de la coordenada</span>
+            <svg class="draw" viewBox="0 0 640 170" role="img" aria-label="Red geodésica, medición GNSS o estación total, coordenadas geográficas, proyectadas, bases de replanteo y modelo">
+              <g font-family="JetBrains Mono, monospace" font-size="10.5" text-anchor="middle">
+                <polygon points="46,30 70,74 22,74" fill="#fff" stroke="#000" stroke-width="2.5"/><circle cx="46" cy="58" r="4" fill="#000"/>
+                <text x="46" y="98">red</text><text x="46" y="111">geodésica</text>
+                <g transform="translate(150,0)"><line x1="0" y1="40" x2="-14" y2="80" stroke="#000" stroke-width="2"/><line x1="0" y1="40" x2="14" y2="80" stroke="#000" stroke-width="2"/><line x1="0" y1="40" x2="0" y2="80" stroke="#000" stroke-width="2"/><rect x="-12" y="24" width="24" height="16" rx="3" fill="#fff" stroke="#000" stroke-width="2"/><text x="0" y="98">GNSS o</text><text x="0" y="111">estación total</text></g>
+                <g transform="translate(262,0)"><rect x="-44" y="34" width="88" height="40" rx="6" fill="#fff" stroke="#000" stroke-width="2"/><text x="0" y="52" font-weight="700">φ λ h</text><text x="0" y="66" fill="#666">datum</text><text x="0" y="98">geográficas</text></g>
+                <g transform="translate(380,0)"><rect x="-44" y="34" width="88" height="40" rx="6" fill="#fff" stroke="#000" stroke-width="2"/><text x="0" y="52" font-weight="700">E N H</text><text x="0" y="66" fill="#666">+ geoide</text><text x="0" y="98">proyectadas</text></g>
+                <g transform="translate(486,0)"><circle cx="0" cy="54" r="14" fill="#fff" stroke="#000" stroke-width="2"/><line x1="-20" y1="54" x2="20" y2="54" stroke="#000" stroke-width="1.5"/><line x1="0" y1="34" x2="0" y2="74" stroke="#000" stroke-width="1.5"/><text x="0" y="98">bases de</text><text x="0" y="111">replanteo</text></g>
+                <g transform="translate(590,0)"><rect x="-36" y="32" width="72" height="44" fill="#FFFF00" stroke="#000" stroke-width="2.5"/><text x="0" y="58" font-weight="700">modelo</text><text x="0" y="98">BIM</text></g>
+                <g stroke="#000" stroke-width="1.5"><path d="M78 54h48M174 54h40M310 54h22M428 54h36M504 54h46"/></g>
+                <text x="320" y="150" fill="#666">cada paso añade una transformación: hay que saber cuál</text>
+              </g>
+            </svg>
+          </div>
+          <div class="card w3 k"><span class="c-label">GNSS</span><span class="c-title">Posición absoluta</span><span class="c-foot">en el datum de la red</span></div>
+          <div class="card w3"><span class="c-label">Estación total</span><span class="c-title">Ángulos y distancias</span><span class="c-foot">desde bases conocidas</span></div>
+        </div>
+      </div>
+    </section>
+
 
     <!-- ========== LÍMITE ========== -->
     <section class="slide" id="limite" data-nav="Lejos del origen">
@@ -914,6 +1079,122 @@
 <span class="c-label">Lo que viene</span><p>Cinco bloques: conceptos generales, estándares, software, plataformas e interoperabilidad. El primero vale para cualquier programa.</p>
 </div>
 </div>
+  </template>
+
+  <template id="l2-tierra">
+    <div class="b-cards">
+      <div class="card w3">
+        <h4>Tres superficies</h4>
+        <ul>
+          <li><strong>Terreno:</strong> donde se mide y se construye.</li>
+          <li><strong>Geoide:</strong> superficie de igual gravedad que coincide con el nivel medio del mar. Es irregular y de él salen las altitudes.</li>
+          <li><strong>Elipsoide:</strong> forma matemática sencilla sobre la que se calculan latitudes, longitudes y proyecciones.</li>
+        </ul>
+      </div>
+      <div class="card w3 g">
+        <h4>Qué es un datum</h4>
+        <p>Es el elipsoide colocado y orientado respecto a la Tierra real. Un mismo punto tiene coordenadas distintas en cada datum: entre ED50 y ETRS89 la diferencia en España es del orden de 200 m.</p>
+      </div>
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Elipsoide GRS80</th><th>Valor</th><th>Lo usan</th></tr></thead>
+          <tbody>
+            <tr><td>Semieje mayor (a)</td><td class="num">6 378 137 m</td><td rowspan="2">ETRS89 y REGCAN95. WGS84 usa un elipsoide casi idéntico.</td></tr>
+            <tr><td>Inverso del achatamiento (1/f)</td><td class="num">298,257 222 101</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w6 k">
+        <h4>Un datum que viaja con su placa</h4>
+        <p>ETRS89 está ligado a la placa euroasiática y WGS84 a la Tierra en su conjunto. Como la placa se mueve, los dos se separan unos centímetros cada año: para posicionar una obra no son intercambiables.</p>
+      </div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2007-15822" target="_blank" rel="noopener">Real Decreto 1071/2007</a> · <a href="https://epsg.io/7019-ellipsoid" target="_blank" rel="noopener">EPSG:7019 (GRS 1980)</a> · <a href="https://www.euref.eu/" target="_blank" rel="noopener">EUREF</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-coordenadas">
+    <div class="b-cards">
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Tipo</th><th>Unidades</th><th>Para qué sirve</th><th>EPSG de ejemplo</th></tr></thead>
+          <tbody>
+            <tr><td>Geográficas</td><td>grados (+ m)</td><td>Situar un punto en el mundo; lo que muestra un GPS</td><td class="num">4258 · ETRS89</td></tr>
+            <tr><td>Geocéntricas</td><td>m</td><td>Cálculo interno del GNSS, desde el centro de la Tierra</td><td class="num">4936 · ETRS89</td></tr>
+            <tr class="is-key"><td>Proyectadas</td><td>m</td><td>Cartografía y proyecto: medir en un plano</td><td class="num">25830 · UTM 30N</td></tr>
+            <tr><td>Locales</td><td>m</td><td>Obra y modelo: números pequeños y cómodos</td><td>sin código: hay que documentar su relación</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w3 g">
+        <h4>La definición de IFC</h4>
+        <div class="quote" style="margin:0"><p>«A coordinate reference system is a coordinate system which is related to the real world by a datum».</p><cite>buildingSMART · <a href="https://standards.buildingsmart.org/IFC/RELEASE/IFC4_3/HTML/lexical/IfcCoordinateReferenceSystem.htm" target="_blank" rel="noopener">IfcCoordinateReferenceSystem</a></cite></div>
+      </div>
+      <div class="card w3">
+        <h4>Qué es un código EPSG</h4>
+        <p>Un número de un registro público que identifica sin ambigüedad datum, tipo de coordenadas y proyección. Escribirlo evita describir el sistema con palabras.</p>
+        <h4 style="margin-top:12px">Horizontal y vertical</h4>
+        <p>Las alturas tienen su propio sistema. Se combinan: por ejemplo, UTM 30N para la planta y altitudes de Alicante para la cota.</p>
+      </div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://epsg.io/4258" target="_blank" rel="noopener">EPSG:4258</a> · <a href="https://epsg.io/4936" target="_blank" rel="noopener">EPSG:4936</a> · <a href="https://epsg.io/25830" target="_blank" rel="noopener">EPSG:25830</a> · <a href="https://standards.buildingsmart.org/IFC/RELEASE/IFC4_3/HTML/lexical/IfcCoordinateReferenceSystem.htm" target="_blank" rel="noopener">IFC4.3</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-proyeccion">
+    <div class="b-cards">
+      <div class="card w2"><span class="step-n">1</span><span class="c-title">Conformes</span><p>Conservan los ángulos. UTM es una de ellas.</p></div>
+      <div class="card w2"><span class="step-n">2</span><span class="c-title">Equivalentes</span><p>Conservan las áreas y deforman las formas.</p></div>
+      <div class="card w2"><span class="step-n">3</span><span class="c-title">Equidistantes</span><p>Conservan algunas distancias, nunca todas.</p></div>
+      <div class="card w3">
+        <h4>Cómo se construye UTM</h4>
+        <ul>
+          <li>Un cilindro transversal toca el elipsoide a lo largo de un meridiano.</li>
+          <li>Cada huso mide 6° de longitud; hay 60.</li>
+          <li>El meridiano central vale 500 000 m de Este, para no tener valores negativos.</li>
+          <li>En el hemisferio norte el Norte se cuenta desde el ecuador.</li>
+          <li>La escala en el meridiano central es 0,9996: así el error se reparte a lo ancho del huso.</li>
+        </ul>
+      </div>
+      <div class="card w3 y">
+        <h4>Por qué importa al modelar</h4>
+        <p>Las coordenadas que se escriben en el modelo y en el IFC suelen ser proyectadas. Dentro del huso, la deformación es pequeña pero no nula, y crece al salir de él: una obra entre dos husos elige uno y lo escribe.</p>
+      </div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2007-15822" target="_blank" rel="noopener">Real Decreto 1071/2007, art. 5</a> · <a href="https://epsg.io/16030" target="_blank" rel="noopener">EPSG:16030 (UTM 30N)</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-topografia">
+    <div class="b-cards">
+      <div class="card w3">
+        <h4>La red geodésica</h4>
+        <p>Vértices y estaciones permanentes con coordenadas oficiales materializan el datum en el terreno, y una red de nivelación hace lo mismo con las altitudes. Todo levantamiento serio parte de ellas.</p>
+      </div>
+      <div class="card w3 g">
+        <h4>Bases de replanteo</h4>
+        <p>Puntos fijos en la obra con coordenadas en el sistema del proyecto. Desde ellos la estación total sitúa el resto. Si el modelo y las bases no comparten sistema, el replanteo no cuadra.</p>
+      </div>
+      <div class="card w6">
+        <h4>Un levantamiento en local</h4>
+        <p>Muchos topógrafos entregan en un sistema local: origen cómodo y sin deformación de proyección. Es válido, pero para georreferenciarlo hacen falta al menos dos puntos con coordenadas en los dos sistemas.</p>
+        <svg class="draw" viewBox="0 -20 640 200" role="img" aria-label="Rejilla local girada sobre la rejilla UTM con dos puntos comunes" style="margin-top:12px;max-height:170px">
+          <g stroke="#D5D5CB"><path d="M20 20h300M20 60h300M20 100h300M20 140h300M40 10v140M120 10v140M200 10v140M280 10v140"/></g>
+          <text x="20" y="14" font-family="JetBrains Mono, monospace" font-size="10" fill="#666">UTM</text>
+          <g transform="translate(170,80) rotate(-18)" stroke="#000" stroke-width="1.5" fill="none"><rect x="-110" y="-55" width="220" height="110"/><path d="M-110 0h220M0 -55v110"/></g>
+          <text x="66" y="40" font-family="JetBrains Mono, monospace" font-size="10">local</text>
+          <circle cx="98" cy="96" r="7" fill="#FFFF00" stroke="#000" stroke-width="2"/><circle cx="238" cy="52" r="7" fill="#FFFF00" stroke="#000" stroke-width="2"/>
+          <g font-family="JetBrains Mono, monospace" font-size="11"><text x="360" y="58">2 puntos con coordenadas</text><text x="360" y="76">en los dos sistemas</text><text x="360" y="104" fill="#666">→ desplazamiento + giro</text><text x="360" y="120" fill="#666">  (+ escala, si hace falta)</text></g>
+        </svg>
+      </div>
+      <div class="card w6 k">
+        <h4>Qué pedir siempre al topógrafo</h4>
+        <ul>
+          <li>Sistema de referencia y huso, con su código EPSG.</li>
+          <li>Tipo de altitud (elipsoidal u ortométrica) y geoide usado.</li>
+          <li>Si las distancias son de cuadrícula o de terreno.</li>
+          <li>Bases de replanteo con sus coordenadas.</li>
+        </ul>
+      </div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2007-15822" target="_blank" rel="noopener">Real Decreto 1071/2007</a> (redes REGENTE y REDNAP) · guía es.BIM (dos puntos documentados).</p></div>
+    </div>
   </template>
 
   <template id="l2-limite">
