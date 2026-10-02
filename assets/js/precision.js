@@ -185,36 +185,63 @@
     const bentos = [...document.querySelectorAll('.slide .bento')];
     document.documentElement.classList.add('pz-x');
     bentos.forEach((b) => tarjetas(b).forEach((c) => { c.style.clipPath = 'inset(50% 50% 50% 50%)'; }));
+    // Dos variantes en prueba (?cruz=cascada | ?cruz=una, se recuerda): crucetas de una en una, o solo en la tarjeta mayor
+    let modo = new URLSearchParams(location.search).get('cruz');
+    try { if (modo) localStorage.setItem('k-cruz', modo); else modo = localStorage.getItem('k-cruz'); } catch (e) {}
+    if (modo !== 'una') modo = 'cascada';
     let capa = null;
-    const DUR = 760, PASO = 110;
+    const libre = new Map();   // cascada por lámina: la siguiente tarjeta espera a que la anterior vaya avanzada
+    const DUR = 760, SOLAPE = 0.72;
     const suave = (t) => 1 - Math.pow(1 - t, 3);
-    const abre = (c, retraso) => {
+    const abre = (c, inicio) => {
       if (!capa) { capa = document.createElement('div'); capa.className = 'pz-xl'; capa.setAttribute('aria-hidden', 'true'); document.body.appendChild(capa); }
       const ls = ['h', 'v', 'h', 'v'].map((k) => { const l = document.createElement('i'); l.className = k; capa.appendChild(l); return l; });
-      let t0 = null;
-      const fin = () => { c.style.clipPath = ''; ls.forEach((l) => { l.classList.add('out'); setTimeout(() => l.remove(), 400); }); };
+      ls.forEach((l) => { l.style.opacity = '0'; });
+      const fin = () => { c.style.clipPath = ''; ls.forEach((l) => { l.style.opacity = ''; l.classList.add('out'); setTimeout(() => l.remove(), 400); }); };
       const paso = (ts) => {
-        if (t0 === null) t0 = ts + retraso;
-        const p = suave(Math.min(1, Math.max(0, (ts - t0) / DUR)));
+        if (ts < inicio) { requestAnimationFrame(paso); return; }
+        const p = suave(Math.min(1, (ts - inicio) / DUR));
         const r = c.getBoundingClientRect(), q = (1 - p) / 2;
         const x1 = r.left + r.width * q, y1 = r.top + r.height * q, x2 = r.right - r.width * q, y2 = r.bottom - r.height * q;
         ls[0].style.transform = `translateY(${y1}px)`; ls[1].style.transform = `translateX(${x1}px)`;
         ls[2].style.transform = `translateY(${y2}px)`; ls[3].style.transform = `translateX(${x2}px)`;
+        ls.forEach((l) => { l.style.opacity = ''; });
         c.style.clipPath = `inset(${q * 100}% ${q * 100}% ${q * 100}% ${q * 100}%)`;
-        if (ts - t0 < DUR) requestAnimationFrame(paso); else fin();
+        if (ts - inicio < DUR) requestAnimationFrame(paso); else fin();
       };
       requestAnimationFrame(paso);
     };
-    // Cada tarjeta se abre al asomar (en móvil una lámina puede medir varias pantallas); las que entran juntas, en cascada.
+    // Variante «una»: el resto de tarjetas aparece sin cruceta, en cuanto la mayor está casi abierta
+    const funde = (c, espera) => {
+      c.style.opacity = '0'; c.style.clipPath = '';
+      setTimeout(() => { c.style.transition = 'opacity .45s ease'; c.style.opacity = ''; setTimeout(() => { c.style.transition = ''; }, 500); }, espera);
+    };
+    const mayor = new Map(), finMayor = new Map();
+    if (modo === 'una') bentos.forEach((b) => {
+      let m = null, a = -1;
+      tarjetas(b).forEach((c) => { const r = c.getBoundingClientRect(), s2 = r.width * r.height; if (s2 > a) { a = s2; m = c; } });
+      mayor.set(b, m);
+    });
+    // Cada tarjeta se abre al asomar (en móvil una lámina puede medir varias pantallas).
     // Sin IntersectionObserver: Chromium descuenta el clip-path y una tarjeta cerrada nunca «intersecta».
     let pendientes = bentos.flatMap(tarjetas), cola = 0;
     const mira = () => {
-      cola = 0; let i = 0;
+      cola = 0;
+      const ahora = performance.now(), vistas = [];
       pendientes = pendientes.filter((c) => {
         const r = c.getBoundingClientRect();
-        if (r.top < innerHeight * 0.88 && r.bottom > innerHeight * 0.06 && r.width) { abre(c, i++ * PASO); return false; }
+        if (r.top < innerHeight * 0.88 && r.bottom > innerHeight * 0.06 && r.width) { vistas.push(c); return false; }
         return true;
       });
+      if (modo === 'cascada') vistas.forEach((c) => { const b = c.closest('.bento'), t = Math.max(ahora, libre.get(b) || 0); const n = tarjetas(b).length; libre.set(b, t + Math.min(DUR * SOLAPE, 1600 / Math.max(1, n - 1))); abre(c, t); });
+      else {
+        vistas.filter((c) => mayor.get(c.closest('.bento')) === c).forEach((c) => { abre(c, ahora); finMayor.set(c.closest('.bento'), ahora + DUR * 0.6); });
+        let k = 0;
+        vistas.filter((c) => mayor.get(c.closest('.bento')) !== c).forEach((c) => {
+          const f = finMayor.get(c.closest('.bento'));
+          funde(c, Math.max(0, (f || ahora) - ahora) + k++ * 70);
+        });
+      }
       if (!pendientes.length) { removeEventListener('scroll', pide, true); removeEventListener('resize', pide); }
     };
     const pide = () => { if (!cola) cola = requestAnimationFrame(mira); };
