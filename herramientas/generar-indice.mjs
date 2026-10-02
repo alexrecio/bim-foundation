@@ -60,6 +60,7 @@ for (const art of SERIE) {
 // Dónde se explica cada término: primero las diapositivas fijadas a mano (revisadas), después las que encuentra el texto
 const CC = 'coordenadas-compartidas';
 const NI = 'niveles-de-informacion';
+const GD = 'gemelos-digitales';
 const MANUAL = {
   C01: [CC, 'problema principio origenes'], C02: [CC, 'coordenadas paises'], C06: [CC, 'coordenadas principio origenes'],
   C11: [CC, 'origenes survey limites'], C12: [CC, 'origenes survey'], C13: [CC, 'survey otros'], C14: [CC, 'revit campus tipologias'],
@@ -69,7 +70,13 @@ const MANUAL = {
   // Artículo 02 · niveles de información
   N01: [NI, 'requisito pregunta iso7817'], N04: [NI, 'tipos'], N08: [NI, 'sobremodelado'], N09: [NI, 'escalera detalle elemento'],
   N10: [NI, 'detalle vista'], N12: [NI, 'exactitud'], N18: [NI, 'historia'], N19: [NI, 'historia paises'], N22: [NI, 'elemento'],
-  N29: [NI, 'loin-ids'], N30: [NI, 'calidad ids comprobadores forma'], N32: [NI, 'partes']
+  N29: [NI, 'loin-ids'], N30: [NI, 'calidad ids comprobadores forma'], N32: [NI, 'partes'],
+  // Artículo 07 · gemelos digitales
+  G01: [GD, 'definicion tres-niveles'], G02: [GD, 'tres-niveles'], G03: [GD, 'tres-niveles'], G05: [GD, 'madurez'], G08: [GD, 'iso19650'], G09: [GD, 'iso19650'],
+  G10: [GD, 'iso19650 entrega'], G13: [GD, 'ifc normas'], G14: [GD, 'identificadores ifc'], G15: [GD, 'ifc'], G16: [GD, 'ifc'], G17: [GD, 'entrega'], G18: [GD, 'ids entrega'],
+  G19: [GD, 'ontologias shacl'], G21: [GD, 'ontologias'], G25: [GD, 'grafo plataformas'], G29: [GD, 'itwin'], G30: [GD, 'grafo'], G31: [GD, 'componentes'],
+  G32: [GD, 'protocolos'], G34: [GD, 'protocolos'], G35: [GD, 'usos'], G36: [GD, 'usos casos'], G37: [GD, 'frecuencia datos-sensor'], G38: [GD, 'datos-sensor'],
+  G39: [GD, 'shacl'], G40: [GD, 'ontologias'], G41: [GD, 'entrega'], G42: [GD, 'casos mapa'], G43: [GD, 'frecuencia']
 };
 // Dónde se explica cada término: puntuación por campo (titular > antetítulo/frase > tarjetas > capa 2)
 const norm = (s) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();

@@ -218,6 +218,8 @@
     ['Civil 3D', 'C3D', 'p', 'civil3d.svg'], ['Navisworks', 'Nw', 'p', 'navisworks.svg'], ['Revit', 'Rv', 'p', 'revit.svg'], ['Archicad', 'Ac', 'p', 'archicad.svg'], ['Tekla', 'Tk', 'p', 'tekla.svg'], ['Allplan', 'Al', 'p', 'allplan.svg'], ['Vectorworks', 'Vw', 'p', 'vectorworks.svg'],
     ['BricsCAD', 'Bc', 'p'], ['Bentley iTwin', 'iT', 'p', 'bentley.svg'], ['Bentley', 'Bn', 'p', 'bentley.svg'], ['Bonsai', 'Bo', 'p', 'bonsai.png'], ['Solibri', 'Sb', 'p'], ['ArcGIS', 'Ag', 'p', 'arcgis.svg'], ['Forma', 'Fo', 'p'],
     ['ReCap', 'Rc', 'p'], ['Dynamo', 'Dy', 'p', 'dynamo.png'], ['CloudCompare', 'CC', 'p', 'cloudcompare.svg'], ['epsg.io', 'ep', 'p'],
+    ['Autodesk Tandem', 'Td', 'p', 'autodesk.svg'], ['Nemetschek dTwin', 'dT', 'p'], ['3DEXPERIENCE', '3DX', 'p'], ['Willow', 'Wi', 'p'], ['Siemens Building X', 'BX', 'p'], ['Unreal Engine', 'UE', 'p'], ['Unity', 'Un', 'p'], ['NVIDIA Omniverse', 'Ov', 'p'], ['Cesium ion', 'Cs', 'p'], ['Azure Digital Twins', 'ADT', 'p'], ['AWS IoT TwinMaker', 'TM', 'p'], ['Eclipse Ditto', 'Di', 'p'],
+    ['COBie', 'CB', 'e'], ['Brick', 'Br', 'e'], ['DTDL', 'DT', 'e'],
     ['IDS', 'IDS', 'e', 'ids.svg'], ['IFC', 'IFC', 'e', 'buildingsmart.png'], ['DWG', 'DWG', 'f'], ['RVT', 'RVT', 'f'], ['E57', 'E57', 'f'], ['LAS', 'LAS', 'f'], ['NWC', 'NWC', 'f'], ['XML', 'XML', 'f']
   ];
   const swIcon = (el) => {

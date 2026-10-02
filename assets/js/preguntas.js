@@ -16,5 +16,9 @@ window.BF_PREGUNTAS = [
   ['¿Pido LOD, LOI o LOIN en el contrato?', 'niveles-de-informacion', 'requisito', 'I'],
   ['¿Qué norma sustituye a la EN 17412-1?', 'niveles-de-informacion', 'iso7817', 'II'],
   ['¿El nivel de detalle «alto» de la vista es un LOD 400?', 'niveles-de-informacion', 'vista', 'III'],
-  ['¿Cómo compruebo que las puertas traen sus datos?', 'niveles-de-informacion', 'ids', 'VI']
+  ['¿Cómo compruebo que las puertas traen sus datos?', 'niveles-de-informacion', 'ids', 'VI'],
+  ['¿Qué diferencia hay entre un modelo BIM y un gemelo digital?', 'gemelos-digitales', 'tres-niveles', 'I'],
+  ['¿Qué datos tengo que pedir en el pliego para tener un gemelo?', 'gemelos-digitales', 'entrega', 'V'],
+  ['¿Cómo enlazo un sensor del edificio con su elemento del modelo?', 'gemelos-digitales', 'identificadores', 'V'],
+  ['¿Cómo compruebo que los datos de un gemelo son fiables?', 'gemelos-digitales', 'calidad', 'VI']
 ];

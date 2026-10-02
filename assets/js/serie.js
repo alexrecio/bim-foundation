@@ -68,14 +68,13 @@ window.SERIE = [
     estado: 'relleno'
   },
   {
-    // Ficticio: prueba del estado «próximamente» (sin enlace ni carpeta)
     slug: 'gemelos-digitales',
     numero: '07',
-    titulo: 'Gemelos digitales',
-    resumen: 'Del modelo de entrega al modelo de explotación conectado a sensores.',
+    titulo: 'Gemelos digitales en construcción e ingeniería',
+    resumen: 'Qué convierte un modelo en gemelo, qué normas lo ordenan (ISO 19650, IFC, Brick, DTDL), qué software y plataformas hay y cómo se comprueba que sus datos son fiables.',
     tema: 'Operación',
-    fecha: '2027-02',
-    lectura: '—',
-    estado: 'proximamente'
+    fecha: '2026-10',
+    lectura: '32 ideas',
+    estado: 'borrador'
   }
 ];
