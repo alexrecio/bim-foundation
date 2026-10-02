@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Borrador: quitar noindex al publicar -->
-  <meta name="bf-fuente" content="articulos/coordenadas-compartidas/index.html@fcf15c590234769174e418f3d965ac31ea84a49b">
+  <meta name="bf-fuente" content="articulos/coordenadas-compartidas/index.html@ec743e04655d623f87a24b6c8418a72ee8945847">
   <meta name="robots" content="noindex, nofollow">
   <title>Gemeinsame Koordinaten in BIM | bimkernel</title>
   <meta name="description" content="Wie gemeinsame Koordinaten in Revit, Civil 3D, IFC und weiterer BIM-Software funktionieren, mit dem spanischen geodätischen Rahmen (ETRS89, EPSG, Höhen über Alicante).">
@@ -32,13 +32,13 @@
 
   <!-- Menú de diapositivas: se rellena con data-nav de cada <section> -->
   <aside id="deck-nav" aria-label="Folien">
-    <span class="kicker-y">Koordinaten · 40 Ideen</span>
+    <span class="kicker-y">Koordinaten · 42 Ideen</span>
     <ol></ol>
   </aside>
   <div id="deck-bar">
     <div id="deck-sheet"><ol></ol></div>
     <button type="button" id="deck-bar-btn" aria-expanded="false" aria-controls="deck-sheet">
-      <span class="n">01/40</span><span class="t">Titel</span>
+      <span class="n">01/42</span><span class="t">Titel</span>
       <span class="chev" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M3 9l4-4 4 4" fill="none" stroke="#fff" stroke-width="2"/></svg></span>
     </button>
   </div>
@@ -55,17 +55,17 @@
       <div class="bento">
         <div class="b-title">
           <p class="hero-id"><a href="../../" style="text-decoration:none">bimkernel · 01</a></p>
-          <span class="kicker-y lg">Grundlagen · Standards · Software</span>
+          <span class="kicker-y lg">Realität · Modell · Baustelle</span>
           <h1 class="display">Gemeinsame<br>Koordinaten<br><span class="hl-y">in BIM<span class="dot">.</span></span></h1>
-          <p class="slide-lead">Das Modell bleibt stehen. Bewegt wird das Koordinatensystem.</p>
-          <div class="slide-actions"><a class="btn" href="#problema">Los geht’s <span aria-hidden="true">↓</span></a></div>
+          <p class="slide-lead">Ein Projekt beschreibt etwas, das es noch nicht gibt. Die Koordinaten sagen, wo es entstehen wird.</p>
+          <div class="slide-actions"><a class="btn" href="#porque">Los geht’s <span aria-hidden="true">↓</span></a></div>
         </div>
         <div class="b-cards">
           <div class="card w6 ficha" data-ficha></div>
           <div class="card w6 g">
             <span class="c-label">Der Beitrag in sechs Blöcken</span>
             <ol class="mapa">
-              <li class="is-key"><a href="#problema"><b>I</b><span>Grundlagen</span><em>16 Ideen · für jede Software</em></a></li>
+              <li class="is-key"><a href="#porque"><b>I</b><span>Grundlagen</span><em>18 Ideen · das Warum, die Erde und der Computer</em></a></li>
               <li><a href="#espana"><b>II</b><span>Normen und Standards</span><em>3 Ideen · EPSG, IFC, ISO 19650</em></a></li>
               <li><a href="#limites"><b>III</b><span>Software</span><em>7 Ideen · Revit, Survey Point, Campus und Typologien</em></a></li>
               <li><a href="#coordinacion"><b>IV</b><span>Plattformen</span><em>2 Ideen · Viewer und Cloud</em></a></li>
@@ -77,14 +77,83 @@
       </div>
     </section>
 
-    <!-- ========== EL PROBLEMA ========== -->
-    <section class="slide" id="problema" data-cap="I · Grundlagen" data-nav="Das Problem">
+    <!-- ========== POR QUÉ COORDENADAS ========== -->
+    <section class="slide" id="porque" data-cap="I · Grundlagen" data-nav="Warum Koordinaten">
       <div class="bento">
         <div class="b-title">
           <span class="slide-n"></span>
-          <span class="kicker-y">Das Problem</span>
+          <span class="kicker-y">A · Warum Koordinaten</span>
+          <h2 class="display">Zeichnen, was es noch nicht gibt<span class="dot">.</span></h2>
+          <p class="slide-lead">Ein Projekt beschreibt ein künftiges Bauwerk auf einem nicht physischen Träger. Die Koordinaten binden es an einen bestimmten Ort auf der Erde.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="porque"><span class="plus">+</span> Details ansehen</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w6">
+            <span class="c-label">Gelände und Modell, dieselbe Zahl</span>
+            <svg class="draw" viewBox="0 0 640 200" role="img" aria-label="Links das Gelände mit einem Vermessungsnagel; rechts ein Bildschirm mit dem Gebäudemodell; eine gelbe Linie mit den Koordinaten E, N und H verbindet den Nagel mit der Gebäudeecke">
+              <path d="M10 170 C70 160 110 150 160 156 S250 172 290 164" fill="none" stroke="#000" stroke-width="3" stroke-linecap="round"/>
+              <path d="M150 156 V128" stroke="#000" stroke-width="3" stroke-linecap="round"/><circle cx="150" cy="122" r="7" fill="#fff" stroke="#000" stroke-width="3"/>
+              <g font-family="JetBrains Mono, monospace" font-size="12"><text x="10" y="194">REALITÄT · wird gemessen</text><text x="104" y="118">Nagel</text></g>
+              <rect x="380" y="20" width="250" height="150" rx="6" fill="#fff" stroke="#000" stroke-width="3"/><path d="M470 170 V186 M440 186 H500" stroke="#000" stroke-width="3" stroke-linecap="round"/>
+              <path d="M430 140 V80 L480 56 L560 74 V128 Z M430 80 L510 98 L560 74 M510 98 V150" fill="none" stroke="#000" stroke-width="2.5" stroke-linejoin="round"/>
+              <path d="M430 140 L510 150 L560 128" fill="none" stroke="#000" stroke-width="2.5" stroke-linejoin="round"/>
+              <text x="392" y="40" font-family="JetBrains Mono, monospace" font-size="12">MODELL · wird geplant</text>
+              <path d="M158 122 C240 100 340 120 424 140" fill="none" stroke="#FFFF00" stroke-width="6" stroke-linecap="round"/>
+              <path d="M158 122 C240 100 340 120 424 140" fill="none" stroke="#000" stroke-width="1.5" stroke-dasharray="4 5"/>
+              <rect x="240" y="76" width="96" height="26" rx="13" fill="#000"/><text x="288" y="94" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="13" font-weight="700" fill="#FFFF00">E · N · H</text>
+            </svg>
+          </div>
+          <div class="card w2"><span class="c-label">Was es ist</span><span class="c-title">Ein künftiges Bauwerk</span></div>
+          <div class="card w2"><span class="c-label">Wo es lebt</span><span class="c-title">Auf einem digitalen Träger</span></div>
+          <div class="card w2 k"><span class="c-label">Was es bindet</span><span class="c-title">Ein Koordinatensystem</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== EL CICLO ========== -->
+    <section class="slide" id="ciclo" data-nav="Messen, codieren, bauen">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Von der Realität zu den Daten und zurück</span>
+          <h2 class="display">Messen, codieren, bauen<span class="dot">.</span></h2>
+          <p class="slide-lead">BIM beginnt mit dem Vermessen des Bestands und endet mit der Absteckung des Geplanten. Ändert sich unterwegs das System, steht das Gebäude nicht dort, wo es entworfen wurde.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="ciclo"><span class="plus">+</span> Die Phasen ansehen</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w6">
+            <span class="c-label">Sechs Phasen, ein System</span>
+            <svg class="draw" viewBox="0 0 640 210" role="img" aria-label="Kreislauf aus sechs Phasen: Realität, Messen, Codieren, Planen, Abstecken und Betreiben, der zur Realität zurückführt; alle teilen dasselbe Koordinatensystem">
+              <g font-family="JetBrains Mono, monospace" font-size="11" text-anchor="middle">
+                <circle cx="50" cy="70" r="40" fill="#000"/><text x="50" y="74" fill="#fff" font-weight="700">REALITÄT</text>
+                <circle cx="158" cy="70" r="40" fill="#fff" stroke="#000" stroke-width="3"/><text x="158" y="74">messen</text>
+                <circle cx="266" cy="70" r="40" fill="#fff" stroke="#000" stroke-width="3"/><text x="266" y="74">codieren</text>
+                <circle cx="374" cy="70" r="40" fill="#fff" stroke="#000" stroke-width="3"/><text x="374" y="74">planen</text>
+                <circle cx="482" cy="70" r="40" fill="#fff" stroke="#000" stroke-width="3"/><text x="482" y="74">abstecken</text>
+                <circle cx="590" cy="70" r="40" fill="#fff" stroke="#000" stroke-width="3"/><text x="590" y="74">betreiben</text>
+              </g>
+              <g stroke="#000" stroke-width="2"><path d="M90 70 H114 M198 70 H222 M306 70 H330 M414 70 H438 M522 70 H546"/></g>
+              <g fill="#000"><polygon points="124,70 114,65 114,75"/><polygon points="232,70 222,65 222,75"/><polygon points="340,70 330,65 330,75"/><polygon points="448,70 438,65 438,75"/><polygon points="556,70 546,65 546,75"/></g>
+              <path d="M590 112 V132 H50 V118" fill="none" stroke="#000" stroke-width="2" stroke-dasharray="6 5"/><polygon points="50,112 45,122 55,122" fill="#000"/>
+              <rect x="20" y="150" width="600" height="40" rx="20" fill="#FFFF00" stroke="#000" stroke-width="2.5"/>
+              <text x="320" y="176" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="14" font-weight="700">ein und dasselbe Koordinatensystem · EPSG <tspan data-pais="epsg">25830</tspan></text>
+            </svg>
+          </div>
+          <div class="card w2"><span class="c-label">Beginnt mit</span><span class="c-title">Der Vermessung</span></div>
+          <div class="card w2"><span class="c-label">Endet mit</span><span class="c-title">Der Absteckung</span></div>
+          <div class="card w2 k"><span class="c-label">Gilt</span><span class="c-title">Das ganze Leben des Bauwerks</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== EL PROBLEMA ========== -->
+    <section class="slide" id="problema" data-nav="Ohne gemeinsames System">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Wenn es kein gemeinsames System gibt</span>
           <h2 class="display">Modelle, die nicht passen<span class="dot">.</span></h2>
-          <p class="slide-lead">Jede Disziplin modelliert in ihrer Software. Ohne gemeinsames System liegen die Modelle bei der Föderation falsch.</p>
+          <p class="slide-lead">Jede Disziplin modelliert in ihrer Software. Teilen sie kein System, liegen die Modelle beim Zusammenführen falsch.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="problema"><span class="plus">+</span> Details ansehen</button></div>
         </div>
         <div class="b-cards">
@@ -104,7 +173,7 @@
             <span class="c-title">Falsche Höhe</span>
           </div>
           <div class="card w4 k">
-            <span class="c-label">GeoBIM Benchmark 2019</span>
+            <span class="c-label">GeoBIM Benchmark 2019 <span class="tag">Noch zu bestätigen</span></span>
             <b class="c-num xl">~30<small>%</small></b>
             <span class="c-text">der Werkzeuge lasen ein georeferenziertes IFC korrekt</span>
           </div>
@@ -122,7 +191,7 @@
       <div class="bento">
         <div class="b-title">
           <span class="slide-n"></span>
-          <span class="kicker-y">Geodäsie</span>
+          <span class="kicker-y">B · Geodäsie</span>
           <h2 class="display">Die Erde ist keine Kugel<span class="dot">.</span></h2>
           <p class="slide-lead">Gerechnet wird auf einem Ellipsoid, einer mathematischen Form. Der Meeresspiegel, das Geoid, ist unregelmäßig.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="tierra"><span class="plus">+</span> Details ansehen</button></div>
@@ -297,7 +366,7 @@
           <span class="slide-n"></span>
           <span class="kicker-y">Orientierung</span>
           <h2 class="display">Vier Nordrichtungen<span class="dot">.</span></h2>
-          <p class="slide-lead">In IFC wird die Drehung gegen Gitter-Nord gemessen, nicht gegen geografisch Nord.</p>
+          <p class="slide-lead">Das Gebäude wird gerade gezeichnet, im amtlichen Plan ist es aber verdreht. Diese Drehung wird gegen Gitter-Nord gemessen, nicht gegen geografisch Nord.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="nortes"><span class="plus">+</span> Details ansehen</button></div>
         </div>
         <div class="b-cards">
@@ -393,7 +462,7 @@
       <div class="bento">
         <div class="b-title">
           <span class="slide-n"></span>
-          <span class="kicker-y">Vermessung</span>
+          <span class="kicker-y">C · Vermessung</span>
           <h2 class="display">Vom Feld ins Modell<span class="dot">.</span></h2>
           <p class="slide-lead">Der Vermesser stützt sich auf das geodätische Netz und liefert Koordinaten in einem bekannten System. Dieses System erbt das Modell.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="topografia"><span class="plus">+</span> Details ansehen</button></div>
@@ -1439,12 +1508,13 @@
     </section>
 
     <!-- ========== CIERRE ========== -->
-    <section class="slide" id="cierre" data-nav="Zusammenfassung">
+    <section class="slide" id="cierre" data-nav="Vom Modell zur Absteckung">
       <div class="bento">
         <div class="b-title">
           <span class="slide-n"></span>
-          <span class="kicker-y">Zusammenfassung</span>
-          <h2 class="display">Vier Regeln<span class="dot">.</span></h2>
+          <span class="kicker-y">Zurück auf die Baustelle</span>
+          <h2 class="display">Vom Modell zur Absteckung<span class="dot">.</span></h2>
+          <p class="slide-lead">Was im Gelände gemessen wurde, kehrt dorthin zurück. Vier Regeln, damit es an derselben Stelle ankommt.</p>
           <div class="slide-actions">
             <button type="button" class="btn l2-btn" data-l2="glosario"><span class="plus">+</span> Glossar</button>
             <button type="button" class="btn ghost l2-btn" data-l2="fuentes"><span class="plus">+</span> Quellen</button>
@@ -1478,6 +1548,59 @@
 
   <!-- ============================== CAPA 2 ============================== -->
   <!-- Capa 2 = ficha «Ver detalle» en tarjetas. Solo añade lo que la slide no dice. -->
+
+    <template id="l2-porque">
+<div class="b-cards">
+<div class="card w6">
+<div class="table-wrap"><table>
+<thead><tr><th>Drei Welten</th><th>Was sie ist</th><th>Wie sie mit den anderen zusammenhängt</th></tr></thead>
+<tbody>
+<tr><td>Realität</td><td>Das Gelände, der Bestand, die erdverlegten Leitungen</td><td>Wird gemessen: Der Vermesser macht daraus Punkte mit Koordinaten</td></tr>
+<tr class="is-key"><td>Modell</td><td>Die Informationen zu einem Bauwerk, das es noch nicht gibt</td><td>Wird auf diesen Punkten und im selben System geplant</td></tr>
+<tr><td>Baustelle</td><td>Das gebaute Bauwerk</td><td>Wird abgesteckt: Die Koordinaten des Modells kehren ins Gelände zurück</td></tr>
+</tbody>
+</table></div>
+</div>
+<div class="card w3">
+<h4>Eine Realität codieren</h4>
+<p>Ein Modell ist kein Architekturmodell aus Pappe, sondern strukturierte Information. ISO 19650 nennt es während Planung und Bau Projektinformationsmodell und ab dem Betrieb Asset-Informationsmodell. Ohne Bezugssystem lassen sich diese Informationen weder mit denen des Geländes noch mit denen der Stadt verknüpfen.</p>
+</div>
+<div class="card w3 k">
+<h4>Was ein System festlegt</h4>
+<ul>
+<li>Wo: Ost- und Nordwert (<a href="#coordenadas">Koordinatenarten</a>).</li>
+<li>In welcher Höhe und bezogen worauf (<a href="#escala">Höhen</a>).</li>
+<li>Wohin es ausgerichtet ist (<a href="#nortes">Nordrichtungen</a>).</li>
+<li>Wie lang es wirklich ist (<a href="#escala">Maßstab</a>).</li>
+</ul>
+</div>
+<div class="card w6"><p class="table-note" style="margin:0">Quellen: <a href="https://www.iso.org/standard/68078.html" target="_blank" rel="noopener">ISO 19650-1:2018, Begriffe</a> · <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2007-15822" target="_blank" rel="noopener">Real Decreto 1071/2007, amtliches geodätisches System</a>.</p></div>
+</div>
+  </template>
+
+  <template id="l2-ciclo">
+<div class="b-cards">
+<div class="card w6">
+<div class="table-wrap"><table>
+<thead><tr><th>Phase</th><th>Wer</th><th>Welche Koordinaten</th><th>Was schiefgehen kann</th></tr></thead>
+<tbody>
+<tr><td>Messen</td><td>Vermesser</td><td>Die des amtlichen geodätischen Netzes</td><td>In einem lokalen System liefern, ohne zu sagen, in welchem (<a href="#topografia">vom Feld ins Modell</a>)</td></tr>
+<tr><td>Codieren</td><td>Vermesser und BIM-Team</td><td>Punkte, Punktwolken und Gelände in diesem System</td><td>So große Zahlen, dass die Software an Genauigkeit verliert (<a href="#limite">fern vom Ursprung</a>)</td></tr>
+<tr class="is-key"><td>Planen</td><td>Jede Disziplin</td><td>Ein lokaler Ursprung nahe am Gebäude und eine Transformation ins amtliche System</td><td>Dass jeder seinen eigenen Ursprung wählt (<a href="#principio">die goldene Regel</a>)</td></tr>
+<tr><td>Koordinieren</td><td>BIM-Koordinator</td><td>Für alle Modelle dieselben</td><td>Verschobene, verdrehte oder höhenversetzte Modelle (<a href="#problema">ohne gemeinsames System</a>)</td></tr>
+<tr><td>Abstecken</td><td>Bauunternehmen</td><td>Die Absteckungsfestpunkte der Baustelle</td><td>Gitter- und Geländestrecken verwechseln (<a href="#escala">Maßstab</a>)</td></tr>
+<tr><td>Betreiben</td><td>Eigentümer</td><td>Die des übergebenen Modells</td><td>Die Georeferenzierung im finalen Modell verlieren (<a href="#ifc">IFC</a>)</td></tr>
+</tbody>
+</table></div>
+</div>
+<div class="card w6 k">
+<h4>Eine einzige Entscheidung, ganz am Anfang</h4>
+<p>Das System wird vor dem Messen gewählt und im BIM-Abwicklungsplan festgehalten. Wird es mitten im Projekt geändert, muss alles Vorhandene transformiert werden, und jede Transformation ist eine Fehlerquelle. <span class="tag">Abgeleitet</span></p>
+</div>
+<div class="card w6"><p class="table-note" style="margin:0">Quellen: <a href="https://www.iso.org/standard/68080.html" target="_blank" rel="noopener">ISO 19650-2:2018, Lieferphasen</a> · <a href="https://www.boe.es/diario_boe/txt.php?id=BOE-A-2023-16784" target="_blank" rel="noopener">Orden PCM/818/2023, BIM-Plan der spanischen Zentralverwaltung</a>.</p></div>
+</div>
+  </template>
+
 
   <template id="l2-problema">
 <div class="b-cards">
