@@ -1,4 +1,4 @@
-# BIM Foundation
+# kernel
 
 Serie de artículos divulgativos sobre BIM en español. Web estática (HTML, CSS y JS sin dependencias ni compilación), con el mismo lenguaje visual que el portfolio de Alejandro García Nicolás.
 

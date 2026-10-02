@@ -77,7 +77,7 @@
   const icono = (a) => `${root}assets/img/iconos/${a.slug || '_plantilla'}.svg`;
   const cover = (a) => `<div class="cover" aria-hidden="true"><span class="cover-n">${a.numero || 'NN'}</span>` +
     `<img src="${root}assets/img/cubiertas/${a.slug || '_plantilla'}.svg" alt="" onerror="this.src='${root}assets/img/cubiertas/_plantilla.svg'">` +
-    `<span class="cover-t">${a.tema || 'Tema'}</span><span class="cover-bf">BF</span></div>`;
+    `<span class="cover-t">${a.tema || 'Tema'}</span><span class="cover-bf">k</span></div>`;
 
   // Portada de la web: rejilla de artículos con su cubierta
   const list = document.getElementById('article-list');
@@ -100,7 +100,7 @@
   document.querySelectorAll('[data-ficha]').forEach((el) => {
     const estado = ESTADOS[actual.estado];
     el.innerHTML = `${cover(actual)}<div class="ficha-info">
-      <span class="c-label">Serie BIM Foundation</span>
+      <span class="c-label">Serie kernel</span>
       <span class="c-title">Artículo ${actual.numero}</span>
       <div class="chips"><span class="chip y">${actual.lectura}</span>${actual.fecha ? `<span class="chip">${fmtFecha(actual.fecha)}</span>` : ''}</div>
       ${estado ? `<span class="badge n">${estado}</span>` : ''}</div>`;

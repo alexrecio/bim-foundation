@@ -1,5 +1,5 @@
 /* ==========================================================================
-   BIM Foundation · capa «Precisión»
+   kernel · capa «Precisión»
    Se carga después de estilo.css. Mantiene la marca (blanco, negro, Hello
    Yellow, Inter 900, JetBrains Mono) y le añade el lenguaje del plano técnico:
    tipografía servida desde el propio sitio, cifras tabulares, retícula de 8 px,
@@ -335,3 +335,44 @@ body.l2-lock .pz-hud { display: none; }
 .pz-in.pz-cover-svg .pz-fill { opacity: 1; transition: opacity .5s ease .8s; }
 @media (prefers-reduced-motion: reduce) { .slide .bento.pz-scan::after { display: none; } }
 .sis-mark img { display: block; margin: auto; } .sis-mark { min-height: 200px; justify-content: space-between; } .sis-lockup .display { margin: 0; }
+
+/* ==========================================================================
+   kernel v0.4: un punto más tecnológico
+   ========================================================================== */
+/* Logotipo de terminal */
+.k-word { font-family: var(--mono); font-weight: 700; letter-spacing: -.02em; text-transform: lowercase; white-space: nowrap; }
+.hero-id .k-word { font-size: 1.6em; }
+.k-cur { display: inline-block; width: .55em; height: .95em; margin-left: .08em; vertical-align: -.12em; background: var(--accent); box-shadow: inset 0 0 0 1.5px var(--black); animation: k-blink 1.05s steps(1) infinite; }
+@keyframes k-blink { 50% { opacity: 0; } }
+/* Botón del cartucho: «k» en mono con el cursor */
+#menu-trigger { font-family: var(--mono); font-weight: 700; font-size: 20px; letter-spacing: 0; text-transform: lowercase; position: relative; }
+#menu-trigger::after { content: ""; position: absolute; right: 11px; bottom: 13px; width: 6px; height: 6px; background: var(--accent); }
+#menu-trigger:hover::after { background: var(--black); }
+.cover-bf { font-family: var(--mono); font-weight: 700; font-size: 13px !important; text-transform: lowercase; }
+
+/* Barra de estado (antes, lector de coordenadas) */
+.pz-hud { gap: 10px; }
+.pz-hud .led { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); border: 1.5px solid var(--black); animation: k-led 2.4s ease-in-out infinite; }
+@keyframes k-led { 50% { box-shadow: 0 0 0 4px rgba(255,255,0,.45); } }
+.pz-hud .sys { color: var(--black); text-transform: lowercase; letter-spacing: .02em; padding-right: 10px; border-right: 1px solid var(--s200); }
+.pz-hud .sys em { font-style: normal; color: var(--s500); }
+.pz-hud .crs { color: var(--black); padding-right: 10px; border-right: 1px solid var(--s200); }
+.pz-hud .crs[hidden] { display: none; }
+
+/* Sello de lámina como ruta */
+.slide[data-pz-stamp]::after { text-transform: none; letter-spacing: .04em; white-space: pre; }
+
+/* Arranque del sistema */
+.k-boot { position: fixed; inset: 0; z-index: 400; background: var(--white); display: flex; align-items: center; justify-content: center; padding: 24px;
+  background-image: linear-gradient(var(--hair) 1px, transparent 1px), linear-gradient(90deg, var(--hair) 1px, transparent 1px); background-size: 8px 8px;
+  transition: opacity .4s ease, transform .45s var(--ease); }
+.k-boot.is-out { opacity: 0; transform: scale(1.01); pointer-events: none; }
+.k-boot pre { margin: 0; width: min(100%, 560px); padding: 22px 24px; background: var(--black); color: var(--white); border-radius: 4px;
+  font-family: var(--mono); font-size: 13px; line-height: 1.9; font-feature-settings: "zero" 1, "tnum" 1; white-space: pre-wrap; box-shadow: 0 30px 60px -20px rgba(0,0,0,.35); }
+.k-boot pre b { color: var(--accent); }
+.k-boot .dim { color: var(--s500); }
+.k-boot .ok { color: var(--accent); }
+.k-boot .y { color: var(--accent); }
+.k-boot .dots::before { content: "··········"; color: var(--s700); }
+@media (max-width: 480px) { .k-boot pre { font-size: 11px; } .k-boot .dots { display: none; } }
+@media (prefers-reduced-motion: reduce) { .k-cur, .pz-hud .led { animation: none; } }

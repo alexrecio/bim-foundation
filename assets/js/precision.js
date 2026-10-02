@@ -7,12 +7,12 @@
   const serie = window.SERIE || [];
   const art = serie.find((a) => a.slug === doc.dataset.slug);
 
-  // ---------- Sello de lámina en cada slide: «BF·01 — 07/39 — I» ----------
+  // ---------- Sello de lámina en cada slide: «kernel://01/07 · I  [07/39]» ----------
   const slides = [...document.querySelectorAll('.slide')];
   let cap = '';
   slides.forEach((s, i) => {
     if (s.dataset.cap) cap = s.dataset.cap.split('·')[0].trim();
-    s.dataset.pzStamp = `BF·${art ? art.numero : '00'} — ${pad(i + 1)}/${pad(slides.length)}${cap ? ' — ' + cap : ''}`;
+    s.dataset.pzStamp = `kernel://${art ? art.numero : '00'}/${pad(i + 1)}${cap ? ' · ' + cap : ''}  [${pad(i + 1)}/${pad(slides.length)}]`;
   });
 
   // ---------- Movimiento: entrada de tarjetas y trazado de los dibujos ----------
@@ -104,17 +104,17 @@
   const pie = document.querySelector('footer.site .wrap');
   if (pie && !pie.querySelector('.pz-cajetin')) {
     const autor = (pie.textContent.match(/(?:Diseñada y desarrollada por|Designed and developed by|entwickelt von) ([^·]+)/) || [])[1] || 'Alejandro García Nicolás';
-    const doc_ = art ? art.titulo : (document.title.split('|').map((t) => t.trim()).find((t) => t && t !== 'BIM Foundation') || 'Índice de la serie');
+    const doc_ = art ? art.titulo : (document.title.split('|').map((t) => t.trim()).find((t) => t && t !== 'kernel') || 'Índice de la serie');
     const meses = ['ENE','FEB','MAR','ABR','MAY','JUN','JUL','AGO','SEP','OCT','NOV','DIC'];
     const f = art && art.fecha ? art.fecha.split('-') : null;
     const fecha = f ? `${meses[+f[1] - 1]} ${f[0]}` : String(new Date().getFullYear());
     const celda = (k, v, cls = '') => `<div class="${cls}"><span>${k}</span><b>${v}</b></div>`;
     // Sustituye solo la línea de autoría original; lo demás que haya en el pie se conserva
-    [...pie.children].filter((el) => el.matches('span') && (/Diseñada|Designed|entwickelt von|BIM Foundation ·/.test(el.textContent) || el.classList.contains('sep'))).forEach((el) => el.remove());
+    [...pie.children].filter((el) => el.matches('span') && (/Diseñada|Designed|entwickelt von|kernel ·/.test(el.textContent) || el.classList.contains('sep'))).forEach((el) => el.remove());
     pie.insertAdjacentHTML('afterbegin', `<div class="pz-cajetin">` +
-      celda('Proyecto', 'BIM Foundation', 'c-proy') +
+      celda('Proyecto', 'kernel', 'c-proy') +
       celda('Documento', doc_, 'c-doc') +
-      celda('Hoja', art ? `BF·${art.numero}` : 'BF·00') +
+      celda('Hoja', art ? `K·${art.numero}` : 'K·00') +
       celda('Escala', '1:1') +
       celda('Fecha', fecha) +
       celda('Rev.', art && art.estado === 'publicado' ? '1.0' : '0.1', 'c-rev') +
@@ -125,7 +125,11 @@
   if (matchMedia('(pointer: fine)').matches) {
     const hud = document.createElement('div');
     hud.className = 'pz-hud'; hud.setAttribute('aria-hidden', 'true');
-    hud.innerHTML = 'X <b>0,0</b> Y <b>0,0</b> <i>mm</i>';
+    const sis = () => { const b = document.querySelector('[data-crs-chip] b'); const m = b && b.textContent.match(/EPSG\s*\d+/); return m ? m[0] : ''; };
+    hud.innerHTML = '<span class="led"></span><span class="sys">kernel <em>v0.1</em></span><span class="crs"></span>X <b>0,0</b> Y <b>0,0</b> <i>mm</i>';
+    const crsEl = hud.querySelector('.crs');
+    const pintaCrs = () => { const c = sis(); crsEl.textContent = c; crsEl.hidden = !c; };
+    pintaCrs(); document.addEventListener('bf-crs', pintaCrs); setTimeout(pintaCrs, 600);
     document.body.appendChild(hud);
     const [bx, by] = hud.querySelectorAll('b');
     const MM = 25.4 / 96; // 1 px CSS = 0,2646 mm
@@ -221,4 +225,48 @@
       requestAnimationFrame(() => requestAnimationFrame(() => { svg.classList.remove('pz-wait'); svg.classList.add('pz-in'); }));
     } catch (e) { /* si falla, se queda la imagen */ }
   }, 0.4);
+})();
+
+// kernel v0.4: logotipo de terminal y arranque del sistema en la portada
+(function () {
+  const lang = (document.documentElement.lang || 'es').slice(0, 2);
+  const calma = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // ---------- Logotipo: «kernel» en mono con el cursor de terminal amarillo ----------
+  document.querySelectorAll('.hero-id').forEach((el) => {
+    const w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+    while (w.nextNode()) {
+      const n = w.currentNode, i = n.nodeValue.indexOf('kernel');
+      if (i < 0) continue;
+      const resto = n.splitText(i); resto.nodeValue = resto.nodeValue.slice(6);
+      const k = document.createElement('span');
+      k.className = 'k-word'; k.innerHTML = 'kernel<i class="k-cur" aria-hidden="true"></i>';
+      n.parentNode.insertBefore(k, resto);
+      break;
+    }
+  });
+
+  // ---------- Arranque: una vez por visita, la portada «arranca» como un sistema ----------
+  const portada = document.getElementById('article-list') && document.querySelector('.hero');
+  let visto = false;
+  try { visto = sessionStorage.getItem('k-boot') === '1'; sessionStorage.setItem('k-boot', '1'); } catch (e) { visto = true; }
+  if (!portada || visto || calma) return;
+  const n = (window.SERIE || []).filter((a) => a.estado !== 'proximamente').length;
+  const T = {
+    es: ['kernel v0.1 · fundamentos BIM', 'montando sistema de referencia', 'cargando registro EPSG', 'fijando origen  E 0,000 · N 0,000', `${n} artículos · 6 bloques · fuentes citadas`, 'listo'],
+    en: ['kernel v0.1 · BIM fundamentals', 'mounting reference system', 'loading EPSG registry', 'fixing origin  E 0.000 · N 0.000', `${n} articles · 6 blocks · sources cited`, 'ready'],
+    de: ['kernel v0.1 · BIM-Grundlagen', 'Bezugssystem wird eingebunden', 'EPSG-Register wird geladen', 'Ursprung wird gesetzt  E 0,000 · N 0,000', `${n} Beiträge · 6 Blöcke · Quellen belegt`, 'bereit']
+  }[lang] || null;
+  if (!T) return;
+  const o = document.createElement('div');
+  o.className = 'k-boot'; o.setAttribute('aria-hidden', 'true');
+  o.innerHTML = `<pre><b>${T[0]}</b>\n</pre>`;
+  document.body.appendChild(o);
+  const pre = o.querySelector('pre');
+  const lineas = [1, 2, 3].map((i) => `<span class="dim">&gt;</span> ${T[i]} <span class="dots"></span> <span class="ok">ok</span>`).concat([`<span class="dim">&gt;</span> ${T[4]}`, `<span class="y">${T[5]}</span><i class="k-cur"></i>`]);
+  let i = 0, fin = false;
+  const cerrar = () => { if (fin) return; fin = true; o.classList.add('is-out'); setTimeout(() => o.remove(), 450); };
+  const sig = () => { if (fin) return; if (i < lineas.length) { pre.insertAdjacentHTML('beforeend', lineas[i++] + '\n'); setTimeout(sig, i < 4 ? 170 : 220); } else setTimeout(cerrar, 380); };
+  setTimeout(sig, 160);
+  ['pointerdown', 'keydown', 'wheel', 'touchstart'].forEach((ev) => addEventListener(ev, cerrar, { once: true, passive: true }));
 })();

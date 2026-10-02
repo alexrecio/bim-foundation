@@ -7,7 +7,7 @@
     // Navigation und Status
     'Inicio': 'Start', 'Artículos': 'Beiträge', 'Glosario': 'Glossar', 'Buscar': 'Suchen', 'Ayuda': 'Hilfe', 'Menú': 'Menü', 'Cerrar': 'Schließen',
     'Borrador': 'Entwurf', 'Próximamente': 'Demnächst', 'Relleno ficticio': 'Fiktiver Platzhalter', 'Ficticio': 'Fiktiv',
-    'Serie BIM Foundation': 'Serie BIM Foundation', 'Tema': 'Thema', 'Primer artículo': 'Erster Beitrag',
+    'Serie kernel': 'Serie kernel', 'Tema': 'Thema', 'Primer artículo': 'Erster Beitrag',
     '← Anterior': '← Zurück', 'Siguiente →': 'Weiter →', 'Por confirmar': 'Noch zu bestätigen', 'Inferido': 'Abgeleitet',
     'Diapositivas': 'Folien', 'Ver detalle': 'Details ansehen', 'Capa 2': 'Ebene 2', 'Capa 1': 'Ebene 1', '15 segundos': '15 Sekunden',
     // Blöcke

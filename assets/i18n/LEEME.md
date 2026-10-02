@@ -1,4 +1,4 @@
-# Idiomas de BIM Foundation
+# Idiomas de kernel
 
 La versión ES es la raíz de la web. Cada idioma vive en `/<lang>/` con **las mismas rutas y slugs** (`/en/`, `/en/glosario/`, `/en/articulos/<slug>/`). Lo que aún no está traducido se enlaza en ES.
 
