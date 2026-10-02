@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 128 128">
+  
+  
+  
+  <path id="b" fill="#000" d="M74 49q-5-16-22-16-30 0-30 34c0 23 16 30 29 30q18 0 24-22h11q-6 31-37 31c-20 0-38-11-39-40q2-42 42-42 27 0 33 25z"/>
+  <use xlink:href="#b" transform="translate(30)"/>
+</svg>

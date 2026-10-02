@@ -11,4 +11,4 @@
 - `assets/js/serie.js` es la única lista de artículos. Un artículo nuevo = carpeta copiada de `articulos/_plantilla/` + ficha en `serie.js` + cubierta en `assets/img/cubiertas/<slug>.svg` + pictograma en `assets/img/iconos/<slug>.svg`.
 - Contenido: cada dato técnico lleva su fuente (preferir documentación oficial). Lo no confirmado se marca con `<span class="tag">Por confirmar</span>` y se revisa antes de publicar.
 - La investigación de cada artículo vive en la carpeta del proyecto (`/mnt/project-files/investigacion/`), no en el repo.
-- **Iconos de software:** cuando se nombra un programa, formato nativo o IFC, lleva su monograma (automático desde la lista `SW` de `assets/js/web.js`, en colores de la web, no logotipos). Programa nuevo = línea en `SW`. Nunca en el bloque I.
+- **Iconos de software:** cuando se nombra un programa, formato nativo o IFC, lleva su logotipo oficial más reciente en una sola tinta, recoloreado a los colores de la web (`assets/img/sw/`, automático desde la lista `SW` de `assets/js/web.js`); si no hay logotipo disponible, monograma. Programa nuevo = línea en `SW`. Nunca en el bloque I.

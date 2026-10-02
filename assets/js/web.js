@@ -211,13 +211,14 @@
 
 
   // Iconos de programas y formatos (monogramas con los colores de la web, no los logotipos)
+  // [nombre, monograma, tipo (p programa · e estándar abierto · f formato), logotipo opcional en assets/img/sw]
   const SW = [
-    ['Autodesk Construction Cloud', 'ACC', 'p'], ['Autodesk Docs', 'Do', 'p'], ['Trimble Connect', 'TC', 'p'], ['BIMcollab Zoom', 'Zm', 'p'], ['BIMcollab', 'BC', 'p'],
-    ['Model Checker', 'MC', 'p'], ['IFCGeoRefChecker', 'GR', 'p'], ['IfcOpenShell', 'IOS', 'p'], ['IfcTester', 'IT', 'p'], ['IfcGref', 'Gf', 'p'], ['IFC Georeferencer', 'Gr', 'p'],
-    ['Civil 3D', 'C3D', 'p'], ['Navisworks', 'Nw', 'p'], ['Revit', 'Rv', 'p'], ['Archicad', 'Ac', 'p'], ['Tekla', 'Tk', 'p'], ['Allplan', 'Al', 'p'], ['Vectorworks', 'Vw', 'p'],
-    ['BricsCAD', 'Bc', 'p'], ['Bentley iTwin', 'iT', 'p'], ['Bentley', 'Bn', 'p'], ['Bonsai', 'Bo', 'p'], ['Solibri', 'Sb', 'p'], ['ArcGIS', 'Ag', 'p'], ['Forma', 'Fo', 'p'],
-    ['ReCap', 'Rc', 'p'], ['Dynamo', 'Dy', 'p'], ['CloudCompare', 'CC', 'p'], ['epsg.io', 'ep', 'p'],
-    ['IDS', 'IDS', 'e'], ['IFC', 'IFC', 'e'], ['DWG', 'DWG', 'f'], ['RVT', 'RVT', 'f'], ['E57', 'E57', 'f'], ['LAS', 'LAS', 'f'], ['NWC', 'NWC', 'f'], ['XML', 'XML', 'f']
+    ['Autodesk Construction Cloud', 'ACC', 'p', 'autodesk.svg'], ['Autodesk Docs', 'Do', 'p', 'autodesk.svg'], ['Trimble Connect', 'TC', 'p', 'trimble.svg'], ['BIMcollab Zoom', 'Zm', 'p'], ['BIMcollab', 'BC', 'p'],
+    ['Model Checker', 'MC', 'p'], ['IFCGeoRefChecker', 'GR', 'p'], ['IfcOpenShell', 'IOS', 'p'], ['IfcTester', 'IT', 'p', 'ifctester.svg'], ['IfcGref', 'Gf', 'p'], ['IFC Georeferencer', 'Gr', 'p'],
+    ['Civil 3D', 'C3D', 'p'], ['Navisworks', 'Nw', 'p'], ['Revit', 'Rv', 'p', 'revit.svg'], ['Archicad', 'Ac', 'p', 'archicad.svg'], ['Tekla', 'Tk', 'p'], ['Allplan', 'Al', 'p'], ['Vectorworks', 'Vw', 'p', 'vectorworks.svg'],
+    ['BricsCAD', 'Bc', 'p'], ['Bentley iTwin', 'iT', 'p'], ['Bentley', 'Bn', 'p'], ['Bonsai', 'Bo', 'p', 'bonsai.png'], ['Solibri', 'Sb', 'p'], ['ArcGIS', 'Ag', 'p', 'arcgis.svg'], ['Forma', 'Fo', 'p'],
+    ['ReCap', 'Rc', 'p'], ['Dynamo', 'Dy', 'p', 'dynamo.png'], ['CloudCompare', 'CC', 'p', 'cloudcompare.svg'], ['epsg.io', 'ep', 'p'],
+    ['IDS', 'IDS', 'e', 'ids.svg'], ['IFC', 'IFC', 'e', 'buildingsmart.png'], ['DWG', 'DWG', 'f'], ['RVT', 'RVT', 'f'], ['E57', 'E57', 'f'], ['LAS', 'LAS', 'f'], ['NWC', 'NWC', 'f'], ['XML', 'XML', 'f']
   ];
   const swIcon = (el) => {
     if (!el || el.querySelector('.sw')) return;
@@ -225,7 +226,11 @@
     const hit = SW.find(([n]) => t === n || t.startsWith(n + ' ') || t.startsWith(n + ':') || t.startsWith(n + ',') || t.startsWith(n + '·') || t.startsWith(n + ' ·'));
     if (!hit) return;
     const i = document.createElement('span');
-    i.className = 'sw sw-' + hit[2]; i.setAttribute('aria-hidden', 'true'); i.textContent = hit[1];
+    i.className = 'sw sw-' + hit[2]; i.setAttribute('aria-hidden', 'true');
+    if (hit[3]) { // logotipo oficial en una sola tinta (assets/img/sw), coloreado con currentColor
+      i.classList.add('sw-logo');
+      i.innerHTML = `<i style="--logo:url('${document.documentElement.dataset.root || './'}assets/img/sw/${hit[3]}')"></i>`;
+    } else i.textContent = hit[1];
     i.title = hit[0];
     el.prepend(i);
   };
