@@ -348,3 +348,13 @@
   sw.innerHTML = `<a href="${enlace('reticula')}" class="${tema === 'reticula' ? 'is-on' : ''}">Retícula</a><a href="${enlace('clasico')}" class="${tema !== 'reticula' ? 'is-on' : ''}">Actual</a>`;
   document.body.appendChild(sw);
 })();
+
+// Menú recogido (retícula): cada bloque deja su numeral en data-n para mostrarlo en la regla estrecha
+(function () {
+  const marca = () => document.querySelectorAll('#deck-nav .nav-cap b').forEach((b) => {
+    const cap = b.closest('.nav-cap'); if (cap.dataset.n) return;
+    const n = (b.textContent || '').split('·')[0].trim(); if (n) cap.dataset.n = n;
+  });
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', () => setTimeout(marca, 0)); else setTimeout(marca, 0);
+  setTimeout(marca, 800);
+})();

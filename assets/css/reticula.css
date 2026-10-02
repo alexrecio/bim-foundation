@@ -101,3 +101,24 @@ html.rt .pz-hud { border-radius: 0; border-style: dashed; }
 /* Botones: se mantienen en píldora (marca); chips y etiquetas, esquina viva */
 html.rt .chip, html.rt .badge.n { border-radius: 0; }
 
+
+/* ---------- Menú de slides recogido (prueba): una regla estrecha a la izquierda y el menú completo flota al pasar ---------- */
+@media (min-width: 1200px) {
+  html.rt { --rail-w: 72px; }
+  html.rt main.deck, html.rt body:has(.deck) footer.site { padding-left: var(--rail-w); }
+  html.rt #deck-nav { width: var(--rail-w); padding: 100px 0 20px 22px; overflow: hidden;
+    transition: width .26s var(--ease), box-shadow .26s ease, background-color .26s ease; transition-delay: .18s; }
+  html.rt #deck-nav:hover, html.rt #deck-nav:focus-within { width: var(--side); padding: 100px 16px 20px 20px; transition-delay: 0s;
+    background: rgba(255,255,255,.94); box-shadow: 1px 0 0 var(--line), 24px 0 60px rgba(0,0,0,.10); }
+  /* Recogido: solo el pictograma, los números de bloque y una marca por slide */
+  html.rt #deck-nav:not(:hover):not(:focus-within) > :not(ol):not(.deck-ico) { display: none; }
+  html.rt #deck-nav:not(:hover):not(:focus-within) > .deck-ico { width: 28px; height: 28px; margin-bottom: 18px; }
+  html.rt #deck-nav:not(:hover):not(:focus-within) .nav-cap { padding: 8px 0 6px; border: 0; background: none; }
+  html.rt #deck-nav:not(:hover):not(:focus-within) .nav-cap > * { display: none; }
+  html.rt #deck-nav:not(:hover):not(:focus-within) .nav-cap::before { content: attr(data-n); font-family: var(--mono); font-size: 11px; font-weight: 700; letter-spacing: 0; color: var(--black); }
+  html.rt #deck-nav:not(:hover):not(:focus-within) .nav-item a { display: block; height: 9px; padding: 4px 0; font-size: 0; background: none; }
+  html.rt #deck-nav:not(:hover):not(:focus-within) .nav-item a > * { display: none; }
+  html.rt #deck-nav:not(:hover):not(:focus-within) .nav-item a::before { content: ""; display: block; width: 10px; height: 1px; background: var(--s300); transition: width .2s ease; }
+  html.rt #deck-nav:not(:hover):not(:focus-within) .nav-item a.is-done::before { background: var(--s600); }
+  html.rt #deck-nav:not(:hover):not(:focus-within) .nav-item a.is-current::before { width: 26px; height: 3px; margin-top: -1px; background: var(--black); box-shadow: 4px 0 0 var(--accent) inset; }
+}
