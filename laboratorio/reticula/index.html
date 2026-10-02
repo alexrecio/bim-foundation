@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es" data-root="../../" data-slug="coordenadas-compartidas">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Laboratorio · retícula | kernel</title>
+  <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="../../assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../assets/css/estilo.css">
+  <link rel="stylesheet" href="../../assets/css/precision.css">
+  <link rel="stylesheet" href="reticula.css">
+</head>
+<body class="rt">
+  <div id="nav-capsule">
+    <button id="menu-trigger" aria-label="Menú" aria-expanded="false">k</button>
+    <div id="menu-content"><nav><a class="menu-link" href="../../">Inicio</a><a class="menu-link is-current" href="./">Laboratorio</a></nav></div>
+  </div>
+  <div class="rt-bg" aria-hidden="true"></div>
+  <main class="deck rt-deck">
+    <section class="slide rt-intro" id="intro" data-nav="Prueba">
+      <div class="rt-frame">
+        <span class="kicker-y">Laboratorio · prueba de retícula</span>
+        <p class="rt-manifest">Retícula de <span class="pill">líneas discontinuas</span> con <span class="pill">cruces</span> en cada intersección. Las celdas son <span class="pill">recuadros</span> de esquina viva con fondo <span class="pill">esmerilado</span>, y el <span class="pill">patrón</span> del fondo queda fijo mientras pasan las láminas.</p>
+        <div class="rt-stats">
+          <div><b class="c-num">40</b><span>ideas en el artículo 01</span></div>
+          <div><b class="c-num">06</b><span>bloques por artículo</span></div>
+          <div><b class="c-num">66</b><span>países con su sistema</span></div>
+          <div><b class="c-num">±0,001</b><span>metros de tolerancia</span></div>
+        </div>
+        <p class="rt-hint mono">↓ desplázate: dos láminas reales del artículo 01</p>
+      </div>
+    </section>
+    <section class="slide" id="problema" data-cap="I · Conceptos generales" data-nav="El problema">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">El problema</span>
+          <h2 class="display">Modelos que no encajan<span class="dot">.</span></h2>
+          <p class="slide-lead">Cada disciplina modela en su programa. Sin un <span class="pill">sistema común</span>, al <span class="pill">federar</span> llegan mal colocados.</p>
+          
+        </div>
+        <div class="b-cards">
+          <div class="card w2">
+            <span class="c-label">01</span>
+            <svg class="draw" viewBox="0 0 160 110" aria-hidden="true"><rect x="20" y="30" width="80" height="56" fill="#EFEFEA" stroke="#000" stroke-width="2"/><rect x="58" y="16" width="80" height="56" fill="none" stroke="#000" stroke-width="2.5" stroke-dasharray="6 4"/><path d="M62 58 L96 44" stroke="#000" stroke-width="2"/><polygon points="96,44 88,42 92,50" fill="#000"/></svg>
+            <span class="c-title">Desplazados</span>
+          </div>
+          <div class="card w2">
+            <span class="c-label">02</span>
+            <svg class="draw" viewBox="0 0 160 110" aria-hidden="true"><rect x="40" y="28" width="80" height="56" fill="#EFEFEA" stroke="#000" stroke-width="2"/><rect x="40" y="28" width="80" height="56" fill="none" stroke="#000" stroke-width="2.5" stroke-dasharray="6 4" transform="rotate(18 80 56)"/><path d="M128 40 A50 50 0 0 1 132 70" fill="none" stroke="#000" stroke-width="2"/></svg>
+            <span class="c-title">Girados</span>
+          </div>
+          <div class="card w2">
+            <span class="c-label">03</span>
+            <svg class="draw" viewBox="0 0 160 110" aria-hidden="true"><line x1="10" y1="96" x2="150" y2="96" stroke="#8F8F87" stroke-width="2"/><rect x="30" y="56" width="60" height="40" fill="#EFEFEA" stroke="#000" stroke-width="2"/><rect x="74" y="20" width="60" height="40" fill="none" stroke="#000" stroke-width="2.5" stroke-dasharray="6 4"/><path d="M144 58 V24" stroke="#000" stroke-width="2"/><polygon points="144,20 140,30 148,30" fill="#000"/></svg>
+            <span class="c-title">A otra cota</span>
+          </div>
+          <div class="card w4 k">
+            <span class="c-label">GeoBIM Benchmark 2019</span>
+            <b class="c-num xl">~30<small>%</small></b>
+            <span class="c-text">de las herramientas leyó bien un IFC georreferenciado</span>
+          </div>
+          <div class="card w2 y">
+            <span class="c-label">Dónde duele</span>
+            <span class="c-title">Federación</span>
+            <span class="c-title">Replanteo</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="slide" id="nortes" data-nav="Cuatro nortes">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Orientación</span>
+          <h2 class="display">Cuatro nortes<span class="dot">.</span></h2>
+          <p class="slide-lead">En IFC, la rotación se mide respecto al <span class="pill">norte de cuadrícula</span>, no al <span class="pill">geográfico</span>.</p>
+          
+        </div>
+        <div class="b-cards">
+          <div class="card w3 g">
+            <span class="c-label">Brújula BIM</span>
+            <svg class="draw" viewBox="0 0 300 250" role="img" aria-label="Cuatro flechas de norte: cuadrícula, geográfico, magnético y proyecto">
+              <g transform="translate(150,225)" font-family="JetBrains Mono, monospace" font-size="11">
+                <g transform="rotate(-4)"><line y2="-170" stroke="#8F8F87" stroke-width="3"/></g>
+                <line y2="-185" stroke="#000" stroke-width="6"/><polygon points="-9,-175 0,-200 9,-175" fill="#000"/>
+                <g transform="rotate(9)"><line y2="-140" stroke="#D5D5CB" stroke-width="3" stroke-dasharray="6 5"/></g>
+                <g transform="rotate(-38)"><line y2="-150" stroke="#000" stroke-width="3"/><polygon points="-6,-142 0,-160 6,-142" fill="#000"/></g>
+                <circle r="6" fill="#000"/>
+              </g>
+            </svg>
+          </div>
+          <div class="card w3">
+            <div class="row"><span style="width:26px;height:6px;background:#000"></span><span class="c-title">Cuadrícula</span><span class="badge y">IFC</span></div>
+            <div class="row"><span style="width:26px;height:3px;background:#8F8F87"></span><span class="c-title" style="color:var(--s600)">Geográfico</span></div>
+            <div class="row"><span style="width:26px;height:0;border-top:3px dashed #D5D5CB"></span><span class="c-title" style="color:var(--s400)">Magnético</span></div>
+            <div class="row"><span style="width:26px;height:3px;background:#000;transform:rotate(-38deg)"></span><span class="c-title">Proyecto</span></div>
+          </div>
+          <div class="card w6 k">
+            <span class="c-label">Convergencia de meridianos en España</span>
+            <div class="row" style="justify-content:space-between;flex-wrap:wrap"><b class="c-num">≈ 2°</b><span class="c-text">entre geográfico y cuadrícula en los bordes del huso</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="site"><div class="wrap"><span>Diseñada y desarrollada por Alejandro García Nicolás</span><span class="sep">·</span><span class="mono">kernel · 2026</span></div></footer>
+  <script src="../../assets/js/serie.js"></script>
+  <script src="../../assets/js/web.js"></script>
+  <script src="../../assets/js/precision.js"></script>
+</body>
+</html>
