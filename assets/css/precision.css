@@ -1,0 +1,222 @@
+/* ==========================================================================
+   BIM Foundation · capa «Precisión»
+   Se carga después de estilo.css. Mantiene la marca (blanco, negro, Hello
+   Yellow, Inter 900, JetBrains Mono) y le añade el lenguaje del plano técnico:
+   tipografía servida desde el propio sitio, cifras tabulares, retícula de 8 px,
+   marcas de registro, reglas con graduación, lector de coordenadas y un
+   movimiento que «traza» los dibujos como un plóter.
+   Guía viva: /sistema/
+   ========================================================================== */
+
+/* ---------- Fuentes propias (sin depender de Google Fonts) ---------- */
+@font-face {
+  font-family: 'Inter'; font-style: normal; font-weight: 100 900; font-display: swap;
+  src: url('../fonts/inter-latin-wght-normal.woff2') format('woff2-variations'), url('../fonts/inter-latin-wght-normal.woff2') format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Inter'; font-style: normal; font-weight: 100 900; font-display: swap;
+  src: url('../fonts/inter-latin-ext-wght-normal.woff2') format('woff2-variations'), url('../fonts/inter-latin-ext-wght-normal.woff2') format('woff2');
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+@font-face {
+  font-family: 'JetBrains Mono'; font-style: normal; font-weight: 400; font-display: swap;
+  src: url('../fonts/jetbrains-mono-latin-400-normal.woff2') format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'JetBrains Mono'; font-style: normal; font-weight: 700; font-display: swap;
+  src: url('../fonts/jetbrains-mono-latin-700-normal.woff2') format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'JetBrains Mono'; font-style: normal; font-weight: 400; font-display: swap;
+  src: url('../fonts/jetbrains-mono-latin-ext-400-normal.woff2') format('woff2');
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+@font-face {
+  font-family: 'JetBrains Mono'; font-style: normal; font-weight: 700; font-display: swap;
+  src: url('../fonts/jetbrains-mono-latin-ext-700-normal.woff2') format('woff2');
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+
+/* ---------- Tokens de precisión ---------- */
+:root {
+  --u: 8px;                                   /* módulo de la retícula */
+  --hair: rgba(0, 0, 0, .07);                 /* línea fina de retícula */
+  --hair-2: rgba(0, 0, 0, .13);               /* línea mayor (cada 5 módulos) */
+  --reg: 12px;                                /* longitud de las marcas de registro */
+  --r: 4px;                                   /* radio: esquinas casi vivas, como una pieza mecanizada */
+  --ease: cubic-bezier(.2, .8, .2, 1);        /* entrada decidida, frenada suave */
+  --ease-plot: cubic-bezier(.6, 0, .2, 1);    /* trazado de plóter */
+  --t-fast: .18s; --t-med: .45s; --t-plot: 1.4s;
+}
+
+/* Cifras: tabulares en todo dato (alinean en columna); cero con barra en monoespaciada */
+.mono, .label, .c-label, .c-foot, .slide-n, .badge, .hero-meta, .cover-t, pre, code, .pz-hud { font-feature-settings: "zero" 1, "tnum" 1; }
+.c-num, .stat b, .cover-n, .nav-item a span, #deck-bar-btn .n { font-variant-numeric: tabular-nums; }
+body { font-feature-settings: "cv11" 1; } /* Inter: «a» de un solo piso, más geométrica */
+.display { font-feature-settings: "cv11" 1, "ss01" 1; letter-spacing: -.042em; } /* con Inter real, -0,05 em pega las letras */
+
+/* ---------- Geometría: esquinas más vivas ---------- */
+.card, .mapa a, .chip { border-radius: var(--r); }
+.cover, .series-nav a, .series-nav .empty, .callout, .prose pre { border-radius: 3px; }
+.l2-panel { border-radius: 6px; }
+
+/* ---------- Marcas de registro (las esquinas de un plano) ---------- */
+/* Uso: clase .reg en cualquier caja con position: relative. En las tarjetas aparecen al pasar por encima. */
+.reg, .card { --reg-c: var(--black); }
+.reg::after, .card::after {
+  content: ""; position: absolute; inset: -5px; pointer-events: none; z-index: 1;
+  background:
+    linear-gradient(var(--reg-c), var(--reg-c)) top left / var(--reg) 1.5px,
+    linear-gradient(var(--reg-c), var(--reg-c)) top left / 1.5px var(--reg),
+    linear-gradient(var(--reg-c), var(--reg-c)) top right / var(--reg) 1.5px,
+    linear-gradient(var(--reg-c), var(--reg-c)) top right / 1.5px var(--reg),
+    linear-gradient(var(--reg-c), var(--reg-c)) bottom left / var(--reg) 1.5px,
+    linear-gradient(var(--reg-c), var(--reg-c)) bottom left / 1.5px var(--reg),
+    linear-gradient(var(--reg-c), var(--reg-c)) bottom right / var(--reg) 1.5px,
+    linear-gradient(var(--reg-c), var(--reg-c)) bottom right / 1.5px var(--reg);
+  background-repeat: no-repeat;
+}
+.card::after { opacity: 0; transform: scale(1.02); transition: opacity var(--t-fast) ease, transform var(--t-med) var(--ease); }
+.card:hover::after, .card:focus-within::after { opacity: 1; transform: none; }
+.card.k { --reg-c: var(--black); }
+.card { transition: border-color var(--t-fast) ease; }
+.card:hover { border-color: var(--s400); }
+.card.k:hover, .card.y:hover { border-color: var(--black); }
+/* Tarjetas que ya tienen su propio comportamiento: sin marcas */
+.card.ficha::after, .l2-body .card::after { content: none; }
+
+/* ---------- Regla graduada (debajo de la numeración de cada slide) ---------- */
+.ruler, .slide-n::after {
+  content: ""; display: block; height: 7px; width: min(100%, 241px); margin-top: 8px;
+  background:
+    repeating-linear-gradient(90deg, var(--black) 0 1px, transparent 1px 40px) bottom left / 100% 7px no-repeat,
+    repeating-linear-gradient(90deg, var(--s400) 0 1px, transparent 1px 8px) bottom left / 100% 4px no-repeat,
+    linear-gradient(var(--s300), var(--s300)) bottom left / 100% 1px no-repeat;
+}
+
+/* ---------- Diapositivas: marco técnico ---------- */
+@media (min-width: 1000px) {
+  .slide::before {
+    content: ""; position: absolute; inset: 20px; pointer-events: none;
+    --c: var(--s300); --l: 14px;
+    background:
+      linear-gradient(var(--c), var(--c)) top left / var(--l) 1px,
+      linear-gradient(var(--c), var(--c)) top left / 1px var(--l),
+      linear-gradient(var(--c), var(--c)) top right / var(--l) 1px,
+      linear-gradient(var(--c), var(--c)) top right / 1px var(--l),
+      linear-gradient(var(--c), var(--c)) bottom left / var(--l) 1px,
+      linear-gradient(var(--c), var(--c)) bottom left / 1px var(--l),
+      linear-gradient(var(--c), var(--c)) bottom right / var(--l) 1px,
+      linear-gradient(var(--c), var(--c)) bottom right / 1px var(--l);
+    background-repeat: no-repeat;
+  }
+  /* Sello de la lámina, arriba a la derecha: artículo · slide · bloque (lo rellena precision.js) */
+  .slide[data-pz-stamp]::after {
+    content: attr(data-pz-stamp); position: absolute; right: 44px; top: 26px; pointer-events: none;
+    font-family: var(--mono); font-size: 9.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--s400);
+    font-feature-settings: "zero" 1, "tnum" 1;
+  }
+}
+
+/* ---------- Plano milimetrado (portada de la web y fondos técnicos) ---------- */
+.pz-grid {
+  background-image:
+    linear-gradient(var(--hair-2) 1px, transparent 1px), linear-gradient(90deg, var(--hair-2) 1px, transparent 1px),
+    linear-gradient(var(--hair) 1px, transparent 1px), linear-gradient(90deg, var(--hair) 1px, transparent 1px);
+  background-size: calc(var(--u) * 5) calc(var(--u) * 5), calc(var(--u) * 5) calc(var(--u) * 5), var(--u) var(--u), var(--u) var(--u);
+}
+.hero { position: relative; overflow: hidden; isolation: isolate; }
+.hero::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background-image:
+    linear-gradient(var(--hair-2) 1px, transparent 1px), linear-gradient(90deg, var(--hair-2) 1px, transparent 1px),
+    linear-gradient(var(--hair) 1px, transparent 1px), linear-gradient(90deg, var(--hair) 1px, transparent 1px);
+  background-size: 40px 40px, 40px 40px, 8px 8px, 8px 8px;
+  -webkit-mask-image: radial-gradient(ellipse 70% 80% at 72% 50%, #000 0%, rgba(0,0,0,.5) 45%, transparent 80%);
+  mask-image: radial-gradient(ellipse 70% 80% at 72% 50%, #000 0%, rgba(0,0,0,.5) 45%, transparent 80%);
+}
+/* Cruz del origen en la portada (la coloca precision.js): origen, tolerancia y una pieza situada
+   por desplazamiento + giro, que es justo lo que hacen las coordenadas compartidas */
+.pz-origin { position: absolute; z-index: -1; pointer-events: none; inset: 0; }
+.pz-origin .h, .pz-origin .v { position: absolute; background: var(--black); }
+.pz-origin .h { left: 0; right: 0; height: 1px; top: var(--oy); }
+.pz-origin .v { top: 0; bottom: 0; width: 1px; left: var(--ox); }
+.pz-origin svg { position: absolute; left: var(--ox); top: var(--oy); width: 1px; height: 1px; overflow: visible; }
+.pz-origin .lbl {
+  position: absolute; font-family: var(--mono); font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--black);
+  font-feature-settings: "zero" 1, "tnum" 1; white-space: nowrap; background: var(--white); padding: 1px 4px;
+}
+.pz-origin .lbl.xy { left: var(--ox); top: var(--oy); transform: translate(-100%, 0) translate(-16px, 14px); }
+.pz-origin .lbl.e { right: 12px; top: var(--oy); transform: translateY(-140%); }
+.pz-origin .lbl.n { left: var(--ox); top: 14px; transform: translateX(10px); }
+.pz-origin .plot { stroke-dasharray: 1; stroke-dashoffset: 1; animation: pz-plot 1.6s var(--ease-plot) .3s forwards; }
+.pz-origin .fill { opacity: 0; animation: pz-fade .6s ease 1.3s forwards; }
+@keyframes pz-plot { to { stroke-dashoffset: 0; } }
+@keyframes pz-fade { to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .pz-origin .plot, .pz-origin .fill { animation: none; stroke-dashoffset: 0; opacity: 1; } }
+@media (max-width: 1279px) { .pz-origin { opacity: .3; } .pz-origin .lbl, .pz-origin .part { display: none; } }
+.hero-side { position: relative; }
+
+/* Ficha técnica (tabla de especificaciones en mono) */
+.pz-spec { width: min(100%, 360px); display: grid; grid-template-columns: max-content 1fr; gap: 0; border-top: 1.5px solid var(--black); font-family: var(--mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: .08em; font-feature-settings: "zero" 1, "tnum" 1; }
+.pz-spec dt, .pz-spec dd { margin: 0; padding: 6px 0; border-bottom: 1px solid var(--s200); }
+.pz-spec dt { color: var(--s500); padding-right: 18px; }
+.pz-spec dd { color: var(--black); font-weight: 700; text-align: right; }
+
+/* ---------- Lector de coordenadas (escritorio, ratón) ---------- */
+.pz-hud {
+  position: fixed; right: 16px; bottom: 16px; z-index: 90; display: none; align-items: center; gap: 12px;
+  padding: 7px 10px; background: rgba(255,255,255,.94); border: 1px solid var(--s200); border-radius: 3px;
+  font-family: var(--mono); font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--s500);
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); pointer-events: none;
+}
+.pz-hud b { color: var(--black); font-weight: 700; display: inline-block; min-width: 9ch; text-align: right; }
+.pz-hud i { font-style: normal; color: var(--black); background: var(--accent); padding: 0 4px; }
+@media (min-width: 1200px) and (pointer: fine) { .pz-hud.is-on { display: flex; } }
+body.l2-lock .pz-hud { display: none; }
+/* Retícula de cursor sobre los dibujos: como en un programa de CAD */
+.card svg.draw, .l2-body .diagram svg { cursor: crosshair; }
+
+/* ---------- Movimiento ---------- */
+/* Entrada de cada slide: titular y tarjetas suben 8 px, una tras otra (solo si la slide aún no se ha visto) */
+.pz-motion .slide.pz-wait .b-title > *, .pz-motion .slide.pz-wait .b-cards > .card { opacity: 0; transform: translateY(var(--u)); }
+.pz-motion .slide.pz-in .b-title > *, .pz-motion .slide.pz-in .b-cards > .card {
+  opacity: 1; transform: none;
+  transition: opacity var(--t-med) ease, transform var(--t-med) var(--ease), border-color var(--t-fast) ease;
+  transition-delay: calc(var(--i, 0) * 55ms);
+}
+/* Trazado de plóter: las líneas de los dibujos se dibujan al entrar (precision.js pone pathLength=1) */
+.pz-motion .pz-wait svg .pz-plot { stroke-dasharray: 1; stroke-dashoffset: 1; }
+.pz-motion .pz-in svg .pz-plot { stroke-dasharray: 1; stroke-dashoffset: 0; transition: stroke-dashoffset var(--t-plot) var(--ease-plot); transition-delay: calc(200ms + var(--i, 0) * 40ms); }
+/* Los rellenos aparecen cuando el trazo ya va avanzado */
+.pz-motion .pz-wait svg .pz-fill { opacity: 0; }
+.pz-motion .pz-in svg .pz-fill { opacity: 1; transition: opacity .5s ease .9s; }
+
+/* Barra de progreso: la cabeza amarilla «escanea» */
+#progress::after { box-shadow: 0 0 0 1px var(--black); }
+
+/* Nadie se marea: sin animaciones si el sistema lo pide */
+@media (prefers-reduced-motion: reduce) {
+  .pz-motion .slide .b-title > *, .pz-motion .slide .b-cards > .card, .pz-motion svg .pz-plot, .pz-motion svg .pz-fill {
+    opacity: 1 !important; transform: none !important; stroke-dashoffset: 0 !important; transition: none !important;
+  }
+  .card::after { transition: none; }
+}
+@media print { .pz-hud, .pz-origin, .slide::before, .slide::after { display: none !important; } }
+
+/* ---------- Guía viva del sistema visual (/sistema/) ---------- */
+.sis-sec { padding: 64px 0; border-top: 1px solid var(--s100); }
+.sis-head { display: flex; flex-direction: column; gap: 6px; margin-bottom: 28px; }
+.sis-head h2 { font-size: clamp(2rem, 4.4vw, 3.6rem); }
+.sis-ramp { display: grid; grid-template-columns: repeat(9, minmax(0, 1fr)); border: 1px solid var(--s200); }
+.sis-ramp i { height: 64px; display: flex; align-items: flex-end; padding: 6px; font-style: normal; }
+.sis-ramp b { font-family: var(--mono); font-size: 10px; }
+.sis-mono { margin: 0; background: none; color: var(--white); font-family: var(--mono); font-size: 14px; line-height: 1.8; white-space: pre; overflow-x: auto; }
+.sis-grid { min-height: 180px; background-color: var(--white); }
+.sis-reg { position: relative; padding: 18px; margin: 6px; border: 1px solid var(--s200); }
+.sis-p { margin: 0; font-size: 15px; line-height: 1.5; color: var(--s700); }
+.card.y .sis-p { color: var(--black); }
+#sis-plot svg.draw { max-height: 240px; }

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es" data-root="../">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Sistema visual | BIM Foundation</title>
+  <meta name="description" content="Guía viva del sistema visual de BIM Foundation: color, tipografía, retícula, marcas técnicas, componentes y movimiento.">
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="../assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../assets/css/estilo.css">
+  <link rel="stylesheet" href="../assets/css/precision.css">
+</head>
+<body>
+  <div id="nav-capsule">
+    <button id="menu-trigger" aria-label="Menú" aria-expanded="false">BF</button>
+    <div id="menu-content">
+      <nav>
+        <a class="menu-link" href="../">Inicio</a>
+        <a class="menu-link is-current" href="./">Sistema</a>
+      </nav>
+    </div>
+  </div>
+
+  <main class="sis">
+    <section class="hero">
+      <div class="wrap">
+        <div class="hero-grid">
+          <div>
+            <p class="hero-id">BIM Foundation · Sistema visual</p>
+            <span class="kicker-y lg">Guía viva · v0.1</span>
+            <h1 class="display">Precisión<br>que se <span class="hl-y">ve<span class="dot">.</span></span></h1>
+          </div>
+          <div class="hero-side">
+            <p class="hero-lead">Las reglas con las que se dibuja toda la serie. Cada pieza de esta página es el componente real, no una imagen.</p>
+            <dl class="pz-spec">
+              <dt>Módulo</dt><dd>8 px · mayor 40 px</dd>
+              <dt>Tipos</dt><dd>Inter 100–900 · JetBrains Mono</dd>
+              <dt>Acento</dt><dd>#FFFF00 · una pieza por dibujo</dd>
+              <dt>Radio</dt><dd>4 px · píldora en botones</dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 01 Principios -->
+    <section class="sis-sec" id="principios">
+      <div class="wrap">
+        <div class="sis-head"><span class="slide-n">01 · Principios</span><h2 class="display">Cinco reglas<span class="dot">.</span></h2></div>
+        <div class="b-cards">
+          <div class="card w2"><span class="step-n">01</span><b class="c-title">Un plano, no un póster</b><p class="sis-p">Retícula, cotas, marcas de registro y sello de lámina. Todo se puede medir.</p></div>
+          <div class="card w2"><span class="step-n">02</span><b class="c-title">Un solo amarillo</b><p class="sis-p">Hello Yellow señala la pieza que importa. Si hay dos, ninguna importa.</p></div>
+          <div class="card w2"><span class="step-n">03</span><b class="c-title">Datos en mono</b><p class="sis-p">Cifras tabulares y cero con barra: 0,001 m no se confunde con O,OO1.</p></div>
+          <div class="card w3"><span class="step-n">04</span><b class="c-title">El movimiento explica</b><p class="sis-p">Los dibujos se trazan como en un plóter. Nada se mueve por adorno; todo se apaga si el sistema pide calma.</p></div>
+          <div class="card w3 y"><span class="step-n">05</span><b class="c-title">Rigor visible</b><p class="sis-p">Fuente en cada dato, «Inferido» y «Por confirmar» siempre a la vista.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 Color -->
+    <section class="sis-sec" id="color">
+      <div class="wrap">
+        <div class="sis-head"><span class="slide-n">02 · Color</span><h2 class="display">Tinta, papel, señal<span class="dot">.</span></h2></div>
+        <div class="b-cards sis-sw">
+          <div class="card w2 k"><span class="c-label">Tinta · --black</span><b class="c-num">#000</b><p class="c-foot">Texto, trazo, fondo de las tarjetas clave</p></div>
+          <div class="card w2"><span class="c-label">Papel · --white</span><b class="c-num">#FFF</b><p class="c-foot">Fondo de todas las láminas</p></div>
+          <div class="card w2 y"><span class="c-label">Señal · --accent</span><b class="c-num">#FF0</b><p class="c-foot">Nunca texto blanco encima; nunca sobre blanco como texto</p></div>
+          <div class="card w6 g">
+            <span class="c-label">Grises Slate / Warm Slate: jerarquía, retícula y datos secundarios</span>
+            <div class="sis-ramp">
+              <i style="background:var(--s50)"><b>50</b></i><i style="background:var(--s100)"><b>100</b></i><i style="background:var(--s200)"><b>200</b></i><i style="background:var(--s300)"><b>300</b></i><i style="background:var(--s400)"><b>400</b></i><i style="background:var(--s500);color:#fff"><b>500</b></i><i style="background:var(--s600);color:#fff"><b>600</b></i><i style="background:var(--s700);color:#fff"><b>700</b></i><i style="background:var(--s800);color:#fff"><b>800</b></i>
+            </div>
+            <p class="c-foot">Contraste sobre blanco: s500 #666 = 5,7:1 (AA en texto) · s400 #8F8F87 = 3,3:1 (solo etiquetas grandes y trazos)</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 Tipografía -->
+    <section class="sis-sec" id="tipografia">
+      <div class="wrap">
+        <div class="sis-head"><span class="slide-n">03 · Tipografía</span><h2 class="display">Dos voces<span class="dot">.</span></h2></div>
+        <div class="b-cards">
+          <div class="card w4">
+            <span class="c-label">Display · Inter 900 · mayúsculas · −0,042 em</span>
+            <p class="display" style="font-size:clamp(2.4rem,6vw,4.6rem)">EPSG 25830<span class="dot">.</span></p>
+            <span class="c-label">Titular de tarjeta · Inter 900 · −0,02 em</span>
+            <b class="c-title">Coordenadas compartidas</b>
+            <span class="c-label">Texto · Inter 400 · 17 px / 1,65</span>
+            <p style="margin:0;max-width:52ch">El modelo se queda quieto. Lo que se mueve es el sistema de coordenadas, y esa es toda la idea.</p>
+          </div>
+          <div class="card w2 k">
+            <span class="c-label">Datos · JetBrains Mono 400/700</span>
+            <pre class="sis-mono">E   440 125,318
+N 4 474 318,904
+H       667,210
+EPSG  25830
+θ    −1,8721°
+±     0,001 m</pre>
+            <p class="c-foot">Cifras tabulares: las columnas cuadran solas.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 Retícula y marcas -->
+    <section class="sis-sec" id="reticula">
+      <div class="wrap">
+        <div class="sis-head"><span class="slide-n">04 · Retícula y marcas</span><h2 class="display">Todo se mide<span class="dot">.</span></h2></div>
+        <div class="b-cards">
+          <div class="card w3 m-full pz-grid sis-grid"><span class="c-label">Plano milimetrado · .pz-grid</span><p class="c-foot">8 px el módulo, 40 px la línea mayor. Portada y fondos de cubiertas.</p></div>
+          <div class="card w3 m-full"><span class="c-label">Regla graduada · bajo la numeración de cada lámina</span><span class="ruler"></span><p class="c-foot">Marca cada 8 px, cota mayor cada 40 px</p></div>
+          <div class="card w3 m-full"><span class="c-label">Marcas de registro · .reg</span><div class="reg sis-reg"><b class="c-title">Pasa el ratón por cualquier tarjeta</b></div><p class="c-foot">Las esquinas de un plano: aparecen al señalar</p></div>
+          <div class="card w3 m-full"><span class="c-label">Sello de lámina</span><b class="mono" style="font-size:12px;letter-spacing:.12em">BF·01 — 07/39 — I</b><p class="c-foot">Artículo · lámina · bloque, arriba a la derecha de cada slide</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 Componentes -->
+    <section class="sis-sec" id="componentes">
+      <div class="wrap">
+        <div class="sis-head"><span class="slide-n">05 · Componentes</span><h2 class="display">Piezas<span class="dot">.</span></h2></div>
+        <div class="b-cards">
+          <div class="card w2"><span class="c-label">Tarjeta · .card</span><b class="c-num">16<small>km</small></b><p class="c-foot">Cifra + unidad + pie</p></div>
+          <div class="card w2 g"><span class="c-label">Tarjeta gris · .card.g</span><b class="c-text">Esquemas y dibujos de apoyo</b></div>
+          <div class="card w2 k"><span class="c-label">Tarjeta clave · .card.k</span><b class="c-text">La idea que hay que llevarse</b></div>
+          <div class="card w3"><span class="c-label">Botones</span><div class="row"><a class="btn" href="#">Ver detalle</a><a class="btn ghost" href="#">Fuentes</a></div></div>
+          <div class="card w3"><span class="c-label">Insignias y marcas de rigor</span><div class="row"><span class="badge y">IFC 4.3</span><span class="badge k">ISO 19650</span><span class="badge n">Borrador</span><span class="tag">Inferido</span><span class="tag">Por confirmar</span></div></div>
+          <div class="card w6"><span class="c-label">Flujo · .flow + .chip</span><div class="flow"><span class="chip">Campo <span class="mono">GNSS</span></span><span class="arrow">→</span><span class="chip">Topografía <span class="mono">bases</span></span><span class="arrow">→</span><span class="chip y">Modelo <span class="mono">BIM</span></span><span class="arrow">→</span><span class="chip k">IFC</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 Movimiento -->
+    <section class="sis-sec slide-demo" id="movimiento">
+      <div class="wrap">
+        <div class="sis-head"><span class="slide-n">06 · Movimiento</span><h2 class="display">Trazado de plóter<span class="dot">.</span></h2></div>
+        <div class="b-cards" id="sis-plot">
+          <div class="card w4 g">
+            <span class="c-label">Los dibujos se trazan al entrar en pantalla · 1,4 s · cubic-bezier(.6,0,.2,1)</span>
+            <svg class="draw" viewBox="0 0 320 160" fill="none" stroke="#000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 140 H300 M20 140 V20"/><path d="M20 140 L180 70"/>
+              <g transform="translate(180 70) rotate(-14)"><rect x="0" y="-50" width="100" height="56" fill="#FFFF00"/><path d="M14 -38 H46 V-12 H14 Z"/></g>
+              <circle cx="20" cy="140" r="8"/>
+            </svg>
+            <button class="btn" type="button" id="sis-replay">Repetir trazado</button>
+          </div>
+          <div class="card w2 m-full">
+            <span class="c-label">Tiempos</span>
+            <dl class="pz-spec" style="width:100%"><dt>--t-fast</dt><dd>0,18 s</dd><dt>--t-med</dt><dd>0,45 s</dd><dt>--t-plot</dt><dd>1,4 s</dd><dt>escalonado</dt><dd>55 ms</dd></dl>
+            <p class="c-foot">Con «reducir movimiento» activado, todo aparece ya dibujado.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site">
+    <div class="wrap">
+      <span>Diseñada y desarrollada por Alejandro García Nicolás</span><span class="sep">·</span><span class="mono">BIM Foundation · Sistema visual v0.1</span>
+    </div>
+  </footer>
+
+  <script src="../assets/js/serie.js"></script>
+  <script src="../assets/js/web.js"></script>
+  <script src="../assets/js/precision.js"></script>
+  <script>
+    // Demo: repetir el trazado del dibujo de la sección de movimiento
+    (function () {
+      const svg = document.querySelector('#sis-plot svg');
+      const els = svg.querySelectorAll('path, circle, rect');
+      els.forEach((e, i) => { if (e.getAttribute('fill') === '#FFFF00') return; e.setAttribute('pathLength', '1'); e.style.strokeDasharray = 1; });
+      const run = () => {
+        els.forEach((e, i) => {
+          if (e.getAttribute('fill') === '#FFFF00') { e.style.transition = 'none'; e.style.opacity = 0; requestAnimationFrame(() => requestAnimationFrame(() => { e.style.transition = 'opacity .5s ease 1s'; e.style.opacity = 1; })); return; }
+          e.style.transition = 'none'; e.style.strokeDashoffset = 1;
+          requestAnimationFrame(() => requestAnimationFrame(() => { e.style.transition = `stroke-dashoffset 1.4s cubic-bezier(.6,0,.2,1) ${i * 90}ms`; e.style.strokeDashoffset = 0; }));
+        });
+      };
+      if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        new IntersectionObserver((en, io) => { if (en[0].isIntersecting) { run(); io.disconnect(); } }, { threshold: .4 }).observe(svg);
+      }
+      document.getElementById('sis-replay').addEventListener('click', run);
+    })();
+  </script>
+</body>
+</html>
