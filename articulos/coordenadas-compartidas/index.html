@@ -1698,7 +1698,7 @@
 </div>
 <div class="card w6 y">
 <h4>Novedad de 2026</h4>
-<p>Según <a href="https://www.geoweeknews.com/articles/autodesk-quietly-unified-its-coordinate-systems/" target="_blank" rel="noopener">Geo Week News</a>, Autodesk ha unificado el motor de geolocalización de Forma, Revit y Civil 3D, por ahora en flujos conectados. No hay documentación oficial. <span class="tag">Por confirmar</span></p>
+<p>Autodesk anunció en su <a href="https://www.autodesk.com/blogs/aec/2026/09/15/civil-3d-the-next-forma-connected-client" target="_blank" rel="noopener">blog oficial</a> (15-09-2026) un motor de geolocalización unificado para Forma, Revit y Civil 3D. En Revit funciona en flujos conectados y en Civil 3D empieza como Tech Preview (<a href="https://www.geoweeknews.com/articles/autodesk-quietly-unified-its-coordinate-systems/" target="_blank" rel="noopener">Geo Week News</a>). No resuelve alturas ni el paso de terreno a cuadrícula.</p>
 </div>
 <div class="card w6 k">
 <h4>Antes de subir a una plataforma</h4>
@@ -1762,6 +1762,10 @@
         </table></div>
 <p class="table-note">Fuente: <a href="https://epsg.io/25830" target="_blank" rel="noopener">epsg.io</a>.</p>
 </div>
+<div class="card w6 y">
+<h4>Por qué georreferenciar en España</h4>
+<p>El <a href="https://www.ign.es/web/servicios-ciudadano/plan-bim" target="_blank" rel="noopener">Plan BIM del IGN</a>, dentro de la <a href="https://www.civil-mercantil.com/sites/civil-mercantil.com/files/NCL013234.pdf" target="_blank" rel="noopener">Orden PCM/818/2023</a>, pide entregar el modelo as built en IFC 4.3 o superior, georreferenciado según el Real Decreto 1071/2007.</p>
+</div>
 </div>
   </template>
 
@@ -1782,7 +1786,7 @@
 <div class="card w3">
 <h4>El factor de escala</h4>
 <ul>
-          <li>En UTM vale <span class="mono">k0 = 0,9996</span> en el meridiano central del huso y crece hacia los bordes.</li>
+          <li>En UTM vale <span class="mono">k0 = 0,9996</span> en el meridiano central del huso y crece hacia los bordes. La normativa española lo llama <strong>coeficiente de anamorfosis (K)</strong> (<a href="https://cdn.transportes.gob.es/portal-web-transportes/carreteras/normativa_tecnica/05_estudios_proyectos/nota_de_servicio_3-2024_prescripciones_cartografia_estudios_informativos_vi.pdf" target="_blank" rel="noopener">Nota de Servicio 03/2024</a>).</li>
           <li>El <strong>factor combinado</strong> multiplica el factor de cuadrícula por el de elevación (<a href="https://pro.arcgis.com/es/pro-app/2.7/help/editing/introduction-to-ground-to-grid.htm" target="_blank" rel="noopener">Esri</a>).</li>
           <li>No todos los programas admiten un factor de escala en la transformación. Si uno lo usa y otro no, el BEP dice quién aplica la corrección.</li>
         </ul>
@@ -2085,6 +2089,7 @@
 <h4>La transformación</h4>
 <div class="formula">E = s·cos θ·x − s·sin θ·y + Eastings<br>N = s·sin θ·x + s·cos θ·y + Northings<br>H = z + OrthogonalHeight<br><span style="color:var(--s500)">θ = atan2(XAxisOrdinate, XAxisAbscissa)</span></div>
 <p><code>Scale</code> es único y convierte unidades: 0,001 si el modelo está en mm y el CRS en m. En IFC4.3, <code>IfcMapConversionScaled</code> añade <code>FactorX/Y/Z</code> para factores pactados.</p>
+<p>Ojo con guías anteriores que usan <code>Scale</code> como factor combinado: <a href="https://standards.buildingsmart.org/IFC/RELEASE/IFC4_3/HTML/lexical/IfcMapConversion.htm" target="_blank" rel="noopener">IFC 4.3 ADD2</a> lo reserva a las unidades y deja el factor de cuadrícula a <a href="https://standards.buildingsmart.org/IFC/RELEASE/IFC4_3/HTML/lexical/IfcMapConversionScaled.htm" target="_blank" rel="noopener">IfcMapConversionScaled</a>.</p>
 </div>
 <div class="card w6">
 <h4>Ejemplo para España (IFC4)</h4>
@@ -2451,7 +2456,8 @@ print("OK" if error &lt; 0.01 else f"Desvío de {error:.3f} m")</code></pre>
       <dt>UTM</dt><dd>Proyección Universal Transversa de Mercator, en husos de 6°.</dd>
       <dt>Altura ortométrica</dt><dd>Altitud sobre el nivel medio del mar. La de los planos.</dd>
       <dt>Altura elipsoidal</dt><dd>Altura sobre el elipsoide. La que da un GNSS.</dd>
-      <dt>Convergencia</dt><dd>Ángulo entre el norte geográfico y el de cuadrícula.</dd>
+      <dt>Convergencia (W)</dt><dd>Ángulo entre el norte geográfico y el de cuadrícula.</dd>
+      <dt>Coeficiente de anamorfosis (K)</dt><dd>Nombre del factor de escala de la proyección en la normativa española.</dd>
       <dt>Factor combinado</dt><dd>Factor de escala de la proyección por el de elevación.</dd>
       <dt>Adquirir / Publicar</dt><dd>Tomar las coordenadas de un vínculo, o imponerle las propias.</dd>
       <dt>IDS</dt><dd>Information Delivery Specification: requisitos de un IFC en un XML que se comprueba de forma automática.</dd>
