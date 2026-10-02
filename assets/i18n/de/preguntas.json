@@ -25,5 +25,14 @@
  "bep-plan-de-ejecucion#contenido": "Was muss ein BAP enthalten?",
  "bep-plan-de-ejecucion#bep": "Was ist der Unterschied zwischen AIA und BAP?",
  "bep-plan-de-ejecucion#espana": "Welche BIM-Stufe verlangt der Plan BIM in Spanien?",
- "bep-plan-de-ejecucion#evaluar": "Wie bewerte ich den BAP eines Bieters?"
+ "bep-plan-de-ejecucion#evaluar": "Wie bewerte ich den BAP eines Bieters?",
+ "clasificacion-bim#espana": "Welches Klassifikationssystem verwende ich in Spanien?",
+ "clasificacion-bim#mapa": "Uniclass, OmniClass oder GuBIMclass?",
+ "clasificacion-bim#revit": "Wie exportiere ich die Klassifikation aus Revit nach IFC?",
+ "clasificacion-bim#calidad": "Wie prüfe ich, ob das ganze Modell klassifiziert ist?",
+ "entorno-comun-de-datos#estados": "Darf ich mit einem Modell koordinieren, das noch in Bearbeitung ist?",
+ "entorno-comun-de-datos#codigos": "Was bedeuten S1, S2 oder A1 bei einer Datei?",
+ "entorno-comun-de-datos#nombres": "Wie benenne ich Dateien nach ISO 19650?",
+ "entorno-comun-de-datos#autoria": "Ist in der Cloud synchronisieren schon teilen?",
+ "entorno-comun-de-datos#espana": "Was verlangt der spanische Plan BIM für die CDE?"
 }

@@ -2536,5 +2536,641 @@
    "Informationserstellungsplan"
   ],
   "h": "1c20b024ff"
+ },
+ "K01": {
+  "t": "Klassifikation",
+  "d": "Systematische Gruppierung von Objekten oder Konzepten in Klassen nach gemeinsamen Merkmalen oder Zwecken, in der Regel hierarchisch.",
+  "ej": "Eine Trennwand, klassifiziert als 40.10.10.10 (GuBIMclass), in einem öffentlichen Projekt in Katalonien.",
+  "eq": "Revit: Assembly Code, OmniClass Number, ClassificationCode; Archicad: Classification Manager; IFC: IfcClassificationReference.",
+  "err": "Klassifizieren mit Benennen verwechseln: Der Typname ist keine Klassifikation.",
+  "al": [
+   "Klassifikation",
+   "Klassifikationen",
+   "Klassifikationssystem",
+   "Klassifikationssystems",
+   "Klassifikationssysteme",
+   "Klassifikationssystemen",
+   "classification system"
+  ]
+ },
+ "K02": {
+  "t": "Klassifikationstabelle",
+  "d": "Hierarchische Liste von Klassen, die eine Art von Konzept nach einem einzigen Kriterium klassifiziert (z. B. Räume nach Funktion).",
+  "ej": "GuBIMclass ist eine einzige Tabelle (Elemente nach Funktion); Uniclass hat 15.",
+  "eq": "Archicad: ein System pro Tabelle im Classification Manager.",
+  "err": "Codes aus verschiedenen Tabellen im selben Feld mischen.",
+  "al": [
+   "Klassifikationstabelle",
+   "Klassifikationstabellen",
+   "Tabelle",
+   "Tabellen"
+  ]
+ },
+ "K03": {
+  "t": "Facette",
+  "d": "Unabhängiger Gesichtspunkt oder unabhängiges Kriterium, nach dem ein Objekt klassifiziert wird (Funktion, Form, Material, Prozess); jede Facette ist meist eine Tabelle.",
+  "ej": "Eine Tür, betrachtet als Raum, Element, System, Produkt oder Leistung.",
+  "eq": "",
+  "err": "Glauben, ein Objekt könne nur einen Code haben.",
+  "al": [
+   "Facette",
+   "Facetten"
+  ]
+ },
+ "K04": {
+  "t": "Facettierte Klassifikation",
+  "d": "System mit mehreren unabhängigen Tabellen, die kombiniert werden, um ein Objekt zu beschreiben (Uniclass, OmniClass) – im Gegensatz zur enumerativen Klassifikation mit einem einzigen Baum.",
+  "ej": "Uniclass: SL_20_15_59 + EF_25_10 + Ss_25_10_30_35 + Pr_25_71_35_33 für eine Bürotrennwand.",
+  "eq": "",
+  "err": "Alle Tabellen verwenden, ohne dass ein Anwendungsfall sie verlangt.",
+  "al": [
+   "facettierte Klassifikation",
+   "facettierten Klassifikation",
+   "facettiert",
+   "facettierte",
+   "facettierten",
+   "faceted classification"
+  ]
+ },
+ "K05": {
+  "t": "Enumerative Klassifikation",
+  "d": "System, das alle Klassen in einer einzigen, vorab festgelegten Hierarchie aufzählt (z. B. die Kapitel eines Preiskatalogs).",
+  "ej": "GuBIMclass und die Kapitel eines spanischen Preiskatalogs (cuadro de precios).",
+  "eq": "",
+  "err": "",
+  "al": [
+   "enumerative Klassifikation",
+   "enumerativen Klassifikation",
+   "enumerativ",
+   "enumerative",
+   "enumerativen"
+  ]
+ },
+ "K06": {
+  "t": "Klassifikationscode",
+  "d": "Kompaktes Symbol, das eine Klasse darstellt (Ss_25_10_30, B2010, 03 30 00). Es ist nicht die Klasse selbst, sondern ihre Notation.",
+  "ej": "40.10.10.10 (GuBIMclass), Ss_25_10_30_35 (Uniclass), 03 30 00 (MasterFormat).",
+  "eq": "Revit: [System]Code:Titel in ClassificationCode; IFC: Identification (ItemReference in IFC2x3).",
+  "err": "Code und Titel zusammen im Codefeld speichern.",
+  "al": [
+   "Klassifikationscode",
+   "Klassifikationscodes",
+   "ClassificationCode"
+  ]
+ },
+ "K07": {
+  "t": "Identifikator",
+  "d": "Eindeutiger Name oder Code, der eine konkrete Instanz (keine Klasse) unterscheidet; z. B. die IFC-GlobalId oder ein Referenzkennzeichen.",
+  "ej": "Tür P-2.14 des Projekts; GlobalId der IFC-Datei.",
+  "eq": "IFC: GlobalId, Tag; Revit: Kennzeichen (Mark).",
+  "err": "Den Identifikator verwenden, als wäre er die Klasse.",
+  "al": [
+   "Identifikator",
+   "Identifikators",
+   "Identifikatoren",
+   "Kennung",
+   "GUID"
+  ]
+ },
+ "K08": {
+  "t": "Referenzkennzeichen",
+  "d": "Strukturierte Kennzeichnung eines Objekts innerhalb eines Systems nach ISO/IEC 81346, mit den Aspekten Funktion (=), Produkt (-) und Ort (+).",
+  "ej": "",
+  "eq": "CCI: =, -, + im Referenzkennzeichen.",
+  "err": "",
+  "al": [
+   "Referenzkennzeichen",
+   "Referenzkennzeichens",
+   "Referenzkennzeichnung",
+   "reference designation"
+  ]
+ },
+ "K09": {
+  "t": "IfcClassification",
+  "d": "IFC-Entität, die das Klassifikationssystem beschreibt: Source, Edition, EditionDate, Name, Description, Specification (Location in IFC4), ReferenceTokens.",
+  "ej": "IFCCLASSIFICATION('GuBIMCat','1.2',$,'GuBIMclass',…)",
+  "eq": "Revit: Classification Settings des IFC-Exporters; Archicad: IFC-Übersetzer.",
+  "err": "System ohne Namen: „Default Classification“.",
+  "al": [
+   "IfcClassification"
+  ]
+ },
+ "K10": {
+  "t": "IfcClassificationReference",
+  "d": "IFC-Entität, die auf einen konkreten Code verweist (Identification, Name, Location, ReferencedSource); in IFC2x3 hieß der Code ItemReference.",
+  "ej": "IFCCLASSIFICATIONREFERENCE($,'40.10.10.10','Tabiques',#…)",
+  "eq": "",
+  "err": "In IFC4 nach ItemReference suchen (heißt jetzt Identification).",
+  "al": [
+   "IfcClassificationReference",
+   "ItemReference",
+   "Klassifikationsreferenz",
+   "Klassifikationsreferenzen"
+  ]
+ },
+ "K11": {
+  "t": "IfcRelAssociatesClassification",
+  "d": "IFC-Beziehung, die eine Klassifikation oder Referenz Objekten, Typen, Pset-Vorlagen oder Kontexten zuordnet.",
+  "ej": "",
+  "eq": "",
+  "err": "Nur Instanzen klassifizieren, obwohl sie es schon vom Typ erben, oder umgekehrt, ohne es zu dokumentieren.",
+  "al": [
+   "IfcRelAssociatesClassification"
+  ]
+ },
+ "K12": {
+  "t": "Leichte / vollständige Klassifikation",
+  "d": "Leicht: Die Referenz verweist direkt auf das System. Vollständig: Sie verweist auf die übergeordnete Referenz und bildet die Hierarchie in der IFC-Datei ab.",
+  "ej": "",
+  "eq": "IfcOpenShell: add_reference(is_lightweight=True).",
+  "err": "",
+  "al": [
+   "leichte Klassifikation",
+   "leichten Klassifikation",
+   "vollständige Klassifikation",
+   "vollständigen Klassifikation",
+   "lightweight classification"
+  ]
+ },
+ "K13": {
+  "t": "bSDD",
+  "d": "Kostenloser Dienst von buildingSMART, der vernetzte Datenkataloge (Klassen, Merkmale, Werte) mit stabilen URIs und API bereitstellt; basiert auf ISO 12006-3.",
+  "ej": "Uniclass und CCI sind im bSDD; GuBIMclass: noch zu bestätigen.",
+  "eq": "Bonsai: Add Classification From bSDD; Add-ins für Revit und Archicad.",
+  "err": "Den Code aus dem bSDD ohne seine URI und Version übernehmen.",
+  "al": [
+   "bSDD",
+   "buildingSMART Data Dictionary",
+   "Datenkatalog",
+   "Datenkatalogs",
+   "Datenkataloge",
+   "Datenwörterbuch"
+  ]
+ },
+ "K14": {
+  "t": "URI",
+  "d": "Dauerhafter Web-Identifikator einer Klasse oder eines Merkmals; im bSDD nach dem Muster identifier.buildingsmart.org/uri/{org}/{dict}/{version}/class/{code}.",
+  "ej": "identifier.buildingsmart.org/uri/molio/cciconstruction/1.0/class/L-BD",
+  "eq": "IFC4: Location; IFC4.3: Specification (System) und Location (Klasse).",
+  "err": "Erwarten, dass IDS die URI prüft: Das tut es nicht.",
+  "al": [
+   "URI",
+   "URIs"
+  ]
+ },
+ "K15": {
+  "t": "IDS",
+  "d": "buildingSMART-Standard (v1.0, Juni 2024) in XML, um automatisch prüfbare Informationsanforderungen an IFC-Modelle festzulegen.",
+  "ej": "IDS, die für die Trennwände eines öffentlichen Projekts 40.10.10.10 verlangt.",
+  "eq": "IfcTester, Solibri, BIMcollab Zoom; Archicad 28 importiert aus IDS.",
+  "err": "Das System anders schreiben als in der IFC-Datei („Uniclass 2015“).",
+  "al": [
+   "IDS",
+   "IDS-Datei",
+   "IDS-Dateien",
+   "Information Delivery Specification"
+  ]
+ },
+ "K16": {
+  "t": "Klassifikationsfacette (IDS)",
+  "d": "IDS-Facette mit system (Pflicht), value und uri, nutzbar in Anwendbarkeit oder Anforderungen mit der Kardinalität required/optional/prohibited.",
+  "ej": "",
+  "eq": "",
+  "err": "Die Klassifikation mit der Merkmalsfacette statt mit der Klassifikationsfacette abfragen.",
+  "al": [
+   "Klassifikationsfacette",
+   "Klassifikationsfacetten",
+   "classification facet"
+  ]
+ },
+ "K17": {
+  "t": "Uniclass",
+  "d": "Einheitliches Klassifikationssystem des Vereinigten Königreichs (NBS), 15 Tabellen, an ISO 12006-2 ausgerichtet, kostenlos (CC BY-ND 4.0), vierteljährlich überarbeitet.",
+  "ej": "Einige spanische Ausschreibungen verlangen es (19 % im Wassersektor, 2022).",
+  "eq": "Revit: ClassificationCode; Archicad: Klassifikationspaket; NBS Chorus.",
+  "err": "Die Ausgabe nicht festlegen: Sie wird jedes Quartal überarbeitet.",
+  "al": [
+   "Uniclass",
+   "Uniclass 2015"
+  ]
+ },
+ "K18": {
+  "t": "OmniClass",
+  "d": "Nordamerikanisches System (CSI) mit 15 Tabellen, nummeriert 11–49, auf Grundlage von ISO 12006-2, MasterFormat, UniFormat und EPIC.",
+  "ej": "",
+  "eq": "Revit: OmniClass Number (Tabelle 23).",
+  "err": "Die Tabellen ohne Datum verwenden: Jede stammt aus einem anderen Jahr.",
+  "al": [
+   "OmniClass"
+  ]
+ },
+ "K19": {
+  "t": "MasterFormat",
+  "d": "CSI-Klassifikation für Leistungsbeschreibungen und Bauleistungen mit sechsstelligen Codes (03 30 00), gegliedert in die Divisionen 00–49.",
+  "ej": "",
+  "eq": "",
+  "err": "",
+  "al": [
+   "MasterFormat"
+  ]
+ },
+ "K20": {
+  "t": "UniFormat",
+  "d": "Klassifikation nach Bauelementen (A1010, B2010) für frühe Kostenschätzungen; UNIFORMAT II ist als ASTM E1557 genormt.",
+  "ej": "",
+  "eq": "Revit: Assembly Code (erscheint in der IFC-Datei als „Uniformat“).",
+  "err": "",
+  "al": [
+   "UniFormat",
+   "Uniformat",
+   "UNIFORMAT II",
+   "Assembly Code"
+  ]
+ },
+ "K21": {
+  "t": "CCI",
+  "d": "System auf Grundlage von ISO/IEC 81346-12, das Klassifikation und Kennzeichnung verbindet; internationale Weiterentwicklung des dänischen CCS (Molio).",
+  "ej": "",
+  "eq": "Revit: Class Feeder; Tekla: Type-ID CCS.",
+  "err": "",
+  "al": [
+   "CCI",
+   "Construction Classification International"
+  ]
+ },
+ "K22": {
+  "t": "CoClass",
+  "d": "Schwedisches System von Svensk Byggtjänst, Nachfolger von BSAB 96, an ISO 12006-2 und ISO 81346-12 ausgerichtet.",
+  "ej": "",
+  "eq": "",
+  "err": "",
+  "al": [
+   "CoClass"
+  ]
+ },
+ "K23": {
+  "t": "NL-SfB",
+  "d": "Niederländische Adaption von CI/SfB, in der BIM basis ILS zur Klassifikation von Hochbauelementen verwendet.",
+  "ej": "",
+  "eq": "",
+  "err": "",
+  "al": [
+   "NL-SfB"
+  ]
+ },
+ "K24": {
+  "t": "GuBIMclass",
+  "d": "Spanisches System zur Klassifikation von Elementen nach ihrer Hauptfunktion, entwickelt von GuBIMCat (v1.0 2017, v1.2 Nov. 2017) und von Infraestructures.cat übernommen.",
+  "ej": "40.10.10.10 Trennwände (Tabiques); 20.10.40.10 Bodenplatten (Soleras); 30.10.10 Fassaden (Fachadas).",
+  "eq": "Archicad: XML für den Classification Manager; Revit: Assembly Code und Classification Manager; Navisworks: Such-XML.",
+  "err": "Von Dritten kopierte Codes verwenden, ohne sie mit der offiziellen Tabelle 1.2 abzugleichen.",
+  "al": [
+   "GuBIMclass",
+   "GuBIMClass",
+   "GuBIMCat"
+  ]
+ },
+ "K25": {
+  "t": "FIEBDC-3 / BC3",
+  "d": "Spanisches Austauschformat für Baudatenbanken (Preise, Aufgliederungen, Mengenermittlungen, Leistungsbeschreibungen) in ASCII mit den Datensätzen ~C, ~D, ~T, ~M …",
+  "ej": "Der Positionscode aus Presto, mit Cost-It mit Revit-Typen verknüpft.",
+  "eq": "Presto, Arquímedes, TCQ.",
+  "err": "Den BC3-Code ins selbe Feld wie die Elementklassifikation schreiben.",
+  "al": [
+   "BC3",
+   "FIEBDC",
+   "FIEBDC-3",
+   "BC3-Format"
+  ]
+ },
+ "K26": {
+  "t": "ISO 12006-2",
+  "d": "Rahmennorm, die Klassifikationstabellen für das Bauwesen empfiehlt (Ressourcen, Prozesse, Ergebnisse, Eigenschaften); liefert keine Inhalte; in Überarbeitung 2025–2026.",
+  "ej": "",
+  "eq": "",
+  "err": "Glauben, die Norm enthalte Codes: Sie enthält nur Tabellentitel.",
+  "al": [
+   "ISO 12006-2",
+   "DIN EN ISO 12006-2"
+  ]
+ },
+ "K27": {
+  "t": "ISO 12006-3",
+  "d": "Rahmennorm für objektorientierte Informationen (sprachunabhängige Datenkataloge); Grundlage von IFD/bSDD.",
+  "ej": "",
+  "eq": "",
+  "err": "",
+  "al": [
+   "ISO 12006-3",
+   "DIN EN ISO 12006-3"
+  ]
+ },
+ "K28": {
+  "t": "ISO/IEC 81346",
+  "d": "Normenreihe für Strukturierung und Referenzkennzeichnung; Teil 12 legt Klassen für Bauwerke und Gebäudetechnik fest.",
+  "ej": "",
+  "eq": "",
+  "err": "",
+  "al": [
+   "ISO 81346",
+   "ISO/IEC 81346",
+   "ISO 81346-12",
+   "DIN EN 81346"
+  ]
+ },
+ "K29": {
+  "t": "COBie",
+  "d": "Format zur Datenübergabe für Betrieb und Instandhaltung; nutzt Category-Spalten mit Klassifikationscodes (OmniClass, Uniclass).",
+  "ej": "",
+  "eq": "Revit: COBie-Export mit „Code : Titel“.",
+  "err": "",
+  "al": [
+   "COBie"
+  ]
+ },
+ "K30": {
+  "t": "Mapping / Zuordnungstabelle",
+  "d": "Tabelle, die Klassen zweier Systeme einander zuordnet (z. B. Uniclass↔NRM, OmniClass↔Uniclass); im bSDD über die Beziehungen IsEqualTo/IsSimilarTo.",
+  "ej": "GuBIMclass ↔ Uniclass ↔ BC3-Position in ein und demselben Projekt.",
+  "eq": "bSDD: IsEqualTo / IsSimilarTo.",
+  "err": "Eins-zu-eins-Entsprechungen erwarten.",
+  "al": [
+   "Mapping",
+   "Mappings",
+   "Zuordnungstabelle",
+   "Zuordnungstabellen",
+   "crosswalk"
+  ]
+ },
+ "K31": {
+  "t": "Ausgabe (einer Tabelle)",
+  "d": "Version oder Veröffentlichungsdatum der verwendeten Klassifikationstabelle. Ohne sie kann ein Code in einer anderen Version fehlen oder etwas anderes bedeuten.",
+  "ej": "GuBIMclass 1.2 (2017); Uniclass Ss v1.43 (Juli 2026).",
+  "eq": "IFC: IfcClassification.Edition / EditionDate.",
+  "err": "Code ohne Ausgabe: Er kann zurückgezogen sein oder seinen Titel geändert haben.",
+  "al": [
+   "Ausgabe der Tabelle",
+   "Tabellenausgabe",
+   "Tabellenversion",
+   "Edition"
+  ]
+ },
+ "E01": {
+  "t": "Gemeinsame Datenumgebung (CDE)",
+  "d": "Vereinbarte Informationsquelle eines Projekts oder Assets, um jeden Informationscontainer in einem kontrollierten Prozess zu sammeln, zu verwalten und zu verteilen (ISO 19650-1, 3.3.15). Sie besteht aus zwei Teilen: dem Workflow (Prozess) und der technischen Lösung.",
+  "ej": "Der spanische Plan BIM (Orden PCM/818/2023) definiert sie als „technische Lösung, die einen Workflow zum Verwalten, Liefern und Prüfen der Informationen integriert“, und verlangt sie nach UNE-EN ISO 19650 ab der fortgeschrittenen Stufe (1.10.2027 für Aufträge ≥ 5,382 Mio. €).",
+  "eq": "Autodesk Docs (Forma Data Management), Trimble Connect, ProjectWise, Aconex, Asite, Dalux, Catenda Hub, Viewpoint For Projects, Thinkproject, usBIM, BIMcollab.",
+  "err": "Eine bestimmte Plattform „CDE“ nennen: Die Norm verlangt zuerst den Workflow und dann das Werkzeug, und das können auch mehrere sein.",
+  "al": [
+   "CDE",
+   "gemeinsame Datenumgebung",
+   "gemeinsamen Datenumgebung",
+   "gemeinsamen Datenumgebungen",
+   "Gemeinsame Datenumgebung",
+   "common data environment"
+  ]
+ },
+ "E02": {
+  "t": "Vereinbarte Informationsquelle",
+  "d": "Kerngedanke der CDE: Alle Beteiligten vereinbaren einen einzigen Ort und einen einzigen Prozess für die Projektinformationen, sodass alles außerhalb davon nicht als geliefert gilt.",
+  "ej": "Ein per E-Mail verschickter Plan ohne veröffentlichten Container ist keine gültige Bauinformation.",
+  "eq": "Softwareunabhängig.",
+  "err": "E-Mail, Netzlaufwerke und Plattform parallel führen: Niemand weiß, welche Fassung gilt.",
+  "al": [
+   "vereinbarte Informationsquelle",
+   "vereinbarten Informationsquelle",
+   "einzige Informationsquelle",
+   "einzigen Informationsquelle",
+   "Single Source of Truth",
+   "single source of truth"
+  ]
+ },
+ "E04": {
+  "t": "Metadaten des Containers",
+  "d": "Daten, die jeden Container begleiten und beschreiben: mindestens Statuscode (Eignung), Revisionscode und Klassifikationscode (ISO 19650-2, 5.1.7) sowie die vom Projektprotokoll festgelegten.",
+  "ej": "In Spanien gibt es keinen nationalen Anhang: Der BAP oder die Ausschreibung legt fest, welche Metadaten Pflicht sind.",
+  "eq": "Autodesk Docs: Attribute Status, Revision und Classification der Benennungskonvention; Catenda und BIMcollab: Status als Metadatum; usBIM: anpassbare Status.",
+  "err": "Den Status nur im Ordnernamen führen oder in den Dateinamen schreiben: Er geht beim Herunterladen verloren oder bricht die Revisionsstapelung.",
+  "al": [
+   "Metadaten",
+   "Metadatum",
+   "Metadaten des Containers",
+   "metadata"
+  ]
+ },
+ "E06": {
+  "t": "Freigabe, Autorisierung und Annahme",
+  "d": "Entscheidungen, die einen Container in einen anderen Status überführen: Das Aufgabenteam prüft, kontrolliert und gibt zum Teilen frei (Entscheidung A nach ISO 19650-4); der federführende Auftragnehmer prüft und autorisiert, der Auftraggeber prüft und nimmt zur Veröffentlichung an (Entscheidung B).",
+  "ej": "ISO 19650-2: 5.6.4 (Freigabe zum Teilen), 5.7.1–5.7.2 (Autorisierung) und 5.7.3–5.7.4 (Annahme).",
+  "eq": "Autodesk Docs: Prüf-Workflows mit 1 bis 6 Schritten; Dalux: statusgesteuerte Workflows; Catenda: Berechtigung „Can publish“; usBIM: Gates.",
+  "err": "Formale Prüfung (des Containers) mit inhaltlicher Prüfung verwechseln oder die Plattform den Status ohne unterzeichnete Entscheidung ändern lassen.",
+  "al": [
+   "Freigabe zum Teilen",
+   "zum Teilen freigeben",
+   "Autorisierung zur Veröffentlichung",
+   "Autorisierung und Annahme",
+   "Prüfpunkt A",
+   "Prüfpunkt B"
+  ]
+ },
+ "E07": {
+  "t": "Statuscode (Eignung)",
+  "d": "Code, der angibt, wofür ein geteilter oder veröffentlichter Container verwendet werden darf. ISO 19650 verlangt einen Statuscode, legt ihn aber nicht fest; am verbreitetsten sind die des britischen Anhangs: S0 in Bearbeitung; S1 Koordination; S2 Information; S3 Prüfung und Kommentare; S4 Phasenfreigabe; A1…An autorisiert und angenommen; B mit Kommentaren; CR Bestandsdokumentation (2018).",
+  "ej": "Ohne spanischen Anhang übernehmen viele Projekte die britische Tabelle von 2018 und halten sie im BAP fest.",
+  "eq": "Autodesk Docs: S0, S1–S4, S6, S7, A, B, CR (Tabelle 2018); Aconex: Status wie For Review, For Construction …, die keine Eignungscodes sind.",
+  "err": "Die Tabelle von 2018 (S6, S7, CR) mit der von 2021 (S4 Autorisierung, S5 Annahme, A6 statt CR) im selben Projekt mischen.",
+  "al": [
+   "Statuscode",
+   "Statuscodes",
+   "Eignungscode",
+   "Eignungscodes",
+   "Eignung",
+   "suitability code",
+   "suitability"
+  ]
+ },
+ "E10": {
+  "t": "Auftraggeber und Auftragnehmer",
+  "d": "Begriffe der DIN EN ISO 19650: Auftraggeber (appointing party, wer beauftragt), federführender Auftragnehmer (lead appointed party, verantwortlich für das Lieferteam) und Auftragnehmer (appointed party). In spanischen Quellen: parte contratante, parte contratada principal und parte contratada; andere Übersetzungen sagen „parte que designa“ und „parte designada“.",
+  "ej": "Bei einem öffentlichen Auftrag ist der Auftraggeber die Verwaltung; federführender Auftragnehmer ist das beauftragte Ingenieurbüro oder Bauunternehmen.",
+  "eq": "Softwareunabhängig; auf den Plattformen entspricht das Unternehmen und Rollen mit Berechtigungen.",
+  "err": "Den federführenden Auftragnehmer für eine technische Rolle halten: Es ist eine vertragliche Verantwortung für die Informationen seines gesamten Teams.",
+  "al": [
+   "Auftraggeber",
+   "Auftraggebers",
+   "federführender Auftragnehmer",
+   "federführenden Auftragnehmer",
+   "federführenden Auftragnehmers",
+   "Auftragnehmer",
+   "Auftragnehmers",
+   "Auftragnehmern"
+  ]
+ },
+ "E11": {
+  "t": "Statusabhängige Berechtigungen",
+  "d": "Zugriffsregeln der CDE, die von Rolle und Status des Containers abhängen: Das Team bearbeitet seine Arbeit in Bearbeitung, die anderen lesen das Geteilte, und Veröffentlichtes bearbeitet niemand (es wird eine neue Revision angelegt).",
+  "ej": "Bei sensiblen Projekten beschränken ISO 19650-5 und in der spanischen Verwaltung das ENS den Zugriff auf diejenigen, die ihn benötigen.",
+  "eq": "Autodesk Docs: Ordnerberechtigungen; Catenda: „View shared revisions“ und „Can publish“; Dalux: geteilter und veröffentlichter Bereich.",
+  "err": "Zu Projektbeginn allen Bearbeitungsrechte geben.",
+  "al": [
+   "Berechtigungen",
+   "Berechtigung",
+   "Zugriffskontrolle",
+   "Zugriffsrechte",
+   "Need-to-know-Prinzip"
+  ]
+ },
+ "E12": {
+  "t": "Archivierung und Prüfpfad",
+  "d": "Vierter Status der CDE: das Journal der Informationstransaktionen, das überholte Revisionen und jeden Statuswechsel (wer, was, wann) festhält. Kein Endstatus des Freigegebenen. Bei Projektabschluss wird das Projektinformationsmodell archiviert (ISO 19650-2, 5.8.1).",
+  "ej": "Einige spanische Ausschreibungen beschreiben das Archiv als „validierte und verifizierte Daten“ und verwechseln es so mit dem veröffentlichten Status.",
+  "eq": "Versionshistorie und Aktivitätsprotokoll jeder Plattform.",
+  "err": "Alte Revisionen löschen, um die CDE „aufzuräumen“.",
+  "al": [
+   "Archiviert",
+   "archiviert",
+   "Archivierung",
+   "Prüfpfad",
+   "Prüfpfads",
+   "Audit-Trail",
+   "audit trail",
+   "golden thread"
+  ]
+ },
+ "E19": {
+  "t": "Nationaler Anhang",
+  "d": "Länderspezifisches Dokument, das ISO 19650-2 konkretisiert: Status- und Revisionscodes, Felder der Dateibenennung und Klassifikation. Der britische (2018, überarbeitet 2021) wird am häufigsten übernommen; Irland verwendet Zweckcodes P1–P10 und Annahmecodes S/A/B/C/D.",
+  "ej": "Spanien hat keinen nationalen Anhang: Die Codes legt jeder BAP oder jede Ausschreibung fest.",
+  "eq": "Die ISO-19650-Vorlagen der Plattformen bilden meist den britischen Anhang von 2018 ab.",
+  "err": "Die Codes S0–S7 als Codes „der ISO 19650“ darstellen, obwohl sie aus dem britischen Anhang stammen.",
+  "al": [
+   "nationaler Anhang",
+   "nationalen Anhang",
+   "nationalen Anhangs",
+   "nationale Anhänge",
+   "nationalen Anhänge",
+   "National Annex"
+  ]
+ },
+ "E20": {
+  "t": "Sicherheitsorientierter Ansatz (ISO 19650-5)",
+  "d": "Teil 5 der Reihe (2020, 2025 bestätigt): verlangt, die Sensibilität des Assets und seiner Informationen zu bewerten und, falls gegeben, eine Sicherheitsstrategie und einen Sicherheitsplan festzulegen, die sich in Berechtigungen, Protokollierung und Hosting der CDE niederschlagen.",
+  "ej": "Die CDE der spanischen Verwaltung muss laut Plan BIM zusätzlich das Esquema Nacional de Seguridad (ENS) und das Esquema Nacional de Interoperabilidad (ENI) erfüllen.",
+  "eq": "Die BSI-Kitemarks von Asite und ACC verweisen auf ISO 19650-5.",
+  "err": "Ihn nur auf kritische Infrastrukturen anwenden: Die Sensibilitätsbewertung gilt für jedes Projekt.",
+  "al": [
+   "ISO 19650-5",
+   "sicherheitsorientierter Ansatz",
+   "sicherheitsorientierten Ansatz",
+   "sicherheitsorientierten Ansatzes",
+   "Esquema Nacional de Seguridad",
+   "ENS"
+  ]
+ },
+ "E21": {
+  "t": "DIN SPEC 91391",
+  "d": "Deutsche Spezifikation (April 2019). Teil 1: verpflichtende und optionale Module und Funktionen einer CDE auf Basis von Abschnitt 12 der ISO 19650-1. Teil 2: Schnittstelle „openCDE“ zum Austausch von Containern und Metadaten zwischen Plattformen.",
+  "ej": "Dient als Anforderungsliste bei der Ausschreibung einer CDE-Plattform.",
+  "eq": "Oracle Aconex erhielt das BSI-Kitemark nach ISO 19650 und DIN SPEC 91391 (2022).",
+  "err": "Glauben, ISO 19650 empfehle OpenCDE: Der normative Vorläufer ist DIN SPEC 91391-2.",
+  "al": [
+   "DIN SPEC 91391",
+   "DIN SPEC 91391-1",
+   "DIN SPEC 91391-2"
+  ]
+ },
+ "E22": {
+  "t": "OpenCDE Documents API",
+  "d": "API von buildingSMART (finaler Standard seit 21.12.2023) zum Hoch- und Herunterladen von Containern einer CDE aus einem Client-Programm. Sie arbeitet mit einem „Handshake“: Der Nutzer wählt in der Weboberfläche der CDE aus und vergibt die Metadaten, der Client überträgt die Datei. Sie stützt sich auf die Foundation API (Discovery und OAuth2).",
+  "ej": "In den ausgewerteten Quellen keine dokumentierten Implementierungen in Spanien.",
+  "eq": "Catenda Hub (selbst deklariert), Solibri 25.12 (Verbindung zu privaten CDEs), buildagil.",
+  "err": "Die Implementierungslisten von buildingSMART für eine Zertifizierung halten: Sie beruhen auf Selbstauskunft.",
+  "al": [
+   "Documents API",
+   "OpenCDE Documents API",
+   "OpenCDE"
+  ]
+ },
+ "E24": {
+  "t": "ICDD (ISO 21597)",
+  "d": "Paketformat, das mehrere Dokumente (Modelle, Pläne, Tabellen) zusammen mit den Verknüpfungen zwischen ihnen liefert. ISO 21597-1:2020 definiert den Container, ISO 21597-2:2020 die Verknüpfungsarten mit Linked-Data-Semantik.",
+  "ej": "UNE-EN ISO 21597-2 im Januar 2021 in Spanien übernommen.",
+  "eq": "In kommerziellen Plattformen wenig verbreitet.",
+  "err": "Den ICDD-Container (ein Paket) mit dem Informationscontainer der ISO 19650 (jede benannte Einheit) verwechseln.",
+  "al": [
+   "ICDD",
+   "ISO 21597",
+   "DIN EN ISO 21597"
+  ]
+ },
+ "E26": {
+  "t": "Prüf-Workflow",
+  "d": "Plattformfunktion, die einen Prüfpunkt der CDE automatisiert: Sie weist Prüfer seriell oder parallel zu, sammelt deren Entscheidung und verschiebt oder kennzeichnet den Container neu.",
+  "ej": "Der Plan BIM legt die Konfiguration nicht fest: Sie wird im BAP definiert.",
+  "eq": "Autodesk Docs: Vorlagen mit 1 bis 6 Schritten, die Freigegebenes in einen Ordner kopieren; Dalux: statusgesteuert; Trimble Connect: Releases erlauben keine Freigabe; SharePoint: Entwurf, ausstehend, genehmigt.",
+  "err": "Das Werkzeug konfigurieren, bevor der Ablauf auf Papier skizziert ist.",
+  "al": [
+   "Prüf-Workflow",
+   "Prüf-Workflows",
+   "Freigabe-Workflow",
+   "Freigabe-Workflows",
+   "Prüfworkflow",
+   "Freigabeworkflow"
+  ]
+ },
+ "E27": {
+  "t": "Gemeinsames Arbeiten in der Cloud",
+  "d": "Arbeitsweise, bei der mehrere Nutzer an einem in der Cloud gehosteten Modell arbeiten. Im Sinne der ISO 19650 ist das Arbeit in Bearbeitung des Teams: Synchronisieren ist kein Teilen; nötig ist ein ausdrücklicher Schritt (veröffentlichen, exportieren, Status ändern).",
+  "ej": "In jedem Land gleich.",
+  "eq": "Revit Cloud Worksharing (synchronisieren vs. veröffentlichen), Archicad Teamwork in BIMcloud, Tekla Model Sharing, Vectorworks Project Sharing.",
+  "err": "Glauben, was „in der Cloud“ liegt, sei bereits mit den anderen Teams geteilt.",
+  "al": [
+   "Zentralmodell",
+   "Zentralmodells",
+   "in der Cloud synchronisieren",
+   "Cloud Worksharing",
+   "Teamwork",
+   "Tekla Model Sharing",
+   "Project Sharing"
+  ]
+ },
+ "E28": {
+  "t": "Prüfkriterien (ISO 19650-4)",
+  "d": "Sechs Kriterien für die Entscheidung an jedem Prüfpunkt: CDE (Name und Metadaten), Konformität, Kontinuität, Kommunikation, Konsistenz und Vollständigkeit. ISO 19650-4:2022 ordnet sie den Entscheidungen A (Teilen) und B (Veröffentlichen) zu.",
+  "ej": "Unverändert anwendbar; keine spanische Anpassung.",
+  "eq": "Namensprüfung der Plattformen (Autodesk Docs, Dalux, Atvero), IDS mit IfcTester oder Solibri.",
+  "err": "Nur den Inhalt prüfen und das erste Kriterium vergessen: den Container selbst.",
+  "al": [
+   "ISO 19650-4",
+   "Prüfkriterien",
+   "Prüfkriterium",
+   "Vollständigkeit",
+   "Konsistenz"
+  ]
+ },
+ "E31": {
+  "t": "BSI-Kitemark für CDE",
+  "d": "Zertifizierung der BSI (seit April 2021), die bewertet, ob eine Plattform ISO-19650-konforme Funktionen, einen sicherheitsorientierten Ansatz und entsprechenden Support bietet. Sie zertifiziert das Werkzeug, nicht den Prozess des Anwenders.",
+  "ej": "Es gibt kein gleichwertiges spanisches Siegel; die BSI stellt zudem Verifizierungszertifikate nach ISO 19650-2 für Organisationen aus.",
+  "eq": "Asite (KM 740457, gültig bis 23.03.2027), Autodesk Construction Cloud (2025), Oracle Aconex (2022). Thinkproject hat eine Bestätigung des TÜV SÜD.",
+  "err": "„ISO-19650-kompatibel“ in einem Prospekt mit einer auditierten Zertifizierung gleichsetzen.",
+  "al": [
+   "Kitemark",
+   "Kitemarks",
+   "BSI Kitemark",
+   "BSI-Kitemark"
+  ]
+ },
+ "E32": {
+  "t": "Plattformversion",
+  "d": "Automatischer Zähler, den die Plattform bei jedem Hochladen oder Speichern erzeugt. Entspricht nicht der ISO-Revision, die sich durch eine Entscheidung beim Passieren eines Prüfpunkts ändert.",
+  "ej": "In jedem Land gleich.",
+  "eq": "Autodesk Docs mit Civil 3D: neue Version bei jedem Speichern; Revit: eine Version pro Veröffentlichung.",
+  "err": "Im Plankopf die automatische Version statt der vereinbarten Revision angeben.",
+  "al": [
+   "Plattformversion",
+   "Plattformversionen",
+   "Versionsnummer der Plattform"
+  ]
  }
 }
