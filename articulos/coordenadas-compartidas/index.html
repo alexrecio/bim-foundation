@@ -31,13 +31,13 @@
 
   <!-- Menú de diapositivas: se rellena con data-nav de cada <section> -->
   <aside id="deck-nav" aria-label="Diapositivas">
-    <span class="kicker-y">Coordenadas · 40 ideas</span>
+    <span class="kicker-y">Coordenadas · 42 ideas</span>
     <ol></ol>
   </aside>
   <div id="deck-bar">
     <div id="deck-sheet"><ol></ol></div>
     <button type="button" id="deck-bar-btn" aria-expanded="false" aria-controls="deck-sheet">
-      <span class="n">01/40</span><span class="t">Portada</span>
+      <span class="n">01/42</span><span class="t">Portada</span>
       <span class="chev" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M3 9l4-4 4 4" fill="none" stroke="#fff" stroke-width="2"/></svg></span>
     </button>
   </div>
@@ -56,15 +56,15 @@
           <p class="hero-id"><a href="../../" style="text-decoration:none">bimkernel · 01</a></p>
           <span class="kicker-y lg">Conceptos · estándares · software</span>
           <h1 class="display">Coordenadas<br>compartidas<br><span class="hl-y">en BIM<span class="dot">.</span></span></h1>
-          <p class="slide-lead">El modelo se queda quieto. Lo que se mueve es el sistema de coordenadas.</p>
-          <div class="slide-actions"><a class="btn" href="#problema">Empezar <span aria-hidden="true">↓</span></a></div>
+          <p class="slide-lead">Un proyecto describe algo que aún no existe. Las coordenadas dicen dónde va a existir.</p>
+          <div class="slide-actions"><a class="btn" href="#porque">Empezar <span aria-hidden="true">↓</span></a></div>
         </div>
         <div class="b-cards">
           <div class="card w6 ficha" data-ficha></div>
           <div class="card w6 g">
             <span class="c-label">El artículo en seis bloques</span>
             <ol class="mapa">
-              <li class="is-key"><a href="#problema"><b>I</b><span>Conceptos generales</span><em>16 ideas · para cualquier programa</em></a></li>
+              <li class="is-key"><a href="#porque"><b>I</b><span>Conceptos generales</span><em>18 ideas · el porqué, la Tierra y el ordenador</em></a></li>
               <li><a href="#espana"><b>II</b><span>Estándares</span><em>3 ideas · EPSG, IFC, ISO 19650</em></a></li>
               <li><a href="#limites"><b>III</b><span>Software</span><em>7 ideas · Revit, Survey Point, campus y tipologías</em></a></li>
               <li><a href="#coordinacion"><b>IV</b><span>Plataformas</span><em>2 ideas · visores y nube</em></a></li>
@@ -76,14 +76,83 @@
       </div>
     </section>
 
-    <!-- ========== EL PROBLEMA ========== -->
-    <section class="slide" id="problema" data-cap="I · Conceptos generales" data-nav="El problema">
+    <!-- ========== POR QUÉ COORDENADAS ========== -->
+    <section class="slide" id="porque" data-cap="I · Conceptos generales" data-nav="Por qué coordenadas">
       <div class="bento">
         <div class="b-title">
           <span class="slide-n"></span>
-          <span class="kicker-y">El problema</span>
+          <span class="kicker-y">A · Por qué coordenadas</span>
+          <h2 class="display">Dibujar lo que aún no existe<span class="dot">.</span></h2>
+          <p class="slide-lead">Un proyecto describe un activo futuro en un soporte que no es físico. Las coordenadas lo atan a un lugar concreto de la Tierra.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="porque"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w6">
+            <span class="c-label">Terreno y modelo, un mismo número</span>
+            <svg class="draw" viewBox="0 0 640 200" role="img" aria-label="A la izquierda el terreno con un clavo topográfico; a la derecha una pantalla con el modelo del edificio; una línea amarilla con las coordenadas E, N y H une el clavo con la esquina del edificio">
+              <path d="M10 170 C70 160 110 150 160 156 S250 172 290 164" fill="none" stroke="#000" stroke-width="3" stroke-linecap="round"/>
+              <path d="M150 156 V128" stroke="#000" stroke-width="3" stroke-linecap="round"/><circle cx="150" cy="122" r="7" fill="#fff" stroke="#000" stroke-width="3"/>
+              <g font-family="JetBrains Mono, monospace" font-size="12"><text x="10" y="194">REALIDAD · se mide</text><text x="104" y="118">clavo</text></g>
+              <rect x="380" y="20" width="250" height="150" rx="6" fill="#fff" stroke="#000" stroke-width="3"/><path d="M470 170 V186 M440 186 H500" stroke="#000" stroke-width="3" stroke-linecap="round"/>
+              <path d="M430 140 V80 L480 56 L560 74 V128 Z M430 80 L510 98 L560 74 M510 98 V150" fill="none" stroke="#000" stroke-width="2.5" stroke-linejoin="round"/>
+              <path d="M430 140 L510 150 L560 128" fill="none" stroke="#000" stroke-width="2.5" stroke-linejoin="round"/>
+              <text x="392" y="40" font-family="JetBrains Mono, monospace" font-size="12">MODELO · se proyecta</text>
+              <path d="M158 122 C240 100 340 120 424 140" fill="none" stroke="#FFFF00" stroke-width="6" stroke-linecap="round"/>
+              <path d="M158 122 C240 100 340 120 424 140" fill="none" stroke="#000" stroke-width="1.5" stroke-dasharray="4 5"/>
+              <rect x="240" y="76" width="96" height="26" rx="13" fill="#000"/><text x="288" y="94" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="13" font-weight="700" fill="#FFFF00">E · N · H</text>
+            </svg>
+          </div>
+          <div class="card w2"><span class="c-label">Qué es</span><span class="c-title">Un activo futuro</span></div>
+          <div class="card w2"><span class="c-label">Dónde vive</span><span class="c-title">En un soporte digital</span></div>
+          <div class="card w2 k"><span class="c-label">Qué lo ata</span><span class="c-title">Un sistema de coordenadas</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== EL CICLO ========== -->
+    <section class="slide" id="ciclo" data-nav="Medir, codificar, construir">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">De la realidad al dato y vuelta</span>
+          <h2 class="display">Medir, codificar, construir<span class="dot">.</span></h2>
+          <p class="slide-lead">El BIM empieza midiendo lo que existe y acaba replanteando lo proyectado. Si el sistema cambia por el camino, el edificio no cae donde se diseñó.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="ciclo"><span class="plus">+</span> Ver las fases</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w6">
+            <span class="c-label">Seis fases, un sistema</span>
+            <svg class="draw" viewBox="0 0 640 210" role="img" aria-label="Ciclo de seis fases: realidad, medir, codificar, proyectar, replantear y operar, que vuelve a la realidad; todas comparten un mismo sistema de coordenadas">
+              <g font-family="JetBrains Mono, monospace" font-size="11" text-anchor="middle">
+                <circle cx="50" cy="70" r="40" fill="#000"/><text x="50" y="74" fill="#fff" font-weight="700">REALIDAD</text>
+                <circle cx="158" cy="70" r="40" fill="#fff" stroke="#000" stroke-width="3"/><text x="158" y="74">medir</text>
+                <circle cx="266" cy="70" r="40" fill="#fff" stroke="#000" stroke-width="3"/><text x="266" y="74">codificar</text>
+                <circle cx="374" cy="70" r="40" fill="#fff" stroke="#000" stroke-width="3"/><text x="374" y="74">proyectar</text>
+                <circle cx="482" cy="70" r="40" fill="#fff" stroke="#000" stroke-width="3"/><text x="482" y="74">replantear</text>
+                <circle cx="590" cy="70" r="40" fill="#fff" stroke="#000" stroke-width="3"/><text x="590" y="74">operar</text>
+              </g>
+              <g stroke="#000" stroke-width="2"><path d="M90 70 H114 M198 70 H222 M306 70 H330 M414 70 H438 M522 70 H546"/></g>
+              <g fill="#000"><polygon points="124,70 114,65 114,75"/><polygon points="232,70 222,65 222,75"/><polygon points="340,70 330,65 330,75"/><polygon points="448,70 438,65 438,75"/><polygon points="556,70 546,65 546,75"/></g>
+              <path d="M590 112 V132 H50 V118" fill="none" stroke="#000" stroke-width="2" stroke-dasharray="6 5"/><polygon points="50,112 45,122 55,122" fill="#000"/>
+              <rect x="20" y="150" width="600" height="40" rx="20" fill="#FFFF00" stroke="#000" stroke-width="2.5"/>
+              <text x="320" y="176" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="14" font-weight="700">un mismo sistema de coordenadas · EPSG <tspan data-pais="epsg">25830</tspan></text>
+            </svg>
+          </div>
+          <div class="card w2"><span class="c-label">Entra por</span><span class="c-title">La topografía</span></div>
+          <div class="card w2"><span class="c-label">Sale por</span><span class="c-title">El replanteo</span></div>
+          <div class="card w2 k"><span class="c-label">Dura</span><span class="c-title">Toda la vida del activo</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== EL PROBLEMA ========== -->
+    <section class="slide" id="problema" data-nav="Sin sistema común">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Cuando no hay sistema común</span>
           <h2 class="display">Modelos que no encajan<span class="dot">.</span></h2>
-          <p class="slide-lead">Cada disciplina modela en su programa. Sin un sistema común, al federar llegan mal colocados.</p>
+          <p class="slide-lead">Cada disciplina modela en su programa. Si no comparten sistema, al juntar los modelos llegan mal colocados.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="problema"><span class="plus">+</span> Ver detalle</button></div>
         </div>
         <div class="b-cards">
@@ -121,7 +190,7 @@
       <div class="bento">
         <div class="b-title">
           <span class="slide-n"></span>
-          <span class="kicker-y">Geodesia</span>
+          <span class="kicker-y">B · Geodesia</span>
           <h2 class="display">La Tierra no es una esfera<span class="dot">.</span></h2>
           <p class="slide-lead">Para calcular se usa un elipsoide, una forma matemática. El nivel del mar, el geoide, es irregular.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="tierra"><span class="plus">+</span> Ver detalle</button></div>
@@ -392,7 +461,7 @@
       <div class="bento">
         <div class="b-title">
           <span class="slide-n"></span>
-          <span class="kicker-y">Topografía</span>
+          <span class="kicker-y">C · Topografía</span>
           <h2 class="display">Del campo al modelo<span class="dot">.</span></h2>
           <p class="slide-lead">El topógrafo se apoya en la red geodésica y entrega coordenadas en un sistema conocido. Ese sistema es el que hereda el modelo.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="topografia"><span class="plus">+</span> Ver detalle</button></div>
@@ -1438,12 +1507,13 @@
     </section>
 
     <!-- ========== CIERRE ========== -->
-    <section class="slide" id="cierre" data-nav="En resumen">
+    <section class="slide" id="cierre" data-nav="Del modelo al replanteo">
       <div class="bento">
         <div class="b-title">
           <span class="slide-n"></span>
-          <span class="kicker-y">En resumen</span>
-          <h2 class="display">Cuatro reglas<span class="dot">.</span></h2>
+          <span class="kicker-y">De vuelta a la obra</span>
+          <h2 class="display">Del modelo al replanteo<span class="dot">.</span></h2>
+          <p class="slide-lead">Lo que se midió en el terreno vuelve a él. Cuatro reglas para que llegue al mismo sitio.</p>
           <div class="slide-actions">
             <button type="button" class="btn l2-btn" data-l2="glosario"><span class="plus">+</span> Glosario</button>
             <button type="button" class="btn ghost l2-btn" data-l2="fuentes"><span class="plus">+</span> Fuentes</button>
@@ -1477,6 +1547,59 @@
 
   <!-- ============================== CAPA 2 ============================== -->
   <!-- Capa 2 = ficha «Ver detalle» en tarjetas. Solo añade lo que la slide no dice. -->
+
+    <template id="l2-porque">
+<div class="b-cards">
+<div class="card w6">
+<div class="table-wrap"><table>
+<thead><tr><th>Tres mundos</th><th>Qué es</th><th>Cómo se relaciona con los otros</th></tr></thead>
+<tbody>
+<tr><td>Realidad</td><td>El terreno, lo construido, las redes enterradas</td><td>Se mide: el topógrafo la convierte en puntos con coordenadas</td></tr>
+<tr class="is-key"><td>Modelo</td><td>La información de un activo que aún no existe</td><td>Se proyecta sobre esos puntos y en el mismo sistema</td></tr>
+<tr><td>Obra</td><td>El activo construido</td><td>Se replantea: las coordenadas del modelo vuelven al terreno</td></tr>
+</tbody>
+</table></div>
+</div>
+<div class="card w3">
+<h4>Codificar una realidad</h4>
+<p>Un modelo no es una maqueta: es información estructurada. La norma ISO 19650 la llama modelo de información del proyecto mientras se diseña y se construye, y del activo cuando pasa a la operación. Sin un sistema de referencia, esa información no se puede cruzar con la del terreno ni con la de la ciudad.</p>
+</div>
+<div class="card w3 k">
+<h4>Lo que fija un sistema</h4>
+<ul>
+<li>Dónde: este y norte (<a href="#coordenadas">tipos de coordenadas</a>).</li>
+<li>A qué altura y respecto a qué (<a href="#escala">alturas</a>).</li>
+<li>Hacia dónde mira (<a href="#nortes">nortes</a>).</li>
+<li>Cuánto mide de verdad (<a href="#escala">escala</a>).</li>
+</ul>
+</div>
+<div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://www.iso.org/standard/68078.html" target="_blank" rel="noopener">ISO 19650-1:2018, conceptos</a> · <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2007-15822" target="_blank" rel="noopener">Real Decreto 1071/2007, sistema geodésico oficial</a>.</p></div>
+</div>
+  </template>
+
+  <template id="l2-ciclo">
+<div class="b-cards">
+<div class="card w6">
+<div class="table-wrap"><table>
+<thead><tr><th>Fase</th><th>Quién</th><th>Qué coordenadas</th><th>Qué puede fallar</th></tr></thead>
+<tbody>
+<tr><td>Medir</td><td>Topógrafo</td><td>Las de la red geodésica oficial</td><td>Entregar en un sistema local sin decir cuál (<a href="#topografia">del campo al modelo</a>)</td></tr>
+<tr><td>Codificar</td><td>Topógrafo y equipo BIM</td><td>Puntos, nubes y terreno en ese sistema</td><td>Cifras tan grandes que el programa pierde precisión (<a href="#limite">lejos del origen</a>)</td></tr>
+<tr class="is-key"><td>Proyectar</td><td>Cada disciplina</td><td>Un origen local cerca del edificio y una transformación al sistema oficial</td><td>Que cada uno elija su origen (<a href="#principio">la regla de oro</a>)</td></tr>
+<tr><td>Coordinar</td><td>Coordinador BIM</td><td>Las mismas para todos los modelos</td><td>Modelos desplazados, girados o a otra cota (<a href="#problema">sin sistema común</a>)</td></tr>
+<tr><td>Replantear</td><td>Constructora</td><td>Las bases de replanteo de la obra</td><td>Confundir distancias de cuadrícula y de terreno (<a href="#escala">escala</a>)</td></tr>
+<tr><td>Operar</td><td>Propiedad</td><td>Las del modelo entregado</td><td>Perder la georreferencia en el modelo final (<a href="#ifc">IFC</a>)</td></tr>
+</tbody>
+</table></div>
+</div>
+<div class="card w6 k">
+<h4>Una sola decisión, al principio</h4>
+<p>El sistema se elige antes de medir y se escribe en el plan de ejecución BIM. Cambiarlo a mitad de proyecto obliga a transformar todo lo que ya existe, y cada transformación es una ocasión de error. <span class="tag">Inferido</span></p>
+</div>
+<div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://www.iso.org/standard/68080.html" target="_blank" rel="noopener">ISO 19650-2:2018, fases de entrega</a> · <a href="https://www.boe.es/diario_boe/txt.php?id=BOE-A-2023-16784" target="_blank" rel="noopener">Orden PCM/818/2023, Plan BIM de la AGE</a>.</p></div>
+</div>
+  </template>
+
 
   <template id="l2-problema">
 <div class="b-cards">
