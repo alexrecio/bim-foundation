@@ -141,3 +141,84 @@
     document.addEventListener('pointerleave', () => hud.classList.remove('is-on'));
   }
 })();
+
+// Capa «Precisión» v0.3: lectura de cifras, cursor de CAD, escaneo de lámina y cubiertas trazadas
+(function () {
+  const calma = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const fino = matchMedia('(pointer: fine)').matches;
+  const ver = (els, fn, threshold = 0.35) => {
+    if (!('IntersectionObserver' in window)) return;
+    const io = new IntersectionObserver((en) => en.forEach((e) => { if (e.isIntersecting) { io.unobserve(e.target); fn(e.target); } }), { threshold });
+    els.forEach((el) => io.observe(el));
+  };
+
+  // ---------- Cifras que se «leen» como en una estación total: las cifras ruedan y se fijan de izquierda a derecha ----------
+  const leer = (el) => {
+    const nodos = [];
+    const w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+    while (w.nextNode()) if (/\d/.test(w.currentNode.nodeValue)) nodos.push([w.currentNode, w.currentNode.nodeValue]);
+    if (!nodos.length) return;
+    const total = nodos.reduce((n, [, t]) => n + (t.match(/\d/g) || []).length, 0);
+    const dur = 650 + total * 45, t0 = performance.now();
+    el.classList.add('pz-reading');
+    const paso = (t) => {
+      const fijas = Math.floor(((t - t0) / dur) * (total + 1));
+      let k = 0;
+      nodos.forEach(([n, fin]) => {
+        n.nodeValue = fin.replace(/\d/g, (d) => (k++ < fijas ? d : String((Math.random() * 10) | 0)));
+      });
+      if (t - t0 < dur) requestAnimationFrame(paso);
+      else { nodos.forEach(([n, fin]) => (n.nodeValue = fin)); el.classList.remove('pz-reading'); }
+    };
+    requestAnimationFrame(paso);
+  };
+  if (!calma) ver([...document.querySelectorAll('.slide .c-num, .stat b')].filter((el) => !el.querySelector('[data-pais]') && !el.closest('[data-pais]')), leer, 0.6);
+
+  // ---------- Escaneo: una línea recorre la lámina al entrar (una vez) ----------
+  if (!calma) ver([...document.querySelectorAll('.slide .bento')], (b) => b.classList.add('pz-scan'), 0.3);
+
+  // ---------- Cursor de CAD: sobre un dibujo, retícula y coordenadas locales del dibujo ----------
+  if (fino) document.querySelectorAll('.card svg.draw').forEach((svg) => {
+    const card = svg.closest('.card');
+    const cad = document.createElement('div');
+    cad.className = 'pz-cad'; cad.setAttribute('aria-hidden', 'true');
+    cad.innerHTML = '<i class="x"></i><i class="y"></i><span></span>';
+    card.appendChild(cad);
+    const lbl = cad.querySelector('span');
+    svg.addEventListener('pointermove', (e) => {
+      const r = svg.getBoundingClientRect(), c = card.getBoundingClientRect();
+      const vb = svg.viewBox && svg.viewBox.baseVal && svg.viewBox.baseVal.width ? svg.viewBox.baseVal : { x: 0, y: 0, width: r.width, height: r.height };
+      const s = Math.min(r.width / vb.width, r.height / vb.height);
+      const ox = r.left + (r.width - vb.width * s) / 2, oy = r.top + (r.height - vb.height * s) / 2;
+      const ux = vb.x + (e.clientX - ox) / s, uy = vb.y + (e.clientY - oy) / s;
+      cad.style.setProperty('--l', r.left - c.left + 'px'); cad.style.setProperty('--t', r.top - c.top + 'px');
+      cad.style.setProperty('--w', r.width + 'px'); cad.style.setProperty('--h', r.height + 'px');
+      cad.style.setProperty('--cx', e.clientX - c.left + 'px'); cad.style.setProperty('--cy', e.clientY - c.top + 'px');
+      lbl.textContent = `x ${ux.toFixed(1).replace('.', ',')}  y ${uy.toFixed(1).replace('.', ',')}`;
+      cad.classList.add('is-on');
+    });
+    svg.addEventListener('pointerleave', () => cad.classList.remove('is-on'));
+  });
+
+  // ---------- Cubiertas de la portada: el dibujo se inserta en la página y se traza al aparecer ----------
+  const cubiertas = [...document.querySelectorAll('.article-list .cover img[src$=".svg"]')];
+  if (!calma && cubiertas.length && window.fetch) ver(cubiertas, async (img) => {
+    try {
+      const txt = await (await fetch(img.src)).text();
+      const tmp = document.createElement('div'); tmp.innerHTML = txt;
+      const svg = tmp.querySelector('svg'); if (!svg || svg.querySelector('script')) return;
+      svg.setAttribute('class', 'pz-cover-svg'); svg.setAttribute('aria-hidden', 'true');
+      img.replaceWith(svg);
+      let k = 0;
+      svg.querySelectorAll('path, line, polyline, polygon, circle, ellipse, rect').forEach((el) => {
+        const cs = getComputedStyle(el);
+        const trazo = cs.stroke !== 'none' && parseFloat(cs.strokeWidth) > 0 && cs.strokeDasharray === 'none';
+        if (trazo) { el.setAttribute('pathLength', '1'); el.classList.add('pz-plot'); el.style.setProperty('--i', Math.min(k++, 12)); }
+        else el.classList.add('pz-fill');
+      });
+      svg.querySelectorAll('text').forEach((t) => t.classList.add('pz-fill'));
+      svg.classList.add('pz-wait');
+      requestAnimationFrame(() => requestAnimationFrame(() => { svg.classList.remove('pz-wait'); svg.classList.add('pz-in'); }));
+    } catch (e) { /* si falla, se queda la imagen */ }
+  }, 0.4);
+})();
