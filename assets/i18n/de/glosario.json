@@ -595,5 +595,1946 @@
    "ITRF"
   ],
   "h": "3ad07c7352"
+ },
+ "N01": {
+  "t": "Informationsbedarfstiefe (LOIN)",
+  "d": "Rahmen, der Umfang und Granularität der für jedes Objekt geforderten Informationen festlegt: welche geometrischen und alphanumerischen Informationen und welche Dokumentation für einen Zweck, zu einem Datenübergabepunkt und zwischen bestimmten Akteuren nötig sind (ISO 7817-1).",
+  "ej": "Eine Brandschutztür in der Ausführungsplanung, zum Nachweis des Brandschutzes: lichte Durchgangsbreite und Öffnungsrichtung; Klasse EI2 60-C5; Prüfzeugnis.",
+  "eq": "Revit/Archicad: existiert nicht als Objekt; wird in Parameter, Vorlagen und eine IDS übersetzt. Anforderungsmanager wie Cobuilder Require, BIMQ oder Plannerly speichern sie in einer Datenbank.",
+  "err": "Sie als eine einzige Zahl für das ganze Modell behandeln („Modell LOIN 3“) oder als Summe LOD + LOI.",
+  "al": [
+   "Informationsbedarfstiefe",
+   "Informationsbedarfstiefen",
+   "LOIN",
+   "LoIN",
+   "level of information need",
+   "Level of Information Need"
+  ],
+  "h": "80b0ffda69"
+ },
+ "N02": {
+  "t": "Geometrische Informationen",
+  "d": "Teil der Informationsbedarfstiefe, der die Form des Objekts über fünf Aspekte beschreibt: Detaillierung, Dimensionalität, Lage, Erscheinungsbild und parametrisches Verhalten.",
+  "ej": "Tür in der Ausführungsplanung: geringe Detaillierung, 3D, absolute Lage, symbolisches Erscheinungsbild, ohne parametrisches Verhalten.",
+  "eq": "Wird umgesetzt in der Geometrie der Familie (Revit), im GDL-Objekt (Archicad) oder in der IFC-Repräsentation.",
+  "err": "Sie mit der Detailgenauigkeit der Ansicht (grob, mittel, fein) verwechseln, die nur bestimmt, was in welchem Maßstab dargestellt wird.",
+  "al": [
+   "geometrische Informationen",
+   "geometrischen Informationen",
+   "geometrische Information",
+   "Dimensionalität",
+   "parametrisches Verhalten",
+   "parametrischen Verhalten",
+   "Erscheinungsbild",
+   "LOG"
+  ],
+  "h": "fafb82e8bc"
+ },
+ "N03": {
+  "t": "Alphanumerische Informationen",
+  "d": "Teil der Informationsbedarfstiefe, bestehend aus der Identifikation des Objekts (Name, Typ, Code, Klassifikation) und seinem Inhalt (Merkmale mit Name, Wert, Einheit und zulässigen Werten).",
+  "ej": "Pset_DoorCommon.FireRating = „EI2 60-C5“; IsExternal = falsch.",
+  "eq": "Revit: (gemeinsam genutzte) Parameter; Archicad: Eigenschaften; Allplan: Attribute; Tekla: UDA und Property Sets; IFC: Attribute und Psets.",
+  "err": "Merkmale ohne normierten Namen und ohne Datentyp fordern: Auf dieselbe Frage kommen „60 min“, „EI60“ und „ja“ zurück.",
+  "al": [
+   "alphanumerische Informationen",
+   "alphanumerischen Informationen",
+   "alphanumerische Information"
+  ],
+  "h": "8eb88dc5bb"
+ },
+ "N04": {
+  "t": "Dokumentation",
+  "d": "Gesamtheit der Dokumente, die ein Objekt oder eine Lieferung begleiten und nicht Teil des Modells sind: Datenblätter, Zertifikate, Fotos, Handbücher, Werkstattpläne.",
+  "ej": "Prüfzeugnis zum Feuerwiderstand der Tür als PDF, mit dem Typ verknüpft.",
+  "eq": "IFC: IfcDocumentReference, zugeordnet über IfcRelAssociatesDocument; in der CDE mit dem Bauteil verknüpfte Dokumente.",
+  "err": "„Technische Dokumentation“ fordern, ohne zu sagen, welches Dokument, in welchem Format und für welchen Datenübergabepunkt.",
+  "al": [
+   "Dokumentation",
+   "IfcDocumentReference"
+  ],
+  "h": "2640c2a7e7"
+ },
+ "N05": {
+  "t": "Zweck",
+  "d": "Verwendung, für die die Informationen gedacht sind (koordinieren, Mengen ermitteln, Brandschutz nachweisen, instand halten …). Er ist die erste Bedingung, um die Informationsbedarfstiefe festzulegen.",
+  "ej": "Zweck „Nachweis des Brandschutzes“ für die Baugenehmigung.",
+  "eq": "IDS: Feld purpose im Kopf <info>.",
+  "err": "Informationen „für alle Fälle“ ohne Zweck fordern: Das führt zu Übermodellierung.",
+  "al": [
+   "Zweck",
+   "Zwecks",
+   "Zwecke",
+   "Anwendungsfall",
+   "Anwendungsfälle",
+   "purpose"
+  ],
+  "h": "4fdf92f48b"
+ },
+ "N06": {
+  "t": "Datenübergabepunkt",
+  "d": "Vereinbarter Zeitpunkt, zu dem Informationen ausgetauscht werden: Phasenende, Ausschreibung, Genehmigung, Abnahme. Die erforderliche Tiefe wird für jeden Datenübergabepunkt festgelegt.",
+  "ej": "Vorentwurf, Entwurf, Genehmigungsplanung, Ausführungsplanung, Bauausführung und Übergabe (Leistungsphasen der HOAI).",
+  "eq": "IDS: Feld milestone im Kopf; ISO 19650: Lieferplan (MIDP).",
+  "err": "In der Planung Daten fordern, die erst bei der Vergabe bekannt sind (Hersteller, Seriennummer).",
+  "al": [
+   "Datenübergabepunkt",
+   "Datenübergabepunkte",
+   "Datenübergabepunkten",
+   "Datenübergabepunkts",
+   "Meilenstein",
+   "Meilensteine",
+   "milestone"
+  ],
+  "h": "b473bb5a60"
+ },
+ "N07": {
+  "t": "Akteure (Auftraggeber / Auftragnehmer)",
+  "d": "Wer die Informationen anfordert (Auftraggeber: der Bauherr oder der federführende Auftragnehmer) und wer sie erstellt (Auftragnehmer). Jede Anforderung benennt beide.",
+  "ej": "Der Bauherr fordert an; das Architekturbüro liefert die Türen in der Ausführungsplanung, der Schreiner in der Bauausführung.",
+  "eq": "Verantwortlichkeitsmatrix des BAP; Anforderungsmanager mit einer IDS je Akteur.",
+  "err": "Keinen Verantwortlichen zuweisen: Die Information bleibt im Niemandsland zwischen zwei Fachdisziplinen.",
+  "al": [
+   "Akteure",
+   "Akteuren",
+   "Auftraggeber",
+   "Auftragnehmer",
+   "appointing party",
+   "appointed party"
+  ],
+  "h": "393fe03931"
+ },
+ "N08": {
+  "t": "Übermodellierung",
+  "d": "Mehr Geometrie oder mehr Daten erzeugen, als irgendein Zweck braucht. Ihre Erstellung, Prüfung und Pflege kostet Aufwand und erzeugt Rauschen.",
+  "ej": "Beschläge und Schrauben aller Türen schon im Vorentwurf modellieren.",
+  "eq": "BIMForum 2025 stärkt seine „Expansion“-Absätze, um auf überzogene LOD-Forderungen zu antworten.",
+  "err": "Glauben, ein detaillierteres Modell sei immer besser.",
+  "al": [
+   "Übermodellierung",
+   "Überspezifikation",
+   "over-modelling"
+  ],
+  "h": "80146b3df6"
+ },
+ "N09": {
+  "t": "Fertigstellungsgrad (LOD)",
+  "d": "Skala von 100 bis 500 (plus 350), die angibt, wie weit man sich auf Geometrie und Informationen eines Bauteils verlassen kann. Entstanden um 2004–2005 (Vico), vom AIA in E202-2008 übernommen.",
+  "ej": "LOD 300: Menge, Größe, Form, Lage und Ausrichtung im Modell messbar.",
+  "eq": "BIMForum LOD Specification (Definitionen je Bauteil); Bauteilmatrizen des BAP.",
+  "err": "Ihn auf das ganze Modell anwenden („Modell LOD 300“); BIMForum: „There is no such thing as an LOD ### model“.",
+  "al": [
+   "Fertigstellungsgrad",
+   "Fertigstellungsgrade",
+   "Fertigstellungsgrads",
+   "Fertigstellungsgrades",
+   "LOD",
+   "level of development",
+   "Level of Development",
+   "LOD 300",
+   "LOD 350"
+  ],
+  "h": "456482d5d3"
+ },
+ "N10": {
+  "t": "Detaillierungsgrad (Level of Detail)",
+  "d": "Wie viel grafisches Detail ein Bauteil enthält. BIMForum unterscheidet es vom Fertigstellungsgrad: Detail ist Eingabe, Fertigstellung ist verlässliche Ausgabe.",
+  "ej": "Eine Katalogtür mit gezeichnetem Drücker und Bändern, aber ohne festgelegtes Produkt: viel Detail, geringer Fertigstellungsgrad.",
+  "eq": "Vereinigtes Königreich (NBS): LOD = level of detail (grafisch). Nicht mit der Detailgenauigkeit der Ansicht verwechseln.",
+  "err": "Das grafische Detail als Beweis nehmen, dass das Bauteil festgelegt ist.",
+  "al": [
+   "Detaillierungsgrad",
+   "Detaillierungsgrade",
+   "Detaillierungsgrads",
+   "level of detail",
+   "Level of Detail"
+  ],
+  "h": "c519140809"
+ },
+ "N11": {
+  "t": "Informationsgrad (LOI)",
+  "d": "Grad der nicht grafischen (alphanumerischen) Informationen eines Bauteils. Verwendet im Vereinigten Königreich (NBS BIM Toolkit) und in Deutschland (neben LOG), heute in der Informationsbedarfstiefe aufgegangen.",
+  "ej": "LOI einer Tür in der Ausführungsplanung: Typ, Feuerwiderstand, Wärmedurchgangskoeffizient, Schallschutz.",
+  "eq": "Deutschland: LOG (Geometrie) + LOI; Peru: Matrix mit LOD und LOI.",
+  "err": "LOD und LOI als zwei lose Zahlen ohne Zweck und ohne Datenübergabepunkt verwenden.",
+  "al": [
+   "Informationsgrad",
+   "Informationsgrads",
+   "LOI",
+   "LOG",
+   "level of information",
+   "level of geometry"
+  ],
+  "h": "fbe33f3ce6"
+ },
+ "N12": {
+  "t": "Genauigkeitsgrad (LOA)",
+  "d": "Skala des USIBD (LOA10 bis LOA50), die bei 95 % Vertrauensniveau die zulässige Abweichung des Gemessenen und des Dargestellten von der Wirklichkeit festlegt.",
+  "ej": "LOA30 (5–15 mm) für das Aufmaß eines Bestandsgebäudes, das umgebaut werden soll.",
+  "eq": "Scans und Punktwolken (ReCap, CloudCompare); Leitfäden wie der von Metrolinx kombinieren ihn mit der LOIN.",
+  "err": "Für ein Bestandsmodell einen hohen LOD fordern, ohne die Genauigkeit des Aufmaßes festzulegen.",
+  "al": [
+   "Genauigkeitsgrad",
+   "LOA",
+   "level of accuracy",
+   "Level of Accuracy"
+  ],
+  "h": "5a0b51a9d3"
+ },
+ "N13": {
+  "t": "ISO 7817-1",
+  "d": "Internationale Norm (2024) „Building information modelling — Level of information need — Part 1: Concepts and principles“. Ersetzt die EN 17412-1 ohne inhaltliche Änderungen; in Spanien UNE-EN ISO 7817-1:2025.",
+  "ej": "UNE-EN ISO 7817-1:2025 ersetzt die UNE-EN 17412-1:2021, zurückgezogen am 22.01.2025.",
+  "eq": "BIMForum 2025 beschreibt jeden LOD mit den Aspekten der ISO 7817-1.",
+  "err": "In Ausschreibungen nach 2025 weiterhin die EN 17412-1 zitieren.",
+  "al": [
+   "ISO 7817",
+   "ISO 7817-1",
+   "EN ISO 7817-1",
+   "DIN EN ISO 7817-1",
+   "UNE-EN ISO 7817-1"
+  ],
+  "h": "33d8ec5de9"
+ },
+ "N14": {
+  "t": "EN 17412-1",
+  "d": "Erste europäische Norm (CEN, 2020) zur Informationsbedarfstiefe. Zurückgezogen und ersetzt durch die EN ISO 7817-1:2024.",
+  "ej": "UNE-EN 17412-1:2021, veröffentlicht am 28.04.2021 und zurückgezogen am 22.01.2025.",
+  "eq": "—",
+  "err": "Sie als gültig zitieren.",
+  "al": [
+   "EN 17412-1",
+   "DIN EN 17412-1",
+   "UNE-EN 17412-1"
+  ],
+  "h": "1f9e3f3113"
+ },
+ "N15": {
+  "t": "Informationsanforderungen (OIR, AIR, PIR, EIR)",
+  "d": "Anforderungskette der ISO 19650: von der Organisation (OIR) und dem Asset (AIR) zum Projekt (PIR) und zu jedem Austausch (EIR, im Deutschen AIA), wo die Informationsbedarfstiefe festgelegt wird.",
+  "ej": "Die AIA eines Architektenvertrags fordern die Türen mit ihrem Feuerwiderstand in der Ausführungsplanung.",
+  "eq": "Anforderungsplattformen (BIMQ, Plannerly, Cobuilder Require); IDS als Anlage zu den AIA.",
+  "err": "Die AIA mit generischen Stufen („LOD 300“) ohne Zweck und ohne Datenübergabepunkt schreiben.",
+  "al": [
+   "OIR",
+   "AIR",
+   "PIR",
+   "EIR",
+   "AIA",
+   "Informationsanforderungen",
+   "Informationsanforderung",
+   "Auftraggeber-Informationsanforderungen",
+   "Austauschanforderungen"
+  ],
+  "h": "fd2dcd669f"
+ },
+ "N16": {
+  "t": "Lieferplan (MIDP / TIDP)",
+  "d": "Pläne der ISO 19650, die festlegen, welcher Informationscontainer von welchem Team, von wem und wann geliefert wird. Sie setzen die Datenübergabepunkte und die erforderliche Tiefe praktisch um.",
+  "ej": "TIDP des Tragwerksteams: Tragwerksmodell in LOD 350 für den Datenübergabepunkt Ausführungsplanung.",
+  "eq": "Tabellen oder Planungsmodule der CDE.",
+  "err": "Lieferungen planen, ohne sie mit den Anforderungen jedes Datenübergabepunkts zu verknüpfen.",
+  "al": [
+   "MIDP",
+   "TIDP",
+   "Lieferplan",
+   "Lieferpläne",
+   "Informationslieferplan"
+  ],
+  "h": "9ade6e5d69"
+ },
+ "N17": {
+  "t": "BIMForum LOD Specification",
+  "d": "Spezifikation (seit 2013, fast jährlich), die festlegt, was jeder LOD für jeden Bauteiltyp bedeutet, mit Abbildungen. Sie hat den LOD 350 eingeführt; die Ausgabe 2025 übernimmt die Aspekte der ISO 7817-1. Es gibt offizielle spanische Fassungen von 2024 und 2025.",
+  "ej": "Ausgabe 2025 auf Spanisch, übersetzt mit BIMForum Ecuador (Februar 2026).",
+  "eq": "Referenz für Bauteilmatrizen in jeder Software.",
+  "err": "Glauben, sie lege fest, welcher LOD in welcher Phase gilt: „diese Festlegung bleibt jedem Projektteam überlassen“.",
+  "al": [
+   "BIMForum",
+   "LOD Specification"
+  ],
+  "h": "6bff580362"
+ },
+ "N18": {
+  "t": "AIA E202 / G202",
+  "d": "Vertragsdokumente des American Institute of Architects: E202-2008 führte die Definitionen des Level of Development ein; 2013 wurden sie in E203, G201 und G202 überarbeitet.",
+  "ej": "—",
+  "eq": "—",
+  "err": "Den Anhang E202 von 2008 so verwenden, als sei er die gültige Fassung.",
+  "al": [
+   "AIA E202",
+   "E202",
+   "G202",
+   "E203"
+  ],
+  "h": "02af19acd5"
+ },
+ "N19": {
+  "t": "Britische LOD und LOI (PAS 1192 / NBS BIM Toolkit)",
+  "d": "Britische Skalen für den grafischen (LOD) und nicht grafischen (LOI) Grad je Projektstufe. NBS betrachtet sie als ersetzt durch ISO 19650, EN 17412-1 und die Informationsbedarfstiefe.",
+  "ej": "—",
+  "eq": "—",
+  "err": "Die britische Skala (1–7) mit der US-amerikanischen (100–500) vermischen.",
+  "al": [
+   "PAS 1192",
+   "NBS BIM Toolkit",
+   "BS 1192"
+  ],
+  "h": "6bae99cc16"
+ },
+ "N20": {
+  "t": "Datenvorlagen (ISO 23386 / ISO 23387)",
+  "d": "ISO 23386 legt fest, wie Merkmale beschrieben und vernetzte Merkmalverzeichnisse gepflegt werden; ISO 23387 definiert Datenvorlagen, die die Merkmale jedes Objekttyps bündeln.",
+  "ej": "Datenvorlage für eine Brandschutztür mit ihrer Feuerwiderstandsklasse und den zulässigen Werten.",
+  "eq": "bSDD; Anforderungsmanager; Import von Merkmalen in Allplan und Archicad.",
+  "err": "In jedem Projekt andere Merkmalnamen erfinden.",
+  "al": [
+   "ISO 23386",
+   "ISO 23387",
+   "DIN EN ISO 23387",
+   "Datenvorlage",
+   "Datenvorlagen",
+   "Merkmal",
+   "Merkmale",
+   "Merkmalen"
+  ],
+  "h": "54f385bea8"
+ },
+ "N21": {
+  "t": "bSDD (buildingSMART Data Dictionary)",
+  "d": "Onlinedienst von buildingSMART, der Klassen- und Merkmalverzeichnisse nach ISO 23386 veröffentlicht, verknüpft mit IFC-Entitäten und mit zulässigen Werten.",
+  "ej": "Merkmal Feuerwiderstand mit den Werten REI30 bis REI120 in einem nationalen Verzeichnis.",
+  "eq": "Allplan 2026 integriert mehr als 300 Verzeichnisse; Bonsai 0.8.5 unterstützt die API v5; IDS-Editoren fragen das bSDD ab.",
+  "err": "Ein eigenes Pset für etwas anlegen, das bereits in einem Verzeichnis oder in IFC existiert.",
+  "al": [
+   "bSDD",
+   "Datenverzeichnis",
+   "Merkmalverzeichnis",
+   "buildingSMART Data Dictionary"
+  ],
+  "h": "a9f665f61e"
+ },
+ "N22": {
+  "t": "Bauteilmatrix",
+  "d": "Tabelle der Bauteile je Datenübergabepunkt mit der geforderten Stufe in jeder Zelle und dem Verantwortlichen. In den USA Model Element Table; in anderen Ländern Progressionsmatrix oder LOIN-Matrix.",
+  "ej": "Tragwerk 350 in der Ausführungsplanung, Türen 300, Möblierung 100.",
+  "eq": "Tabelle des BAP oder Anforderungsmanager wie Plannerly und BIMQ.",
+  "err": "Eine einzige Spalte „LOD des Modells“.",
+  "al": [
+   "Bauteilmatrix",
+   "Bauteilmatrizen",
+   "LOIN-Matrix",
+   "LOD-Matrix",
+   "Model Element Table"
+  ],
+  "h": "dfd5252556"
+ },
+ "N23": {
+  "t": "Detailgenauigkeit der Ansicht",
+  "d": "Grafische Einstellung der Programme (grob/mittel/fein, schematisch/vereinfacht/vollständig), die bestimmt, welche Geometrie in welchem Maßstab dargestellt wird. Sie ist keine vertragliche Stufe.",
+  "ej": "—",
+  "eq": "Revit: Detailgenauigkeit (Grob, Mittel, Fein) je Ansicht; Archicad: Modellansicht-Optionen; IFC-Exporter von Revit: „Level of Detail“ = Tesselierung.",
+  "err": "Glauben, eine Ansicht in „Fein“ entspreche LOD 400.",
+  "al": [
+   "Detailgenauigkeit",
+   "Detail Level"
+  ],
+  "h": "56f51dc646"
+ },
+ "N24": {
+  "t": "Parameter und Eigenschaften der Software",
+  "d": "Native Container der alphanumerischen Informationen in jedem Autorenprogramm. Sie sollten einmal definiert werden, und zwar mit dem Namen, den die Anforderung vorgibt.",
+  "ej": "—",
+  "eq": "Revit: gemeinsam genutzte Parameter (TXT); Archicad: Eigenschaften-Manager und Ausdrücke; Allplan: Attribute; Tekla: Property Sets von Trimble Connect.",
+  "err": "Die Information in einen Parameter eintragen, den der IFC-Exporter in kein Pset überträgt.",
+  "al": [
+   "gemeinsam genutzte Parameter",
+   "gemeinsam genutzten Parameter",
+   "Parameter",
+   "Parametern",
+   "Attribute",
+   "Attributen"
+  ],
+  "h": "a22607b659"
+ },
+ "N25": {
+  "t": "Anforderungsmanager",
+  "d": "Plattform, die die Anforderungen je Objekt, Datenübergabepunkt, Zweck und Akteur speichert und sie als Vorlagen, Regeln oder IDS exportiert.",
+  "ej": "—",
+  "eq": "dRofus, Plannerly, BIMQ, Cobuilder Require (exportiert eine IDS je Datenübergabepunkt und Zweck).",
+  "err": "Hunderte von Anforderungen in einer Tabelle ohne Versionskontrolle verwalten.",
+  "al": [
+   "Anforderungsmanager",
+   "Anforderungsmanagern",
+   "Anforderungsmanagements"
+  ],
+  "h": "a5358c50dc"
+ },
+ "N26": {
+  "t": "IFC-Property-Set (Pset)",
+  "d": "Gruppe von Merkmalen eines IFC-Objekts. Die Standard-Pset_ von buildingSMART (z. B. Pset_DoorCommon) haben feste Namen und Datentypen; die Mengensets (Qto_) speichern Maße.",
+  "ej": "Pset_DoorCommon.FireRating (IfcLabel), IsExternal (IfcBoolean).",
+  "eq": "Revit: Registerkarte Property Sets des Exporters und TXT benutzerdefinierter Sets; Archicad: IFC-Übersetzer.",
+  "err": "Eigene Sets anlegen, die mit „Pset_“ beginnen, oder ein Standardmerkmal duplizieren.",
+  "al": [
+   "Pset",
+   "Psets",
+   "Property Set",
+   "Property Sets",
+   "Property-Set",
+   "Property-Sets",
+   "Pset_DoorCommon",
+   "Qto"
+  ],
+  "h": "bc2f5f8808"
+ },
+ "N27": {
+  "t": "IDS (Information Delivery Specification)",
+  "d": "Standard von buildingSMART (1.0, Juni 2024): XML-Datei mit prüfbaren Anforderungen an ein IFC, gegliedert in Anwendbarkeit und Anforderungen, mit sechs Facetten. Ihr Kopf erlaubt purpose und milestone; Geometrie kann sie nicht fordern.",
+  "ej": "IDS für Türen: FireRating mit dem Muster „EI2? \\d+(-C\\d)?“ und IsExternal als Boolean.",
+  "eq": "IDS importieren: Archicad 28+, Allplan 2026, Vectorworks 2024+, BricsCAD V25; prüfen: IfcTester, Solibri (Regel 244), BIMcollab Zoom; Revit mit Add-ins.",
+  "err": "Glauben, die IDS decke die ganze Informationsbedarfstiefe ab: Geometrie und Dokumente bleiben außen vor.",
+  "al": [
+   "IDS",
+   "Information Delivery Specification"
+  ],
+  "h": "40748a07ae"
+ },
+ "N28": {
+  "t": "COBie",
+  "d": "Datenteilmenge für Betrieb und Instandhaltung (Anlagen, Räume, Typen, Komponenten, Garantien). COBie v3 (2023) ist Teil von NBIMS-US V4 und ergänzt JSON.",
+  "ej": "—",
+  "eq": "COBie-Exporter der Autorenprogramme; Tabellen und IFC.",
+  "err": "In den Planungsphasen ein vollständiges COBie fordern.",
+  "al": [
+   "COBie"
+  ],
+  "h": "b337978fd2"
+ },
+ "N29": {
+  "t": "IDM (ISO 29481)",
+  "d": "Methode zur Beschreibung der Prozesse und des Informationsaustauschs eines Anwendungsfalls. ISO 29481-3:2022 liefert ein maschinenlesbares Datenschema.",
+  "ej": "—",
+  "eq": "buildingSMART Use Case Management; IDS als prüfbarer technischer Teil.",
+  "err": "Anforderungen ohne den Prozess schreiben, der sie begründet.",
+  "al": [
+   "IDM",
+   "ISO 29481",
+   "Information Delivery Manual"
+  ],
+  "h": "c2460bbc5e"
+ },
+ "N30": {
+  "t": "Anforderungsprüfung",
+  "d": "Prüfung, ob eine Lieferung ihre Informationsbedarfstiefe erfüllt: ob die Merkmale vorhanden sind, einen Wert haben und dieser gültig ist; die Geometrie wird mit Regeln und Stichproben geprüft.",
+  "ej": "IfcTester 0.9.0: 1 von 3 Türen erfüllt die Test-IDS.",
+  "eq": "IfcTester, Solibri, BIMcollab Zoom, usBIM.IDS, xbim; der Validation Service von buildingSMART prüft keine IDS.",
+  "err": "Erst beim Empfang prüfen, wenn Korrekturen teurer sind.",
+  "al": [
+   "Anforderungsprüfung",
+   "Anforderungsprüfungen",
+   "IfcTester",
+   "IDS-Prüfung",
+   "IDS-Validierung"
+  ],
+  "h": "378b008a7a"
+ },
+ "N31": {
+  "t": "Nationale Leitfäden zu Informationsgraden",
+  "d": "Dokumente jedes Landes, die konkretisieren, wie Informationsgrade gefordert werden: Abkürzungen, Skalen, Matrixvorlagen und Beispiele. Manche folgen der Skala LOD 100–500, andere der Informationsbedarfstiefe.",
+  "ej": "Spanien: UNE-EN ISO 7817-1:2025 und Leitfäden der CBIM; Chile: NDI des MINVU und Planbim; Peru: Matrix der Informationsbedarfstiefe des Plan BIM; Deutschland: Arbeitshilfe LOIN-Konzept.",
+  "eq": "—",
+  "err": "Die Matrix eines anderen Landes übernehmen, ohne Zwecke und Datenübergabepunkte anzupassen.",
+  "al": [
+   "NDI",
+   "Plan BIM",
+   "Planbim",
+   "LOIN-Konzept"
+  ],
+  "h": "4b789cc807"
+ },
+ "N32": {
+  "t": "ISO 7817-2 und ISO 7817-3",
+  "d": "Teile in Vorbereitung: Teil 2 (ISO/DTS) ist ein Anwendungsleitfaden mit Beispielen und Vorlagen; Teil 3 (ISO/DIS) definiert ein UML-Datenmodell und ein XSD-Schema für den Austausch der Informationsbedarfstiefe.",
+  "ej": "—",
+  "eq": "Bibliotheken, die Entwürfe von Teil 3 lesen (z. B. openbim-loin).",
+  "err": "Den Entwurf von Teil 3 so implementieren, als sei er endgültig.",
+  "al": [
+   "ISO 7817-2",
+   "ISO 7817-3"
+  ],
+  "h": "1ed169e91f"
+ },
+ "G01": {
+  "t": "Digitaler Zwilling",
+  "d": "Integrierte, datengestützte virtuelle Darstellung realer Entitäten und Prozesse mit synchronisierter Interaktion in festgelegter Frequenz und Genauigkeit.",
+  "ej": "Urbaner Zwilling der Stadt Madrid, der 3D-Kartografie und Daten städtischer Sensoren zusammenführt.",
+  "eq": "ISO/IEC 30173:2023 (genormter Begriff); „operational twin“ in AWS IoT TwinMaker; „twin graph“ in Azure Digital Twins; „facility twin“ in Autodesk Tandem; „iTwin“ bei Bentley; „virtual twin“ bei Dassault.",
+  "err": "Jedes BIM-Modell oder 3D-Rendering als Zwilling bezeichnen: Ohne Datenverbindung zum realen Asset gibt es keinen Zwilling.",
+  "al": [
+   "Digitaler Zwilling",
+   "digitaler Zwilling",
+   "digitalen Zwilling",
+   "digitalen Zwillings",
+   "digitalen Zwillinge",
+   "digitalen Zwillingen",
+   "Digitale Zwillinge",
+   "digitale Zwillinge",
+   "digital twin",
+   "digital twins"
+  ],
+  "h": "6c8a29e859"
+ },
+ "G02": {
+  "t": "Digitales Modell",
+  "d": "Digitale Darstellung eines physischen Objekts ohne automatischen Datenaustausch: Jede Aktualisierung zwischen Objekt und Modell erfolgt manuell (Kritzinger et al., 2018).",
+  "ej": "„As-built“-BIM-Modell, das bei Bauende übergeben und nach Umbauten von niemandem aktualisiert wird.",
+  "eq": "Stufe 1 „Digital model“ bei Arup (2019); statisches Asset-Informationsmodell (ISO 19650).",
+  "err": "Glauben, ein „As-built“-BIM-Modell sei bereits ein digitaler Zwilling.",
+  "al": [
+   "digitales Modell",
+   "digitalen Modell",
+   "digitalen Modells",
+   "Digitales Modell",
+   "digital model",
+   "statisches BIM-Modell"
+  ],
+  "h": "9f296ef40f"
+ },
+ "G03": {
+  "t": "Digitaler Schatten",
+  "d": "Digitale Darstellung, die automatisch Daten vom physischen Objekt erhält, deren Änderungen aber nicht automatisch zum Objekt zurückfließen (Einbahnfluss) (Kritzinger et al., 2018).",
+  "ej": "Dashboard, das in einem 3D-Modell die von der Gebäudeleittechnik (GLT/BMS) gemeldeten Raumtemperaturen anzeigt, ohne Sollwerte zu senden.",
+  "eq": "Viele kommerzielle „Digital Twin“-Produkte für den Betrieb arbeiten in der Praxis als digitaler Schatten (Überwachung ohne Eingriff).",
+  "err": "Annehmen, jeder Zwilling müsse auf das Asset einwirken: Im Bauwesen sind die meisten realen Fälle digitale Schatten, und das darf man auch so sagen.",
+  "al": [
+   "digitaler Schatten",
+   "digitalen Schatten",
+   "digitalen Schattens",
+   "Digitaler Schatten",
+   "digitale Schatten",
+   "digital shadow"
+  ],
+  "h": "f3c0ed4146"
+ },
+ "G04": {
+  "t": "Physisches Asset",
+  "d": "Reales Element (Gebäude, Brücke, Anlage, Netz), das der Zwilling darstellt und von dem er Daten erhält; ISO 55000 definiert ein Asset als Gegenstand mit potenziellem oder tatsächlichem Wert für eine Organisation.",
+  "ej": "Eine Kältemaschine in einem Krankenhaus, ein Pfeiler eines Viadukts oder ein Pumpwerk des Canal de Isabel II.",
+  "eq": "IfcProduct/IfcElement in IFC; „Asset“ in AAS (IEC 63278); „Equipment“ in Brick; „Entity“ in AWS IoT TwinMaker.",
+  "err": "Das Asset mit seinem Modell verwechseln: Der Zwilling muss jedes Asset eindeutig und dauerhaft identifizieren.",
+  "al": [
+   "physisches Asset",
+   "physischen Asset",
+   "physischen Assets",
+   "physischer Zwilling",
+   "physischen Zwilling",
+   "physical twin",
+   "physical asset"
+  ],
+  "h": "99ab37fa35"
+ },
+ "G05": {
+  "t": "Reifegrad des Zwillings",
+  "d": "Skala, die einen Zwilling nach seinen Fähigkeiten einstuft: Arup (2019) schlägt 5 Stufen vom digitalen Modell bis zum autonomen Schlussfolgern vor und bewertet Autonomie, Intelligenz, Lernfähigkeit und Genauigkeit.",
+  "ej": "Ein Temperaturwarnsystem in einem Gebäude entspräche auf der Arup-Skala Stufe 2 (Rückkopplung und Steuerung).",
+  "eq": "Arup 1–5 (2019); ISO/IEC 30186:2025 „Digital twin — Maturity model and guidance for maturity assessment“.",
+  "err": "Den Reifegrad als Selbstzweck behandeln: Die passende Stufe hängt vom Anwendungsfall ab, nicht immer ist die höchste die richtige.",
+  "al": [
+   "Reifegrad",
+   "Reifegrade",
+   "Reifegrads",
+   "Reifegrades",
+   "Reifegradstufe",
+   "Reifegradstufen",
+   "maturity level"
+  ],
+  "h": "6de34b5f5f"
+ },
+ "G06": {
+  "t": "Nationaler digitaler Zwilling",
+  "d": "Ökosystem digitaler Zwillinge, die über sicheren Datenaustausch verbunden sind; im Vereinigten Königreich vom CDBB vorgeschlagen und heute vom National Digital Twin Programme (NDTP) weiterentwickelt.",
+  "ej": "Britisches Programm, das Zwillinge für Wasser, Energie und Verkehr über einen gemeinsamen Rahmen für das Informationsmanagement verbinden will.",
+  "eq": "Information Management Framework (IMF) des CDBB; Gemini Principles; Integration Architecture des NDTP.",
+  "err": "Ihn sich als ein einziges riesiges Modell des Landes vorstellen: Es ist eine Föderation interoperabler Zwillinge.",
+  "al": [
+   "nationaler digitaler Zwilling",
+   "nationalen digitalen Zwilling",
+   "nationalen digitalen Zwillings",
+   "National Digital Twin",
+   "NDTP"
+  ],
+  "h": "cb6c94b959"
+ },
+ "G07": {
+  "t": "Gemini-Prinzipien",
+  "d": "Neun Prinzipien (CDBB, Dezember 2018) für Zwillinge der gebauten Umwelt, gruppiert nach Zweck, Vertrauen und Funktion: Gemeinwohl, Wert, Erkenntnis, Sicherheit, Offenheit, Qualität, Föderation, Kuratierung und Weiterentwicklung.",
+  "ej": "Sie als Checkliste beim Verfassen der Leistungsbeschreibung für einen Zwilling eines öffentlichen Netzes nutzen.",
+  "eq": "Grundlage des britischen Information Management Framework; zitiert in ISO/IEC 30173 und in der AEC-Literatur.",
+  "err": "Sie als technische Norm verstehen: Es sind Leitprinzipien, keine prüfbaren Anforderungen.",
+  "al": [
+   "Gemini-Prinzipien",
+   "Gemini Principles",
+   "The Gemini Principles"
+  ],
+  "h": "92a9b695f0"
+ },
+ "G08": {
+  "t": "Asset-Informationsmodell (AIM)",
+  "d": "Informationsmodell (Geometrie, Daten und Dokumente), das das Asset-Management im Betrieb trägt, nach ISO 19650-1 und 19650-3.",
+  "ej": "Asset-Datenbank der Instandhaltung, die bei der Übernahme eines öffentlichen Gebäudes mit COBie befüllt wird.",
+  "eq": "ISO 19650-3:2020 (Betriebsphase); „Facility“ in Autodesk Tandem; iModel bei Bentley; AIM ≈ statische Schicht des Zwillings.",
+  "err": "AIM und Zwilling verwechseln: Das AIM ist die Referenzdatenbank; der Zwilling ergänzt dynamische Anbindung und Analytik.",
+  "al": [
+   "AIM",
+   "Asset-Informationsmodell",
+   "Asset-Informationsmodells",
+   "asset information model"
+  ],
+  "h": "50f3176735"
+ },
+ "G09": {
+  "t": "Projektinformationsmodell (PIM)",
+  "d": "In Planung und Bau entwickeltes Informationsmodell (ISO 19650-2); nach Abschluss wird der relevante Teil in das AIM überführt.",
+  "ej": "Föderierte Modelle eines Krankenhausbaus, die bis zur Abnahme in einer CDE verwaltet werden.",
+  "eq": "ISO 19650-2:2018; Informationscontainer in der CDE.",
+  "err": "Das gesamte PIM als AIM übergeben, mit Baudaten, die für den Betrieb nutzlos sind.",
+  "al": [
+   "PIM",
+   "Projektinformationsmodell",
+   "Projektinformationsmodells",
+   "project information model"
+  ],
+  "h": "f590e925e4"
+ },
+ "G10": {
+  "t": "Asset-Informationsanforderungen (AIR)",
+  "d": "Anforderungen des Eigentümers, welche Informationen über das Asset für dessen Bewirtschaftung zu liefern sind, abgeleitet aus den organisatorischen Informationsanforderungen (OIR) nach ISO 19650.",
+  "ej": "Liste der Pflichtattribute (Hersteller, Seriennummer, Gewährleistung, Wartungsintervall) für jede Pumpe eines Gebäudes.",
+  "eq": "ISO 19650-1/-3; lassen sich prüfbar mit IDS (buildingSMART) oder COBie-Vorlagen ausdrücken.",
+  "err": "Allgemeine AIR als PDF verfassen, die niemand automatisch prüfen kann.",
+  "al": [
+   "AIR",
+   "Asset-Informationsanforderungen",
+   "asset information requirements"
+  ],
+  "h": "f4a77bcafc"
+ },
+ "G13": {
+  "t": "IFC",
+  "d": "Offenes Schema von buildingSMART zur Beschreibung von Bau- und Infrastrukturdaten; die Version IFC 4.3 wurde als ISO 16739-1:2024 veröffentlicht (April 2024).",
+  "ej": "Das Modell eines Viadukts in IFC 4.3 mit IfcBridge exportieren, um es in eine Zwillingsplattform zu laden.",
+  "eq": "Importiert von Autodesk Tandem, Bentley iTwin (IFC-Konnektor), Nemetschek dTwin, Dalux; in Graphen umwandelbar (ifcOWL, Brick).",
+  "err": "Glauben, IFC übertrage Sensordaten in Echtzeit: IFC beschreibt das Asset, nicht den Telemetriestrom.",
+  "al": [
+   "IFC",
+   "Industry Foundation Classes",
+   "ISO 16739"
+  ],
+  "h": "82c322512f"
+ },
+ "G14": {
+  "t": "IFC-GUID (GlobalId)",
+  "d": "Global eindeutige 128-Bit-Kennung (codiert in 22 Zeichen) jedes IFC-Objekts; damit lässt sich ein Modellelement bis zum Datensatz im Zwilling zurückverfolgen.",
+  "ej": "Das Wartungsetikett eines Klimageräts mit der GlobalId des IfcUnitaryEquipment verknüpfen.",
+  "eq": "IfcRoot.GlobalId in IFC; „externalId“ in Autodesk Tandem; „federationGuid“ im iModel (⚠); Mapping-Eigenschaft in DTDL.",
+  "err": "Annehmen, die GUID sei stabil: Manche Werkzeuge erzeugen sie beim erneuten Export neu und zerstören so die Rückverfolgbarkeit.",
+  "al": [
+   "GUID",
+   "GUIDs",
+   "GlobalId",
+   "IfcGloballyUniqueId",
+   "persistente Kennung",
+   "eindeutige Kennung"
+  ],
+  "h": "71aa92da63"
+ },
+ "G15": {
+  "t": "IfcSensor",
+  "d": "IFC-Klasse (Subtyp von IfcDistributionControlElement) für ein Gerät, das eine physikalische Größe misst (Temperatur, Durchfluss, Verformung) und Teil eines Regelsystems ist.",
+  "ej": "In Revit modellierter Feuchtesensor, exportiert als IfcSensor mit PredefinedType HUMIDITYSENSOR.",
+  "eq": "IfcSensor (IFC); brick:Sensor (Brick); sosa:Sensor (SSN/SOSA); Sensor (SensorThings API).",
+  "err": "Den Sensor nur als generische Geometrie modellieren (IfcBuildingElementProxy) und damit seine Semantik verlieren.",
+  "al": [
+   "IfcSensor",
+   "IFC-Sensor",
+   "IfcDistributionControlElement"
+  ],
+  "h": "cb41088b53"
+ },
+ "G16": {
+  "t": "Leistungshistorie (IfcPerformanceHistory)",
+  "d": "IFC-Entitäten zur Aufzeichnung des Verhaltens eines Elements über die Zeit (Zeitreihen); in der Praxis wenig genutzt gegenüber Zeitreihendatenbanken.",
+  "ej": "Bei der Übergabe des AIM eine monatliche Verbrauchsübersicht einer Pumpe in IFC speichern.",
+  "eq": "IfcPerformanceHistory + IfcTimeSeries (IFC); in der Praxis Zeitreihen in InfluxDB/Azure Data Explorer.",
+  "err": "Versuchen, hochfrequente Telemetrie in IFC-Dateien unterzubringen.",
+  "al": [
+   "IfcPerformanceHistory",
+   "IfcTimeSeries",
+   "IFC-Zeitreihen"
+  ],
+  "h": "2d8ea918fe"
+ },
+ "G17": {
+  "t": "COBie",
+  "d": "Austauschspezifikation (meist Tabelle oder IFC) mit Räumen, Systemen, Komponenten, Typen und Dokumenten für die Übergabe an die Instandhaltung; 2007 beim USACE entstanden.",
+  "ej": "Dem Eigentümer eine COBie-Arbeitsmappe mit allen Endgeräten und ihrer Gewährleistung übergeben.",
+  "eq": "NBIMS-US (COBie v3 in Arbeit, Entwurf 2023); BS 1192-4:2014 im Vereinigten Königreich; COBie-Exporter von Revit, Archicad.",
+  "err": "COBie bei Bauende „von Hand“ ausfüllen, ohne Verknüpfung mit den GUIDs des Modells.",
+  "al": [
+   "COBie",
+   "Construction Operations Building information exchange",
+   "COBie-Tabelle"
+  ],
+  "h": "892c3e337d"
+ },
+ "G18": {
+  "t": "IDS",
+  "d": "Standard von buildingSMART (v1.0 verabschiedet am 4.6.2024) zur Definition von Informationsanforderungen in menschenlesbarem XML, automatisch prüfbar gegen IFC-Modelle.",
+  "ej": "IDS-Datei, die verlangt, dass jede IfcPump „Manufacturer“ und „SerialNumber“ hat, bevor sie in den Zwilling geladen wird.",
+  "eq": "IfcTester (IfcOpenShell), Solibri, BIMcollab Zoom, usBIM.IDS und weitere Prüfwerkzeuge; sechs Facetten: entity, attribute, property, classification, material, partOf.",
+  "err": "IDS mit IFC verwechseln: IDS beschreibt, welche Daten gefordert sind, nicht das Modell.",
+  "al": [
+   "IDS",
+   "Information Delivery Specification"
+  ],
+  "h": "8448297405"
+ },
+ "G19": {
+  "t": "Brick",
+  "d": "Offene Ontologie (RDF/OWL) zur maschinenlesbaren Beschreibung von Anlagen, Datenpunkten, Räumen und Beziehungen von Gebäudesystemen (Klima, Beleuchtung, Zähler).",
+  "ej": "Brick-Graph eines Gebäudes, in dem ein „Supply_Air_Temperature_Sensor“ eine „AHU“ versorgt.",
+  "eq": "brick:Equipment/Point/Location; Entsprechungen zu Haystack, RealEstateCore und ASHRAE 223P; SHACL-Validierung mit der Bibliothek brickschema.",
+  "err": "Brick für Geometrie verwenden: Brick beschreibt Beziehungen von Systemen und Datenpunkten, nicht Form oder Lage.",
+  "al": [
+   "Brick",
+   "Brick Schema",
+   "Brick-Ontologie"
+  ],
+  "h": "3155cd0e39"
+ },
+ "G20": {
+  "t": "Project Haystack",
+  "d": "Offene Initiative zur semantischen Kennzeichnung von IoT-Gebäudedaten (Tags wie „ahu“, „temp“, „sensor“); Haystack 5 (2025) ergänzt die Schemasprache Xeto und RDF-Integration.",
+  "ej": "GLT-Datenpunkte, getaggt als „discharge air temp sensor point“, damit eine Analytik sie findet.",
+  "eq": "Haystack 4 (Tags und Defs); Haystack 5 mit Xeto; genutzt in SkySpark und zahlreichen GLT-Systemen.",
+  "err": "Glauben, Haystack und Brick konkurrierten unvereinbar: Sie nähern sich gemeinsam mit ASHRAE 223P an.",
+  "al": [
+   "Haystack",
+   "Project Haystack",
+   "Haystack 5",
+   "Xeto"
+  ],
+  "h": "cfecc801e7"
+ },
+ "G21": {
+  "t": "RealEstateCore",
+  "d": "Modulare offene Ontologie (MIT-Lizenz) für Immobilien, die BIM/IFC, Gebäudeautomation und IoT verbindet; Grundlage der DTDL-Gebäudeontologien für Azure Digital Twins.",
+  "ej": "Räume, Geschosse und Anlagen eines Büroportfolios als REC-Zwillinge in Azure Digital Twins modellieren.",
+  "eq": "REC in DTDL (Azure), WillowTwin (Erweiterung von REC), RDF/OWL-Version.",
+  "err": "Sie für eine ISO-Norm halten: Es ist ein offenes Konsortium, das bestehende Normen ausdrücklich „überbrückt“.",
+  "al": [
+   "RealEstateCore",
+   "REC",
+   "RealEstateCore-Ontologie"
+  ],
+  "h": "0b829faab6"
+ },
+ "G22": {
+  "t": "SSN/SOSA",
+  "d": "W3C-OGC-Ontologie (Empfehlung, Oktober 2017) zur Beschreibung von Sensoren, Beobachtungen, Verfahren und Aktoren; SOSA ist ihr schlanker Kern.",
+  "ej": "Beschreiben, dass ein Dehnungsmesser (sosa:Sensor) die Verformung eines Trägers (sosa:FeatureOfInterest) beobachtet.",
+  "eq": "sosa:Sensor ≈ IfcSensor ≈ brick:Sensor; konzeptionelle Grundlage der SensorThings API.",
+  "err": "Sie zur Modellierung des ganzen Gebäudes nutzen: Sie konzentriert sich auf die Beobachtung und wird mit anderen Ontologien kombiniert.",
+  "al": [
+   "SSN",
+   "SOSA",
+   "Semantic Sensor Network",
+   "SSN-Ontologie"
+  ],
+  "h": "1401bd1772"
+ },
+ "G23": {
+  "t": "SensorThings API",
+  "d": "Offene, raumbezogene Web-API-Norm des OGC zur Vernetzung von IoT-Geräten, Sensoren und Beobachtungen (Teil 1 Sensing v1.0 2016, v1.1 2021; Teil 2 Tasking).",
+  "ej": "Die Messwerte der Piezometer einer Talsperre als Thing/Datastream/Observation-Entitäten veröffentlichen, abfragbar über REST und MQTT.",
+  "eq": "Entitäten Thing, Location, Datastream, Sensor, ObservedProperty, Observation, FeatureOfInterest; Implementierungen wie FROST-Server.",
+  "err": "Sie mit einem Low-Level-Protokoll verwechseln: Sie definiert Datenmodell und API und nutzt darunter HTTP/MQTT.",
+  "al": [
+   "SensorThings",
+   "SensorThings API",
+   "OGC SensorThings"
+  ],
+  "h": "3295190ab2"
+ },
+ "G24": {
+  "t": "Dynamizer (CityGML 3.0)",
+  "d": "Modul von CityGML 3.0 (OGC, 2021), das Stadtobjekten zeitlich veränderliche Werte zuordnet und IoT-Sensoren mit dem 3D-Stadtmodell verknüpft.",
+  "ej": "Der Fassade eines Gebäudes die stündliche Sonneneinstrahlung zuordnen oder einen Verkehrssensor mit einem Straßenabschnitt verknüpfen.",
+  "eq": "CityGML 3.0 Dynamizer; kann auf Zeitreihen der SensorThings API verweisen.",
+  "err": "Glauben, CityGML 3.0 ersetze IFC: Beide arbeiten in unterschiedlichen Maßstäben (Stadt vs. Gebäude).",
+  "al": [
+   "Dynamizer",
+   "Dynamizer-Modul",
+   "CityGML 3.0"
+  ],
+  "h": "b3b8fb8175"
+ },
+ "G25": {
+  "t": "DTDL",
+  "d": "Offene, auf JSON-LD basierende Sprache von Microsoft zur Definition von Zwillingsmodellen (Interfaces mit Eigenschaften, Telemetrie, Beziehungen und Komponenten); Versionen v2, v3 und v4.",
+  "ej": "Interface „Room“ mit der Eigenschaft humidity und der Beziehung „hasSensors“, genutzt für einen Hochschulcampus.",
+  "eq": "Azure Digital Twins (unterstützt v2/v3), Ontologien RealEstateCore und WillowTwin, Azure IoT Plug and Play.",
+  "err": "Glauben, DTDL sei eine ISO/IEC-Norm: Es ist eine offene Spezifikation von Microsoft.",
+  "al": [
+   "DTDL",
+   "Digital Twins Definition Language",
+   "DTDL v3",
+   "DTDL v4"
+  ],
+  "h": "0f15a2b0ab"
+ },
+ "G26": {
+  "t": "Asset Administration Shell (AAS)",
+  "d": "Genormte digitale Darstellung (IEC 63278-1:2023), die über Teilmodelle einheitlichen Zugriff auf Informationen und Dienste eines Industrie-Assets bietet.",
+  "ej": "Digitales Typenschild einer Kältemaschine, vom Hersteller als AAS geliefert.",
+  "eq": "IEC 63278; Industrie 4.0 / IDTA; Eclipse BaSyx; Teilmodelle „Digital Nameplate“, „Technical Data“.",
+  "err": "Sie für bauwesenfremd halten: Sie wird zunehmend für TGA-Anlagen und Produkte genutzt.",
+  "al": [
+   "Asset Administration Shell",
+   "AAS",
+   "Verwaltungsschale",
+   "Verwaltungsschalen",
+   "IEC 63278"
+  ],
+  "h": "836bc67eb0"
+ },
+ "G27": {
+  "t": "OpenUSD",
+  "d": "Offenes Format und API zur Beschreibung und Komposition von 3D-Szenen, ursprünglich von Pixar; die Alliance for OpenUSD veröffentlichte die Core Specification 1.0 am 17.12.2025.",
+  "ej": "In NVIDIA Omniverse das Modell einer Fabrik aus USD-Ebenen aus Revit und Sensordaten zusammensetzen.",
+  "eq": "NVIDIA Omniverse; USD-Konnektoren von Autodesk, Bentley; Cesium for Omniverse.",
+  "err": "Glauben, USD ersetze IFC: USD ist Szene/Visualisierung; IFC trägt die Bausemantik.",
+  "al": [
+   "OpenUSD",
+   "Universal Scene Description",
+   "USD"
+  ],
+  "h": "814550c76a"
+ },
+ "G28": {
+  "t": "3D Tiles",
+  "d": "Von Cesium geschaffenes offenes Format (OGC Community Standard), um große 3D-Datenmengen (Städte, Punktwolken, BIM-Modelle) gekachelt ins Web zu streamen.",
+  "ej": "Im Browser einen Zwilling einer Autobahn mit Gelände, Orthofoto und gekacheltem BIM-Modell anzeigen.",
+  "eq": "Cesium ion, CesiumJS, Cesium for Unreal/Unity/Omniverse, Bentley iTwin.",
+  "err": "Volle BIM-Semantik in 3D Tiles erwarten: Sie enthalten Metadaten, ihr Ziel ist aber effiziente Visualisierung.",
+  "al": [
+   "3D Tiles",
+   "3D-Kacheln",
+   "OGC 3D Tiles"
+  ],
+  "h": "ef2380d65f"
+ },
+ "G29": {
+  "t": "iModel",
+  "d": "Verteilte Datenbank (auf SQLite-Basis) der Plattform Bentley iTwin, die Daten aus verschiedenen Ingenieurquellen in einem gemeinsamen Schema zusammenführt und Änderungen („changesets“) protokolliert.",
+  "ej": "IFC-, DGN- und Revit-Modelle einer U-Bahn-Linie in einem gemeinsamen iModel synchronisieren.",
+  "eq": "iTwin.js (Open Source); IFC/Revit/DGN-Konnektoren; BIS-Schemas (⚠ technisches Detail in dieser Sitzung nicht verifiziert).",
+  "err": "iModel mit einer Datei verwechseln: Es ist ein Repository mit Änderungshistorie.",
+  "al": [
+   "iModel",
+   "iModels"
+  ],
+  "h": "f692ae9cbc"
+ },
+ "G30": {
+  "t": "Zwillingsgraph",
+  "d": "Netz aus Zwillingen (Knoten), verbunden durch typisierte Beziehungen (enthält, versorgt, bedient), das Abfragen zum Systemzustand und seinem Kontext ermöglicht.",
+  "ej": "Abfrage: „alle Räume im 3. OG, die vom RLT-Gerät 2 versorgt werden und CO2 > 1000 ppm aufweisen“.",
+  "eq": "Azure Digital Twins (twin graph), AWS IoT TwinMaker (knowledge graph), Brick-RDF-Graph.",
+  "err": "Glauben, das 3D-Modell sei der Zwilling: Der Beziehungsgraph bringt meist mehr Nutzen als die Geometrie.",
+  "al": [
+   "Zwillingsgraph",
+   "Zwillingsgraphen",
+   "twin graph",
+   "Wissensgraph",
+   "Wissensgraphen",
+   "knowledge graph"
+  ],
+  "h": "ce94a24af5"
+ },
+ "G31": {
+  "t": "Internet der Dinge (IoT)",
+  "d": "Netz von Geräten mit Sensoren und Konnektivität, die Daten an IT-Systeme senden; in einem Zwilling der Weg, über den der Zustand des Assets aktualisiert wird.",
+  "ej": "LoRaWAN-Belegungssensoren in den Hörsälen eines Universitätsgebäudes.",
+  "eq": "Azure IoT Hub, AWS IoT Core, Eclipse Ditto; genormt in ISO/IEC JTC 1/SC 41.",
+  "err": "Glauben, mehr Sensoren ergäben einen besseren Zwilling: Ohne semantisches Modell sind die Daten schwer nutzbar.",
+  "al": [
+   "IoT",
+   "Internet der Dinge",
+   "Internet of Things",
+   "IoT-Sensoren"
+  ],
+  "h": "3a5efa43fd"
+ },
+ "G32": {
+  "t": "MQTT",
+  "d": "Schlankes Publish/Subscribe-Nachrichtenprotokoll (OASIS; ISO/IEC 20922), häufig genutzt, um Sensortelemetrie an Zwillingsplattformen zu senden.",
+  "ej": "Gebäude-Gateway, das jede Minute „gebaeude/og3/raum12/co2“ an einen Broker veröffentlicht.",
+  "eq": "Unterstützt von Eclipse Ditto (MQTT 3.1.1 und 5), Azure IoT Hub, AWS IoT Core, SensorThings API.",
+  "err": "Glauben, MQTT liefere Semantik: Es transportiert nur Nachrichten; die Bedeutung gibt das Modell (Brick, DTDL …).",
+  "al": [
+   "MQTT",
+   "MQTT-Protokoll",
+   "MQTT-Broker"
+  ],
+  "h": "d437becd95"
+ },
+ "G33": {
+  "t": "OPC UA",
+  "d": "Industrielle Kommunikationsarchitektur (IEC 62541) mit eigenem Informationsmodell; es gibt ein veröffentlichtes Mapping zwischen BACnet (ISO 16484-5) und OPC UA.",
+  "ej": "Daten einer Wasseraufbereitungsanlage (SCADA) in den Zwilling des Netzes einlesen.",
+  "eq": "IEC 62541; Companion Specifications; OPC-UA-Konnektoren in AWS IoT SiteWise, Azure IoT.",
+  "err": "Annehmen, OPC UA sei nur etwas für die Industrie: Es kommt auch in Infrastrukturen und großen Anlagen vor.",
+  "al": [
+   "OPC UA",
+   "OPC-UA",
+   "IEC 62541"
+  ],
+  "h": "09bc982b11"
+ },
+ "G34": {
+  "t": "BACnet",
+  "d": "Kommunikationsprotokoll für Gebäudeautomation (ASHRAE 135 / ISO 16484-5), übliche Quelle betrieblicher Daten aus Klima- und Beleuchtungstechnik.",
+  "ej": "Die BACnet-Datenpunkte der GLT eines Krankenhauses über einen Konnektor in Autodesk Tandem oder Willow einbinden.",
+  "eq": "ISO 16484-5; Mapping auf OPC UA; Datenpunkte mit Haystack/Brick taggbar.",
+  "err": "Glauben, BACnet-Datenpunktnamen seien verständlich: Meist sind es Codes, die zugeordnet werden müssen.",
+  "al": [
+   "BACnet",
+   "ISO 16484-5",
+   "ASHRAE 135"
+  ],
+  "h": "957edfec90"
+ },
+ "G35": {
+  "t": "Vorausschauende Instandhaltung",
+  "d": "Strategie, die Ausfälle anhand von Zustandsdaten und Analysemodellen vorhersagt, um vor dem Schaden einzugreifen; Stufe 3 auf der Arup-Skala.",
+  "ej": "Anhand von Vibration und Verbrauch erkennen, dass eine Förderpumpe nachlässt, und ihren Austausch einplanen.",
+  "eq": "AWS IoT TwinMaker + SiteWise; Azure Digital Twins + Analytik; Autodesk Tandem (Schwellenwertwarnungen).",
+  "err": "Sie mit vorbeugender (kalenderbasierter) Instandhaltung verwechseln.",
+  "al": [
+   "vorausschauende Instandhaltung",
+   "vorausschauenden Instandhaltung",
+   "vorausschauende Wartung",
+   "Predictive Maintenance",
+   "predictive maintenance",
+   "PdM"
+  ],
+  "h": "031bf65d60"
+ },
+ "G36": {
+  "t": "Bauwerksüberwachung (SHM)",
+  "d": "Kontinuierliche Messung (Verformung, Schwingung, Neigung, Temperatur) des Verhaltens eines Tragwerks, um Schäden zu erkennen und Instandhaltungsentscheidungen zu stützen.",
+  "ej": "Überwachungssystem der Queensferry Crossing (Schottland) mit Hunderten von Sensoren.",
+  "eq": "Bentley iTwin IoT / SHM-Partner; SensorThings zur Veröffentlichung; IfcSensor zur Modellierung von Sensoren.",
+  "err": "Ein SHM ohne zugehöriges Brückenmodell als Zwilling bezeichnen: Es ist Überwachung, nicht zwangsläufig ein Zwilling.",
+  "al": [
+   "SHM",
+   "Bauwerksüberwachung",
+   "Bauwerksmonitoring",
+   "Structural Health Monitoring",
+   "structural health monitoring"
+  ],
+  "h": "d6ce329ff8"
+ },
+ "G37": {
+  "t": "Latenz und Synchronisationsfrequenz",
+  "d": "Zeit zwischen einer Änderung am Asset und ihrer Abbildung im Zwilling sowie der Aktualisierungstakt; die Definition des DTC verlangt eine je nach Anwendungsfall festgelegte Frequenz.",
+  "ej": "Raumbelegung: alle 5 min genügt; Schwingungen einer Brücke: Abtastung mit Hunderten Hz und Aggregation.",
+  "eq": "Entwurfsparameter in jeder Plattform (IoT Hub, SiteWise, Tandem Streams).",
+  "err": "Für alles „Echtzeit“ fordern und damit die Kosten erhöhen, ohne Nutzen zu stiften.",
+  "al": [
+   "Latenz",
+   "Synchronisationsfrequenz",
+   "Aktualisierungsfrequenz"
+  ],
+  "h": "dea110864e"
+ },
+ "G38": {
+  "t": "Sensordrift und Kalibrierung",
+  "d": "Fortschreitende Abweichung des Messwerts eines Sensors vom tatsächlichen Wert; regelmäßige Kalibrierung und die Erkennung von Ausreißern gehören zur Qualitätskontrolle des Zwillings.",
+  "ej": "CO2-Fühler, der nach zwei Jahren 150 ppm zu viel misst und die Lüftung unnötig auslöst.",
+  "eq": "Kalibrierungsmetadaten in SSN/SOSA (Verfahren), Brick (Eigenschaften), Wartungsprotokolle.",
+  "err": "Dem Wert trauen, weil er „vom Sensor kommt“, ohne Kalibrierplan.",
+  "al": [
+   "Sensordrift",
+   "Drift des Sensors",
+   "sensor drift"
+  ],
+  "h": "4f9a662907"
+ },
+ "G39": {
+  "t": "SHACL",
+  "d": "W3C-Sprache zur Validierung von RDF-Graphen gegen „Shapes“ (Einschränkungen); damit wird geprüft, ob ein Brick-Modell der Ontologie entspricht.",
+  "ej": "Mit der Python-Bibliothek brickschema prüfen, dass jeder Sensor „isPointOf“ auf eine Anlage hat.",
+  "eq": "brickschema (Python), pySHACL, TopBraid; auch ASHRAE 223P ist mit SHACL definiert.",
+  "err": "Nur die RDF-Syntax prüfen und nicht die semantische Stimmigkeit.",
+  "al": [
+   "SHACL",
+   "SHACL-Validierung",
+   "Shapes Constraint Language"
+  ],
+  "h": "5a252c6ff5"
+ },
+ "G40": {
+  "t": "Ontologie",
+  "d": "Formales Modell der Begriffe und Beziehungen einer Domäne, damit verschiedene Systeme die Daten des Zwillings gleich interpretieren.",
+  "ej": "Brick + IFC + SOSA nutzen, damit Analytik, Instandhaltung und BIM von derselben „Anlage“ sprechen.",
+  "eq": "Brick, RealEstateCore, ifcOWL, SSN/SOSA, ASHRAE 223P; DTDL als Modellierungssprache.",
+  "err": "Für jedes Projekt eine eigene Ontologie erfinden, statt eine bestehende zu erweitern.",
+  "al": [
+   "Ontologie",
+   "Ontologien",
+   "ontology"
+  ],
+  "h": "75751c2681"
+ },
+ "G41": {
+  "t": "Informationsübergabe (Handover)",
+  "d": "Strukturierte Übergabe der Projektinformationen (PIM) an den Eigentümer, um das AIM zu bilden und den Zwilling zu speisen, unter Prüfung der vereinbarten Anforderungen.",
+  "ej": "Crossrail übergab TfL im Rahmen des Handovers die Asset-Informationen der Elizabeth line.",
+  "eq": "ISO 19650-2/-3; COBie; IDS; britisches „Soft Landings“.",
+  "err": "Die Übergabe ans Ende schieben: Die Informationen müssen während des gesamten Baus gesammelt und geprüft werden.",
+  "al": [
+   "Handover",
+   "handover",
+   "Informationsübergabe"
+  ],
+  "h": "98a8aba67b"
+ },
+ "G42": {
+  "t": "Urbaner digitaler Zwilling",
+  "d": "Zwilling im Stadtmaßstab, der 3D-Modell, Geodaten, Sensoren und Simulationen für Stadtplanung und -management zusammenführt.",
+  "ej": "Virtual Singapore (NRF, seit 2014) oder der digitale Zwilling der Stadt Madrid.",
+  "eq": "CityGML 3.0, 3D Tiles/Cesium, Dassault 3DEXPERIENCE (Virtual Singapore), Esri.",
+  "err": "Einen 3D-Stadtviewer ohne dynamische Daten oder Simulation mit einem Zwilling gleichsetzen.",
+  "al": [
+   "urbaner digitaler Zwilling",
+   "urbanen digitalen Zwilling",
+   "urbaner Zwilling",
+   "urbanen Zwilling",
+   "Stadtzwilling",
+   "urban digital twin"
+  ],
+  "h": "6a219ae962"
+ },
+ "G43": {
+  "t": "Genauigkeit (Fidelity)",
+  "d": "Grad an Detail und Exaktheit, mit dem der Zwilling das Asset abbildet (Geometrie, Daten und Verhalten); er muss für den Anwendungsfall ausreichen.",
+  "ej": "Für das Belegungsmanagement genügt ein Raummodell; für SHM braucht es ein kalibriertes Tragwerksmodell.",
+  "eq": "Arups Kennzahl „Fidelity“; „fidelity“ in der Definition des DTC; Level of Information Need (ISO 7817-1).",
+  "err": "Maximale geometrische Genauigkeit anstreben, wenn der Wert in den Daten liegt.",
+  "al": [
+   "Fidelity",
+   "fidelity",
+   "Wiedergabetreue",
+   "Modellgenauigkeit"
+  ],
+  "h": "8d6a4923b7"
+ },
+ "D01": {
+  "t": "Kollision",
+  "d": "Unverträglichkeit zwischen Elementen eines oder mehrerer Modelle (räumlich, bezüglich Abstand oder zeitlich), die Bau, Betrieb oder Instandhaltung wie geplant verhindern würde; sie wird ermittelt, indem Elementgruppen nach Regeln und Toleranzen miteinander verglichen werden.",
+  "ej": "Ein Lüftungskanal durchdringt einen Stahlbetonträger.",
+  "eq": "Navisworks: Clash; Solibri: Issue/Clash (Regel für Komponentenüberschneidung); Revit: Interference Check; ACC Model Coordination: Clash; IfcClash: clash; BCF: Topic (Typ Clash)",
+  "err": "Ein geometrisches Ergebnis mit einem echten Problem verwechseln: Viele Ergebnisse sind irrelevant oder doppelt.",
+  "al": [
+   "Kollision",
+   "Kollisionen",
+   "Clash",
+   "Clashes"
+  ],
+  "h": "ff543fa0f4"
+ },
+ "D02": {
+  "t": "Harte Kollision",
+  "d": "Zwei Elemente belegen denselben physischen Raum: Ihre Geometrien durchdringen sich über die zulässige Durchdringungstoleranz hinaus.",
+  "ej": "Eine Abwasserleitung durchdringt eine Stütze.",
+  "eq": "Navisworks: Hard / Hard (Conservative); Solibri: Intersection; ACC: Hard clash; IfcClash: intersection/collision",
+  "err": "Geplante Durchführungen (Futterrohre) oder tangentiale Berührungen ohne Toleranz als harte Kollisionen melden.",
+  "al": [
+   "harte Kollision",
+   "harten Kollision",
+   "harte Kollisionen",
+   "harten Kollisionen",
+   "hard clash"
+  ],
+  "h": "12f9abf755"
+ },
+ "D03": {
+  "t": "Weiche Kollision (Abstandskollision)",
+  "d": "Ein Element dringt in den Mindestabstand oder den freizuhaltenden Raum um ein anderes ein (Dämmung, Montage, Zugang, Sicherheit), ohne es zu berühren.",
+  "ej": "Kabeltrasse 5 cm neben einem Lüftungskanal, obwohl 30 cm Abstand gefordert sind.",
+  "eq": "Navisworks: Clearance; Solibri: Clearance / Abstandsregel; Revizto: Clearance (mit H/V-Versatz); IfcClash: clearance",
+  "err": "Einen einheitlichen Abstand auf das ganze Modell anwenden; der Abstand hängt vom System ab und sollte als Volumen modelliert werden, wenn er der Instandhaltung dient.",
+  "al": [
+   "weiche Kollision",
+   "weichen Kollision",
+   "weiche Kollisionen",
+   "weichen Kollisionen",
+   "Abstandskollision",
+   "Abstandskollisionen",
+   "clearance"
+  ],
+  "h": "a0412826cd"
+ },
+ "D04": {
+  "t": "Ablaufkollision / zeitliche Kollision (4D)",
+  "d": "Konflikt, der bei der Verknüpfung des Modells mit dem Terminplan entsteht: Zwei Vorgänge, Geräte oder Arbeitsbereiche treffen am selben Ort zur selben Zeit zusammen, oder die Reihenfolge verhindert eine Montage.",
+  "ej": "Der Schwenkradius des Krans ragt in Kalenderwoche 32 in den Montagebereich der Fassade.",
+  "eq": "Navisworks: Clash Detective mit TimeLiner; Synchro: 4D-Konflikte; ACC/Revizto: eingeschränkt",
+  "err": "Sie mit denselben Regeln behandeln wie eine statische räumliche Kollision.",
+  "al": [
+   "Ablaufkollision",
+   "Ablaufkollisionen",
+   "zeitliche Kollision",
+   "zeitliche Kollisionen",
+   "4D"
+  ],
+  "h": "124b340416"
+ },
+ "D05": {
+  "t": "Prüftoleranz",
+  "d": "Zahlenwert, der festlegt, was gemeldet wird: bei harten Kollisionen die Mindestdurchdringung, ab der gemeldet wird; bei Abstandskollisionen der Höchstabstand, unterhalb dessen gemeldet wird. Wird meist je Phase und Fachdisziplin angepasst.",
+  "ej": "Hart mit 10 mm, um Modellierungsberührungen zu ignorieren; Abstand von 50 mm zwischen Lüftungskanälen.",
+  "eq": "Navisworks: Tolerance; Solibri: Toleranz in Regeln; Revizto: Tolerance; IfcClash: tolerance/clearance",
+  "err": "Die Prüftoleranz mit der Ausführungstoleranz auf der Baustelle verwechseln oder sie so hoch ansetzen, dass echte Kollisionen verborgen bleiben.",
+  "al": [
+   "Toleranz",
+   "Toleranzen",
+   "Prüftoleranz",
+   "Prüftoleranzen"
+  ],
+  "h": "61b90fa6c4"
+ },
+ "D06": {
+  "t": "Kollisionsmatrix (Prüfplan)",
+  "d": "Im BAP vereinbarte Tabelle, die festlegt, welche Paare von Fachdisziplinen oder Systemen geprüft werden, mit welcher Prüfart und Toleranz, in welcher Phase, mit welcher Priorität und wer verantwortlich ist.",
+  "ej": "ARC vs. TWP hart 0 mm; Abwasser vs. Lüftung Abstand 25 mm; ELT vs. alle, Ausführungsphase.",
+  "eq": "Navisworks: Liste der Tests; Solibri: Ruleset; ACC: Clash test (automatisch); BIMcollab/Revizto: Clash sets",
+  "err": "„Alles gegen alles“ ohne Matrix prüfen und Tausende nutzloser Ergebnisse erhalten.",
+  "al": [
+   "Kollisionsmatrix",
+   "Kollisionsmatrizen",
+   "Prüfmatrix",
+   "Prüfplan",
+   "Matrix",
+   "clash matrix"
+  ],
+  "h": "9a4c8e0e66"
+ },
+ "D07": {
+  "t": "Gruppierung von Kollisionen",
+  "d": "Ergebnisse mit gemeinsamer Ursache oder Lösung (dasselbe Element, System, Geschoss, dieselbe Zone oder Zuständigkeit) zusammenfassen, um sie als ein einziges Problem zu bearbeiten.",
+  "ej": "40 Kollisionen derselben Kabeltrasse mit 40 Deckenträgern werden als ein Problem behandelt.",
+  "eq": "Navisworks: Clash groups/Group; Solibri: Gruppierung von Ergebnissen in Issues; BIM Track: Clash grouper; Revizto: Grouping; IfcClash: smart grouping",
+  "err": "Nur nach Geschoss oder Raster gruppieren und dabei Probleme verschiedener Verantwortlicher vermischen.",
+  "al": [
+   "Gruppierung",
+   "Gruppierungen",
+   "gruppieren",
+   "gruppiert"
+  ],
+  "h": "3f25c75668"
+ },
+ "D08": {
+  "t": "Falschmeldung (False Positive)",
+  "d": "Ergebnis, das das Werkzeug als Kollision markiert, das aber kein Handeln erfordert: beabsichtigte Berührung, Element ohne ausreichenden Detaillierungsgrad, auf der Baustelle lösbare Situation oder bereits gelöstes Element.",
+  "ej": "Kollision zwischen der Rohrdämmung und ihrer Rohrschelle.",
+  "eq": "Navisworks: Approved/Resolved; Solibri: Accepted/Rejected; ACC: Not an issue; BCF: TopicStatus geschlossen",
+  "err": "Pauschal ohne Kriterien genehmigen oder umgekehrt alles an die Fachdisziplinen weiterleiten.",
+  "al": [
+   "Falschmeldung",
+   "Falschmeldungen",
+   "False Positive",
+   "False Positives",
+   "false positive"
+  ],
+  "h": "b2aa6ac999"
+ },
+ "D09": {
+  "t": "Räumliche Koordination / Koordinationsmodell",
+  "d": "Prozess, die Modelle der einzelnen Fachdisziplinen ohne Zusammenführen und ohne Verlust ihrer Urheberschaft zu einem georeferenzierten Koordinationsmodell zu verbinden, in dem Unverträglichkeiten erkannt und gelöst werden.",
+  "ej": "Architektur, Tragwerk und TGA als IFC in einem gemeinsamen Viewer mit gemeinsamem Ursprung zusammengeführt.",
+  "eq": "Navisworks: NWF/NWD; Solibri: SMC mit mehreren IFC; ACC: Coordination space; Revizto/BIMcollab Zoom; Trimble Connect",
+  "err": "Modelle mit unterschiedlichem Ursprung oder Stand zusammenführen oder an einem „verschmolzenen“ Modell koordinieren, das die Urheberschaft löscht.",
+  "al": [
+   "räumliche Koordination",
+   "räumlichen Koordination",
+   "3D-Koordination",
+   "Koordinationsmodell",
+   "Koordinationsmodells"
+  ],
+  "h": "4023d4a479"
+ },
+ "D10": {
+  "t": "Problem (Issue / Topic)",
+  "d": "Bearbeitbarer Eintrag zu einem festgestellten Problem mit Titel, Beschreibung, Typ, Status, Priorität, Zuständigkeit, Frist, Kommentaren und zugehörigen Ansichten; in BCF heißt er Topic.",
+  "ej": "Topic „Kanal K-12 gegen Träger T-3, 2. OG“, zugewiesen an TGA, Frist Freitag.",
+  "eq": "BCF: Topic; Navisworks: Clash result/Issue; Solibri: Issue; ACC: Issue; Revizto: Issue; Trimble Connect: ToDo",
+  "err": "Das Problem als bloßen Screenshot ohne Zuständigkeit und Status verwenden.",
+  "al": [
+   "Issue",
+   "Issues",
+   "Topic",
+   "Topics",
+   "Aufgabe",
+   "Aufgaben"
+  ],
+  "h": "cfaa3c6de1"
+ },
+ "D11": {
+  "t": "Ansichtspunkt und Snapshot",
+  "d": "Darstellungszustand, der zu einem Problem gehört: Kamera (orthogonal oder perspektivisch), Schnittebenen, ausgewählte, sichtbare oder eingefärbte Komponenten (per IFC-GUID) und ein Referenzbild.",
+  "ej": "viewpoint.bcfv mit Kamera, zwei per IfcGuid ausgewählten Komponenten und snapshot.png.",
+  "eq": "BCF: .bcfv + Snapshot PNG/JPEG; Navisworks: Viewpoint; Solibri: Slide; ACC/Revizto: Ansicht des Issues",
+  "err": "Nur das Bild ohne Komponenten teilen: Der Empfänger kann die Elemente in seiner Software nicht auswählen.",
+  "al": [
+   "Ansichtspunkt",
+   "Ansichtspunkte",
+   "Viewpoint",
+   "Viewpoints",
+   "Snapshot"
+  ],
+  "h": "2f49bec4c7"
+ },
+ "D12": {
+  "t": "Duplikate",
+  "d": "Wiederholte oder überlagerte Elemente mit identischer (oder nahezu identischer) Geometrie am selben Ort, im selben Modell oder zwischen Modellen; sie verfälschen Mengen und Kollisionsergebnisse.",
+  "ej": "Eine Stütze, die im Architektur- und im Tragwerksmodell modelliert ist, oder eine zweimal kopierte Wand.",
+  "eq": "Navisworks: Duplicates; Solibri: Regel für doppelte Komponenten; Revit: Warnung „identische Instanzen“",
+  "err": "Die Duplikatprüfung nicht vor den Prüfungen zwischen den Fachdisziplinen ausführen und damit die Ergebnisse vervielfachen.",
+  "al": [
+   "Duplikat",
+   "Duplikate",
+   "Duplikaten",
+   "doppelte Elemente"
+  ],
+  "h": "e0fd420c91"
+ },
+ "D13": {
+  "t": "Lösungshierarchie (wer weicht aus)",
+  "d": "Im BAP vereinbarte Rangfolge, die festlegt, welches System bei einer Kollision nach seiner Flexibilität ausweicht: Größere, dauerhafte oder stärker eingeschränkte Elemente (Tragwerk, Freispiegelentwässerung) haben Vorrang.",
+  "ej": "Freispiegelentwässerung > Lüftungskanäle > Druckrohrleitungen/Brandschutz > Kabeltrassen und Elektroinstallationsrohre.",
+  "eq": "Prioritätenmatrix des BAP; ETS: Schweregrad A/B/C; Ashghal: Priorität A–C und Schweregrad 1–4",
+  "err": "Sie ausnahmslos anwenden (z. B. ein kleiner Kanal gegenüber einem Hauptsammler).",
+  "al": [
+   "wer weicht aus",
+   "Lösungshierarchie",
+   "Vorfahrtsregel",
+   "Vorrangregel"
+  ],
+  "h": "feb7f28725"
+ },
+ "D14": {
+  "t": "BCF (BIM Collaboration Format)",
+  "d": "Offener Standard von buildingSMART zum Austausch von Problemen zu Modellen (IFC oder andere), ohne das Modell zu versenden: XML (BCF-XML, Container .bcfzip/.bcf) oder Webdienste (BCF API). Versionen 1.0 (2011), 2.0, 2.1 und 3.0.",
+  "ej": "25 Topics aus Solibri als BCF 2.1 exportieren und in Revit mit BCF Manager importieren.",
+  "eq": "BCF-XML 2.1/3.0; BCF API 2.1/3.0; Plug-ins für Revit/Archicad/Tekla; BIMcollab; Revizto; Trimble Connect; Catenda; Bonsai",
+  "err": "Versionen mischen (3.0 vs. 2.1) oder beim Export Felder verlieren (Priorität, Server-ID).",
+  "al": [
+   "BCF",
+   "BIM Collaboration Format"
+  ],
+  "h": "3f2a0ea80b"
+ },
+ "D15": {
+  "t": "BCF API / OpenCDE",
+  "d": "REST/JSON-Spezifikation zur Synchronisierung von BCF-Problemen zwischen Anwendungen und Servern; gehört zur OpenCDE-Familie zusammen mit der Foundation API (Erkennung, OAuth 2.0, Benutzer) und der Documents API (Herunter- und Hochladen in die CDE).",
+  "ej": "Ein Revit-Plug-in fragt GET /bcf/3.0/projects/{id}/topics ab und aktualisiert den Status, ohne Dateien zu übertragen.",
+  "eq": "BCF API 2.1/3.0; OpenCDE Foundation API 1.0/1.1; Documents API 1.0",
+  "err": "Annehmen, dass „unterstützt BCF“ auch die API einschließt (viele Werkzeuge lesen/schreiben nur Dateien).",
+  "al": [
+   "BCF API",
+   "OpenCDE",
+   "Foundation API"
+  ],
+  "h": "cc57a431a8"
+ },
+ "D16": {
+  "t": "ISO 19650 und Koordination",
+  "d": "Rahmen für das Informationsmanagement (DIN EN ISO 19650), der die Koordination zuweist: Jedes Aufgabenteam prüft und koordiniert seine Informationen, bevor es sie teilt; der federführende Auftragnehmer legt die Föderationsstrategie, die Containerstruktur und die Verantwortlichkeitsmatrix fest und fasst die TIDP im MIDP zusammen.",
+  "ej": "Der BAP legt die Föderationsstrategie je Gebäude und Fachdisziplin fest sowie die Matrix, die die Kollisionsprüfung dem Koordinator des Lieferteams zuweist.",
+  "eq": "ISO 19650-1/-2 (2018; Überarbeitung 2026); DIN EN ISO 19650; UK BIM Framework; spanischer Plan BIM (Orden PCM/818/2023)",
+  "err": "Annehmen, dass ISO 19650 Positionen (BIM-Manager) oder das Prüfverfahren festlegt: Sie definiert Funktionen und Prozesse.",
+  "al": [
+   "Föderationsstrategie",
+   "TIDP",
+   "MIDP"
+  ],
+  "h": "3873e74db7"
+ },
+ "D17": {
+  "t": "IFC-Objektkennung (GlobalId)",
+  "d": "Eindeutige 128-Bit-Kennung jedes IFC-Objekts, codiert in 22 Zeichen (Alphabet 0-9A-Za-z_$); BCF verwendet sie (IfcGuid), um Komponenten zu referenzieren, weshalb sie zwischen Exporten stabil bleiben muss.",
+  "ej": "2O2Fr$t4X7Zf8NOew3FLOH kennzeichnet dieselbe Tür in allen Versionen der IFC-Datei.",
+  "eq": "IFC: GlobalId; BCF: IfcGuid; Revit: Parameter IfcGUID/IFC GUID (abgeleitet von der UniqueId); Archicad: IFC GlobalId; Tekla: GUID",
+  "err": "GUIDs beim Export neu erzeugen (Kopieren/Einfügen, Löschen und Neumodellieren) zerstört die Rückverfolgbarkeit der Probleme.",
+  "al": [
+   "GlobalId",
+   "IfcGloballyUniqueId",
+   "IFC GUID",
+   "IFC-GUID"
+  ],
+  "h": "681c0a2d8c"
+ },
+ "D18": {
+  "t": "Auswahlset / Suchset",
+  "d": "Gespeicherte Gruppe von Elementen des Koordinationsmodells, die als Seite A oder B einer Kollisionsprüfung dient. Das Auswahlset speichert konkrete Elemente (statisch); das Suchset speichert Kriterien (Eigenschaft, Kategorie, System) und wird bei Modelländerungen neu ausgewertet (dynamisch).",
+  "ej": "Suchset „TGA – Abwasser“ = Elemente, deren „System Type“ „Sanitary“ enthält; geprüft gegen das Suchset „TWP – Träger“. Beim Laden der neuen Modellversion enthält das Set automatisch die neuen Rohrleitungen.",
+  "eq": "Navisworks: Selection Set / Search Set (Fenster Sets, Find Items); BIMcollab Zoom: Smart Views als Source/Target Set; Revizto: Search Sets A/B; Solibri: Komponentenfilter der Regel; Archicad: Gruppe 1 / Gruppe 2 nach Kriterien; IfcClash: Selektoren der Gruppe A/B; MicroStation: Ebenen/Referenzen/Named Groups.",
+  "err": "Statische Auswahlsets in wiederholten Prüfungen verwenden: Neue Elemente der nächsten Lieferung bleiben außen vor, und die Prüfung meldet fälschlich „null Kollisionen“. Ebenso: Kriterien auf Basis nicht normierter Namen.",
+  "al": [
+   "Auswahlset",
+   "Auswahlsets",
+   "Suchset",
+   "Suchsets",
+   "search set",
+   "search sets",
+   "selection set"
+  ],
+  "h": "38944e108a"
+ },
+ "D19": {
+  "t": "Ausschlussregeln und Regelsätze",
+  "d": "Bedingungen, durch die das Programm bestimmte Kollisionen nicht meldet (Ausschlussregeln), und gespeicherte, wiederverwendbare Gruppen von Prüfregeln (Regelsätze). Sie dienen dazu, systematische Falschmeldungen zu beseitigen und die Prüfung zu standardisieren.",
+  "ej": "In Navisworks „Items in Same File“ aktivieren, um interne Kollisionen jeder Fachdisziplin nicht zu melden, und die Vorlage „Insulation Thickness“ für gedämmte Rohrleitungen; in Solibri ein Ruleset „Koordination TGA–TWP“ mit General Intersection Rule und Ausnahmen für „Kanal durchdringt Wand“.",
+  "eq": "Navisworks: Registerkarte Rules (6 Standardregeln + Vorlagen); Solibri: Ruleset / Intersection Exceptions; Revizto: Ignore rules; Bentley: Suppression rules; Trimble Connect: „Ignore clashes within the same file/type“; Archicad: Teilnahme an der Kollisionsprüfung je Baustoff; BIMcollab Zoom: Regelsätze Local/Shared.",
+  "err": "Zu weit gefasste Regeln (z. B. „Same File“ bei einem in einer einzigen NWD zusammengeführten Modell), die echte Kollisionen verbergen; oder die Regeln nicht im BAP dokumentieren, sodass jeder Koordinator andere Ergebnisse erhält.",
+  "al": [
+   "Ausschlussregel",
+   "Ausschlussregeln",
+   "Regelsatz",
+   "Regelsätze",
+   "Regelsatzes",
+   "ruleset",
+   "rulesets"
+  ],
+  "h": "d0264a2bb8"
+ },
+ "D20": {
+  "t": "Freiraum / Wartungs- und Zugangsbereich",
+  "d": "Volumen, das um Geräte oder Elemente frei bleiben muss, um sie sicher zu bedienen, zu warten, auszutauschen oder zu erreichen; es wird als Hilfskörper modelliert und mit Abstands- oder harten Prüfungen gegen dieses Volumen geprüft.",
+  "ej": "1 m Bedienbereich vor einem Schaltschrank oder Öffnungsbereich der Revisionsklappe eines RLT-Geräts.",
+  "eq": "Clearance-Familien/-Objekte in Revit; Solibri: Freiraumregel; Navisworks: Prüfung gegen Abstandskörper",
+  "err": "Ihn nicht modellieren und auf die globale Toleranz vertrauen; oder ihn als Körper modellieren, der später als reales Element gemessen oder exportiert wird.",
+  "al": [
+   "Freiraum",
+   "Freiräume",
+   "Wartungsbereich",
+   "Wartungsbereiche",
+   "Zugangsbereich"
+  ],
+  "h": "28f9c6f46d"
+ },
+ "D21": {
+  "t": "Automatische Kollisionsprüfung in der Cloud",
+  "d": "Kollisionsberechnung, die ein Dienst in der CDE ohne manuelles Eingreifen ausführt, sobald ein Modell in einem Koordinationsbereich veröffentlicht oder aktualisiert wird oder nach Zeitplan, und deren Ergebnisse dem ganzen Team zugänglich sind.",
+  "ej": "Beim Hochladen der neuen Version der Lüftungs-IFC in den Koordinationsbereich berechnet Forma Model Coordination die Kollisionen gegen Tragwerk und Architektur neu und zeigt sie gruppiert an.",
+  "eq": "Model Coordination (Autodesk Forma/BIM Collaborate Pro), Clash Automation (Revizto), Clash Spaces (Aconex), Clash Sets in der Cloud (Trimble Connect).",
+  "err": "Annehmen, „automatisch“ heiße so konfigurierbar wie Navisworks: Model Coordination kennt in der Berechnung weder Toleranz noch Prüfmatrix, nur nachträgliche Filter; oder Containermodelle aktiviert lassen und so Rauschen und Rechenzeiten vervielfachen.",
+  "al": [
+   "automatische Kollisionsprüfung",
+   "automatischen Kollisionsprüfung"
+  ],
+  "h": "456df01484"
+ },
+ "D22": {
+  "t": "Status und Lebenszyklus eines Problems",
+  "d": "Abfolge von Status, die ein Problem von der Erstellung bis zur bestätigten Schließung durchläuft (z. B. Neu → Aktiv/Zugewiesen → Vom Ersteller gelöst → Verifiziert/Geschlossen, oder Verworfen), mit Zuständigkeit, Daten und Verlauf.",
+  "ej": "Der Koordinator erstellt das Problem „Kanal vs. Träger 3. OG“ (Open) und weist es der TGA zu; die TGA markiert es als gelöst; nach erneuter Prüfung setzt der Koordinator es auf Geschlossen.",
+  "eq": "Topic status (BCF), New/Active/Reviewed/Approved/Resolved (Navisworks), Open/Closed (ACC Issues).",
+  "err": "Status zwischen Programmen falsch zuordnen: BCF legt keine Werte fest, jeder Server definiert sie in extensions; beim Import in ACC kommt alles außer „Closed“ als „Open“ an; „gelöst“ mit „geschlossen“ verwechseln.",
+  "al": [
+   "Status des Problems",
+   "Lebenszyklus",
+   "Issue-Status"
+  ],
+  "h": "75a427f7d4"
+ },
+ "D23": {
+  "t": "Koordinationskennzahlen (KPI)",
+  "d": "Kennzahlen, die den Zustand des Koordinationsprozesses messen: offene/geschlossene Probleme, neue je Zyklus, mittlere Bearbeitungsdauer, Alter, wieder geöffnete, Tendenz je Fachdisziplin oder Zone und Verhältnis erkannt/gelöst.",
+  "ej": "Wöchentliche Übersicht: 42 offen (−15 %), mittlere Bearbeitungsdauer 9 Tage, 6 wieder geöffnet; TGA–Tragwerk vereint 60 % der offenen Probleme im 2. OG.",
+  "eq": "Clash metrics, coordination dashboard, clash aging.",
+  "err": "Die rohe Anzahl der Kollisionen messen (dominiert von Falschmeldungen und Duplikaten) statt gruppierter Probleme; Zyklen mit unterschiedlichen Prüfungen oder Toleranzen vergleichen.",
+  "al": [
+   "Kennzahlen",
+   "Kennzahl",
+   "KPI",
+   "KPIs"
+  ],
+  "h": "8023de8594"
+ },
+ "D24": {
+  "t": "Koordinationsbesprechung",
+  "d": "Regelmäßige Sitzung (meist wöchentlich oder vierzehntägig) am Koordinationsmodell, in der priorisierte Problemgruppen geprüft, Lösungen entschieden sowie Zuständigkeiten und Fristen zugewiesen und in BCF/CDE festgehalten werden.",
+  "ej": "Wöchentliche Besprechung: Prüfung von 15 vorrangigen Problemen im 3. OG mit TGA und Tragwerk.",
+  "eq": "ACC/BIM 360 Coordination; Revizto; BIMcollab; Navisworks im Besprechungsraum; Teams + BCF",
+  "err": "Kollision für Kollision ohne Vorbereitung durchgehen und am Ende keine Aufgaben zuweisen.",
+  "al": [
+   "Koordinationsbesprechung",
+   "Koordinationsbesprechungen"
+  ],
+  "h": "d844a01d24"
+ },
+ "D25": {
+  "t": "Informationsbedarfstiefe und Prüfreife des Modells",
+  "d": "Geometrischer und alphanumerischer Ausarbeitungsgrad, den jedes Element für einen Zweck haben muss; für die Koordination ist Geometrie mit Größe, Lage und Schnittstellen nötig (z. B. LOD 350 nach BIMForum), festgelegt gemäß LOIN (EN ISO 7817-1:2024).",
+  "ej": "Lüftungskanäle mit Dämmung und Halterungen modelliert, bevor die Gewerkekoordination beginnt.",
+  "eq": "BIMForum LOD 100–500 (350 für die Koordination); EN ISO 7817-1 (LOIN); IDS zur Prüfung der Anforderungen",
+  "err": "Kollisionen an LOD-200-Modellen prüfen und Entscheidungen auf generischer Geometrie treffen.",
+  "al": [
+   "Fertigstellungsgrad",
+   "LOD",
+   "LOIN",
+   "Informationsbedarfstiefe",
+   "Level of Information Need"
+  ],
+  "h": "9831d1e34d"
+ },
+ "D26": {
+  "t": "Abschlussprüfung",
+  "d": "Prüfung, ob ein als gelöst markiertes Problem es wirklich ist: Dieselbe Prüfung (gleiche Regeln und Toleranz) wird an der neuen Modellversion erneut ausgeführt und bestätigt, dass die Kollision verschwindet, ohne neue zu erzeugen, bevor das Problem geschlossen wird.",
+  "ej": "Nach der neuen Version des Sanitärmodells startet der Koordinator die Prüfung SAN_v_TWP erneut; die Kollision verschwindet und das Problem wechselt von Gelöst zu Geschlossen; eine neue Kollision mit der abgehängten Decke erzeugt ein weiteres Problem.",
+  "eq": "Re-run, verify fix, Approved/Resolved im Clash Detective, veraltete Kollisionen in Rot (Trimble Connect).",
+  "err": "Auf Erklärung des Erstellers hin schließen, ohne erneut zu prüfen, oder mit anderer Toleranz bzw. anderem Modell erneut prüfen und das Verschwinden als gültig ansehen.",
+  "al": [
+   "Abschlussprüfung",
+   "Abschlussprüfungen",
+   "re-run"
+  ],
+  "h": "bdcaa21806"
+ },
+ "P01": {
+  "t": "BIM-Abwicklungsplan (BAP)",
+  "d": "Plan, der erläutert, wie das Lieferteam die Informationen eines Auftrags verwaltet und liefert, um die AIA zu erfüllen: Personen, Strategie, Föderation, Verantwortlichkeiten, Methoden, Standard und Ressourcen.",
+  "ej": "Die andalusische Regionalregierung (AOPJA) nennt ihn PEB und verlangt einen vorvertraglichen PEB mit dem Angebot und den PEB nach der Vergabe.",
+  "eq": "ISO 19650-2: BIM execution plan; Penn State: BIM Project Execution Plan (PxP); NBIMS-US V4: BIM Execution Plan; laufende ISO-Überarbeitung: möglicherweise „Information Production Plan“.",
+  "err": "Ein allgemeines Unternehmenshandbuch schreiben, das auf keine konkrete Anforderung der AIA antwortet.",
+  "al": [
+   "BIM-Abwicklungsplan",
+   "BIM-Abwicklungsplans",
+   "BIM-Abwicklungspläne",
+   "BIM-Abwicklungsplänen",
+   "BAP",
+   "BEP",
+   "BIM execution plan"
+  ],
+  "h": "35d44b20f1"
+ },
+ "P02": {
+  "t": "Vorvertraglicher BAP",
+  "d": "Fassung des BAP, die jeder Bewerber um die Rolle des federführenden Auftragnehmers mit seinem Angebot einreicht (ISO 19650-2, 5.3.2), um zu zeigen, wie er die AIA erfüllen wird; enthält eine übergeordnete Verantwortlichkeitsmatrix.",
+  "ej": "Vorvertraglicher PEB in den Muster-AIA der AOPJA (2024).",
+  "eq": "PAS 1192-2: pre-contract BEP; Penn State: Angebot.",
+  "err": "Ihn als Werbekatalog statt als punktgenaue Antwort auf die AIA vorlegen.",
+  "al": [
+   "vorvertraglicher BAP",
+   "vorvertraglichen BAP",
+   "vorvertraglichen BAPs",
+   "Vor-BAP",
+   "pre-BEP",
+   "pre-appointment BEP"
+  ],
+  "h": "aacb86454b"
+ },
+ "P03": {
+  "t": "BAP nach Vergabe (bestätigter BAP)",
+  "d": "BAP, den das beauftragte Team nach der Beauftragung bestätigt und ausarbeitet (ISO 19650-2, 5.4.1): Namen der Personen, detaillierte Matrix, vereinbarte Methoden und Standard. Er ist Teil der Vertragsunterlagen.",
+  "ej": "PEB nach der Vergabe in den Ausschreibungsunterlagen der AOPJA.",
+  "eq": "PAS 1192-2: post-contract award BEP.",
+  "err": "Ihn nach der Unterzeichnung nicht fortschreiben: Zur Projektmitte beschreibt er ein Team, das es nicht mehr gibt.",
+  "al": [
+   "BAP nach Vergabe",
+   "bestätigter BAP",
+   "bestätigten BAP",
+   "post-appointment BEP"
+  ],
+  "h": "72ceb44d75"
+ },
+ "P04": {
+  "t": "Auftraggeber-Informationsanforderungen (AIA / EIR)",
+  "d": "Informationsanforderungen eines konkreten Auftrags (Management, kaufmännische und technische Aspekte). Der Auftraggeber verfasst sie, und der federführende Auftragnehmer gibt sie an jeden Auftragnehmer weiter.",
+  "ej": "Anlage „BIM-Anforderungen (EIR)“ der Ausschreibungsunterlagen der AOPJA.",
+  "eq": "PAS 1192-2: Employer's Information Requirements; spanischer Plan BIM: BIM-Anforderungen in den technischen Vorgaben; DIN EN ISO 19650: Austausch-Informationsanforderungen.",
+  "err": "EIR weiterhin als „Employer's“ lesen: In ISO 19650 gibt es eine AIA je Auftrag, auch gegenüber Nachunternehmern.",
+  "al": [
+   "Auftraggeber-Informationsanforderungen",
+   "Austausch-Informationsanforderungen",
+   "AIA",
+   "EIR",
+   "exchange information requirements"
+  ],
+  "h": "515d5f3bab"
+ },
+ "P05": {
+  "t": "Organisatorische Informationsanforderungen (OIR)",
+  "d": "Informationsanforderungen, die an die strategischen Ziele der Organisation in Bezug auf ihre Assets gebunden sind; sie speisen die PIR und die AIR.",
+  "ej": "Eine Stadtverwaltung, die den Energieverbrauch aller ihrer Gebäude kennen muss.",
+  "eq": "ISO 19650-1.",
+  "err": "Sie überspringen und die AIA schreiben, ohne zu wissen, für welche Entscheidungen die Informationen benötigt werden.",
+  "al": [
+   "OIR",
+   "organisatorische Informationsanforderungen",
+   "organisatorischen Informationsanforderungen"
+  ],
+  "h": "d720b23b00"
+ },
+ "P06": {
+  "t": "Projekt-Informationsanforderungen (PIR)",
+  "d": "Anforderungen an Zweck, Planung und Bau des Assets, verknüpft mit den wichtigsten Entscheidungspunkten des Projekts; sie bestimmen das Projekt-Informationsmodell (PIM).",
+  "ej": "Informationen, um am Ende der Ausführungsplanung zu entscheiden, ob die Bauleistung ausgeschrieben wird.",
+  "eq": "ISO 19650-1.",
+  "err": "Sie mit der AIA verwechseln: Die PIR gehören zum Projekt, die AIA zu jedem einzelnen Auftrag.",
+  "al": [
+   "PIR",
+   "Projekt-Informationsanforderungen"
+  ],
+  "h": "7728c95bc2"
+ },
+ "P07": {
+  "t": "Asset-Informationsanforderungen (AIR)",
+  "d": "Anforderungen an die Informationen, die für Betrieb und Instandhaltung des Assets nötig sind; sie bestimmen den Inhalt des Asset-Informationsmodells (AIM).",
+  "ej": "Wartungsdaten der Lüftungs- und Klimageräte, die der Gebäudebetreiber anfordert.",
+  "eq": "ISO 19650-1 und -3; COBie als übliches Format.",
+  "err": "Sie erst am Ende der Bauphase anfordern, statt sie von der ersten AIA an aufzunehmen.",
+  "al": [
+   "AIR",
+   "Asset-Informationsanforderungen"
+  ],
+  "h": "f14bba1675"
+ },
+ "P08": {
+  "t": "Projekt-Informationsmodell (PIM)",
+  "d": "Informationsmodell (strukturierte und unstrukturierte Container), das in der Lieferphase entsteht und an das AIM übergibt, was die AIR verlangen.",
+  "ej": "Modelle, Pläne und Dokumente zu Planung und Bau eines Krankenhauses.",
+  "eq": "ISO 19650-1.",
+  "err": "Annehmen, es sei nur das föderierte 3D-Modell.",
+  "al": [
+   "PIM",
+   "Projekt-Informationsmodell",
+   "Projekt-Informationsmodells"
+  ],
+  "h": "2f8d1c8337"
+ },
+ "P09": {
+  "t": "Asset-Informationsmodell (AIM)",
+  "d": "Informationsmodell der Betriebsphase; es erhält beim Projektabschluss die relevanten Informationen aus dem PIM.",
+  "ej": "Instandhaltungsdatenbank des übergebenen Gebäudes.",
+  "eq": "ISO 19650-1 und -3.",
+  "err": "Das vollständige PIM als AIM übergeben, ohne herauszufiltern, was für den Betrieb wirklich nützt.",
+  "al": [
+   "AIM",
+   "Asset-Informationsmodell",
+   "Asset-Informationsmodells"
+  ],
+  "h": "b769083d7b"
+ },
+ "P10": {
+  "t": "Auftraggeber",
+  "d": "Empfänger der Informationen zu Arbeiten oder Leistungen: in der Regel der Bauherr oder wer die Informationen in seinem Namen verwaltet. Er verfasst die AIA und nimmt die Informationen ab.",
+  "ej": "Ein Ministerium oder eine Behörde für öffentliche Bauvorhaben, die ein Projekt ausschreibt.",
+  "eq": "ISO 19650: appointing party; PAS 1192: employer.",
+  "err": "Ihn einfach „den Bauherrn“ nennen, obwohl tatsächlich ein beauftragter Informationsmanager handelt.",
+  "al": [
+   "Auftraggeber",
+   "Auftraggebers",
+   "appointing party"
+  ],
+  "h": "60cca94f81"
+ },
+ "P11": {
+  "t": "Federführender Auftragnehmer",
+  "d": "Vom Auftraggeber beauftragte Partei, die die Informationen zwischen ihrem Lieferteam und dem Auftraggeber koordiniert und verwaltet. Sie verfasst den BAP und den MIDP.",
+  "ej": "Das Architekturbüro, das den Wettbewerb gewinnt und Tragwerksplanung und TGA an Nachunternehmer vergibt.",
+  "eq": "ISO 19650: lead appointed party.",
+  "err": "Annehmen, es gebe nur einen pro Projekt: Es gibt einen je Lieferteam.",
+  "al": [
+   "federführender Auftragnehmer",
+   "federführenden Auftragnehmer",
+   "federführenden Auftragnehmers",
+   "federführende Auftragnehmer",
+   "lead appointed party"
+  ],
+  "h": "a53a79ae18"
+ },
+ "P12": {
+  "t": "Auftragnehmer",
+  "d": "Informationslieferant, der vom federführenden Auftragnehmer beauftragt wird; erhält eigene AIA und verfasst den TIDP seiner Aufgabenteams.",
+  "ej": "Das Tragwerksplanungsbüro, das vom Architekturbüro als Nachunternehmer beauftragt wird.",
+  "eq": "ISO 19650: appointed party.",
+  "err": "Ihm keine eigenen AIA übergeben: Dann weiß er nicht, was er liefern muss.",
+  "al": [
+   "Auftragnehmer",
+   "Auftragnehmers",
+   "Auftragnehmern",
+   "appointed party"
+  ],
+  "h": "87a88181ef"
+ },
+ "P13": {
+  "t": "Lieferteam",
+  "d": "Einheit aus einem federführenden Auftragnehmer und seinen Auftragnehmern.",
+  "ej": "Architektur + Tragwerk + TGA unter einem gemeinsamen Hauptvertrag.",
+  "eq": "ISO 19650: delivery team. Im Spanischen auch „equipo de ejecución“ (UNE-Übersetzung zu bestätigen).",
+  "err": "Es mit dem Projektteam verwechseln, das außerdem den Auftraggeber und andere Lieferteams umfasst.",
+  "al": [
+   "Lieferteam",
+   "Lieferteams",
+   "delivery team"
+  ],
+  "h": "e7221d54f0"
+ },
+ "P14": {
+  "t": "Aufgabenteam",
+  "d": "Gruppe von Personen, die innerhalb eines Auftragnehmers ein bestimmtes Arbeitspaket ausführt.",
+  "ej": "Das Team für Elektroinstallationen innerhalb des Ingenieurbüros.",
+  "eq": "ISO 19650: task team.",
+  "err": "Das ganze Unternehmen als ein einziges Aufgabenteam behandeln und so die Detailtiefe des TIDP verlieren.",
+  "al": [
+   "Aufgabenteam",
+   "Aufgabenteams",
+   "task team"
+  ],
+  "h": "b3156d92f0"
+ },
+ "P15": {
+  "t": "Projektteam",
+  "d": "Der Auftraggeber zuzüglich aller Lieferteams des Projekts.",
+  "ej": "Bauherr, Planungsteam und Bauunternehmen desselben Bauvorhabens.",
+  "eq": "ISO 19650: project team.",
+  "err": "—",
+  "al": [
+   "Projektteam",
+   "Projektteams",
+   "project team"
+  ],
+  "h": "05905c9874"
+ },
+ "P16": {
+  "t": "Verantwortlichkeitsmatrix",
+  "d": "Tabelle, die festlegt, wer welche Information erstellt: übergeordnet im vorvertraglichen BAP und detailliert (je Container, Meilenstein und Verantwortlichem) nach der Beauftragung.",
+  "ej": "Tabellenkalkulation mit Containern in den Zeilen und Teams in den Spalten.",
+  "eq": "ISO 19650-2: high-level / detailed responsibility matrix; RACI im Projektmanagement.",
+  "err": "Zeilen mit zwei „Verantwortlichen“: Wenn alle verantwortlich sind, ist es niemand.",
+  "al": [
+   "Verantwortlichkeitsmatrix",
+   "Verantwortlichkeitsmatrizen",
+   "responsibility matrix"
+  ],
+  "h": "20a4e19f9d"
+ },
+ "P17": {
+  "t": "Teil-Informationslieferplan (TIDP)",
+  "d": "Liste der Container, die jedes Aufgabenteam liefern wird, mit Informationstiefe, Format, Datum und Verantwortlichem.",
+  "ej": "TIDP des Tragwerksteams für die Entwurfsplanung.",
+  "eq": "ISO 19650-2.",
+  "err": "Ihn einmal erstellen und nicht fortschreiben, wenn sich der Terminplan ändert.",
+  "al": [
+   "TIDP",
+   "Teil-Informationslieferplan",
+   "Teil-Informationslieferplans",
+   "Teil-Informationslieferpläne"
+  ],
+  "h": "ee12a40096"
+ },
+ "P18": {
+  "t": "Master-Informationslieferplan (MIDP)",
+  "d": "Plan, der die TIDP des gesamten Lieferteams zusammenführt, abgestimmt auf die Liefermeilensteine des Auftraggebers.",
+  "ej": "MIDP des Siegerteams eines Krankenhauswettbewerbs.",
+  "eq": "ISO 19650-2; Peru: „programa general de desarrollo de la información“ (UNE-Übersetzung zu bestätigen).",
+  "err": "Ihn als Bauzeitenplan (Gantt-Diagramm) statt als Informationsplan verwenden.",
+  "al": [
+   "MIDP",
+   "Master-Informationslieferplan",
+   "Master-Informationslieferplans"
+  ],
+  "h": "1d8f9e33a0"
+ },
+ "P19": {
+  "t": "Meilenstein der Informationslieferung",
+  "d": "Zeitpunkt, zu dem der Auftraggeber Informationen für eine Entscheidung benötigt; er kann am Ende einer Phase oder innerhalb einer Phase liegen.",
+  "ej": "Lieferung vor dem Bauantrag.",
+  "eq": "ISO 19650-1/2; key decision points; in Deutschland auch Datenübergabepunkt.",
+  "err": "Meilensteine nach der Bequemlichkeit des Teams statt nach den Entscheidungen des Auftraggebers festlegen.",
+  "al": [
+   "Meilenstein",
+   "Meilensteine",
+   "Meilensteinen",
+   "Liefermeilenstein",
+   "Liefermeilensteine",
+   "Datenübergabepunkt",
+   "Datenübergabepunkte"
+  ],
+  "h": "b5d2570125"
+ },
+ "P20": {
+  "t": "Föderationsstrategie",
+  "d": "Wie die Informationen in Container aufgeteilt werden (nach Fachdisziplin, Bauteil, Geschoss …) und wie sie zur Koordination zusammengeführt werden.",
+  "ej": "Ein Modell je Fachdisziplin und Gebäude, wöchentlich föderiert.",
+  "eq": "ISO 19650-2 (vorvertraglicher BAP); Container-Aufschlüsselungsstruktur.",
+  "err": "Das Modell nach der Gewohnheit des jeweiligen Programms aufteilen, ohne zu bedenken, wer es erstellt.",
+  "al": [
+   "Föderationsstrategie",
+   "Föderationsstrategien"
+  ],
+  "h": "3726626d1d"
+ },
+ "P21": {
+  "t": "Informationsstandard des Projekts",
+  "d": "Gemeinsame Regeln für die Informationen: Namen, Klassifikation, Einheiten, Informationstiefe, Koordinatensystem und Formate. Der BAP schlägt Änderungen vor, der bestätigte BAP legt sie fest.",
+  "ej": "Namenskonvention + Meter + EPSG:25830 + Höhen Alicante.",
+  "eq": "ISO 19650-2, 5.1.4.",
+  "err": "Die Koordinaten weglassen: Dann wählt jede Fachdisziplin ihren eigenen Ursprung.",
+  "al": [
+   "Informationsstandard",
+   "Informationsstandards",
+   "Informationsstandard des Projekts"
+  ],
+  "h": "33f61cef52"
+ },
+ "P22": {
+  "t": "Methoden und Verfahren der Informationserstellung",
+  "d": "Wie Informationen im Projekt erstellt, geprüft, überprüft, freigegeben und geteilt werden.",
+  "ej": "Interne Prüfung, bevor eine Datei in den Bereich „geteilt“ übergeht.",
+  "eq": "ISO 19650-2, 5.1.5.",
+  "err": "Sie mit dem Standard verwechseln: Der Standard sagt, wie die Information beschaffen ist; die Methoden, wie gearbeitet wird.",
+  "al": [
+   "Methoden und Verfahren der Informationserstellung",
+   "Methoden der Informationserstellung",
+   "Erstellungsmethoden"
+  ],
+  "h": "c87375427d"
+ },
+ "P23": {
+  "t": "Informationsprotokoll",
+  "d": "Vertragsanlage, die das Informationsmanagement in den Auftrag einbindet: Verantwortlichkeiten, Lizenzen und Nutzung der Informationen.",
+  "ej": "—",
+  "eq": "UK BIM Framework: Information Protocol (2021).",
+  "err": "Den Vertrag ohne es unterzeichnen: Dann verpflichtet der BAP zu nichts.",
+  "al": [
+   "Informationsprotokoll",
+   "Informationsprotokolls",
+   "Information Protocol"
+  ],
+  "h": "4bea1b4e75"
+ },
+ "P24": {
+  "t": "Informationscontainer",
+  "d": "Benannte Menge von Informationen, abrufbar aus einem Dateisystem oder einer Anwendung: ein Plan, ein Modell, eine Tabelle, ein Dokument.",
+  "ej": "HSP-ARQ-ZZ-01-M3-A-0001.ifc",
+  "eq": "ISO 19650-1.",
+  "err": "Nur an Modelle denken: Auch eine PDF-Datei oder eine Tabellenkalkulation ist ein Container.",
+  "al": [
+   "Informationscontainer",
+   "Informationscontainers",
+   "Informationscontainern",
+   "Container",
+   "Containern",
+   "Containers"
+  ],
+  "h": "8356c14178"
+ },
+ "P25": {
+  "t": "Status in der CDE",
+  "d": "Zustand jedes Containers in der gemeinsamen Datenumgebung: in Bearbeitung, geteilt, veröffentlicht und archiviert. Jeder Übergang erfordert eine Prüfung, Überprüfung oder Freigabe.",
+  "ej": "WIP-Ordner jedes Teams und Ordner für veröffentlichte Projektinformationen.",
+  "eq": "ISO 19650-1; Autodesk Docs und BCDE Project setzen sie mit Status und Workflows um.",
+  "err": "Die vier Ordner anlegen, ohne dass jemand die Übergänge freigibt.",
+  "al": [
+   "CDE-Status",
+   "Status der CDE",
+   "in Bearbeitung",
+   "work in progress",
+   "WIP"
+  ],
+  "h": "c0eb2daa65"
+ },
+ "P26": {
+  "t": "Statuscode",
+  "d": "Metadatum, das angibt, wofür ein Container geeignet ist: S0 in Bearbeitung; S1–S7 geteilt; A, B und CR veröffentlicht (britischer nationaler Anhang von 2021).",
+  "ej": "S1 geeignet für die Koordination; A1 freigegeben und angenommen.",
+  "eq": "BS EN ISO 19650-2 NA; Autodesk Docs (Attribut); andere CDE mit eigenen Listen.",
+  "err": "S für „ungeprüft“ und A für „freigegeben“ verwenden, ohne die Liste im Informationsstandard des Projekts festzulegen.",
+  "al": [
+   "Statuscode",
+   "Statuscodes",
+   "status code"
+  ],
+  "h": "56a99f823e"
+ },
+ "P27": {
+  "t": "Revisionscode",
+  "d": "Versionskennung des Containers: P01, P02 … vorläufig; C01, C02 … vertraglich; P01.01 für Zwischenversionen.",
+  "ej": "P03 im Bereich „geteilt“; C01 bei der Veröffentlichung.",
+  "eq": "BS EN ISO 19650-2 NA.",
+  "err": "Die Nummerierung beim Statuswechsel neu beginnen.",
+  "al": [
+   "Revisionscode",
+   "Revisionscodes",
+   "revision code"
+  ],
+  "h": "ea5de4a421"
+ },
+ "P28": {
+  "t": "Namenskonvention",
+  "d": "Regel zur Kennzeichnung von Containern durch mit Bindestrichen getrennte Felder: Projekt-Urheber-Bauteil-Geschoss-Typ-Rolle-Nummer (britischer nationaler Anhang).",
+  "ej": "HSP-ARQ-ZZ-01-M3-A-0001",
+  "eq": "BS EN ISO 19650-2 NA; Namensvalidierung in Autodesk Docs.",
+  "err": "Die britische Konvention übernehmen, ohne die Codes jedes Feldes für das Projekt festzulegen.",
+  "al": [
+   "Namenskonvention",
+   "Namenskonventionen",
+   "Benennungskonvention",
+   "naming convention"
+  ],
+  "h": "cca59de3f4"
+ },
+ "P29": {
+  "t": "Mobilisierungsplan",
+  "d": "Wie das Team Ressourcen, Technologie und Methoden vor Beginn der Erstellung in Betrieb nimmt und testet (ISO 19650-2, 5.3.5 und 5.5).",
+  "ej": "Test des IFC-Exports und des Hochladens in die CDE in der ersten Woche.",
+  "eq": "ISO 19650-2.",
+  "err": "Mit der Erstellung beginnen, ohne den gesamten Ablauf getestet zu haben.",
+  "al": [
+   "Mobilisierungsplan",
+   "Mobilisierungsplans",
+   "Mobilisierung"
+  ],
+  "h": "81b727c30b"
+ },
+ "P30": {
+  "t": "Informationsmanagementprozess",
+  "d": "Die acht Aktivitäten der ISO 19650-2 für jeden Auftrag: Bewertung und Bedarf, Aufforderung zur Angebotsabgabe, Angebot, Beauftragung, Mobilisierung, kollaborative Erstellung, Lieferung und Projektabschluss.",
+  "ej": "—",
+  "eq": "ISO 19650-2, Abschnitt 5; ISO 19650-3 für den Betrieb.",
+  "err": "Den BAP als losgelöstes Dokument statt als Teil dieses Prozesses lesen.",
+  "al": [
+   "Informationsmanagement",
+   "Informationsmanagements",
+   "Informationsmanagementprozess",
+   "Informationsmanagementprozesses"
+  ],
+  "h": "44e336387d"
+ },
+ "P31": {
+  "t": "Normenreihe ISO 19650",
+  "d": "Internationale Normen für das Informationsmanagement mit BIM: 1 Begriffe und Grundsätze, 2 Lieferphase, 3 Betriebsphase, 4 Informationsaustausch, 5 Sicherheit, 6 Gesundheitsschutz und Sicherheit. In Deutschland DIN EN ISO 19650, in Spanien UNE-EN ISO 19650.",
+  "ej": "UNE-EN ISO 19650-1:2019 und -2:2019.",
+  "eq": "BS 1192 und PAS 1192-2 (britische Vorläufer).",
+  "err": "„ISO 19650“ ohne Teil zitieren: Der BAP steht in Teil 2.",
+  "al": [
+   "ISO 19650",
+   "DIN EN ISO 19650",
+   "UNE-EN ISO 19650"
+  ],
+  "h": "06ee1e92b6"
+ },
+ "P32": {
+  "t": "BIM-Anwendungsfälle",
+  "d": "Konkrete Arten, BIM zur Erreichung eines Ziels einzusetzen (3D-Koordination, Mengenermittlung, Simulation …); Kern des Leitfadens der Penn State und des NBIMS-US.",
+  "ej": "3D-Koordination und Planableitung, gefordert in der Stufe „Inicial“ des spanischen Plan BIM.",
+  "eq": "Penn State BIM PxP Guide; NBIMS-US V4; spanischer Plan BIM.",
+  "err": "In den AIA „alle Anwendungsfälle“ verlangen, ohne zu sagen, welcher Entscheidung jeder dient.",
+  "al": [
+   "BIM-Anwendungsfall",
+   "BIM-Anwendungsfälle",
+   "BIM-Anwendungsfällen",
+   "BIM-Anwendungsfalls",
+   "BIM uses"
+  ],
+  "h": "8bb279e036"
+ },
+ "P33": {
+  "t": "Plan BIM für die öffentliche Auftragsvergabe (Spanien)",
+  "d": "Plan zur Einführung der BIM-Methodik in der öffentlichen Auftragsvergabe Spaniens (Beschluss des Ministerrats vom 27.06.2023, Orden PCM/818/2023): Zeitplan der geforderten BIM-Stufen nach Auftragswert.",
+  "ej": "Stufe „Medio“ bei Bauleistungen ≥ 5.404.000 € ab dem 1.10.2025.",
+  "eq": "Interne Anweisung für die Allgemeine Staatsverwaltung (AGE); Empfehlung für den übrigen öffentlichen Sektor.",
+  "err": "Ihn „Königliches Dekret“ (real decreto) nennen: Das ist er nicht.",
+  "al": [
+   "Plan BIM",
+   "Orden PCM/818/2023",
+   "Plan de Incorporación de la Metodología BIM"
+  ],
+  "h": "d7dfaab76f"
+ },
+ "P34": {
+  "t": "BIM-Stufe (spanischer Plan BIM)",
+  "d": "Reifegradskala des Plan BIM: PreBIM, Inicial, Medio, Avanzado und Integrado, bewertet nach Strategie, Prozessen, Technologie und Personen.",
+  "ej": "Stufe „Inicial“: Modelle für Pläne und 3D-Koordination, CDE als Ablage und offene Formate.",
+  "eq": "UK: „BIM Level 2“ (Begriff mit ISO 19650 aufgegeben).",
+  "err": "Sie mit dem Fertigstellungsgrad (LOD) der Elemente verwechseln.",
+  "al": [
+   "BIM-Stufe",
+   "BIM-Stufen",
+   "BIM Level"
+  ],
+  "h": "2a0628f201"
+ },
+ "P35": {
+  "t": "Interministerielle BIM-Kommission (CIBIM)",
+  "d": "Durch das Königliche Dekret RD 1515/2018 geschaffenes Gremium zur Koordinierung der BIM-Einführung bei der Auftragsvergabe der spanischen Allgemeinen Staatsverwaltung; es hat den Plan BIM erarbeitet.",
+  "ej": "cibim.transportes.gob.es",
+  "eq": "Zuvor: Kommission es.BIM (2015).",
+  "err": "Ihr den Plan BIM als eigene Vorschrift zuschreiben: Beschlossen hat ihn der Ministerrat.",
+  "al": [
+   "CIBIM",
+   "CBIM",
+   "Comisión Interministerial BIM"
+  ],
+  "h": "66dfa24cbd"
+ },
+ "P36": {
+  "t": "Britischer nationaler Anhang",
+  "d": "Anhang der BS EN ISO 19650-2, der für das Vereinigte Königreich die Namenskonvention, die Statuscodes und die Revisionscodes festlegt.",
+  "ej": "Viele spanische Ausschreibungsunterlagen übernehmen seine Konvention.",
+  "eq": "BS EN ISO 19650-2:2018 + A1 / NA (2021).",
+  "err": "Ihn für eine spanische Norm halten: Spanien hat keinen nationalen Anhang.",
+  "al": [
+   "nationaler Anhang",
+   "nationalen Anhang",
+   "nationalen Anhangs",
+   "britischer nationaler Anhang",
+   "britischen nationalen Anhang",
+   "UK National Annex"
+  ],
+  "h": "6725d5485a"
+ },
+ "P37": {
+  "t": "Informationsrisikoregister",
+  "d": "Risiken, die eine termin- und formgerechte Lieferung der Informationen verhindern können, mit ihrer Behandlung; begleitet das Angebot (ISO 19650-2, 5.3.6).",
+  "ej": "Risiko: unterschiedliche Softwareversionen in Architektur und Tragwerksplanung.",
+  "eq": "ISO 19650-2.",
+  "err": "Es mit dem Risikoregister der Bauausführung verwechseln.",
+  "al": [
+   "Risikoregister",
+   "Risikoregisters",
+   "Informationsrisikoregister",
+   "Informationsrisikoregisters"
+  ],
+  "h": "3bad9ac056"
+ },
+ "P38": {
+  "t": "Informationserstellungsplan (vorgeschlagen)",
+  "d": "Bezeichnung, die laut Quellen, die die öffentliche Konsultation verfolgt haben, den BAP in der Überarbeitung der ISO 19650 ersetzen könnte (Entwurf seit dem 18.08.2026 in erneuter Abstimmung). Nicht endgültig.",
+  "ej": "—",
+  "eq": "ISO/DIS 19650-2.",
+  "err": "Ihn bereits als offiziellen Begriff verwenden.",
+  "al": [
+   "Information Production Plan",
+   "Informationserstellungsplan"
+  ],
+  "h": "1c20b024ff"
  }
 }

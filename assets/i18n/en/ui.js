@@ -91,12 +91,12 @@
     // Series catalogue (assets/js/serie.js): translated fields per slug
     serie: {
       'coordenadas-compartidas': { titulo: 'Shared coordinates in BIM', resumen: 'First the concepts that hold for any program (geodesy, surveying, precision and transformation); then standards, software, platforms, interoperability and quality control.', tema: 'Georeferencing' },
-      'niveles-de-informacion': { titulo: 'Level of information need', resumen: 'Ask for just enough at each stage: no more geometry and no less data.', tema: 'Information' },
+      'niveles-de-informacion': { titulo: 'Level of information need', resumen: 'LOD, LOI and level of information need (ISO 7817-1): what to ask of each element, why and at which milestone, and how to check it with IFC and IDS.', tema: 'Information' },
       'entorno-comun-de-datos': { titulo: 'Common data environment', resumen: 'One single place where information has a status, a version and an owner.', tema: 'Management' },
-      'deteccion-de-interferencias': { titulo: 'Clash detection', resumen: 'Find the clashes in the model before they reach the site.', tema: 'Coordination' },
+      'deteccion-de-interferencias': { titulo: 'Clash detection', resumen: 'Clash types, tolerances, matrix and grouping for any program; then ISO 19650 and BCF, Navisworks, Solibri and the cloud, the journey of an issue and how it is really closed.', tema: 'Coordination' },
       'clasificacion-bim': { titulo: 'Classification systems', resumen: 'A common code so that every element is understood at every stage.', tema: 'Data' },
-      'bep-plan-de-ejecucion': { titulo: 'BIM execution plan', resumen: 'The document that turns the client’s requirements into a work plan.', tema: 'Management' },
-      'gemelos-digitales': { titulo: 'Digital twins', resumen: 'From the handover model to an operational model connected to sensors.', tema: 'Operation' }
+      'bep-plan-de-ejecucion': { titulo: 'BIM execution plan', resumen: 'What the information requirements (OIR, PIR, AIR, EIR) ask for and how the BEP responds under ISO 19650: parties, matrix, delivery plans, CDE, the Spanish BIM Plan and how it is checked.', tema: 'Management' },
+      'gemelos-digitales': { titulo: 'Digital twins in construction and engineering', resumen: 'What turns a model into a twin, which standards organise it (ISO 19650, IFC, Brick, DTDL), what software and platforms exist and how to check that its data is reliable.', tema: 'Operation' }
     }
   };
 })();

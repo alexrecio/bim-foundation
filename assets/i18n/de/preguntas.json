@@ -8,5 +8,22 @@
  "coordenadas-compartidas#revit": "Koordinaten in Revit übernehmen oder veröffentlichen?",
  "coordenadas-compartidas#nubes": "Wie bringe ich eine Punktwolke in UTM ins Modell?",
  "coordenadas-compartidas#coordinacion": "Verschiebe ich das Modell im Viewer oder im Original?",
- "coordenadas-compartidas#calidad": "Wie prüfe ich, ob ein Modell an der richtigen Stelle liegt?"
+ "coordenadas-compartidas#calidad": "Wie prüfe ich, ob ein Modell an der richtigen Stelle liegt?",
+ "niveles-de-informacion#escalera": "Was bedeutet ein LOD 300 eigentlich?",
+ "niveles-de-informacion#requisito": "Fordere ich im Vertrag LOD, LOI oder LOIN?",
+ "niveles-de-informacion#iso7817": "Welche Norm ersetzt die EN 17412-1?",
+ "niveles-de-informacion#vista": "Ist die Detailgenauigkeit „Fein“ der Ansicht ein LOD 400?",
+ "niveles-de-informacion#ids": "Wie prüfe ich, ob die Türen ihre Daten mitbringen?",
+ "gemelos-digitales#tres-niveles": "Was unterscheidet ein BIM-Modell von einem digitalen Zwilling?",
+ "gemelos-digitales#entrega": "Welche Daten muss ich in der Leistungsbeschreibung fordern, um einen Zwilling zu erhalten?",
+ "gemelos-digitales#identificadores": "Wie verknüpfe ich einen Sensor im Gebäude mit seinem Element im Modell?",
+ "gemelos-digitales#calidad": "Wie prüfe ich, ob die Daten eines Zwillings verlässlich sind?",
+ "deteccion-de-interferencias#ruido": "Warum erscheinen Tausende Kollisionen, die gar keine sind?",
+ "deteccion-de-interferencias#tolerancia": "Welche Toleranz stelle ich in einer Kollisionsprüfung ein?",
+ "deteccion-de-interferencias#quien-mueve": "Wer weicht aus, wenn zwei TGA-Leitungen kollidieren?",
+ "deteccion-de-interferencias#bcf-versiones": "Welche BCF-Version verwende ich, und warum gehen Issues verloren?",
+ "bep-plan-de-ejecucion#contenido": "Was muss ein BAP enthalten?",
+ "bep-plan-de-ejecucion#bep": "Was ist der Unterschied zwischen AIA und BAP?",
+ "bep-plan-de-ejecucion#espana": "Welche BIM-Stufe verlangt der Plan BIM in Spanien?",
+ "bep-plan-de-ejecucion#evaluar": "Wie bewerte ich den BAP eines Bieters?"
 }

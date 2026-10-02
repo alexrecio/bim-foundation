@@ -18,7 +18,7 @@ Copia del HTML ES con el texto traducido (estructura, clases, ids y `data-l2` in
 ## Flujo
 1. Traducir o actualizar la página / los JSON.
 2. `node herramientas/i18n.mjs` → regenera datos e índice y lista avisos (páginas desfasadas, términos o países sin traducir).
-3. Si una página estaba desfasada y ya la has puesto al día: `node herramientas/i18n.mjs --sellar en/articulos/<slug>/index.html`.
+3. Si una página estaba desfasada y ya la has puesto al día: `node herramientas/i18n.mjs --sellar en/articulos/<slug>/index.html`. Los scripts propios de un artículo con textos (p. ej. `articulos/niveles-de-informacion/niveles.js`) llevan copia traducida junto a la página, con `// bf-fuente: <ruta ES>@<blob>` en la primera línea; se sellan igual.
 4. Subir a `main`.
 
 Idioma nuevo = carpeta `assets/i18n/<lang>/` + `/<lang>/` + línea en `LANGS` de `idioma.js`. Terminología: `/mnt/project-files/traduccion/<lang>/`.

@@ -1,7 +1,7 @@
 // Idiomas de la web: regenera los datos de cada idioma y avisa de las traducciones desfasadas.
 // Uso (desde la raíz del repo, sin dependencias):
 //   node herramientas/i18n.mjs                       → todos los idiomas de assets/i18n/<lang>/
-//   node herramientas/i18n.mjs --sellar <página.html> → marca una página traducida como al día con su original ES actual
+//   node herramientas/i18n.mjs --sellar <página.html|script.js|glosario.json> → marca una traducción como al día con su original ES actual
 // Qué hace, por idioma:
 //   1. assets/i18n/paginas.js: qué páginas existen en cada idioma (el selector y los enlaces lo usan).
 //   2. glosario.js desde glosario.json (solo campos traducidos por id; lo que falte se queda en ES y se avisa).
@@ -20,6 +20,8 @@ const blob = (f) => execFileSync('git', ['hash-object', f], { encoding: 'utf8' }
 const leer = (f) => { const ctx = { window: {} }; vm.runInNewContext(fs.readFileSync(f, 'utf8'), ctx); return ctx.window; };
 const json = (f) => (fs.existsSync(f) ? JSON.parse(fs.readFileSync(f, 'utf8')) : null);
 const META = /<meta name="bf-fuente" content="([^"@]+)@([0-9a-f]*)">/;
+// Scripts propios de una página traducida (p. ej. en/articulos/x/niveles.js): primera línea «// bf-fuente: ruta@blob»
+const META_JS = /^\/\/ bf-fuente: ([^@\s]+)@([0-9a-f]*)/m;
 
 // Huella del texto ES de cada término del glosario: si cambia, la traducción está desfasada
 const huella = (g) => createHash('sha1').update([g.t, g.d, g.ej, g.eq, g.err].join('\u0001')).digest('hex').slice(0, 10);
@@ -31,9 +33,9 @@ if (process.argv[2] === '--sellar') {
       G0.forEach((g) => { if (T[g.id]) T[g.id].h = huella(g); });
       fs.writeFileSync(f, JSON.stringify(T, null, 1) + '\n'); console.log('al día:', f); continue;
     }
-    const h = fs.readFileSync(f, 'utf8'); const m = h.match(META);
-    if (!m) { console.error('sin <meta name="bf-fuente">:', f); process.exitCode = 1; continue; }
-    fs.writeFileSync(f, h.replace(META, `<meta name="bf-fuente" content="${m[1]}@${blob(m[1])}">`));
+    const h = fs.readFileSync(f, 'utf8'); const js = f.endsWith('.js'); const m = h.match(js ? META_JS : META);
+    if (!m) { console.error(js ? 'sin «// bf-fuente: ruta@blob»:' : 'sin <meta name="bf-fuente">:', f); process.exitCode = 1; continue; }
+    fs.writeFileSync(f, h.replace(js ? META_JS : META, js ? `// bf-fuente: ${m[1]}@${blob(m[1])}` : `<meta name="bf-fuente" content="${m[1]}@${blob(m[1])}">`));
     console.log('al día:', f, '←', m[1]);
   }
   process.exit();
@@ -129,6 +131,15 @@ for (const l of LANGS) {
     if (!m) { avisos.push(`${l} · ${f}: sin <meta name="bf-fuente"> (no se puede saber si está al día)`); continue; }
     if (!fs.existsSync(m[1])) { avisos.push(`${l} · ${f}: el original ${m[1]} ya no existe`); continue; }
     if (blob(m[1]) !== m[2]) avisos.push(`${l} · ${f}: DESFASADA, ${m[1]} ha cambiado desde la traducción → git diff ${m[2].slice(0, 10)} ${blob(m[1]).slice(0, 10)}; al terminar: node herramientas/i18n.mjs --sellar ${f}`);
+    // Scripts propios de la página (los que tiene el original ES junto a su index.html)
+    const dirEs = path.dirname(m[1]);
+    for (const js of fs.readdirSync(dirEs).filter((x) => x.endsWith('.js'))) {
+      const fj = `${l}/${k}${js}`;
+      if (!fs.existsSync(fj)) { avisos.push(`${l} · ${fj}: falta (el original ${dirEs}/${js} tiene textos; copia traducida con «// bf-fuente: ${dirEs}/${js}@blob» en la 1.ª línea)`); continue; }
+      const mj = fs.readFileSync(fj, 'utf8').match(META_JS);
+      if (!mj) avisos.push(`${l} · ${fj}: sin «// bf-fuente: ruta@blob» en la 1.ª línea`);
+      else if (blob(mj[1]) !== mj[2]) avisos.push(`${l} · ${fj}: DESFASADO, ${mj[1]} ha cambiado → git diff ${mj[2].slice(0, 10)} ${blob(mj[1]).slice(0, 10)}; al terminar: node herramientas/i18n.mjs --sellar ${fj}`);
+    }
   }
   // Artículos de la serie aún sin traducir
   const sin = leer('assets/js/serie.js').SERIE.filter((a) => fs.existsSync(`articulos/${a.slug}/index.html`) && !PAG[l].includes(`articulos/${a.slug}/`)).map((a) => a.numero);

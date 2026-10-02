@@ -1,0 +1,1722 @@
+<!DOCTYPE html>
+<html lang="de" data-root="../../../" data-lang="de" data-slug="gemelos-digitales">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Borrador: quitar noindex al publicar -->
+  <meta name="bf-fuente" content="articulos/gemelos-digitales/index.html@ace5224f63cb43b614b762ddd399156e3c65ff95">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Digitale Zwillinge in Bauwesen und Ingenieurbau | kernel</title>
+  <meta name="description" content="Was ein digitaler Zwilling eines Gebäudes oder einer Infrastruktur ist, worin er sich von einem BIM-Modell unterscheidet, welche Normen ihn ordnen (ISO 19650, IFC, Brick, DTDL) und wie sich prüfen lässt, ob seine Daten verlässlich sind.">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Digitale Zwillinge in Bauwesen und Ingenieurbau · kernel">
+  <meta property="og:description" content="Ein Modell ist erst dann ein Zwilling, wenn die Daten von selbst aus dem realen Asset zurückfließen.">
+  <link rel="icon" href="../../../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="../../../assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../../assets/css/estilo.css">
+  <link rel="stylesheet" href="../../../assets/css/precision.css">
+</head>
+<body>
+  <div id="progress" aria-hidden="true"></div>
+  <div id="nav-capsule">
+    <button id="menu-trigger" aria-label="Menü" aria-expanded="false">k</button>
+    <div id="menu-content">
+      <nav>
+        <a class="menu-link" href="../../">Start</a>
+        <a class="menu-link" href="../../#articulos">Beiträge</a>
+        <a class="menu-link is-current" href="#portada">07 · Digitale Zwillinge</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Menú de diapositivas: se rellena con data-nav de cada <section> -->
+  <aside id="deck-nav" aria-label="Folien">
+    <span class="kicker-y">Zwillinge · 32 Ideen</span>
+    <ol></ol>
+    <div id="deck-progress" aria-hidden="true"><i></i></div>
+  </aside>
+  <div id="deck-bar">
+    <div id="deck-sheet"><ol></ol></div>
+    <button type="button" id="deck-bar-btn" aria-expanded="false" aria-controls="deck-sheet">
+      <span class="n">01/32</span><span class="t">Titel</span>
+      <span class="chev" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M3 9l4-4 4 4" fill="none" stroke="#fff" stroke-width="2"/></svg></span>
+    </button>
+  </div>
+
+  <!--
+    Regla de capas
+    Capa 1 = una diapositiva por idea, legible en 15 segundos: titular + tarjetas visuales (cifras, diagramas, chips) con rótulos breves.
+    Capa 2 = la ficha que abre «Ver detalle» (<template id="l2-…">), también en tarjetas. Solo añade lo que la diapositiva no dice.
+    Investigación y base de fuentes: /mnt/project-files/investigacion/07-gemelos-digitales/ y /mnt/project-files/fuentes/07-gemelos-digitales/
+  -->
+  <main class="deck">
+
+    <!-- ========== PORTADA ========== -->
+    <section class="slide" id="portada" data-nav="Titel">
+      <div class="bento">
+        <div class="b-title">
+          <p class="hero-id"><a href="../../" style="text-decoration:none">kernel · 07</a></p>
+          <span class="kicker-y lg">Grundlagen · Standards · Software</span>
+          <h1 class="display">Digitale<br>Zwillinge<br><span class="hl-y">am Bau<span class="dot">.</span></span></h1>
+          <p class="slide-lead">Ein Modell ist erst dann ein Zwilling, wenn die Daten von selbst aus dem realen Asset zurückfließen.</p>
+          <div class="slide-actions"><a class="btn" href="#problema">Los geht’s <span aria-hidden="true">↓</span></a></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w6 ficha" data-ficha></div>
+          <div class="card w6 g">
+            <span class="c-label">Der Beitrag in sechs Blöcken</span>
+            <ol class="mapa">
+              <li class="is-key"><a href="#problema"><b>I</b><span>Grundlagen</span><em>10 Ideen · für jede Software</em></a></li>
+              <li><a href="#normas"><b>II</b><span>Normen und Standards</span><em>5 Ideen · ISO 19650, IFC, Brick, Gemini</em></a></li>
+              <li><a href="#software"><b>III</b><span>Software</span><em>4 Ideen · Tandem, iTwin, 3D-Engines</em></a></li>
+              <li><a href="#plataformas"><b>IV</b><span>Plattformen</span><em>3 Ideen · Cloud, Graph und Karte</em></a></li>
+              <li><a href="#tres-mundos"><b>V</b><span>Interoperabilität</span><em>4 Ideen · GUID, Protokolle und Übergabe</em></a></li>
+              <li><a href="#calidad"><b>VI</b><span>Qualitätsprüfung</span><em>4 Ideen · IDS, SHACL und Sensordaten</em></a></li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== I · EL PROBLEMA ========== -->
+    <section class="slide" id="problema" data-cap="I · Grundlagen" data-nav="Das Problem">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Das Problem</span>
+          <h2 class="display">Das Modell wird übergeben und eingefroren<span class="dot">.</span></h2>
+          <p class="slide-lead">Der Bau dauert einige Jahre, das Gebäude Jahrzehnte. Mit der Abnahme hört das Modell auf, sich zu ändern, das Asset aber nicht.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="problema"><span class="plus">+</span> Details ansehen</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w4">
+            <span class="c-label">Lebenszyklus eines Gebäudes</span>
+            <svg class="draw" viewBox="0 0 440 150" role="img" aria-label="Zeitachse: Planung und Bau umfassen wenige Jahre, der Betrieb fünfzig oder mehr">
+              <line x1="10" y1="80" x2="430" y2="80" stroke="#000" stroke-width="2"/>
+              <rect x="10" y="62" width="14" height="36" fill="#fff" stroke="#000" stroke-width="2.5"/>
+              <rect x="24" y="62" width="18" height="36" fill="#000"/>
+              <rect x="42" y="62" width="386" height="36" fill="#FFFF00" stroke="#000" stroke-width="2.5"/>
+              <g font-family="JetBrains Mono, monospace" font-size="11">
+                <text x="6" y="52">Planung</text><text x="30" y="122">Bau</text>
+                <text x="190" y="85" font-weight="700">Betrieb · 50 Jahre oder mehr</text>
+                <path d="M42 108 V132" stroke="#000" stroke-width="2"/><text x="48" y="142">Abnahme: Das Modell friert ein</text>
+              </g>
+            </svg>
+          </div>
+          <div class="card w2 k">
+            <span class="c-label">Nutzungsdauer</span>
+            <b class="c-num xl">50<small>Jahre</small></b>
+            <span class="c-text">die der CTE für ein gewöhnliches Gebäude festlegt</span>
+          </div>
+          <div class="card w2"><span class="c-label">Was sich ändert</span><span class="c-title">Nutzungen</span><span class="c-title">Anlagen</span><span class="c-title">Umbauten</span></div>
+          <div class="card w2 g"><span class="c-label">Was passiert</span><span class="c-title">Temperatur</span><span class="c-title">Belegung</span><span class="c-title">Störungen</span></div>
+          <div class="card w2 y"><span class="c-label">Was fehlt</span><span class="c-title">Ein Modell, das es mitbekommt</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== I · DEFINICIÓN ========== -->
+    <section class="slide" id="definicion" data-nav="Was ist ein Zwilling">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Definition</span>
+          <h2 class="display">Drei Teile, hin und zurück<span class="dot">.</span></h2>
+          <p class="slide-lead">Ein physisches Asset, sein digitales Abbild und die Verbindung, die beide synchron hält. Erst diese Verbindung macht das Modell zum Zwilling.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="definicion"><span class="plus">+</span> Details ansehen</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w4 g">
+            <span class="c-label">Physisch · Verbindung · digital</span>
+            <svg class="draw" viewBox="0 0 440 200" role="img" aria-label="Links ein reales Gebäude, rechts sein Drahtmodell-Abbild, verbunden durch einen Datenpfeil und einen Entscheidungspfeil">
+              <path d="M30 170 V80 L90 40 L150 80 V170 Z" fill="#fff" stroke="#000" stroke-width="3"/>
+              <rect x="62" y="116" width="22" height="54" fill="#000"/><rect x="100" y="96" width="24" height="20" fill="none" stroke="#000" stroke-width="2.5"/>
+              <path d="M290 170 V80 L350 40 L410 80 V170 Z" fill="none" stroke="#000" stroke-width="2" stroke-dasharray="5 4"/>
+              <path d="M290 80 H410 M350 40 V170 M290 125 H410" stroke="#000" stroke-width="1.2" opacity=".5"/>
+              <circle cx="350" cy="80" r="4" fill="#000"/><circle cx="290" cy="125" r="4" fill="#000"/><circle cx="410" cy="125" r="4" fill="#000"/>
+              <path d="M165 92 H272" stroke="#000" stroke-width="3"/><polygon points="276,92 264,86 264,98" fill="#000"/>
+              <path d="M272 136 H170" stroke="#000" stroke-width="3"/><polygon points="164,136 176,130 176,142" fill="#000"/>
+              <rect x="186" y="104" width="68" height="20" rx="10" fill="#FFFF00" stroke="#000" stroke-width="2"/>
+              <g font-family="JetBrains Mono, monospace" font-size="11"><text x="194" y="84">Daten</text><text x="194" y="118" font-weight="700">Sync</text><text x="186" y="158">Entscheidungen</text><text x="40" y="192">PHYSISCHES ASSET</text><text x="294" y="192">DIGITALES ABBILD</text></g>
+            </svg>
+          </div>
+          <div class="card w2 k">
+            <span class="c-label">Das Konzept</span>
+            <b class="c-num">2002</b>
+            <span class="c-text">vorgestellt im Product Lifecycle Management der Industrie</span>
+          </div>
+          <div class="card w3"><span class="c-label">Was er nicht ist</span><span class="c-title">Ein schönes Rendering</span><span class="c-foot">ohne reale Daten kein Zwilling</span></div>
+          <div class="card w3 y"><span class="c-label">Der Test</span><span class="c-title">Aktualisiert er sich selbst?</span><span class="c-foot">so oft, wie sein Zweck es verlangt</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== I · MODELO, SOMBRA, GEMELO ========== -->
+    <section class="slide" id="tres-niveles" data-nav="Modell, Schatten oder Zwilling">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Modell · Schatten · Zwilling</span>
+          <h2 class="display">Entscheidend ist, wie die Daten fließen<span class="dot">.</span></h2>
+          <p class="slide-lead">Manuell in beide Richtungen: ein Modell. Automatisch nur hin: ein Schatten. Automatisch in beide: ein Zwilling.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="tres-niveles"><span class="plus">+</span> Details ansehen</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w2">
+            <span class="c-label">01 · Modell</span>
+            <svg class="draw" viewBox="0 0 210 110" role="img" aria-label="Modell: physisch zu digital manuell, digital zu physisch manuell">
+              <rect x="8" y="30" width="54" height="54" fill="#fff" stroke="#000" stroke-width="3"/><text x="27" y="63" font-family="JetBrains Mono, monospace" font-size="15" font-weight="700">P</text>
+              <rect x="148" y="30" width="54" height="54" fill="#fff" stroke="#000" stroke-width="2" stroke-dasharray="5 4"/><text x="167" y="63" font-family="JetBrains Mono, monospace" font-size="15" font-weight="700">D</text>
+              <path d="M66 44 H140" stroke="#000" stroke-width="2" stroke-dasharray="4 5"/><polygon points="146,44 134,38 134,50" fill="#000"/>
+              <path d="M144 76 H70" stroke="#000" stroke-width="2" stroke-dasharray="4 5"/><polygon points="64,76 76,70 76,82" fill="#000"/>
+            </svg>
+            <span class="c-title">Modell</span><span class="c-foot">manuell · manuell</span>
+          </div>
+          <div class="card w2 g">
+            <span class="c-label">02 · Schatten</span>
+            <svg class="draw" viewBox="0 0 210 110" role="img" aria-label="Schatten: physisch zu digital automatisch, digital zu physisch manuell">
+              <rect x="8" y="30" width="54" height="54" fill="#fff" stroke="#000" stroke-width="3"/><text x="27" y="63" font-family="JetBrains Mono, monospace" font-size="15" font-weight="700">P</text>
+              <rect x="148" y="30" width="54" height="54" fill="#fff" stroke="#000" stroke-width="2" stroke-dasharray="5 4"/><text x="167" y="63" font-family="JetBrains Mono, monospace" font-size="15" font-weight="700">D</text>
+              <path d="M66 44 H140" stroke="#000" stroke-width="3"/><polygon points="146,44 134,38 134,50" fill="#000"/>
+              <path d="M144 76 H70" stroke="#000" stroke-width="2" stroke-dasharray="4 5"/><polygon points="64,76 76,70 76,82" fill="#000"/>
+            </svg>
+            <span class="c-title">Schatten</span><span class="c-foot">automatisch · manuell</span>
+          </div>
+          <div class="card w2 y">
+            <span class="c-label">03 · Zwilling</span>
+            <svg class="draw" viewBox="0 0 210 110" role="img" aria-label="Zwilling: physisch zu digital automatisch, digital zu physisch automatisch">
+              <rect x="8" y="30" width="54" height="54" fill="#fff" stroke="#000" stroke-width="3"/><text x="27" y="63" font-family="JetBrains Mono, monospace" font-size="15" font-weight="700">P</text>
+              <rect x="148" y="30" width="54" height="54" fill="#fff" stroke="#000" stroke-width="2" stroke-dasharray="5 4"/><text x="167" y="63" font-family="JetBrains Mono, monospace" font-size="15" font-weight="700">D</text>
+              <path d="M66 44 H140" stroke="#000" stroke-width="3"/><polygon points="146,44 134,38 134,50" fill="#000"/>
+              <path d="M144 76 H70" stroke="#000" stroke-width="3"/><polygon points="64,76 76,70 76,82" fill="#000"/>
+            </svg>
+            <span class="c-title">Zwilling</span><span class="c-foot">automatisch · automatisch</span>
+          </div>
+          <div class="card w6"><span class="c-label">So lesen Sie es</span><div class="flow"><span class="chip">P = physisches Asset</span><span class="chip">D = digitales Abbild</span><span class="chip k">durchgezogen: automatisch</span><span class="chip">gestrichelt: manuell</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== I · COMPONENTES ========== -->
+    <section class="slide" id="componentes" data-nav="Die Bausteine">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Komponenten</span>
+          <h2 class="display">Sechs Schichten, vom Asset zur Entscheidung<span class="dot">.</span></h2>
+          <p class="slide-lead">Der Messwert entsteht in einem Sensor, läuft über ein Netz, wird mit seinem Kontext gespeichert, mit dem Modell verknüpft und mündet in eine Aktion.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="componentes"><span class="plus">+</span> Details ansehen</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w6">
+            <span class="c-label">Der Stack eines Zwillings</span>
+            <svg class="draw" viewBox="0 0 640 210" role="img" aria-label="Sechs gestapelte Schichten: Asset, Sensoren, Konnektivität, Daten, Modell und Analytik, Entscheidung">
+              <g font-family="Inter, sans-serif" font-weight="900" font-size="15">
+                <rect x="10" y="168" width="620" height="32" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="24" y="190">1 · ASSET</text>
+                <rect x="40" y="134" width="560" height="32" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="54" y="156">2 · SENSORIK UND STEUERUNG</text>
+                <rect x="70" y="100" width="500" height="32" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="84" y="122">3 · KONNEKTIVITÄT</text>
+                <rect x="100" y="66" width="440" height="32" fill="#000"/><text x="114" y="88" fill="#fff">4 · DATEN MIT KONTEXT</text>
+                <rect x="130" y="32" width="380" height="32" fill="#FFFF00" stroke="#000" stroke-width="2.5"/><text x="144" y="54">5 · MODELL + ANALYTIK</text>
+                <rect x="160" y="0" width="320" height="30" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="174" y="21">6 · ENTSCHEIDUNG</text>
+              </g>
+              <g font-family="JetBrains Mono, monospace" font-size="11" fill="#666">
+                <text x="420" y="190">Gebäude, Brücke, Netz</text><text x="420" y="156">Temperatur, Durchfluss</text><text x="400" y="122">Kabel, Funk, Gateway</text>
+              </g>
+              <path d="M620 160 V12" stroke="#000" stroke-width="2"/><polygon points="620,6 614,18 626,18" fill="#000"/>
+            </svg>
+          </div>
+          <div class="card w3 k"><span class="c-label">Die Schicht, die am häufigsten versagt</span><span class="c-title" style="color:var(--accent)">4 · Kontext</span><span class="c-foot">ein Messwert ohne „wo“ und „wovon“ ist wertlos</span></div>
+          <div class="card w3"><span class="c-label">Die Schicht, die am meisten verkauft wird</span><span class="c-title">5 · Der 3D-Viewer</span><span class="c-foot">eindrucksvoll, aber nur die Spitze des Eisbergs</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== I · MADUREZ ========== -->
+    <section class="slide" id="madurez" data-nav="Reifegrade">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Reifegrad</span>
+          <h2 class="display">Vom Scan zum autonomen Gebäude<span class="dot">.</span></h2>
+          <p class="slide-lead">Sechs Stufen, von der Punktwolke bis zum Gebäude, das sich selbst steuert. Jede baut auf der vorherigen auf.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="madurez"><span class="plus">+</span> Details ansehen</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w6">
+            <span class="c-label">Reifegradspektrum · 0 bis 5</span>
+            <svg class="draw" viewBox="0 0 640 200" role="img" aria-label="Treppe mit sechs Stufen, von 0 Erfassung der Realität bis 5 autonomer Betrieb; Stufe 3, Echtzeitdaten, hervorgehoben">
+              <g stroke="#000" stroke-width="2.5">
+                <rect x="10" y="160" width="100" height="30" fill="#fff"/>
+                <rect x="115" y="134" width="100" height="56" fill="#fff"/>
+                <rect x="220" y="108" width="100" height="82" fill="#fff"/>
+                <rect x="325" y="82" width="100" height="108" fill="#FFFF00"/>
+                <rect x="430" y="56" width="100" height="134" fill="#fff"/>
+                <rect x="535" y="30" width="100" height="160" fill="#000"/>
+              </g>
+              <g font-family="Inter, sans-serif" font-weight="900" font-size="22"><text x="20" y="184">0</text><text x="125" y="158">1</text><text x="230" y="132">2</text><text x="335" y="106">3</text><text x="440" y="80">4</text><text x="545" y="54" fill="#fff">5</text></g>
+              <g font-family="JetBrains Mono, monospace" font-size="10.5">
+                <text x="40" y="184">Erfassung</text><text x="145" y="158">Modell</text><text x="250" y="132">+ statische</text><text x="250" y="146">Daten</text>
+                <text x="355" y="106">+ Echt-</text><text x="355" y="120">zeit</text><text x="460" y="80">hin und</text><text x="460" y="94">zurück</text><text x="565" y="54" fill="#fff">autonom</text>
+              </g>
+            </svg>
+            <span class="c-foot">Der Sprung, der aus einem Schatten einen Zwilling macht, liegt zwischen 3 und 4</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== I · FRECUENCIA ========== -->
+    <section class="slide" id="frecuencia" data-nav="Wie oft aktualisiert wird">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Frequenz und Detailtreue</span>
+          <h2 class="display">So lebendig wie die Entscheidung, der er dient<span class="dot">.</span></h2>
+          <p class="slide-lead">Jeder Wert hat seinen Takt: Die Geometrie ändert sich in Jahren, die Belegung in Minuten, eine Schwingung in Millisekunden.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="frecuencia"><span class="plus">+</span> Details ansehen</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w4">
+            <span class="c-label">Typisches Aktualisierungsintervall</span>
+            <div class="bars">
+              <div class="bar"><span>Jahre</span><i style="width:100%">Geometrie und Umbauten</i></div>
+              <div class="bar"><span>Monate</span><i style="width:84%">gescannter Baufortschritt</i></div>
+              <div class="bar"><span>Tage</span><i style="width:68%">Wartungsaufträge</i></div>
+              <div class="bar is-key"><span>Min</span><i style="width:52%">Temperatur, CO₂, Belegung</i></div>
+              <div class="bar"><span>s</span><i style="width:36%">Energiezähler</i></div>
+              <div class="bar"><span>ms</span><i style="width:20%">Bauwerksschwingungen</i></div>
+            </div>
+            <span class="c-foot">Richtwerte <span class="tag">Abgeleitet</span></span>
+          </div>
+          <div class="card w2 k"><span class="c-label">Die Regel</span><span class="c-title" style="color:var(--accent)">Frequenz und Detailtreue</span><span class="c-foot">richten sich nach dem Zweck, nicht nach der Technik</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== I · CICLO DE VIDA ========== -->
+    <section class="slide" id="ciclo" data-nav="Ein Zwilling je Phase">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Lebenszyklus</span>
+          <h2 class="display">Geboren in der Planung, gereift im Betrieb<span class="dot">.</span></h2>
+          <p class="slide-lead">In der Planung simuliert er, im Bau vergleicht er Gebautes mit Geplantem, im Betrieb überwacht er und lernt.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="ciclo"><span class="plus">+</span> Details ansehen</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w2">
+            <span class="c-label">Planung</span>
+            <svg class="ico wide" viewBox="0 0 80 40" aria-hidden="true"><rect x="6" y="8" width="40" height="26" fill="none" stroke="#000" stroke-width="2.5"/><path d="M50 30 C58 10, 66 30, 76 8" fill="none" stroke="#000" stroke-width="2.5"/></svg>
+            <span class="c-title">Simulieren</span><span class="c-foot">Energie, Entfluchtung, Luftströmung</span>
+          </div>
+          <div class="card w2 g">
+            <span class="c-label">Bau</span>
+            <svg class="ico wide" viewBox="0 0 80 40" aria-hidden="true"><rect x="6" y="10" width="30" height="24" fill="none" stroke="#000" stroke-width="2" stroke-dasharray="4 3"/><rect x="12" y="16" width="30" height="18" fill="#000"/><path d="M50 22 H74" stroke="#000" stroke-width="2.5"/><circle cx="62" cy="22" r="7" fill="none" stroke="#000" stroke-width="2.5"/></svg>
+            <span class="c-title">Vergleichen</span><span class="c-foot">geplant gegenüber gescannt</span>
+          </div>
+          <div class="card w2 y">
+            <span class="c-label">Betrieb</span>
+            <svg class="ico wide" viewBox="0 0 80 40" aria-hidden="true"><path d="M4 30 L18 22 L30 26 L44 12 L58 18 L76 6" fill="none" stroke="#000" stroke-width="2.5"/><circle cx="76" cy="6" r="3" fill="#000"/></svg>
+            <span class="c-title">Überwachen</span><span class="c-foot">Sensoren, Meldungen, Instandhaltung</span>
+          </div>
+          <div class="card w6">
+            <span class="c-label">Der rote Faden</span>
+            <div class="flow"><span class="chip">Planungsmodell</span><span class="arrow">→</span><span class="chip">Baumodell</span><span class="arrow">→</span><span class="chip y">Asset-Informationsmodell</span><span class="arrow">→</span><span class="chip k">Zwilling</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== I · USOS ========== -->
+    <section class="slide" id="usos" data-nav="Wofür er dient">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Anwendungsfälle</span>
+          <h2 class="display">Sechs Fragen, die er beantwortet<span class="dot">.</span></h2>
+          <p class="slide-lead">Ein Zwilling rechtfertigt sich durch die Fragen, die er besser beantwortet als eine Tabellenkalkulation oder eine Begehung.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="usos"><span class="plus">+</span> Details ansehen</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w2 y"><span class="c-label">Instandhaltung</span><span class="c-title">Was wird ausfallen?</span></div>
+          <div class="card w2"><span class="c-label">Energie</span><span class="c-title">Wo geht sie verloren?</span></div>
+          <div class="card w2"><span class="c-label">Flächen</span><span class="c-title">Welche Räume sind zu viel?</span></div>
+          <div class="card w2 g"><span class="c-label">Komfort</span><span class="c-title">Ist die Luft gut?</span></div>
+          <div class="card w2 g"><span class="c-label">Tragwerk</span><span class="c-title">Bewegt es sich mehr als normal?</span></div>
+          <div class="card w2 k"><span class="c-label">Szenarien</span><span class="c-title" style="color:var(--accent)">Was wäre, wenn …?</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== I · CASOS ========== -->
+    <section class="slide" id="casos" data-nav="Praxisbeispiele">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Praxisbeispiele</span>
+          <h2 class="display">Vom Gebäude bis zum ganzen Land<span class="dot">.</span></h2>
+          <p class="slide-lead">Die meistzitierten Beispiele reichen von einer instrumentierten Brücke bis zum lebenden Modell einer ganzen Stadt. Alle begannen mit einer konkreten Frage.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="casos"><span class="plus">+</span> Beispiele ansehen</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w2 k"><span class="c-label">Eisenbahn · London</span><span class="c-title">Crossrail</span><span class="c-foot">Asset-Informationen vom ersten Tag an geplant</span></div>
+          <div class="card w2"><span class="c-label">Stadt · Singapur</span><span class="c-title">Virtual Singapore</span><span class="c-foot">3D-Modell des ganzen Landes, angekündigt 2014</span></div>
+          <div class="card w2 g"><span class="c-label">Brücke · Schottland</span><span class="c-title">Queensferry Crossing</span><span class="c-foot">Bauwerksüberwachung seit 2017</span></div>
+          <div class="card w3"><span class="c-label">Flughafen · Vancouver</span><span class="c-title">Betrieb im Zwilling</span><span class="c-foot">Passagiere, Gates und Gepäck</span></div>
+          <div class="card w3 y"><span class="c-label">Stadt · Madrid</span><span class="c-title">Städtischer Zwilling</span><span class="c-foot">beauftragt von der Stadtverwaltung</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== I · RIESGOS ========== -->
+    <section class="slide" id="riesgos" data-nav="Risiken">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Risiken</span>
+          <h2 class="display">Mehr Vernetzung, mehr Angriffsfläche<span class="dot">.</span></h2>
+          <p class="slide-lead">Ein Zwilling verbindet das Büronetz mit dem Netz der Gebäudetechnik. Zu klären ist, wer was sieht, wem die Daten gehören und was der Betrieb kostet.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="riesgos"><span class="plus">+</span> Details ansehen</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w3 k">
+            <span class="c-label">01 · Sicherheit</span>
+            <svg class="ico" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 4 L34 10 V20 C34 28 28 34 20 37 C12 34 6 28 6 20 V10 Z" fill="none" stroke="#FFFF00" stroke-width="2.5"/><path d="M14 20 L19 25 L27 15" fill="none" stroke="#FFFF00" stroke-width="2.5"/></svg>
+            <span class="c-title">Netz der Gebäudetechnik exponiert</span>
+          </div>
+          <div class="card w3">
+            <span class="c-label">02 · Eigentum</span>
+            <svg class="ico" viewBox="0 0 40 40" aria-hidden="true"><circle cx="14" cy="20" r="8" fill="none" stroke="#000" stroke-width="2.5"/><path d="M22 20 H36 M30 20 V26 M35 20 V25" stroke="#000" stroke-width="2.5"/></svg>
+            <span class="c-title">Wem gehören die Daten?</span>
+          </div>
+          <div class="card w3">
+            <span class="c-label">03 · Kosten</span>
+            <svg class="ico" viewBox="0 0 40 40" aria-hidden="true"><path d="M6 32 H34" stroke="#000" stroke-width="2.5"/><rect x="9" y="20" width="6" height="12" fill="#000"/><rect x="19" y="14" width="6" height="18" fill="#000"/><rect x="29" y="6" width="6" height="26" fill="none" stroke="#000" stroke-width="2.5"/></svg>
+            <span class="c-title">Ihn lebendig zu halten, kostet</span>
+          </div>
+          <div class="card w3 y">
+            <span class="c-label">04 · Schaufenster</span>
+            <svg class="ico" viewBox="0 0 40 40" aria-hidden="true"><rect x="5" y="8" width="30" height="20" fill="none" stroke="#000" stroke-width="2.5"/><path d="M14 34 H26 M20 28 V34" stroke="#000" stroke-width="2.5"/><path d="M11 22 L17 15 L22 19 L29 12" fill="none" stroke="#000" stroke-width="2"/></svg>
+            <span class="c-title">Ein Viewer ohne reale Daten</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== II · MAPA DE NORMAS ========== -->
+    <section class="slide" id="normas" data-cap="II · Normen und Standards" data-nav="Normenlandkarte">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Normenlandkarte</span>
+          <h2 class="display">Es gibt keine Norm für den Zwilling<span class="dot">.</span></h2>
+          <p class="slide-lead">Es gibt eine pro Schicht: Vokabular, Informationsmanagement, Modell, Bedeutung der Daten und Transport. Der Zwilling verbindet sie.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="normas"><span class="plus">+</span> Alle ansehen</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w4">
+            <span class="c-label">Eine Norm pro Schicht</span>
+            <svg class="draw" viewBox="0 0 420 290" role="img" aria-label="Fünf Bänder: Vokabular ISO/IEC 30173, Management ISO 19650, Modell IFC, Semantik Brick und Haystack, Transport BACnet MQTT OPC UA"><g font-family="JetBrains Mono, monospace"><rect x="0" y="0" width="420" height="52" fill="#fff" stroke="#000" stroke-width="2"/><text x="12" y="20" fill="#666" font-size="11">VOKABULAR</text><text x="12" y="42" fill="#000" font-size="14" font-weight="700">ISO/IEC 30173 · Gemini Principles</text><rect x="0" y="58" width="420" height="52" fill="#fff" stroke="#000" stroke-width="2"/><text x="12" y="78" fill="#666" font-size="11">MANAGEMENT</text><text x="12" y="100" fill="#000" font-size="14" font-weight="700">ISO 19650-1, -2, -3 · COBie</text><rect x="0" y="116" width="420" height="52" fill="#FFFF00" stroke="#000" stroke-width="2.5"/><text x="12" y="136" fill="#000" font-size="11">MODELL</text><text x="12" y="158" fill="#000" font-size="14" font-weight="700">IFC 4.3 · ISO 16739-1:2024</text><rect x="0" y="174" width="420" height="52" fill="#fff" stroke="#000" stroke-width="2"/><text x="12" y="194" fill="#666" font-size="11">SEMANTIK</text><text x="12" y="216" fill="#000" font-size="14" font-weight="700">Brick · Haystack · REC · SOSA</text><rect x="0" y="232" width="420" height="52" fill="#000" stroke="#000" stroke-width="2"/><text x="12" y="252" fill="#B9B9B0" font-size="11">TRANSPORT</text><text x="12" y="274" fill="#fff" font-size="14" font-weight="700">BACnet · MQTT · OPC UA · SensorThings</text></g></svg>
+          </div>
+          <div class="card w2 k"><span class="c-label">Die Naht</span><span class="c-title">Ein gemeinsamer Schlüssel</span><span class="c-foot">die Kennung des Elements, in allen Schichten gleich</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== II · ISO 19650 ========== -->
+    <section class="slide" id="iso19650" data-nav="ISO 19650: vom PIM zum AIM">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">ISO 19650</span>
+          <h2 class="display">Vom Projektmodell zum Asset-Modell<span class="dot">.</span></h2>
+          <p class="slide-lead">Die Norm trennt das Modell, mit dem geplant und gebaut wird, von dem, das für den Betrieb übergeben wird. Der Zwilling speist sich aus dem zweiten.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="iso19650"><span class="plus">+</span> Details ansehen</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w4 g">
+            <span class="c-label">Anforderungen → Modelle</span>
+            <svg class="draw" viewBox="0 0 420 180" role="img" aria-label="Die Anforderungen der Organisation erzeugen die des Assets; diese speisen das Asset-Informationsmodell, das die Übergabe aus dem Projektinformationsmodell erhält">
+              <g font-family="Inter, sans-serif" font-weight="900" font-size="15">
+                <rect x="10" y="10" width="90" height="40" rx="20" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="34" y="36">OIR</text>
+                <rect x="160" y="10" width="90" height="40" rx="20" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="184" y="36">AIR</text>
+                <rect x="310" y="10" width="90" height="40" rx="20" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="334" y="36">EIR</text>
+                <rect x="290" y="118" width="120" height="50" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="330" y="149">PIM</text>
+                <rect x="140" y="118" width="120" height="50" fill="#FFFF00" stroke="#000" stroke-width="3"/><text x="180" y="149">AIM</text>
+              </g>
+              <path d="M104 30 H154" stroke="#000" stroke-width="2.5"/><polygon points="158,30 148,25 148,35" fill="#000"/>
+              <path d="M205 54 V112" stroke="#000" stroke-width="2.5"/><polygon points="205,116 200,106 210,106" fill="#000"/>
+              <path d="M355 54 V112" stroke="#000" stroke-width="2.5"/><polygon points="355,116 350,106 360,106" fill="#000"/>
+              <path d="M286 143 H266" stroke="#000" stroke-width="3"/><polygon points="262,143 272,138 272,148" fill="#000"/>
+              <text x="40" y="150" font-family="JetBrains Mono, monospace" font-size="11">Zwilling ←</text>
+              <text x="262" y="110" font-family="JetBrains Mono, monospace" font-size="10" fill="#666">Übergabe</text>
+            </svg>
+          </div>
+          <div class="card w2 k"><span class="c-label">Der relevante Teil</span><b class="c-num">19650-3</b><span class="c-foot">Betriebsphase der Assets</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== II · IFC ========== -->
+    <section class="slide" id="ifc" data-nav="IFC: Sensoren und Zeitreihen">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">IFC</span>
+          <h2 class="display">Das Modell weiß bereits, was ein Sensor ist<span class="dot">.</span></h2>
+          <p class="slide-lead">Der offene Standard kennt Entitäten für Sensoren, Aktoren und Zeitreihen – und eine eindeutige Kennung je Element.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="ifc"><span class="plus">+</span> Details ansehen</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w3"><span class="c-label">Was misst</span><span class="c-title"><code>IfcSensor</code></span><span class="c-foot">mit Typ: Temperatur, CO₂, Volumenstrom …</span></div>
+          <div class="card w3 g"><span class="c-label">Was stellt</span><span class="c-title"><code>IfcActuator</code> · <code>IfcController</code></span><span class="c-foot">Ventile, Klappen, Regler</span></div>
+          <div class="card w3 y"><span class="c-label">Der Schlüssel</span><span class="c-title"><code>GlobalId</code></span><span class="c-foot">22 Zeichen, die sich nicht ändern</span></div>
+          <div class="card w3 k"><span class="c-label">Was es nicht leistet</span><span class="c-title">Echtzeitdaten speichern</span><span class="c-foot">Zeitreihen in IFC sind Historie, kein Datenstrom</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== II · ONTOLOGÍAS ========== -->
+    <section class="slide" id="ontologias" data-nav="Brick, Haystack und Co.">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Semantik</span>
+          <h2 class="display">Daten, die sagen, was sie sind und wozu sie gehören<span class="dot">.</span></h2>
+          <p class="slide-lead">Ein Datenpunkt namens „AI-3.07“ sagt nichts. Eine Ontologie macht daraus „Lufttemperatur der Zone 104, versorgt von Anlage 1“.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="ontologias"><span class="plus">+</span> Vergleichen</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w4">
+            <span class="c-label">Ein Beziehungsgraph</span>
+            <svg class="draw" viewBox="0 0 440 170" role="img" aria-label="Graph: Lüftungsgerät versorgt VVS-Box, diese versorgt Zone 104; die Zone enthält den Raum; der Temperatursensor ist Datenpunkt der Zone">
+              <g font-family="JetBrains Mono, monospace" font-size="11">
+                <rect x="6" y="20" width="82" height="34" rx="17" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="20" y="41">CL-01</text>
+                <rect x="140" y="20" width="82" height="34" rx="17" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="152" y="41">VAV-104</text>
+                <rect x="274" y="20" width="96" height="34" rx="17" fill="#FFFF00" stroke="#000" stroke-width="3"/><text x="286" y="41" font-weight="700">Zone-104</text>
+                <rect x="290" y="118" width="96" height="34" rx="17" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="302" y="139">P01-104</text>
+                <rect x="120" y="118" width="96" height="34" rx="17" fill="#000"/><text x="140" y="139" fill="#fff">TT-104</text>
+                <path d="M92 37 H134" stroke="#000" stroke-width="2"/><polygon points="138,37 128,32 128,42" fill="#000"/><text x="96" y="30" fill="#666">feeds</text>
+                <path d="M226 37 H268" stroke="#000" stroke-width="2"/><polygon points="272,37 262,32 262,42" fill="#000"/><text x="230" y="30" fill="#666">feeds</text>
+                <path d="M330 58 V112" stroke="#000" stroke-width="2"/><polygon points="330,116 325,106 335,106" fill="#000"/><text x="336" y="90" fill="#666">hasPart</text>
+                <path d="M216 128 L290 60" stroke="#000" stroke-width="2"/><polygon points="294,56 283,60 290,67" fill="#000"/><text x="196" y="96" fill="#666">isPointOf</text>
+              </g>
+            </svg>
+          </div>
+          <div class="card w2 k">
+            <span class="c-label">Vier Vokabulare</span>
+            <div class="chips"><span class="chip y">Brick</span><span class="chip">Haystack</span><span class="chip">RealEstateCore</span><span class="chip">SOSA/SSN</span></div>
+            <span class="c-foot">sie wachsen zusammen: Brick gleicht sich bereits an die anderen an</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== II · PRINCIPIOS GÉMINIS ========== -->
+    <section class="slide" id="gemini" data-nav="Gemini-Prinzipien">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Gemini Principles</span>
+          <h2 class="display">Neun Prinzipien in drei Gruppen<span class="dot">.</span></h2>
+          <p class="slide-lead">Großbritannien veröffentlichte sie, damit sich Zwillinge verschiedener Eigentümer eines Tages verbinden lassen. Sie sind noch immer die beste Checkliste.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="gemini"><span class="plus">+</span> Details ansehen</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w2 y">
+            <span class="c-label">Zweck</span>
+            <span class="c-title">Gemeinwohl</span><span class="c-title">Wert</span><span class="c-title">Erkenntnis</span>
+          </div>
+          <div class="card w2">
+            <span class="c-label">Vertrauen</span>
+            <span class="c-title">Sicherheit</span><span class="c-title">Offenheit</span><span class="c-title">Qualität</span>
+          </div>
+          <div class="card w2 k">
+            <span class="c-label">Funktion</span>
+            <span class="c-title">Föderation</span><span class="c-title">Kuratierung</span><span class="c-title">Weiterentwicklung</span>
+          </div>
+          <div class="card w6 g"><span class="c-label">Der Grundgedanke</span><div class="flow"><span class="chip">Zwilling eines Assets</span><span class="arrow">→</span><span class="chip">Vernetzte Zwillinge</span><span class="arrow">→</span><span class="chip k">Nationaler Zwilling</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== III · MAPA DE SOFTWARE ========== -->
+    <section class="slide" id="software" data-cap="III · Software" data-nav="Software-Landkarte">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Software-Landkarte</span>
+          <h2 class="display">Jeder Hersteller kommt von seinem Terrain<span class="dot">.</span></h2>
+          <p class="slide-lead">BIM-Autorensoftware dehnt ihr Modell in den Betrieb aus. Gebäudetechnik- und Industrieanbieter kommen von den Daten. Sie treffen sich in der Mitte.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="software"><span class="plus">+</span> Vergleichen</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w6">
+            <span class="c-label">Hochbau ↔ Infrastruktur · Modell ↔ Daten</span>
+            <svg class="draw" viewBox="0 0 640 230" role="img" aria-label="Diagramm mit zwei Achsen: horizontal von Hochbau bis Infrastruktur, vertikal von Modell bis Daten; jeder Hersteller in seinem Quadranten">
+              <line x1="320" y1="20" x2="320" y2="220" stroke="#000" stroke-width="2" stroke-dasharray="5 5"/>
+              <line x1="10" y1="120" x2="630" y2="120" stroke="#000" stroke-width="2" stroke-dasharray="5 5"/>
+              <g font-family="JetBrains Mono, monospace" font-size="11" fill="#666"><text x="10" y="14">↑ vom BIM-Modell aus</text><text x="10" y="228">↓ von den TGA-Daten aus</text><text x="10" y="138">HOCHBAU</text><text x="520" y="138">INFRASTRUKTUR</text></g>
+              <g font-family="Inter, sans-serif" font-weight="900" font-size="14">
+                <rect x="40" y="34" width="190" height="34" rx="17" fill="#FFFF00" stroke="#000" stroke-width="2.5"/><text x="56" y="56">AUTODESK TANDEM</text>
+                <rect x="40" y="74" width="200" height="34" rx="17" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="56" y="96">NEMETSCHEK DTWIN</text>
+                <rect x="400" y="34" width="190" height="34" rx="17" fill="#000"/><text x="420" y="56" fill="#fff">BENTLEY ITWIN</text>
+                <rect x="350" y="74" width="160" height="34" rx="17" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="366" y="96">3DEXPERIENCE</text>
+                <rect x="40" y="148" width="130" height="34" rx="17" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="64" y="170">WILLOW</text>
+                <rect x="150" y="174" width="210" height="34" rx="17" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="166" y="196">SIEMENS BUILDING X</text>
+                <rect x="410" y="160" width="190" height="34" rx="17" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="430" y="182">IOT-PLATTFORMEN</text>
+              </g>
+            </svg>
+            <span class="c-foot">Ungefähre Einordnung <span class="tag">Abgeleitet</span></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== III · AUTODESK TANDEM ========== -->
+    <section class="slide" id="tandem" data-nav="Autodesk Tandem">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Autodesk Tandem</span>
+          <h2 class="display">Vom übergebenen Modell zum Gebäude im Betrieb<span class="dot">.</span></h2>
+          <p class="slide-lead">Es übernimmt die Planungsmodelle, behält die für den Betreiber relevanten Assets, versieht sie mit Parametern und verbindet sie mit Sensordatenströmen.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="tandem"><span class="plus">+</span> Details ansehen</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w6">
+            <span class="c-label">Vier Schritte</span>
+            <div class="flow"><span class="chip">Revit · IFC · DWG</span><span class="arrow">→</span><span class="chip">Assets klassifizieren</span><span class="arrow">→</span><span class="chip y">Parametervorlage</span><span class="arrow">→</span><span class="chip k">Sensor-Streams</span></div>
+          </div>
+          <div class="card w3"><span class="c-label">Für wen</span><span class="c-title">Eigentümer und Instandhaltung</span></div>
+          <div class="card w3 g"><span class="c-label">Was es nicht ist</span><span class="c-title">Ein Autorenwerkzeug</span><span class="c-foot">darin wird nicht modelliert</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== III · BENTLEY ITWIN ========== -->
+    <section class="slide" id="itwin" data-nav="Bentley iTwin">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Bentley iTwin</span>
+          <h2 class="display">Infrastruktur mit ihrer Änderungshistorie<span class="dot">.</span></h2>
+          <p class="slide-lead">Es synchronisiert Modelle aus vielen Programmen in ein iModel, das jede Änderung speichert wie ein Code-Repository, und verknüpft es mit Sensor- und Inspektionsdaten.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="itwin"><span class="plus">+</span> Details ansehen</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w4 g">
+            <span class="c-label">Ein iModel, viele Quellen</span>
+            <svg class="draw" viewBox="0 0 420 150" role="img" aria-label="Mehrere Dateien aus verschiedenen Programmen gelangen über Konnektoren in ein iModel mit einer Änderungslinie">
+              <g font-family="JetBrains Mono, monospace" font-size="11">
+                <rect x="6" y="10" width="70" height="28" fill="#fff" stroke="#000" stroke-width="2"/><text x="20" y="29">DGN</text>
+                <rect x="6" y="60" width="70" height="28" fill="#fff" stroke="#000" stroke-width="2"/><text x="20" y="79">RVT</text>
+                <rect x="6" y="110" width="70" height="28" fill="#fff" stroke="#000" stroke-width="2"/><text x="20" y="129">IFC</text>
+                <path d="M80 24 L150 70 M80 74 H150 M80 124 L150 78" stroke="#000" stroke-width="2"/>
+                <rect x="152" y="46" width="100" height="56" fill="#FFFF00" stroke="#000" stroke-width="3"/><text x="172" y="79" font-weight="700">iModel</text>
+                <path d="M262 74 H410" stroke="#000" stroke-width="2"/>
+                <circle cx="290" cy="74" r="7" fill="#000"/><circle cx="330" cy="74" r="7" fill="#000"/><circle cx="370" cy="74" r="7" fill="#000"/><circle cx="406" cy="74" r="7" fill="#fff" stroke="#000" stroke-width="2.5"/>
+                <text x="276" y="104" fill="#666">Änderung für Änderung</text>
+              </g>
+            </svg>
+          </div>
+          <div class="card w2 k"><span class="c-label">Seit 2024</span><span class="c-title">Cesium</span><span class="c-foot">die 3D-Weltkarte, jetzt bei Bentley</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== III · MOTORES 3D ========== -->
+    <section class="slide" id="motores" data-nav="3D-Engines">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Visualisierung</span>
+          <h2 class="display">Game-Engines liefern das Schaufenster<span class="dot">.</span></h2>
+          <p class="slide-lead">Sie liefern realistische Bilder und Echtzeitsimulation. Die Daten und ihre Bedeutung liegen weiterhin in einer anderen Schicht.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="motores"><span class="plus">+</span> Details ansehen</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w2"><span class="c-label">Unreal Engine</span><span class="c-title">Realistische Bilder</span><span class="c-foot">Visualisierung und Echtzeitsimulation</span></div>
+          <div class="card w2 g"><span class="c-label">Unity</span><span class="c-title">Maßgeschneiderte Anwendungen</span><span class="c-foot">der Zwilling des Flughafens Vancouver</span></div>
+          <div class="card w2 y"><span class="c-label">NVIDIA Omniverse</span><span class="c-title">OpenUSD</span><span class="c-foot">Szenen, die viele Programme teilen</span></div>
+          <div class="card w6 k"><span class="c-label">Die Falle</span><span class="c-title" style="color:var(--accent)">Schön heißt nicht verlässlich</span><span class="c-foot">die Qualität des Zwillings liegt in den Daten, nicht im Rendering</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== IV · PLATAFORMAS ========== -->
+    <section class="slide" id="plataformas" data-cap="IV · Plattformen" data-nav="Cloud-Plattformen">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Plattformen</span>
+          <h2 class="display">Die Cloud liefert Graph und Skalierung<span class="dot">.</span></h2>
+          <p class="slide-lead">Die großen Clouds bieten einen Zwillingsdienst: einen Graphen aus Entitäten und Beziehungen, verbunden mit Millionen von Messwerten.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="plataformas"><span class="plus">+</span> Vergleichen</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w3 k"><span class="c-label">Azure Digital Twins</span><span class="c-title">Graph in DTDL</span><span class="c-foot">Abfragen über Beziehungen und Ereignisrouten</span></div>
+          <div class="card w3"><span class="c-label">AWS IoT TwinMaker</span><span class="c-title">Entitäten und Komponenten</span><span class="c-foot">3D-Szenen und Datenkonnektoren</span></div>
+          <div class="card w2 g"><span class="c-label">Eclipse Ditto</span><span class="c-title">Open Source</span><span class="c-foot">ohne Abhängigkeit von einer Cloud</span></div>
+          <div class="card w2"><span class="c-label">Cesium ion</span><span class="c-title">3D Tiles</span><span class="c-foot">riesige Modelle über das Internet</span></div>
+          <div class="card w2 y"><span class="c-label">Das Risiko</span><span class="c-title">Dienste ändern sich</span><span class="c-foot">AWS hat bereits Teile seines IoT-Angebots eingestellt</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== IV · EL GRAFO ========== -->
+    <section class="slide" id="grafo" data-nav="Ein Zwilling ist ein Graph">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Der Graph</span>
+          <h2 class="display">Ein Zwilling ist ein Graph, keine Datei<span class="dot">.</span></h2>
+          <p class="slide-lead">Jeder Raum, jedes Gerät, jeder Sensor ist ein Knoten mit Eigenschaften und Telemetrie. Erst die Beziehungen machen Abfragen möglich.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="grafo"><span class="plus">+</span> Ein Modell ansehen</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w4">
+            <span class="c-label">Gebäude → Geschoss → Raum → Sensor</span>
+            <svg class="draw" viewBox="0 0 440 190" role="img" aria-label="Knotenbaum: Gebäude, zwei Geschosse, drei Räume, Sensoren an den Räumen; ein Raum hervorgehoben mit seinem Temperaturmesswert">
+              <g stroke="#000" stroke-width="2"><path d="M220 34 L120 82 M220 34 L320 82 M120 102 L60 146 M120 102 L180 146 M320 102 L320 146 M180 166 L180 180"/></g>
+              <g font-family="JetBrains Mono, monospace" font-size="11">
+                <rect x="170" y="6" width="100" height="28" rx="14" fill="#000"/><text x="190" y="25" fill="#fff">Gebäude</text>
+                <rect x="80" y="76" width="80" height="26" rx="13" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="100" y="94">P00</text>
+                <rect x="280" y="76" width="80" height="26" rx="13" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="300" y="94">P01</text>
+                <rect x="20" y="140" width="80" height="26" rx="13" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="34" y="158">Raum 001</text>
+                <rect x="140" y="140" width="80" height="26" rx="13" fill="#FFFF00" stroke="#000" stroke-width="3"/><text x="154" y="158">Raum 002</text>
+                <rect x="280" y="140" width="80" height="26" rx="13" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="294" y="158">Raum 104</text>
+                <rect x="232" y="140" width="0" height="0"/>
+                <text x="228" y="186" font-weight="700">23,4 °C · jetzt</text><circle cx="180" cy="182" r="4" fill="#000"/>
+              </g>
+            </svg>
+          </div>
+          <div class="card w2 k">
+            <span class="c-label">Modellierungssprache</span>
+            <b class="c-num" style="color:var(--accent)">DTDL</b>
+            <span class="c-foot">JSON-LD: Eigenschaften, Telemetrie, Beziehungen und Befehle</span>
+          </div>
+          <div class="card w6 g"><span class="c-label">Was sich damit abfragen lässt</span><span class="c-title">„Räume im 1. OG über 26 °C bei laufendem Lüftungsgerät“</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== IV · EN EL MAPA ========== -->
+    <section class="slide" id="mapa" data-nav="Der Zwilling auf der Karte">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Auf der Karte</span>
+          <h2 class="display">Ein Zwilling ohne Koordinaten lässt sich nicht verbinden<span class="dot">.</span></h2>
+          <p class="slide-lead">Um den Zwilling eines Gebäudes mit dem seiner Straße, seines Netzes oder seiner Stadt zusammenzuführen, müssen alle dasselbe Bezugssystem sprechen.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="mapa"><span class="plus">+</span> Details ansehen</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w4 g">
+            <span class="c-label">Gebäude · Netz · Stadt</span>
+            <svg class="draw" viewBox="0 0 420 170" role="img" aria-label="Drei übereinandergestapelte Ebenen in Perspektive: Stadt, Versorgungsnetz und Gebäude, durchzogen von derselben Koordinatenachse">
+              <g stroke="#000" stroke-width="2.5">
+                <path d="M20 140 L210 165 L400 140 L210 115 Z" fill="#fff"/>
+                <path d="M20 100 L210 125 L400 100 L210 75 Z" fill="#fff" stroke-dasharray="6 4"/>
+                <path d="M110 60 L210 73 L310 60 L210 47 Z" fill="#FFFF00"/>
+              </g>
+              <path d="M210 10 V165" stroke="#000" stroke-width="2"/><circle cx="210" cy="60" r="5" fill="#000"/>
+              <g font-family="JetBrains Mono, monospace" font-size="11"><text x="320" y="56">Gebäude</text><text x="330" y="96">Netz</text><text x="340" y="136">Stadt</text><text x="218" y="20" font-weight="700">EPSG:<tspan data-pais="epsg">25830</tspan></text></g>
+            </svg>
+          </div>
+          <div class="card w2 k"><span class="c-label">So geht es</span><span class="c-title">Gemeinsame Koordinaten</span><a class="c-foot" style="color:var(--accent)" href="../coordenadas-compartidas/">Beitrag 01 →</a></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== V · TRES MUNDOS ========== -->
+    <section class="slide" id="tres-mundos" data-cap="V · Interoperabilität" data-nav="Drei Datenwelten">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Interoperabilität</span>
+          <h2 class="display">Drei Welten, die verknüpft werden müssen<span class="dot">.</span></h2>
+          <p class="slide-lead">Das BIM-Modell ist statisch, der semantische Graph erklärt Beziehungen, und das Gebäudetechniknetz spricht in Messwerten. Jede Welt hat ihr Format.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="tres-mundos"><span class="plus">+</span> Details ansehen</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w2"><span class="c-label">Statisch</span><span class="c-title">IFC · COBie</span><span class="c-foot">was es gibt und wo</span></div>
+          <div class="card w2 y"><span class="c-label">Semantisch</span><span class="c-title">Brick · DTDL</span><span class="c-foot">was wozu dient</span></div>
+          <div class="card w2 k"><span class="c-label">Live</span><span class="c-title">BACnet · MQTT</span><span class="c-foot">was gerade passiert</span></div>
+          <div class="card w6">
+            <span class="c-label">Die Naht</span>
+            <svg class="draw" viewBox="0 0 640 90" role="img" aria-label="Drei Blöcke, verbunden durch dieselbe Kennung">
+              <g font-family="JetBrains Mono, monospace" font-size="12">
+                <rect x="10" y="20" width="160" height="44" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="24" y="47">IfcSensor</text>
+                <rect x="240" y="20" width="160" height="44" fill="#FFFF00" stroke="#000" stroke-width="2.5"/><text x="254" y="47">brick:TT-104</text>
+                <rect x="470" y="20" width="160" height="44" fill="#000"/><text x="484" y="47" fill="#fff">AI-3.07 · 23,4</text>
+                <path d="M174 42 H236 M404 42 H466" stroke="#000" stroke-width="3"/>
+                <text x="178" y="84" font-weight="700">dieselbe Kennung in allen drei</text>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== V · IDENTIFICADORES ========== -->
+    <section class="slide" id="identificadores" data-nav="Der Schlüssel: die Kennung">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Kennungen</span>
+          <h2 class="display">Ändert sich die GUID, bricht der Zwilling<span class="dot">.</span></h2>
+          <p class="slide-lead">Sensor im Modell und Sensor im Netz werden über eine Kennung verknüpft. Wird ein Element gelöscht und neu erstellt, ändert sie sich – der Messwert verwaist.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="identificadores"><span class="plus">+</span> Details ansehen</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w3 y"><span class="c-label">IFC</span><span class="c-title"><code>0wkdTQadv0cuaIsExdNkQZ</code></span><span class="c-foot">GlobalId des Sensors · die aus dem Modell</span></div>
+          <div class="card w3"><span class="c-label">Kennzeichen</span><span class="c-title"><code>TT-104</code></span><span class="c-foot">der Code auf dem Typenschild</span></div>
+          <div class="card w3 g"><span class="c-label">Steuerungsnetz</span><span class="c-title"><code>AI-3.07</code></span><span class="c-foot">der Datenpunkt im Controller</span></div>
+          <div class="card w3 k"><span class="c-label">Die Tabelle, die niemand erstellen will</span><span class="c-title" style="color:var(--accent)">Zuordnungstabelle</span><span class="c-foot">eine Zeile je Datenpunkt, mit allen drei Codes</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== V · PROTOCOLOS ========== -->
+    <section class="slide" id="protocolos" data-nav="Feldprotokolle">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Protokolle</span>
+          <h2 class="display">Vom Controller in die Cloud<span class="dot">.</span></h2>
+          <p class="slide-lead">Die Gebäudetechnik spricht Industrieprotokolle. Ein Gateway übersetzt sie in schlanke Nachrichten, die die Cloud als Zeitreihen speichert.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="protocolos"><span class="plus">+</span> Details ansehen</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w6">
+            <span class="c-label">Feld → Gateway → Cloud</span>
+            <svg class="draw" viewBox="0 0 640 150" role="img" aria-label="Feldprotokolle gehen in ein Gateway, das Nachrichten an eine Zeitreihendatenbank sendet">
+              <g font-family="JetBrains Mono, monospace" font-size="12">
+                <rect x="10" y="10" width="120" height="30" fill="#fff" stroke="#000" stroke-width="2"/><text x="22" y="30">BACnet</text>
+                <rect x="10" y="50" width="120" height="30" fill="#fff" stroke="#000" stroke-width="2"/><text x="22" y="70">Modbus</text>
+                <rect x="10" y="90" width="120" height="30" fill="#fff" stroke="#000" stroke-width="2"/><text x="22" y="110">KNX · LoRaWAN</text>
+                <path d="M134 25 L230 62 M134 65 H230 M134 105 L230 68" stroke="#000" stroke-width="2"/>
+                <rect x="232" y="40" width="120" height="50" fill="#000"/><text x="250" y="70" fill="#fff" font-weight="700">Gateway</text>
+                <path d="M356 65 H452" stroke="#000" stroke-width="3"/><polygon points="456,65 446,60 446,70" fill="#000"/>
+                <rect x="380" y="26" width="64" height="24" rx="12" fill="#FFFF00" stroke="#000" stroke-width="2"/><text x="390" y="43" font-weight="700">MQTT</text>
+                <rect x="380" y="82" width="64" height="24" rx="12" fill="#fff" stroke="#000" stroke-width="2"/><text x="386" y="99">OPC UA</text>
+                <path d="M470 40 h150 v60 h-150 z" fill="#fff" stroke="#000" stroke-width="2.5"/>
+                <path d="M480 90 L510 70 L540 78 L570 56 L610 62" fill="none" stroke="#000" stroke-width="2"/>
+                <text x="476" y="128">Zeitreihen</text>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== V · ENTREGA ========== -->
+    <section class="slide" id="entrega" data-nav="Übergabe an den Betreiber">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Übergabe</span>
+          <h2 class="display">Der Zwilling wird im Vertrag gefordert<span class="dot">.</span></h2>
+          <p class="slide-lead">Fordert die Leistungsbeschreibung keine Assets mit Code, Hersteller und Raumbezug, kommt das Modell ohne sie an – und niemand ergänzt sie später.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="entrega"><span class="plus">+</span> Details ansehen</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w6">
+            <span class="c-label">Von der Leistungsbeschreibung zum Zwilling</span>
+            <div class="flow"><span class="chip">AIR in der Ausschreibung</span><span class="arrow">→</span><span class="chip">IDS, das sie prüft</span><span class="arrow">→</span><span class="chip">IFC + COBie bei der Übergabe</span><span class="arrow">→</span><span class="chip y">Datenpunktliste</span><span class="arrow">→</span><span class="chip k">Zwilling</span></div>
+          </div>
+          <div class="card w3 g"><span class="c-label">Teuer</span><span class="c-title">Daten nachträglich erheben</span><span class="c-foot">Bestandsaufnahme vor Ort, Gerät für Gerät</span></div>
+          <div class="card w3 y"><span class="c-label">Günstig</span><span class="c-title">Sie von Anfang an fordern</span><span class="c-foot">jeder Beteiligte liefert seinen Teil</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== VI · QUÉ COMPROBAR ========== -->
+    <section class="slide" id="calidad" data-cap="VI · Qualitätsprüfung" data-nav="Was zu prüfen ist">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Qualitätsprüfung</span>
+          <h2 class="display">Vier Fragen, bevor Sie vertrauen<span class="dot">.</span></h2>
+          <p class="slide-lead">Ist alles da, was gefordert wurde? Lässt es sich verknüpfen? Sind die Beziehungen sinnvoll? Sind die eingehenden Daten gut?</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="calidad"><span class="plus">+</span> Details ansehen</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w3 y"><span class="c-label">01 · Vollständig</span><span class="c-title">Assets mit ihren Daten</span><span class="c-foot">IDS auf das IFC</span></div>
+          <div class="card w3"><span class="c-label">02 · Verknüpfbar</span><span class="c-title">Eine Kennung je Datenpunkt</span><span class="c-foot">Zuordnungstabelle</span></div>
+          <div class="card w3"><span class="c-label">03 · Stimmig</span><span class="c-title">Sinnvolle Beziehungen</span><span class="c-foot">SHACL auf den Graphen</span></div>
+          <div class="card w3 k"><span class="c-label">04 · Verlässlich</span><span class="c-title">Saubere Messwerte</span><span class="c-foot">Lücken, Sprünge und Drift</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== VI · IDS ========== -->
+    <section class="slide" id="ids" data-nav="IDS für Assets">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">IDS</span>
+          <h2 class="display">Die Leistungsbeschreibung als Prüfung<span class="dot">.</span></h2>
+          <p class="slide-lead">Eine Datei fordert für jeden Sensor Kennzeichen und Raum, für jedes Gerät Hersteller und Seriennummer. Das IFC besteht – oder nicht.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="ids"><span class="plus">+</span> Beispiel ansehen</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w2 y"><span class="c-label">Geprüft</span><b class="c-num">5</b><span class="c-foot">Testelemente</span></div>
+          <div class="card w2"><span class="c-label">Bestanden</span><b class="c-num">2</b><span class="c-foot">Sensor und Pumpe vollständig</span></div>
+          <div class="card w2 k"><span class="c-label">Nicht bestanden</span><b class="c-num" style="color:var(--accent)">3</b><span class="c-foot">Kennzeichen, Raum, Seriennummer</span></div>
+          <div class="card w6 g">
+            <span class="c-label">Was gefordert wird</span>
+            <div class="chips"><span class="chip">Tag = AA-000</span><span class="chip">In einem IfcSpace</span><span class="chip y">Manufacturer</span><span class="chip y">SerialNumber</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== VI · SHACL ========== -->
+    <section class="slide" id="shacl" data-nav="SHACL für den Graphen">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">SHACL</span>
+          <h2 class="display">Regeln für den Graphen<span class="dot">.</span></h2>
+          <p class="slide-lead">Was IDS für das IFC leistet, leistet SHACL für den Graphen: Es prüft, ob jeder Sensor am richtigen Element hängt und in der richtigen Einheit misst.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="shacl"><span class="plus">+</span> Beispiel ansehen</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w3 k"><span class="c-label">Die mitgelieferten Shapes</span><span class="c-title">Prüfen die Struktur</span><span class="c-foot">Klassen, Einheiten, veraltete Begriffe</span></div>
+          <div class="card w3 y"><span class="c-label">Die eigenen Shapes</span><span class="c-title">Prüfen das Projekt</span><span class="c-foot">„CO₂ wird in ppm angegeben“</span></div>
+          <div class="card w6">
+            <span class="c-label">Prüfergebnis</span>
+            <div class="bars">
+              <div class="bar"><span>Mitgeliefert</span><i style="width:12%">0 Projektfehler</i></div>
+              <div class="bar is-key"><span>Eigene</span><i style="width:60%">3 Fehler: Einheit und zwei „Datenpunkte“, die keine sind</i></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== VI · DATOS DE SENSOR ========== -->
+    <section class="slide" id="datos-sensor" data-nav="Qualität der Live-Daten">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Sensordaten</span>
+          <h2 class="display">Auch ein Sensor lügt<span class="dot">.</span></h2>
+          <p class="slide-lead">Er friert ein, verliert die Kalibrierung, lässt Messwerte aus oder hat die falsche Uhrzeit. Prüfen Sie die Daten, bevor Sie dem Zwilling glauben.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="datos-sensor"><span class="plus">+</span> Details ansehen</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w6">
+            <span class="c-label">Vier typische Fehler in einer Temperaturreihe</span>
+            <svg class="draw" viewBox="0 0 640 170" role="img" aria-label="Zeitreihe mit vier markierten Fehlern: Lücke, eingefrorener Wert, unmöglicher Ausreißer und langsame Drift">
+              <line x1="10" y1="150" x2="630" y2="150" stroke="#000" stroke-width="1.5"/>
+              <path d="M10 100 L40 96 L70 102 L100 98 L130 94" fill="none" stroke="#000" stroke-width="2.5"/>
+              <path d="M190 96 L220 100 L250 92 L280 92 L310 92 L340 92 L370 92" fill="none" stroke="#000" stroke-width="2.5"/>
+              <path d="M370 92 L400 98 L420 20 L440 96 L470 100" fill="none" stroke="#000" stroke-width="2.5"/>
+              <path d="M470 100 L510 90 L550 80 L590 70 L630 60" fill="none" stroke="#000" stroke-width="2.5"/>
+              <rect x="134" y="60" width="52" height="80" fill="#FFFF00" stroke="#000" stroke-width="2"/>
+              <rect x="250" y="80" width="120" height="24" fill="none" stroke="#000" stroke-width="2" stroke-dasharray="4 3"/>
+              <circle cx="420" cy="20" r="9" fill="none" stroke="#000" stroke-width="2.5"/>
+              <path d="M470 110 L630 70" stroke="#000" stroke-width="1.5" stroke-dasharray="5 4"/>
+              <g font-family="JetBrains Mono, monospace" font-size="11" font-weight="700"><text x="140" y="166">Lücke</text><text x="262" y="122">eingefroren</text><text x="434" y="24">Spitze</text><text x="560" y="110">Drift</text></g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== CIERRE ========== -->
+    <section class="slide" id="cierre" data-nav="Zusammenfassung">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Zusammenfassung</span>
+          <h2 class="display">Vier Regeln<span class="dot">.</span></h2>
+          <div class="slide-actions">
+            <button type="button" class="btn l2-btn" data-l2="glosario"><span class="plus">+</span> Glossar</button>
+            <button type="button" class="btn ghost l2-btn" data-l2="fuentes"><span class="plus">+</span> Quellen</button>
+          </div>
+        </div>
+        <div class="b-cards">
+          <div class="card w3 y"><span class="c-label">01</span><span class="c-title">Ein Zweck</span><span class="c-foot">die Fragen bestimmen die Frequenz</span></div>
+          <div class="card w3"><span class="c-label">02</span><span class="c-title">Ein Vertrag</span><span class="c-foot">AIR + IDS ab der Leistungsbeschreibung</span></div>
+          <div class="card w3 k"><span class="c-label">03</span><span class="c-title">Ein Schlüssel</span><span class="c-foot">überall dieselbe Kennung</span></div>
+          <div class="card w3"><span class="c-label">04</span><span class="c-title">Eine Prüfung</span><span class="c-foot">IDS, SHACL und die Live-Daten</span></div>
+          <div class="card w6"><nav id="series-nav" class="series-nav" style="margin-top:0;border-top:0;padding-top:0" aria-label="Navigation der Serie"></nav></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site">
+    <div class="wrap">
+      <span>Gestaltet und entwickelt von Alejandro García Nicolás</span><span class="sep">·</span><span class="mono">kernel · 2026</span>
+    </div>
+  </footer>
+
+  <div id="l2-modal" role="dialog" aria-modal="true" aria-label="Details">
+    <div class="l2-panel custom-scroll">
+      <button type="button" class="l2-close" aria-label="Schließen" title="Schließen">✕</button>
+      <div id="l2-body" class="l2-body prose"></div>
+    </div>
+  </div>
+
+  <!-- ============================== CAPA 2 ============================== -->
+  <!-- Capa 2 = ficha «Ver detalle» en tarjetas. Solo añade lo que la slide no dice. -->
+
+  <template id="l2-problema">
+    <div class="b-cards">
+      <div class="card w3">
+        <h4>Warum es einfriert</h4>
+        <p>Das Projektmodell wird für Planung und Bau beauftragt. Bei der Abnahme wird eine letzte «As-built»-Version übergeben, und das Team, das es gepflegt hat, wechselt ins nächste Projekt. Ab diesem Tag entfernt jeder Umbau, jedes ausgetauschte Gerät und jede Nutzungsänderung es ein Stück weiter von der Realität.</p>
+      </div>
+      <div class="card w3 g">
+        <h4>Die 50 Jahre</h4>
+        <p>Der spanische Código Técnico de la Edificación setzt für ein gewöhnliches Gebäude 50 Jahre als Referenz-Nutzungsdauer an («sofern nicht anders angegeben»). Das ist ein Wert für die Tragwerksbemessung, kein Verfallsdatum: Viele Gebäude stehen deutlich länger.</p>
+      </div>
+      <div class="card w3 k">
+        <h4>Eine berühmte und umstrittene Zahl</h4>
+        <p>Oft heißt es, Bau, Instandhaltung und Nutzung eines Gebäudes kosten im Verhältnis 1 : 5 : 200. Eine Studie von 2004 ging dem Ursprung dieser Angabe nach und konnte sie nicht reproduzieren: Die tatsächlichen Verhältnisse hängen stark vom Gebäude ab. Zitieren Sie sie besser nicht als Beleg.</p>
+      </div>
+      <div class="card w3 y">
+        <span class="c-label">Was sicher ist</span>
+        <p>Der Betrieb dauert viel länger als Planung und Bau zusammen. Ein Modell, das in dieser Phase nicht aktualisiert wird, verliert jedes Jahr an Wert.</p>
+      </div>
+      <div class="card w6"><p class="table-note" style="margin:0">Quellen: <a href="https://www.codigotecnico.org/pdf/Documentos/SE/DBSE.pdf" target="_blank" rel="noopener">CTE DB SE</a> <span class="tag">Noch zu bestätigen</span> (Abschnitt noch abzugleichen) · <a href="https://www.arcom.ac.uk/-docs/proceedings/ar2004-0373-0381_Hughes_et_al.pdf" target="_blank" rel="noopener">Hughes et al. (2004), der Mythos 1:5:200</a> <span class="tag">Noch zu bestätigen</span>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-definicion">
+    <div class="b-cards">
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Wer</th><th>Jahr</th><th>Wie er ihn definiert</th></tr></thead>
+          <tbody>
+            <tr><td>Michael Grieves</td><td class="num">2002</td><td>Ein realer Raum, ein virtueller Raum und der Daten- und Informationsfluss zwischen beiden. Er stellte das Konzept an der University of Michigan für das Produktlebenszyklusmanagement vor.</td></tr>
+            <tr><td>NASA</td><td class="num">2010</td><td>Verwendet den Begriff <em>digital twin</em> in ihrer Technologie-Roadmap, um Raumfahrzeuge mit Flugdaten zu simulieren. Diese Herkunftsgeschichte ist umstritten. <span class="tag">Noch zu bestätigen</span></td></tr>
+            <tr class="is-key"><td>Gemini Principles</td><td class="num">2018</td><td>«Eine realistische digitale Darstellung von etwas Physischem. Was einen Zwilling von jedem anderen digitalen Modell unterscheidet, ist seine Verbindung zum physischen Zwilling».</td></tr>
+            <tr><td>Digital Twin Consortium</td><td class="num">2020</td><td>«Integrierte, datengestützte virtuelle Darstellung realer Entitäten und Prozesse mit synchronisierter Interaktion in festgelegter Frequenz und Genauigkeit».</td></tr>
+            <tr><td>ISO/IEC 30173</td><td class="num">2023</td><td>Legt das gemeinsame Vokabular fest: Systemkontext, Lebenszyklus, Zwillingstypen und Beteiligte.</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w3 y">
+        <span class="c-label">Was allen gemeinsam ist</span>
+        <p>Alle verlangen dasselbe: etwas Physisches, ein digitales Abbild und Daten, die beide in Übereinstimmung halten. Keine verlangt 3D-Geometrie.</p>
+      </div>
+      <div class="card w3 g">
+        <h4>Und die Geometrie</h4>
+        <p>Ein Zwilling kann eine Tabelle und ein Graph ohne ein einziges Polygon sein. Im Hochbau geht er fast immer von einem 3D-Modell aus, weil es bereits existiert und hilft, jede Angabe zu verorten.</p>
+      </div>
+      <div class="card w6"><p class="table-note" style="margin:0">Quellen: <a href="https://doi.org/10.1007/978-3-319-38756-7_4" target="_blank" rel="noopener">Grieves und Vickers (2017)</a> · <a href="https://www.cdbb.cam.ac.uk/DFTG/GeminiPrinciples" target="_blank" rel="noopener">The Gemini Principles (CDBB, 2018)</a> · <a href="https://www.digitaltwinconsortium.org/initiatives/the-definition-of-a-digital-twin/" target="_blank" rel="noopener">Digital Twin Consortium</a> · <a href="https://arxiv.org/pdf/2203.12867" target="_blank" rel="noopener">Qi et al. (2022)</a> · <a href="https://www.iso.org/standard/81442.html" target="_blank" rel="noopener">ISO/IEC 30173:2023</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-tres-niveles">
+    <div class="b-cards">
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Stufe</th><th>Physisch → digital</th><th>Digital → physisch</th><th>Beispiel in einem Gebäude</th></tr></thead>
+          <tbody>
+            <tr><td>Digitales Modell</td><td>manuell</td><td>manuell</td><td>Das «As-built»-Modell, das jemand nach jedem Umbau aktualisiert.</td></tr>
+            <tr><td>Digitaler Schatten</td><td>automatisch</td><td>manuell</td><td>Ein Dashboard, das die Temperatur jedes Raums im Modell einfärbt. Die Fachkraft entscheidet und handelt.</td></tr>
+            <tr class="is-key"><td>Digitaler Zwilling</td><td>automatisch</td><td>automatisch</td><td>Das System erkennt einen leeren Raum und senkt dessen Klima-Sollwert selbstständig.</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w3 k">
+        <h4>Der Schatten ist der Normalfall</h4>
+        <p>Im Hochbau ist fast alles, was Zwilling genannt wird, ein Schatten: Die Daten kommen automatisch, aber die Entscheidung trifft ein Mensch. Das ist kein Mangel, oft ist es die umsichtige Wahl.</p>
+      </div>
+      <div class="card w3">
+        <h4>Woher die Einteilung stammt</h4>
+        <p>Aus einer Literaturübersicht zur Fertigung von Kritzinger und anderen (2018), die feststellte, dass viele Artikel bloße Modelle oder Schatten als Zwilling bezeichneten.</p>
+      </div>
+      <div class="card w6"><p class="table-note" style="margin:0">Quelle: <a href="https://doi.org/10.1016/j.ifacol.2018.08.474" target="_blank" rel="noopener">Kritzinger, Karner, Traar, Henjes und Sihn (2018). Digital Twin in manufacturing: A categorical literature review and classification. IFAC-PapersOnLine 51(11)</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-componentes">
+    <div class="b-cards">
+      <div class="card w2"><span class="step-n">1</span><span class="c-title">Asset</span><p>Das, was existiert: Gebäude, Tunnel, Kläranlage. Einschließlich seiner technischen Anlagen und seines Steuerungssystems.</p></div>
+      <div class="card w2"><span class="step-n">2</span><span class="c-title">Sensoren und Steuerung</span><p>Fühler, Zähler, Aktoren und Regler. Viele sind bereits Teil der Gebäudeautomation.</p></div>
+      <div class="card w2"><span class="step-n">3</span><span class="c-title">Konnektivität</span><p>Buskabel, energiesparender Funk und ein Gateway, das die Daten aus dem lokalen Netz hinausführt.</p></div>
+      <div class="card w2 k"><span class="step-n">4</span><span class="c-title">Daten mit Kontext</span><p>Zeitreihen plus ein Graph, der angibt, was jeder Datenpunkt misst, wo er sich befindet und wozu er dient.</p></div>
+      <div class="card w2 y"><span class="step-n">5</span><span class="c-title">Modell und Analytik</span><p>Das Modell liefert den Ort; Regeln, Simulation oder maschinelles Lernen liefern die Diagnose.</p></div>
+      <div class="card w2"><span class="step-n">6</span><span class="c-title">Entscheidung</span><p>Ein Arbeitsauftrag, eine Meldung, eine Sollwertänderung oder ein Bericht für den Eigentümer.</p></div>
+      <div class="card w6 g">
+        <h4>Warum Schicht 4 scheitert</h4>
+        <p>Die Datenpunkte eines Steuerungssystems tragen meist interne Codes des Errichters und nennen weder Raum noch Gerät. Ohne diese Übersetzung finden Modell und Daten nicht zueinander. Es ist die unscheinbarste Arbeit und die, die in einem realen Zwilling die meisten Stunden kostet. <span class="tag">Abgeleitet</span></p>
+      </div>
+    </div>
+  </template>
+
+  <template id="l2-madurez">
+    <div class="b-cards">
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Stufe</th><th>Was vorhanden ist</th><th>Was möglich wird</th></tr></thead>
+          <tbody>
+            <tr><td class="num">0</td><td>Realitätserfassung: Punktwolke, Fotos, Bestandsaufnahme</td><td>Wissen, wie es heute aussieht</td></tr>
+            <tr><td class="num">1</td><td>2D-Plan oder 3D-Modell</td><td>Ansehen und messen</td></tr>
+            <tr><td class="num">2</td><td>Modell verknüpft mit statischen Daten: Datenblätter, Wartung, Gewährleistungen</td><td>Das Asset aus dem Modell heraus abfragen</td></tr>
+            <tr class="is-key"><td class="num">3</td><td>Echtzeitdaten von Sensoren</td><td>Überwachen, melden, vergleichen</td></tr>
+            <tr><td class="num">4</td><td>Integration in beide Richtungen</td><td>Aus dem Zwilling auf das Asset einwirken</td></tr>
+            <tr><td class="num">5</td><td>Autonomer Betrieb mit Lernen</td><td>Das System entscheidet innerhalb festgelegter Grenzen</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w3 y"><span class="c-label">Stufe 5 ist nicht nötig</span><p>Jede Stufe kostet mehr als die vorige. Die richtige ist die niedrigste, die die Fragen des Betreibers beantwortet.</p></div>
+      <div class="card w3 g"><h4>Andere Modelle</h4><p>Beratungen und Hersteller haben ähnliche Skalen unter anderen Namen. Alle ordnen dasselbe: von der Geometrie zu den Live-Daten und von den Daten zur Handlung.</p></div>
+      <div class="card w6"><p class="table-note" style="margin:0">Quelle: <a href="https://www.theiet.org/media/8762/digital-twins-for-the-built-environment.pdf" target="_blank" rel="noopener">IET und Atkins (2019). Digital twins for the built environment</a> <span class="tag">Noch zu bestätigen</span> (die sechs Stufen werden nach dieser Veröffentlichung zitiert und sind noch mit dem PDF abzugleichen) · <a href="https://arup.com/globalassets/downloads/insights/digital-twin-towards-a-meaningful-framework.pdf" target="_blank" rel="noopener">Arup (2019), Skala von 1 bis 5</a> · <a href="https://webstore.iec.ch/en/publication/77533" target="_blank" rel="noopener">ISO/IEC 30186:2025, Reifegradmodell</a> <span class="tag">Noch zu bestätigen</span>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-frecuencia">
+    <div class="b-cards">
+      <div class="card w3">
+        <h4>Frequenz</h4>
+        <p>Wie oft die Daten aktualisiert werden. Für die Abrechnung genügt bei einem Wasserzähler ein Wert pro Tag; um ein Leck zu erkennen, braucht es alle paar Minuten einen.</p>
+      </div>
+      <div class="card w3">
+        <h4>Genauigkeit</h4>
+        <p>Wie viel Detail abgebildet wird. Der Zwilling eines Krankenhauses kann jedes Zimmer darstellen, der eines Straßennetzes jeden Kilometerabschnitt.</p>
+      </div>
+      <div class="card w6 g">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Frage</th><th>Daten</th><th>Ausreichender Takt</th></tr></thead>
+          <tbody>
+            <tr><td>Halten wir den Bauzeitenplan ein?</td><td>Scan oder Fotos des Baufortschritts</td><td class="num">wöchentlich oder monatlich</td></tr>
+            <tr><td>Welches Gerät ist zu prüfen?</td><td>Betriebsstunden</td><td class="num">täglich</td></tr>
+            <tr class="is-key"><td>Gibt es schlecht belüftete Räume?</td><td>CO₂ je Raum</td><td class="num">alle 5-15 min</td></tr>
+            <tr><td>Schwingt die Brücke ungewöhnlich?</td><td>Beschleunigungssensoren</td><td class="num">Hunderte Messwerte pro Sekunde</td></tr>
+          </tbody>
+        </table></div>
+        <p class="table-note">Richtwerte aus der gängigen Praxis <span class="tag">Abgeleitet</span>.</p>
+      </div>
+      <div class="card w6 y"><span class="c-label">Schneller ist nicht besser</span><p>Jeder Messwert kostet Batterie, Bandbreite und Speicher. Sekündliche Daten für eine monatliche Frage füllen die Datenbank mit Rauschen.</p></div>
+      <div class="card w6"><p class="table-note" style="margin:0">Quelle der Definition: <a href="https://www.digitaltwinconsortium.org/initiatives/the-definition-of-a-digital-twin/" target="_blank" rel="noopener">Digital Twin Consortium</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-ciclo">
+    <div class="b-cards">
+      <div class="card w2"><h4>Planung</h4><p>Das Verhalten wird vor dem Bau simuliert: Verbrauch, Komfort, Evakuierung, Verschattung. Noch gibt es keine Sensoren, aber die künftig geforderten Daten und die Struktur des künftigen Zwillings werden festgelegt.</p></div>
+      <div class="card w2 g"><h4>Bau</h4><p>Scans, Drohnen und Fotos werden mit dem Modell verglichen, um Fortschritt und Abweichungen zu messen. Die eingebauten Geräte werden mit ihrer Seriennummer erfasst.</p></div>
+      <div class="card w2 y"><h4>Betrieb</h4><p>Die Live-Daten treffen ein. Das Asset-Informationsmodell wird mit der Gebäudeautomation und der Instandhaltung verbunden.</p></div>
+      <div class="card w6 k">
+        <h4>Ein einziger Faden, nicht drei Zwillinge</h4>
+        <p>Idealerweise übernimmt jede Phase die vorherige. In der Praxis geht beim Übergang vom Bau in den Betrieb die meiste Information verloren, weil Team, Programme und Vertrag wechseln.</p>
+      </div>
+    </div>
+  </template>
+
+  <template id="l2-usos">
+    <div class="b-cards">
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Anwendung</th><th>Benötigte Daten</th><th>Was man gewinnt</th></tr></thead>
+          <tbody>
+            <tr class="is-key"><td>Vorausschauende Instandhaltung</td><td>Betriebsstunden, Schwingung, Temperatur von Motoren und Pumpen</td><td>Reparieren vor dem Ausfall statt nach Kalender</td></tr>
+            <tr><td>Energie</td><td>Zähler je Zone, Sollwerte, Wetterdaten</td><td>Verbrauch außerhalb der Betriebszeiten und schlecht eingestellte Geräte erkennen</td></tr>
+            <tr><td>Flächen</td><td>Belegung je Raum (Präsenz, Buchungen, WLAN)</td><td>Büroflächen und Reinigung neu bemessen</td></tr>
+            <tr><td>Komfort und Gesundheit</td><td>CO₂, Temperatur, Feuchte, Lärm</td><td>Dort lüften, wo es nötig ist</td></tr>
+            <tr><td>Tragwerk</td><td>Beschleunigungssensoren, Neigungsmesser, Dehnungsmessstreifen</td><td>Nach Zustand prüfen und nicht nur nach Frist</td></tr>
+            <tr><td>Szenarien</td><td>Modell + Verlaufsdaten</td><td>Einen Umbau oder einen Notfall durchspielen, bevor er eintritt</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w3 y"><span class="c-label">Womit beginnen</span><p>Mit einer Anwendung, die einen Verantwortlichen hat, und mit Daten, die bereits existieren. Ein Zwilling «für alles» endet meist als Viewer, den niemand öffnet. <span class="tag">Abgeleitet</span></p></div>
+      <div class="card w3 g"><h4>Bauwerksüberwachung</h4><p>Der älteste Fall im Ingenieurbau: Brücken und Talsperren werden instrumentiert, lange bevor es den Begriff Zwilling gab.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-casos">
+    <div class="b-cards">
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Fall</th><th>Art</th><th>Was er leistet</th><th>Quelle</th></tr></thead>
+          <tbody>
+            <tr class="is-key"><td>Crossrail · Elizabeth line</td><td>Eisenbahn</td><td>Eigenes Rahmenwerk für das Management der Asset-Informationen und geplante Übergabe an den Betreiber (TfL)</td><td><a href="https://learninglegacy.crossrail.co.uk/learning-legacy-themes/information-management-and-technology/asset-information/" target="_blank" rel="noopener">Learning Legacy</a></td></tr>
+            <tr><td>Virtual Singapore</td><td>Stadt</td><td>3D-Modell des Landes für Planung und Simulation; 2014 angekündigt, mit einem genannten Budget von 73 Mio. SGD <span class="tag">Noch zu bestätigen</span></td><td><a href="https://www.govtech.com/fs/Virtual-Singapore-Is-More-Than-Just-a-3-D-Model-Its-an-Intelligent-Rendering-of-the-City.html" target="_blank" rel="noopener">GovTech</a></td></tr>
+            <tr><td>Queensferry Crossing</td><td>Brücke</td><td>Bauwerksüberwachungssystem an der 2017 eröffneten Schrägseilbrücke</td><td><a href="https://strainstall.com/case-studies/structural-monitoring-queensferry-crossing/" target="_blank" rel="noopener">Strainstall</a></td></tr>
+            <tr><td>Schwimmbrücke I-90 (USA)</td><td>Brücke</td><td>Von der FHWA finanzierter digitaler Zwilling; Abschlussbericht vom Mai 2026</td><td><a href="https://depts.washington.edu/trac/bulkdisk/pdf/STIC_Interstate90DigitalTwinFloatingBridgeProject_FHWAReport_FINALMay2026.pdf" target="_blank" rel="noopener">Univ. of Washington</a></td></tr>
+            <tr><td>Flughafen Vancouver</td><td>Flughafen</td><td>Betriebszwilling, gebaut mit einer Spiele-Engine</td><td><a href="https://news.yvr.ca/yvr-and-unity-accelerate-digital-transformation-in-aviation-with-yvrs-digital-twin-platform/" target="_blank" rel="noopener">YVR</a></td></tr>
+            <tr><td>Madrid</td><td>Stadt</td><td>Städtischer digitaler Zwilling; die Presse nennt 5,1 Mio. € für die Aktualisierung bis 2028 <span class="tag">Noch zu bestätigen</span></td><td><a href="https://diario.madrid.es/blog/notas-de-prensa/el-ayuntamiento-autoriza-el-contrato-para-comenzar-a-crear-el-gemelo-digital-de-madrid/" target="_blank" rel="noopener">Ayuntamiento de Madrid</a></td></tr>
+          </tbody>
+        </table></div>
+        <p class="table-note">Die Zahlen ließen sich nicht mit der Primärquelle abgleichen und tragen die entsprechende Markierung.</p>
+      </div>
+      <div class="card w3 y"><span class="c-label">Was sie gemeinsam haben</span><p>Einen Eigentümer, der eine konkrete Antwort brauchte (eine Linie instand halten, eine Brücke überwachen, eine Stadt planen) und der die Informationen schon im Vertrag gefordert hat.</p></div>
+      <div class="card w3 g"><h4>In Spanien</h4><p>Es gibt viel digitale Transformation bei Wasser, Eisenbahn und Konzessionen, aber nur wenige öffentlich dokumentierte Fälle als «digitaler Zwilling». Madrid ist der meistzitierte.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-riesgos">
+    <div class="b-cards">
+      <div class="card w3 k">
+        <h4>Sicherheit der Anlagen</h4>
+        <p>Die Protokolle der Gebäudeautomation entstanden für geschlossene Netze, und viele verschlüsseln nichts. Ihre Anbindung an die Cloud erfordert getrennte Netze, Gateways, die Daten nur nach außen lassen, und ein ernsthaftes Zugriffsmanagement.</p>
+      </div>
+      <div class="card w3">
+        <h4>Eigentum und Nutzung der Daten</h4>
+        <p>Darf der Gerätehersteller seine Daten auslesen? Lassen sie sich bei einem Anbieterwechsel aus der Plattform exportieren? Halten Sie das im Vertrag fest, bevor Sie irgendetwas anschließen.</p>
+      </div>
+      <div class="card w3">
+        <h4>Kosten für den laufenden Betrieb</h4>
+        <p>Sensoren, die ausfallen, Lizenzen pro Asset, das Modell nach jedem Umbau aktualisieren. Ein Zwilling ohne Betriebsbudget verkümmert zum Schatten und danach zum Modell.</p>
+      </div>
+      <div class="card w3 y">
+        <span class="c-label">Schaufenster-Zwilling</span>
+        <p>Ein 3D-Viewer mit Beispieldaten glänzt in einer Präsentation, beantwortet aber keine Frage. Der Test: Lassen Sie sich einen Wert von heute zeigen und woher er stammt. <span class="tag">Abgeleitet</span></p>
+      </div>
+      <div class="card w6"><p class="table-note" style="margin:0">Quellen: <a href="https://www.cdbb.cam.ac.uk/DFTG/GeminiPrinciples" target="_blank" rel="noopener">The Gemini Principles</a> (Grundsätze zu Sicherheit und Offenheit) · <a href="https://docs.aws.amazon.com/iot-sitewise/latest/appguide/iotsitewise-monitor-availability-change.html" target="_blank" rel="noopener">AWS: Änderung der Verfügbarkeit von IoT SiteWise Monitor</a> (Beispiel für Anbieterabhängigkeit).</p></div>
+    </div>
+  </template>
+
+  <template id="l2-normas">
+    <div class="b-cards">
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Norm</th><th>Version</th><th>Wozu im Zwilling</th></tr></thead>
+          <tbody>
+            <tr><td><a href="https://www.iso.org/standard/81442.html" target="_blank" rel="noopener">ISO/IEC 30173</a></td><td class="num">2023</td><td>Gemeinsames Vokabular und Konzepte des digitalen Zwillings</td></tr>
+            <tr><td><a href="https://www.iso.org/standard/81578.html" target="_blank" rel="noopener">ISO/IEC TR 30172</a></td><td class="num">2023</td><td>Katalog von Anwendungsfällen aus verschiedenen Branchen</td></tr>
+            <tr><td><a href="https://webstore.iec.ch/en/publication/77533" target="_blank" rel="noopener">ISO/IEC 30186</a></td><td class="num">2025</td><td>Reifegradmodell und Bewertungsleitfaden <span class="tag">Noch zu bestätigen</span></td></tr>
+            <tr><td><a href="https://www.iso.org/standard/75066.html" target="_blank" rel="noopener">ISO 23247-1</a></td><td class="num">2021</td><td>Rahmen für Zwillinge in der Fertigung; nützlich als Architekturreferenz</td></tr>
+            <tr class="is-key"><td><a href="https://www.iso.org/standard/68078.html" target="_blank" rel="noopener">ISO 19650-1, -2, -3</a></td><td class="num">2018-2020</td><td>Anforderungen (OIR, AIR, EIR) und Modelle (PIM, AIM); Teil 3 behandelt den Betrieb</td></tr>
+            <tr class="is-key"><td><a href="https://www.buildingsmart.org/?p=29521" target="_blank" rel="noopener">IFC 4.3 · ISO 16739-1</a></td><td class="num">2024</td><td>Offenes Modell für Gebäude und Infrastruktur, mit Sensoren und GlobalId</td></tr>
+            <tr><td><a href="https://www.buildingsmart.org/?p=30065" target="_blank" rel="noopener">IDS</a></td><td class="num">1.0 · 2024</td><td>Maschinell prüfbare Informationsanforderungen</td></tr>
+            <tr><td><a href="https://www.nationalbimstandard.org/files/pdfs/2023-05-26NBIMS-US_COBie_v3_Standard_DRAFT-20230501.pdf" target="_blank" rel="noopener">COBie</a></td><td class="num">2.4 (v3 als Entwurf)</td><td>Tabellen zu Geräten, Räumen und Gewährleistungen für den Betreiber</td></tr>
+            <tr><td><a href="https://brickschema.org/" target="_blank" rel="noopener">Brick</a></td><td class="num">Reihe 1.4-1.5</td><td>Ontologie für technische Anlagen, Geräte und Datenpunkte</td></tr>
+            <tr><td><a href="https://project-haystack.org/" target="_blank" rel="noopener">Project Haystack</a></td><td class="num">4 · 5 mit Xeto (2025)</td><td>Semantische Tags für Steuerungsdatenpunkte</td></tr>
+            <tr><td><a href="https://www.w3.org/TR/vocab-ssn/" target="_blank" rel="noopener">W3C SSN/SOSA</a></td><td class="num">2017</td><td>Sensor, Beobachtung und beobachtete Eigenschaft</td></tr>
+            <tr><td><a href="https://learn.microsoft.com/en-us/azure/digital-twins/concepts-models" target="_blank" rel="noopener">DTDL</a></td><td class="num">v3 (v4 veröffentlicht)</td><td>Modellierungssprache für Zwillinge in JSON-LD</td></tr>
+            <tr><td><a href="https://www.ogc.org/standards/sensorthings/" target="_blank" rel="noopener">OGC SensorThings API</a></td><td class="num">1.1 · 2021</td><td>Offene API für Sensoren und Beobachtungen mit Position</td></tr>
+            <tr><td><a href="https://www.asg.ed.tum.de/en/gis/news/article/veroeffentlichung-des-neuen-citygml-30-standards-unter-mitarbeit-des-lehrstuhls-fuer-geoinformatik-der-tum" target="_blank" rel="noopener">CityGML</a></td><td class="num">3.0 · 2021</td><td>Stadtmodell mit Dynamizer-Modul für veränderliche Werte</td></tr>
+            <tr><td><a href="https://webstore.iec.ch/en/publication/65628" target="_blank" rel="noopener">IEC 63278-1 · AAS</a></td><td class="num">2023</td><td>Genormte Darstellung industrieller Assets (Verwaltungsschale)</td></tr>
+            <tr><td><a href="https://www.linuxfoundation.org/press/alliance-for-openusd-announces-core-specification-1.0-the-universal-language-for-building-3d-worlds" target="_blank" rel="noopener">OpenUSD</a></td><td class="num">Core 1.0 · 2025</td><td>Beschreibung gemeinsam genutzter 3D-Szenen</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w6 y"><span class="c-label">So lesen Sie die Übersicht</span><p>Keine Norm deckt den ganzen Zwilling ab. In einer Leistungsbeschreibung empfiehlt es sich, je Schicht eine zu nennen und festzulegen, wie sie verknüpft werden: fast immer über die Kennung jedes Elements.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-iso19650">
+    <div class="b-cards">
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Kürzel</th><th>Name</th><th>Was es enthält</th></tr></thead>
+          <tbody>
+            <tr><td>OIR</td><td>Organisatorische Informationsanforderungen</td><td>Was der Eigentümer wissen muss, um sein Portfolio zu verwalten</td></tr>
+            <tr class="is-key"><td>AIR</td><td>Asset-Informationsanforderungen</td><td>Welche Daten zu jedem Asset zu liefern und zu pflegen sind: das «Was fordern» des Zwillings</td></tr>
+            <tr><td>EIR</td><td>Austausch-Informationsanforderungen (in DE: AIA)</td><td>Was bei jeder Lieferung eines konkreten Vertrags gefordert wird</td></tr>
+            <tr><td>PIM</td><td>Projektinformationsmodell</td><td>Was bei Planung und Bau entsteht</td></tr>
+            <tr class="is-key"><td>AIM</td><td>Asset-Informationsmodell</td><td>Was für Betrieb und Instandhaltung genutzt wird; es wird über die gesamte Lebensdauer des Assets aktualisiert</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w3 g"><h4>Was Teil 3 sagt</h4><p>ISO 19650-3 (2020) wendet das Informationsmanagement auf die Betriebsphase an: wann das AIM aktualisiert wird, wer es tut und welche Ereignisse es auslösen (ein Umbau, ein Gerätewechsel, eine Inspektion).</p></div>
+      <div class="card w3 k"><h4>AIM ist kein Zwilling</h4><p>Das AIM ist verwaltete Information, nicht zwingend verbunden. Zur Grundlage des Zwillings wird es, sobald die Live-Daten angebunden werden.</p></div>
+      <div class="card w6"><p class="table-note" style="margin:0">Quellen: <a href="https://www.iso.org/standard/68078.html" target="_blank" rel="noopener">ISO 19650-1:2018</a> · <a href="https://www.iso.org/standard/75109.html" target="_blank" rel="noopener">ISO 19650-3:2020</a> · <a href="https://www.ukbimframework.org/" target="_blank" rel="noopener">UK BIM Framework</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-ifc">
+    <div class="b-cards">
+      <div class="card w3">
+        <h4>Steuern und Messen</h4>
+        <ul>
+          <li><code>IfcSensor</code> und sein Typ, mit Werten wie Temperatur, CO₂, Feuchte, Druck, Durchfluss oder Bewegung.</li>
+          <li><code>IfcActuator</code>, <code>IfcController</code>, <code>IfcAlarm</code> und <code>IfcFlowInstrument</code>.</li>
+          <li>Alle leiten sich von <code>IfcDistributionControlElement</code> ab und stehen in Beziehung zu dem, was sie steuern.</li>
+        </ul>
+      </div>
+      <div class="card w3 g">
+        <h4>Daten über die Zeit</h4>
+        <ul>
+          <li><code>IfcTimeSeries</code> (regelmäßig oder unregelmäßig), um Werte mit Zeitstempel zu speichern.</li>
+          <li><code>IfcPerformanceHistory</code> für die Betriebshistorie eines Elements.</li>
+          <li>Sie dienen zur Übergabe einer Historie oder eines Planungswerts, nicht für einen kontinuierlichen Datenstrom.</li>
+        </ul>
+      </div>
+      <div class="card w6 k">
+        <h4>Die GlobalId</h4>
+        <p>Jedes IFC-Objekt trägt eine 128-Bit-Kennung, geschrieben in 22 Zeichen. Sie ist der Schlüssel, um das Modellelement mit seinem Datenpunkt im Steuerungssystem, seinem Wartungsdatenblatt und seinem Knoten im Graphen zu verknüpfen. Erzeugt das Autorenprogramm sie bei jedem Export neu, geht die Verknüpfung verloren.</p>
+      </div>
+      <div class="card w6"><p class="table-note" style="margin:0">Quellen: <a href="https://standards.buildingsmart.org/IFC/RELEASE/IFC4_3/HTML/lexical/IfcSensor.htm" target="_blank" rel="noopener">IfcSensor</a> · <a href="https://standards.buildingsmart.org/IFC/RELEASE/IFC4_3/HTML/lexical/IfcTimeSeries.htm" target="_blank" rel="noopener">IfcTimeSeries</a> · <a href="https://standards.buildingsmart.org/IFC/RELEASE/IFC4_3/HTML/lexical/IfcPerformanceHistory.htm" target="_blank" rel="noopener">IfcPerformanceHistory</a> · <a href="https://standards.buildingsmart.org/IFC/RELEASE/IFC4_3/HTML/lexical/IfcGloballyUniqueId.htm" target="_blank" rel="noopener">IfcGloballyUniqueId</a> · <a href="https://www.buildingsmart.org/?p=29521" target="_blank" rel="noopener">IFC 4.3 = ISO 16739-1:2024</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-ontologias">
+    <div class="b-cards">
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Vokabular</th><th>Herkunft</th><th>Wie es beschreibt</th><th>Stark bei</th></tr></thead>
+          <tbody>
+            <tr class="is-key"><td>Brick</td><td>Offenes Konsortium, entstanden an Universitäten und Laboren in den USA</td><td>Klassen und Beziehungen in RDF (<code>feeds</code>, <code>hasPoint</code>, <code>isPointOf</code>)</td><td>Technische Anlagen: Klima, Beleuchtung, Zähler</td></tr>
+            <tr><td>Project Haystack</td><td>Community von Herstellern der Gebäudeautomation</td><td>Tags an jedem Datenpunkt (<code>temp</code>, <code>air</code>, <code>sensor</code>)</td><td>Integration in bestehende Leitsysteme</td></tr>
+            <tr><td>RealEstateCore</td><td>Konsortium von Immobilieneigentümern</td><td>Ontologie für Gebäude, Räume und Assets</td><td>Immobilienportfolios und Flächen</td></tr>
+            <tr><td>SOSA / SSN</td><td>W3C und OGC</td><td>Sensor, Beobachtung, beobachtete Eigenschaft</td><td>Generische Basis für jeden Sensor</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w3 y"><span class="c-label">Konvergenz</span><p>Neuere Brick-Versionen übernehmen die Raumklassen von RealEstateCore und Haystack-Tags als Aliasse. Der Test dieses Beitrags bestätigt es: Seit Version 1.4 kennzeichnet Brick <code>brick:Room</code> als veraltet und ersetzt es durch <code>rec:Room</code>.</p></div>
+      <div class="card w3 g"><h4>Und im Vergleich zu IFC?</h4><p>IFC beschreibt gut, was vorhanden ist und wo. Brick beschreibt gut, was wem dient und was jeder Datenpunkt misst. Sie ergänzen sich: Derselbe Sensor kann in beiden stehen, verknüpft über seine GlobalId.</p></div>
+      <div class="card w6"><p class="table-note" style="margin:0">Quellen: <a href="https://brickschema.org/" target="_blank" rel="noopener">Brick Schema</a> · <a href="https://project-haystack.org/" target="_blank" rel="noopener">Project Haystack</a> · <a href="https://www.realestatecore.io/" target="_blank" rel="noopener">RealEstateCore</a> · <a href="https://www.w3.org/TR/vocab-ssn/" target="_blank" rel="noopener">W3C SSN/SOSA</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-gemini">
+    <div class="b-cards">
+      <div class="card w2 y"><h4>Zweck</h4><ul><li><strong>Gemeinwohl:</strong> Nutzen für die Gesellschaft.</li><li><strong>Wertschöpfung:</strong> messbare Leistung.</li><li><strong>Erkenntnis:</strong> besseres Verständnis der gebauten Umwelt.</li></ul></div>
+      <div class="card w2"><h4>Vertrauen</h4><ul><li><strong>Sicherheit:</strong> sicher durch Design.</li><li><strong>Offenheit:</strong> so offen wie möglich.</li><li><strong>Qualität:</strong> Daten bekannter Qualität.</li></ul></div>
+      <div class="card w2 k"><h4>Funktion</h4><ul><li><strong>Föderation:</strong> Standards, um Zwillinge zu verbinden.</li><li><strong>Kuratierung:</strong> klare Eigentümer und Verantwortliche.</li><li><strong>Evolution:</strong> mit der Technik wachsen können.</li></ul></div>
+      <div class="card w6 g">
+        <h4>Woher sie stammen</h4>
+        <p>Veröffentlicht im Dezember 2018 vom Centre for Digital Built Britain der University of Cambridge im Rahmen des nationalen Programms des Vereinigten Königreichs. Ziel war ein «nationaler digitaler Zwilling»: ein Ökosystem von Zwillingen verschiedener Eigentümer, die sicher Daten teilen. Heute führt das National Digital Twin Programme diese Arbeit mit einem Informationsmanagement-Rahmen zur Föderation von Zwillingen fort.</p>
+      </div>
+      <div class="card w6"><p class="table-note" style="margin:0">Quellen: <a href="https://www.cdbb.cam.ac.uk/DFTG/GeminiPrinciples" target="_blank" rel="noopener">The Gemini Principles (CDBB, 2018)</a> · <a href="https://digitaltwinhub.co.uk/ndtp/" target="_blank" rel="noopener">National Digital Twin Programme</a> <span class="tag">Noch zu bestätigen</span>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-software">
+    <div class="b-cards">
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Programm</th><th>Hersteller</th><th>Ausgangspunkt</th><th>Stark bei</th></tr></thead>
+          <tbody>
+            <tr><td>Autodesk Tandem</td><td>Autodesk</td><td>Revit- und IFC-Modelle</td><td>Gebäude im Betrieb, Sensoren per API · <a href="https://www.autodesk.com/products/tandem/overview" target="_blank" rel="noopener">Web</a></td></tr>
+            <tr><td>Bentley iTwin</td><td>Bentley</td><td>iModel, synchronisiert aus vielen Formaten</td><td>Infrastruktur, Realitätserfassung, Geokontext · <a href="https://developer.bentley.com/" target="_blank" rel="noopener">Web</a></td></tr>
+            <tr><td>3DEXPERIENCE</td><td>Dassault Systèmes</td><td>Produktmodellierung und -simulation</td><td>Stadtzwillinge (Virtual Singapore) und Industrie · <a href="https://www.3ds.com/3dexperience" target="_blank" rel="noopener">Web</a></td></tr>
+            <tr><td>Nemetschek dTwin</td><td>Nemetschek</td><td>CAD-, BIM- und Immobilienmanagement-Daten (2023)</td><td>Gebäudeportfolios · <a href="https://www.geoweeknews.com/articles/digital-twins-nemetschek-group-dtwin/" target="_blank" rel="noopener">Web</a></td></tr>
+            <tr><td>Siemens Building X</td><td>Siemens</td><td>Gebäudesysteme (2022)</td><td>Energie, Sicherheit und Betrieb · <a href="https://assets.new.siemens.com/siemens/assets/api/uuid:36cbc2f1-b398-4b2e-aec5-42b31cc16aee/Siemens-launches-Building-X-an-open-AI-enabled-suite-for-net-zero-buildings.pdf" target="_blank" rel="noopener">Web</a></td></tr>
+            <tr><td>Willow</td><td>Willow</td><td>Betriebsdaten mit offener DTDL-Ontologie</td><td>Immobilien, Flughäfen und Eisenbahn · <a href="https://github.com/WillowInc/opendigitaltwins-building" target="_blank" rel="noopener">Web</a></td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w6 y"><span class="c-label">Vor der Auswahl</span><p>Klären Sie drei Dinge: welche Eingabeformate unterstützt werden (IFC, nicht nur das native), wie die Daten bei einem Plattformwechsel herauskommen und welches semantische Modell intern verwendet wird.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-tandem">
+    <div class="b-cards">
+      <div class="card w3">
+        <h4>Was es leistet</h4>
+        <p>Macht aus den Projektmodellen den Zwilling einer Liegenschaft: Asset-Inventar, Verlauf der technischen Anlagensysteme, Heatmaps sowie Verlaufs- und Beinahe-Echtzeitdaten.</p>
+      </div>
+      <div class="card w3 g">
+        <h4>Wie die Live-Daten hineinkommen</h4>
+        <p>Jeder Sensor ist ein <em>Stream</em>, der einem Raum oder einem Gerät zugeordnet ist. Die Werte kommen über die API vom Gateway des Steuerungssystems oder von einer anderen Plattform.</p>
+      </div>
+      <div class="card w3 y"><span class="c-label">Die Parametervorlage</span><p>Legt fest, welche Daten zu jedem Asset-Typ gewünscht sind. Sie ist die praktische Übersetzung der AIR nach ISO 19650 in ein konkretes Programm. <span class="tag">Abgeleitet</span></p></div>
+      <div class="card w3 k"><h4>Was Sie fragen sollten</h4><p>Wie Daten und Historie exportiert werden, falls Sie eines Tages die Plattform wechseln.</p></div>
+      <div class="card w6"><p class="table-note" style="margin:0">Quellen: <a href="https://www.autodesk.com/products/tandem/overview" target="_blank" rel="noopener">Autodesk Tandem</a> · <a href="https://aps.autodesk.com/en/docs/tandem/v1/developers_guide/basics/streams" target="_blank" rel="noopener">Streams-API</a> <span class="tag">Noch zu bestätigen</span>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-itwin">
+    <div class="b-cards">
+      <div class="card w3">
+        <h4>iModel</h4>
+        <p>Datenbank des Zwillings, die Modelle aus verschiedenen Programmen über Konnektoren zusammenführt und jede synchronisierte Änderung speichert. Jeder frühere Stand lässt sich wiederherstellen.</p>
+      </div>
+      <div class="card w3 g">
+        <h4>Plattform, kein Programm</h4>
+        <p>Die iTwin Platform ist eine Sammlung von Diensten und APIs (mit der offenen Bibliothek iTwin.js) zum Bau von Zwillingsanwendungen: Realitätserfassung, Synchronisierung, Berichte.</p>
+      </div>
+      <div class="card w6 y"><span class="c-label">Cesium</span><p>Bentley hat Cesium am 6. September 2024 übernommen. 3D Tiles und die offenen Projekte von Cesium bleiben verfügbar, nun innerhalb des iTwin-Ökosystems für den Geokontext.</p></div>
+      <div class="card w6"><p class="table-note" style="margin:0">Quellen: <a href="https://developer.bentley.com/" target="_blank" rel="noopener">iTwin Platform</a> · <a href="https://www.bentley.com/news/bentley-systems-acquires-3d-geospatial-company-cesium/" target="_blank" rel="noopener">Bentley übernimmt Cesium (2024)</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-motores">
+    <div class="b-cards">
+      <div class="card w2"><h4>Unreal Engine</h4><p>Fotorealistische Darstellung und Echtzeitsimulation. Twinmotion dient als Brücke aus den Architekturprogrammen.</p></div>
+      <div class="card w2 g"><h4>Unity</h4><p>Maßgeschneiderte Anwendungen für Tablet, Web oder Mixed Reality. Der Flughafen Vancouver nutzt Unity für seinen Betriebszwilling.</p></div>
+      <div class="card w2 y"><h4>NVIDIA Omniverse</h4><p>Verbindet Szenen aus vielen Programmen über OpenUSD, dessen Spezifikation 1.0 im Dezember 2025 veröffentlicht wurde.</p></div>
+      <div class="card w6 k"><h4>Wo sie hingehören</h4><p>Sie sind die Darstellungs- und Simulationsschicht. Stammdaten, Graph und Zeitreihen liegen auf einer anderen Plattform, die Engine liest sie nur. Liegen die Daten ausschließlich in der Engine, hängt der Zwilling vom Rendering ab. <span class="tag">Abgeleitet</span></p></div>
+      <div class="card w6"><p class="table-note" style="margin:0">Quellen: <a href="https://news.yvr.ca/yvr-and-unity-accelerate-digital-transformation-in-aviation-with-yvrs-digital-twin-platform/" target="_blank" rel="noopener">YVR und Unity</a> <span class="tag">Noch zu bestätigen</span> · <a href="https://dev.epicgames.com/documentation/twinmotion/overview-of-the-twinmotion-to-unreal-engine-workflow" target="_blank" rel="noopener">Twinmotion → Unreal</a> · <a href="https://www.linuxfoundation.org/press/alliance-for-openusd-announces-core-specification-1.0-the-universal-language-for-building-3d-worlds" target="_blank" rel="noopener">OpenUSD 1.0</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-plataformas">
+    <div class="b-cards">
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Plattform</th><th>Datenmodell</th><th>Was sie bietet</th><th>Achtung</th></tr></thead>
+          <tbody>
+            <tr><td>Azure Digital Twins</td><td>DTDL v2 und v3</td><td>Graph mit Abfragen, Ereignisrouten und Historie in Azure Data Explorer</td><td>Die Telemetrie läuft durch den Graphen, wird dort aber nicht gespeichert</td></tr>
+            <tr><td>Microsoft Fabric</td><td>Eigene Ontologie</td><td>„Digital twin builder“, 2025 innerhalb von Real-Time Intelligence vorgestellt</td><td>In der Vorschau <span class="tag">Noch zu bestätigen</span></td></tr>
+            <tr><td>AWS IoT TwinMaker</td><td>Entität-Komponente</td><td>Wissensgraph, glTF-Szenen, Konnektoren und Dashboards in Grafana</td><td>Keine Abkündigung gefunden; AWS hat jedoch IoT SiteWise Monitor und IoT Events eingestellt <span class="tag">Noch zu bestätigen</span></td></tr>
+            <tr><td>Eclipse Ditto</td><td>Things + W3C WoT</td><td>Open Source; MQTT, AMQP, Kafka und HTTP</td><td>Muss selbst betrieben und gewartet werden</td></tr>
+            <tr><td>Cesium ion</td><td>3D Tiles</td><td>Kachelung und Streaming von Modellen und Gelände</td><td>Liefert räumlichen Kontext, kein Asset-Management</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w3 y"><span class="c-label">So schützen Sie sich</span><p>Das semantische Modell in einem offenen Format ablegen (Brick, DTDL in einem eigenen Repository veröffentlicht) und die Historie in einer exportierbaren Datenbank. Dann ist ein Cloudwechsel eine Migration und kein Neuanfang. <span class="tag">Abgeleitet</span></p></div>
+      <div class="card w3 g"><h4>Und die CDE?</h4><p>Die gemeinsame Datenumgebung verwaltet die Projekt- und Asset-Informationen mit Status und Versionen. Sie ist keine Echtzeitplattform: Der Zwilling liest sie, ersetzt sie aber nicht.</p></div>
+      <div class="card w6"><p class="table-note" style="margin:0">Quellen: <a href="https://learn.microsoft.com/en-us/azure/digital-twins/overview" target="_blank" rel="noopener">Azure Digital Twins</a> · <a href="https://learn.microsoft.com/en-us/fabric/real-time-intelligence/digital-twin-builder/overview" target="_blank" rel="noopener">Fabric digital twin builder</a> · <a href="https://docs.aws.amazon.com/iot-twinmaker/latest/guide/what-is-twinmaker.html" target="_blank" rel="noopener">AWS IoT TwinMaker</a> · <a href="https://docs.aws.amazon.com/iot-sitewise/latest/appguide/iotsitewise-monitor-availability-change.html" target="_blank" rel="noopener">IoT SiteWise Monitor</a> · <a href="https://eclipse.dev/ditto/basic-wot-integration.html" target="_blank" rel="noopener">Eclipse Ditto</a> · <a href="https://cesium.com/platform/cesium-ion/" target="_blank" rel="noopener">Cesium ion</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-grafo">
+    <div class="b-cards">
+      <div class="card w4 k">
+        <h4>Ein Raum in DTDL v3</h4>
+<pre><code>{
+  "@context": ["dtmi:dtdl:context;3",
+               "dtmi:dtdl:extension:quantitativeTypes;1"],
+  "@id": "dtmi:bimfoundation:Sala;1",
+  "@type": "Interface",
+  "displayName": "Raum",
+  "contents": [
+    { "@type": "Property", "name": "ifcGlobalId",
+      "schema": "string" },
+    { "@type": ["Telemetry", "Temperature"],
+      "name": "temperatura", "schema": "double",
+      "unit": "degreeCelsius" },
+    { "@type": "Relationship", "name": "contiene",
+      "target": "dtmi:bimfoundation:Sensor;1" }
+  ]
+}</code></pre>
+      </div>
+      <div class="card w2">
+        <h4>Vier Inhaltsarten</h4>
+        <ul>
+          <li><strong>Property:</strong> Zustand, der sich selten ändert (GUID, Fläche).</li>
+          <li><strong>Telemetry:</strong> eingehende Messwerte.</li>
+          <li><strong>Relationship:</strong> Verknüpfung mit einem anderen Zwilling.</li>
+          <li><strong>Command:</strong> Befehl, der gesendet werden kann.</li>
+        </ul>
+      </div>
+      <div class="card w3 y"><span class="c-label">Die GUID als Eigenschaft</span><p>Wird die IFC-<code>GlobalId</code> als Eigenschaft jedes Zwillings gespeichert, führt der Weg von den Daten zurück ins Modell.</p></div>
+      <div class="card w3 g"><h4>DTDL und Brick</h4><p>Es gibt Übersetzungen von Gebäudeontologien nach DTDL (RealEstateCore und Willow haben ihre veröffentlicht), sodass die Klassen nicht neu erfunden werden müssen. DTDL v4 existiert bereits, Azure Digital Twins arbeitet aber mit v2 und v3.</p></div>
+      <div class="card w6"><p class="table-note" style="margin:0">Quellen: <a href="https://azure.github.io/opendigitaltwins-dtdl/DTDL/v3/DTDL.v3.html" target="_blank" rel="noopener">DTDL v3</a> · <a href="https://azure.github.io/opendigitaltwins-dtdl/DTDL/v3/DTDL.quantitativeTypes.v1.html" target="_blank" rel="noopener">QuantitativeTypes</a> · <a href="https://github.com/Azure/opendigitaltwins-building" target="_blank" rel="noopener">Gebäudeontologie in DTDL auf Basis von RealEstateCore</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-mapa">
+    <div class="b-cards">
+      <div class="card w3">
+        <h4>Warum das wichtig ist</h4>
+        <p>Ein Gebäudezwilling lebt in lokalen Koordinaten. Um ihn mit Wassernetz, Verkehr oder kommunaler Kartografie zu verschneiden, muss er ins amtliche System überführt werden: in <span data-pais="nombre">España</span> <span data-pais="crs-nombre">ETRS89 / UTM huso 30N</span>.</p>
+      </div>
+      <div class="card w3 g">
+        <h4>Stadtformate</h4>
+        <ul>
+          <li><strong>CityGML 3.0:</strong> Stadtmodell mit einem Modul für zeitlich veränderliche Eigenschaften.</li>
+          <li><strong>3D Tiles:</strong> Kacheln, um riesige Modelle über das Internet auszuliefern.</li>
+          <li><strong>SensorThings API:</strong> Sensoren und Beobachtungen mit ihrer Position.</li>
+        </ul>
+      </div>
+      <div class="card w6 y"><span class="c-label">Die Verbindung zu Beitrag 01</span><p>Alles, was in <a href="../coordenadas-compartidas/">Gemeinsame Koordinaten</a> erklärt wird (Ursprung, Projektbasispunkt, EPSG, <code>IfcMapConversion</code>), ist Voraussetzung dafür, dass sich ein Zwilling mit anderen föderieren lässt.</p></div>
+      <div class="card w6"><p class="table-note" style="margin:0">Quellen: <a href="https://www.ogc.org/standards/citygml/" target="_blank" rel="noopener">OGC CityGML</a> · <a href="https://www.ogc.org/standards/3dtiles/" target="_blank" rel="noopener">OGC 3D Tiles</a> · <a href="https://www.ogc.org/standards/sensorthings/" target="_blank" rel="noopener">OGC SensorThings API</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-tres-mundos">
+    <div class="b-cards">
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Welt</th><th>Formate</th><th>Ändert sich</th><th>Erzeugt von</th></tr></thead>
+          <tbody>
+            <tr><td>Statisch</td><td>IFC, COBie, native Autorenformate</td><td>Bei jedem Umbau</td><td>Planer und Bauunternehmen</td></tr>
+            <tr class="is-key"><td>Semantisch</td><td>Brick, Haystack, DTDL, RealEstateCore</td><td>Bei Änderungen an der Gebäudetechnik</td><td>Integrator des Zwillings</td></tr>
+            <tr><td>Lebendig</td><td>BACnet, Modbus, MQTT, OPC UA, Zeitreihen</td><td>Jede Sekunde oder Minute</td><td>Regelungssysteme und Sensoren</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w3 g"><h4>Warum nicht ein einziges Format</h4><p>Jede Welt optimiert etwas anderes: IFC die vollständige Gebäudebeschreibung, der Graph Abfragen über Beziehungen, die Zeitreihen die Menge der Messwerte. Alles in einem macht sie langsam oder unvollständig.</p></div>
+      <div class="card w3 y"><span class="c-label">Die Integrationsarbeit</span><p>Den Graphen aus dem IFC erzeugen, jeden Knoten mit seinem Datenpunkt verknüpfen und diese Verknüpfungen bei jeder Änderung pflegen.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-identificadores">
+    <div class="b-cards">
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>GlobalId (IFC)</th><th>Kennzeichen</th><th>Datenpunkt</th><th>Graphknoten</th><th>Raum</th></tr></thead>
+          <tbody>
+            <tr class="is-key"><td><code>0wkdTQadv0cuaIsExdNkQZ</code></td><td>TT-104</td><td>AI-3.07</td><td><code>:TT-104</code></td><td>P01-104</td></tr>
+            <tr><td><code>0oe4ZyO5T7OOk4XitOFkoB</code></td><td>QT-106</td><td>AI-3.11</td><td><code>:QT-106</code></td><td>P01-104</td></tr>
+          </tbody>
+        </table></div>
+        <p class="table-note">Beispiel mit den Kennungen des Testmodells dieses Beitrags.</p>
+      </div>
+      <div class="card w3 k"><h4>Was die Verknüpfung bricht</h4><ul><li>Ein Element löschen und neu zeichnen, statt es zu ändern.</li><li>Exporter, die bei jedem Export eine neue GlobalId erzeugen.</li><li>Datenpunkte im Regelungssystem ohne Absprache umbenennen.</li></ul></div>
+      <div class="card w3"><h4>Was sie schützt</h4><ul><li>Ein lesbares Kennzeichen (<code>Tag</code>), verpflichtend und mit festem Muster.</li><li>Bei jeder Übergabe prüfen, dass die GlobalIds unverändert sind.</li><li>Die Zuordnungstabelle unter Versionskontrolle.</li></ul></div>
+    </div>
+  </template>
+
+  <template id="l2-protocolos">
+    <div class="b-cards">
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Protokoll</th><th>Norm</th><th>Wo es vorkommt</th></tr></thead>
+          <tbody>
+            <tr class="is-key"><td>BACnet</td><td>ISO 16484-5 · ASHRAE 135</td><td>Gebäudeautomation: Klima- und Lüftungstechnik, Beleuchtung, Zutritt</td></tr>
+            <tr><td>Modbus</td><td>Offene Spezifikation der Modbus Organization</td><td>Zähler, Frequenzumrichter und einfache Geräte</td></tr>
+            <tr><td>KNX</td><td>ISO/IEC 14543-3</td><td>Haus- und Gebäudeautomation in Europa</td></tr>
+            <tr><td>LoRaWAN</td><td>LoRa Alliance</td><td>Funksensoren mit geringem Verbrauch und großer Reichweite</td></tr>
+            <tr class="is-key"><td>MQTT</td><td>OASIS · ISO/IEC 20922 (v3.1.1)</td><td>Leichtgewichtige Publish-Subscribe-Nachrichten in die Cloud</td></tr>
+            <tr><td>OPC UA</td><td>IEC 62541</td><td>Industrie und SCADA; es gibt ein offizielles Mapping zu BACnet</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w3 y"><span class="c-label">Das übliche Muster</span><p>Die Controller sprechen weiter ihr Protokoll; ein Gateway liest die Datenpunkte und veröffentlicht jede Änderung auf einem Message-Broker. Die Plattform abonniert sie und speichert die Reihe mit Zeitstempel.</p></div>
+      <div class="card w3 g"><h4>Die Uhrzeit zählt</h4><p>Jeder Messwert braucht eine Zeit in koordinierter Weltzeit (UTC), und es muss klar sein, ob es die Mess- oder die Eingangszeit ist. Wer beide mischt, erzeugt bei der Sommerzeitumstellung falsche Sprünge. <span class="tag">Abgeleitet</span></p></div>
+    </div>
+  </template>
+
+  <template id="l2-entrega">
+    <div class="b-cards">
+      <div class="card w2"><span class="step-n">1</span><span class="c-title">AIR</span><p>Der Eigentümer legt fest, welche Assets ihm wichtig sind und welche Daten er zu jedem will.</p></div>
+      <div class="card w2"><span class="step-n">2</span><span class="c-title">IDS</span><p>Diese Anforderungen werden in einer Datei festgehalten, die sich automatisch prüfen lässt.</p></div>
+      <div class="card w2"><span class="step-n">3</span><span class="c-title">IFC + COBie</span><p>Die Übergabe enthält das Modell und die Tabellen zu Anlagen, Räumen und Gewährleistungen.</p></div>
+      <div class="card w3 y"><span class="step-n">4</span><span class="c-title">Datenpunktliste</span><p>Der MSR-Errichter übergibt die Datenpunktliste mit Kennzeichen und GlobalId jedes Elements.</p></div>
+      <div class="card w3 k"><span class="step-n">5</span><span class="c-title">Zwilling</span><p>Der Integrator erzeugt den Graphen und bindet die Live-Daten an. Wurden die vorigen Schritte erledigt, ist das Konfiguration und keine Archäologie.</p></div>
+      <div class="card w6 g">
+        <h4>Was ist COBie?</h4>
+        <p>Construction Operations Building information exchange: ein Satz Tabellenblätter (Liegenschaften, Räume, Typen, Komponenten, Systeme, Gewährleistungen …), um dem Betreiber die benötigten Daten ohne das vollständige Modell zu übergeben. Referenzversion ist COBie 2.4 in der US-Norm NBIMS-US V3; Version 3 liegt seit 2023 als Entwurf vor. Im Vereinigten Königreich wurde COBie in BS 1192-4:2014 aufgenommen. <span class="tag">Noch zu bestätigen</span></p>
+      </div>
+      <div class="card w6"><p class="table-note" style="margin:0">Quellen: <a href="https://www.buildingsmart.org/?p=30065" target="_blank" rel="noopener">buildingSMART: IDS 1.0</a> · <a href="https://nibs.org/nbims/v3/cobie/2-4/" target="_blank" rel="noopener">NIBS: COBie 2.4</a> · <a href="https://www.nationalbimstandard.org/files/pdfs/2023-05-26NBIMS-US_COBie_v3_Standard_DRAFT-20230501.pdf" target="_blank" rel="noopener">Entwurf COBie v3</a> · <a href="https://learninglegacy.crossrail.co.uk/learning-legacy-themes/information-management-and-technology/asset-information/" target="_blank" rel="noopener">Crossrail Learning Legacy: Asset-Informationen</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-calidad">
+    <div class="b-cards">
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Frage</th><th>Woran</th><th>Womit</th><th>Wann</th></tr></thead>
+          <tbody>
+            <tr class="is-key"><td>Ist alles da?</td><td>IFC-Modell</td><td>IDS</td><td>Bei jeder Übergabe</td></tr>
+            <tr><td>Lässt es sich verknüpfen?</td><td>GlobalId, Kennzeichen, Datenpunkte</td><td>Skript zum Tabellenabgleich</td><td>Beim Anbinden und nach jeder Änderung</td></tr>
+            <tr><td>Ergibt es Sinn?</td><td>Semantischer Graph</td><td>SHACL</td><td>Beim Erzeugen oder Ändern des Graphen</td></tr>
+            <tr><td>Sind die Daten gut?</td><td>Zeitreihen</td><td>Automatische Qualitätsregeln</td><td>Laufend</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w6 y"><span class="c-label">Ein Gedanke</span><p>Die ersten beiden werden einmal pro Übergabe geprüft, die letzten beiden ständig überwacht. Ein abgenommener Zwilling kann in wenigen Wochen verfallen, wenn niemand auf die Daten schaut.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-ids">
+    <div class="b-cards">
+      <div class="card w4 k">
+        <h4>Zwei Anforderungen für den Zwilling</h4>
+<pre><code>&lt;specification name="Sensor mit Kennzeichen und Raum" ifcVersion="IFC4"&gt;
+  &lt;applicability minOccurs="1" maxOccurs="unbounded"&gt;
+    &lt;entity&gt;&lt;name&gt;&lt;simpleValue&gt;IFCSENSOR&lt;/simpleValue&gt;&lt;/name&gt;&lt;/entity&gt;
+  &lt;/applicability&gt;
+  &lt;requirements&gt;
+    &lt;attribute&gt;
+      &lt;name&gt;&lt;simpleValue&gt;Tag&lt;/simpleValue&gt;&lt;/name&gt;
+      &lt;value&gt;&lt;xs:restriction base="xs:string"&gt;
+        &lt;xs:pattern value="[A-Z]{2}-[0-9]{3}"/&gt;
+      &lt;/xs:restriction&gt;&lt;/value&gt;
+    &lt;/attribute&gt;
+    &lt;partOf relation="IFCRELCONTAINEDINSPATIALSTRUCTURE"&gt;
+      &lt;entity&gt;&lt;name&gt;&lt;simpleValue&gt;IFCSPACE&lt;/simpleValue&gt;&lt;/name&gt;&lt;/entity&gt;
+    &lt;/partOf&gt;
+  &lt;/requirements&gt;
+&lt;/specification&gt;
+&lt;specification name="Anlage mit Hersteller und Seriennummer" ifcVersion="IFC4"&gt;
+  &lt;applicability minOccurs="0" maxOccurs="unbounded"&gt;
+    &lt;entity&gt;&lt;name&gt;&lt;simpleValue&gt;IFCPUMP&lt;/simpleValue&gt;&lt;/name&gt;&lt;/entity&gt;
+  &lt;/applicability&gt;
+  &lt;requirements&gt;
+    &lt;property dataType="IFCLABEL"&gt;
+      &lt;propertySet&gt;&lt;simpleValue&gt;Pset_ManufacturerTypeInformation&lt;/simpleValue&gt;&lt;/propertySet&gt;
+      &lt;baseName&gt;&lt;simpleValue&gt;Manufacturer&lt;/simpleValue&gt;&lt;/baseName&gt;
+    &lt;/property&gt;
+    &lt;property dataType="IFCIDENTIFIER"&gt;
+      &lt;propertySet&gt;&lt;simpleValue&gt;Pset_ManufacturerOccurrence&lt;/simpleValue&gt;&lt;/propertySet&gt;
+      &lt;baseName&gt;&lt;simpleValue&gt;SerialNumber&lt;/simpleValue&gt;&lt;/baseName&gt;
+    &lt;/property&gt;
+  &lt;/requirements&gt;
+&lt;/specification&gt;</code></pre>
+      </div>
+      <div class="card w2">
+        <h4>Ergebnis</h4>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Element</th><th>Bestanden?</th></tr></thead>
+          <tbody>
+            <tr class="is-key"><td>TT-104</td><td>✓</td></tr>
+            <tr><td>„sonda 5“</td><td>✗ Kennzeichen</td></tr>
+            <tr><td>QT-106</td><td>✗ im Geschoss, nicht im Raum</td></tr>
+            <tr class="is-key"><td>Pumpe B-01</td><td>✓</td></tr>
+            <tr><td>Pumpe B-02</td><td>✗ ohne Herstellerangaben</td></tr>
+          </tbody>
+        </table></div>
+        <p class="table-note">Getestet mit IfcTester 0.9.0 (IfcOpenShell) an einem für diesen Beitrag erzeugten IFC4-Testmodell.</p>
+      </div>
+      <div class="card w3 y"><span class="c-label">Warum der Raum</span><p>Hängt der Sensor am Geschoss statt am Raum, weiß der Zwilling nicht, welchen Raum er misst. Das ist der häufigste Fehler und der teuerste, wenn er später behoben wird. <span class="tag">Abgeleitet</span></p></div>
+      <div class="card w3 g"><h4>Grenzen von IDS</h4><p>IDS prüft, ob die Angabe vorhanden und richtig geformt ist. Nicht geprüft wird, ob das Kennzeichen mit dem im Regelungssystem übereinstimmt: Das ist ein Tabellenabgleich außerhalb des IFC.</p></div>
+      <div class="card w6"><p class="table-note" style="margin:0">Quellen: <a href="https://www.buildingsmart.org/standards/bsi-standards/information-delivery-specifications-ids/" target="_blank" rel="noopener">buildingSMART IDS</a> · <a href="https://docs.ifcopenshell.org/ifctester.html" target="_blank" rel="noopener">IfcTester</a> · <a href="https://standards.buildingsmart.org/IFC/RELEASE/IFC4_3/HTML/lexical/Pset_ManufacturerOccurrence.htm" target="_blank" rel="noopener">Pset_ManufacturerOccurrence</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-shacl">
+    <div class="b-cards">
+      <div class="card w3 g">
+        <h4>Der Testgraph (Brick, Turtle)</h4>
+<pre><code>:CL-01    a brick:AHU ; brick:feeds :VAV-104 .
+:VAV-104  a brick:VAV ; brick:feeds :Zona-104 .
+:Zona-104 a rec:HVACZone ; rec:hasPart :P01-104 .
+:P01-104  a rec:Room .
+:TT-104   a brick:Zone_Air_Temperature_Sensor ;
+          brick:isPointOf :Zona-104 ;
+          brick:hasUnit unit:DEG_C .
+:QT-106   a brick:CO2_Sensor ;
+          brick:isPointOf :P01-104 ;
+          brick:hasUnit unit:DEG_C .   # Fehler
+:VAV-104  brick:hasPoint :P01-104 .    # Fehler
+:TT-104   brick:hasPoint :VAV-104 .    # Fehler</code></pre>
+      </div>
+      <div class="card w3 k">
+        <h4>Die eigenen Regeln (SHACL)</h4>
+<pre><code>:SondaCO2 a sh:NodeShape ;
+  sh:targetClass brick:CO2_Sensor ;
+  sh:property [ sh:path brick:hasUnit ;
+    sh:hasValue unit:PPM ;
+    sh:message "CO2 wird in ppm angegeben" ] .
+
+:Punto a sh:NodeShape ;
+  sh:targetObjectsOf brick:hasPoint ;
+  sh:class brick:Point ;
+  sh:message "hasPoint zeigt nur auf Datenpunkte" .</code></pre>
+      </div>
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Validierung</th><th>Projektfehler</th><th>Ergebnis</th></tr></thead>
+          <tbody>
+            <tr><td>Nur die Shapes von Brick 1.5</td><td class="num">0</td><td>Warnt, dass <code>brick:Room</code> und <code>brick:HVAC_Zone</code> veraltet sind (<code>rec:</code> verwenden), lässt aber CO₂ in Grad durch</td></tr>
+            <tr class="is-key"><td>Brick + eigene Regeln</td><td class="num">3</td><td>QT-106 misst nicht in ppm · P01-104 und VAV-104 sind keine Datenpunkte</td></tr>
+          </tbody>
+        </table></div>
+        <p class="table-note">Getestet mit brickschema 0.8.0 (Brick 1.5) und pySHACL. Die QUDT-Einheiten wurden von Hand deklariert, weil der Test ohne Verbindung zum vollständigen Vokabular lief.</p>
+      </div>
+      <div class="card w6 y"><span class="c-label">Die Lehre</span><p>Die mitgelieferten Shapes des Vokabulars prüfen, ob der Graph korrekt aufgebaut ist. Die Projektregeln (welche Einheit, woran jeder Sensor hängt) müssen Sie selbst schreiben, genau wie die IDS.</p></div>
+      <div class="card w6"><p class="table-note" style="margin:0">Quellen: <a href="https://www.w3.org/TR/shacl/" target="_blank" rel="noopener">W3C SHACL</a> · <a href="https://github.com/BrickSchema/py-brickschema" target="_blank" rel="noopener">py-brickschema</a> · <a href="https://brickschema.org/" target="_blank" rel="noopener">Brick</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-datos-sensor">
+    <div class="b-cards">
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Fehler</th><th>Erscheinungsbild</th><th>Automatische Regel</th></tr></thead>
+          <tbody>
+            <tr><td>Lücke</td><td>Messwerte fehlen</td><td>Anteil empfangener gegenüber erwarteten Messwerten pro Stunde</td></tr>
+            <tr><td>Eingefroren</td><td>Stundenlang derselbe Wert</td><td>Varianz null in einem Zeitfenster</td></tr>
+            <tr><td>Ausreißer</td><td>Ein unmöglicher Wert</td><td>Physikalischer Bereich (ein Raum hat keine 80 °C) und maximaler Sprung pro Minute</td></tr>
+            <tr class="is-key"><td>Drift</td><td>Steigt oder fällt langsam ohne Grund</td><td>Vergleich mit einem Nachbar- oder Referenzsensor; regelmäßige Kalibrierung</td></tr>
+            <tr><td>Zeit</td><td>Messwerte in falscher Reihenfolge oder um eine Stunde verschoben</td><td>Zeitstempel in UTC und Dublettenprüfung</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w3 y"><span class="c-label">Eine Kennzahl, die Gold wert ist</span><p>Anteil gesunder Datenpunkte des Zwillings, täglich. Sinkt er, lügt der Zwilling, auch wenn der Viewer gleich aussieht. <span class="tag">Abgeleitet</span></p></div>
+      <div class="card w3 g"><h4>Und die Latenz</h4><p>Die Zeit zwischen Messung und Eingang auf der Plattform. Für die Instandhaltung spielt eine Minute keine Rolle, für einen Sicherheitsalarm schon.</p></div>
+      <div class="card w6"><p class="table-note" style="margin:0">Quellen: <a href="https://www.w3.org/TR/vocab-ssn/" target="_blank" rel="noopener">W3C SSN/SOSA (Verfahrensmetadaten)</a> · <a href="https://learn.microsoft.com/en-us/azure/digital-twins/concepts-models" target="_blank" rel="noopener">DTDL: Einheiten</a> · Es gibt keine eigene Norm zur Sensordatenqualität für Zwillinge: Die Regeln der Tabelle sind gängige Praxis <span class="tag">Abgeleitet</span>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-glosario">
+<div class="b-cards"><div class="card w6">
+<dl class="glossary">
+      <dt>Digitaler Zwilling</dt><dd>Digitales Abbild eines physischen Assets, das über Daten mit ihm verbunden ist und so synchron bleibt.</dd>
+      <dt>Digitaler Schatten</dt><dd>Abbild, das automatisch Daten vom Asset erhält, dessen Entscheidungen aber manuell zurückfließen.</dd>
+      <dt>AIM</dt><dd>Asset-Informationsmodell (ISO 19650): die Informationen für Betrieb und Instandhaltung.</dd>
+      <dt>AIR</dt><dd>Asset-Informationsanforderungen: welche Daten der Eigentümer zu jedem Asset verlangt.</dd>
+      <dt>GlobalId</dt><dd>Eindeutige, dauerhafte Kennung jedes IFC-Objekts mit 22 Zeichen.</dd>
+      <dt>COBie</dt><dd>Übergabetabellen zu Anlagen, Räumen und Gewährleistungen für den Betreiber.</dd>
+      <dt>Brick</dt><dd>Offene Ontologie, die Gebäudetechnik, Anlagen, Datenpunkte und ihre Beziehungen beschreibt.</dd>
+      <dt>DTDL</dt><dd>JSON-LD-Sprache zur Definition von Zwillingsmodellen: Eigenschaften, Telemetrie, Beziehungen und Befehle.</dd>
+      <dt>SHACL</dt><dd>W3C-Sprache für Regeln, die ein RDF-Graph erfüllen muss.</dd>
+      <dt>IDS</dt><dd>XML-Datei von buildingSMART mit Anforderungen, die ein IFC erfüllen muss.</dd>
+      <dt>MQTT</dt><dd>Leichtgewichtiges Publish-Subscribe-Nachrichtenprotokoll, üblich zwischen Gateways und Cloud.</dd>
+      <dt>BACnet</dt><dd>Kommunikationsprotokoll der Gebäudeautomation (ISO 16484-5).</dd>
+      <dt>Drift</dt><dd>Langsame Abweichung eines Sensors vom tatsächlichen Wert; wird durch Kalibrieren korrigiert.</dd>
+</dl>
+<p class="table-note">Vollständiges Glossar der Serie: <a href="../../glosario/">Glossar</a>.</p>
+</div></div>
+  </template>
+
+  <template id="l2-fuentes">
+<div class="b-cards"><div class="card w6">
+<p>Vorrang haben Normen, Institutionen und offizielle Dokumentation. Was sich nicht mit der Originalquelle abgleichen ließ, ist mit <span class="tag">Noch zu bestätigen</span> markiert. Die vollständige Datenbasis (69 bewertete Quellen und 41 Begriffe) liegt im Projektordner.</p>
+</div></div>
+<div class="b-cards">
+<div class="card w6">
+<h4>Grundlagen</h4>
+<ul class="sources">
+          <li><a href="https://www.digitaltwinconsortium.org/initiatives/the-definition-of-a-digital-twin/" target="_blank" rel="noopener">Digital Twin Consortium: Definition</a></li>
+          <li><a href="https://www.cdbb.cam.ac.uk/DFTG/GeminiPrinciples" target="_blank" rel="noopener">The Gemini Principles (CDBB, 2018)</a></li>
+          <li><a href="https://arup.com/globalassets/downloads/insights/digital-twin-towards-a-meaningful-framework.pdf" target="_blank" rel="noopener">Arup (2019): Digital twin, towards a meaningful framework</a></li>
+          <li><a href="https://doi.org/10.1016/j.ifacol.2018.08.474" target="_blank" rel="noopener">Kritzinger et al. (2018): Modell, Schatten und Zwilling</a></li>
+          <li><a href="https://arxiv.org/pdf/2203.12867" target="_blank" rel="noopener">Qi et al. (2022): Revisiting Digital Twins</a></li>
+          <li><a href="https://www.theiet.org/media/8762/digital-twins-for-the-built-environment.pdf" target="_blank" rel="noopener">IET und Atkins (2019): Digital twins for the built environment</a></li>
+          <li><a href="https://www.arcom.ac.uk/-docs/proceedings/ar2004-0373-0381_Hughes_et_al.pdf" target="_blank" rel="noopener">Hughes et al. (2004): der Mythos 1:5:200</a></li>
+          <li><a href="https://www.codigotecnico.org/pdf/Documentos/SE/DBSE.pdf" target="_blank" rel="noopener">CTE DB SE</a></li>
+        </ul>
+</div>
+<div class="card w6">
+<h4>Normen</h4>
+<ul class="sources">
+          <li><a href="https://www.iso.org/standard/81442.html" target="_blank" rel="noopener">ISO/IEC 30173:2023</a></li>
+          <li><a href="https://www.iso.org/standard/81578.html" target="_blank" rel="noopener">ISO/IEC TR 30172:2023</a></li>
+          <li><a href="https://www.iso.org/standard/68078.html" target="_blank" rel="noopener">ISO 19650-1</a></li>
+          <li><a href="https://www.buildingsmart.org/?p=29521" target="_blank" rel="noopener">IFC 4.3 / ISO 16739-1:2024</a></li>
+          <li><a href="https://www.buildingsmart.org/?p=30065" target="_blank" rel="noopener">IDS 1.0</a></li>
+          <li><a href="https://brickschema.org/" target="_blank" rel="noopener">Brick</a></li>
+          <li><a href="https://project-haystack.org/" target="_blank" rel="noopener">Project Haystack</a></li>
+          <li><a href="https://www.realestatecore.io/" target="_blank" rel="noopener">RealEstateCore</a></li>
+          <li><a href="https://www.w3.org/TR/vocab-ssn/" target="_blank" rel="noopener">W3C SSN/SOSA</a></li>
+          <li><a href="https://www.ogc.org/standards/sensorthings/" target="_blank" rel="noopener">OGC SensorThings API</a></li>
+          <li><a href="https://azure.github.io/opendigitaltwins-dtdl/DTDL/v3/DTDL.v3.html" target="_blank" rel="noopener">DTDL v3</a></li>
+          <li><a href="https://www.w3.org/TR/shacl/" target="_blank" rel="noopener">W3C SHACL</a></li>
+        </ul>
+</div>
+<div class="card w6">
+<h4>Software und Plattformen</h4>
+<ul class="sources">
+          <li><a href="https://www.autodesk.com/products/tandem/overview" target="_blank" rel="noopener">Autodesk Tandem</a></li>
+          <li><a href="https://developer.bentley.com/" target="_blank" rel="noopener">Bentley iTwin</a></li>
+          <li><a href="https://www.bentley.com/news/bentley-systems-acquires-3d-geospatial-company-cesium/" target="_blank" rel="noopener">Bentley übernimmt Cesium</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/azure/digital-twins/overview" target="_blank" rel="noopener">Azure Digital Twins</a></li>
+          <li><a href="https://docs.aws.amazon.com/iot-twinmaker/latest/guide/what-is-twinmaker.html" target="_blank" rel="noopener">AWS IoT TwinMaker</a></li>
+          <li><a href="https://eclipse.dev/ditto/basic-wot-integration.html" target="_blank" rel="noopener">Eclipse Ditto</a></li>
+          <li><a href="https://github.com/WillowInc/opendigitaltwins-building" target="_blank" rel="noopener">Willow: DTDL-Ontologie</a></li>
+          <li><a href="https://docs.ifcopenshell.org/ifctester.html" target="_blank" rel="noopener">IfcTester</a></li>
+          <li><a href="https://github.com/BrickSchema/py-brickschema" target="_blank" rel="noopener">py-brickschema</a></li>
+        </ul>
+</div>
+<div class="card w6">
+<h4>Praxisbeispiele</h4>
+<ul class="sources">
+          <li><a href="https://learninglegacy.crossrail.co.uk/learning-legacy-themes/information-management-and-technology/asset-information/" target="_blank" rel="noopener">Crossrail: Asset-Informationen</a></li>
+          <li><a href="https://www.govtech.com/fs/Virtual-Singapore-Is-More-Than-Just-a-3-D-Model-Its-an-Intelligent-Rendering-of-the-City.html" target="_blank" rel="noopener">Virtual Singapore</a></li>
+          <li><a href="https://strainstall.com/case-studies/structural-monitoring-queensferry-crossing/" target="_blank" rel="noopener">Queensferry Crossing</a></li>
+          <li><a href="https://depts.washington.edu/trac/bulkdisk/pdf/STIC_Interstate90DigitalTwinFloatingBridgeProject_FHWAReport_FINALMay2026.pdf" target="_blank" rel="noopener">Schwimmbrücke I-90 (FHWA, 2026)</a></li>
+          <li><a href="https://news.yvr.ca/yvr-and-unity-accelerate-digital-transformation-in-aviation-with-yvrs-digital-twin-platform/" target="_blank" rel="noopener">Flughafen Vancouver</a></li>
+          <li><a href="https://diario.madrid.es/blog/notas-de-prensa/el-ayuntamiento-autoriza-el-contrato-para-comenzar-a-crear-el-gemelo-digital-de-madrid/" target="_blank" rel="noopener">Digitaler Zwilling Madrid</a></li>
+        </ul>
+</div>
+</div>
+  </template>
+
+  <script src="../../../assets/js/serie.js"></script>
+  <script src="../../../assets/js/paises.js"></script>
+  <script src="../../../assets/i18n/de/paises.js"></script>
+  <script src="../../../assets/i18n/paginas.js"></script>
+  <script src="../../../assets/i18n/de/ui.js"></script>
+  <script src="../../../assets/js/idioma.js"></script>
+  <script src="../../../assets/js/web.js"></script>
+  <script src="../../../assets/js/precision.js"></script>
+</body>
+</html>
