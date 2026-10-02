@@ -209,6 +209,84 @@
   slides.forEach((s) => io.observe(s));
   setCurrent(0);
 
+
+  // Iconos de programas y formatos (monogramas con los colores de la web, no los logotipos)
+  const SW = [
+    ['Autodesk Construction Cloud', 'ACC', 'p'], ['Autodesk Docs', 'Do', 'p'], ['Trimble Connect', 'TC', 'p'], ['BIMcollab Zoom', 'Zm', 'p'], ['BIMcollab', 'BC', 'p'],
+    ['Model Checker', 'MC', 'p'], ['IFCGeoRefChecker', 'GR', 'p'], ['IfcOpenShell', 'IOS', 'p'], ['IfcTester', 'IT', 'p'], ['IfcGref', 'Gf', 'p'], ['IFC Georeferencer', 'Gr', 'p'],
+    ['Civil 3D', 'C3D', 'p'], ['Navisworks', 'Nw', 'p'], ['Revit', 'Rv', 'p'], ['Archicad', 'Ac', 'p'], ['Tekla', 'Tk', 'p'], ['Allplan', 'Al', 'p'], ['Vectorworks', 'Vw', 'p'],
+    ['BricsCAD', 'Bc', 'p'], ['Bentley iTwin', 'iT', 'p'], ['Bentley', 'Bn', 'p'], ['Bonsai', 'Bo', 'p'], ['Solibri', 'Sb', 'p'], ['ArcGIS', 'Ag', 'p'], ['Forma', 'Fo', 'p'],
+    ['ReCap', 'Rc', 'p'], ['Dynamo', 'Dy', 'p'], ['CloudCompare', 'CC', 'p'], ['epsg.io', 'ep', 'p'],
+    ['IDS', 'IDS', 'e'], ['IFC', 'IFC', 'e'], ['DWG', 'DWG', 'f'], ['RVT', 'RVT', 'f'], ['E57', 'E57', 'f'], ['LAS', 'LAS', 'f'], ['NWC', 'NWC', 'f'], ['XML', 'XML', 'f']
+  ];
+  const swIcon = (el) => {
+    if (!el || el.querySelector('.sw')) return;
+    const t = el.textContent.trim();
+    const hit = SW.find(([n]) => t === n || t.startsWith(n + ' ') || t.startsWith(n + ':') || t.startsWith(n + ',') || t.startsWith(n + '·') || t.startsWith(n + ' ·'));
+    if (!hit) return;
+    const i = document.createElement('span');
+    i.className = 'sw sw-' + hit[2]; i.setAttribute('aria-hidden', 'true'); i.textContent = hit[1];
+    i.title = hit[0];
+    el.prepend(i);
+  };
+  const swDecorate = (root) => root.querySelectorAll('.card .c-label, .b-title .kicker-y, .l2-head .kicker-y, .card h4, .table-wrap td:first-child, .table-wrap th').forEach((el) => {
+    const s = el.closest('.slide');
+    if (s && s.dataset.capI === '0') return; // bloque I: sin nombres de software
+    swIcon(el);
+  });
+  slides.forEach((s, i) => { s.dataset.capI = String(caps.slice(0, i + 1).filter((c, j) => slides[j].dataset.cap).length - 1); });
+  swDecorate(document);
+
+  // Lector de coordenadas: un cursor que se arrastra y se lee en tres sistemas
+  document.querySelectorAll('.lector').forEach((el) => {
+    const E0 = +el.dataset.e0, N0 = +el.dataset.n0, S = 10; // 10 px = 1 m
+    const IO = [80, 240], PB = [150, 200], V = [480, 80];
+    const f = (v) => { const [n, d] = Math.abs(v).toFixed(2).split('.'); return (v < 0 ? '−' : '') + n.replace(/\B(?=(\d{3})+$)/g, '\u00a0') + ',' + d; };
+    el.innerHTML = `
+      <div class="lector-bar"><span class="label">Survey Point</span>
+        <button type="button" class="chip is-on" data-sp="clip">Con clip</button><button type="button" class="chip" data-sp="libre">Sin clip, en el vértice</button></div>
+      <svg viewBox="0 0 600 300" class="lector-svg" role="img" aria-label="Plano con origen interno, punto base, vértice topográfico y un cursor que se puede arrastrar">
+        <g stroke="#E3E3DB" stroke-width="1">${Array.from({ length: 15 }, (_, k) => `<line x1="${k * 40 + 20}" y1="0" x2="${k * 40 + 20}" y2="300"/>`).join('')}${Array.from({ length: 8 }, (_, k) => `<line x1="0" y1="${k * 40}" x2="600" y2="${k * 40}"/>`).join('')}</g>
+        <rect x="200" y="110" width="180" height="100" fill="#fff" stroke="#000" stroke-width="3"/><text x="210" y="130" font-family="JetBrains Mono, monospace" font-size="11">edificio</text>
+        <path d="M${IO[0]} ${IO[1]} h40 M${IO[0]} ${IO[1]} v-40" stroke="#000" stroke-width="2.5"/><circle cx="${IO[0]}" cy="${IO[1]}" r="5" fill="#000"/><text x="${IO[0] + 6}" y="${IO[1] + 18}" font-family="JetBrains Mono, monospace" font-size="11">origen interno</text>
+        <circle cx="${PB[0]}" cy="${PB[1]}" r="8" fill="#fff" stroke="#000" stroke-width="2.5"/><path d="M${PB[0] - 8} ${PB[1]} h16 M${PB[0]} ${PB[1] - 8} v16" stroke="#000" stroke-width="2"/><text x="${PB[0] + 12}" y="${PB[1] + 4}" font-family="JetBrains Mono, monospace" font-size="11">punto base</text>
+        <polygon points="${V[0]},${V[1] - 10} ${V[0] + 9},${V[1] + 6} ${V[0] - 9},${V[1] + 6}" fill="none" stroke="#000" stroke-width="2.5"/><text x="${V[0] + 14}" y="${V[1] + 4}" font-family="JetBrains Mono, monospace" font-size="11">vértice</text>
+        <g class="lector-sp"><circle r="11" fill="#FFFF00" stroke="#000" stroke-width="3"/><path d="M-11 0 h22 M0 -11 v22" stroke="#000" stroke-width="2"/></g>
+        <g class="lector-far"><path d="M60 290 L14 296" stroke="#000" stroke-width="2.5"/><polygon points="6,297 18,290 18,302" fill="#000"/><text x="66" y="294" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700">Survey Point y origen compartido: a 440 km</text></g>
+        <g class="lector-cur" style="cursor:grab"><circle r="16" fill="transparent"/><circle r="6" fill="#000"/><path d="M-14 0 h28 M0 -14 v28" stroke="#000" stroke-width="1.5"/></g>
+      </svg>
+      <div class="lector-out">
+        <div><span class="label">Desde el origen interno</span><b data-o="io"></b></div>
+        <div><span class="label">Desde el punto base</span><b data-o="pb"></b></div>
+        <div class="is-key"><span class="label">Coordenadas compartidas</span><b data-o="sh"></b></div>
+        <div class="k"><span class="label">El Survey Point marca</span><b data-o="sp"></b></div>
+      </div>`;
+    const svg = el.querySelector('svg'), cur = el.querySelector('.lector-cur'), sp = el.querySelector('.lector-sp'), far = el.querySelector('.lector-far');
+    let P = [300, 160], mode = 'clip';
+    const xy = (p, o) => [(p[0] - o[0]) / S, (o[1] - p[1]) / S];
+    const draw = () => {
+      cur.setAttribute('transform', `translate(${P[0]} ${P[1]})`);
+      const a = xy(P, IO), b = xy(P, PB);
+      el.querySelector('[data-o="io"]').textContent = `x ${f(a[0])} · y ${f(a[1])}`;
+      el.querySelector('[data-o="pb"]').textContent = `x ${f(b[0])} · y ${f(b[1])}`;
+      el.querySelector('[data-o="sh"]').textContent = `E ${f(E0 + a[0])} · N ${f(N0 + a[1])}`;
+      const v = xy(V, IO);
+      el.querySelector('[data-o="sp"]').textContent = mode === 'clip' ? 'E 0,00 · N 0,00 (su sitio es el origen)' : `E ${f(E0 + v[0])} · N ${f(N0 + v[1])}`;
+      sp.style.display = mode === 'clip' ? 'none' : ''; far.style.display = mode === 'clip' ? '' : 'none';
+      sp.setAttribute('transform', `translate(${V[0]} ${V[1]})`);
+    };
+    const pt = (e) => { const r = svg.getBoundingClientRect(); return [Math.max(10, Math.min(590, (e.clientX - r.left) / r.width * 600)), Math.max(10, Math.min(290, (e.clientY - r.top) / r.height * 300))]; };
+    let drag = false;
+    svg.style.touchAction = 'none';
+    svg.addEventListener('pointerdown', (e) => { drag = true; svg.setPointerCapture(e.pointerId); P = pt(e); draw(); });
+    svg.addEventListener('pointermove', (e) => { if (drag) { P = pt(e); draw(); } });
+    svg.addEventListener('pointerup', () => { drag = false; });
+    el.querySelectorAll('[data-sp]').forEach((b) => b.addEventListener('click', () => {
+      mode = b.dataset.sp; el.querySelectorAll('[data-sp]').forEach((x) => x.classList.toggle('is-on', x === b)); draw();
+    }));
+    draw();
+  });
+
   // Capa 2
   const modal = document.getElementById('l2-modal');
   const body = document.getElementById('l2-body');
@@ -221,6 +299,7 @@
     const kicker = (slide.querySelector('.kicker-y') || {}).textContent || '';
     body.innerHTML = `<div class="l2-head"><span class="kicker-y">${kicker}</span><span class="label">Capa 2 · ${pad(i + 1)} / ${total}${i >= 0 && caps[i] ? ' · ' + caps[i] : ''}</span><h3>${tpl.dataset.title || titleOf(slide)}</h3></div>`;
     body.appendChild(tpl.content.cloneNode(true));
+    if (slide.dataset.capI !== '0') swDecorate(body);
     opener = btn || null;
     modal.classList.add('is-visible');
     document.body.classList.add('l2-lock');

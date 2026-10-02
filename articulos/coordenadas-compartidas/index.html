@@ -31,14 +31,14 @@
 
   <!-- Menú de diapositivas: se rellena con data-nav de cada <section> -->
   <aside id="deck-nav" aria-label="Diapositivas">
-    <span class="kicker-y">Coordenadas · 36 ideas</span>
+    <span class="kicker-y">Coordenadas · 37 ideas</span>
     <ol></ol>
     <div id="deck-progress" aria-hidden="true"><i></i></div>
   </aside>
   <div id="deck-bar">
     <div id="deck-sheet"><ol></ol></div>
     <button type="button" id="deck-bar-btn" aria-expanded="false" aria-controls="deck-sheet">
-      <span class="n">01/36</span><span class="t">Portada</span>
+      <span class="n">01/37</span><span class="t">Portada</span>
       <span class="chev" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M3 9l4-4 4 4" fill="none" stroke="#fff" stroke-width="2"/></svg></span>
     </button>
   </div>
@@ -67,7 +67,7 @@
             <ol class="mapa">
               <li class="is-key"><a href="#problema"><b>I</b><span>Conceptos generales</span><em>14 ideas · para cualquier programa</em></a></li>
               <li><a href="#espana"><b>II</b><span>Estándares</span><em>3 ideas · EPSG, IFC, ISO 19650</em></a></li>
-              <li><a href="#limites"><b>III</b><span>Software</span><em>6 ideas · Revit, campus y tipologías</em></a></li>
+              <li><a href="#limites"><b>III</b><span>Software</span><em>7 ideas · Revit, Survey Point, campus y tipologías</em></a></li>
               <li><a href="#coordinacion"><b>IV</b><span>Plataformas</span><em>2 ideas · visores y nube</em></a></li>
               <li><a href="#civil3d"><b>V</b><span>Interoperabilidad</span><em>2 ideas · intercambio y errores</em></a></li>
             <li><a href="#calidad"><b>VI</b><span>Control de calidad</span><em>8 ideas · IDS, IfcOpenShell, Model Checker, Solibri</em></a></li>
@@ -116,6 +116,7 @@
         </div>
       </div>
     </section>
+
     <!-- ========== LA FORMA DE LA TIERRA ========== -->
     <section class="slide" id="tierra" data-nav="La forma de la Tierra">
       <div class="bento">
@@ -248,6 +249,88 @@
       </div>
     </section>
 
+    <!-- ========== NORTES ========== -->
+    <section class="slide" id="nortes" data-nav="Cuatro nortes">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Orientación</span>
+          <h2 class="display">Cuatro nortes<span class="dot">.</span></h2>
+          <p class="slide-lead">En IFC, la rotación se mide respecto al norte de cuadrícula, no al geográfico.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="nortes"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w3 g">
+            <span class="c-label">Brújula BIM</span>
+            <svg class="draw" viewBox="0 0 300 250" role="img" aria-label="Cuatro flechas de norte: cuadrícula, geográfico, magnético y proyecto">
+              <g transform="translate(150,225)" font-family="JetBrains Mono, monospace" font-size="11">
+                <g transform="rotate(-4)"><line y2="-170" stroke="#8F8F87" stroke-width="3"/></g>
+                <line y2="-185" stroke="#000" stroke-width="6"/><polygon points="-9,-175 0,-200 9,-175" fill="#000"/>
+                <g transform="rotate(9)"><line y2="-140" stroke="#D5D5CB" stroke-width="3" stroke-dasharray="6 5"/></g>
+                <g transform="rotate(-38)"><line y2="-150" stroke="#000" stroke-width="3"/><polygon points="-6,-142 0,-160 6,-142" fill="#000"/></g>
+                <circle r="6" fill="#000"/>
+              </g>
+            </svg>
+          </div>
+          <div class="card w3">
+            <div class="row"><span style="width:26px;height:6px;background:#000"></span><span class="c-title">Cuadrícula</span><span class="badge y">IFC</span></div>
+            <div class="row"><span style="width:26px;height:3px;background:#8F8F87"></span><span class="c-title" style="color:var(--s600)">Geográfico</span></div>
+            <div class="row"><span style="width:26px;height:0;border-top:3px dashed #D5D5CB"></span><span class="c-title" style="color:var(--s400)">Magnético</span></div>
+            <div class="row"><span style="width:26px;height:3px;background:#000;transform:rotate(-38deg)"></span><span class="c-title">Proyecto</span></div>
+          </div>
+          <div class="card w6 k">
+            <span class="c-label">Convergencia de meridianos en España</span>
+            <div class="row" style="justify-content:space-between;flex-wrap:wrap"><b class="c-num">≈ 2°</b><span class="c-text">entre geográfico y cuadrícula en los bordes del huso</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== ESCALA Y ALTURAS ========== -->
+    <section class="slide" id="escala" data-nav="Alturas y escala">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Alturas y escala</span>
+          <h2 class="display">Un metro UTM no es un metro de obra<span class="dot">.</span></h2>
+          <p class="slide-lead">La proyección deforma las distancias y hay dos alturas distintas. Hay que elegir y escribirlo.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="escala"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w4 g">
+            <span class="c-label">Dos alturas para un mismo punto</span>
+            <svg class="draw" viewBox="0 0 400 200" role="img" aria-label="Terreno, geoide y elipsoide; h es la altura elipsoidal, H la ortométrica y N la diferencia">
+              <path d="M0 60 C80 30 160 70 240 40 S360 50 400 30" fill="none" stroke="#000" stroke-width="3"/>
+              <text x="8" y="36" font-family="JetBrains Mono, monospace" font-size="11">terreno</text>
+              <path d="M0 120 C100 105 200 135 300 115 S380 118 400 112" fill="none" stroke="#000" stroke-width="2" stroke-dasharray="7 5"/>
+              <text x="8" y="140" font-family="JetBrains Mono, monospace" font-size="11">geoide (nivel del mar)</text>
+              <line x1="0" y1="176" x2="400" y2="176" stroke="#8F8F87" stroke-width="2"/>
+              <text x="8" y="194" font-family="JetBrains Mono, monospace" font-size="11" fill="#666">elipsoide</text>
+              <circle cx="250" cy="41" r="6" fill="#FFFF00" stroke="#000" stroke-width="2"/>
+              <line x1="250" y1="47" x2="250" y2="117" stroke="#000" stroke-width="2.5"/><text x="258" y="86" font-family="JetBrains Mono, monospace" font-size="13" font-weight="700">H</text>
+              <line x1="320" y1="47" x2="320" y2="176" stroke="#000" stroke-width="1.5"/><text x="328" y="110" font-family="JetBrains Mono, monospace" font-size="13" font-weight="700">h</text>
+              <line x1="250" y1="117" x2="250" y2="176" stroke="#8F8F87" stroke-width="2.5"/><text x="258" y="156" font-family="JetBrains Mono, monospace" font-size="13" font-weight="700" fill="#666">N</text>
+            </svg>
+            <span class="c-foot">GNSS da h · los planos usan H · N = h − H</span>
+          </div>
+          <div class="card w2 k">
+            <span class="c-label">Error en 100 m</span>
+            <b class="c-num">4<small>cm</small></b>
+            <span class="c-foot">con 400 ppm de diferencia</span>
+          </div>
+          <div class="card w3">
+            <span class="c-label">Factor de escala UTM</span>
+            <b class="c-num" style="font-size:clamp(2rem,3.4vw,3rem)">0,9996</b>
+            <span class="c-foot">en el meridiano central</span>
+          </div>
+          <div class="card w3 y">
+            <span class="c-label">Decisión para el BEP</span>
+            <div class="row"><span class="chip">Cuadrícula</span><span class="arrow" style="font-weight:900">o</span><span class="chip k">Terreno</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ========== TOPOGRAFÍA ========== -->
     <section class="slide" id="topografia" data-nav="Del campo al modelo">
       <div class="bento">
@@ -280,7 +363,6 @@
         </div>
       </div>
     </section>
-
 
     <!-- ========== LÍMITE ========== -->
     <section class="slide" id="limite" data-nav="Lejos del origen">
@@ -560,88 +642,6 @@
       </div>
     </section>
 
-    <!-- ========== NORTES ========== -->
-    <section class="slide" id="nortes" data-nav="Cuatro nortes">
-      <div class="bento">
-        <div class="b-title">
-          <span class="slide-n"></span>
-          <span class="kicker-y">Orientación</span>
-          <h2 class="display">Cuatro nortes<span class="dot">.</span></h2>
-          <p class="slide-lead">En IFC, la rotación se mide respecto al norte de cuadrícula, no al geográfico.</p>
-          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="nortes"><span class="plus">+</span> Ver detalle</button></div>
-        </div>
-        <div class="b-cards">
-          <div class="card w3 g">
-            <span class="c-label">Brújula BIM</span>
-            <svg class="draw" viewBox="0 0 300 250" role="img" aria-label="Cuatro flechas de norte: cuadrícula, geográfico, magnético y proyecto">
-              <g transform="translate(150,225)" font-family="JetBrains Mono, monospace" font-size="11">
-                <g transform="rotate(-4)"><line y2="-170" stroke="#8F8F87" stroke-width="3"/></g>
-                <line y2="-185" stroke="#000" stroke-width="6"/><polygon points="-9,-175 0,-200 9,-175" fill="#000"/>
-                <g transform="rotate(9)"><line y2="-140" stroke="#D5D5CB" stroke-width="3" stroke-dasharray="6 5"/></g>
-                <g transform="rotate(-38)"><line y2="-150" stroke="#000" stroke-width="3"/><polygon points="-6,-142 0,-160 6,-142" fill="#000"/></g>
-                <circle r="6" fill="#000"/>
-              </g>
-            </svg>
-          </div>
-          <div class="card w3">
-            <div class="row"><span style="width:26px;height:6px;background:#000"></span><span class="c-title">Cuadrícula</span><span class="badge y">IFC</span></div>
-            <div class="row"><span style="width:26px;height:3px;background:#8F8F87"></span><span class="c-title" style="color:var(--s600)">Geográfico</span></div>
-            <div class="row"><span style="width:26px;height:0;border-top:3px dashed #D5D5CB"></span><span class="c-title" style="color:var(--s400)">Magnético</span></div>
-            <div class="row"><span style="width:26px;height:3px;background:#000;transform:rotate(-38deg)"></span><span class="c-title">Proyecto</span></div>
-          </div>
-          <div class="card w6 k">
-            <span class="c-label">Convergencia de meridianos en España</span>
-            <div class="row" style="justify-content:space-between;flex-wrap:wrap"><b class="c-num">≈ 2°</b><span class="c-text">entre geográfico y cuadrícula en los bordes del huso</span></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ========== ESCALA Y ALTURAS ========== -->
-    <section class="slide" id="escala" data-nav="Alturas y escala">
-      <div class="bento">
-        <div class="b-title">
-          <span class="slide-n"></span>
-          <span class="kicker-y">Alturas y escala</span>
-          <h2 class="display">Un metro UTM no es un metro de obra<span class="dot">.</span></h2>
-          <p class="slide-lead">La proyección deforma las distancias y hay dos alturas distintas. Hay que elegir y escribirlo.</p>
-          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="escala"><span class="plus">+</span> Ver detalle</button></div>
-        </div>
-        <div class="b-cards">
-          <div class="card w4 g">
-            <span class="c-label">Dos alturas para un mismo punto</span>
-            <svg class="draw" viewBox="0 0 400 200" role="img" aria-label="Terreno, geoide y elipsoide; h es la altura elipsoidal, H la ortométrica y N la diferencia">
-              <path d="M0 60 C80 30 160 70 240 40 S360 50 400 30" fill="none" stroke="#000" stroke-width="3"/>
-              <text x="8" y="36" font-family="JetBrains Mono, monospace" font-size="11">terreno</text>
-              <path d="M0 120 C100 105 200 135 300 115 S380 118 400 112" fill="none" stroke="#000" stroke-width="2" stroke-dasharray="7 5"/>
-              <text x="8" y="140" font-family="JetBrains Mono, monospace" font-size="11">geoide (nivel del mar)</text>
-              <line x1="0" y1="176" x2="400" y2="176" stroke="#8F8F87" stroke-width="2"/>
-              <text x="8" y="194" font-family="JetBrains Mono, monospace" font-size="11" fill="#666">elipsoide</text>
-              <circle cx="250" cy="41" r="6" fill="#FFFF00" stroke="#000" stroke-width="2"/>
-              <line x1="250" y1="47" x2="250" y2="117" stroke="#000" stroke-width="2.5"/><text x="258" y="86" font-family="JetBrains Mono, monospace" font-size="13" font-weight="700">H</text>
-              <line x1="320" y1="47" x2="320" y2="176" stroke="#000" stroke-width="1.5"/><text x="328" y="110" font-family="JetBrains Mono, monospace" font-size="13" font-weight="700">h</text>
-              <line x1="250" y1="117" x2="250" y2="176" stroke="#8F8F87" stroke-width="2.5"/><text x="258" y="156" font-family="JetBrains Mono, monospace" font-size="13" font-weight="700" fill="#666">N</text>
-            </svg>
-            <span class="c-foot">GNSS da h · los planos usan H · N = h − H</span>
-          </div>
-          <div class="card w2 k">
-            <span class="c-label">Error en 100 m</span>
-            <b class="c-num">4<small>cm</small></b>
-            <span class="c-foot">con 400 ppm de diferencia</span>
-          </div>
-          <div class="card w3">
-            <span class="c-label">Factor de escala UTM</span>
-            <b class="c-num" style="font-size:clamp(2rem,3.4vw,3rem)">0,9996</b>
-            <span class="c-foot">en el meridiano central</span>
-          </div>
-          <div class="card w3 y">
-            <span class="c-label">Decisión para el BEP</span>
-            <div class="row"><span class="chip">Cuadrícula</span><span class="arrow" style="font-weight:900">o</span><span class="chip k">Terreno</span></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- ========== ESPAÑA ========== -->
     <section class="slide" id="espana" data-cap="II · Estándares" data-nav="Marco español">
       <div class="bento">
@@ -799,6 +799,25 @@
               <circle cx="310" cy="124" r="22" fill="#FFFF00" stroke="#000" stroke-width="3"/><path d="M310 96 V152 M282 124 H338" stroke="#000" stroke-width="2.5"/>
               <rect x="235" y="196" width="150" height="34" rx="17" fill="#000"/><text x="310" y="218" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="12" font-weight="700" fill="#fff">IfcMapConversion</text><path d="M310 150 V194" stroke="#000" stroke-width="2.5"/>
             </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SURVEY POINT ========== -->
+    <section class="slide" id="survey" data-nav="El Survey Point no es el origen">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Revit · Survey Point</span>
+          <h2 class="display">El Survey Point no es el origen<span class="dot">.</span></h2>
+          <p class="slide-lead">Las coordenadas compartidas tienen su propio origen. El Survey Point es una marca: con clip está en ese origen; sin clip va a un vértice y muestra sus coordenadas.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="survey"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w6">
+            <span class="c-label">Lector de coordenadas · arrastra el cursor</span>
+            <div class="lector" data-e0="440100" data-n0="4474200"></div>
           </div>
         </div>
       </div>
@@ -1390,7 +1409,7 @@
 <p>Del <a href="https://arxiv.org/pdf/2007.10951" target="_blank" rel="noopener">GeoBIM Benchmark 2019</a>: se pidió a distintos programas que interpretaran la georreferenciación de un mismo IFC y solo alrededor de un tercio lo hizo bien.</p>
 </div>
 <div class="card w3 y">
-<span class="c-label">Lo que viene</span><p>Cinco bloques: conceptos generales, estándares, software, plataformas e interoperabilidad. El primero vale para cualquier programa.</p>
+<span class="c-label">Lo que viene</span><p>Seis bloques: conceptos generales, estándares, software, plataformas, interoperabilidad y control de calidad. El primero vale para cualquier programa.</p>
 </div>
 </div>
   </template>
@@ -1868,6 +1887,41 @@
 </div>
   </template>
 
+  <template id="l2-survey">
+    <div class="b-cards">
+      <div class="card w6">
+        <h4>Tres cosas que no hay que confundir</h4>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Elemento</th><th>Qué es</th><th>Dónde está</th></tr></thead>
+          <tbody>
+            <tr class="is-key"><td>Origen de las coordenadas compartidas</td><td>El 0,0 del sistema compartido; en UTM, el del huso</td><td>Normalmente a cientos de km del modelo</td></tr>
+            <tr><td>Survey Point</td><td>Una marca que muestra sus coordenadas en ese sistema</td><td>Por defecto, en el origen; sin clip, donde se lleve</td></tr>
+            <tr><td>Punto base del proyecto</td><td>El origen de las coordenadas del proyecto</td><td>Donde convenga al replanteo del edificio</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w6">
+        <h4>Mover el Survey Point</h4>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Estado</th><th>Qué se mueve</th><th>Coordenadas compartidas del modelo</th></tr></thead>
+          <tbody>
+            <tr><td>Con clip</td><td>El sistema compartido entero, respecto al modelo</td><td>Cambian</td></tr>
+            <tr class="is-key"><td>Sin clip</td><td>Solo la marca, a otro punto del mismo sistema</td><td>No cambian</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w3 y">
+        <h4>Una trampa del menú</h4>
+        <p>En una <span class="ui">Cota de coordenada</span>, el origen «Punto de reconocimiento» mide desde el origen compartido, no desde la marca. Si la marca está sin clip en un vértice, la cota no da ceros sobre ella.</p>
+      </div>
+      <div class="card w3 k">
+        <h4>Regla práctica</h4>
+        <p>Para colocar el sistema: adquirir o especificar coordenadas, nunca arrastrar. Para ver un vértice conocido en planta: mover solo la marca, sin clip.</p>
+      </div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://help.autodesk.com/cloudhelp/2027/ENU/Revit-Model/files/GUID-4EAEF1B1-CC5B-4484-9727-91ACD90B0B78.htm" target="_blank" rel="noopener">Revit 2027: mover el Survey Point</a> · <a href="https://www.bimpure.com/blog/understanding-revits-mysterious-survey-point" target="_blank" rel="noopener">BIMpure: el misterioso Survey Point</a>. El lector usa un ejemplo sin giro entre los sistemas.</p></div>
+    </div>
+  </template>
+
   <template id="l2-revit">
 <div class="b-cards">
 <div class="card w3">
@@ -1912,18 +1966,8 @@
 <ul>
           <li><strong>Origen interno:</strong> el 0,0,0 del motor. Se puede mostrar en las vistas desde Revit 2020.2.</li>
           <li><strong>Punto base del proyecto:</strong> referencia para el replanteo y las cotas del propio proyecto. No se comparte con otros archivos.</li>
-          <li><strong>Punto de reconocimiento (Survey Point):</strong> origen de las coordenadas compartidas.</li>
+          <li><strong>Punto de reconocimiento (Survey Point):</strong> una marca dentro del sistema de coordenadas compartidas. No es su origen: se explica en «El Survey Point no es el origen».</li>
         </ul>
-</div>
-<div class="card w6">
-<h4>Mover el Survey Point</h4>
-<div class="table-wrap"><table>
-          <thead><tr><th>Estado</th><th>Al moverlo</th></tr></thead>
-          <tbody>
-            <tr><td>Con clip</td><td>Se desplaza todo el sistema compartido respecto al modelo.</td></tr>
-            <tr><td>Sin clip</td><td>Solo cambian el marcador y sus valores.</td></tr>
-          </tbody>
-        </table></div>
 </div>
 <div class="card w3">
 <h4>¿Y el punto base?</h4>
@@ -2427,7 +2471,7 @@ print("OK" if error &lt; 0.01 else f"Desvío de {error:.3f} m")</code></pre>
         <div class="table-wrap"><table>
           <thead><tr><th>Programa</th><th>Dónde mirar</th><th>Qué comprobar</th></tr></thead>
           <tbody>
-            <tr><td>Revit</td><td>Anotación <span class="ui">Cota de coordenada</span> con origen en el punto de reconocimiento</td><td>Este, Norte y elevación del cubo testigo</td></tr>
+            <tr><td>Revit</td><td>Anotación <span class="ui">Cota de coordenada</span> con origen «Punto de reconocimiento», que mide desde el origen compartido</td><td>Este, Norte y elevación del cubo testigo</td></tr>
             <tr><td>Archicad</td><td><span class="ui">Mostrar coordenadas del Survey Point</span></td><td>Las coordenadas del punto, junto a él</td></tr>
             <tr><td>Civil 3D</td><td><span class="ui">Configuración del dibujo › Unidades y zona</span></td><td>El sistema de coordenadas asignado</td></tr>
             <tr><td>Bonsai</td><td>Panel de georreferenciación</td><td>Conversión de local a global de un punto</td></tr>

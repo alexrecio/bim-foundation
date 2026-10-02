@@ -542,3 +542,26 @@ body.l2-lock { overflow: hidden; }
 .card.k code { background: rgba(255,255,255,.14); color: var(--white); border-color: transparent; }
 .card.k pre code, .card pre code { background: none; border: 0; padding: 0; color: inherit; }
 .card.k .tag { color: var(--white); border-color: var(--white); }
+
+/* Iconos de programas y formatos: monogramas con los colores de la web (no son los logotipos) */
+.sw { display: inline-flex; align-items: center; justify-content: center; min-width: 22px; height: 22px; padding: 0 4px; margin-right: 6px; border-radius: 5px; vertical-align: middle; font-family: var(--mono); font-size: 9.5px; font-weight: 700; letter-spacing: 0; text-transform: none; line-height: 1; flex: none; }
+.sw-p { background: var(--black); color: var(--accent); }
+.sw-e { background: var(--accent); color: var(--black); border: 1.5px solid var(--black); }
+.sw-f { background: var(--white); color: var(--black); border: 1.5px solid var(--black); border-radius: 2px 7px 2px 2px; }
+.card.k .sw-p { background: var(--accent); color: var(--black); }
+.kicker-y .sw { height: 18px; min-width: 18px; font-size: 8.5px; margin: -2px 6px -2px 0; }
+.c-label .sw { height: 18px; min-width: 18px; font-size: 8.5px; }
+
+/* Lector de coordenadas */
+.lector { display: grid; gap: 10px; }
+.lector-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.lector-bar .chip { cursor: pointer; font: inherit; font-family: var(--mono); font-size: 11px; }
+.lector-bar .chip.is-on { background: var(--black); color: var(--accent); }
+.lector-svg { width: 100%; height: auto; display: block; border: 1px solid var(--s200); border-radius: 6px; background: var(--white); user-select: none; }
+.lector-out { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
+@media (min-width: 1200px) { .lector-out { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.lector-out > div { padding: 8px 10px; border: 1px solid var(--s200); border-radius: 6px; min-width: 0; }
+.lector-out b { display: block; font-family: var(--mono); font-size: 12px; overflow-wrap: anywhere; }
+.lector-out .is-key { background: var(--accent); border-color: var(--black); }
+.lector-out .k { background: var(--black); color: var(--white); }
+.lector-out .k .label { color: var(--s300); }

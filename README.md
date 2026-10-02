@@ -38,6 +38,8 @@ Mismo patrón que el portfolio:
 - Estructura: `.bento` › `.b-title` + `.b-cards` (6 columnas; 2 en móvil). Tarjetas `.card` con ancho `w2`, `w3`, `w4`, `w6` y variante `g` (gris), `k` (negra) o `y` (amarilla).
 - Dentro de una tarjeta: `c-label`, `c-num` (`xl`), `c-title`, `c-text`, `c-foot`, `badge` (`y`, `k`, `n`), `chips`/`chip`, `flow`, `bars`/`bar` (`is-key`), `row`, `step-n`, `ico`, `svg.draw`.
 - Capa 2 (en tarjetas `.b-cards`): `h4`, `vsteps`, `callout` (`dark`, `check`), `quote`, `errors`, `checklist`, `table-wrap` + `table` (fila `is-key`), `formula`, `pre`/`code`, `glossary`, `sources`, `tag` («Por confirmar») y `ui` (`Menú › Comando`).
+- Iconos de software y formatos: automáticos. `web.js` (lista `SW`) antepone un monograma en los colores de la web (programa: píldora negra con letras amarillas; estándar abierto IFC/IDS: amarillo; formato de archivo: hoja blanca con esquina doblada) a antetítulos, `c-label`, `h4` y primera columna de tablas cuyo texto empiece por un nombre conocido. No son logotipos. Nunca en el bloque I. Un programa nuevo = una línea en `SW`.
+- `.lector` (`data-e0`, `data-n0`): lector de coordenadas interactivo; se arrastra el cursor y muestra las coordenadas desde el origen interno, el punto base, el origen compartido y lo que marca el Survey Point (con y sin clip).
 
 ## Probar en local
 
