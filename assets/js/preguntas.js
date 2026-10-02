@@ -1,5 +1,5 @@
 // Preguntas frecuentes: la duda del lector, en sus palabras, y la diapositiva que la responde.
-// Se muestran en la portada («Empieza por tu duda»), en la ayuda de cada artículo y en el buscador vacío.
+// Se muestran en la página faq/ (preguntas frecuentes), en la ayuda de cada artículo y en el buscador vacío.
 // [pregunta, artículo, id de la diapositiva, bloque]. Revisar al añadir artículos: cada una debe llevar a una respuesta real.
 window.BF_PREGUNTAS = [
   ['¿Por qué los modelos llegan desplazados al federar?', 'coordenadas-compartidas', 'problema', 'I'],

@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Borrador: quitar noindex al publicar -->
   <meta name="robots" content="noindex, nofollow">
-  <title>Glosario | bimkernel</title>
-  <meta name="description" content="Glosario de la serie bimkernel: cada término con su definición, el error típico, cómo se llama en cada programa y la idea del artículo donde se explica.">
+  <title>Preguntas frecuentes | bimkernel</title>
+  <meta name="description" content="Preguntas frecuentes de la serie bimkernel: cada duda con un clic hasta la idea que la responde.">
   <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="../assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="../assets/css/estilo.css">
@@ -19,8 +19,8 @@
       <nav>
         <a class="menu-link" href="../">Inicio</a>
         <a class="menu-link" href="../#articulos">Artículos</a>
-        <a class="menu-link is-current" href="./">Glosario</a>
-        <a class="menu-link" href="../faq/">FAQ</a>
+        <a class="menu-link" href="../glosario/">Glosario</a>
+        <a class="menu-link is-current" href="./">FAQ</a>
       </nav>
     </div>
   </div>
@@ -29,15 +29,14 @@
     <section class="gl-hero">
       <div class="wrap">
         <p class="hero-id"><a href="../">bimkernel</a></p>
-        <span class="kicker-y lg">Glosario de la serie</span>
-        <h1 class="display">Cada palabra,<br><span class="hl-y">en su sitio<span class="dot">.</span></span></h1>
-        <p class="hero-lead">Qué significa, el error que más se repite, cómo se llama en cada programa y en qué idea del artículo se explica con dibujos.</p>
+        <span class="kicker-y lg">Preguntas frecuentes</span>
+        <h1 class="display">Las dudas<br><span class="hl-y">más repetidas<span class="dot">.</span></span></h1>
+        <p class="hero-lead">Cada pregunta lleva a la idea del artículo que la responde, con sus dibujos y su capa de detalle.</p>
       </div>
     </section>
     <section>
       <div class="wrap">
-        <div id="glosario-filtros" class="gl-filtros"></div>
-        <div id="glosario-lista" class="gl-lista"><p class="label">Cargando el glosario…</p></div>
+        <ol id="bf-dudas" class="bf-dudas"></ol>
       </div>
     </section>
   </main>
