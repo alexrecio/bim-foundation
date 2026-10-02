@@ -20,19 +20,22 @@ Mismo patrón que el portfolio:
 
 - **Capa 1 · regla de los 15 segundos.** Cada idea es una diapositiva a pantalla completa que se lee en unos 15 s: antetítulo, titular (unas 6 palabras), una frase (unas 20) y un visual (cifra, chips, flujo, barras, iconos o SVG). Unas 40 palabras en total.
 - **Capa 2 · detalle.** El botón «Ver detalle» de cada diapositiva abre una ficha (`<template id="l2-…">`) con los pasos, tablas, matices y fuentes. **Ningún texto se repite entre capas**: la ficha solo añade lo que la diapositiva no dice (los datos sí pueden repetirse cuando aportan).
-- Navegación: rueda o flechas pasan de diapositiva, Esc cierra la ficha, y `#detalle-<id>` enlaza directamente a una ficha.
+- **Bloques a ancho completo.** Cada diapositiva es un `.bento`: a la izquierda el titular (`.b-title`) y a la derecha una rejilla de tarjetas (`.b-cards`) con cifras, esquemas y dibujos SVG. En móvil se apila y las tarjetas pasan a dos columnas.
+- **Menú de diapositivas.** Lateral en escritorio y barra inferior desplegable en móvil, con el título de cada slide (`data-nav`) y la slide actual marcada.
+- Navegación: rueda, flechas o el menú; Esc cierra la ficha, y `#detalle-<id>` enlaza directamente a una ficha.
 
 ## Añadir un artículo
 
 1. Copiar `articulos/_plantilla/` a `articulos/<slug>/` (slug en minúsculas, sin tildes, con guiones).
 2. En el nuevo `index.html`: cambiar `data-slug="SLUG"` por el slug y rellenar título, descripción y diapositivas.
-3. Cada diapositiva es un `<section class="slide" id="…">` dentro de `<main class="deck">`; su ficha es `<template id="l2-<id>">` y se abre con `data-l2="<id>"`. La numeración, el contador y los puntos laterales se generan solos.
+3. Cada diapositiva es un `<section class="slide" id="…" data-nav="Título del menú">` dentro de `<main class="deck">`; su ficha es `<template id="l2-<id>">` y se abre con `data-l2="<id>"`. La numeración y el menú se generan solos.
 4. Añadir la ficha en `assets/js/serie.js`, en el orden de la serie. `estado`: `borrador`, `publicado` o `proximamente` (se lista sin enlace).
 
 ## Bloques disponibles
 
-- Capa 1: `big-num` + `big-cap`, `chips`/`chip` (`y` amarillo, `k` negro), `flow`, `eq`, `bars`, `top3`, `cards3`, `figure.diagram` (SVG).
-- Capa 2: `l2-cols`, `callout` (`dark`, `check`), `quote`, `steps`, `errors`, `checklist`, `table-wrap` + `table` (fila `is-key`), `formula`, `pre`/`code`, `glossary`, `sources`, `tag` («Por confirmar») y `ui` (`Menú › Comando`).
+- Estructura: `.bento` › `.b-title` + `.b-cards` (6 columnas; 2 en móvil). Tarjetas `.card` con ancho `w2`, `w3`, `w4`, `w6` y variante `g` (gris), `k` (negra) o `y` (amarilla).
+- Dentro de una tarjeta: `c-label`, `c-num` (`xl`), `c-title`, `c-text`, `c-foot`, `badge` (`y`, `k`, `n`), `chips`/`chip`, `flow`, `bars`/`bar` (`is-key`), `row`, `step-n`, `ico`, `svg.draw`.
+- Capa 2 (en tarjetas `.b-cards`): `h4`, `vsteps`, `callout` (`dark`, `check`), `quote`, `errors`, `checklist`, `table-wrap` + `table` (fila `is-key`), `formula`, `pre`/`code`, `glossary`, `sources`, `tag` («Por confirmar») y `ui` (`Menú › Comando`).
 
 ## Probar en local
 

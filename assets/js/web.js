@@ -101,33 +101,44 @@
 (function () {
   const slides = [...document.querySelectorAll('.deck > .slide[id]')];
   if (!slides.length) return;
-  const total = String(slides.length).padStart(2, '0');
+  const pad = (n) => String(n).padStart(2, '0');
+  const total = pad(slides.length);
+  const titleOf = (s) => s.dataset.nav || ((s.querySelector('h1, h2') || {}).textContent || '').replace(/\.$/, '');
 
-  // Numeración, contador y puntos laterales
-  const dots = document.getElementById('deck-dots');
-  const count = document.getElementById('deck-count');
-  slides.forEach((s, i) => {
-    const n = s.querySelector('.slide-n');
-    if (n) n.textContent = `${String(i + 1).padStart(2, '0')} / ${total}`;
-    if (dots) {
-      const a = document.createElement('a');
-      a.href = '#' + s.id;
-      a.title = (s.querySelector('h1, h2') || {}).textContent || '';
-      a.setAttribute('aria-label', a.title);
-      dots.appendChild(a);
-    }
-  });
-  const dotLinks = dots ? [...dots.children] : [];
-  let current = 0;
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach((en) => {
-      if (!en.isIntersecting) return;
-      current = slides.indexOf(en.target);
-      dotLinks.forEach((a, i) => a.classList.toggle('is-current', i === current));
-      if (count) count.innerHTML = `<b>${String(current + 1).padStart(2, '0')}</b> / ${total}`;
+  // Numeración y menú con los títulos de cada diapositiva (lateral en escritorio, hoja inferior en móvil)
+  const list = () => slides.map((s, i) => `<li class="nav-item"><a href="#${s.id}" data-i="${i}"><span>${pad(i + 1)}</span>${titleOf(s)}</a></li>`).join('');
+  slides.forEach((s, i) => { const n = s.querySelector('.slide-n'); if (n) n.textContent = `${pad(i + 1)} / ${total}`; });
+  const side = document.querySelector('#deck-nav ol');
+  const sheet = document.querySelector('#deck-sheet ol');
+  if (side) side.innerHTML = list();
+  if (sheet) sheet.innerHTML = list();
+  const bar = document.getElementById('deck-bar');
+  const barBtn = document.getElementById('deck-bar-btn');
+  if (barBtn) barBtn.addEventListener('click', (e) => { e.stopPropagation(); bar.classList.toggle('is-open'); barBtn.setAttribute('aria-expanded', bar.classList.contains('is-open')); });
+  document.addEventListener('click', (e) => { if (bar && !bar.contains(e.target)) bar.classList.remove('is-open'); });
+  if (sheet) sheet.addEventListener('click', () => bar.classList.remove('is-open'));
+
+  let current = -1;
+  const setCurrent = (i) => {
+    if (i === current) return;
+    current = i;
+    document.querySelectorAll('.nav-item a').forEach((a) => {
+      const k = +a.dataset.i;
+      a.classList.toggle('is-current', k === i);
+      a.classList.toggle('is-done', k < i);
+      if (k === i) a.setAttribute('aria-current', 'step'); else a.removeAttribute('aria-current');
     });
-  }, { threshold: 0.55 });
+    const cur = side && side.querySelector('a.is-current');
+    if (cur) cur.scrollIntoView({ block: 'nearest' });
+    const p = document.querySelector('#deck-progress i');
+    if (p) p.style.width = ((i + 1) / slides.length * 100) + '%';
+    if (barBtn) barBtn.querySelector('.n').textContent = `${pad(i + 1)}/${total}`, barBtn.querySelector('.t').textContent = titleOf(slides[i]);
+  };
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((en) => { if (en.isIntersecting) setCurrent(slides.indexOf(en.target)); });
+  }, { rootMargin: '-45% 0px -45% 0px' });
   slides.forEach((s) => io.observe(s));
+  setCurrent(0);
 
   // Capa 2
   const modal = document.getElementById('l2-modal');
@@ -136,10 +147,10 @@
   const open = (id, btn) => {
     const tpl = document.getElementById('l2-' + id);
     if (!tpl || !modal) return;
-    const slide = btn ? btn.closest('.slide') : document.querySelector(`.slide [data-l2="${id}"]`)?.closest('.slide');
-    const kicker = slide ? (slide.querySelector('.kicker-y') || {}).textContent : '';
-    const num = slide ? String(slides.indexOf(slide) + 1).padStart(2, '0') : '';
-    body.innerHTML = `<div class="l2-head"><span class="kicker-y">${kicker}</span><span class="label">Detalle · ${num}</span></div>`;
+    const slide = (btn || document.querySelector(`.slide [data-l2="${id}"]`)).closest('.slide');
+    const i = slides.indexOf(slide);
+    const kicker = (slide.querySelector('.kicker-y') || {}).textContent || '';
+    body.innerHTML = `<div class="l2-head"><span class="kicker-y">${kicker}</span><span class="label">Capa 2 · ${pad(i + 1)} / ${total}</span><h3>${tpl.dataset.title || titleOf(slide)}</h3></div>`;
     body.appendChild(tpl.content.cloneNode(true));
     opener = btn || null;
     modal.classList.add('is-visible');
@@ -165,9 +176,9 @@
     modal.querySelector('.l2-close').addEventListener('click', close);
   }
 
-  // Teclado: Esc cierra la ficha; flechas y avance de página pasan de diapositiva
+  // Teclado: Esc cierra; flechas y avance de página pasan de diapositiva
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') return close();
+    if (e.key === 'Escape') { if (bar) bar.classList.remove('is-open'); return close(); }
     if (modal && modal.classList.contains('is-visible')) return;
     if (e.target.closest('input, textarea, select')) return;
     const step = { ArrowDown: 1, PageDown: 1, ArrowUp: -1, PageUp: -1 }[e.key];
