@@ -3,14 +3,19 @@
 Uso: python3 herramientas/glosario_desde_xlsx.py /mnt/project-files/fuentes/coordenadas_bim_fuentes_y_glosario.xlsx [otra_base.xlsx ...]
 Admite varias bases (una por artículo, p. ej. /mnt/project-files/fuentes/05-clasificacion/*.xlsx): se concatenan
 en el orden dado; cada una usa sus propios ID (el artículo 05 usa K01, K02...) y no pueden repetirse.
+Sin argumentos lee TODAS las bases de /mnt/project-files/fuentes/ (la general primero): es la forma segura,
+porque glosario.js se reescribe entero y los términos de una base que no se pase desaparecen.
 Si la hoja «Glosario» tiene una columna «Alias» (separados por «;»), sus alias se usan en lugar de los de ALIAS.
 Después: node herramientas/generar-indice.mjs (calcula en qué diapositivas se explica cada término).
 
 ALIAS: formas en que el término aparece en el texto de los artículos. Sirven para el buscador
 y para marcar el término en las diapositivas (definición al pasar). La primera es la principal.
 """
-import json, re, sys, unicodedata
+import glob, json, os, re, sys, unicodedata
 import openpyxl
+
+FUENTES = '/mnt/project-files/fuentes'
+GENERAL = 'coordenadas_bim_fuentes_y_glosario.xlsx'
 
 ALIAS = {
     'C01': ['georreferenciación', 'georreferenciar', 'georreferenciado', 'georeferencing'],
@@ -78,10 +83,23 @@ def leer(path, out):
         })
 
 
+def bases():
+    """Todas las bases con hoja «Glosario» de la carpeta de fuentes, la general primero."""
+    fs = [f for f in glob.glob(os.path.join(FUENTES, '**', '*.xlsx'), recursive=True) if not os.path.basename(f).startswith('~$')]
+    fs = [f for f in fs if 'Glosario' in openpyxl.load_workbook(f, read_only=True).sheetnames]
+    return sorted(fs, key=lambda f: (os.path.basename(f) != GENERAL, f))
+
+
 def main(paths):
     out = []
-    for path in paths:
+    for path in paths or bases():
+        n = len(out)
         leer(path, out)
+        print(f'{len(out) - n:3d} términos · {path}')
+    slugs = [g['slug'] for g in out]
+    for g in out:  # dos términos con el mismo nombre: el ancla del glosario lleva el ID
+        if slugs.count(g['slug']) > 1:
+            g['slug'] += '-' + g['id'].lower()
     js = ('// Glosario de la serie. GENERADO por herramientas/glosario_desde_xlsx.py: no editar a mano.\n'
           '// id · slug · t término · en inglés · b bloque · d definición · ej ejemplo (España) · eq equivalentes por programa\n'
           '// err error típico · rel relacionados · al alias (cómo aparece en el texto)\n'
