@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Borrador: quitar noindex al publicar -->
-  <meta name="bf-fuente" content="articulos/clasificacion-bim/index.html@c8dae7f9c9677262276610eedeb07bfdcfae68a2">
+  <meta name="bf-fuente" content="articulos/clasificacion-bim/index.html@68c42f980bca70e951d3d7e41b4f6041f03a576f">
   <meta name="robots" content="noindex, nofollow">
   <title>Klassifikationssysteme in BIM | kernel</title>
   <meta name="description" content="Was Klassifizieren in BIM bedeutet und wie es mit Uniclass, OmniClass, CCI und GuBIMclass gelingt: Tabellen, Codes, IFC, bSDD, Revit, Archicad und Qualitätsprüfung mit IDS und IfcOpenShell.">
@@ -580,12 +580,12 @@
           </div>
           <div class="card w3">
             <span class="c-label">Herkunft</span>
-            <span class="c-title">Dänisches CCS und schwedisches CoClass</span>
-            <span class="c-foot">2018 zur Norm gemacht</span>
+            <span class="c-title">ISO 81346 und das dänische CCS</span>
+            <span class="c-foot">Bauwerksklassen in Teil 12 (2018)</span>
           </div>
           <div class="card w3 y">
             <span class="c-label">Genutzt in</span>
-            <span class="c-title">DK · CZ · EE · PL · SK</span>
+            <span class="c-title">DK · EE · CZ · SE · LT</span>
             <span class="c-foot">in der CCI-Kooperation</span>
           </div>
         </div>
@@ -1244,7 +1244,7 @@
     <div class="b-cards">
       <div class="card w3">
         <h4>Was ein Datenkatalog ist</h4>
-        <p>Eine veröffentlichte Liste von Klassen und Eigenschaften, jede mit Definition, Einheit, Datentyp und einer eindeutigen, stabilen Kennung (oft eine Webadresse). Geregelt wird das in ISO 12006-3 und der Reihe ISO 23386 / ISO 23387.</p>
+        <p>Eine veröffentlichte Liste von Klassen und Eigenschaften, jede mit Definition, Einheit, Datentyp und einer eindeutigen, stabilen Kennung (oft eine Webadresse). Geregelt wird das in ISO 12006-3 und ISO 23386.</p>
       </div>
       <div class="card w3 y">
         <span class="c-label">Kernidee</span>
@@ -1417,8 +1417,8 @@
     <div class="b-cards">
       <div class="card w3">
         <h4>Klassifikation plus Identifikation</h4>
-        <p>ISO/IEC 81346 stammt aus der Industrie: Jedes Teil einer Anlage trägt eine Kennzeichnung, die Aspekte kombiniert. Teil 12 (2018) enthält die Klassen für Bauwerke und technische Gebäudeausrüstung, auf Basis des dänischen CCS und von CoClass.</p>
-        <p>CCI (Construction Classification International) ist seine Anwendung, entwickelt von Molio mit Partnern aus Tschechien, Estland, Polen und der Slowakei.</p>
+        <p>ISO/IEC 81346 stammt aus der Industrie: Jedes Teil einer Anlage trägt eine Kennzeichnung, die Aspekte kombiniert. Teil 12 (2018) enthält die Klassen für Bauwerke und technische Gebäudeausrüstung. Dass diese Klassen auf das dänische CCS und CoClass zurückgehen, ist eine eigene Lesart aufgrund ihrer Ähnlichkeit. <span class="tag">Abgeleitet</span></p>
+        <p>CCI (Construction Classification International) ist seine Anwendung, gestützt auf ISO 81346 und das dänische CCS (Cuneco, 2011–2015). Die CCI-Kooperation bilden Dänemark, Estland, Tschechien, Schweden und Litauen.</p>
       </div>
       <div class="card w3 g">
         <h4>Wozu der Aspekt dient</h4>
@@ -1441,7 +1441,7 @@
       <div class="card w3">
         <h4>GuBIMclass</h4>
         <p>Entwickelt hat es die katalanische BIM-Anwendergruppe (GuBIMCat) 2017 auf Basis der Klassifikation von Infraestructures.cat, nach Prüfung von OmniClass, UniFormat, MasterFormat, Uniclass und SfB. Kriterium: die Hauptfunktion des Elements, damit sich der Code zwischen den Phasen nicht ändert.</p>
-        <p>Version 1.2 (November 2017) ist die letzte im offiziellen Repository veröffentlichte, auf Spanisch und Katalanisch, mit Dateien für Archicad, Revit und Navisworks.</p>
+        <p>Version 1.2 (Juli 2017; die XML-Datei für Archicad erschien im November) ist die letzte im offiziellen Repository veröffentlichte, auf Spanisch und Katalanisch, mit Dateien für Archicad, Revit und Navisworks.</p>
       </div>
       <div class="card w3 g">
         <h4>Weitere Systeme im Einsatz</h4>
@@ -1474,7 +1474,7 @@
       <div class="card w3">
         <h4>So liest es der IFC-Exporter</h4>
         <ol class="vsteps">
-          <li>Hat der Typ einen <code>Assembly Code</code>, legt er die Klassifikation „Uniformat“ an, ohne dass jemand sie anfordert.</li>
+          <li>Hat der Typ einen <code>Assembly Code</code>, legt er die Klassifikation „Uniformat“ an, ohne dass jemand sie anfordert, es sei denn, es gibt bereits eine eigene Uniformat-Klassifikation.</li>
           <li>Er liest <code>ClassificationCode</code> und <code>ClassificationCode(2)</code> bis <code>(10)</code> oder die Namen, die unter <span class="ui">Export IFC › Modify Setup › Classification Settings</span> eingetragen sind.</li>
           <li>Er trennt System, Code und Titel über die Syntax <code>[System]Code:Titel</code>.</li>
           <li>Er erzeugt ein <code>IfcClassification</code> je System und eine Referenz je Code.</li>
@@ -1552,8 +1552,8 @@
     <div class="b-cards">
       <div class="card w3">
         <h4>Was es ist</h4>
-        <p>Das buildingSMART Data Dictionary ist die frühere IFD-Bibliothek. Es wendet die Normen ISO 12006-3, 23386 und 23387 an: Klassen und Eigenschaften mit Definition, Übersetzungen, Beziehungen und einer Webadresse, die sich nicht ändert.</p>
-        <p>Jeder Herausgeber (NBS, Molio, ETIM, buildingSMART…) veröffentlicht sein Datenwörterbuch in Versionen: Vorschau, aktiv, inaktiv.</p>
+        <p>Das buildingSMART Data Dictionary ist die frühere IFD-Bibliothek. Es wendet die Normen ISO 12006-3 und ISO 23386 an: Klassen und Eigenschaften mit Definition, Übersetzungen, Beziehungen und einer Webadresse, die sich nicht ändert.</p>
+        <p>Jeder Herausgeber (NBS, Molio, ETIM, buildingSMART…) veröffentlicht sein Datenwörterbuch in Versionen; jede Klasse und Eigenschaft ist aktiv oder inaktiv.</p>
       </div>
       <div class="card w3 y">
         <span class="c-label">Kernidee</span>
@@ -1566,6 +1566,7 @@
           <tbody>
             <tr class="is-key"><td>IsEqualTo / IsSimilarTo</td><td>Entsprechungen zwischen verschiedenen Systemen</td></tr>
             <tr><td>IsChildOf / IsParentOf</td><td>Die Hierarchie innerhalb eines Systems</td></tr>
+            <tr><td>HasReference / HasMaterial</td><td>Verweise auf andere Klassen und Materialien</td></tr>
             <tr><td>HasPart / IsPartOf</td><td>Zusammensetzung</td></tr>
             <tr><td>Zugehörige IFC-Klasse</td><td>Mit welcher IFC-Entität die Klasse verwendet wird</td></tr>
           </tbody>
@@ -1728,7 +1729,7 @@
         <ul>
           <li><code>system</code> wird unverändert mit dem Systemnamen verglichen.</li>
           <li><code>uri</code> wird nicht geprüft.</li>
-          <li>Ein Untercode erfüllt die Anforderung, wenn sein übergeordneter Code in der IFC steht (vollständige Klassifikation).</li>
+          <li>Verlangt die IDS einen übergeordneten Code, erfüllt auch ein Objekt mit einem Untercode die Anforderung, sofern die IFC die vollständige Hierarchie enthält. So löst es IfcTester. <span class="tag">Abgeleitet</span></li>
         </ul>
       </div>
       <div class="card w6">
