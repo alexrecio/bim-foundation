@@ -223,7 +223,7 @@
     ['Oracle Aconex', 'Ax', 'p'], ['Asite', 'As', 'p'], ['Catenda', 'Ca', 'p'], ['Viewpoint For Projects', 'VP', 'p', 'trimble.svg'], ['Thinkproject', 'tp', 'p'], ['SharePoint', 'SP', 'p'], ['usBIM', 'us', 'p'], ['ProjectWise', 'PW', 'p', 'bentley.svg'], ['Atvero', 'At', 'p'],
     ['OpenCDE', 'oC', 'e'], ['ICDD', 'ICDD', 'e'], ['DIN SPEC', 'DIN', 'e'],
     ['COBie', 'CB', 'e'], ['Brick', 'Br', 'e'], ['DTDL', 'DT', 'e'],
-    ['IDS', 'IDS', 'e', 'ids.svg'], ['BCF', 'BCF', 'e', 'buildingsmart.png'], ['IFC', 'IFC', 'e', 'buildingsmart.png'], ['DWG', 'DWG', 'f'], ['RVT', 'RVT', 'f'], ['E57', 'E57', 'f'], ['LAS', 'LAS', 'f'], ['NWC', 'NWC', 'f'], ['XML', 'XML', 'f']
+    ['bSDD', 'bSDD', 'e', 'buildingsmart.png'], ['Presto', 'Pr', 'p'], ['IDS', 'IDS', 'e', 'ids.svg'], ['BCF', 'BCF', 'e', 'buildingsmart.png'], ['IFC', 'IFC', 'e', 'buildingsmart.png'], ['DWG', 'DWG', 'f'], ['RVT', 'RVT', 'f'], ['E57', 'E57', 'f'], ['LAS', 'LAS', 'f'], ['NWC', 'NWC', 'f'], ['XML', 'XML', 'f']
   ];
   const swIcon = (el) => {
     if (!el || el.querySelector('.sw')) return;
