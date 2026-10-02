@@ -532,3 +532,4 @@ body.l2-lock { overflow: hidden; }
 .badge { max-width: 100%; }
 .card.k code { background: rgba(255,255,255,.14); color: var(--white); border-color: transparent; }
 .card.k pre code, .card pre code { background: none; border: 0; padding: 0; color: inherit; }
+.card.k .tag { color: var(--white); border-color: var(--white); }

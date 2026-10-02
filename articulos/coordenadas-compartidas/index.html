@@ -31,14 +31,14 @@
 
   <!-- Menú de diapositivas: se rellena con data-nav de cada <section> -->
   <aside id="deck-nav" aria-label="Diapositivas">
-    <span class="kicker-y">Coordenadas · 34 ideas</span>
+    <span class="kicker-y">Coordenadas · 36 ideas</span>
     <ol></ol>
     <div id="deck-progress" aria-hidden="true"><i></i></div>
   </aside>
   <div id="deck-bar">
     <div id="deck-sheet"><ol></ol></div>
     <button type="button" id="deck-bar-btn" aria-expanded="false" aria-controls="deck-sheet">
-      <span class="n">01/34</span><span class="t">Portada</span>
+      <span class="n">01/36</span><span class="t">Portada</span>
       <span class="chev" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M3 9l4-4 4 4" fill="none" stroke="#fff" stroke-width="2"/></svg></span>
     </button>
   </div>
@@ -67,7 +67,7 @@
             <ol class="mapa">
               <li class="is-key"><a href="#problema"><b>I</b><span>Conceptos generales</span><em>14 ideas · para cualquier programa</em></a></li>
               <li><a href="#espana"><b>II</b><span>Estándares</span><em>3 ideas · EPSG, IFC, ISO 19650</em></a></li>
-              <li><a href="#limites"><b>III</b><span>Software</span><em>4 ideas · Revit y equivalencias</em></a></li>
+              <li><a href="#limites"><b>III</b><span>Software</span><em>6 ideas · Revit, campus y tipologías</em></a></li>
               <li><a href="#coordinacion"><b>IV</b><span>Plataformas</span><em>2 ideas · visores y nube</em></a></li>
               <li><a href="#civil3d"><b>V</b><span>Interoperabilidad</span><em>2 ideas · intercambio y errores</em></a></li>
             <li><a href="#calidad"><b>VI</b><span>Control de calidad</span><em>8 ideas · IDS, IfcOpenShell, Model Checker, Solibri</em></a></li>
@@ -838,6 +838,81 @@
           <div class="card w3">
             <span class="c-label">Después, vincular</span>
             <span class="c-title">Por coordenadas compartidas</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== CAMPUS ========== -->
+    <section class="slide" id="campus" data-nav="Campus: un sistema por edificio">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Revit · campus</span>
+          <h2 class="display">Cada edificio, su sistema local<span class="dot">.</span></h2>
+          <p class="slide-lead">Cada edificio se modela recto y cerca de su origen. El modelo de parcela lo coloca, lo gira y le publica su posición.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="campus"><span class="plus">+</span> Ver los pasos</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w6">
+            <span class="c-label">Una parcela, tres sistemas locales</span>
+            <svg class="draw" viewBox="0 0 440 260" role="img" aria-label="Parcela con tres edificios girados, cada uno con sus propios ejes locales, y un sistema compartido común">
+              <rect x="6" y="6" width="428" height="248" rx="6" fill="none" stroke="#000" stroke-width="2" stroke-dasharray="6 6"/>
+              <g transform="translate(70 70)"><rect x="0" y="0" width="110" height="60" fill="#fff" stroke="#000" stroke-width="3"/><path d="M-10 70 L40 70 M-10 70 L-10 20" stroke="#000" stroke-width="2"/><text x="6" y="36" font-family="Inter, sans-serif" font-weight="900" font-size="15">A</text></g>
+              <g transform="translate(250 50) rotate(25)"><rect x="0" y="0" width="120" height="56" fill="#fff" stroke="#000" stroke-width="3"/><path d="M-10 66 L40 66 M-10 66 L-10 16" stroke="#000" stroke-width="2"/><text x="6" y="34" font-family="Inter, sans-serif" font-weight="900" font-size="15">B</text></g>
+              <g transform="translate(210 160) rotate(-15)"><rect x="0" y="0" width="100" height="44" fill="#fff" stroke="#000" stroke-width="3"/><path d="M-10 54 L36 54 M-10 54 L-10 10" stroke="#000" stroke-width="2"/><text x="6" y="28" font-family="Inter, sans-serif" font-weight="900" font-size="15">C</text></g>
+              <circle cx="40" cy="226" r="12" fill="#FFFF00" stroke="#000" stroke-width="3"/><path d="M40 214 L40 238 M28 226 L52 226" stroke="#000" stroke-width="2"/>
+              <text x="60" y="231" font-family="JetBrains Mono, monospace" font-size="12" font-weight="700">compartido · UTM</text>
+              <text x="320" y="240" font-family="JetBrains Mono, monospace" font-size="12" fill="#666">└ ejes locales</text>
+            </svg>
+          </div>
+          <div class="card w3 k">
+            <span class="c-label">Propio de cada edificio</span>
+            <span class="c-title" style="color:var(--accent)">Rejillas y cotas</span>
+            <span class="c-foot">no cambian al colocarlo</span>
+          </div>
+          <div class="card w3">
+            <span class="c-label">Común a todos</span>
+            <span class="c-title">El emplazamiento compartido</span>
+            <span class="c-foot">lo publica la parcela</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== TIPOLOGÍAS ========== -->
+    <section class="slide" id="tipologias" data-nav="Tipologías replicadas">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Revit · tipologías</span>
+          <h2 class="display">Un vínculo, varias posiciones<span class="dot">.</span></h2>
+          <p class="slide-lead">La vivienda tipo se vincula tantas veces como se repite. Cada ejemplar guarda su posición con nombre dentro del archivo vinculado.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="tipologias"><span class="plus">+</span> Ver los pasos</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w6">
+            <span class="c-label">Un RVT, tres ejemplares en el maestro</span>
+            <svg class="draw" viewBox="0 0 440 230" role="img" aria-label="Un archivo de tipología vinculado tres veces, con las posiciones Bloque 1, 2 y 3">
+              <rect x="4" y="80" width="110" height="70" rx="6" fill="#FFFF00" stroke="#000" stroke-width="3"/><text x="18" y="110" font-family="Inter, sans-serif" font-weight="900" font-size="15">TIPO A</text><text x="18" y="132" font-family="JetBrains Mono, monospace" font-size="12">.rvt</text>
+              <g stroke="#000" stroke-width="2" fill="none"><path d="M114 100 L210 40"/><path d="M114 115 L210 115"/><path d="M114 130 L210 190"/></g>
+              <g fill="#000"><polygon points="214,38 202,38 208,48"/><polygon points="214,115 204,110 204,120"/><polygon points="214,192 208,182 202,192"/></g>
+              <g font-family="JetBrains Mono, monospace" font-size="12" font-weight="700">
+                <rect x="220" y="16" width="80" height="44" fill="#fff" stroke="#000" stroke-width="3"/><text x="312" y="43">Bloque 1</text>
+                <g transform="translate(220 92) rotate(12)"><rect x="0" y="0" width="80" height="44" fill="#fff" stroke="#000" stroke-width="3"/></g><text x="312" y="120">Bloque 2</text>
+                <g transform="translate(220 172) rotate(-20)"><rect x="0" y="0" width="80" height="44" fill="#fff" stroke="#000" stroke-width="3"/></g><text x="312" y="196">Bloque 3</text>
+              </g>
+            </svg>
+          </div>
+          <div class="card w3 k">
+            <span class="c-label">Se gestiona desde</span>
+            <span class="c-title" style="color:var(--accent)">Propiedades del ejemplar</span>
+            <span class="c-foot">no con Adquirir ni Publicar</span>
+          </div>
+          <div class="card w3 y">
+            <span class="c-label">Archivos que mantener</span>
+            <b class="c-num">1</b>
+            <span class="c-foot">se edita una vez, cambian todos los bloques</span>
           </div>
         </div>
       </div>
@@ -1751,7 +1826,6 @@
 <div class="card w3">
 <h4>Otros casos</h4>
 <ul>
-          <li><strong>Posiciones con nombre:</strong> el mismo edificio en varios sitios de la parcela. Se gestionan desde las propiedades del vínculo.</li>
           <li><strong>Resetear:</strong> vincular Origen a origen un archivo limpio y adquirir, o (desde 2021) <span class="ui">Resetear coordenadas compartidas</span>.</li>
           <li><strong>Topografía nueva:</strong> si el DWG es un «guardar como» del anterior, marcarlo antes como «No compartir coordenadas»; luego repetir Adquirir › Reconciliar en cada RVT.</li>
           <li><strong>Exportar a DWG:</strong> coordenadas «Compartidas», exportando vistas, no planos.</li>
@@ -1799,6 +1873,80 @@
 </div>
 </div>
   </template>
+
+  <template id="l2-campus">
+    <div class="b-cards">
+      <div class="card w3 g">
+        <h4>El flujo</h4>
+        <ol class="vsteps">
+          <li>El modelo de parcela vincula la topografía y <strong>adquiere</strong> sus coordenadas.</li>
+          <li>Vincula cada edificio <strong>Origen a origen</strong>.</li>
+          <li>Lo mueve y gira hasta su sitio, y ajusta la cota.</li>
+          <li><span class="ui">Emplazamiento compartido</span> › <strong>Publicar</strong> › Reconciliar: el edificio recibe su posición con nombre.</li>
+          <li>Se repite con cada edificio.</li>
+          <li>Estructura e instalaciones de cada edificio adquieren de su arquitectura y vinculan la parcela por coordenadas compartidas.</li>
+        </ol>
+      </div>
+      <div class="card w3">
+        <h4>Qué es de cada uno</h4>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Elemento</th><th>Edificio</th><th>Campus</th></tr></thead>
+          <tbody>
+            <tr><td>Origen interno</td><td>✓</td><td></td></tr>
+            <tr><td>Punto base y rejillas</td><td>✓</td><td></td></tr>
+            <tr><td>Norte de proyecto</td><td>✓</td><td></td></tr>
+            <tr class="is-key"><td>Coordenadas compartidas</td><td></td><td>✓</td></tr>
+            <tr><td>Norte verdadero</td><td></td><td>✓</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w3 k">
+        <h4>Por qué no un sistema único</h4>
+        <p>Si todos modelaran en el sistema de la parcela, los edificios girados tendrían las rejillas oblicuas y los más alejados quedarían lejos del origen, donde se pierde precisión. <span class="tag">Inferido</span></p>
+      </div>
+      <div class="card w3 y">
+        <span class="c-label">Para empezar bien</span>
+        <p>Una plantilla con la parcela y las coordenadas ya compartidas, de la que parten todos los modelos del campus.</p>
+      </div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://bimpure.com/blog/12-steps-to-create-a-shared-site-in-revit" target="_blank" rel="noopener">BIMpure: 12 pasos para un emplazamiento compartido</a> · <a href="https://resources.imaginit.com/revit/shared-coordinate-best-practice-part-2" target="_blank" rel="noopener">IMAGINiT: varios edificios con coordenadas compartidas</a> · <a href="https://help.autodesk.com/cloudhelp/2025/ENU/Revit-Collaborate/files/GUID-008933F3-DE4C-471F-890A-1A4B82D9C808.htm" target="_blank" rel="noopener">ayuda de Revit: adquirir o publicar desde el ejemplar</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-tipologias">
+    <div class="b-cards">
+      <div class="card w6">
+        <h4>El diálogo del ejemplar</h4>
+        <p>Seleccionar el vínculo › <span class="ui">Propiedades › Emplazamiento compartido</span> › clic en el nombre.</p>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Opción</th><th>Qué hace</th><th>Cuándo</th></tr></thead>
+          <tbody>
+            <tr><td><span class="ui">Move instance to</span><br>mover el ejemplar a</td><td>Lleva el ejemplar a una posición que ya existe en el archivo vinculado</td><td>Colocar otra copia donde ya se definió</td></tr>
+            <tr class="is-key"><td><span class="ui">Record current position as</span><br>registrar la posición actual como</td><td>Guarda dónde está este ejemplar como posición con nombre (nueva con <em>Cambiar</em> › Duplicar)</td><td>Cada bloque nuevo</td></tr>
+            <tr><td><span class="ui">Do not share site</span><br>no compartir</td><td>Deja el ejemplar donde está y lo marca <em>&lt;No compartido&gt;</em></td><td>Romper un error</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w3 g">
+        <h4>Paso a paso</h4>
+        <ol class="vsteps">
+          <li>Vincular la tipología tantas veces como se repite y colocar cada copia.</li>
+          <li>En cada copia: registrar la posición actual como «Bloque 1», «Bloque 2»…</li>
+          <li>Al guardar el maestro, aceptar <em>Guardar</em> en el aviso de posición cambiada: las posiciones se escriben en el RVT de la tipología.</li>
+          <li>Dentro de la tipología, <span class="ui">Gestionar › Ubicación › Emplazamiento</span> lista las posiciones; <em>Hacer actual</em> cambia en cuál se trabaja.</li>
+        </ol>
+      </div>
+      <div class="card w3 k">
+        <h4>Límites</h4>
+        <ul>
+          <li>Con varias posiciones, las herramientas Adquirir y Publicar no funcionan: solo las propiedades del ejemplar.</li>
+          <li>En Autodesk Construction Cloud no se pueden modificar las posiciones de los vínculos y <em>Record current position</em> queda desactivado.</li>
+          <li>Para exportar el IFC de un bloque, hacer actual su posición antes de exportar. <span class="tag">Inferido</span></li>
+        </ul>
+      </div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://help.autodesk.com/cloudhelp/2025/ENU/Revit-Collaborate/files/GUID-92A1257B-955A-4408-8A36-AC9EF7393202.htm" target="_blank" rel="noopener">Revit: mover un ejemplar a una posición con nombre</a> · <a href="https://help.autodesk.com/cloudhelp/2023/ENU/Revit-Collaborate/files/GUID-0B11202D-36E7-41BC-889B-8319320B33D4.htm" target="_blank" rel="noopener">recolocar posiciones con nombre</a> · <a href="https://help.autodesk.com/cloudhelp/2025/ENU/Revit-Collaborate/files/GUID-008933F3-DE4C-471F-890A-1A4B82D9C808.htm" target="_blank" rel="noopener">adquirir o publicar desde el ejemplar</a> · <a href="https://bimpure.com/blog/12-steps-to-create-a-shared-site-in-revit" target="_blank" rel="noopener">BIMpure, paso 10</a>.</p></div>
+    </div>
+  </template>
+
 
   <template id="l2-civil3d">
 <div class="b-cards">
