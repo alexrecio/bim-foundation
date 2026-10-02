@@ -702,7 +702,7 @@
    "appointing party",
    "appointed party"
   ],
-  "h": "393fe03931"
+  "h": "b8c0f547b6"
  },
  "N08": {
   "t": "Übermodellierung",
@@ -719,7 +719,7 @@
  },
  "N09": {
   "t": "Fertigstellungsgrad (LOD)",
-  "d": "Skala von 100 bis 500 (plus 350), die angibt, wie weit man sich auf Geometrie und Informationen eines Bauteils verlassen kann. Entstanden um 2004–2005 (Vico), vom AIA in E202-2008 übernommen.",
+  "d": "Skala von 100 bis 500 (plus 350), die angibt, wie weit man sich auf Geometrie und Informationen eines Bauteils verlassen kann. Entstanden um 2004–2005 in einem Team von Graphisoft (seit 2007 Vico Software), vom AIA in E202-2008 übernommen.",
   "ej": "LOD 300: Menge, Größe, Form, Lage und Ausrichtung im Modell messbar.",
   "eq": "BIMForum LOD Specification (Definitionen je Bauteil); Bauteilmatrizen des BAP.",
   "err": "Ihn auf das ganze Modell anwenden („Modell LOD 300“); BIMForum: „There is no such thing as an LOD ### model“.",
@@ -734,7 +734,7 @@
    "LOD 300",
    "LOD 350"
   ],
-  "h": "456482d5d3"
+  "h": "8410f3ce69"
  },
  "N10": {
   "t": "Detaillierungsgrad (Level of Detail)",
@@ -884,7 +884,7 @@
  },
  "N20": {
   "t": "Datenvorlagen (ISO 23386 / ISO 23387)",
-  "d": "ISO 23386 legt fest, wie Merkmale beschrieben und vernetzte Merkmalverzeichnisse gepflegt werden; ISO 23387 definiert Datenvorlagen, die die Merkmale jedes Objekttyps bündeln.",
+  "d": "ISO 23386 legt fest, wie Merkmale beschrieben und vernetzte Merkmalverzeichnisse gepflegt werden; ISO 23387 (gültige Ausgabe von 2025) definiert Datenvorlagen, die die Merkmale jedes Objekttyps bündeln.",
   "ej": "Datenvorlage für eine Brandschutztür mit ihrer Feuerwiderstandsklasse und den zulässigen Werten.",
   "eq": "bSDD; Anforderungsmanager; Import von Merkmalen in Allplan und Archicad.",
   "err": "In jedem Projekt andere Merkmalnamen erfinden.",
@@ -898,7 +898,7 @@
    "Merkmale",
    "Merkmalen"
   ],
-  "h": "54f385bea8"
+  "h": "649c9800f3"
  },
  "N21": {
   "t": "bSDD (buildingSMART Data Dictionary)",
@@ -1279,14 +1279,14 @@
   "t": "COBie",
   "d": "Austauschspezifikation (meist Tabelle oder IFC) mit Räumen, Systemen, Komponenten, Typen und Dokumenten für die Übergabe an die Instandhaltung; 2007 beim USACE entstanden.",
   "ej": "Dem Eigentümer eine COBie-Arbeitsmappe mit allen Endgeräten und ihrer Gewährleistung übergeben.",
-  "eq": "NBIMS-US (COBie v3 in Arbeit, Entwurf 2023); BS 1192-4:2014 im Vereinigten Königreich; COBie-Exporter von Revit, Archicad.",
+  "eq": "NBIMS-US V4 (COBie 3, veröffentlicht 2023; 2.4 aus NBIMS-US V3 ist weiterhin sehr verbreitet); BS 1192-4:2014 im Vereinigten Königreich (2022 zurückgezogen); COBie-Exporter von Revit, Archicad.",
   "err": "COBie bei Bauende „von Hand“ ausfüllen, ohne Verknüpfung mit den GUIDs des Modells.",
   "al": [
    "COBie",
    "Construction Operations Building information exchange",
    "COBie-Tabelle"
   ],
-  "h": "892c3e337d"
+  "h": "5b7f5f39b4"
  },
  "G18": {
   "t": "IDS",
@@ -2047,7 +2047,7 @@
    "pre-BEP",
    "pre-appointment BEP"
   ],
-  "h": "aacb86454b"
+  "h": "db489c6a73"
  },
  "P03": {
   "t": "BAP nach Vergabe (bestätigter BAP)",
@@ -2076,7 +2076,7 @@
    "EIR",
    "exchange information requirements"
   ],
-  "h": "515d5f3bab"
+  "h": "f6724589b6"
  },
  "P05": {
   "t": "Organisatorische Informationsanforderungen (OIR)",
@@ -2152,7 +2152,7 @@
    "Auftraggebers",
    "appointing party"
   ],
-  "h": "60cca94f81"
+  "h": "ed23bb83d5"
  },
  "P11": {
   "t": "Federführender Auftragnehmer",
@@ -2167,7 +2167,7 @@
    "federführende Auftragnehmer",
    "lead appointed party"
   ],
-  "h": "a53a79ae18"
+  "h": "52667abe2a"
  },
  "P12": {
   "t": "Auftragnehmer",
@@ -2181,7 +2181,7 @@
    "Auftragnehmern",
    "appointed party"
   ],
-  "h": "87a88181ef"
+  "h": "3e85e97271"
  },
  "P13": {
   "t": "Lieferteam",
@@ -2194,7 +2194,7 @@
    "Lieferteams",
    "delivery team"
   ],
-  "h": "e7221d54f0"
+  "h": "f969c2dda1"
  },
  "P14": {
   "t": "Aufgabenteam",
@@ -2207,7 +2207,7 @@
    "Aufgabenteams",
    "task team"
   ],
-  "h": "b3156d92f0"
+  "h": "6103879eb4"
  },
  "P15": {
   "t": "Projektteam",
@@ -2220,7 +2220,7 @@
    "Projektteams",
    "project team"
   ],
-  "h": "05905c9874"
+  "h": "d2f0f3bb65"
  },
  "P16": {
   "t": "Verantwortlichkeitsmatrix",
@@ -2260,7 +2260,7 @@
    "Master-Informationslieferplan",
    "Master-Informationslieferplans"
   ],
-  "h": "1d8f9e33a0"
+  "h": "a4d8d2f642"
  },
  "P19": {
   "t": "Meilenstein der Informationslieferung",
@@ -2277,7 +2277,7 @@
    "Datenübergabepunkt",
    "Datenübergabepunkte"
   ],
-  "h": "b5d2570125"
+  "h": "b41d7b5171"
  },
  "P20": {
   "t": "Föderationsstrategie",
