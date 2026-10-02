@@ -31,13 +31,13 @@
 
   <!-- Menú de diapositivas: se rellena con data-nav de cada <section> -->
   <aside id="deck-nav" aria-label="Diapositivas">
-    <span class="kicker-y">Coordenadas · 42 ideas</span>
+    <span class="kicker-y">Coordenadas · 41 ideas</span>
     <ol></ol>
   </aside>
   <div id="deck-bar">
     <div id="deck-sheet"><ol></ol></div>
     <button type="button" id="deck-bar-btn" aria-expanded="false" aria-controls="deck-sheet">
-      <span class="n">01/42</span><span class="t">Portada</span>
+      <span class="n">01/41</span><span class="t">Portada</span>
       <span class="chev" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M3 9l4-4 4 4" fill="none" stroke="#fff" stroke-width="2"/></svg></span>
     </button>
   </div>
@@ -64,7 +64,7 @@
           <div class="card w6 g">
             <span class="c-label">El artículo en seis bloques</span>
             <ol class="mapa">
-              <li class="is-key"><a href="#porque"><b>I</b><span>Conceptos generales</span><em>18 ideas · el porqué, la Tierra y el ordenador</em></a></li>
+              <li class="is-key"><a href="#porque"><b>I</b><span>Conceptos generales</span><em>17 ideas · el porqué, la Tierra y el ordenador</em></a></li>
               <li><a href="#espana"><b>II</b><span>Estándares</span><em>3 ideas · EPSG, IFC, ISO 19650</em></a></li>
               <li><a href="#limites"><b>III</b><span>Software</span><em>7 ideas · Revit, Survey Point, campus y tipologías</em></a></li>
               <li><a href="#coordinacion"><b>IV</b><span>Plataformas</span><em>2 ideas · visores y nube</em></a></li>
@@ -82,42 +82,9 @@
         <div class="b-title">
           <span class="slide-n"></span>
           <span class="kicker-y">A · Por qué coordenadas</span>
-          <h2 class="display">Dibujar lo que aún no existe<span class="dot">.</span></h2>
-          <p class="slide-lead">Un proyecto describe un activo futuro en un soporte que no es físico. Las coordenadas lo atan a un lugar concreto de la Tierra.</p>
+          <h2 class="display">Sin coordenadas, el modelo no está en ningún sitio<span class="dot">.</span></h2>
+          <p class="slide-lead">Un proyecto describe en digital algo que aún no existe. Del terreno medido al replanteo, un mismo sistema de coordenadas lo ata a su lugar en la Tierra.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="porque"><span class="plus">+</span> Ver detalle</button></div>
-        </div>
-        <div class="b-cards">
-          <div class="card w6">
-            <span class="c-label">Terreno y modelo, un mismo número</span>
-            <svg class="draw" viewBox="0 0 640 200" role="img" aria-label="A la izquierda el terreno con un clavo topográfico; a la derecha una pantalla con el modelo del edificio; una línea amarilla con las coordenadas E, N y H une el clavo con la esquina del edificio">
-              <path d="M10 170 C70 160 110 150 160 156 S250 172 290 164" fill="none" stroke="#000" stroke-width="3" stroke-linecap="round"/>
-              <path d="M150 156 V128" stroke="#000" stroke-width="3" stroke-linecap="round"/><circle cx="150" cy="122" r="7" fill="#fff" stroke="#000" stroke-width="3"/>
-              <g font-family="JetBrains Mono, monospace" font-size="12"><text x="10" y="194">REALIDAD · se mide</text><text x="104" y="118">clavo</text></g>
-              <rect x="380" y="20" width="250" height="150" rx="6" fill="#fff" stroke="#000" stroke-width="3"/><path d="M470 170 V186 M440 186 H500" stroke="#000" stroke-width="3" stroke-linecap="round"/>
-              <path d="M430 140 V80 L480 56 L560 74 V128 Z M430 80 L510 98 L560 74 M510 98 V150" fill="none" stroke="#000" stroke-width="2.5" stroke-linejoin="round"/>
-              <path d="M430 140 L510 150 L560 128" fill="none" stroke="#000" stroke-width="2.5" stroke-linejoin="round"/>
-              <text x="392" y="40" font-family="JetBrains Mono, monospace" font-size="12">MODELO · se proyecta</text>
-              <path d="M158 122 C240 100 340 120 424 140" fill="none" stroke="#FFFF00" stroke-width="6" stroke-linecap="round"/>
-              <path d="M158 122 C240 100 340 120 424 140" fill="none" stroke="#000" stroke-width="1.5" stroke-dasharray="4 5"/>
-              <rect x="240" y="76" width="96" height="26" rx="13" fill="#000"/><text x="288" y="94" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="13" font-weight="700" fill="#FFFF00">E · N · H</text>
-            </svg>
-          </div>
-          <div class="card w2"><span class="c-label">Qué es</span><span class="c-title">Un activo futuro</span></div>
-          <div class="card w2"><span class="c-label">Dónde vive</span><span class="c-title">En un soporte digital</span></div>
-          <div class="card w2 k"><span class="c-label">Qué lo ata</span><span class="c-title">Un sistema de coordenadas</span></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ========== EL CICLO ========== -->
-    <section class="slide" id="ciclo" data-nav="Medir, codificar, construir">
-      <div class="bento">
-        <div class="b-title">
-          <span class="slide-n"></span>
-          <span class="kicker-y">De la realidad al dato y vuelta</span>
-          <h2 class="display">Medir, codificar, construir<span class="dot">.</span></h2>
-          <p class="slide-lead">El BIM empieza midiendo lo que existe y acaba replanteando lo proyectado. Si el sistema cambia por el camino, el edificio no cae donde se diseñó.</p>
-          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="ciclo"><span class="plus">+</span> Ver las fases</button></div>
         </div>
         <div class="b-cards">
           <div class="card w6">
@@ -1553,11 +1520,14 @@
 <div class="b-cards">
 <div class="card w6">
 <div class="table-wrap"><table>
-<thead><tr><th>Tres mundos</th><th>Qué es</th><th>Cómo se relaciona con los otros</th></tr></thead>
+<thead><tr><th>Fase <span class="tag">Inferido</span></th><th>Quién</th><th>Qué coordenadas</th><th>Qué puede fallar</th></tr></thead>
 <tbody>
-<tr><td>Realidad</td><td>El terreno, lo construido, las redes enterradas</td><td>Se mide: el topógrafo la convierte en puntos con coordenadas</td></tr>
-<tr class="is-key"><td>Modelo</td><td>La información de un activo que aún no existe</td><td>Se proyecta sobre esos puntos y en el mismo sistema</td></tr>
-<tr><td>Obra</td><td>El activo construido</td><td>Se replantea: las coordenadas del modelo vuelven al terreno</td></tr>
+<tr><td>Medir</td><td>Topógrafo</td><td>Las de la red geodésica oficial</td><td>Entregar en un sistema local sin decir cuál (<a href="#topografia">del campo al modelo</a>)</td></tr>
+<tr><td>Codificar</td><td>Topógrafo y equipo BIM</td><td>Puntos, nubes y terreno en ese sistema</td><td>Cifras tan grandes que el programa pierde precisión (<a href="#limite">lejos del origen</a>)</td></tr>
+<tr class="is-key"><td>Proyectar</td><td>Cada disciplina</td><td>Un origen local cerca del edificio y una transformación al sistema oficial</td><td>Que cada uno elija su origen (<a href="#principio">la regla de oro</a>)</td></tr>
+<tr><td>Coordinar</td><td>Coordinador BIM</td><td>Las mismas para todos los modelos</td><td>Modelos desplazados, girados o a otra cota (<a href="#problema">sin sistema común</a>)</td></tr>
+<tr><td>Replantear</td><td>Constructora</td><td>Las bases de replanteo de la obra</td><td>Confundir distancias de cuadrícula y de terreno (<a href="#escala">escala</a>)</td></tr>
+<tr><td>Operar</td><td>Propiedad</td><td>Las del modelo entregado</td><td>Perder la georreferencia en el modelo final (<a href="#ifc">IFC</a>)</td></tr>
 </tbody>
 </table></div>
 </div>
@@ -1574,32 +1544,14 @@
 <li>Cuánto mide de verdad (<a href="#escala">escala</a>).</li>
 </ul>
 </div>
-<div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://www.iso.org/standard/68078.html" target="_blank" rel="noopener">ISO 19650-1:2018, conceptos</a> · <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2007-15822" target="_blank" rel="noopener">Real Decreto 1071/2007, sistema geodésico oficial</a>.</p></div>
-</div>
-  </template>
-
-  <template id="l2-ciclo">
-<div class="b-cards">
-<div class="card w6">
-<div class="table-wrap"><table>
-<thead><tr><th>Fase <span class="tag">Inferido</span></th><th>Quién</th><th>Qué coordenadas</th><th>Qué puede fallar</th></tr></thead>
-<tbody>
-<tr><td>Medir</td><td>Topógrafo</td><td>Las de la red geodésica oficial</td><td>Entregar en un sistema local sin decir cuál (<a href="#topografia">del campo al modelo</a>)</td></tr>
-<tr><td>Codificar</td><td>Topógrafo y equipo BIM</td><td>Puntos, nubes y terreno en ese sistema</td><td>Cifras tan grandes que el programa pierde precisión (<a href="#limite">lejos del origen</a>)</td></tr>
-<tr class="is-key"><td>Proyectar</td><td>Cada disciplina</td><td>Un origen local cerca del edificio y una transformación al sistema oficial</td><td>Que cada uno elija su origen (<a href="#principio">la regla de oro</a>)</td></tr>
-<tr><td>Coordinar</td><td>Coordinador BIM</td><td>Las mismas para todos los modelos</td><td>Modelos desplazados, girados o a otra cota (<a href="#problema">sin sistema común</a>)</td></tr>
-<tr><td>Replantear</td><td>Constructora</td><td>Las bases de replanteo de la obra</td><td>Confundir distancias de cuadrícula y de terreno (<a href="#escala">escala</a>)</td></tr>
-<tr><td>Operar</td><td>Propiedad</td><td>Las del modelo entregado</td><td>Perder la georreferencia en el modelo final (<a href="#ifc">IFC</a>)</td></tr>
-</tbody>
-</table></div>
-</div>
-<div class="card w6 k">
+<div class="card w6 y">
 <h4>Una sola decisión, al principio</h4>
 <p>El sistema se elige antes de medir y se escribe en el plan de ejecución BIM. Cambiarlo a mitad de proyecto obliga a transformar todo lo que ya existe, y cada transformación es una ocasión de error. <span class="tag">Inferido</span></p>
 </div>
-<div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://www.iso.org/standard/68080.html" target="_blank" rel="noopener">ISO 19650-2:2018, entrega de la información</a> (las fases del ciclo son lectura propia) · <a href="https://www.boe.es/diario_boe/txt.php?id=BOE-A-2023-16784" target="_blank" rel="noopener">Orden PCM/818/2023, Plan BIM de la AGE</a>.</p></div>
+<div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://www.iso.org/standard/68078.html" target="_blank" rel="noopener">ISO 19650-1:2018, conceptos</a> · <a href="https://www.iso.org/standard/68080.html" target="_blank" rel="noopener">ISO 19650-2:2018, entrega de la información</a> (las fases del ciclo son lectura propia) · <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2007-15822" target="_blank" rel="noopener">Real Decreto 1071/2007, sistema geodésico oficial</a>.</p></div>
 </div>
   </template>
+
 
 
   <template id="l2-problema">
