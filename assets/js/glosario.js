@@ -2767,7 +2767,7 @@ window.BF_GLOSARIO = [
   "t": "GuBIMclass",
   "en": "GuBIMclass",
   "b": "II",
-  "d": "Sistema español de clasificación de elementos por función principal creado por GuBIMCat (v1.0 2017, v1.2 nov. 2017), adoptado por Infraestructures.cat.",
+  "d": "Sistema español de clasificación de elementos por función principal creado por GuBIMCat (v1.0 2017, v1.2 julio de 2017), adoptado por Infraestructures.cat.",
   "ej": "40.10.10.10 Tabiques; 20.10.40.10 Soleras; 30.10.10 Fachadas.",
   "eq": "Archicad: XML del Classification Manager; Revit: Assembly Code y Classification Manager; Navisworks: XML de búsqueda.",
   "err": "Usar códigos copiados de terceros sin cotejarlos con la tabla oficial 1.2.",
@@ -3125,8 +3125,7 @@ window.BF_GLOSARIO = [
   "al": [
    "parte contratante",
    "appointing party",
-   "parte que designa",
-   "appointing party"
+   "parte que designa"
   ]
  },
  {
@@ -3148,8 +3147,7 @@ window.BF_GLOSARIO = [
   "al": [
    "parte contratada principal",
    "lead appointed party",
-   "parte designada principal",
-   "lead appointed party"
+   "parte designada principal"
   ]
  },
  {
@@ -3171,8 +3169,7 @@ window.BF_GLOSARIO = [
    "parte contratada",
    "partes contratadas",
    "appointed party",
-   "parte designada",
-   "appointed party"
+   "parte designada"
   ]
  },
  {
