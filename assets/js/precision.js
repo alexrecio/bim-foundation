@@ -77,11 +77,11 @@
     document.addEventListener('bf-crs', () => { o.querySelector('.lbl.xy').textContent = `${crs()} · E 0,000 · N 0,000`; });
   }
 
-  // Primera lámina de cada bloque (I–VI): papel milimetrado en la esquina y el numeral del bloque, en hueco
+  // Primera lámina de cada bloque (I–VI): papel milimetrado en la esquina (sin numeral: Álex, no aporta)
   slides.filter((s) => s.dataset.cap).forEach((s) => {
     const n = document.createElement('div');
     n.className = 'pz-block'; n.setAttribute('aria-hidden', 'true');
-    n.innerHTML = `<i class="paper"></i><b>${s.dataset.cap.split('·')[0].trim()}</b>`;
+    n.innerHTML = '<i class="paper"></i>';
     s.classList.add('pz-host'); s.prepend(n);
   });
 
