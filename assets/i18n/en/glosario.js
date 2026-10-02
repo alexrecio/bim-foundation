@@ -997,7 +997,7 @@ window.BF_GLOSARIO = [
   "id": "N07",
   "slug": "actores",
   "t": "Actors (appointing / appointed party)",
-  "en": "Actores (parte que designa / parte designada)",
+  "en": "Actores (parte contratante / parte contratada)",
   "b": "I",
   "d": "Who requests the information (appointing party: the client or the lead contractor) and who produces it (appointed party). Every requirement identifies them.",
   "ej": "The client requests; the architecture team delivers the doors at detailed design and the joiner during construction.",
@@ -1013,8 +1013,9 @@ window.BF_GLOSARIO = [
    "appointing party",
    "appointed party",
    "actores",
-   "parte que designa",
-   "parte designada"
+   "parte contratante",
+   "parte contratada principal",
+   "parte contratada"
   ]
  },
  {
@@ -3469,9 +3470,9 @@ window.BF_GLOSARIO = [
  },
  {
   "id": "P10",
-  "slug": "parte-que-designa",
+  "slug": "parte-contratante",
   "t": "Appointing party",
-  "en": "Parte que designa",
+  "en": "Parte contratante",
   "b": "I",
   "d": "Receiver of information concerning works, goods or services: usually the client or whoever manages information on its behalf. It writes the EIR and accepts the information.",
   "ej": "A ministry or a public works agency tendering a project.",
@@ -3485,14 +3486,15 @@ window.BF_GLOSARIO = [
   "al": [
    "appointing party",
    "appointing parties",
+   "parte contratante",
    "parte que designa"
   ]
  },
  {
   "id": "P11",
-  "slug": "parte-designada-principal",
+  "slug": "parte-contratada-principal",
   "t": "Lead appointed party",
-  "en": "Parte designada principal",
+  "en": "Parte contratada principal",
   "b": "I",
   "d": "Party appointed by the appointing party that coordinates and manages information between its delivery team and the appointing party. It writes the BEP and the MIDP.",
   "ej": "The architecture practice that wins the competition and subcontracts structures and building services.",
@@ -3507,14 +3509,15 @@ window.BF_GLOSARIO = [
   "al": [
    "lead appointed party",
    "lead appointed parties",
+   "parte contratada principal",
    "parte designada principal"
   ]
  },
  {
   "id": "P12",
-  "slug": "parte-designada",
+  "slug": "parte-contratada",
   "t": "Appointed party",
-  "en": "Parte designada",
+  "en": "Parte contratada",
   "b": "I",
   "d": "Provider of information appointed by the lead appointed party; it receives its own EIR and writes the TIDP for its task teams.",
   "ej": "The structural engineering firm subcontracted by the architecture practice.",
@@ -3528,8 +3531,9 @@ window.BF_GLOSARIO = [
   "al": [
    "appointed party",
    "appointed parties",
-   "parte designada",
-   "partes designadas"
+   "parte contratada",
+   "partes contratadas",
+   "parte designada"
   ]
  },
  {

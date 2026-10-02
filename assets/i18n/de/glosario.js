@@ -1108,7 +1108,7 @@ window.BF_GLOSARIO = [
   "id": "N07",
   "slug": "actores",
   "t": "Akteure (Auftraggeber / Auftragnehmer)",
-  "en": "Actores (parte que designa / parte designada)",
+  "en": "Actores (parte contratante / parte contratada)",
   "b": "I",
   "d": "Wer die Informationen anfordert (Auftraggeber: der Bauherr oder der federführende Auftragnehmer) und wer sie erstellt (Auftragnehmer). Jede Anforderung benennt beide.",
   "ej": "Der Bauherr fordert an; das Architekturbüro liefert die Türen in der Ausführungsplanung, der Schreiner in der Bauausführung.",
@@ -1127,8 +1127,9 @@ window.BF_GLOSARIO = [
    "appointing party",
    "appointed party",
    "actores",
-   "parte que designa",
-   "parte designada"
+   "parte contratante",
+   "parte contratada principal",
+   "parte contratada"
   ]
  },
  {
@@ -3669,9 +3670,9 @@ window.BF_GLOSARIO = [
  },
  {
   "id": "P10",
-  "slug": "parte-que-designa",
+  "slug": "parte-contratante",
   "t": "Auftraggeber",
-  "en": "Parte que designa",
+  "en": "Parte contratante",
   "b": "I",
   "d": "Empfänger der Informationen zu Arbeiten oder Leistungen: in der Regel der Bauherr oder wer die Informationen in seinem Namen verwaltet. Er verfasst die AIA und nimmt die Informationen ab.",
   "ej": "Ein Ministerium oder eine Behörde für öffentliche Bauvorhaben, die ein Projekt ausschreibt.",
@@ -3686,14 +3687,15 @@ window.BF_GLOSARIO = [
    "Auftraggeber",
    "Auftraggebers",
    "appointing party",
+   "parte contratante",
    "parte que designa"
   ]
  },
  {
   "id": "P11",
-  "slug": "parte-designada-principal",
+  "slug": "parte-contratada-principal",
   "t": "Federführender Auftragnehmer",
-  "en": "Parte designada principal",
+  "en": "Parte contratada principal",
   "b": "I",
   "d": "Vom Auftraggeber beauftragte Partei, die die Informationen zwischen ihrem Lieferteam und dem Auftraggeber koordiniert und verwaltet. Sie verfasst den BAP und den MIDP.",
   "ej": "Das Architekturbüro, das den Wettbewerb gewinnt und Tragwerksplanung und TGA an Nachunternehmer vergibt.",
@@ -3711,14 +3713,15 @@ window.BF_GLOSARIO = [
    "federführenden Auftragnehmers",
    "federführende Auftragnehmer",
    "lead appointed party",
+   "parte contratada principal",
    "parte designada principal"
   ]
  },
  {
   "id": "P12",
-  "slug": "parte-designada",
+  "slug": "parte-contratada",
   "t": "Auftragnehmer",
-  "en": "Parte designada",
+  "en": "Parte contratada",
   "b": "I",
   "d": "Informationslieferant, der vom federführenden Auftragnehmer beauftragt wird; erhält eigene AIA und verfasst den TIDP seiner Aufgabenteams.",
   "ej": "Das Tragwerksplanungsbüro, das vom Architekturbüro als Nachunternehmer beauftragt wird.",
@@ -3734,8 +3737,9 @@ window.BF_GLOSARIO = [
    "Auftragnehmers",
    "Auftragnehmern",
    "appointed party",
-   "parte designada",
-   "partes designadas"
+   "parte contratada",
+   "partes contratadas",
+   "parte designada"
   ]
  },
  {
