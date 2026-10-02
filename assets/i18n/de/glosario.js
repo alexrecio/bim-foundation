@@ -1057,7 +1057,7 @@ window.BF_GLOSARIO = [
  },
  {
   "id": "N06",
-  "slug": "hito-de-entrega-de-informacion",
+  "slug": "hito-de-entrega-de-informacion-n06",
   "t": "Hito de entrega de información",
   "en": "Information delivery milestone",
   "b": "I",
@@ -1609,6 +1609,1311 @@ window.BF_GLOSARIO = [
   ]
  },
  {
+  "id": "D01",
+  "slug": "interferencia-colision",
+  "t": "Interferencia / colisión",
+  "en": "Clash / conflict",
+  "b": "I",
+  "d": "Incompatibilidad entre elementos de uno o varios modelos (espacial, de holgura o temporal) que impediría construir, operar o mantener como está diseñado; se detecta comparando conjuntos de elementos con unas reglas y tolerancias.",
+  "ej": "Un conducto de climatización atraviesa una viga de hormigón.",
+  "eq": "Navisworks: Clash; Solibri: Issue/Clash (regla de intersección de componentes); Revit: Interference Check; ACC Model Coordination: Clash; IfcClash: clash; BCF: Topic (tipo Clash)",
+  "err": "Confundir un resultado geométrico con un problema real: muchos resultados son irrelevantes o duplicados.",
+  "rel": [
+   "D02",
+   "D03",
+   "D04",
+   "D08",
+   "D10"
+  ],
+  "al": [
+   "interferencia",
+   "interferencias",
+   "choque",
+   "choques",
+   "colisión",
+   "colisiones"
+  ]
+ },
+ {
+  "id": "D02",
+  "slug": "interferencia-dura",
+  "t": "Interferencia dura",
+  "en": "Hard clash",
+  "b": "I",
+  "d": "Dos elementos ocupan el mismo espacio físico: sus geometrías se intersecan más allá de la tolerancia de penetración admitida.",
+  "ej": "Tubería de saneamiento que atraviesa un pilar.",
+  "eq": "Navisworks: Hard / Hard (Conservative); Solibri: Intersection; ACC: Hard clash; IfcClash: intersection/collision",
+  "err": "Reportar como duros los pasos previstos (pasatubos) o los contactos tangentes sin tolerancia.",
+  "rel": [
+   "D05",
+   "D12"
+  ],
+  "al": [
+   "interferencia dura",
+   "choque duro",
+   "hard clash"
+  ]
+ },
+ {
+  "id": "D03",
+  "slug": "interferencia-blanda-o-de-holgura",
+  "t": "Interferencia blanda o de holgura",
+  "en": "Soft / clearance clash",
+  "b": "I",
+  "d": "Un elemento invade la distancia mínima o el volumen libre exigido alrededor de otro (aislamiento, montaje, acceso, seguridad) aunque no lo toque.",
+  "ej": "Bandeja eléctrica a 5 cm de un conducto cuando se exigen 30 cm de separación.",
+  "eq": "Navisworks: Clearance; Solibri: Clearance / regla de distancia; Revizto: Clearance (con desfases H/V); IfcClash: clearance",
+  "err": "Aplicar una holgura única a todo el modelo; la holgura depende del sistema y debería modelarse como volumen cuando es de mantenimiento.",
+  "rel": [
+   "D05",
+   "D20"
+  ],
+  "al": [
+   "holgura",
+   "interferencia de holgura",
+   "clearance"
+  ]
+ },
+ {
+  "id": "D04",
+  "slug": "interferencia-de-flujo-de-trabajo-4d",
+  "t": "Interferencia de flujo de trabajo / 4D",
+  "en": "Workflow / 4D / time-space clash",
+  "b": "I",
+  "d": "Conflicto que surge al vincular el modelo con la planificación: dos actividades, equipos o espacios de trabajo coinciden en lugar y tiempo, o la secuencia impide montar algo.",
+  "ej": "El radio de giro de la grúa invade la zona de montaje de fachada en la semana 32.",
+  "eq": "Navisworks: Clash Detective con TimeLiner; Synchro: conflictos 4D; ACC/Revizto: limitados",
+  "err": "Tratarla con las mismas reglas que una interferencia espacial estática.",
+  "rel": [
+   "D01",
+   "D24"
+  ],
+  "al": [
+   "secuencia",
+   "interferencia de flujo",
+   "4D"
+  ]
+ },
+ {
+  "id": "D05",
+  "slug": "tolerancia-de-deteccion",
+  "t": "Tolerancia de detección",
+  "en": "Clash tolerance",
+  "b": "I",
+  "d": "Valor numérico que define qué se reporta: en choques duros, la penetración mínima a partir de la cual se informa; en holgura, la distancia máxima por debajo de la cual se informa. Suele ajustarse por fase y disciplina.",
+  "ej": "Duro con 10 mm para ignorar contactos de modelado; holgura de 50 mm entre conductos.",
+  "eq": "Navisworks: Tolerance; Solibri: tolerancia en reglas; Revizto: Tolerance; IfcClash: tolerance/clearance",
+  "err": "Confundir tolerancia de detección con tolerancia de ejecución de obra, o subirla tanto que oculte choques reales.",
+  "rel": [
+   "D02",
+   "D03",
+   "D06"
+  ],
+  "al": [
+   "tolerancia"
+  ]
+ },
+ {
+  "id": "D06",
+  "slug": "matriz-de-deteccion",
+  "t": "Matriz de detección (plan de pruebas)",
+  "en": "Clash matrix / clash test plan",
+  "b": "I",
+  "d": "Tabla, acordada en el BEP, que define qué pares de disciplinas o sistemas se comprueban, con qué tipo de prueba y tolerancia, en qué fase, con qué prioridad y quién es responsable.",
+  "ej": "ARQ vs EST duro 0 mm; SAN vs CLIM holgura 25 mm; ELE vs todo, fase de ejecución.",
+  "eq": "Navisworks: lista de Tests; Solibri: Ruleset; ACC: Clash test (automático); BIMcollab/Revizto: Clash sets",
+  "err": "Probar 'todo contra todo' sin matriz y obtener miles de resultados inútiles.",
+  "rel": [
+   "D05",
+   "D13",
+   "D16",
+   "D07"
+  ],
+  "al": [
+   "matriz de detección",
+   "matriz de pruebas",
+   "matriz"
+  ]
+ },
+ {
+  "id": "D07",
+  "slug": "agrupacion-de-interferencias",
+  "t": "Agrupación de interferencias",
+  "en": "Clash grouping",
+  "b": "I",
+  "d": "Reunir resultados con una causa o solución común (mismo elemento, sistema, nivel, zona o responsable) para gestionarlos como una sola incidencia.",
+  "ej": "40 choques de una misma bandeja contra 40 viguetas se tratan como una incidencia.",
+  "eq": "Navisworks: Clash groups/Group; Solibri: agrupación de resultados en Issues; BIM Track: Clash grouper; Revizto: Grouping; IfcClash: smart grouping",
+  "err": "Agrupar solo por nivel o rejilla, mezclando problemas de distintos responsables.",
+  "rel": [
+   "D08",
+   "D10",
+   "D12"
+  ],
+  "al": [
+   "agrupación",
+   "agrupar"
+  ]
+ },
+ {
+  "id": "D08",
+  "slug": "falso-positivo-interferencia-irrelevante",
+  "t": "Falso positivo / interferencia irrelevante",
+  "en": "False positive / irrelevant clash",
+  "b": "I",
+  "d": "Resultado que la herramienta marca como choque pero no requiere acción: contacto intencionado, elemento sin modelar a nivel suficiente, solución resoluble en obra o elemento ya resuelto.",
+  "ej": "Choque entre aislamiento de tubería y su abrazadera.",
+  "eq": "Navisworks: Approved/Resolved; Solibri: Accepted/Rejected; ACC: Not an issue; BCF: TopicStatus cerrado",
+  "err": "Aprobar en bloque sin criterio o, al revés, mandar todo a las disciplinas.",
+  "rel": [
+   "D05",
+   "D07",
+   "D12"
+  ],
+  "al": [
+   "falso positivo",
+   "falsos positivos"
+  ]
+ },
+ {
+  "id": "D09",
+  "slug": "coordinacion-espacial-modelo-federado-de-coordinacion",
+  "t": "Coordinación espacial / modelo federado de coordinación",
+  "en": "Spatial coordination / federated coordination model",
+  "b": "I",
+  "d": "Proceso de integrar los modelos de cada disciplina, sin fusionarlos ni perder su autoría, en un modelo federado georreferenciado sobre el que se detectan y resuelven incompatibilidades.",
+  "ej": "Arquitectura, estructura y MEP en IFC federados en un visor común con origen compartido.",
+  "eq": "Navisworks: NWF/NWD; Solibri: SMC con varios IFC; ACC: Coordination space; Revizto/BIMcollab Zoom; Trimble Connect",
+  "err": "Federar modelos con distinto origen o versión, o coordinar sobre un modelo 'fusionado' que borra la autoría.",
+  "rel": [
+   "C17",
+   "D16",
+   "D24"
+  ],
+  "al": [
+   "coordinación espacial",
+   "coordinación 3D"
+  ]
+ },
+ {
+  "id": "D10",
+  "slug": "incidencia",
+  "t": "Incidencia (issue / topic)",
+  "en": "Issue / topic",
+  "b": "I",
+  "d": "Registro gestionable de un problema detectado, con título, descripción, tipo, estado, prioridad, responsable, fecha límite, comentarios y vistas asociadas; en BCF se denomina Topic.",
+  "ej": "Topic 'Conducto C-12 contra viga V-3, planta 2', asignado a MEP, fecha límite viernes.",
+  "eq": "BCF: Topic; Navisworks: Clash result/Issue; Solibri: Issue; ACC: Issue; Revizto: Issue; Trimble Connect: ToDo",
+  "err": "Usar la incidencia como captura sin responsable ni estado.",
+  "rel": [
+   "D11",
+   "D14",
+   "D22"
+  ],
+  "al": [
+   "incidencia",
+   "incidencias"
+  ]
+ },
+ {
+  "id": "D11",
+  "slug": "punto-de-vista-y-captura",
+  "t": "Punto de vista y captura",
+  "en": "Viewpoint and snapshot",
+  "b": "I",
+  "d": "Estado de visualización asociado a una incidencia: cámara (ortogonal o perspectiva), planos de corte, componentes seleccionados, visibles o coloreados (por GUID IFC) y una imagen de referencia.",
+  "ej": "viewpoint.bcfv con cámara, dos componentes seleccionados por IfcGuid y snapshot.png.",
+  "eq": "BCF: .bcfv + snapshot PNG/JPEG; Navisworks: Viewpoint; Solibri: Slide; ACC/Revizto: vista de la incidencia",
+  "err": "Compartir solo la imagen sin componentes: el receptor no puede seleccionar los elementos en su software.",
+  "rel": [
+   "D10",
+   "D14",
+   "D17"
+  ],
+  "al": [
+   "punto de vista",
+   "puntos de vista"
+  ]
+ },
+ {
+  "id": "D12",
+  "slug": "duplicados",
+  "t": "Duplicados",
+  "en": "Duplicates",
+  "b": "I",
+  "d": "Elementos repetidos o superpuestos de geometría idéntica (o casi) en el mismo lugar, en un mismo modelo o entre modelos; inflan mediciones y resultados de choques.",
+  "ej": "Pilar modelado en arquitectura y en estructura, o un muro copiado dos veces.",
+  "eq": "Navisworks: Duplicates; Solibri: regla de componentes duplicados; Revit: advertencia 'instancias idénticas'",
+  "err": "No ejecutarla antes de los cruces entre disciplinas, multiplicando los resultados.",
+  "rel": [
+   "D08",
+   "D25"
+  ],
+  "al": [
+   "duplicado",
+   "duplicados"
+  ]
+ },
+ {
+  "id": "D13",
+  "slug": "jerarquia-de-resolucion",
+  "t": "Jerarquía de resolución (quién se mueve)",
+  "en": "Clash resolution hierarchy / right of way",
+  "b": "I",
+  "d": "Orden, pactado en el BEP, que decide qué sistema cede ante un choque según su flexibilidad: los elementos más grandes, permanentes o restringidos (estructura, saneamiento por gravedad) tienen prioridad.",
+  "ej": "Saneamiento por gravedad > conductos > tuberías a presión/PCI > bandejas y tubos eléctricos.",
+  "eq": "Matriz de prioridades del BEP; ETS: gravedad A/B/C; Ashghal: prioridad A-C y severidad 1-4",
+  "err": "Aplicarla sin excepciones (p. ej. un conducto pequeño frente a un colector principal).",
+  "rel": [
+   "D06",
+   "D24",
+   "D20"
+  ],
+  "al": [
+   "quién se mueve",
+   "jerarquía de resolución",
+   "derecho de paso"
+  ]
+ },
+ {
+  "id": "D14",
+  "slug": "bcf",
+  "t": "BCF (BIM Collaboration Format)",
+  "en": "BIM Collaboration Format",
+  "b": "II",
+  "d": "Estándar abierto de buildingSMART para intercambiar incidencias sobre modelos (IFC u otros) sin enviar el modelo: XML (BCF-XML, contenedor .bcfzip/.bcf) o servicios web (BCF API). Versiones 1.0 (2011), 2.0, 2.1 y 3.0.",
+  "ej": "Exportar 25 topics de Solibri en BCF 2.1 e importarlos en Revit con BCF Manager.",
+  "eq": "BCF-XML 2.1/3.0; BCF API 2.1/3.0; complementos en Revit/Archicad/Tekla; BIMcollab; Revizto; Trimble Connect; Catenda; Bonsai",
+  "err": "Mezclar versiones (3.0 vs 2.1) o perder campos (prioridad, id del servidor) en la exportación.",
+  "rel": [
+   "D10",
+   "D11",
+   "D15",
+   "D17"
+  ],
+  "al": [
+   "BCF",
+   "BIM Collaboration Format"
+  ]
+ },
+ {
+  "id": "D15",
+  "slug": "bcf-api-opencde",
+  "t": "BCF API / OpenCDE",
+  "en": "BCF API / OpenCDE APIs",
+  "b": "II",
+  "d": "Especificación REST/JSON para sincronizar incidencias BCF entre aplicaciones y servidores; forma parte de la familia OpenCDE junto con la Foundation API (descubrimiento, OAuth 2.0, usuario) y la Documents API (descarga/subida al CDE).",
+  "ej": "Un complemento de Revit consulta GET /bcf/3.0/projects/{id}/topics y actualiza el estado sin pasar archivos.",
+  "eq": "BCF API 2.1/3.0; OpenCDE Foundation API 1.0/1.1; Documents API 1.0",
+  "err": "Creer que 'soporta BCF' implica soportar la API (muchas herramientas solo leen/escriben archivos).",
+  "rel": [
+   "D14",
+   "C30"
+  ],
+  "al": [
+   "BCF API",
+   "OpenCDE",
+   "Foundation API"
+  ]
+ },
+ {
+  "id": "D16",
+  "slug": "iso-19650-y-coordinacion",
+  "t": "ISO 19650 y coordinación",
+  "en": "ISO 19650 and coordination",
+  "b": "II",
+  "d": "Marco de gestión de la información (UNE-EN ISO 19650) que asigna la coordinación: cada equipo de tarea revisa y coordina su información antes de compartirla; la parte adjudicataria principal define la estrategia de federación, la estructura de contenedores, la matriz de responsabilidades y compila los TIDP en el MIDP.",
+  "ej": "El BEP fija la estrategia de federación por edificio y disciplina y la matriz que asigna la detección al coordinador del equipo de desarrollo.",
+  "eq": "ISO 19650-1/-2 (2018; revisión 2026); UNE-EN ISO 19650; UK BIM Framework; Plan BIM (Orden PCM/818/2023)",
+  "err": "Creer que ISO 19650 define cargos (BIM Manager) o el procedimiento de detección: define funciones y procesos.",
+  "rel": [
+   "C25",
+   "C17",
+   "C30",
+   "D06"
+  ],
+  "al": [
+   "estrategia de federación",
+   "TIDP",
+   "MIDP"
+  ]
+ },
+ {
+  "id": "D17",
+  "slug": "identificador-de-objeto-ifc",
+  "t": "Identificador de objeto IFC (GlobalId)",
+  "en": "IFC GlobalId / IfcGloballyUniqueId",
+  "b": "II",
+  "d": "Identificador único de 128 bits de cada objeto IFC, codificado en 22 caracteres (alfabeto 0-9A-Za-z_$); BCF lo usa (IfcGuid) para referenciar componentes, por lo que debe mantenerse estable entre exportaciones.",
+  "ej": "2O2Fr$t4X7Zf8NOew3FLOH identifica la misma puerta en todas las versiones del IFC.",
+  "eq": "IFC: GlobalId; BCF: IfcGuid; Revit: parámetro IfcGUID/IFC GUID (derivado del UniqueId); Archicad: IFC GlobalId; Tekla: GUID",
+  "err": "Regenerar GUID al exportar (copiar/pegar, borrar y rehacer) rompe la trazabilidad de las incidencias.",
+  "rel": [
+   "D11",
+   "D14"
+  ],
+  "al": [
+   "GlobalId",
+   "IfcGloballyUniqueId",
+   "IFC GUID"
+  ]
+ },
+ {
+  "id": "D18",
+  "slug": "conjunto-de-seleccion-conjunto-de-busqueda",
+  "t": "Conjunto de selección / conjunto de búsqueda",
+  "en": "Selection set / Search set (Navisworks); Smart View (BIMcollab Zoom); Search set (Revizto); grupo de criterios (Archicad)",
+  "b": "III",
+  "d": "Agrupación guardada de elementos del modelo federado que se usa como lado A o B de una prueba de interferencias. El conjunto de selección guarda elementos concretos (estático); el de búsqueda guarda criterios (propiedad, categoría, sistema) y se reevalúa cuando el modelo cambia (dinámico).",
+  "ej": "Search set 'MEP – Saneamiento' = elementos cuyo 'System Type' contiene 'Sanitary'; se prueba contra el search set 'EST – Vigas'. Al cargar la nueva versión del modelo, el conjunto incluye automáticamente las tuberías nuevas.",
+  "eq": "Navisworks: Selection Set / Search Set (ventana Sets, Find Items); BIMcollab Zoom: Smart Views como source/target set; Revizto: search sets A/B; Solibri: filtros de componentes de la regla; Archicad: Grupo 1 / Grupo 2 por criterios; IfcClash: selectores del grupo A/B; MicroStation: niveles/referencias/Named Groups.",
+  "err": "Usar conjuntos de selección estáticos en pruebas que se repiten: los elementos nuevos de la siguiente entrega quedan fuera y la prueba da un falso 'cero interferencias'. También: criterios basados en nombres no normalizados.",
+  "rel": [
+   "D06",
+   "D19",
+   "D08",
+   "C17"
+  ],
+  "al": [
+   "conjunto de selección",
+   "conjuntos de búsqueda",
+   "search sets"
+  ]
+ },
+ {
+  "id": "D19",
+  "slug": "reglas-de-exclusion-y-conjuntos-de-reglas",
+  "t": "Reglas de exclusión y conjuntos de reglas",
+  "en": "Clash rules / ignore rules / suppression rules; rulesets",
+  "b": "III",
+  "d": "Condiciones que hacen que el programa no informe de ciertas interferencias (reglas de exclusión) y agrupaciones de reglas de comprobación guardadas y reutilizables (conjuntos de reglas). Sirven para eliminar falsos positivos sistemáticos y estandarizar la comprobación.",
+  "ej": "En Navisworks, activar 'Items in Same File' para no informar de choques internos de cada disciplina y la plantilla 'Insulation Thickness' para tuberías aisladas; en Solibri, un ruleset 'Coordinación MEP-EST' con General Intersection Rule y excepciones de 'conducto atraviesa muro'.",
+  "eq": "Navisworks: pestaña Rules (6 reglas por defecto + plantillas); Solibri: Ruleset / Intersection Exceptions; Revizto: Ignore rules; Bentley: Suppression rules; Trimble Connect: 'Ignore clashes within the same file/type'; Archicad: 'Participa en Detección de Colisiones' por material; BIMcollab Zoom: conjuntos de reglas Local/Shared.",
+  "err": "Reglas demasiado amplias (p. ej. 'Same File' en un modelo federado en un solo NWD) que ocultan interferencias reales; o no documentar las reglas en el BEP, de modo que cada coordinador obtiene resultados distintos.",
+  "rel": [
+   "D08",
+   "D18",
+   "D06",
+   "D05",
+   "C32"
+  ],
+  "al": [
+   "reglas de exclusión",
+   "conjunto de reglas"
+  ]
+ },
+ {
+  "id": "D20",
+  "slug": "zona-libre-espacio-de-mantenimiento-y-acceso",
+  "t": "Zona libre / espacio de mantenimiento y acceso",
+  "en": "Clearance / maintenance and access zone",
+  "b": "I",
+  "d": "Volumen que debe quedar libre alrededor de equipos o elementos para operar, mantener, sustituir o acceder con seguridad; se modela como sólido auxiliar y se comprueba con pruebas de holgura o duras contra ese volumen.",
+  "ej": "Zona frontal de 1 m delante de un cuadro eléctrico o de apertura del registro de una UTA.",
+  "eq": "Familias/objetos de 'clearance' en Revit; Solibri: regla de espacio libre; Navisworks: prueba contra sólidos de holgura",
+  "err": "No modelarla y confiar en la tolerancia global; o modelarla como sólido que luego se mide o se exporta como elemento real.",
+  "rel": [
+   "D03",
+   "D13"
+  ],
+  "al": [
+   "zona libre",
+   "espacio libre",
+   "espacio de mantenimiento"
+  ]
+ },
+ {
+  "id": "D21",
+  "slug": "deteccion-automatica-en-la-nube",
+  "t": "Detección automática en la nube",
+  "en": "Automated cloud clash detection",
+  "b": "IV",
+  "d": "Cálculo de interferencias que ejecuta un servicio en el CDE sin intervención manual cuando se publica o actualiza un modelo en un espacio de coordinación, o según una programación, y deja los resultados accesibles a todo el equipo.",
+  "ej": "Al subir la nueva versión del IFC de climatización al espacio de coordinación, Forma Model Coordination recalcula los choques contra estructura y arquitectura y los muestra agrupados.",
+  "eq": "Model Coordination (Autodesk Forma/BIM Collaborate Pro), Clash Automation (Revizto), clash spaces (Aconex), clash sets en la nube (Trimble Connect).",
+  "err": "Creer que 'automática' significa configurable como Navisworks: en Model Coordination no hay tolerancia ni matriz de pruebas en el cálculo, solo filtros posteriores; o dejar activados los modelos contenedor y multiplicar ruido y tiempos.",
+  "rel": [
+   "D05",
+   "D06",
+   "D07",
+   "D09",
+   "C30"
+  ],
+  "al": [
+   "detección automática"
+  ]
+ },
+ {
+  "id": "D22",
+  "slug": "estado-y-ciclo-de-vida-de-la-incidencia",
+  "t": "Estado y ciclo de vida de la incidencia",
+  "en": "Issue status and lifecycle",
+  "b": "V",
+  "d": "Secuencia de estados por los que pasa una incidencia desde que se crea hasta que se verifica su cierre (p. ej. Nueva → Activa/Asignada → Resuelta por el autor → Verificada/Cerrada, o Descartada), con responsable, fechas e historial.",
+  "ej": "El coordinador crea la incidencia 'Conducto vs viga P3' (Open), la asigna a MEP; MEP la marca Resuelta; tras reejecutar la prueba el coordinador la pasa a Cerrada.",
+  "eq": "Topic status (BCF), New/Active/Reviewed/Approved/Resolved (Navisworks), Open/Closed (ACC Issues).",
+  "err": "Mapear mal los estados entre programas: BCF no fija valores, cada servidor los define en extensions; al importar a ACC todo llega como 'Open' salvo 'Closed'; confundir 'Resuelta' con 'Cerrada'.",
+  "rel": [
+   "D10",
+   "D14",
+   "D15",
+   "D23",
+   "D26"
+  ],
+  "al": [
+   "estado de la incidencia",
+   "ciclo de vida"
+  ]
+ },
+ {
+  "id": "D23",
+  "slug": "indicadores-de-coordinacion",
+  "t": "Indicadores de coordinación (KPI)",
+  "en": "Coordination KPIs",
+  "b": "VI",
+  "d": "Métricas que miden la salud del proceso de coordinación: incidencias abiertas/cerradas, nuevas por ciclo, tiempo medio de cierre, antigüedad, reabiertas, tendencia por disciplina o zona y ratio identificadas/resueltas.",
+  "ej": "Cuadro semanal: 42 abiertas (−15 %), tiempo medio de cierre 9 días, 6 reabiertas; MEP-estructura concentra el 60 % de las abiertas en P2.",
+  "eq": "Clash metrics, coordination dashboard, clash aging.",
+  "err": "Medir el número bruto de choques (dominado por falsos positivos y duplicados) en lugar de incidencias agrupadas; comparar ciclos con pruebas o tolerancias distintas.",
+  "rel": [
+   "D07",
+   "D08",
+   "D22",
+   "D24",
+   "C32"
+  ],
+  "al": [
+   "indicadores",
+   "KPI"
+  ]
+ },
+ {
+  "id": "D24",
+  "slug": "reunion-de-coordinacion",
+  "t": "Reunión de coordinación",
+  "en": "Coordination meeting",
+  "b": "I",
+  "d": "Sesión periódica (habitualmente semanal o quincenal) en torno al modelo federado donde se revisan los grupos de incidencias priorizadas, se deciden soluciones y se asignan responsables y plazos, registrándose en BCF/CDE.",
+  "ej": "Reunión semanal: revisión de 15 incidencias prioritarias de la planta 3 con MEP y estructura.",
+  "eq": "ACC/BIM 360 Coordination; Revizto; BIMcollab; Navisworks en sala; Teams + BCF",
+  "err": "Revisar choque a choque sin preparación previa ni asignar tareas al terminar.",
+  "rel": [
+   "D09",
+   "D10",
+   "D13"
+  ],
+  "al": [
+   "reunión de coordinación"
+  ]
+ },
+ {
+  "id": "D25",
+  "slug": "nivel-de-informacion-y-aptitud-del-modelo-para-detectar",
+  "t": "Nivel de información y aptitud del modelo para detectar",
+  "en": "Level of information need / LOD",
+  "b": "I",
+  "d": "Grado de desarrollo geométrico y alfanumérico que debe tener cada elemento para un propósito; para coordinar hace falta geometría con tamaño, posición e interfaces (p. ej. LOD 350 de BIMForum), definida conforme al LOIN (EN ISO 7817-1:2024).",
+  "ej": "Conductos con aislamiento y soportes modelados antes de la coordinación de oficios.",
+  "eq": "BIMForum LOD 100-500 (350 para coordinación); EN ISO 7817-1 (LOIN); IDS para comprobar requisitos",
+  "err": "Detectar sobre modelos LOD 200 y tomar decisiones sobre geometría genérica.",
+  "rel": [
+   "D01",
+   "D08",
+   "C32"
+  ],
+  "al": [
+   "nivel de desarrollo",
+   "LOD",
+   "nivel de información necesario"
+  ]
+ },
+ {
+  "id": "D26",
+  "slug": "verificacion-de-cierre",
+  "t": "Verificación de cierre",
+  "en": "Closure verification / clash re-run",
+  "b": "VI",
+  "d": "Comprobación de que una incidencia marcada como resuelta lo está realmente: se reejecuta la misma prueba (mismas reglas y tolerancia) sobre la nueva versión de los modelos y se confirma que el choque desaparece sin crear otros, antes de cerrarla.",
+  "ej": "Tras la nueva versión del modelo de fontanería, el coordinador relanza la prueba FON_v_EST; el choque desaparece y la incidencia pasa de Resuelta a Cerrada; un nuevo choque con el falso techo genera otra incidencia.",
+  "eq": "Re-run, verify fix, Approved/Resolved en Clash Detective, choques en rojo por desactualizados (Trimble Connect).",
+  "err": "Cerrar por declaración del autor sin reejecutar, o reejecutar con otra tolerancia o modelo y dar por buena la desaparición.",
+  "rel": [
+   "D22",
+   "D23",
+   "D06",
+   "D05"
+  ],
+  "al": [
+   "verificación de cierre"
+  ]
+ },
+ {
+  "id": "P01",
+  "slug": "plan-de-ejecucion-bim",
+  "t": "Plan de ejecución BIM (BEP)",
+  "en": "BIM execution plan (BEP)",
+  "b": "I",
+  "d": "Plan que explica cómo el equipo de desarrollo gestionará y entregará la información de una designación para cumplir el EIR: personas, estrategia, federación, responsabilidades, métodos, estándar y medios.",
+  "ej": "La Junta de Andalucía (AOPJA) lo llama PEB y pide un pre-PEB con la oferta y el PEB tras la adjudicación.",
+  "eq": "ISO 19650-2: BIM execution plan; Penn State: BIM Project Execution Plan (PxP); NBIMS-US V4: BIM Execution Plan; revisión ISO en curso: posible «Information Production Plan».",
+  "err": "Escribir un manual de empresa genérico que no responde a ningún requisito concreto del EIR.",
+  "rel": [
+   "P02",
+   "P03",
+   "P04",
+   "P16",
+   "P21"
+  ],
+  "al": [
+   "plan de ejecución BIM",
+   "planes de ejecución BIM",
+   "BEP",
+   "PEB",
+   "BIM execution plan"
+  ]
+ },
+ {
+  "id": "P02",
+  "slug": "bep-previo-a-la-designacion",
+  "t": "BEP previo a la designación",
+  "en": "Pre-appointment BEP",
+  "b": "I",
+  "d": "Versión del BEP que cada candidato a parte designada principal entrega con su oferta (ISO 19650-2, 5.3.2) para mostrar cómo cumplirá el EIR; incluye una matriz de responsabilidades de alto nivel.",
+  "ej": "pre-PEB del EIR tipo de la AOPJA (2024).",
+  "eq": "PAS 1192-2: pre-contract BEP; Penn State: propuesta.",
+  "err": "Presentarlo como un catálogo comercial en lugar de una respuesta punto por punto al EIR.",
+  "rel": [
+   "P01",
+   "P03",
+   "P16",
+   "P29"
+  ],
+  "al": [
+   "BEP previo",
+   "pre-BEP",
+   "pre-PEB",
+   "pre-appointment BEP"
+  ]
+ },
+ {
+  "id": "P03",
+  "slug": "bep-confirmado",
+  "t": "BEP confirmado (posterior a la designación)",
+  "en": "Post-appointment BEP",
+  "b": "I",
+  "d": "BEP que el equipo designado confirma y detalla tras la designación (ISO 19650-2, 5.4.1): nombres de las personas, matriz detallada, métodos y estándar acordados. Forma parte de los documentos del contrato.",
+  "ej": "PEB tras la adjudicación en los pliegos de la AOPJA.",
+  "eq": "PAS 1192-2: post-contract award BEP.",
+  "err": "No actualizarlo después de firmar: a mitad de proyecto ya describe un equipo que no existe.",
+  "rel": [
+   "P01",
+   "P02",
+   "P17",
+   "P18"
+  ],
+  "al": [
+   "BEP confirmado",
+   "post-appointment BEP"
+  ]
+ },
+ {
+  "id": "P04",
+  "slug": "requisitos-de-intercambio-de-informacion",
+  "t": "Requisitos de intercambio de información (EIR)",
+  "en": "Exchange information requirements (EIR)",
+  "b": "I",
+  "d": "Requisitos de información de una designación concreta (aspectos de gestión, comerciales y técnicos). Los escribe la parte que designa y la parte designada principal los traslada a cada parte designada.",
+  "ej": "Anexo «Requerimientos BIM (EIR)» de los pliegos de la AOPJA.",
+  "eq": "PAS 1192-2: Employer's Information Requirements; Plan BIM español: requisitos BIM en las prescripciones técnicas.",
+  "err": "Seguir leyendo EIR como «Employer's»: en ISO 19650 hay un EIR por cada designación, también hacia las subcontratas.",
+  "rel": [
+   "P05",
+   "P06",
+   "P07",
+   "P01"
+  ],
+  "al": [
+   "requisitos de intercambio de información",
+   "requisitos de intercambio",
+   "EIR",
+   "exchange information requirements"
+  ]
+ },
+ {
+  "id": "P05",
+  "slug": "requisitos-de-informacion-de-la-organizacion",
+  "t": "Requisitos de información de la organización (OIR)",
+  "en": "Organizational information requirements (OIR)",
+  "b": "I",
+  "d": "Requisitos de información ligados a los objetivos estratégicos de la organización respecto a sus activos; alimentan los PIR y los AIR.",
+  "ej": "Un ayuntamiento que necesita conocer el consumo energético de todos sus edificios.",
+  "eq": "ISO 19650-1.",
+  "err": "Saltárselos y escribir el EIR sin saber para qué decisiones se pide la información.",
+  "rel": [
+   "P06",
+   "P07",
+   "P04"
+  ],
+  "al": [
+   "OIR",
+   "requisitos de información de la organización"
+  ]
+ },
+ {
+  "id": "P06",
+  "slug": "requisitos-de-informacion-del-proyecto",
+  "t": "Requisitos de información del proyecto (PIR)",
+  "en": "Project information requirements (PIR)",
+  "b": "I",
+  "d": "Requisitos relativos al propósito, diseño y construcción del activo, ligados a los puntos de decisión clave del proyecto; determinan el modelo de información del proyecto (PIM).",
+  "ej": "Información para decidir si se licita la obra al final del proyecto de ejecución.",
+  "eq": "ISO 19650-1.",
+  "err": "Confundirlos con el EIR: el PIR es del proyecto; el EIR, de cada designación.",
+  "rel": [
+   "P05",
+   "P04",
+   "P08",
+   "P19"
+  ],
+  "al": [
+   "PIR",
+   "requisitos de información del proyecto"
+  ]
+ },
+ {
+  "id": "P07",
+  "slug": "requisitos-de-informacion-del-activo-p07",
+  "t": "Requisitos de información del activo (AIR)",
+  "en": "Asset information requirements (AIR)",
+  "b": "I",
+  "d": "Requisitos de la información necesaria para operar y mantener el activo; determinan el contenido del modelo de información del activo (AIM).",
+  "ej": "Datos de mantenimiento de equipos de climatización que pide el gestor del edificio.",
+  "eq": "ISO 19650-1 y -3; COBie como formato habitual.",
+  "err": "Pedirlos al final de la obra en lugar de incluirlos desde el primer EIR.",
+  "rel": [
+   "P05",
+   "P09",
+   "P04"
+  ],
+  "al": [
+   "AIR",
+   "requisitos de información del activo"
+  ]
+ },
+ {
+  "id": "P08",
+  "slug": "modelo-de-informacion-del-proyecto-p08",
+  "t": "Modelo de información del proyecto (PIM)",
+  "en": "Project information model (PIM)",
+  "b": "I",
+  "d": "Modelo de información (contenedores estructurados y no estructurados) que se desarrolla en la fase de desarrollo y transfiere al AIM lo que pide el AIR.",
+  "ej": "Modelos, planos y documentos del proyecto y la obra de un hospital.",
+  "eq": "ISO 19650-1.",
+  "err": "Pensar que es solo el modelo 3D federado.",
+  "rel": [
+   "P09",
+   "P06",
+   "P24"
+  ],
+  "al": [
+   "PIM",
+   "modelo de información del proyecto"
+  ]
+ },
+ {
+  "id": "P09",
+  "slug": "modelo-de-informacion-del-activo-p09",
+  "t": "Modelo de información del activo (AIM)",
+  "en": "Asset information model (AIM)",
+  "b": "I",
+  "d": "Modelo de información de la fase de operación; recibe del PIM la información pertinente al cierre del proyecto.",
+  "ej": "Base de datos de mantenimiento del edificio entregado.",
+  "eq": "ISO 19650-1 y -3.",
+  "err": "Entregar el PIM completo como AIM sin filtrar lo que de verdad sirve para operar.",
+  "rel": [
+   "P08",
+   "P07"
+  ],
+  "al": [
+   "AIM",
+   "modelo de información del activo"
+  ]
+ },
+ {
+  "id": "P10",
+  "slug": "parte-que-designa",
+  "t": "Parte que designa",
+  "en": "Appointing party",
+  "b": "I",
+  "d": "Receptor de la información sobre trabajos o servicios: normalmente el cliente o quien gestiona la información en su nombre. Escribe el EIR y acepta la información.",
+  "ej": "Un ministerio o una agencia de obra pública que licita un proyecto.",
+  "eq": "ISO 19650: appointing party; PAS 1192: employer.",
+  "err": "Llamarla «el cliente» sin más cuando en realidad actúa un gestor de la información delegado.",
+  "rel": [
+   "P11",
+   "P12",
+   "P04"
+  ],
+  "al": [
+   "parte que designa",
+   "appointing party"
+  ]
+ },
+ {
+  "id": "P11",
+  "slug": "parte-designada-principal",
+  "t": "Parte designada principal",
+  "en": "Lead appointed party",
+  "b": "I",
+  "d": "Parte designada por la parte que designa que coordina y gestiona la información entre su equipo de desarrollo y la parte que designa. Escribe el BEP y el MIDP.",
+  "ej": "El estudio de arquitectura que gana el concurso y subcontrata estructura e instalaciones.",
+  "eq": "ISO 19650: lead appointed party.",
+  "err": "Suponer que solo hay una por proyecto: hay una por cada equipo de desarrollo.",
+  "rel": [
+   "P10",
+   "P12",
+   "P13",
+   "P18"
+  ],
+  "al": [
+   "parte designada principal",
+   "lead appointed party"
+  ]
+ },
+ {
+  "id": "P12",
+  "slug": "parte-designada",
+  "t": "Parte designada",
+  "en": "Appointed party",
+  "b": "I",
+  "d": "Proveedor de información designado por la parte designada principal; recibe su propio EIR y escribe el TIDP de sus equipos de tarea.",
+  "ej": "La ingeniería de estructuras subcontratada por el estudio de arquitectura.",
+  "eq": "ISO 19650: appointed party.",
+  "err": "No pasarle un EIR propio: entonces no sabe qué debe entregar.",
+  "rel": [
+   "P11",
+   "P14",
+   "P17"
+  ],
+  "al": [
+   "parte designada",
+   "partes designadas",
+   "appointed party"
+  ]
+ },
+ {
+  "id": "P13",
+  "slug": "equipo-de-desarrollo",
+  "t": "Equipo de desarrollo",
+  "en": "Delivery team",
+  "b": "I",
+  "d": "Conjunto formado por una parte designada principal y sus partes designadas.",
+  "ej": "Arquitectura + estructura + instalaciones bajo un mismo contrato principal.",
+  "eq": "ISO 19650: delivery team. En español también «equipo de ejecución» (traducción UNE por confirmar).",
+  "err": "Confundirlo con el equipo del proyecto, que incluye además a la parte que designa y a otros equipos de desarrollo.",
+  "rel": [
+   "P11",
+   "P12",
+   "P15"
+  ],
+  "al": [
+   "equipo de desarrollo",
+   "equipos de desarrollo",
+   "delivery team"
+  ]
+ },
+ {
+  "id": "P14",
+  "slug": "equipo-de-tarea",
+  "t": "Equipo de tarea",
+  "en": "Task team",
+  "b": "I",
+  "d": "Grupo de personas que realiza un paquete de trabajo concreto dentro de una parte designada.",
+  "ej": "El equipo de instalaciones eléctricas dentro de la ingeniería.",
+  "eq": "ISO 19650: task team.",
+  "err": "Tratar a la empresa entera como un solo equipo de tarea y perder el detalle del TIDP.",
+  "rel": [
+   "P12",
+   "P17"
+  ],
+  "al": [
+   "equipo de tarea",
+   "equipos de tarea",
+   "task team"
+  ]
+ },
+ {
+  "id": "P15",
+  "slug": "equipo-del-proyecto",
+  "t": "Equipo del proyecto",
+  "en": "Project team",
+  "b": "I",
+  "d": "La parte que designa más todos los equipos de desarrollo del proyecto.",
+  "ej": "Promotor, equipo de diseño y constructora de una misma obra.",
+  "eq": "ISO 19650: project team.",
+  "err": "—",
+  "rel": [
+   "P10",
+   "P13"
+  ],
+  "al": [
+   "equipo del proyecto",
+   "project team"
+  ]
+ },
+ {
+  "id": "P16",
+  "slug": "matriz-de-responsabilidades",
+  "t": "Matriz de responsabilidades",
+  "en": "Responsibility matrix",
+  "b": "I",
+  "d": "Tabla que asigna quién produce cada información: de alto nivel en el BEP previo y detallada (por contenedor, hito y responsable) tras la designación.",
+  "ej": "Hoja de cálculo con contenedores en filas y equipos en columnas.",
+  "eq": "ISO 19650-2: high-level / detailed responsibility matrix; RACI en gestión de proyectos.",
+  "err": "Filas con dos «responsables»: si todos lo son, nadie lo es.",
+  "rel": [
+   "P02",
+   "P17",
+   "P18"
+  ],
+  "al": [
+   "matriz de responsabilidades",
+   "matriz de responsabilidad"
+  ]
+ },
+ {
+  "id": "P17",
+  "slug": "plan-de-entrega-de-informacion-de-la-tarea",
+  "t": "Plan de entrega de información de la tarea (TIDP)",
+  "en": "Task information delivery plan (TIDP)",
+  "b": "I",
+  "d": "Lista de contenedores que entregará cada equipo de tarea, con nivel de información, formato, fecha y responsable.",
+  "ej": "TIDP del equipo de estructuras para el proyecto básico.",
+  "eq": "ISO 19650-2.",
+  "err": "Hacerlo una vez y no actualizarlo cuando cambia el calendario.",
+  "rel": [
+   "P18",
+   "P14",
+   "P16"
+  ],
+  "al": [
+   "TIDP",
+   "plan de entrega de información de la tarea"
+  ]
+ },
+ {
+  "id": "P18",
+  "slug": "plan-maestro-de-entrega-de-informacion",
+  "t": "Plan maestro de entrega de información (MIDP)",
+  "en": "Master information delivery plan (MIDP)",
+  "b": "I",
+  "d": "Plan que reúne los TIDP de todo el equipo de desarrollo, alineado con los hitos de entrega de la parte que designa.",
+  "ej": "MIDP del equipo ganador de un concurso de hospital.",
+  "eq": "ISO 19650-2; Perú: «programa general de desarrollo de la información» (traducción UNE por confirmar).",
+  "err": "Usarlo como diagrama de Gantt de obra en lugar de como plan de información.",
+  "rel": [
+   "P17",
+   "P19",
+   "P11"
+  ],
+  "al": [
+   "MIDP",
+   "plan maestro de entrega de información",
+   "plan maestro de entrega"
+  ]
+ },
+ {
+  "id": "P19",
+  "slug": "hito-de-entrega-de-informacion-p19",
+  "t": "Hito de entrega de información",
+  "en": "Information delivery milestone",
+  "b": "I",
+  "d": "Momento en que la parte que designa necesita información para decidir; puede estar al final de una etapa o dentro de ella.",
+  "ej": "Entrega antes de pedir la licencia de obras.",
+  "eq": "ISO 19650-1/2; key decision points.",
+  "err": "Fijar los hitos por la comodidad del equipo y no por las decisiones del cliente.",
+  "rel": [
+   "P06",
+   "P18"
+  ],
+  "al": [
+   "hito de entrega",
+   "hitos de entrega",
+   "hito de entrega de información"
+  ]
+ },
+ {
+  "id": "P20",
+  "slug": "estrategia-de-federacion",
+  "t": "Estrategia de federación",
+  "en": "Federation strategy",
+  "b": "I",
+  "d": "Cómo se divide la información en contenedores (por disciplina, volumen, nivel…) y cómo se juntan para coordinar.",
+  "ej": "Un modelo por disciplina y edificio, federado cada semana.",
+  "eq": "ISO 19650-2 (BEP previo); estructura de desglose de contenedores.",
+  "err": "Dividir el modelo según la costumbre de cada programa sin pensar en quién lo produce.",
+  "rel": [
+   "P01",
+   "P24"
+  ],
+  "al": [
+   "estrategia de federación"
+  ]
+ },
+ {
+  "id": "P21",
+  "slug": "estandar-de-informacion-del-proyecto",
+  "t": "Estándar de información del proyecto",
+  "en": "Project's information standard",
+  "b": "I",
+  "d": "Reglas comunes de la información: nombres, clasificación, unidades, niveles de información, sistema de coordenadas y formatos. El BEP propone cambios y el BEP confirmado los fija.",
+  "ej": "Convención de nombres + metros + EPSG:25830 + altitudes Alicante.",
+  "eq": "ISO 19650-2, 5.1.4.",
+  "err": "Dejar las coordenadas fuera: cada disciplina elige su origen.",
+  "rel": [
+   "P28",
+   "P22",
+   "P01"
+  ],
+  "al": [
+   "estándar de información",
+   "estándar de información del proyecto"
+  ]
+ },
+ {
+  "id": "P22",
+  "slug": "metodos-y-procedimientos-de-produccion-de-la-informacion",
+  "t": "Métodos y procedimientos de producción de la información",
+  "en": "Information production methods and procedures",
+  "b": "I",
+  "d": "Cómo se produce, comprueba, revisa, aprueba y comparte la información en el proyecto.",
+  "ej": "Revisión interna antes de pasar un fichero a compartido.",
+  "eq": "ISO 19650-2, 5.1.5.",
+  "err": "Confundirlos con el estándar: el estándar dice cómo es la información; los métodos, cómo se trabaja.",
+  "rel": [
+   "P21",
+   "P25"
+  ],
+  "al": [
+   "métodos y procedimientos de producción",
+   "métodos de producción"
+  ]
+ },
+ {
+  "id": "P23",
+  "slug": "protocolo-de-informacion",
+  "t": "Protocolo de información",
+  "en": "Information protocol",
+  "b": "II",
+  "d": "Anexo contractual que incorpora la gestión de la información a la designación: responsabilidades, licencias y uso de la información.",
+  "ej": "—",
+  "eq": "UK BIM Framework: Information Protocol (2021).",
+  "err": "Firmar el contrato sin él: entonces el BEP no obliga a nada.",
+  "rel": [
+   "P04",
+   "P01"
+  ],
+  "al": [
+   "protocolo de información"
+  ]
+ },
+ {
+  "id": "P24",
+  "slug": "contenedor-de-informacion",
+  "t": "Contenedor de información",
+  "en": "Information container",
+  "b": "I",
+  "d": "Conjunto de información con nombre propio, recuperable de un sistema de ficheros o aplicación: un plano, un modelo, una tabla, un documento.",
+  "ej": "HSP-ARQ-ZZ-01-M3-A-0001.ifc",
+  "eq": "ISO 19650-1.",
+  "err": "Pensar solo en modelos: un PDF o una hoja de cálculo también son contenedores.",
+  "rel": [
+   "P28",
+   "P25",
+   "P08"
+  ],
+  "al": [
+   "contenedor de información",
+   "contenedores de información",
+   "contenedor",
+   "contenedores"
+  ]
+ },
+ {
+  "id": "P25",
+  "slug": "estados-del-cde",
+  "t": "Estados del CDE",
+  "en": "CDE states",
+  "b": "I",
+  "d": "Situación de cada contenedor en el entorno común de datos: trabajo en curso, compartido, publicado y archivado. Cada transición exige una comprobación, revisión o autorización.",
+  "ej": "Carpeta WIP de cada equipo y carpeta de publicados del proyecto.",
+  "eq": "ISO 19650-1; Autodesk Docs y BCDE Project los implementan con estados y flujos.",
+  "err": "Tener las cuatro carpetas sin nadie que firme las transiciones.",
+  "rel": [
+   "P26",
+   "P24",
+   "P22"
+  ],
+  "al": [
+   "estados del CDE",
+   "trabajo en curso",
+   "work in progress"
+  ]
+ },
+ {
+  "id": "P26",
+  "slug": "codigo-de-estado",
+  "t": "Código de estado",
+  "en": "Status code",
+  "b": "II",
+  "d": "Metadato que indica para qué es apto un contenedor: S0 en curso; S1–S7 compartido; A, B y CR publicado (anexo nacional británico de 2021).",
+  "ej": "S1 apto para coordinación; A1 autorizado y aceptado.",
+  "eq": "BS EN ISO 19650-2 NA; Autodesk Docs (atributo); otros CDE con listas propias.",
+  "err": "Usar S para «sin revisar» y A para «aprobado» sin definir la lista en el estándar del proyecto.",
+  "rel": [
+   "P25",
+   "P27",
+   "P28"
+  ],
+  "al": [
+   "código de estado",
+   "códigos de estado",
+   "status code"
+  ]
+ },
+ {
+  "id": "P27",
+  "slug": "codigo-de-revision",
+  "t": "Código de revisión",
+  "en": "Revision code",
+  "b": "II",
+  "d": "Identificador de versión del contenedor: P01, P02… preliminar; C01, C02… contractual; P01.01 para versiones intermedias.",
+  "ej": "P03 en compartido; C01 al publicar.",
+  "eq": "BS EN ISO 19650-2 NA.",
+  "err": "Reiniciar la numeración al cambiar de estado.",
+  "rel": [
+   "P26",
+   "P28"
+  ],
+  "al": [
+   "código de revisión",
+   "códigos de revisión"
+  ]
+ },
+ {
+  "id": "P28",
+  "slug": "convencion-de-nomenclatura",
+  "t": "Convención de nomenclatura",
+  "en": "Naming convention",
+  "b": "II",
+  "d": "Regla de identificación de contenedores por campos separados por guiones: proyecto-originador-volumen-nivel-tipo-rol-número (anexo nacional británico).",
+  "ej": "HSP-ARQ-ZZ-01-M3-A-0001",
+  "eq": "BS EN ISO 19650-2 NA; validador de nombres de Autodesk Docs.",
+  "err": "Copiar la convención británica sin definir los códigos de cada campo para el proyecto.",
+  "rel": [
+   "P24",
+   "P26",
+   "P21"
+  ],
+  "al": [
+   "convención de nombres",
+   "convención de nomenclatura",
+   "nomenclatura"
+  ]
+ },
+ {
+  "id": "P29",
+  "slug": "plan-de-movilizacion",
+  "t": "Plan de movilización",
+  "en": "Mobilization plan",
+  "b": "I",
+  "d": "Cómo el equipo pondrá en marcha y probará recursos, tecnología y métodos antes de producir (ISO 19650-2, 5.3.5 y 5.5).",
+  "ej": "Prueba de exportación IFC y subida al CDE en la primera semana.",
+  "eq": "ISO 19650-2.",
+  "err": "Empezar a producir sin haber probado el flujo completo.",
+  "rel": [
+   "P02",
+   "P30"
+  ],
+  "al": [
+   "plan de movilización",
+   "movilización"
+  ]
+ },
+ {
+  "id": "P30",
+  "slug": "proceso-de-gestion-de-la-informacion",
+  "t": "Proceso de gestión de la información",
+  "en": "Information management process",
+  "b": "II",
+  "d": "Las ocho actividades de ISO 19650-2 para cada designación: evaluación y necesidad, invitación a licitar, respuesta, designación, movilización, producción colaborativa, entrega y cierre.",
+  "ej": "—",
+  "eq": "ISO 19650-2, cláusula 5; ISO 19650-3 para la operación.",
+  "err": "Leer el BEP como un documento suelto y no como parte de ese proceso.",
+  "rel": [
+   "P01",
+   "P02",
+   "P03",
+   "P29"
+  ],
+  "al": [
+   "gestión de la información",
+   "proceso de gestión de la información"
+  ]
+ },
+ {
+  "id": "P31",
+  "slug": "serie-iso-19650",
+  "t": "Serie ISO 19650",
+  "en": "ISO 19650 series",
+  "b": "II",
+  "d": "Normas internacionales de gestión de la información con BIM: 1 conceptos, 2 desarrollo, 3 operación, 4 intercambio, 5 seguridad, 6 salud y seguridad. En España, UNE-EN ISO 19650.",
+  "ej": "UNE-EN ISO 19650-1:2019 y -2:2019.",
+  "eq": "BS 1192 y PAS 1192-2 (antecedentes británicos).",
+  "err": "Citar «ISO 19650» sin la parte: el BEP está en la parte 2.",
+  "rel": [
+   "P30",
+   "P01"
+  ],
+  "al": [
+   "ISO 19650",
+   "UNE-EN ISO 19650"
+  ]
+ },
+ {
+  "id": "P32",
+  "slug": "usos-bim",
+  "t": "Usos BIM",
+  "en": "BIM uses",
+  "b": "I",
+  "d": "Formas concretas de aplicar BIM para conseguir un objetivo (coordinación 3D, mediciones, simulación…); eje de la guía de Penn State y de NBIMS-US.",
+  "ej": "Coordinación 3D y extracción de planos, exigidos en el nivel Inicial del Plan BIM.",
+  "eq": "Penn State BIM PxP Guide; NBIMS-US V4; Plan BIM español.",
+  "err": "Pedir «todos los usos» en el EIR sin decir para qué decisión sirve cada uno.",
+  "rel": [
+   "P01",
+   "P04"
+  ],
+  "al": [
+   "usos BIM",
+   "uso BIM"
+  ]
+ },
+ {
+  "id": "P33",
+  "slug": "plan-bim-en-la-contratacion-publica",
+  "t": "Plan BIM en la contratación pública",
+  "en": "Spanish BIM plan for public procurement",
+  "b": "II",
+  "d": "Plan de Incorporación de la Metodología BIM en la contratación pública (Acuerdo del Consejo de Ministros de 27/06/2023, Orden PCM/818/2023): calendario de niveles BIM exigidos por valor de contrato.",
+  "ej": "Nivel Medio en obras ≥ 5.404.000 € desde el 1/10/2025.",
+  "eq": "Instrucción interna para la AGE; recomendación para el resto del sector público.",
+  "err": "Llamarlo «real decreto»: no lo es.",
+  "rel": [
+   "P34",
+   "P35"
+  ],
+  "al": [
+   "Plan BIM",
+   "Orden PCM/818/2023",
+   "Plan de Incorporación de la Metodología BIM"
+  ]
+ },
+ {
+  "id": "P34",
+  "slug": "nivel-bim",
+  "t": "Nivel BIM (Plan BIM español)",
+  "en": "BIM level (Spanish BIM plan)",
+  "b": "II",
+  "d": "Escala de madurez del Plan BIM: PreBIM, Inicial, Medio, Avanzado e Integrado, evaluada en estrategia, procesos, tecnología y personas.",
+  "ej": "Nivel Inicial: modelos para planos y coordinación 3D, CDE como repositorio y formatos abiertos.",
+  "eq": "UK: «BIM Level 2» (término retirado con ISO 19650).",
+  "err": "Confundirlo con los «niveles de desarrollo» (LOD) de los elementos.",
+  "rel": [
+   "P33"
+  ],
+  "al": [
+   "nivel BIM",
+   "niveles BIM"
+  ]
+ },
+ {
+  "id": "P35",
+  "slug": "comision-interministerial-bim",
+  "t": "Comisión Interministerial BIM (CIBIM)",
+  "en": "Interministerial BIM Commission",
+  "b": "II",
+  "d": "Órgano creado por el RD 1515/2018 para coordinar la incorporación de BIM en la contratación de la Administración General del Estado; elaboró el Plan BIM.",
+  "ej": "cibim.transportes.gob.es",
+  "eq": "Antes: Comisión es.BIM (2015).",
+  "err": "Atribuirle el Plan BIM como norma propia: lo aprobó el Consejo de Ministros.",
+  "rel": [
+   "P33",
+   "P34"
+  ],
+  "al": [
+   "CIBIM",
+   "CBIM",
+   "Comisión Interministerial BIM"
+  ]
+ },
+ {
+  "id": "P36",
+  "slug": "anexo-nacional-britanico",
+  "t": "Anexo nacional británico",
+  "en": "UK National Annex",
+  "b": "II",
+  "d": "Anexo de BS EN ISO 19650-2 que concreta para el Reino Unido la convención de nombres, los códigos de estado y los de revisión.",
+  "ej": "Muchos pliegos españoles copian su convención.",
+  "eq": "BS EN ISO 19650-2:2018 + A1 / NA (2021).",
+  "err": "Darlo por norma española: España no tiene anexo nacional.",
+  "rel": [
+   "P28",
+   "P26",
+   "P27"
+  ],
+  "al": [
+   "anexo nacional",
+   "anexo nacional británico"
+  ]
+ },
+ {
+  "id": "P37",
+  "slug": "registro-de-riesgos-de-informacion",
+  "t": "Registro de riesgos de información",
+  "en": "Information risk register",
+  "b": "I",
+  "d": "Riesgos que pueden impedir entregar la información en plazo y forma, con su tratamiento; acompaña a la respuesta a la licitación (ISO 19650-2, 5.3.6).",
+  "ej": "Riesgo: versión de software distinta entre arquitectura y estructura.",
+  "eq": "ISO 19650-2.",
+  "err": "Confundirlo con el registro de riesgos de obra.",
+  "rel": [
+   "P02",
+   "P29"
+  ],
+  "al": [
+   "registro de riesgos"
+  ]
+ },
+ {
+  "id": "P38",
+  "slug": "plan-de-produccion-de-informacion",
+  "t": "Plan de producción de información (propuesto)",
+  "en": "Information Production Plan (proposed)",
+  "b": "II",
+  "d": "Nombre que, según fuentes que siguieron la consulta pública, podría sustituir al BEP en la revisión de ISO 19650 (borrador en nueva votación desde el 18/08/2026). No es definitivo.",
+  "ej": "—",
+  "eq": "ISO/DIS 19650-2.",
+  "err": "Usarlo ya como término oficial.",
+  "rel": [
+   "P01",
+   "P31"
+  ],
+  "al": [
+   "Information Production Plan"
+  ]
+ },
+ {
   "id": "G01",
   "slug": "gemelo-digital",
   "t": "Gemelo digital",
@@ -1761,7 +3066,7 @@ window.BF_GLOSARIO = [
  },
  {
   "id": "G08",
-  "slug": "modelo-de-informacion-del-activo",
+  "slug": "modelo-de-informacion-del-activo-g08",
   "t": "Modelo de información del activo (AIM)",
   "en": "Asset information model (AIM)",
   "b": "II",
@@ -1783,7 +3088,7 @@ window.BF_GLOSARIO = [
  },
  {
   "id": "G09",
-  "slug": "modelo-de-informacion-del-proyecto",
+  "slug": "modelo-de-informacion-del-proyecto-g09",
   "t": "Modelo de información del proyecto (PIM)",
   "en": "Project information model (PIM)",
   "b": "II",
@@ -1803,7 +3108,7 @@ window.BF_GLOSARIO = [
  },
  {
   "id": "G10",
-  "slug": "requisitos-de-informacion-del-activo",
+  "slug": "requisitos-de-informacion-del-activo-g10",
   "t": "Requisitos de información del activo (AIR)",
   "en": "Asset information requirements (AIR)",
   "b": "V",

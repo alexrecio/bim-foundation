@@ -16,5 +16,9 @@ window.BF_PREGUNTAS = [
   ['¿Pido LOD, LOI o LOIN en el contrato?', 'niveles-de-informacion', 'requisito', 'I'],
   ['¿Qué norma sustituye a la EN 17412-1?', 'niveles-de-informacion', 'iso7817', 'II'],
   ['¿El nivel de detalle «alto» de la vista es un LOD 400?', 'niveles-de-informacion', 'vista', 'III'],
-  ['¿Cómo compruebo que las puertas traen sus datos?', 'niveles-de-informacion', 'ids', 'VI']
+  ['¿Cómo compruebo que las puertas traen sus datos?', 'niveles-de-informacion', 'ids', 'VI'],
+  ['¿Por qué salen miles de choques que no son reales?', 'deteccion-de-interferencias', 'ruido', 'I'],
+  ['¿Qué tolerancia pongo en una prueba de interferencias?', 'deteccion-de-interferencias', 'tolerancia', 'I'],
+  ['¿Quién se mueve cuando chocan dos instalaciones?', 'deteccion-de-interferencias', 'quien-mueve', 'I'],
+  ['¿Qué versión de BCF uso y por qué se pierden incidencias?', 'deteccion-de-interferencias', 'bcf-versiones', 'II']
 ];

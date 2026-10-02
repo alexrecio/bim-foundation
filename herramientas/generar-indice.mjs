@@ -60,6 +60,7 @@ for (const art of SERIE) {
 // Dónde se explica cada término: primero las diapositivas fijadas a mano (revisadas), después las que encuentra el texto
 const CC = 'coordenadas-compartidas';
 const NI = 'niveles-de-informacion';
+const DI = 'deteccion-de-interferencias';
 const MANUAL = {
   C01: [CC, 'problema principio origenes'], C02: [CC, 'coordenadas paises'], C06: [CC, 'coordenadas principio origenes'],
   C11: [CC, 'origenes survey limites'], C12: [CC, 'origenes survey'], C13: [CC, 'survey otros'], C14: [CC, 'revit campus tipologias'],
@@ -69,7 +70,13 @@ const MANUAL = {
   // Artículo 02 · niveles de información
   N01: [NI, 'requisito pregunta iso7817'], N04: [NI, 'tipos'], N08: [NI, 'sobremodelado'], N09: [NI, 'escalera detalle elemento'],
   N10: [NI, 'detalle vista'], N12: [NI, 'exactitud'], N18: [NI, 'historia'], N19: [NI, 'historia paises'], N22: [NI, 'elemento'],
-  N29: [NI, 'loin-ids'], N30: [NI, 'calidad ids comprobadores forma'], N32: [NI, 'partes']
+  N29: [NI, 'loin-ids'], N30: [NI, 'calidad ids comprobadores forma'], N32: [NI, 'partes'],
+  // Artículo 04 · detección de interferencias
+  D01: [DI, 'que-es tipos'], D02: [DI, 'tipos tolerancia'], D03: [DI, 'tipos holguras'], D04: [DI, 'tipos'], D05: [DI, 'tolerancia'],
+  D06: [DI, 'matriz'], D07: [DI, 'agrupar'], D08: [DI, 'ruido'], D09: [DI, 'ciclo iso19650'], D10: [DI, 'incidencia'],
+  D11: [DI, 'incidencia bcf-dentro'], D12: [DI, 'tipos ruido'], D13: [DI, 'quien-mueve'], D14: [DI, 'bcf bcf-dentro bcf-versiones'],
+  D15: [DI, 'bcf-api'], D16: [DI, 'iso19650'], D17: [DI, 'guid ida-vuelta'], D18: [DI, 'navisworks'], D19: [DI, 'navisworks solibri'],
+  D20: [DI, 'holguras'], D21: [DI, 'nube'], D22: [DI, 'cerrar'], D23: [DI, 'kpi'], D24: [DI, 'ciclo'], D25: [DI, 'aptitud'], D26: [DI, 'cerrar']
 };
 // Dónde se explica cada término: puntuación por campo (titular > antetítulo/frase > tarjetas > capa 2)
 const norm = (s) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();

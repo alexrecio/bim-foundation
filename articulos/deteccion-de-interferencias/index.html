@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Borrador: quitar noindex al publicar -->
   <meta name="robots" content="noindex, nofollow">
-  <title>Detección de interferencias (relleno) | BIM Foundation</title>
-  <meta name="description" content="Artículo ficticio de relleno.">
+  <title>Detección de interferencias | BIM Foundation</title>
+  <meta name="description" content="Cómo se encuentran y se resuelven los choques entre modelos BIM antes de la obra: tipos, tolerancias, matriz, agrupación, BCF, Navisworks, Solibri, plataformas en la nube y control de calidad.">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Detección de interferencias (relleno) · BIM Foundation">
-  <meta property="og:description" content="Encontrar los choques en el modelo antes que en la obra.">
+  <meta property="og:title" content="Detección de interferencias · BIM Foundation">
+  <meta property="og:description" content="Encontrar mil choques es fácil. Lo difícil es convertirlos en veinte decisiones con dueño y fecha.">
   <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="../../assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="../../assets/css/estilo.css">
@@ -28,122 +28,980 @@
     </div>
   </div>
 
-  <!-- ARTÍCULO FICTICIO DE RELLENO para trabajar la arquitectura de la web. Sustituir o borrar antes de publicar. -->
+  <!-- Menú de diapositivas: se rellena con data-nav de cada <section> -->
   <aside id="deck-nav" aria-label="Diapositivas">
-    <span class="kicker-y">Interferencias · 6 ideas</span>
+    <span class="kicker-y">Interferencias · 34 ideas</span>
     <ol></ol>
   </aside>
   <div id="deck-bar">
     <div id="deck-sheet"><ol></ol></div>
     <button type="button" id="deck-bar-btn" aria-expanded="false" aria-controls="deck-sheet">
-      <span class="n">01</span><span class="t">Portada</span>
+      <span class="n">01/34</span><span class="t">Portada</span>
       <span class="chev" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M3 9l4-4 4 4" fill="none" stroke="#fff" stroke-width="2"/></svg></span>
     </button>
   </div>
 
+  <!--
+    Regla de capas
+    Capa 1 = una diapositiva por idea, legible en 15 segundos: titular + tarjetas visuales (cifras, diagramas, chips) con rótulos breves.
+    Capa 2 = la ficha que abre «Ver detalle» (<template id="l2-…">), también en tarjetas. Solo añade lo que la diapositiva no dice.
+    Bloque I: ningún nombre de programa ni en capa 1 ni en su capa 2 (solo en enlaces de fuentes).
+  -->
   <main class="deck">
 
+    <!-- ========== PORTADA ========== -->
     <section class="slide" id="portada" data-nav="Portada">
       <div class="bento">
         <div class="b-title">
           <p class="hero-id"><a href="../../" style="text-decoration:none">BIM Foundation · 04</a></p>
-          <span class="kicker-y lg">Clash detection</span>
+          <span class="kicker-y lg">Conceptos · BCF · software</span>
           <h1 class="display">Detección de<br><span class="hl-y">interferencias<span class="dot">.</span></span></h1>
-          <p class="slide-lead">Encontrar los choques en el modelo antes que en la obra.</p>
-          <div class="slide-actions"><a class="btn" href="#tipos">Empezar <span aria-hidden="true">↓</span></a></div>
+          <p class="slide-lead">Encontrar mil choques es fácil. Lo difícil es convertirlos en veinte decisiones con dueño y fecha.</p>
+          <div class="slide-actions"><a class="btn" href="#problema">Empezar <span aria-hidden="true">↓</span></a></div>
         </div>
         <div class="b-cards">
           <div class="card w6 ficha" data-ficha></div>
-          <div class="card w6 y"><span class="c-label">Artículo de relleno</span><span class="c-title">Contenido ficticio para probar la arquitectura de la web</span><span class="c-foot">Textos y cifras inventados · no usar como referencia</span></div>
+          <div class="card w6 g">
+            <span class="c-label">El artículo en seis bloques</span>
+            <ol class="mapa">
+              <li class="is-key"><a href="#problema"><b>I</b><span>Conceptos generales</span><em>12 ideas · para cualquier programa</em></a></li>
+              <li><a href="#iso19650"><b>II</b><span>Estándares</span><em>6 ideas · ISO 19650, Plan BIM, BCF, GlobalId</em></a></li>
+              <li><a href="#navisworks"><b>III</b><span>Software</span><em>5 ideas · Navisworks, Revit, Solibri, autoría, abierto</em></a></li>
+              <li><a href="#nube"><b>IV</b><span>Plataformas</span><em>2 ideas · detección en la nube</em></a></li>
+              <li><a href="#ida-vuelta"><b>V</b><span>Interoperabilidad</span><em>3 ideas · el viaje de una incidencia</em></a></li>
+              <li><a href="#antes"><b>VI</b><span>Control de calidad</span><em>4 ideas · preparar, medir y cerrar</em></a></li>
+            </ol>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="slide" id="tipos" data-nav="Tipos">
+    <!-- ========== I · EL PROBLEMA ========== -->
+    <section class="slide" id="problema" data-cap="I · Conceptos generales" data-nav="El problema">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">El problema</span>
+          <h2 class="display">Cada choque se paga una vez<span class="dot">.</span></h2>
+          <p class="slide-lead">En el modelo cuesta mover una línea. En obra, demoler, pedir otra pieza y esperar.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="problema"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w4 g">
+            <span class="c-label">Mismo choque, dos momentos</span>
+            <svg class="draw" viewBox="0 0 420 200" role="img" aria-label="Una tubería atraviesa una viga. En el modelo se corrige moviendo la línea; en obra hay que cortar, demoler y esperar material">
+              <g font-family="JetBrains Mono, monospace" font-size="11">
+                <text x="10" y="18" font-weight="700">EN EL MODELO</text><text x="226" y="18" font-weight="700">EN OBRA</text>
+              </g>
+              <rect x="20" y="70" width="170" height="40" fill="#EFEFEA" stroke="#000" stroke-width="2.5"/>
+              <path d="M105 34 V180" stroke="#000" stroke-width="12" stroke-linecap="round" stroke-dasharray="1 0" opacity=".15"/>
+              <path d="M140 34 V180" stroke="#000" stroke-width="14" stroke-linecap="round"/><path d="M140 34 V180" stroke="#fff" stroke-width="8" stroke-linecap="round"/>
+              <path d="M112 128 H132" stroke="#000" stroke-width="2"/><polygon points="132,123 140,128 132,133" fill="#000"/>
+              <rect x="236" y="70" width="170" height="40" fill="#EFEFEA" stroke="#000" stroke-width="2.5"/>
+              <path d="M320 34 V180" stroke="#000" stroke-width="14" stroke-linecap="round"/><path d="M320 34 V180" stroke="#fff" stroke-width="8" stroke-linecap="round"/>
+              <circle cx="320" cy="90" r="26" fill="#FFFF00" fill-opacity=".7" stroke="#000" stroke-width="2.5"/>
+              <path d="M300 70 l8 10 M340 70 l-8 10 M300 110 l8 -10 M340 110 l-8 -10" stroke="#000" stroke-width="2"/>
+              <g font-family="JetBrains Mono, monospace" font-size="11" fill="#666"><text x="20" y="196">mover la línea</text><text x="236" y="196">cortar · pedir · esperar</text></g>
+            </svg>
+          </div>
+          <div class="card w2 k">
+            <span class="c-label">Retrabajo medido</span>
+            <b class="c-num">0,4–0,8<small>%</small></b>
+            <span class="c-foot">del contrato · datos reales</span>
+          </div>
+          <div class="card w3">
+            <span class="c-label">Un caso estudiado</span>
+            <b class="c-num">5029<small>→ 13</small></b>
+            <span class="c-foot">choques detectados → problemas reales</span>
+          </div>
+          <div class="card w3 y">
+            <span class="c-label">La causa principal</span>
+            <span class="c-title">Trabajo aislado</span>
+            <span class="c-foot">cada disciplina en su modelo, sin cruzarlo</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== QUÉ ES ========== -->
+    <section class="slide" id="que-es" data-nav="Qué es una interferencia">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Definición</span>
+          <h2 class="display">Dos objetos, un mismo sitio<span class="dot">.</span></h2>
+          <p class="slide-lead">Una interferencia es un par de elementos que se cruzan, o que están más cerca de lo permitido.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="que-es"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w4 g">
+            <span class="c-label">Lo que calcula el ordenador</span>
+            <svg class="draw" viewBox="0 0 420 210" role="img" aria-label="Dos sólidos se solapan; el volumen común se marca en amarillo y se mide su penetración">
+              <rect x="40" y="60" width="200" height="90" fill="#fff" stroke="#000" stroke-width="3"/>
+              <rect x="190" y="30" width="80" height="160" fill="#fff" stroke="#000" stroke-width="3" fill-opacity=".85"/>
+              <rect x="190" y="60" width="50" height="90" fill="#FFFF00" stroke="#000" stroke-width="2.5"/>
+              <path d="M190 172 H240" stroke="#000" stroke-width="2"/><path d="M190 166 V178 M240 166 V178" stroke="#000" stroke-width="2"/>
+              <g font-family="JetBrains Mono, monospace" font-size="11"><text x="48" y="80">A · viga</text><text x="200" y="48">B · conducto</text><text x="250" y="186" font-weight="700">penetración</text></g>
+              <g font-family="JetBrains Mono, monospace" font-size="11" fill="#666"><text x="296" y="90">par (A, B)</text><text x="296" y="108">volumen común</text><text x="296" y="126">punto de choque</text></g>
+            </svg>
+          </div>
+          <div class="card w2 k"><span class="c-label">Siempre por pares</span><b class="c-num" style="color:var(--accent)">A×B</b><span class="c-foot">un elemento contra otro</span></div>
+          <div class="card w3"><span class="c-label">Lo que se detecta</span><span class="c-title">Geometría</span><span class="c-foot">sólo lo que está modelado</span></div>
+          <div class="card w3 y"><span class="c-label">Lo que se resuelve</span><span class="c-title">Un problema</span><span class="c-foot">que puede tener cien pares</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== TIPOS ========== -->
+    <section class="slide" id="tipos" data-nav="Tres tipos">
       <div class="bento">
         <div class="b-title">
           <span class="slide-n"></span>
           <span class="kicker-y">Clasificación</span>
-          <h2 class="display">Duras, blandas y de flujo<span class="dot">.</span></h2>
-          <p class="slide-lead">Cruce físico, falta de espacio de mantenimiento o conflicto de secuencia.</p>
+          <h2 class="display">Duras, de holgura y de secuencia<span class="dot">.</span></h2>
+          <p class="slide-lead">Se cruzan, se acercan demasiado o chocan en el tiempo. Y un cuarto caso: el mismo objeto dos veces.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="tipos"><span class="plus">+</span> Ver detalle</button></div>
         </div>
         <div class="b-cards">
-          <div class="card w2 "><span class="c-label">Dura</span><span class="c-title">Cruce físico</span><span class="badge y">Hard</span></div>
-          <div class="card w2 g"><span class="c-label">Blanda</span><span class="c-title">Holgura</span><span class="badge y">Soft</span></div>
-          <div class="card w2 y"><span class="c-label">4D</span><span class="c-title">Secuencia</span><span class="badge y">Time</span></div>
-          <div class="card w6"><span class="c-label">Reparto típico (relleno)</span><div class="bars"><div class="bar is-key"><span>D</span><i style="width:60%">duras</i></div><div class="bar"><span>B</span><i style="width:30%">blandas</i></div><div class="bar"><span>4D</span><i style="width:10%">secuencia</i></div></div></div>
+          <div class="card w3">
+            <span class="c-label">01 · Dura</span>
+            <svg class="draw" viewBox="0 0 200 110" aria-hidden="true"><rect x="20" y="40" width="160" height="34" fill="#EFEFEA" stroke="#000" stroke-width="2.5"/><circle cx="100" cy="57" r="24" fill="#fff" stroke="#000" stroke-width="3"/><path d="M84 57 a16 16 0 0 1 32 0" fill="#FFFF00" stroke="#000" stroke-width="2"/><path d="M84 57 a16 16 0 0 0 32 0" fill="#FFFF00" stroke="#000" stroke-width="2"/></svg>
+            <span class="c-title">Se cruzan</span><span class="c-foot">ocupan el mismo volumen</span>
+          </div>
+          <div class="card w3">
+            <span class="c-label">02 · Holgura</span>
+            <svg class="draw" viewBox="0 0 200 110" aria-hidden="true"><rect x="20" y="62" width="160" height="34" fill="#EFEFEA" stroke="#000" stroke-width="2.5"/><circle cx="100" cy="30" r="20" fill="#fff" stroke="#000" stroke-width="3"/><circle cx="100" cy="30" r="34" fill="none" stroke="#000" stroke-width="2" stroke-dasharray="5 4"/><path d="M84 56 Q100 68 116 56 L116 62 H84Z" fill="#FFFF00" stroke="#000" stroke-width="1.5"/></svg>
+            <span class="c-title">Demasiado cerca</span><span class="c-foot">invaden un espacio libre</span>
+          </div>
+          <div class="card w3">
+            <span class="c-label">03 · Secuencia</span>
+            <svg class="draw" viewBox="0 0 200 110" aria-hidden="true"><path d="M16 96 H184" stroke="#000" stroke-width="2"/><g font-family="JetBrains Mono, monospace" font-size="10"><text x="16" y="108">S1</text><text x="78" y="108">S2</text><text x="140" y="108">S3</text></g><rect x="30" y="20" width="90" height="22" fill="#EFEFEA" stroke="#000" stroke-width="2.5"/><rect x="80" y="54" width="90" height="22" fill="#fff" stroke="#000" stroke-width="2.5"/><rect x="80" y="20" width="40" height="56" fill="#FFFF00" fill-opacity=".8" stroke="#000" stroke-width="2"/><text x="34" y="35" font-family="JetBrains Mono, monospace" font-size="10">grúa</text><text x="128" y="69" font-family="JetBrains Mono, monospace" font-size="10">acopio</text></svg>
+            <span class="c-title">Chocan en el tiempo</span><span class="c-foot">misma zona, misma semana</span>
+          </div>
+          <div class="card w3 k">
+            <span class="c-label">04 · Duplicado</span>
+            <svg class="draw" viewBox="0 0 200 110" aria-hidden="true"><rect x="50" y="26" width="100" height="60" fill="none" stroke="#fff" stroke-width="3"/><rect x="56" y="32" width="100" height="60" fill="none" stroke="#FFFF00" stroke-width="3" stroke-dasharray="6 4"/></svg>
+            <span class="c-title" style="color:var(--accent)">Dos veces</span><span class="c-foot">mismo objeto, mismo sitio</span>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="slide" id="matriz-pruebas" data-nav="Matriz de pruebas">
+    <!-- ========== TOLERANCIA ========== -->
+    <section class="slide" id="tolerancia" data-nav="La tolerancia">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Tolerancia</span>
+          <h2 class="display">Una cifra decide qué es choque<span class="dot">.</span></h2>
+          <p class="slide-lead">En una dura, la penetración mínima que cuenta. En una holgura, la distancia libre que se exige. Misma palabra, dos sentidos.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="tolerancia"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w6 g">
+            <span class="c-label">Penetración · se ignora lo que queda por debajo</span>
+            <svg class="draw" viewBox="0 0 620 120" role="img" aria-label="Escala de penetración: por debajo de la tolerancia se ignora, por encima se informa como choque">
+              <path d="M20 70 H600" stroke="#000" stroke-width="3"/>
+              <g stroke="#000" stroke-width="2"><path d="M20 62 V78"/><path d="M140 62 V78"/><path d="M260 62 V78"/><path d="M380 62 V78"/><path d="M500 62 V78"/></g>
+              <rect x="20" y="40" width="120" height="22" fill="#fff" stroke="#000" stroke-width="2" stroke-dasharray="4 4"/>
+              <rect x="140" y="40" width="460" height="22" fill="#FFFF00" stroke="#000" stroke-width="2.5"/>
+              <g font-family="JetBrains Mono, monospace" font-size="11"><text x="24" y="56">se ignora</text><text x="150" y="56" font-weight="700">choque</text><text x="16" y="96">0</text><text x="128" y="96" font-weight="700">t</text><text x="246" y="96">10</text><text x="364" y="96">50</text><text x="484" y="96">100 mm</text></g>
+              <text x="20" y="20" font-family="JetBrains Mono, monospace" font-size="11" fill="#666">t = tolerancia de la prueba</text>
+            </svg>
+          </div>
+          <div class="card w2"><span class="c-label">Fase preliminar</span><b class="c-num">100<small>mm</small></b><span class="c-foot">coordinación gruesa</span></div>
+          <div class="card w2"><span class="c-label">Desarrollo</span><b class="c-num">50<small>mm</small></b><span class="c-foot">sistemas definidos</span></div>
+          <div class="card w2 k"><span class="c-label">Detalle</span><b class="c-num" style="color:var(--accent)">25<small>mm</small></b><span class="c-foot">antes de fabricar</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== HOLGURAS ========== -->
+    <section class="slide" id="holguras" data-nav="Espacios que no se ven">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Holguras</span>
+          <h2 class="display">Lo que no se modela no choca<span class="dot">.</span></h2>
+          <p class="slide-lead">Aislamiento, mantenimiento, apertura de puertas, montaje. Si ese espacio no es un volumen, ninguna prueba lo protege.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="holguras"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w4 g">
+            <span class="c-label">Un equipo y su espacio libre</span>
+            <svg class="draw" viewBox="0 0 420 200" role="img" aria-label="Un equipo con su volumen de acceso delante; una tubería invade ese volumen aunque no toca el equipo">
+              <rect x="40" y="50" width="110" height="120" fill="#EFEFEA" stroke="#000" stroke-width="3"/>
+              <rect x="150" y="50" width="150" height="120" fill="none" stroke="#000" stroke-width="2" stroke-dasharray="6 5"/>
+              <path d="M272 20 V190" stroke="#000" stroke-width="16" stroke-linecap="round"/><path d="M272 20 V190" stroke="#fff" stroke-width="10" stroke-linecap="round"/>
+              <rect x="261" y="50" width="22" height="120" fill="#FFFF00" stroke="#000" stroke-width="2"/>
+              <g font-family="JetBrains Mono, monospace" font-size="11"><text x="48" y="44">equipo</text><text x="160" y="44">zona de acceso</text><text x="290" y="186">tubería</text></g>
+              <path d="M150 182 H300" stroke="#000" stroke-width="1.5"/><text x="196" y="198" font-family="JetBrains Mono, monospace" font-size="10" fill="#666">≥ 1 m libre</text>
+            </svg>
+          </div>
+          <div class="card w2 k"><span class="c-label">Se modela como</span><span class="c-title" style="color:var(--accent)">Volumen</span><span class="c-foot">transparente, sin construir</span></div>
+          <div class="card w3"><span class="c-label">Aislamiento</span><span class="c-title">Más grueso</span><span class="c-foot">que el tubo que lo lleva</span></div>
+          <div class="card w3 y"><span class="c-label">Acceso</span><span class="c-title">Espacio vacío</span><span class="c-foot">delante de cuadros y equipos</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== APTITUD ========== -->
+    <section class="slide" id="aptitud" data-nav="Modelo apto">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Nivel de desarrollo</span>
+          <h2 class="display">Detectar pide un modelo listo<span class="dot">.</span></h2>
+          <p class="slide-lead">Con cajas genéricas salen choques que no existen y se escapan los que sí. Cada fase tiene su nivel y su prueba.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="aptitud"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w3">
+            <span class="c-label">Caja genérica</span>
+            <svg class="draw" viewBox="0 0 200 110" aria-hidden="true"><rect x="30" y="20" width="140" height="70" fill="#EFEFEA" stroke="#000" stroke-width="2.5"/><path d="M60 0 V110" stroke="#000" stroke-width="10"/><path d="M60 0 V110" stroke="#fff" stroke-width="5"/><rect x="55" y="20" width="10" height="70" fill="#FFFF00" stroke="#000" stroke-width="1.5"/></svg>
+            <span class="c-title">Choca de más</span><span class="c-foot">el volumen no es el real</span>
+          </div>
+          <div class="card w3 y">
+            <span class="c-label">Interfaz medible</span>
+            <svg class="draw" viewBox="0 0 200 110" aria-hidden="true"><path d="M30 20 H170 V34 H108 V76 H170 V90 H30 V76 H92 V34 H30Z" fill="#fff" stroke="#000" stroke-width="2.5"/><path d="M140 0 V110" stroke="#000" stroke-width="10"/><path d="M140 0 V110" stroke="#fff" stroke-width="5"/></svg>
+            <span class="c-title">Choca lo justo</span><span class="c-foot">forma, tamaño y posición</span>
+          </div>
+          <div class="card w3 k"><span class="c-label">Nivel de referencia</span><b class="c-num" style="color:var(--accent)">350</b><span class="c-foot">interfaces con lo adyacente</span></div>
+          <div class="card w3"><span class="c-label">Subir un nivel</span><b class="c-num">×2–11</b><span class="c-foot">esfuerzo de modelado</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== MATRIZ ========== -->
+    <section class="slide" id="matriz" data-nav="La matriz de pruebas">
       <div class="bento">
         <div class="b-title">
           <span class="slide-n"></span>
           <span class="kicker-y">Organización</span>
           <h2 class="display">No todo contra todo<span class="dot">.</span></h2>
-          <p class="slide-lead">Una matriz decide qué disciplinas se cruzan y con qué tolerancia.</p>
-          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="matriz-pruebas"><span class="plus">+</span> Ver detalle</button></div>
+          <p class="slide-lead">Una matriz decide qué disciplinas se cruzan, con qué tipo de prueba y con qué tolerancia.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="matriz"><span class="plus">+</span> Ver una matriz</button></div>
         </div>
         <div class="b-cards">
-          <div class="card w6 g"><span class="c-label">Disciplinas</span><svg class="draw" viewBox="0 0 620 140" aria-hidden="true"><rect x="10" y="62" width="134" height="68" rx="6" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="22" y="118" font-family="Inter, sans-serif" font-weight="900" font-size="14">ARQ</text><rect x="160" y="48" width="134" height="82" rx="6" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="172" y="118" font-family="Inter, sans-serif" font-weight="900" font-size="14">EST</text><rect x="310" y="34" width="134" height="96" rx="6" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="322" y="118" font-family="Inter, sans-serif" font-weight="900" font-size="14">MEP</text><rect x="460" y="20" width="134" height="110" rx="6" fill="#FFFF00" stroke="#000" stroke-width="2.5"/><text x="472" y="118" font-family="Inter, sans-serif" font-weight="900" font-size="14">CIV</text></svg></div>
-          <div class="card w3 k"><span class="c-label">Pruebas</span><b class="c-num">12<small></small></b><span class="c-foot">Relleno</span></div>
-          <div class="card w3 y"><span class="c-label">Tolerancia</span><b class="c-num">25<small>mm</small></b><span class="c-foot">Relleno</span></div>
+          <div class="card w4 g">
+            <span class="c-label">Media matriz · cada celda es una prueba</span>
+            <svg class="draw" viewBox="0 0 420 230" role="img" aria-label="Matriz triangular de disciplinas: estructura, saneamiento, climatización, fontanería y electricidad, con el tipo de prueba y la tolerancia en cada celda">
+              <g font-family="JetBrains Mono, monospace" font-size="11" font-weight="700"><text x="8" y="68">EST</text><text x="8" y="108">SAN</text><text x="8" y="148">CLI</text><text x="8" y="188">FON</text><text x="8" y="228">ELE</text><text x="74" y="30">ARQ</text><text x="140" y="30">EST</text><text x="206" y="30">SAN</text><text x="272" y="30">CLI</text><text x="338" y="30">FON</text></g>
+              <g stroke="#000" stroke-width="2" fill="#fff" font-family="JetBrains Mono, monospace" font-size="10">
+                <rect x="60" y="44" width="62" height="36"/><rect x="60" y="84" width="62" height="36"/><rect x="126" y="84" width="62" height="36" fill="#FFFF00"/>
+                <rect x="60" y="124" width="62" height="36"/><rect x="126" y="124" width="62" height="36" fill="#FFFF00"/><rect x="192" y="124" width="62" height="36"/>
+                <rect x="60" y="164" width="62" height="36"/><rect x="126" y="164" width="62" height="36"/><rect x="192" y="164" width="62" height="36"/><rect x="258" y="164" width="62" height="36"/>
+                <rect x="60" y="204" width="62" height="24"/><rect x="126" y="204" width="62" height="24"/><rect x="192" y="204" width="62" height="24" fill="#EFEFEA"/><rect x="258" y="204" width="62" height="24"/><rect x="324" y="204" width="62" height="24"/>
+              </g>
+              <g font-family="JetBrains Mono, monospace" font-size="10"><text x="66" y="67">D·25</text><text x="66" y="107">D·25</text><text x="132" y="107" font-weight="700">D·10</text><text x="66" y="147">D·25</text><text x="132" y="147" font-weight="700">H·50</text><text x="198" y="147">D·25</text><text x="66" y="187">D·25</text><text x="132" y="187">D·10</text><text x="198" y="187">D·25</text><text x="264" y="187">D·25</text><text x="66" y="221">D·25</text><text x="132" y="221">D·25</text><text x="198" y="221">—</text><text x="264" y="221">H·50</text><text x="330" y="221">H·100</text></g>
+            </svg>
+          </div>
+          <div class="card w2 k"><span class="c-label">Disciplinas</span><b class="c-num" style="color:var(--accent)">6</b><span class="c-foot">= 15 cruces + 6 consigo mismas</span></div>
+          <div class="card w3"><span class="c-label">Celda</span><span class="c-title">Tipo · tolerancia</span><span class="c-foot">D dura, H holgura, en mm</span></div>
+          <div class="card w3 y"><span class="c-label">Va en</span><span class="c-title">El plan de ejecución</span><span class="c-foot">firmado antes de la primera prueba</span></div>
         </div>
       </div>
     </section>
 
-    <section class="slide" id="ciclo" data-nav="El ciclo">
-      <div class="bento">
-        <div class="b-title">
-          <span class="slide-n"></span>
-          <span class="kicker-y">Rutina</span>
-          <h2 class="display">Detectar, agrupar, asignar, resolver<span class="dot">.</span></h2>
-          <p class="slide-lead">Cada semana el mismo ciclo, con incidencias en BCF.</p>
-          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="ciclo"><span class="plus">+</span> Ver detalle</button></div>
-        </div>
-        <div class="b-cards">
-          <div class="card w6 g"><span class="c-label">Ciclo semanal</span><div class="flow"><span class="chip">Federar</span><span class="arrow">→</span><span class="chip">Detectar</span><span class="arrow">→</span><span class="chip">Agrupar</span><span class="arrow">→</span><span class="chip y">Asignar BCF</span><span class="arrow">→</span><span class="chip k">Resolver</span></div></div>
-          <div class="card w3 k"><span class="c-label">Ciclo</span><b class="c-num">7<small>días</small></b><span class="c-foot">Relleno</span></div>
-          <div class="card w3 "><span class="c-label">Abiertas</span><b class="c-num">48<small></small></b><span class="c-foot">Relleno</span></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="slide" id="ruido" data-nav="El ruido">
+    <!-- ========== RUIDO ========== -->
+    <section class="slide" id="ruido" data-nav="Miles de falsos choques">
       <div class="bento">
         <div class="b-title">
           <span class="slide-n"></span>
           <span class="kicker-y">Lo que falla</span>
           <h2 class="display">Miles de choques, pocos reales<span class="dot">.</span></h2>
-          <p class="slide-lead">Sin reglas ni agrupación, el informe no sirve a nadie.</p>
+          <p class="slide-lead">Hasta seis de cada diez resultados no son problemas: piezas que se tocan a propósito, duplicados y modelos sin limpiar.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="ruido"><span class="plus">+</span> Ver detalle</button></div>
         </div>
         <div class="b-cards">
-          <div class="card w3 k"><span class="c-label">Choques brutos</span><b class="c-num">3 200<small></small></b><span class="c-foot">Relleno</span></div>
-          <div class="card w3 y"><span class="c-label">Problemas reales</span><b class="c-num">40<small></small></b><span class="c-foot">Relleno</span></div>
-          <div class="card w6 "><span class="c-label">Filtros</span><div class="chips"><span class="chip">Por nivel</span><span class="chip">Por sistema</span><span class="chip y">Por tolerancia</span></div></div>
+          <div class="card w4 g">
+            <span class="c-label">100 resultados de una prueba</span>
+            <svg class="draw" viewBox="0 0 420 170" role="img" aria-label="Cien cuadrados: sesenta son falsos positivos y cuarenta merecen revisión">
+              <g stroke="#000" stroke-width="1.5">
+                <g fill="#fff"><rect x="10" y="10" width="14" height="14"/><rect x="30" y="10" width="14" height="14"/><rect x="50" y="10" width="14" height="14"/><rect x="70" y="10" width="14" height="14"/><rect x="90" y="10" width="14" height="14"/><rect x="110" y="10" width="14" height="14"/><rect x="130" y="10" width="14" height="14"/><rect x="150" y="10" width="14" height="14"/><rect x="170" y="10" width="14" height="14"/><rect x="190" y="10" width="14" height="14"/><rect x="210" y="10" width="14" height="14"/><rect x="230" y="10" width="14" height="14"/><rect x="250" y="10" width="14" height="14"/><rect x="270" y="10" width="14" height="14"/><rect x="290" y="10" width="14" height="14"/><rect x="310" y="10" width="14" height="14"/><rect x="330" y="10" width="14" height="14"/><rect x="350" y="10" width="14" height="14"/><rect x="370" y="10" width="14" height="14"/><rect x="390" y="10" width="14" height="14"/>
+                <rect x="10" y="30" width="14" height="14"/><rect x="30" y="30" width="14" height="14"/><rect x="50" y="30" width="14" height="14"/><rect x="70" y="30" width="14" height="14"/><rect x="90" y="30" width="14" height="14"/><rect x="110" y="30" width="14" height="14"/><rect x="130" y="30" width="14" height="14"/><rect x="150" y="30" width="14" height="14"/><rect x="170" y="30" width="14" height="14"/><rect x="190" y="30" width="14" height="14"/><rect x="210" y="30" width="14" height="14"/><rect x="230" y="30" width="14" height="14"/><rect x="250" y="30" width="14" height="14"/><rect x="270" y="30" width="14" height="14"/><rect x="290" y="30" width="14" height="14"/><rect x="310" y="30" width="14" height="14"/><rect x="330" y="30" width="14" height="14"/><rect x="350" y="30" width="14" height="14"/><rect x="370" y="30" width="14" height="14"/><rect x="390" y="30" width="14" height="14"/>
+                <rect x="10" y="50" width="14" height="14"/><rect x="30" y="50" width="14" height="14"/><rect x="50" y="50" width="14" height="14"/><rect x="70" y="50" width="14" height="14"/><rect x="90" y="50" width="14" height="14"/><rect x="110" y="50" width="14" height="14"/><rect x="130" y="50" width="14" height="14"/><rect x="150" y="50" width="14" height="14"/><rect x="170" y="50" width="14" height="14"/><rect x="190" y="50" width="14" height="14"/><rect x="210" y="50" width="14" height="14"/><rect x="230" y="50" width="14" height="14"/><rect x="250" y="50" width="14" height="14"/><rect x="270" y="50" width="14" height="14"/><rect x="290" y="50" width="14" height="14"/><rect x="310" y="50" width="14" height="14"/><rect x="330" y="50" width="14" height="14"/><rect x="350" y="50" width="14" height="14"/><rect x="370" y="50" width="14" height="14"/><rect x="390" y="50" width="14" height="14"/></g>
+                <g fill="#FFFF00"><rect x="10" y="70" width="14" height="14"/><rect x="30" y="70" width="14" height="14"/><rect x="50" y="70" width="14" height="14"/><rect x="70" y="70" width="14" height="14"/><rect x="90" y="70" width="14" height="14"/><rect x="110" y="70" width="14" height="14"/><rect x="130" y="70" width="14" height="14"/><rect x="150" y="70" width="14" height="14"/><rect x="170" y="70" width="14" height="14"/><rect x="190" y="70" width="14" height="14"/><rect x="210" y="70" width="14" height="14"/><rect x="230" y="70" width="14" height="14"/><rect x="250" y="70" width="14" height="14"/><rect x="270" y="70" width="14" height="14"/><rect x="290" y="70" width="14" height="14"/><rect x="310" y="70" width="14" height="14"/><rect x="330" y="70" width="14" height="14"/><rect x="350" y="70" width="14" height="14"/><rect x="370" y="70" width="14" height="14"/><rect x="390" y="70" width="14" height="14"/>
+                <rect x="10" y="90" width="14" height="14"/><rect x="30" y="90" width="14" height="14"/><rect x="50" y="90" width="14" height="14"/><rect x="70" y="90" width="14" height="14"/><rect x="90" y="90" width="14" height="14"/><rect x="110" y="90" width="14" height="14"/><rect x="130" y="90" width="14" height="14"/><rect x="150" y="90" width="14" height="14"/><rect x="170" y="90" width="14" height="14"/><rect x="190" y="90" width="14" height="14"/><rect x="210" y="90" width="14" height="14"/><rect x="230" y="90" width="14" height="14"/><rect x="250" y="90" width="14" height="14"/><rect x="270" y="90" width="14" height="14"/><rect x="290" y="90" width="14" height="14"/><rect x="310" y="90" width="14" height="14"/><rect x="330" y="90" width="14" height="14"/><rect x="350" y="90" width="14" height="14"/><rect x="370" y="90" width="14" height="14"/><rect x="390" y="90" width="14" height="14"/></g></g>
+              <g font-family="JetBrains Mono, monospace" font-size="11"><text x="10" y="132" fill="#666">■ 60 falsos positivos</text><text x="10" y="152" font-weight="700">■ 40 a revisar</text></g>
+            </svg>
+          </div>
+          <div class="card w2 k"><span class="c-label">Falsos positivos</span><b class="c-num xl" style="color:var(--accent)">60<small>%</small></b><span class="c-foot">hasta · 36 562 choques analizados</span></div>
+          <div class="card w6"><span class="c-label">De dónde sale el ruido</span><div class="chips"><span class="chip">Contacto previsto</span><span class="chip">Duplicados</span><span class="chip">Tolerancia baja</span><span class="chip">Todo contra todo</span><span class="chip y">Modelo no apto</span><span class="chip">Elementos provisionales</span></div></div>
         </div>
       </div>
     </section>
 
+    <!-- ========== AGRUPAR ========== -->
+    <section class="slide" id="agrupar" data-nav="Agrupar">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Agrupación</span>
+          <h2 class="display">Un problema, cien choques<span class="dot">.</span></h2>
+          <p class="slide-lead">Un conducto mal trazado choca con cada viga que cruza. Se agrupa por elemento, planta, zona o sistema y se decide una vez.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="agrupar"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w4 g">
+            <span class="c-label">Un conducto, seis vigas, un grupo</span>
+            <svg class="draw" viewBox="0 0 420 180" role="img" aria-label="Un conducto que cruza seis vigas produce seis choques; agrupados forman un único problema">
+              <g fill="#EFEFEA" stroke="#000" stroke-width="2.5"><rect x="40" y="30" width="22" height="120"/><rect x="100" y="30" width="22" height="120"/><rect x="160" y="30" width="22" height="120"/><rect x="220" y="30" width="22" height="120"/><rect x="280" y="30" width="22" height="120"/><rect x="340" y="30" width="22" height="120"/></g>
+              <rect x="14" y="76" width="380" height="28" fill="#fff" stroke="#000" stroke-width="3" fill-opacity=".9"/>
+              <g fill="#FFFF00" stroke="#000" stroke-width="2"><rect x="40" y="76" width="22" height="28"/><rect x="100" y="76" width="22" height="28"/><rect x="160" y="76" width="22" height="28"/><rect x="220" y="76" width="22" height="28"/><rect x="280" y="76" width="22" height="28"/><rect x="340" y="76" width="22" height="28"/></g>
+              <rect x="30" y="64" width="344" height="52" rx="6" fill="none" stroke="#000" stroke-width="2" stroke-dasharray="6 5"/>
+              <g font-family="JetBrains Mono, monospace" font-size="11"><text x="14" y="172" fill="#666">6 choques</text><text x="250" y="172" font-weight="700">= 1 incidencia</text></g>
+            </svg>
+          </div>
+          <div class="card w2 k"><span class="c-label">Un caso real</span><b class="c-num" style="color:var(--accent)">5029</b><span class="c-foot">choques → 13 grupos</span></div>
+          <div class="card w6"><span class="c-label">Criterios de agrupación</span><div class="flow"><span class="chip">Por elemento</span><span class="arrow">·</span><span class="chip">Por planta</span><span class="arrow">·</span><span class="chip">Por zona o rejilla</span><span class="arrow">·</span><span class="chip y">Por sistema</span><span class="arrow">·</span><span class="chip">Por responsable</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== QUIÉN SE MUEVE ========== -->
+    <section class="slide" id="quien-mueve" data-nav="Quién se mueve">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Prioridad</span>
+          <h2 class="display">Se mueve el que puede<span class="dot">.</span></h2>
+          <p class="slide-lead">Lo grande, lo permanente y lo que cae por gravedad tiene paso. Lo flexible se desvía. Pactarlo antes evita discutir cada choque.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="quien-mueve"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w3 g">
+            <span class="c-label">Orden habitual de paso</span>
+            <div class="bars">
+              <div class="bar is-key"><span>1</span><i style="width:100%">Estructura</i></div>
+              <div class="bar"><span>2</span><i style="width:92%">Saneamiento</i></div>
+              <div class="bar"><span>3</span><i style="width:84%">Conductos</i></div>
+              <div class="bar"><span>4</span><i style="width:76%">Tuberías</i></div>
+              <div class="bar"><span>5</span><i style="width:68%">Bandejas</i></div>
+              <div class="bar"><span>6</span><i style="width:62%">Cables</i></div>
+            </div>
+          </div>
+          <div class="card w3">
+            <span class="c-label">Por qué la gravedad manda</span>
+            <svg class="draw" viewBox="0 0 280 130" role="img" aria-label="Un colector con pendiente del 1,5 % baja 30 centímetros en 20 metros">
+              <path d="M10 30 L270 75" stroke="#000" stroke-width="8" stroke-linecap="round"/><path d="M10 30 L270 75" stroke="#FFFF00" stroke-width="4" stroke-linecap="round"/>
+              <path d="M10 30 H270" stroke="#000" stroke-width="1.5" stroke-dasharray="4 4"/><path d="M262 30 V75" stroke="#000" stroke-width="2"/>
+              <g font-family="JetBrains Mono, monospace" font-size="11"><text x="200" y="58" font-weight="700">30 cm</text><text x="10" y="110">1,5 % en 20 m</text></g>
+            </svg>
+            <span class="c-foot">un desvío rompe la pendiente</span>
+          </div>
+          <div class="card w6 y"><span class="c-label">La regla general</span><span class="c-title">Cuanto más grande o permanente, más derecho de paso</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== INCIDENCIA ========== -->
+    <section class="slide" id="incidencia" data-nav="Anatomía de una incidencia">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Incidencia</span>
+          <h2 class="display">Un choque no es una tarea<span class="dot">.</span></h2>
+          <p class="slide-lead">Se convierte en incidencia cuando lleva vista, elementos, responsable, fecha y estado. Así viaja entre equipos.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="incidencia"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w6 g">
+            <span class="c-label">Ficha de una incidencia</span>
+            <svg class="draw" viewBox="0 0 620 220" role="img" aria-label="Ficha de incidencia con captura, punto de vista, elementos implicados, responsable, fecha límite, estado y comentarios">
+              <rect x="10" y="10" width="600" height="200" rx="6" fill="#fff" stroke="#000" stroke-width="3"/>
+              <rect x="26" y="26" width="200" height="130" fill="#EFEFEA" stroke="#000" stroke-width="2"/>
+              <rect x="60" y="80" width="140" height="22" fill="#fff" stroke="#000" stroke-width="2"/><path d="M120 36 V146" stroke="#000" stroke-width="10"/><path d="M120 36 V146" stroke="#fff" stroke-width="5"/><circle cx="120" cy="91" r="16" fill="#FFFF00" fill-opacity=".7" stroke="#000" stroke-width="2"/>
+              <path d="M36 140 l20 -10 M36 140 l10 -20" stroke="#000" stroke-width="2"/><text x="60" y="140" font-family="JetBrains Mono, monospace" font-size="10">cámara</text>
+              <g font-family="JetBrains Mono, monospace" font-size="12">
+                <text x="250" y="42" font-weight="700">#0142 · Conducto cruza viga P2</text>
+                <text x="250" y="70" fill="#666">Elementos</text><text x="360" y="70">2 · por su ID</text>
+                <text x="250" y="94" fill="#666">Responsable</text><text x="360" y="94">Climatización</text>
+                <text x="250" y="118" fill="#666">Fecha límite</text><text x="360" y="118">14/11</text>
+                <text x="250" y="142" fill="#666">Prioridad</text><text x="360" y="142">Alta</text>
+              </g>
+              <rect x="250" y="160" width="96" height="26" rx="13" fill="#FFFF00" stroke="#000" stroke-width="2"/><text x="266" y="178" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700">ABIERTA</text>
+              <text x="26" y="186" font-family="JetBrains Mono, monospace" font-size="11" fill="#666">captura + punto de vista</text>
+              <text x="360" y="178" font-family="JetBrains Mono, monospace" font-size="11" fill="#666">3 comentarios</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== CICLO ========== -->
+    <section class="slide" id="ciclo" data-nav="El ciclo de coordinación">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Rutina</span>
+          <h2 class="display">Federar, detectar, decidir, volver<span class="dot">.</span></h2>
+          <p class="slide-lead">Un ciclo fijo, con reunión: se detecta, se agrupa, se asigna, se corrige en el modelo de origen y se vuelve a probar.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="ciclo"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w4 g">
+            <span class="c-label">El ciclo</span>
+            <svg class="draw" viewBox="0 0 420 230" role="img" aria-label="Ciclo de seis pasos: federar, detectar, agrupar, asignar, corregir en el origen y verificar">
+              <circle cx="210" cy="115" r="82" fill="none" stroke="#000" stroke-width="2" stroke-dasharray="6 6"/>
+              <g font-family="JetBrains Mono, monospace" font-size="11" font-weight="700">
+                <rect x="160" y="16" width="100" height="28" rx="14" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="180" y="35">FEDERAR</text>
+                <rect x="276" y="60" width="100" height="28" rx="14" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="292" y="79">DETECTAR</text>
+                <rect x="276" y="142" width="100" height="28" rx="14" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="296" y="161">AGRUPAR</text>
+                <rect x="160" y="186" width="100" height="28" rx="14" fill="#FFFF00" stroke="#000" stroke-width="2.5"/><text x="180" y="205">ASIGNAR</text>
+                <rect x="44" y="142" width="100" height="28" rx="14" fill="#000" stroke="#000" stroke-width="2.5"/><text x="62" y="161" fill="#FFFF00">CORREGIR</text>
+                <rect x="44" y="60" width="100" height="28" rx="14" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="58" y="79">VERIFICAR</text>
+              </g>
+              <text x="174" y="120" font-family="JetBrains Mono, monospace" font-size="11" fill="#666">reunión</text>
+            </svg>
+          </div>
+          <div class="card w2 k"><span class="c-label">Cadencia típica</span><b class="c-num" style="color:var(--accent)">1<small>semana</small></b><span class="c-foot">o cada entrega de modelos</span></div>
+          <div class="card w3"><span class="c-label">Se corrige en</span><span class="c-title">El modelo de origen</span><span class="c-foot">nunca en el federado</span></div>
+          <div class="card w3 y"><span class="c-label">Se cierra cuando</span><span class="c-title">La prueba ya no lo encuentra</span><span class="c-foot">y alguien lo comprueba</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== II · ISO 19650 ========== -->
+    <section class="slide" id="iso19650" data-cap="II · Estándares" data-nav="ISO 19650 y federación">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">ISO 19650</span>
+          <h2 class="display">Cada equipo, su contenedor<span class="dot">.</span></h2>
+          <p class="slide-lead">La norma no dice cómo detectar. Dice cómo se divide el modelo, quién entrega cada parte y quién coordina el conjunto.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="iso19650"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w4 g">
+            <span class="c-label">Estrategia de federación</span>
+            <svg class="draw" viewBox="0 0 420 200" role="img" aria-label="Los equipos de tarea entregan sus contenedores de información; la parte adjudicataria principal los federa y coordina">
+              <g stroke="#000" stroke-width="2.5" fill="#fff" font-family="JetBrains Mono, monospace" font-size="11">
+                <rect x="10" y="20" width="96" height="40" rx="4"/><rect x="10" y="80" width="96" height="40" rx="4"/><rect x="10" y="140" width="96" height="40" rx="4"/>
+              </g>
+              <g font-family="JetBrains Mono, monospace" font-size="11"><text x="22" y="45">ARQ</text><text x="22" y="105">EST</text><text x="22" y="165">INST</text></g>
+              <g stroke="#000" stroke-width="2"><path d="M106 40 L220 92"/><path d="M106 100 H220"/><path d="M106 160 L220 108"/></g>
+              <rect x="224" y="62" width="120" height="76" rx="6" fill="#FFFF00" stroke="#000" stroke-width="3"/>
+              <text x="238" y="96" font-family="Inter, sans-serif" font-weight="900" font-size="14">FEDERADO</text><text x="238" y="118" font-family="JetBrains Mono, monospace" font-size="10">solo lectura</text>
+              <g font-family="JetBrains Mono, monospace" font-size="10" fill="#666"><text x="10" y="196">equipos de tarea · contenedores</text><text x="224" y="160">coordina la parte</text><text x="224" y="174">adjudicataria principal</text></g>
+            </svg>
+          </div>
+          <div class="card w2 k"><span class="c-label">Plan de entregas</span><span class="c-title" style="color:var(--accent)">TIDP → MIDP</span><span class="c-foot">qué entrega cada equipo y cuándo</span></div>
+          <div class="card w3"><span class="c-label">ISO 19650-1 y -2</span><span class="c-title">Federación</span><span class="c-foot">estrategia y desglose en contenedores</span></div>
+          <div class="card w3 y"><span class="c-label">En revisión · 2026</span><span class="c-title">19650-2 + 19650-3</span><span class="c-foot">una sola parte para todo el ciclo</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== EJEMPLO: ESPAÑA ========== -->
+    <section class="slide" id="espana" data-nav="Ejemplo: España">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Ejemplo · España</span>
+          <h2 class="display">La coordinación 3D ya es obligatoria<span class="dot">.</span></h2>
+          <p class="slide-lead">El Plan BIM de la Administración General del Estado la define como detectar y resolver colisiones, y la exige por niveles.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="espana"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w6 g">
+            <span class="c-label">Plan BIM · niveles y fechas</span>
+            <svg class="draw" viewBox="0 0 620 150" role="img" aria-label="Línea de tiempo del Plan BIM: nivel inicial desde abril de 2024, nivel medio obligatorio desde octubre de 2025 y nivel avanzado, con BCF, desde octubre de 2027">
+              <path d="M20 70 H600" stroke="#000" stroke-width="3"/>
+              <g stroke="#000" stroke-width="2.5"><circle cx="90" cy="70" r="10" fill="#fff"/><circle cx="300" cy="70" r="12" fill="#FFFF00"/><circle cx="520" cy="70" r="10" fill="#000"/></g>
+              <g font-family="JetBrains Mono, monospace" font-size="12">
+                <text x="50" y="40" font-weight="700">01/04/2024</text><text x="50" y="104">Inicial</text><text x="50" y="122" fill="#666">coordinación 3D</text>
+                <text x="258" y="40" font-weight="700">01/10/2025</text><text x="258" y="104" font-weight="700">Medio · obligatorio</text><text x="258" y="122" fill="#666">≥ 5,404 M€ desde 2026</text>
+                <text x="478" y="40" font-weight="700">01/10/2027</text><text x="478" y="104">Avanzado</text><text x="478" y="122" fill="#666">BCF o equivalente</text>
+              </g>
+            </svg>
+          </div>
+          <div class="card w3 k"><span class="c-label">Orden PCM/818/2023</span><span class="c-title" style="color:var(--accent)">«Detección y resolución de colisiones»</span></div>
+          <div class="card w3"><span class="c-label">Lo que no fija</span><span class="c-title">Tolerancias ni matriz</span><span class="c-foot">quedan para el plan de ejecución</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== BCF ========== -->
+    <section class="slide" id="bcf" data-nav="BCF: incidencias abiertas">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">BCF · buildingSMART</span>
+          <h2 class="display">Viajan las incidencias, no el modelo<span class="dot">.</span></h2>
+          <p class="slide-lead">BCF es un formato abierto para comentar modelos: vista, captura y elementos señalados. El modelo se queda en su sitio.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="bcf"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w4 g">
+            <span class="c-label">Dos caminos para una incidencia</span>
+            <svg class="draw" viewBox="0 0 420 190" role="img" aria-label="Del programa de coordinación al de autoría la incidencia viaja como archivo BCF o por la BCF API, sin enviar el modelo">
+              <rect x="10" y="60" width="110" height="70" rx="6" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="22" y="90" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700">COORDINA</text><text x="22" y="110" font-family="JetBrains Mono, monospace" font-size="10" fill="#666">detecta</text>
+              <rect x="300" y="60" width="110" height="70" rx="6" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="312" y="90" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700">AUTORÍA</text><text x="312" y="110" font-family="JetBrains Mono, monospace" font-size="10" fill="#666">corrige</text>
+              <rect x="170" y="20" width="80" height="50" rx="4" fill="#FFFF00" stroke="#000" stroke-width="2.5"/><text x="188" y="50" font-family="JetBrains Mono, monospace" font-size="12" font-weight="700">.bcf</text>
+              <path d="M120 80 L166 50 M254 50 L300 80" stroke="#000" stroke-width="2"/>
+              <path d="M120 112 H300" stroke="#000" stroke-width="2.5" stroke-dasharray="7 5"/><text x="160" y="140" font-family="JetBrains Mono, monospace" font-size="11">BCF API · servidor</text>
+              <text x="10" y="176" font-family="JetBrains Mono, monospace" font-size="11" fill="#666">archivo arriba · conexión abajo</text>
+            </svg>
+          </div>
+          <div class="card w2 k"><span class="c-label">Programas con BCF</span><b class="c-num" style="color:var(--accent)">110<small>+</small></b><span class="c-foot">según buildingSMART</span></div>
+          <div class="card w3"><span class="c-label">Señala elementos por</span><span class="c-title">GlobalId IFC</span><span class="c-foot">el mismo en todos los programas</span></div>
+          <div class="card w3 y"><span class="c-label">Nació en</span><span class="c-title">2009</span><span class="c-foot">primera versión publicada en 2011</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== DENTRO DE UN BCF ========== -->
+    <section class="slide" id="bcf-dentro" data-nav="Dentro de un BCF">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">BCF 3.0 · el archivo</span>
+          <h2 class="display">Un zip con una carpeta por tema<span class="dot">.</span></h2>
+          <p class="slide-lead">Cada incidencia lleva su ficha, sus vistas y sus capturas. La raíz dice qué estados y tipos se admiten.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="bcf-dentro"><span class="plus">+</span> Ver la estructura</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w4 g">
+            <span class="c-label">Contenido de incidencias.bcf</span>
+            <svg class="draw" viewBox="0 0 420 230" role="img" aria-label="Árbol del archivo BCF: bcf.version, extensions.xml, project.bcfp, documents.xml y una carpeta por tema con markup.bcf, viewpoint.bcfv y snapshot.png">
+              <g font-family="JetBrains Mono, monospace" font-size="12">
+                <rect x="10" y="8" width="150" height="26" rx="4" fill="#000"/><text x="20" y="26" fill="#FFFF00" font-weight="700">incidencias.bcf</text>
+                <g stroke="#000" stroke-width="2" fill="none"><path d="M24 34 V200"/><path d="M24 54 H40"/><path d="M24 78 H40"/><path d="M24 102 H40"/><path d="M24 126 H40"/><path d="M24 150 H40"/><path d="M60 162 V214"/><path d="M60 178 H76"/><path d="M60 196 H76"/><path d="M60 214 H76"/></g>
+                <text x="46" y="58">bcf.version</text>
+                <text x="46" y="82" font-weight="700">extensions.xml</text><text x="200" y="82" fill="#666">estados, tipos, etiquetas</text>
+                <text x="46" y="106">project.bcfp</text><text x="200" y="106" fill="#666">opcional</text>
+                <text x="46" y="130">documents.xml</text><text x="200" y="130" fill="#666">opcional · 3.0</text>
+                <rect x="40" y="138" width="200" height="22" fill="#FFFF00" stroke="#000" stroke-width="2"/><text x="46" y="154" font-weight="700">a3f0…e91c/</text><text x="252" y="154" fill="#666">GUID del tema</text>
+                <text x="82" y="182">markup.bcf</text><text x="200" y="182" fill="#666">título, estado, comentarios</text>
+                <text x="82" y="200">viewpoint.bcfv</text><text x="200" y="200" fill="#666">cámara, elementos, cortes</text>
+                <text x="82" y="218">snapshot.png</text><text x="200" y="218" fill="#666">≤ 1500 px</text>
+              </g>
+            </svg>
+          </div>
+          <div class="card w2 k"><span class="c-label">Obligatorios</span><span class="c-title" style="color:var(--accent)">Tipo y estado</span><span class="c-foot">el resto, opcional</span></div>
+          <div class="card w6"><span class="c-label">Campos del tema</span><div class="chips"><span class="chip y">TopicType</span><span class="chip y">TopicStatus</span><span class="chip">Priority</span><span class="chip">AssignedTo</span><span class="chip">DueDate</span><span class="chip">Labels</span><span class="chip">Stage</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== VERSIONES ========== -->
+    <section class="slide" id="bcf-versiones" data-nav="Versiones de BCF">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Versiones</span>
+          <h2 class="display">2.1 sigue mandando<span class="dot">.</span></h2>
+          <p class="slide-lead">La 3.0 ordena estados y tipos y separa la autenticación. Pero muchas herramientas solo leen 2.1: se fija en el plan de ejecución.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="bcf-versiones"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w6 g">
+            <span class="c-label">De archivo a servicio</span>
+            <svg class="draw" viewBox="0 0 620 140" role="img" aria-label="Cronología de BCF: inicio en 2009, versión 1.0 en 2011, 2.0 en 2014, 2.1 y la API en 2017 y 3.0 en 2021">
+              <path d="M20 66 H600" stroke="#000" stroke-width="3"/>
+              <g stroke="#000" stroke-width="2.5"><circle cx="40" cy="66" r="8" fill="#fff"/><circle cx="150" cy="66" r="8" fill="#fff"/><circle cx="280" cy="66" r="8" fill="#fff"/><circle cx="420" cy="66" r="12" fill="#FFFF00"/><circle cx="560" cy="66" r="10" fill="#000"/></g>
+              <g font-family="JetBrains Mono, monospace" font-size="12"><text x="20" y="40" font-weight="700">2009</text><text x="130" y="40" font-weight="700">2011</text><text x="260" y="40" font-weight="700">2014</text><text x="400" y="40" font-weight="700">2017</text><text x="540" y="40" font-weight="700">2021</text>
+              <text x="20" y="98" fill="#666">inicio</text><text x="130" y="98">1.0</text><text x="260" y="98">2.0</text><text x="400" y="98" font-weight="700">2.1 + API</text><text x="540" y="98">3.0</text>
+              <text x="300" y="122" fill="#666">.bcf (antes .bcfzip)</text><text x="520" y="122" fill="#666">OpenCDE</text></g>
+            </svg>
+          </div>
+          <div class="card w3"><span class="c-label">Herramientas en 2.1</span><span class="c-title">Aún muchas</span><span class="c-foot">alguna solo importa 2.1</span></div>
+          <div class="card w3 k"><span class="c-label">Regla</span><span class="c-title" style="color:var(--accent)">Una versión</span><span class="c-foot">la misma en todo el proyecto</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== GLOBALID ========== -->
+    <section class="slide" id="guid" data-nav="El GlobalId">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">IFC · GlobalId</span>
+          <h2 class="display">22 caracteres que no deben cambiar<span class="dot">.</span></h2>
+          <p class="slide-lead">La incidencia señala elementos por su identificador IFC. Si el elemento se borra y se rehace, la incidencia apunta a la nada.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="guid"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w6 k">
+            <span class="c-label">Un GlobalId</span>
+            <b class="c-num" style="color:var(--accent);font-size:clamp(20px,4vw,40px)">2O2Fr$t4X7Zf8NOew3FLOH</b>
+            <span class="c-foot">128 bits en 22 caracteres · 0-9 A-Z a-z _ $</span>
+          </div>
+          <div class="card w3">
+            <span class="c-label">Exportar otra vez</span>
+            <svg class="draw" viewBox="0 0 200 90" aria-hidden="true"><rect x="10" y="20" width="70" height="44" fill="#fff" stroke="#000" stroke-width="2.5"/><rect x="120" y="20" width="70" height="44" fill="#fff" stroke="#000" stroke-width="2.5"/><path d="M84 42 H112" stroke="#000" stroke-width="2.5"/><polygon points="112,36 120,42 112,48" fill="#000"/><text x="18" y="84" font-family="JetBrains Mono, monospace" font-size="11">…OLOH = …OLOH</text></svg>
+            <span class="c-title">Se conserva</span>
+          </div>
+          <div class="card w3 y">
+            <span class="c-label">Borrar y rehacer</span>
+            <svg class="draw" viewBox="0 0 200 90" aria-hidden="true"><rect x="10" y="20" width="70" height="44" fill="#fff" stroke="#000" stroke-width="2.5"/><path d="M14 24 L76 60 M76 24 L14 60" stroke="#000" stroke-width="2"/><rect x="120" y="20" width="70" height="44" fill="#fff" stroke="#000" stroke-width="2.5"/><path d="M84 42 H112" stroke="#000" stroke-width="2.5"/><polygon points="112,36 120,42 112,48" fill="#000"/><text x="18" y="84" font-family="JetBrains Mono, monospace" font-size="11">…OLOH ≠ …k3Qa</text></svg>
+            <span class="c-title">Se pierde el enlace</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== III · NAVISWORKS ========== -->
+    <section class="slide" id="navisworks" data-cap="III · Software" data-nav="Navisworks">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Navisworks · Clash Detective</span>
+          <h2 class="display">Cuatro pruebas y cinco estados<span class="dot">.</span></h2>
+          <p class="slide-lead">El estándar de facto para federar. La tolerancia cambia de sentido según el tipo de prueba, y no exporta BCF sin un complemento.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="navisworks"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w3 g">
+            <span class="c-label">Tipos de prueba</span>
+            <div class="chips"><span class="chip y">Hard</span><span class="chip">Hard (Conservative)</span><span class="chip">Clearance</span><span class="chip">Duplicates</span></div>
+          </div>
+          <div class="card w3">
+            <span class="c-label">Estados</span>
+            <div class="flow"><span class="chip">New</span><span class="chip">Active</span><span class="chip">Reviewed</span><span class="chip k">Approved</span><span class="chip y">Resolved</span></div>
+            <span class="c-foot">abiertos · cerrados</span>
+          </div>
+          <div class="card w2 k"><span class="c-label">Novedad 2027</span><span class="c-title" style="color:var(--accent)">Clash Test Matrix</span><span class="c-foot">y carpetas de pruebas</span></div>
+          <div class="card w2"><span class="c-label">Con TimeLiner</span><span class="c-title">4D</span><span class="c-foot">choques en el tiempo</span></div>
+          <div class="card w2 y"><span class="c-label">BCF</span><span class="c-title">No nativo</span><span class="c-foot">el informe sale en XML o HTML</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== REVIT ========== -->
+    <section class="slide" id="revit" data-nav="Revit">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Revit · Comprobación de interferencias</span>
+          <h2 class="display">Para revisarse a uno mismo<span class="dot">.</span></h2>
+          <p class="slide-lead">Compara categorías del modelo y de un vínculo. Sin tolerancia, sin reglas y sin pruebas guardadas: útil antes de entregar, no para coordinar.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="revit"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w3"><span class="c-label">Revit · ruta</span><span class="c-title">Colaborar › Coordinar</span><span class="c-foot">Comprobación de interferencias</span></div>
+          <div class="card w3 g">
+            <span class="c-label">Lo que trae y lo que no</span>
+            <ul class="checklist"><li>Intersecciones duras</li><li>Informe HTML</li></ul>
+            <div class="chips" style="margin-top:8px"><span class="chip">Sin tolerancia</span><span class="chip">Sin holgura</span><span class="chip">Sin historial</span></div>
+          </div>
+          <div class="card w3 y"><span class="c-label">Trampa</span><span class="c-title">«Actualizar»</span><span class="c-foot">solo revisa los choques del informe; no busca nuevos</span></div>
+          <div class="card w3 k"><span class="c-label">Para BCF</span><span class="c-title" style="color:var(--accent)">Complemento</span><span class="c-foot">BCF Manager u otro gestor</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SOLIBRI ========== -->
+    <section class="slide" id="solibri" data-nav="Solibri">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Solibri · reglas</span>
+          <h2 class="display">El choque como regla<span class="dot">.</span></h2>
+          <p class="slide-lead">No hay botón de detectar: hay reglas parametrizadas sobre el IFC, con tolerancias por componente y una matriz que se edita en Excel.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="solibri"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w3"><span class="c-label">Regla 1</span><span class="c-title">General Intersection</span><span class="c-foot">dura, dentro y duplicado</span></div>
+          <div class="card w3"><span class="c-label">Regla 222</span><span class="c-title">Component Distance</span><span class="c-foot">distancia mínima o máxima</span></div>
+          <div class="card w3"><span class="c-label">Regla 226</span><span class="c-title">Free Area in Front</span><span class="c-foot">volumen libre delante</span></div>
+          <div class="card w3 y"><span class="c-label">Regla 245 · desde 24.5</span><span class="c-title">Clash Detection Matrix</span><span class="c-foot">tolerancia y gravedad por celda</span></div>
+          <div class="card w3 k"><span class="c-label">Licencia mínima</span><span class="c-title" style="color:var(--accent)">Essential</span><span class="c-foot">Starter no detecta</span></div>
+          <div class="card w3"><span class="c-label">BCF</span><span class="c-title">Nativo</span><span class="c-foot">archivo y conexión en vivo</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== AUTORÍA ========== -->
+    <section class="slide" id="autoria" data-nav="Dentro de cada programa">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Programas de autoría</span>
+          <h2 class="display">Casi todos detectan algo<span class="dot">.</span></h2>
+          <p class="slide-lead">Sirven para limpiar el propio modelo antes de entregarlo. Cambian los nombres, las tolerancias y el soporte de BCF.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="autoria"><span class="plus">+</span> Comparar</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w2"><span class="c-label">Archicad</span><span class="c-title">Detección de colisiones</span><span class="c-foot">tolerancia de volumen y superficie</span></div>
+          <div class="card w2"><span class="c-label">Tekla</span><span class="c-title">Clash check</span><span class="c-foot">distancia −500 a 500 mm</span></div>
+          <div class="card w2"><span class="c-label">Allplan · Bimplus</span><span class="c-title">Clash detection</span><span class="c-foot">10 mm por defecto</span></div>
+          <div class="card w2"><span class="c-label">BricsCAD</span><span class="c-title">INTERFERE</span><span class="c-foot">dos conjuntos o uno</span></div>
+          <div class="card w2"><span class="c-label">Bentley</span><span class="c-title">Clash Detection</span><span class="c-foot">trabajos con reglas de supresión</span></div>
+          <div class="card w2 y"><span class="c-label">Vectorworks</span><span class="c-title">BCF Manager</span><span class="c-foot">detección propia <span class="tag">Por confirmar</span></span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== ABIERTO ========== -->
+    <section class="slide" id="abierto" data-nav="Visores IFC y código abierto">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Sobre IFC</span>
+          <h2 class="display">Detectar sin el programa de origen<span class="dot">.</span></h2>
+          <p class="slide-lead">Los visores IFC y las herramientas abiertas cruzan modelos de cualquier procedencia, agrupan y exportan BCF.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="abierto"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w3 g">
+            <span class="c-label">IfcClash · IfcOpenShell</span>
+            <div class="chips"><span class="chip">intersection</span><span class="chip">collision</span><span class="chip y">clearance</span></div>
+            <span class="c-foot">agrupación automática por cercanía · BCF</span>
+          </div>
+          <div class="card w3">
+            <span class="c-label">BIMcollab Zoom · tolerancia</span>
+            <svg class="draw" viewBox="0 0 260 100" aria-hidden="true"><path d="M30 80 L200 20" stroke="#000" stroke-width="12" stroke-linecap="round"/><path d="M30 80 L200 20" stroke="#fff" stroke-width="7" stroke-linecap="round"/><rect x="96" y="34" width="44" height="36" fill="#FFFF00" fill-opacity=".6" stroke="#000" stroke-width="2" stroke-dasharray="4 3"/><path d="M118 10 V96" stroke="#000" stroke-width="2.5"/><text x="150" y="90" font-family="JetBrains Mono, monospace" font-size="10">caja XYZ</text></svg>
+            <span class="c-foot">cajas alineadas a los ejes: sobredimensionan lo inclinado</span>
+          </div>
+          <div class="card w3 k"><span class="c-label">Bonsai</span><span class="c-title" style="color:var(--accent)">Gratis</span><span class="c-foot">IfcClash dentro de Blender</span></div>
+          <div class="card w3 y"><span class="c-label">Límite</span><span class="c-title">BCF 2.0</span><span class="c-foot">IfcClash 0.8 aún no escribe 3.0</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== IV · NUBE ========== -->
+    <section class="slide" id="nube" data-cap="IV · Plataformas" data-nav="Detección en la nube">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Entorno común de datos</span>
+          <h2 class="display">Detectar al publicar<span class="dot">.</span></h2>
+          <p class="slide-lead">En la nube, la prueba se lanza sola cada vez que llega una versión nueva. Se gana constancia y se pierde control fino.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="nube"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w4 g">
+            <span class="c-label">Publicar = volver a probar</span>
+            <svg class="draw" viewBox="0 0 420 180" role="img" aria-label="Cada versión publicada en el entorno común de datos dispara de nuevo la detección y actualiza los grupos de choques">
+              <g stroke="#000" stroke-width="2.5" fill="#fff" font-family="JetBrains Mono, monospace" font-size="11"><rect x="10" y="20" width="70" height="36" rx="4"/><rect x="10" y="72" width="70" height="36" rx="4"/><rect x="10" y="124" width="70" height="36" rx="4"/></g>
+              <g font-family="JetBrains Mono, monospace" font-size="11"><text x="20" y="43">v12</text><text x="20" y="95">v08</text><text x="20" y="147">v21</text></g>
+              <g stroke="#000" stroke-width="2"><path d="M80 38 L150 84"/><path d="M80 90 H150"/><path d="M80 142 L150 96"/></g>
+              <path d="M160 130 H300 A30 30 0 0 0 294 72 A44 44 0 0 0 210 60 A34 34 0 0 0 156 88 A22 22 0 0 0 160 130 Z" fill="#FFFF00" stroke="#000" stroke-width="3" stroke-linejoin="round"/>
+              <text x="196" y="104" font-family="Inter, sans-serif" font-weight="900" font-size="14">CDE</text>
+              <path d="M312 96 H350" stroke="#000" stroke-width="2.5"/><polygon points="350,90 360,96 350,102" fill="#000"/>
+              <rect x="364" y="70" width="48" height="52" rx="4" fill="#000"/><text x="372" y="102" font-family="JetBrains Mono, monospace" font-size="12" fill="#FFFF00" font-weight="700">218</text>
+              <text x="150" y="172" font-family="JetBrains Mono, monospace" font-size="11" fill="#666">detección automática</text>
+            </svg>
+          </div>
+          <div class="card w2 k"><span class="c-label">Autodesk Forma</span><span class="c-title" style="color:var(--accent)">Model Coordi&shy;nation</span><span class="c-foot">antes ACC · desde marzo de 2026</span></div>
+          <div class="card w3"><span class="c-label">Lo que se gana</span><span class="c-title">Siempre al día</span><span class="c-foot">nadie olvida lanzar la prueba</span></div>
+          <div class="card w3 y"><span class="c-label">Lo que se pierde</span><span class="c-title">Tolerancia y holgura</span><span class="c-foot">la «tolerancia» es un filtro posterior</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== PLATAFORMAS ========== -->
+    <section class="slide" id="plataformas" data-nav="Plataformas comparadas">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Comparativa</span>
+          <h2 class="display">Unas detectan, otras gestionan<span class="dot">.</span></h2>
+          <p class="slide-lead">Hay plataformas que calculan choques y otras que solo reciben incidencias. Lo que todas deberían hablar es BCF.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="plataformas"><span class="plus">+</span> Comparar</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w2"><span class="c-label">Revizto</span><span class="c-title">Detecta</span><span class="c-foot">pruebas programadas</span></div>
+          <div class="card w2"><span class="c-label">Trimble Connect</span><span class="c-title">Detecta</span><span class="c-foot">desde el escritorio</span></div>
+          <div class="card w2"><span class="c-label">Dalux</span><span class="c-title">Detecta</span><span class="c-foot">geometría y propiedades</span></div>
+          <div class="card w2"><span class="c-label">Aconex</span><span class="c-title">Detecta</span><span class="c-foot">repite al actualizar</span></div>
+          <div class="card w2"><span class="c-label">Catenda Hub</span><span class="c-title">Gestiona</span><span class="c-foot">BCF API 2.1 y 3.0</span></div>
+          <div class="card w2"><span class="c-label">Procore</span><span class="c-title">Gestiona</span><span class="c-foot">solo importa BCF 2.1</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== V · IDA Y VUELTA ========== -->
+    <section class="slide" id="ida-vuelta" data-cap="V · Interoperabilidad" data-nav="Ida y vuelta de una incidencia">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">El viaje</span>
+          <h2 class="display">Del visor al modelo, y de vuelta<span class="dot">.</span></h2>
+          <p class="slide-lead">El coordinador marca la incidencia en el federado. El autor la abre en su programa, que salta a los elementos por su GlobalId, corrige y responde.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="ida-vuelta"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w6 g">
+            <span class="c-label">Cuatro pasos, dos programas</span>
+            <svg class="draw" viewBox="0 0 620 170" role="img" aria-label="El coordinador detecta y exporta la incidencia; el autor la importa, el programa localiza los elementos por GlobalId, corrige y cambia el estado; el coordinador verifica con el modelo nuevo">
+              <g stroke="#000" stroke-width="2.5" fill="#fff"><rect x="10" y="40" width="130" height="80" rx="6"/><rect x="480" y="40" width="130" height="80" rx="6"/></g>
+              <g font-family="JetBrains Mono, monospace" font-size="11"><text x="22" y="66" font-weight="700">COORDINACIÓN</text><text x="22" y="88">1 detectar</text><text x="22" y="106">4 verificar</text><text x="492" y="66" font-weight="700">AUTORÍA</text><text x="492" y="88">2 localizar</text><text x="492" y="106">3 corregir</text></g>
+              <path d="M140 62 H470" stroke="#000" stroke-width="2.5"/><polygon points="470,56 480,62 470,68" fill="#000"/>
+              <path d="M480 104 H150" stroke="#000" stroke-width="2.5" stroke-dasharray="7 5"/><polygon points="150,98 140,104 150,110" fill="#000"/>
+              <rect x="250" y="44" width="120" height="34" rx="4" fill="#FFFF00" stroke="#000" stroke-width="2.5"/><text x="262" y="66" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700">BCF · abierta</text>
+              <rect x="250" y="88" width="120" height="34" rx="4" fill="#000"/><text x="262" y="110" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700" fill="#FFFF00">BCF · resuelta</text>
+              <text x="140" y="156" font-family="JetBrains Mono, monospace" font-size="11" fill="#666">+ el modelo corregido se vuelve a publicar y a federar</text>
+            </svg>
+          </div>
+          <div class="card w3"><span class="c-label">En el programa de autoría</span><span class="c-title">Un gestor BCF</span><span class="c-foot">nativo o complemento</span></div>
+          <div class="card w3 y"><span class="c-label">La llave</span><span class="c-title">GlobalId estable</span><span class="c-foot">guardado en el modelo nativo</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== BCF API ========== -->
+    <section class="slide" id="bcf-api" data-nav="BCF API">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">BCF API · OpenCDE</span>
+          <h2 class="display">Sin archivos que mandar<span class="dot">.</span></h2>
+          <p class="slide-lead">Con la API, cada programa lee y escribe las incidencias en un mismo servidor. No hay versiones del BCF circulando por correo.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="bcf-api"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w4 g">
+            <span class="c-label">Un servidor, muchos clientes</span>
+            <svg class="draw" viewBox="0 0 420 180" role="img" aria-label="Un servidor BCF en el centro con cuatro programas conectados que leen y escriben las mismas incidencias">
+              <rect x="160" y="60" width="100" height="60" rx="6" fill="#FFFF00" stroke="#000" stroke-width="3"/><text x="174" y="88" font-family="JetBrains Mono, monospace" font-size="12" font-weight="700">SERVIDOR</text><text x="174" y="106" font-family="JetBrains Mono, monospace" font-size="10">/bcf/3.0</text>
+              <g stroke="#000" stroke-width="2.5" fill="#fff"><rect x="10" y="14" width="96" height="36" rx="4"/><rect x="314" y="14" width="96" height="36" rx="4"/><rect x="10" y="130" width="96" height="36" rx="4"/><rect x="314" y="130" width="96" height="36" rx="4"/></g>
+              <g font-family="JetBrains Mono, monospace" font-size="11"><text x="20" y="37">coordinación</text><text x="324" y="37">autoría 1</text><text x="20" y="153">visor obra</text><text x="324" y="153">autoría 2</text></g>
+              <g stroke="#000" stroke-width="2"><path d="M106 40 L160 70"/><path d="M314 40 L260 70"/><path d="M106 140 L160 110"/><path d="M314 140 L260 110"/></g>
+            </svg>
+          </div>
+          <div class="card w2 k"><span class="c-label">Antes de la API</span><span class="c-title" style="color:var(--accent)">Foundation API</span><span class="c-foot">identidad y versiones</span></div>
+          <div class="card w6"><span class="c-label">Recursos de la API 3.0</span><div class="chips"><span class="chip">projects</span><span class="chip y">topics</span><span class="chip">comments</span><span class="chip">viewpoints</span><span class="chip">documents</span><span class="chip">events</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== LO QUE SE PIERDE ========== -->
+    <section class="slide" id="perdidas" data-nav="Lo que se pierde por el camino">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Errores</span>
+          <h2 class="display">Lo que no llega al otro lado<span class="dot">.</span></h2>
+          <p class="slide-lead">Cada programa entiende un BCF a su manera. Antes de la primera reunión, se prueba un viaje de ida y vuelta con los programas reales del proyecto.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="perdidas"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w2 y"><span class="c-label">01</span><span class="c-title">Elementos</span><span class="c-foot">si cambia el GlobalId</span></div>
+          <div class="card w2"><span class="c-label">02</span><span class="c-title">Versión</span><span class="c-foot">3.0 donde solo se lee 2.1</span></div>
+          <div class="card w2"><span class="c-label">03</span><span class="c-title">Campos propios</span><span class="c-foot">solo viaja lo estándar</span></div>
+          <div class="card w2"><span class="c-label">04</span><span class="c-title">Cortes y colores</span><span class="c-foot">planos que nadie pidió</span></div>
+          <div class="card w2"><span class="c-label">05</span><span class="c-title">Vistas 2D</span><span class="c-foot">sin GlobalId, no viajan</span></div>
+          <div class="card w2 k"><span class="c-label">06</span><span class="c-title" style="color:var(--accent)">Origen distinto</span><span class="c-foot">la cámara apunta a otro sitio</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== VI · ANTES DE DETECTAR ========== -->
+    <section class="slide" id="antes" data-cap="VI · Control de calidad" data-nav="Antes de detectar">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Control de calidad</span>
+          <h2 class="display">Primero, que el modelo sea apto<span class="dot">.</span></h2>
+          <p class="slide-lead">Detectar sobre un modelo sin limpiar fabrica ruido. Cinco comprobaciones previas, automatizables con un IDS.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="antes"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w3 g">
+            <span class="c-label">Antes de cada prueba</span>
+            <ul class="checklist"><li>Mismas coordenadas compartidas</li><li>Unidades y GlobalId estables</li><li>Sin duplicados</li><li>Sistemas y clasificación rellenos</li><li>Aislamiento y holguras modelados</li></ul>
+          </div>
+          <div class="card w3 k"><span class="c-label">IDS · buildingSMART</span><b class="c-num" style="color:var(--accent)">1.0</b><span class="c-foot">estándar final desde junio de 2024</span></div>
+          <div class="card w6 y"><span class="c-label">Por qué importa</span><span class="c-title">Las reglas y la agrupación leen propiedades: si están vacías, la prueba no distingue nada</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== INDICADORES ========== -->
+    <section class="slide" id="kpi" data-nav="Indicadores">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Medir</span>
+          <h2 class="display">La curva tiene que bajar<span class="dot">.</span></h2>
+          <p class="slide-lead">Incidencias abiertas por disciplina y tiempo medio de cierre, semana a semana. El total de choques solo mide el ruido.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="kpi"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w4 g">
+            <span class="c-label">Incidencias abiertas por semana · ejemplo</span>
+            <svg class="draw" viewBox="0 0 420 190" role="img" aria-label="Gráfico de ejemplo: las incidencias abiertas suben en las primeras semanas y bajan hasta casi cero antes de la entrega">
+              <path d="M40 160 H410" stroke="#000" stroke-width="2"/><path d="M40 20 V160" stroke="#000" stroke-width="2"/>
+              <g stroke="#B9B9B0" stroke-width="1" stroke-dasharray="3 4"><path d="M40 125 H410"/><path d="M40 90 H410"/><path d="M40 55 H410"/></g>
+              <path d="M50 140 L90 96 L130 62 L170 50 L210 66 L250 88 L290 112 L330 132 L370 146 L400 152" fill="none" stroke="#000" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/><path d="M50 140 L90 96 L130 62 L170 50 L210 66 L250 88 L290 112 L330 132 L370 146 L400 152" fill="none" stroke="#FFFF00" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+              <g font-family="JetBrains Mono, monospace" font-size="10" fill="#666"><text x="44" y="176">S1</text><text x="164" y="176">S4</text><text x="284" y="176">S7</text><text x="388" y="176">S10</text><text x="6" y="58">60</text><text x="6" y="128">20</text></g>
+              <text x="330" y="40" font-family="JetBrains Mono, monospace" font-size="10" fill="#666">datos ficticios</text>
+            </svg>
+          </div>
+          <div class="card w2 k"><span class="c-label">Lo que importa</span><span class="c-title" style="color:var(--accent)">Días hasta cerrar</span><span class="c-foot">por responsable</span></div>
+          <div class="card w3"><span class="c-label">Útil</span><span class="c-title">Abiertas por disciplina</span><span class="c-foot">y vencidas</span></div>
+          <div class="card w3 y"><span class="c-label">Engañoso</span><span class="c-title">Total de choques</span><span class="c-foot">depende de la tolerancia</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== CERRAR ========== -->
+    <section class="slide" id="cerrar" data-nav="Cerrar de verdad">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Verificación</span>
+          <h2 class="display">«Resuelto» no es «corregido»<span class="dot">.</span></h2>
+          <p class="slide-lead">Un choque desaparece si se corrige, pero también si se borra el elemento o cambia la selección de la prueba. Alguien tiene que mirar.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="cerrar"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w2"><span class="c-label">Desaparece porque</span><span class="c-title">Se corrigió</span><span class="badge y">bien</span></div>
+          <div class="card w2"><span class="c-label">Desaparece porque</span><span class="c-title">Se borró</span><span class="badge n">revisar</span></div>
+          <div class="card w2"><span class="c-label">Desaparece porque</span><span class="c-title">Salió de la prueba</span><span class="badge n">revisar</span></div>
+          <div class="card w6 g">
+            <span class="c-label">Cierre en dos pasos</span>
+            <div class="flow"><span class="chip">El autor marca resuelta</span><span class="arrow">→</span><span class="chip">Nueva versión federada</span><span class="arrow">→</span><span class="chip">La prueba no la encuentra</span><span class="arrow">→</span><span class="chip k">El coordinador la cierra</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== HERRAMIENTAS ========== -->
+    <section class="slide" id="herramientas" data-nav="Herramientas de control">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Con qué</span>
+          <h2 class="display">Del modelo propio al federado<span class="dot">.</span></h2>
+          <p class="slide-lead">Cada nivel tiene su herramienta. Un error encontrado arriba no viaja al resto.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="herramientas"><span class="plus">+</span> Ver dónde mirar</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w2"><span class="c-label">01 · Mi modelo</span><span class="c-title">Autoría</span><span class="c-foot">interferencias propias</span></div>
+          <div class="card w2"><span class="c-label">02 · Mi IFC</span><span class="c-title">IDS</span><span class="c-foot">datos que piden las reglas</span></div>
+          <div class="card w2 y"><span class="c-label">03 · El conjunto</span><span class="c-title">Matriz</span><span class="c-foot">pruebas entre disciplinas</span></div>
+          <div class="card w3"><span class="c-label">IfcTester</span><span class="c-title">IDS gratis</span><span class="c-foot">informe HTML o BCF</span></div>
+          <div class="card w3 k"><span class="c-label">Solibri · BIMcollab Zoom</span><span class="c-title" style="color:var(--accent)">IDS + choques</span><span class="c-foot">en el mismo visor IFC</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== CIERRE ========== -->
     <section class="slide" id="cierre" data-nav="En resumen">
       <div class="bento">
         <div class="b-title">
           <span class="slide-n"></span>
           <span class="kicker-y">En resumen</span>
-          <h2 class="display">Tres reglas<span class="dot">.</span></h2>
-          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="fuentes"><span class="plus">+</span> Fuentes</button></div>
+          <h2 class="display">Cuatro reglas<span class="dot">.</span></h2>
+          <div class="slide-actions">
+            <button type="button" class="btn l2-btn" data-l2="glosario"><span class="plus">+</span> Glosario</button>
+            <button type="button" class="btn ghost l2-btn" data-l2="fuentes"><span class="plus">+</span> Fuentes</button>
+          </div>
         </div>
         <div class="b-cards">
-          <div class="card w2 k"><span class="step-n">1</span><span class="c-title">Matriz de pruebas</span></div>
-          <div class="card w2"><span class="step-n">2</span><span class="c-title">Agrupar el ruido</span></div>
-          <div class="card w2 y"><span class="step-n">3</span><span class="c-title">Ciclo semanal</span></div>
-          <div class="card w6"><nav id="series-nav" class="series-nav" style="margin-top:0" aria-label="Navegación de la serie"></nav></div>
+          <div class="card w3 y"><span class="c-label">01</span><span class="c-title">Una matriz</span><span class="c-foot">qué contra qué y con qué tolerancia</span></div>
+          <div class="card w3"><span class="c-label">02</span><span class="c-title">Un grupo, un dueño</span><span class="c-foot">incidencias, no choques</span></div>
+          <div class="card w3 k"><span class="c-label">03</span><span class="c-title">Un BCF</span><span class="c-foot">misma versión y GlobalId estable</span></div>
+          <div class="card w3"><span class="c-label">04</span><span class="c-title">Un cierre</span><span class="c-foot">verificado en el modelo nuevo</span></div>
+          <div class="card w6"><nav id="series-nav" class="series-nav" style="margin-top:0;border-top:0;padding-top:0" aria-label="Navegación de la serie"></nav></div>
         </div>
       </div>
     </section>
+
   </main>
 
   <footer class="site">
@@ -159,48 +1017,705 @@
     </div>
   </div>
 
-  <!-- ============================== CAPA 2 (relleno) ============================== -->
+  <!-- ============================== CAPA 2 ============================== -->
+  <!-- Capa 2 = ficha «Ver detalle» en tarjetas. Solo añade lo que la slide no dice. -->
+
+  <template id="l2-problema">
+    <div class="b-cards">
+      <div class="card w6">
+        <span class="c-label">Cuánto cuesta el retrabajo · depende de cómo se mida</span>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Estudio</th><th>Método</th><th>Retrabajo</th></tr></thead>
+          <tbody>
+            <tr><td>Love y Edwards (2005)</td><td>Encuesta a 161 profesionales</td><td class="num">6,4 % directo + 5,9 % indirecto</td></tr>
+            <tr class="is-key"><td>Love (ASCE, 2026)</td><td>Costes reales de un contratista</td><td class="num">0,38 % – 0,76 %</td></tr>
+          </tbody>
+        </table></div>
+        <p class="table-note">Una cifra declarada no es una cifra medida: conviene no mezclarlas. Fuentes: <a href="https://ro.ecu.edu.au/ecuworks/2401/" target="_blank" rel="noopener">Love y Edwards</a> · <a href="https://www.asce.org/publications-and-news/civil-engineering-source/article/2026/01/22/how-much-does-field-rework-in-construction-actually-cost" target="_blank" rel="noopener">ASCE</a>.</p>
+      </div>
+      <div class="card w3">
+        <h4>El caso de los 5029 choques</h4>
+        <p>En un edificio comercial de 9,5 millones de dólares, 5029 choques se quedaron en 13 grupos relevantes. El retorno de la coordinación fue del 127 %, pero el ahorro equivalió solo al 0,1 % del coste total: el valor está en evitar sorpresas, no en grandes cifras. <a href="https://itcon.org/papers/2016_16.content.05645.pdf" target="_blank" rel="noopener">Bockstael e Issa (2016)</a>.</p>
+      </div>
+      <div class="card w3">
+        <h4>Cifras que circulan</h4>
+        <p>El «ahorro de hasta el 10 % del contrato» procede de un estudio de 32 proyectos recogido por <a href="https://ascelibrary.com/doi/10.1061/%28ASCE%29LM.1943-5630.0000127" target="_blank" rel="noopener">Azhar (2011)</a>: es un máximo, no una media. Otros casos citan hasta un 20 % en una gran infraestructura (<a href="https://nrl.northumbria.ac.uk/id/eprint/45184" target="_blank" rel="noopener">Chahrour et al., 2021</a>).</p>
+      </div>
+      <div class="card w3 y">
+        <span class="c-label">Por qué aparecen</span>
+        <p>Una encuesta entre técnicos sitúa el trabajo aislado de cada disciplina como primera causa de los choques, sobre todo en instalaciones (<a href="https://www.mdpi.com/2075-5309/7/3/75" target="_blank" rel="noopener">Akponeware y Adamu, 2017</a>).</p>
+      </div>
+      <div class="card w3">
+        <span class="c-label">Lo que viene</span><p>Seis bloques: conceptos generales, estándares, software, plataformas, interoperabilidad y control de calidad. El primero vale para cualquier programa.</p>
+      </div>
+    </div>
+  </template>
+
+  <template id="l2-que-es">
+    <div class="b-cards">
+      <div class="card w3">
+        <h4>Cómo lo calcula</h4>
+        <ol class="vsteps">
+          <li>Se eligen dos conjuntos de elementos (A y B).</li>
+          <li>Se descartan pares lejanos comparando sus cajas envolventes.</li>
+          <li>En los pares cercanos se intersecan las mallas de triángulos.</li>
+          <li>Cada par que supera la tolerancia es un resultado, con un punto y una distancia.</li>
+        </ol>
+      </div>
+      <div class="card w3">
+        <h4>Lo que no ve</h4>
+        <p>Solo hay geometría: lo que no está modelado (holguras, aislamiento, piezas de montaje) no existe para la prueba. Tampoco sabe si un contacto es intencionado, como una tubería que atraviesa un manguito previsto.</p>
+      </div>
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Palabra</th><th>Qué es</th></tr></thead>
+          <tbody>
+            <tr><td>Resultado o choque</td><td>Un par de elementos que cumple la condición de la prueba</td></tr>
+            <tr><td>Grupo</td><td>Varios resultados con la misma causa</td></tr>
+            <tr class="is-key"><td>Incidencia</td><td>Un problema con responsable, fecha y estado, que se comunica</td></tr>
+          </tbody>
+        </table></div>
+        <p class="table-note">La Orden PCM/818/2023 llama a esta actividad «detección y resolución de colisiones o interferencias» (<a href="https://www.civil-mercantil.com/sites/civil-mercantil.com/files/NCL013234.pdf" target="_blank" rel="noopener">texto de la Orden</a>). Glosario oficial: <a href="https://cibim.transportes.gob.es/recursos_cbim/bb_gt1_estrategia_sg1.1_glosario_de_terminos.pdf" target="_blank" rel="noopener">es.BIM</a>.</p>
+      </div>
+    </div>
+  </template>
+
   <template id="l2-tipos">
     <div class="b-cards">
-      <div class="card w3"><h4>Qué hay detrás</h4><p>Texto de relleno sobre tipos. Aquí irá la explicación completa con ejemplos y matices. <span class="tag">Relleno</span></p></div>
-      <div class="card w3 y"><span class="c-label">Idea clave</span><p>Un aviso destacado de relleno para probar la tarjeta amarilla.</p></div>
-      <div class="card w6"><h4>Pasos de ejemplo</h4><ol class="vsteps"><li>Primer paso ficticio.</li><li>Segundo paso ficticio con <span class="ui">Menú › Comando</span>.</li><li>Resultado esperado.</li></ol></div>
-      <div class="card w6"><div class="table-wrap"><table><thead><tr><th>Concepto</th><th>Valor</th><th>Nota</th></tr></thead><tbody><tr><td>Ejemplo A</td><td class="num">10</td><td>Relleno</td></tr><tr class="is-key"><td>Ejemplo B</td><td class="num">20</td><td>Fila clave</td></tr><tr><td>Ejemplo C</td><td class="num">30</td><td>Relleno</td></tr></tbody></table></div></div>
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Tipo</th><th>Condición</th><th>Ejemplo</th><th>Tolerancia significa</th></tr></thead>
+          <tbody>
+            <tr class="is-key"><td>Dura</td><td>Los volúmenes se intersecan</td><td>Conducto que atraviesa una viga</td><td>Penetración mínima que se informa</td></tr>
+            <tr><td>Dura conservadora</td><td>Podrían intersecarse aunque no se crucen triángulos</td><td>Tuberías paralelas solapadas</td><td>Igual; da más falsos positivos</td></tr>
+            <tr><td>Holgura</td><td>Están a menos de una distancia</td><td>Tubería a 3 cm de un cuadro eléctrico</td><td>Distancia libre exigida</td></tr>
+            <tr><td>Duplicado</td><td>Misma geometría en el mismo sitio</td><td>Pilar modelado por arquitectura y estructura</td><td>Separación máxima para considerarlos iguales</td></tr>
+            <tr><td>Secuencia o 4D</td><td>Ocupan el mismo espacio en el mismo periodo</td><td>Acopio bajo el radio de una grúa</td><td>Paso de tiempo de la simulación</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w3"><h4>Ojo con «blanda»</h4><p>Muchas guías llaman «blanda» a la de holgura. Algunos programas reservan esa palabra para choques entre objetos en movimiento, de ahí que convenga hablar de holgura.</p></div>
+      <div class="card w3 y"><span class="c-label">Lo que pocos prueban</span><p>Las de secuencia exigen vincular el modelo a un plan de obra. Son las que detectan problemas de grúas, acopios y montaje.</p></div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://help.autodesk.com/cloudhelp/2022/ENU/Navisworks/files/GUID-27EA59E6-1A15-4372-9D7D-90508936B512.htm" target="_blank" rel="noopener">definiciones de tipos de prueba (Autodesk)</a> · <a href="https://catenda.com/glossary/bim-coordination-process" target="_blank" rel="noopener">Catenda: proceso de coordinación</a> · <a href="https://www.biminnz.co.nz/s/BIM-Handbook_APPENDIX_Bv4-kpes.pdf" target="_blank" rel="noopener">NZ BIM Handbook, apéndice B</a>.</p></div>
     </div>
   </template>
 
-  <template id="l2-matriz-pruebas">
+  <template id="l2-tolerancia">
     <div class="b-cards">
-      <div class="card w3"><h4>Qué hay detrás</h4><p>Texto de relleno sobre matriz de pruebas. Aquí irá la explicación completa con ejemplos y matices. <span class="tag">Relleno</span></p></div>
-      <div class="card w3 y"><span class="c-label">Idea clave</span><p>Un aviso destacado de relleno para probar la tarjeta amarilla.</p></div>
-      <div class="card w6"><h4>Pasos de ejemplo</h4><ol class="vsteps"><li>Primer paso ficticio.</li><li>Segundo paso ficticio con <span class="ui">Menú › Comando</span>.</li><li>Resultado esperado.</li></ol></div>
-      <div class="card w6"><div class="table-wrap"><table><thead><tr><th>Concepto</th><th>Valor</th><th>Nota</th></tr></thead><tbody><tr><td>Ejemplo A</td><td class="num">10</td><td>Relleno</td></tr><tr class="is-key"><td>Ejemplo B</td><td class="num">20</td><td>Fila clave</td></tr><tr><td>Ejemplo C</td><td class="num">30</td><td>Relleno</td></tr></tbody></table></div></div>
+      <div class="card w3">
+        <h4>Dos tolerancias, dos sentidos</h4>
+        <p>En una prueba dura, la tolerancia es la penetración por debajo de la cual el choque se ignora: unos milímetros para no informar de contactos de modelado. En una de holgura, es la distancia mínima que debe quedar libre: 25, 50, 100 mm o más.</p>
+      </div>
+      <div class="card w3">
+        <h4>Por fases</h4>
+        <div class="bars">
+          <div class="bar"><span>Prel.</span><i style="width:100%">≈100 mm</i></div>
+          <div class="bar"><span>Des.</span><i style="width:50%">≈50 mm</i></div>
+          <div class="bar is-key"><span>Det.</span><i style="width:25%">≈25 mm</i></div>
+        </div>
+        <p class="table-note">Tolerancias de coordinación por fase del <a href="https://www.biminnz.co.nz/s/BIM-Handbook_APPENDIX_Bv4-kpes.pdf" target="_blank" rel="noopener">NZ BIM Handbook</a>. Son de coordinación, no de detección.</p>
+      </div>
+      <div class="card w3 y"><span class="c-label">Cómo se escribe</span><p>Algunas guías lo codifican en la matriz: <code>H-500</code> para una prueba dura y <code>C-1000</code> para una de holgura, con prioridad y gravedad por celda (<a href="https://www.ashghal.gov.qa/en/Services/GIS%20and%20CAD%20Manuals/ASHGHAL%20BIM%20STANDARD/S0301_Clash%20Detection%20Matrix%20Template%20Guide_V1.pdf" target="_blank" rel="noopener">Ashghal, Catar</a>).</p></div>
+      <div class="card w3 k"><span class="c-label">Trampa</span><p>Una tolerancia muy baja llena el informe de contactos inocentes; una muy alta esconde choques reales. Se prueba con un modelo de ejemplo antes de fijarla.</p></div>
     </div>
   </template>
 
-  <template id="l2-ciclo">
+  <template id="l2-holguras">
     <div class="b-cards">
-      <div class="card w3"><h4>Qué hay detrás</h4><p>Texto de relleno sobre el ciclo. Aquí irá la explicación completa con ejemplos y matices. <span class="tag">Relleno</span></p></div>
-      <div class="card w3 y"><span class="c-label">Idea clave</span><p>Un aviso destacado de relleno para probar la tarjeta amarilla.</p></div>
-      <div class="card w6"><h4>Pasos de ejemplo</h4><ol class="vsteps"><li>Primer paso ficticio.</li><li>Segundo paso ficticio con <span class="ui">Menú › Comando</span>.</li><li>Resultado esperado.</li></ol></div>
-      <div class="card w6"><div class="table-wrap"><table><thead><tr><th>Concepto</th><th>Valor</th><th>Nota</th></tr></thead><tbody><tr><td>Ejemplo A</td><td class="num">10</td><td>Relleno</td></tr><tr class="is-key"><td>Ejemplo B</td><td class="num">20</td><td>Fila clave</td></tr><tr><td>Ejemplo C</td><td class="num">30</td><td>Relleno</td></tr></tbody></table></div></div>
+      <div class="card w3">
+        <h4>Espacios que hay que reservar</h4>
+        <ul class="checklist"><li>Mantenimiento y sustitución de equipos</li><li>Apertura de puertas y registros</li><li>Aislamiento y revestimientos</li><li>Pendientes de saneamiento</li><li>Montaje e izado de piezas</li></ul>
+      </div>
+      <div class="card w3">
+        <h4>Dos formas de protegerlos</h4>
+        <p>Una prueba de holgura con distancia mínima entre dos familias de elementos, o un volumen «vacío» modelado delante del equipo que entra en una prueba dura. El volumen es más claro: se ve, se mide y viaja en el IFC.</p>
+      </div>
+      <div class="card w6 y"><span class="c-label">Ejemplo</span><p>Una tubería de 50 mm con 30 mm de aislamiento ocupa 110 mm. Si solo se modela el tubo, la prueba aprobará pasos donde el aislamiento no cabe. <span class="tag">Inferido</span></p></div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://help.solibri.com/hc/en-us/articles/4406907043351-226-Free-Area-in-Front-of-Components" target="_blank" rel="noopener">regla de espacio libre delante de componentes</a> · <a href="https://support.tekla.com/fi/doc/tekla-structures/2021/rel_2021_clash_check_improvements" target="_blank" rel="noopener">distancia mínima para aislamiento</a> · <a href="https://www.globalbim.org/wp-content/uploads/2024/01/bim-guide-v2-2.pdf" target="_blank" rel="noopener">HDB BIM Guide (Singapur)</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-aptitud">
+    <div class="b-cards">
+      <div class="card w3">
+        <h4>LOD 350</h4>
+        <p>En la especificación de BIMForum, el nivel 350 es aquel en el que se pueden medir las interfaces con los elementos adyacentes. LOD significa nivel de desarrollo, no de detalle. <a href="https://bimforum.org/wp-content/uploads/2024/12/LOD-Spec-2025-Part-I-Official.pdf" target="_blank" rel="noopener">LOD Specification 2025</a>.</p>
+      </div>
+      <div class="card w3">
+        <h4>Nivel de información necesario</h4>
+        <p>La EN ISO 7817-1:2024 sustituye a la EN 17412-1 y fija cómo pedir geometría y datos según el propósito. Si el propósito es coordinar, se pide la geometría que choca. <a href="https://constructionmanagement.co.uk/new-level-of-information-need-standard-published/" target="_blank" rel="noopener">Construction Management</a>.</p>
+      </div>
+      <div class="card w3 k"><span class="c-label">El coste del detalle</span><p>Pasar de un nivel al siguiente multiplica el esfuerzo de modelado entre 2 y 11 veces, y la detección mejora en lo que encuentra pero empeora en precisión (<a href="https://avesis.metu.edu.tr/yayin/246bd601-6e14-46f8-a317-da271f00a6c7/analysis-of-modeling-effort-and-impact-of-different-levels-of-detail-in-building-information-models" target="_blank" rel="noopener">Leite et al., 2011</a>).</p></div>
+      <div class="card w3 y"><span class="c-label">Regla práctica</span><p>Cada fase con su prueba: volúmenes de reserva al principio, sistemas al desarrollar y piezas reales antes de fabricar. Una guía pública de Singapur exige que el coordinador compruebe que el modelo es apto antes de distribuirlo (<a href="https://www.globalbim.org/wp-content/uploads/2024/01/bim-guide-v2-2.pdf" target="_blank" rel="noopener">HDB</a>).</p></div>
+    </div>
+  </template>
+
+  <template id="l2-matriz">
+    <div class="b-cards">
+      <div class="card w6">
+        <span class="c-label">Una matriz de ejemplo · D dura, H holgura, en mm</span>
+        <div class="table-wrap"><table>
+          <thead><tr><th></th><th>ARQ</th><th>EST</th><th>SAN</th><th>CLI</th><th>FON</th></tr></thead>
+          <tbody>
+            <tr><td>EST</td><td class="num">D·25</td><td></td><td></td><td></td><td></td></tr>
+            <tr><td>SAN</td><td class="num">D·25</td><td class="num">D·10</td><td></td><td></td><td></td></tr>
+            <tr class="is-key"><td>CLI</td><td class="num">D·25</td><td class="num">H·50</td><td class="num">D·25</td><td></td><td></td></tr>
+            <tr><td>FON</td><td class="num">D·25</td><td class="num">D·10</td><td class="num">D·25</td><td class="num">D·25</td><td></td></tr>
+            <tr><td>ELE</td><td class="num">D·25</td><td class="num">D·25</td><td class="num">—</td><td class="num">H·50</td><td class="num">H·100</td></tr>
+          </tbody>
+        </table></div>
+        <p class="table-note">Valores ilustrativos. Cada proyecto fija los suyos en el plan de ejecución. <span class="tag">Inferido</span></p>
+      </div>
+      <div class="card w3">
+        <h4>Qué lleva cada celda</h4>
+        <ol class="vsteps"><li>Tipo de prueba y tolerancia.</li><li>Prioridad o gravedad del choque.</li><li>Quién resuelve por defecto.</li><li>Fase desde la que se ejecuta.</li></ol>
+      </div>
+      <div class="card w3">
+        <h4>Nombrar las pruebas</h4>
+        <p>Un nombre que diga qué contra qué: <code>AR0030_v_ST0520</code>, por ejemplo, en la plantilla de <a href="https://www.ashghal.gov.qa/en/Services/GIS%20and%20CAD%20Manuals/ASHGHAL%20BIM%20STANDARD/S0301_Clash%20Detection%20Matrix%20Template%20Guide_V1.pdf" target="_blank" rel="noopener">Ashghal</a>. El manual de <a href="https://www.euskadi.eus/contenidos/informacion/ets_bim/es_def/adjuntos/2024/AN8CoordinacionControlCalidad.pdf" target="_blank" rel="noopener">ETS</a> ordena por gravedad A, B y C: los choques A-A se resuelven primero.</p>
+      </div>
+      <div class="card w6 y"><span class="c-label">Disciplina contra sí misma</span><p>La diagonal también cuenta: duplicados dentro de un mismo modelo y choques internos de instalaciones. Se prueban antes de entregar, por cada equipo.</p></div>
     </div>
   </template>
 
   <template id="l2-ruido">
     <div class="b-cards">
-      <div class="card w3"><h4>Qué hay detrás</h4><p>Texto de relleno sobre el ruido. Aquí irá la explicación completa con ejemplos y matices. <span class="tag">Relleno</span></p></div>
-      <div class="card w3 y"><span class="c-label">Idea clave</span><p>Un aviso destacado de relleno para probar la tarjeta amarilla.</p></div>
-      <div class="card w6"><h4>Pasos de ejemplo</h4><ol class="vsteps"><li>Primer paso ficticio.</li><li>Segundo paso ficticio con <span class="ui">Menú › Comando</span>.</li><li>Resultado esperado.</li></ol></div>
-      <div class="card w6"><div class="table-wrap"><table><thead><tr><th>Concepto</th><th>Valor</th><th>Nota</th></tr></thead><tbody><tr><td>Ejemplo A</td><td class="num">10</td><td>Relleno</td></tr><tr class="is-key"><td>Ejemplo B</td><td class="num">20</td><td>Fila clave</td></tr><tr><td>Ejemplo C</td><td class="num">30</td><td>Relleno</td></tr></tbody></table></div></div>
+      <div class="card w3">
+        <h4>El dato</h4>
+        <p>En 36 562 choques de dos proyectos públicos, hasta el 60 % eran falsos positivos. Un modelo de aprendizaje automático los separó con un F1 de 0,96 (<a href="https://www.sciencedirect.com/science/article/pii/S0926580525006843" target="_blank" rel="noopener">Ailem y Boton, 2026</a>).</p>
+      </div>
+      <div class="card w3">
+        <h4>Todo contra todo</h4>
+        <p>Una plataforma en la nube generó tres millones de resultados en 45 minutos al cruzar todo con todo en un gran proyecto británico (<a href="https://aecmag.com/bim/revizto-clash-detection-added-to-bim-collaboration-platform/" target="_blank" rel="noopener">AEC Magazine</a>). Sin matriz, el informe no se puede leer.</p>
+      </div>
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Causa del ruido</th><th>Remedio</th></tr></thead>
+          <tbody>
+            <tr><td>Contactos previstos (forjado sobre muro, tubo en manguito)</td><td>Reglas de exclusión y tolerancia mínima</td></tr>
+            <tr><td>Duplicados entre modelos</td><td>Prueba de duplicados antes que la de choques</td></tr>
+            <tr class="is-key"><td>Modelo no apto (cajas genéricas, elementos provisionales)</td><td>Comprobación previa y prueba por fase</td></tr>
+            <tr><td>Un mismo elemento contra muchos</td><td>Agrupación</td></tr>
+          </tbody>
+        </table></div>
+      </div>
     </div>
   </template>
 
+  <template id="l2-agrupar">
+    <div class="b-cards">
+      <div class="card w3">
+        <h4>Criterios que funcionan</h4>
+        <ul class="checklist"><li>El elemento que choca con muchos</li><li>Planta y zona o eje de rejilla</li><li>Sistema (impulsión, retorno, saneamiento)</li><li>Responsable que debe resolver</li><li>Cercanía en el espacio</li></ul>
+      </div>
+      <div class="card w3">
+        <h4>Tamaño razonable</h4>
+        <p>Una recomendación práctica: pruebas disciplina contra disciplina y subdividir cualquier grupo de más de 100 choques (<a href="https://bimtrack.co/blog/blog-posts/grouping-clashes-with-bim-track-101" target="_blank" rel="noopener">BIM Track</a>).</p>
+      </div>
+      <div class="card w6 y"><span class="c-label">La idea</span><p>Se decide sobre el grupo, se asigna una sola incidencia y, cuando se corrige el elemento origen, desaparecen todos sus choques a la vez.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-quien-mueve">
+    <div class="b-cards">
+      <div class="card w3">
+        <h4>De dónde sale el orden</h4>
+        <p>Es práctica de oficio, no norma. La guía neozelandesa lo resume como «cuanto más grande o permanente, más derecho de paso» (<a href="https://www.globalbim.org/wp-content/uploads/2024/01/NZ-BIM-Handbook-Appendix_I-Model-coordination-April-19-2.pdf" target="_blank" rel="noopener">NZ BIM Handbook</a>); el orden por sistemas está en <a href="https://bimcorner.com/the-one-bim-coordination-rule-nobody-ever-told-you/" target="_blank" rel="noopener">BIM Corner</a>.</p>
+      </div>
+      <div class="card w3">
+        <h4>Excepciones habituales</h4>
+        <ul class="checklist"><li>Un elemento ya fabricado o instalado manda</li><li>Lo que cambia la estructura sube de nivel</li><li>Lo que afecta a otra fase o al presupuesto va a la reunión</li></ul>
+      </div>
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Nivel</th><th>Lo resuelve</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>Un solo equipo, sin consultar</td></tr>
+            <tr><td>2</td><td>Varios equipos, en la reunión de coordinación</td></tr>
+            <tr class="is-key"><td>3</td><td>Requiere un cambio de diseño o de presupuesto: decide el cliente</td></tr>
+          </tbody>
+        </table></div>
+        <p class="table-note">Tres niveles atribuidos a la GSA estadounidense en <a href="https://easychair.org/publications/open/qf9z" target="_blank" rel="noopener">un trabajo académico</a>. <span class="tag">Por confirmar</span></p>
+      </div>
+    </div>
+  </template>
+
+  <template id="l2-incidencia">
+    <div class="b-cards">
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Campo</th><th>Para qué</th></tr></thead>
+          <tbody>
+            <tr><td>Título y descripción</td><td>Qué pasa y qué se propone</td></tr>
+            <tr><td>Punto de vista y captura</td><td>Abrir la misma vista, con los mismos cortes, en otro programa</td></tr>
+            <tr class="is-key"><td>Elementos</td><td>Señalados por su identificador, no por su posición</td></tr>
+            <tr><td>Responsable y fecha</td><td>Quién y cuándo</td></tr>
+            <tr><td>Tipo, prioridad, estado</td><td>Filtrar, ordenar y medir</td></tr>
+            <tr><td>Comentarios</td><td>La conversación queda junto al problema</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w3"><h4>Una incidencia, un problema</h4><p>Un grupo de choques con una misma causa se convierte en una sola incidencia. Si un choque tiene dos causas, son dos incidencias.</p></div>
+      <div class="card w3 y"><span class="c-label">Lo que la hace portable</span><p>Esa ficha tiene un formato estándar y abierto, que se ve en el bloque II.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-ciclo">
+    <div class="b-cards">
+      <div class="card w3">
+        <h4>Los pasos</h4>
+        <ol class="vsteps">
+          <li>Cada equipo publica su modelo revisado.</li>
+          <li>El coordinador federa y ejecuta la matriz.</li>
+          <li>Agrupa, descarta el ruido y crea incidencias.</li>
+          <li>Envía el informe antes de la reunión.</li>
+          <li>En la reunión se decide quién se mueve.</li>
+          <li>Cada autor corrige en su modelo y vuelve al paso 1.</li>
+        </ol>
+      </div>
+      <div class="card w3">
+        <h4>Cadencia</h4>
+        <p>Los requisitos de coordinación de instalaciones de EE. UU. piden reuniones semanales (<a href="https://www.nibs.org/files/pdfs/nbimsv3/NBIMS-US_V3_5.5_MEP_Spatial_Coordination_Requirements.pdf" target="_blank" rel="noopener">NBIMS-US 5.5</a>). Una guía catalana de licitación propone ciclos semanales o quincenales con las incidencias en el entorno común de datos (<a href="https://docs.itec.cat/e/Guia-de-Licitacion-BIM-ESP-junio2021.pdf" target="_blank" rel="noopener">ITeC</a>).</p>
+      </div>
+      <div class="card w3 k"><span class="c-label">Nunca en el federado</span><p>El federado es de solo lectura. Lo que se mueve ahí se pierde en la próxima entrega.</p></div>
+      <div class="card w3 y"><span class="c-label">La reunión</span><p>Sobre el modelo federado, no sobre un listado: se revisan los grupos de mayor prioridad y se sale con responsables y fechas (<a href="https://www.biminnz.co.nz/s/BIM-Handbook_APPENDIX_Bv4-kpes.pdf" target="_blank" rel="noopener">NZ BIM Handbook</a>).</p></div>
+    </div>
+  </template>
+
+  <template id="l2-iso19650">
+    <div class="b-cards">
+      <div class="card w3">
+        <h4>Lo que fija la norma</h4>
+        <ul class="checklist"><li>Estrategia de federación y estructura de contenedores</li><li>Matriz de responsabilidades</li><li>Planes de entrega: TIDP de cada equipo y MIDP del conjunto</li><li>Revisión y aprobación antes de compartir</li></ul>
+        <p class="table-note"><a href="https://www.cdbb.cam.ac.uk/system/files/documents/InformationManagementaccordingtoBSENISO19650GuidancePart1Concepts.pdf" target="_blank" rel="noopener">Guía ISO 19650, parte 1</a>.</p>
+      </div>
+      <div class="card w3">
+        <h4>Partes, no cargos</h4>
+        <p>La norma habla de parte adjudicadora, parte adjudicataria principal y equipos de tarea. «BIM manager» o «coordinador BIM» son cargos de empresa: la norma no los define.</p>
+      </div>
+      <div class="card w3 y"><span class="c-label">Novedad 2026</span><p>La segunda edición de ISO 19650-2 fusiona las partes 2 y 3. Se votó entre marzo y junio de 2026 y aún no está publicada (<a href="https://committee.iso.org/es/sites/isoorg/contents/data/standard/08/97/89704.html" target="_blank" rel="noopener">ISO/DIS 19650-2</a>).</p></div>
+      <div class="card w3 k"><span class="c-label">Lo que no dice</span><p>Ni tolerancias ni tipos de prueba. Eso va en el plan de ejecución BIM de cada proyecto.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-espana">
+    <div class="b-cards">
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Nivel del Plan BIM</th><th>Desde</th><th>Coordinación</th></tr></thead>
+          <tbody>
+            <tr><td>Inicial</td><td>01/04/2024</td><td>Coordinación 3D</td></tr>
+            <tr class="is-key"><td>Medio (obligatorio ≥ umbral)</td><td>01/10/2025</td><td>Coordinación 3D en entorno común de datos</td></tr>
+            <tr><td>Avanzado</td><td>01/10/2027</td><td>Incidencias en BCF «o equivalente»</td></tr>
+          </tbody>
+        </table></div>
+        <p class="table-note">Umbral desde el 1 de enero de 2026: 5 404 000 €. Fuentes: <a href="https://cdn.mitma.gob.es/portal-web-drupal/cbim/pdf/resumen_ejecutivo_es_a4_web.pdf" target="_blank" rel="noopener">resumen ejecutivo del Plan BIM</a> · <a href="https://cdn.transportes.gob.es/portal-web-drupal/cbim/triptico-es-v11web_nuevos-umbrales-2026_27-(1).pdf" target="_blank" rel="noopener">umbrales 2026-2027</a> · <a href="https://www.civil-mercantil.com/sites/civil-mercantil.com/files/NCL013234.pdf" target="_blank" rel="noopener">Orden PCM/818/2023</a>.</p>
+      </div>
+      <div class="card w3"><h4>Hueco</h4><p>Ninguna guía oficial española consultada fija tolerancias, plantilla de matriz ni orden de prioridad; los pliegos piden una «matriz de interferencias» sin criterios.</p></div>
+      <div class="card w3 y"><span class="c-label">Referencia útil</span><p>El manual de coordinación de <a href="https://www.euskadi.eus/contenidos/informacion/ets_bim/es_def/adjuntos/2024/AN8CoordinacionControlCalidad.pdf" target="_blank" rel="noopener">ETS (Gobierno Vasco)</a>: matriz por gravedad y seguimiento en BCF.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-bcf">
+    <div class="b-cards">
+      <div class="card w3">
+        <h4>Qué es</h4>
+        <p>BIM Collaboration Format: un esquema XML de buildingSMART para intercambiar comentarios sobre modelos. Lo idearon dos fabricantes de software junto con el iabi en 2009, y la versión 1.0 se publicó en febrero de 2011.</p>
+        <p class="table-note"><a href="https://technical.buildingsmart.org/standards/bcf/" target="_blank" rel="noopener">buildingSMART Technical</a> · <a href="https://nibs.org/wp-content/uploads/2025/04/NBIMS-US_V3_2.6_BIM_Collaboration_Format_BCF_V1.0.pdf" target="_blank" rel="noopener">NBIMS-US 2.6</a></p>
+      </div>
+      <div class="card w3">
+        <h4>Qué no es</h4>
+        <p>No lleva el modelo ni lo modifica. Tampoco detecta: es la forma de contar lo que se detectó. Los elementos se señalan por su GlobalId IFC, así que el que recibe necesita su propio modelo.</p>
+      </div>
+      <div class="card w3 k"><span class="c-label">Dos sabores</span><p><b>BCF-XML</b>: un archivo que se envía. <b>BCF API</b>: un servicio web en el que todos leen y escriben.</p></div>
+      <div class="card w3 y"><span class="c-label">Lista de buildingSMART</span><p>Más de 110 aplicaciones declaran soporte. Es una lista autodeclarada, no de software certificado (<a href="https://technical.buildingsmart.org/resources/software-implementations/" target="_blank" rel="noopener">implementaciones</a>).</p></div>
+    </div>
+  </template>
+
+  <template id="l2-bcf-dentro">
+    <div class="b-cards">
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Archivo</th><th>Contiene</th></tr></thead>
+          <tbody>
+            <tr><td><code>bcf.version</code></td><td>La versión del esquema (2.1, 3.0)</td></tr>
+            <tr class="is-key"><td><code>extensions.xml</code></td><td>Valores permitidos de tipo, estado, prioridad, etiquetas, fases y usuarios</td></tr>
+            <tr><td><code>markup.bcf</code></td><td>El tema: título, tipo, estado, prioridad, responsable, fecha límite, comentarios</td></tr>
+            <tr><td><code>*.bcfv</code></td><td>Cámara, elementos seleccionados, visibles y coloreados por IfcGuid, planos de corte</td></tr>
+            <tr><td><code>snapshot.png / .jpg</code></td><td>Captura de la vista; lado mayor de 1500 px como máximo</td></tr>
+            <tr><td><code>documents.xml</code></td><td>Documentos adjuntos (3.0)</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w3"><h4>Dos «.bcf»</h4><p>Desde la 2.1 el contenedor puede llamarse <code>.bcf</code> (antes <code>.bcfzip</code>), y dentro de cada tema hay un <code>markup.bcf</code>. El mismo sufijo nombra dos cosas.</p></div>
+      <div class="card w3 y"><span class="c-label">Si no hay GlobalId</span><p>En 3.0, el identificador nativo del programa de autoría (<code>AuthoringToolId</code>) sirve de reserva, pero solo lo entiende ese programa.</p></div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://github.com/buildingSMART/BCF-XML/tree/release_3_0/Documentation" target="_blank" rel="noopener">BCF-XML 3.0, documentación</a> · <a href="https://www.buildingsmart.es/bim/openbim/bcf/" target="_blank" rel="noopener">buildingSMART Spain</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-bcf-versiones">
+    <div class="b-cards">
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Versión</th><th>Año</th><th>Novedad principal</th></tr></thead>
+          <tbody>
+            <tr><td>1.0</td><td class="num">2011</td><td>Primer esquema XML; contenedor <code>.bcfzip</code></td></tr>
+            <tr><td>2.0</td><td class="num">2014-2015</td><td>Más campos en el tema; BCF API en desarrollo</td></tr>
+            <tr class="is-key"><td>2.1</td><td class="num">2017</td><td>La más implantada; contenedor <code>.bcf</code>; BCF API 2.1</td></tr>
+            <tr><td>3.0</td><td class="num">2021</td><td>Tipo y estado obligatorios, extensiones como XML, documentos, fechas UTC; la autenticación pasa a OpenCDE</td></tr>
+          </tbody>
+        </table></div>
+        <p class="table-note">Las etiquetas «final» de GitHub son posteriores (2.1 en enero de 2024 y 3.0 en junio de 2024): distinguir publicación de etiqueta. Fuentes: <a href="https://github.com/buildingSMART/BCF-XML/releases" target="_blank" rel="noopener">releases</a> · <a href="https://github.com/buildingSMART/BCF-XML/wiki/What's-new-in-BCF-3.0" target="_blank" rel="noopener">novedades de 3.0</a> · <a href="https://www.buildingsmart.org/bim-collaboration-format-bcf-3-0/" target="_blank" rel="noopener">presentación de 3.0</a>.</p>
+      </div>
+      <div class="card w3"><h4>Quién lee qué</h4><p>Hay plataformas que solo importan 2.1, y gestores que empezaron a importar 3.0 en 2026. Lo seguro es fijar la versión en el plan de ejecución y probarla.</p></div>
+      <div class="card w3 y"><span class="c-label">Cuidado con la wiki</span><p>Algunas páginas aún dicen que 3.0 es un borrador. No lo es.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-guid">
+    <div class="b-cards">
+      <div class="card w3">
+        <h4>Qué es</h4>
+        <p><code>IfcGloballyUniqueId</code>: un número de 128 bits escrito en 22 caracteres con el alfabeto 0-9, A-Z, a-z, _ y $. El primer carácter solo puede ser 0, 1, 2 o 3 (<a href="https://standards.buildingsmart.org/IFC/RELEASE/IFC4_3/HTML/lexical/IfcGloballyUniqueId.htm" target="_blank" rel="noopener">IFC 4.3</a>).</p>
+      </div>
+      <div class="card w3">
+        <h4>Qué lo rompe</h4>
+        <ul class="checklist"><li>Borrar un elemento y volver a crearlo</li><li>Copiar y pegar en lugar de mover</li><li>Exportar sin guardar el identificador en el modelo</li><li>Generar identificadores nuevos en cada exportación</li></ul>
+      </div>
+      <div class="card w6 y"><span class="c-label">La regla</span><p>Activar en cada programa de autoría la opción que guarda y reutiliza el GlobalId, y comprobar en dos exportaciones seguidas que un mismo elemento conserva el suyo. El bloque V lo concreta por programa.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-navisworks">
+    <div class="b-cards">
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Prueba</th><th>Informa</th><th>La tolerancia ignora</th></tr></thead>
+          <tbody>
+            <tr class="is-key"><td>Hard</td><td>Penetraciones mayores que la tolerancia</td><td>Penetraciones pequeñas</td></tr>
+            <tr><td>Hard (Conservative)</td><td>Pares que podrían chocar aunque no se crucen triángulos</td><td>Igual, con más falsos positivos</td></tr>
+            <tr><td>Clearance</td><td>Elementos a menos de la distancia fijada</td><td>Distancias mayores</td></tr>
+            <tr><td>Duplicates</td><td>Geometría igual en el mismo sitio</td><td>Separaciones mayores</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w3">
+        <h4>Navisworks · reglas de exclusión</h4>
+        <p>De serie: mismo archivo, misma capa, mismo grupo o bloque, mismo objeto compuesto, puntos de enganche coincidentes. Plantillas: espesor de aislamiento, mismo valor de propiedad, conjuntos de selección concretos.</p>
+      </div>
+      <div class="card w3">
+        <h4>Navisworks 2026 y 2027</h4>
+        <p>2026 (abril de 2025) mete la agrupación por propiedades en Clash Detective, con prioridad y responsable por defecto. 2027 (marzo de 2026) añade carpetas de pruebas, una «Clash Test Matrix» y renombrado por lotes.</p>
+      </div>
+      <div class="card w3 y"><span class="c-label">Trampa · Resolved</span><p>El estado lo pone el programa cuando el choque ya no aparece al relanzar la prueba. También aparece si el elemento se borró o salió de la selección.</p></div>
+      <div class="card w3 k"><span class="c-label">Ediciones</span><p>Clash Detective está solo en Manage. Simulate y Freedom no detectan; Simulate puede ver resultados guardados como puntos de vista.</p></div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://help.autodesk.com/cloudhelp/2022/ENU/Navisworks/files/GUID-27EA59E6-1A15-4372-9D7D-90508936B512.htm" target="_blank" rel="noopener">tipos y tolerancia</a> · <a href="https://help.autodesk.com/cloudhelp/2020/ENU/Navisworks/files/GUID-FCC9E5E1-2717-48D2-8DBE-2055CF2DC61E.htm" target="_blank" rel="noopener">estados</a> · <a href="https://help.autodesk.com/cloudhelp/2020/ENU/Navisworks/files/GUID-5A4502DF-75DF-4BA2-A649-35A921E3BBCD.htm" target="_blank" rel="noopener">reglas</a> · <a href="https://help.autodesk.com/cloudhelp/2026/ENU/Navisworks-Clash-Detective/files/GUID-BD25B5D3-CB5F-424F-BF94-4C9710E47D27.htm" target="_blank" rel="noopener">informes 2026</a> · <a href="https://forums.autodesk.com/t5/navisworks-forum/product-update-navisworks-2026-what-s-new/m-p/13417357" target="_blank" rel="noopener">novedades 2026</a> · <a href="https://forums.autodesk.com/t5/navisworks-forum/product-update-navisworks-2027-what-s-new/m-p/14121733" target="_blank" rel="noopener">novedades 2027</a> · <a href="https://ukcommunity.arkance.world/hc/en-us/articles/21565344685586-View-Clash-Test-Results-in-Navisworks-Simulate" target="_blank" rel="noopener">Simulate</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-revit">
+    <div class="b-cards">
+      <div class="card w3">
+        <h4>Revit · pasos</h4>
+        <ol class="vsteps">
+          <li><span class="ui">Colaborar › Coordinar › Comprobación de interferencias › Ejecutar</span>.</li>
+          <li>Elegir categorías a cada lado: modelo actual o un vínculo.</li>
+          <li>Revisar el informe y mostrar cada elemento por su ID.</li>
+          <li>Exportar a HTML o <span class="ui">Mostrar último informe</span>.</li>
+        </ol>
+      </div>
+      <div class="card w3">
+        <h4>Límites</h4>
+        <ul class="checklist"><li>Sin tolerancia ni holgura</li><li>Sin reglas ni pruebas guardadas</li><li>Excluye piezas de fabricación MEP y acero detallado</li><li>«Actualizar» solo revisa los choques ya listados</li></ul>
+      </div>
+      <div class="card w3 y"><span class="c-label">Para qué sirve</span><p>Autocomprobación antes de publicar: duplicados de muros, pilares dentro de muros, conductos contra estructura vinculada.</p></div>
+      <div class="card w3 k"><span class="c-label">BCF</span><p>Revit no lee BCF sin complemento. Los más usados son gestores gratuitos de BCF o los conectores de las plataformas.</p></div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://help.autodesk.com/cloudhelp/2027/ENU/Revit-Collaborate/files/GUID-890A9FE0-EFF4-4CFB-9E81-B0DE1A132BEC.htm" target="_blank" rel="noopener">Revit 2027: comprobación de interferencias</a> · <a href="https://marketplace.autodesk.com/apps/5233f058-a07e-493a-83b6-63ce9f3a34d8" target="_blank" rel="noopener">BCF Manager para Revit</a>. Que no haya BCF nativo es lectura de la ayuda: <span class="tag">Inferido</span></p></div>
+    </div>
+  </template>
+
+  <template id="l2-solibri">
+    <div class="b-cards">
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Regla</th><th>Número</th><th>Comprueba</th><th>Parámetros</th></tr></thead>
+          <tbody>
+            <tr><td>General Intersection Rule</td><td class="num">1</td><td>Solape, dentro de, duplicado</td><td>Tolerancia horizontal, vertical y de volumen</td></tr>
+            <tr><td>Component Distance</td><td class="num">222</td><td>Distancia mínima o máxima entre componentes</td><td>Distancias y filtros</td></tr>
+            <tr><td>Free Area in Front of Components</td><td class="num">226</td><td>Volumen libre delante de cuadros, puertas, máquinas</td><td>Ancho, fondo, alto</td></tr>
+            <tr class="is-key"><td>Clash Detection Matrix</td><td class="num">245</td><td>Toda la matriz en una regla</td><td>Tolerancia y gravedad por celda; se edita en Excel</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w3"><h4>Solibri · licencias</h4><p>Starter (99 €/año) no detecta. Essential (1 428 €/año) usa reglas predefinidas. Editar reglas o la matriz exige Advanced o Premium.</p></div>
+      <div class="card w3 y"><span class="c-label">Novedad 25.12</span><p>Diciembre de 2025: la ejecución automática actualiza presentaciones desde BCF y la matriz desde Excel, y llegan reglas de zona libre accesible.</p></div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://help.solibri.com/hc/en-us/articles/1500004738042" target="_blank" rel="noopener">regla 1</a> · <a href="https://help.solibri.com/hc/en-us/articles/4406899817111-222-Component-Distance" target="_blank" rel="noopener">regla 222</a> · <a href="https://help.solibri.com/hc/en-us/articles/4406907043351-226-Free-Area-in-Front-of-Components" target="_blank" rel="noopener">regla 226</a> · <a href="https://help.solibri.com/hc/en-us/articles/23765423193111-245-Clash-Detection-Matrix" target="_blank" rel="noopener">regla 245</a> · <a href="https://www.solibri.com/pricing" target="_blank" rel="noopener">precios</a> · <a href="https://help.solibri.com/hc/en-us/articles/1500004784301" target="_blank" rel="noopener">BCF Live Connector</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-autoria">
+    <div class="b-cards">
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Programa</th><th>Dónde</th><th>Tipos</th><th>Tolerancia</th><th>BCF</th></tr></thead>
+          <tbody>
+            <tr><td>Archicad 29</td><td>Diseño › Comprobación del Modelo › Detección de Colisiones</td><td>Grupo 1 contra grupo 2</td><td>Volumen y superficie</td><td>Nativo: 3.0, 2.1 y 2.0</td></tr>
+            <tr><td>Tekla Structures 2025</td><td>Manage › Clash check</td><td>Choque, dentro, distancia mínima</td><td>−500 a 500 mm</td><td>Temas BCF con Trimble Connect</td></tr>
+            <tr><td>Allplan · Bimplus</td><td>Clash detection en Bimplus</td><td>Solape</td><td>10 mm por defecto</td><td>Con BCF Manager</td></tr>
+            <tr><td>BricsCAD</td><td><code>INTERFERE</code></td><td>Dos conjuntos o dentro de uno</td><td>No documentada</td><td><span class="tag">Por confirmar</span></td></tr>
+            <tr><td>Bentley MicroStation</td><td>Tools › Clash Detection</td><td>Dura y holgura</td><td>Distancia de holgura</td><td><span class="tag">Por confirmar</span></td></tr>
+            <tr><td>Vectorworks 2025</td><td>Paleta BCF Manager</td><td>Sin herramienta propia documentada</td><td>—</td><td>Nativo</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w3"><h4>Tekla · estados</h4><p>New, Active, Modified, Resolved y Missing. Una distancia mínima negativa permite solapes sin informar.</p></div>
+      <div class="card w3 y"><span class="c-label">Archicad · desde la 21</span><p>La detección de colisiones viene de serie desde Archicad 21 (2017), aunque la ayuda de la 19 ya la describía ligada a MEP.</p></div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://help.graphisoft.com/AC/29/SPA/_AC29_Help/080_Collaboration/080_Collaboration-64.htm" target="_blank" rel="noopener">Archicad: detección de colisiones</a> · <a href="https://help.graphisoft.com/AC/29/INT/_AC29_Help/082_IssueHandling/082_IssueHandling-14.htm" target="_blank" rel="noopener">Archicad: BCF</a> · <a href="https://support.tekla.com/doc/tekla-structures/2025/mod_finding_clashes_using_ccm" target="_blank" rel="noopener">Tekla: Clash check</a> · <a href="https://support.tekla.com/doc/tekla-structures/2025/int_tc_bcf_topics" target="_blank" rel="noopener">Tekla: BCF</a> · <a href="https://doc.allplan.com/x/rJP2" target="_blank" rel="noopener">Bimplus</a> · <a href="https://help.bricsys.com/en-us/document/command-reference/i/interfere-command" target="_blank" rel="noopener">BricsCAD</a> · <a href="https://appstest.wsdot.wa.gov/publications/fulltext/design/cae/TechNotes/MS_ClashDetection.pdf" target="_blank" rel="noopener">MicroStation (WSDOT)</a> · <a href="https://app-help.vectorworks.net/2025/eng/VW2025_Guide/IFC/The_BCF_Manager_palette.htm" target="_blank" rel="noopener">Vectorworks</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-abierto">
+    <div class="b-cards">
+      <div class="card w3">
+        <h4>IfcClash · cómo se usa</h4>
+        <p>En Bonsai, desde el panel de control de calidad; en línea de comandos, con un JSON que define los conjuntos de cada prueba. Modos <code>intersection</code>, <code>collision</code> y <code>clearance</code>, con <code>tolerance</code> y <code>allow_touching</code>.</p>
+        <pre><code>ifcclash clash_sets.json -o informe.bcf</code></pre>
+      </div>
+      <div class="card w3">
+        <h4>BIMcollab Zoom · tolerancia</h4>
+        <p>Se fija por el tamaño de la caja de interferencia (lado corto o largo) y por volumen mínimo. Agrupa por componente, rejilla y planta más una propiedad, y convierte los grupos en incidencias BCF.</p>
+      </div>
+      <div class="card w3 y"><span class="c-label">Ventaja</span><p>Trabajan sobre el IFC de todos: los resultados no dependen del programa de origen y se ven igual en cualquier visor.</p></div>
+      <div class="card w3 k"><span class="c-label">Hueco</span><p>No hay detección nativa en Speckle. Para usBIM.clash no se encontró documentación técnica verificable. <span class="tag">Por confirmar</span></p></div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://raw.githubusercontent.com/IfcOpenShell/IfcOpenShell/v0.8.0/src/ifcclash/ifcclash/ifcclash.py" target="_blank" rel="noopener">IfcClash 0.8.0</a> · <a href="https://helpcenter.bimcollab.com/portal/en/kb/articles/setting-tolerances-for-clash-detection" target="_blank" rel="noopener">Zoom: tolerancias</a> · <a href="https://helpcenter.bimcollab.com/portal/en/kb/articles/how-to-perform-a-clash-detection-with-bimcollab-zoom" target="_blank" rel="noopener">Zoom: detección</a> · <a href="https://speckle.community/t/clash-detection/9401" target="_blank" rel="noopener">Speckle</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-nube">
+    <div class="b-cards">
+      <div class="card w3">
+        <h4>Autodesk Forma · Model Coordination</h4>
+        <ol class="vsteps">
+          <li>Se suben RVT, DWG, NWC o IFC a un espacio de coordinación.</li>
+          <li>La detección corre sola con cada versión nueva.</li>
+          <li>Se filtran y agrupan los choques, hasta por 10 propiedades.</li>
+          <li>Los grupos se convierten en incidencias.</li>
+        </ol>
+      </div>
+      <div class="card w3">
+        <h4>La «tolerancia»</h4>
+        <p>Los ajustes solo activan o desactivan modelos y excluyen objetos. La tolerancia es un filtro por penetración aplicado después. Un blog del fabricante de diciembre de 2025 habla de ajustar tolerancias: contradice la ayuda. <span class="tag">Por confirmar</span></p>
+      </div>
+      <div class="card w3 y"><span class="c-label">Nombres nuevos</span><p>En marzo de 2026 Autodesk Construction Cloud pasó a llamarse Autodesk Forma; BIM Collaborate Pro es ahora Forma Design Collaboration.</p></div>
+      <div class="card w3 k"><span class="c-label">BCF</span><p>Las incidencias importan BCF 2.1, hasta 100 por archivo, y exportan hasta 250. Un RVT necesita su IFC GUID guardado, que es la opción por defecto desde Revit 2022.</p></div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://help.autodesk.com/cloudhelp/ENU/Coord-GS/files/About_Model_Coord.html" target="_blank" rel="noopener">Model Coordination</a> · <a href="https://help.autodesk.com/cloudhelp/ENU/Coord-Clashes/files/Model_Coord_Filter_Investigate_Clashes.html" target="_blank" rel="noopener">filtrar choques</a> · <a href="https://help.autodesk.com/cloudhelp/ENU/Build-Issues/files/Issues_BCF_Import.html" target="_blank" rel="noopener">importar BCF</a> · <a href="https://help.autodesk.com/cloudhelp/ENU/Build-Issues/files/bcf-import/About_BCF_File_Format.html" target="_blank" rel="noopener">exportar BCF</a> · <a href="https://www.autodesk.com/blogs/construction/autodesk-construction-cloud-is-now-autodesk-forma-heres-what-that-means-for-you/" target="_blank" rel="noopener">ACC pasa a Forma</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-plataformas">
+    <div class="b-cards">
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Plataforma</th><th>Detección</th><th>BCF</th><th>BCF API</th></tr></thead>
+          <tbody>
+            <tr><td>Autodesk Forma</td><td>Automática al publicar; solo dura</td><td>Importa 2.1</td><td>No</td></tr>
+            <tr><td>Revizto</td><td>Pruebas programadas: dura, holgura, dentro, duplicado, «A requiere B»</td><td>Sí (versión no publicada)</td><td><span class="tag">Por confirmar</span></td></tr>
+            <tr><td>Trimble Connect</td><td>Conjuntos de choque y holgura desde el escritorio; reejecución manual</td><td>2.1</td><td>Sí: 2.1 y 3.0</td></tr>
+            <tr><td>Dalux</td><td>Geometría y propiedades</td><td>Sí</td><td><span class="tag">Por confirmar</span></td></tr>
+            <tr><td>Aconex</td><td>Se repite al actualizar los modelos</td><td>—</td><td>Declara 2.1</td></tr>
+            <tr class="is-key"><td>Catenda Hub</td><td>No propia: recibe temas</td><td>2.0, 2.1 y 3.0</td><td>Sí: 2.0 a 3.0</td></tr>
+            <tr><td>Procore</td><td>No propia</td><td>Importa solo 2.1</td><td>No</td></tr>
+          </tbody>
+        </table></div>
+        <p class="table-note">Soporte declarado por cada fabricante; la lista de buildingSMART es autodeclarada.</p>
+      </div>
+      <div class="card w3"><h4>Revizto · agrupación</h4><p>Por nivel, rejilla, habitación, zona, propiedades o proximidad (15 m por defecto).</p></div>
+      <div class="card w3 y"><span class="c-label">Qué preguntar</span><p>¿Detecta o solo gestiona? ¿Qué versión de BCF importa y exporta? ¿Tiene BCF API? ¿Se repite la prueba al publicar?</p></div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://help.revizto.com/hc/en-us/articles/4413526515215" target="_blank" rel="noopener">Revizto</a> · <a href="https://help.trimble.com/doc/trimble-connect/trimble-connect/connect-for-windows/clashes/clash-sets-listing" target="_blank" rel="noopener">Trimble Connect</a> · <a href="https://developer.trimble.com/docs/connect/topics" target="_blank" rel="noopener">Topics API</a> · <a href="https://help.aconex.com/models/defining-clash-tests/" target="_blank" rel="noopener">Aconex</a> · <a href="https://v2.support.procore.com/es-es/faq-how-can-i-prevent-import-errors-when-using-the-coordination-issues-tool" target="_blank" rel="noopener">Procore</a> · <a href="https://technical.buildingsmart.org/resources/software-implementations/" target="_blank" rel="noopener">implementaciones de buildingSMART</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-ida-vuelta">
+    <div class="b-cards">
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Programa de autoría</th><th>Cómo lee BCF</th><th>Para conservar el GlobalId</th></tr></thead>
+          <tbody>
+            <tr><td>Revit</td><td>Complemento (BCF Manager u otro)</td><td>Guardar el IFC GUID en el parámetro IfcGUID (por defecto desde 2022)</td></tr>
+            <tr class="is-key"><td>Archicad</td><td>Nativo: 3.0, 2.1, 2.0</td><td>Mantener el ID IFC de Archicad, no generar nuevos</td></tr>
+            <tr><td>Tekla Structures</td><td>Temas BCF con Trimble Connect</td><td>El GUID del objeto se conserva</td></tr>
+            <tr><td>Vectorworks</td><td>Paleta BCF Manager nativa</td><td><span class="tag">Por confirmar</span></td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w3"><h4>Al recibir</h4><ol class="vsteps"><li>Importar el BCF o sincronizar.</li><li>Abrir la incidencia: el programa aplica la cámara y selecciona los elementos.</li><li>Corregir y comentar.</li><li>Cambiar el estado y devolver.</li></ol></div>
+      <div class="card w3 y"><span class="c-label">Revit y Forma</span><p>Para importar BCF en las incidencias de la nube, el RVT necesita su IFC GUID guardado.</p></div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://blog.autodesk.io/unique-id-and-ifc-guid/" target="_blank" rel="noopener">Revit: UniqueId e IFC GUID</a> · <a href="https://blog.autodesk.io/consistency-of-ifc-guid-and-uniqueid/" target="_blank" rel="noopener">consistencia del GUID</a> · <a href="https://help.graphisoft.com/AC/22/INT/_AC22_Help/115_IFC/115_IFC-41.htm" target="_blank" rel="noopener">Archicad: ID IFC</a> · <a href="https://help.graphisoft.com/AC/28/INT/_AC28_Help/082_IssueHandling/082_IssueHandling-14.htm" target="_blank" rel="noopener">Archicad: importar BCF</a> · <a href="https://help.autodesk.com/cloudhelp/ENU/Build-Issues/files/Issues_BCF_Import.html" target="_blank" rel="noopener">Forma: importar BCF</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-bcf-api">
+    <div class="b-cards">
+      <div class="card w3">
+        <h4>Cómo es</h4>
+        <p>Un servicio REST con JSON. Rutas del tipo <code>GET /bcf/3.0/projects/{id}/topics</code>, con filtros. Las medidas van en metros y grados.</p>
+        <pre><code>GET /bcf/3.0/projects/p1/topics
+  ?$filter=topic_status eq 'Open'</code></pre>
+      </div>
+      <div class="card w3">
+        <h4>Dos identificadores</h4>
+        <p>Cada tema tiene un <code>guid</code> para las máquinas y un <code>server_assigned_id</code> legible, único en el proyecto, que pone el servidor: el «#0142» que se dice en la reunión.</p>
+      </div>
+      <div class="card w3 k"><span class="c-label">OpenCDE</span><p>Desde 3.0, la identidad (OAuth 2.0) y las versiones las da la Foundation API 1.1, publicada junto a la Documents API 1.0, que enlaza las incidencias con los documentos del entorno común de datos.</p></div>
+      <div class="card w3 y"><span class="c-label">Para medir</span><p>Los eventos de cada tema (cambio de estado, de responsable) permiten calcular tiempos de cierre sin exportar nada. <span class="tag">Inferido</span></p></div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://github.com/buildingSMART/BCF-API/tree/release_3_0" target="_blank" rel="noopener">BCF API 3.0</a> · <a href="https://github.com/buildingSMART/foundation-API" target="_blank" rel="noopener">Foundation API</a> · <a href="https://github.com/buildingSMART/documents-API" target="_blank" rel="noopener">Documents API</a> · <a href="https://help.solibri.com/hc/en-us/articles/1500004784301" target="_blank" rel="noopener">un cliente: Solibri BCF Live</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-perdidas">
+    <div class="b-cards">
+      <div class="card w6"><ol class="errors">
+        <li>El GlobalId cambió entre exportaciones: la incidencia abre la vista pero no selecciona nada.</li>
+        <li>Se exportó 3.0 y la plataforma solo importa 2.1 (o al revés).</li>
+        <li>Campos propios de una plataforma (área, disciplina) no viajan: solo lo estándar.</li>
+        <li>Planos de sección añadidos al punto de vista aunque el corte estaba apagado; colores que solo se ven con ciertos ajustes.</li>
+        <li>Incidencias sobre vistas 2D: no llevan GlobalId y solo se abren en el programa que las creó.</li>
+        <li>Modelos con origen distinto: la cámara apunta a otro lugar.</li>
+        <li>Puntos de vista con más de 25 000 componentes que el gestor no muestra bien.</li>
+      </ol></div>
+      <div class="card w3 y"><span class="c-label">Prueba de ida y vuelta</span><p>Una incidencia de prueba por cada pareja de programas del proyecto, antes de la primera reunión: crear, enviar, abrir, cerrar y volver.</p></div>
+      <div class="card w3"><h4>Coordenadas</h4><p>Todos los modelos en las mismas coordenadas compartidas. Lo explica el <a href="../coordenadas-compartidas/">artículo 01</a>.</p></div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://helpcenter.bimcollab.com/portal/en/kb/articles/why-do-issues-have-section-planes-when-they-are-disabled-in-navisworks" target="_blank" rel="noopener">planos de sección</a> · <a href="https://helpcenter.bimcollab.com/portal/en/kb/articles/creating-and-zooming-into-2d-issues" target="_blank" rel="noopener">incidencias 2D</a> · <a href="https://helpcenter.bimcollab.com/en/articles/330740-troubleshooting-issue-viewpoints-not-displaying-correctly" target="_blank" rel="noopener">puntos de vista grandes</a> · <a href="https://helpcenter.bimcollab.com/portal/en/kb/articles/connect-to-bimcollab-nexus-from-solibri" target="_blank" rel="noopener">campos propios</a> · <a href="https://help.autodesk.com/cloudhelp/ENU/Build-Issues/files/Issues_BCF_Import.html" target="_blank" rel="noopener">versiones admitidas</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-antes">
+    <div class="b-cards">
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Comprobación</th><th>Por qué</th><th>Cómo</th></tr></thead>
+          <tbody>
+            <tr><td>Coordenadas compartidas</td><td>Un modelo desplazado choca con todo o con nada</td><td>Punto de control en cada modelo</td></tr>
+            <tr><td>GlobalId estable</td><td>Sin él, las incidencias pierden sus elementos</td><td>Dos exportaciones seguidas, mismo ID</td></tr>
+            <tr><td>Duplicados</td><td>Multiplican el ruido</td><td>Prueba de duplicados dentro de cada modelo</td></tr>
+            <tr class="is-key"><td>Sistema, clasificación, planta</td><td>La agrupación y las reglas leen propiedades</td><td>IDS con propiedades obligatorias</td></tr>
+            <tr><td>Aislamiento y holguras</td><td>Lo que no se modela no choca</td><td>Revisión por muestreo</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w3"><h4>IDS</h4><p>Information Delivery Specification: requisitos de un IFC escritos en XML que un programa comprueba solo. Es estándar final de buildingSMART desde junio de 2024 (<a href="https://www.buildingsmart.org/standards/bsi-standards/information-delivery-specification-ids/" target="_blank" rel="noopener">buildingSMART</a>).</p></div>
+      <div class="card w3 y"><span class="c-label">Regla</span><p>Un modelo que no pasa el IDS no entra en la prueba de la semana: vuelve al autor.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-kpi">
+    <div class="b-cards">
+      <div class="card w3">
+        <h4>Indicadores que sirven</h4>
+        <ul class="checklist"><li>Abiertas por pareja de disciplinas</li><li>Vencidas por responsable</li><li>Días medios hasta cerrar</li><li>Antigüedad de la más vieja</li><li>Nuevas frente a cerradas por semana</li></ul>
+      </div>
+      <div class="card w3">
+        <h4>Un ejemplo</h4>
+        <p>Un informe semanal de plataforma separa lo que se cierra solo (por debajo de 2 cm), la revisión técnica (2 a 5 cm) y la antigüedad (<a href="https://support.catenda.com/en/articles/13847707-weekly-clash-reports" target="_blank" rel="noopener">Catenda</a>). Un cuadro de mando de consultora fija 20 días hasta la firma (<a href="https://united-bim.com/wp-content/uploads/2020/10/Design-Coordination-Dashboard-for-Gatekeeper-Meeting_Ver01Oct2020.pdf" target="_blank" rel="noopener">United BIM</a>).</p>
+      </div>
+      <div class="card w3 k"><span class="c-label">De dónde salen</span><p>Del historial de estados de las incidencias: un BCF exportado cada semana o, mejor, los eventos de la BCF API.</p></div>
+      <div class="card w3 y"><span class="c-label">El gráfico de la slide</span><p>Es ilustrativo, con datos ficticios: muestra la forma esperada, no un proyecto real.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-cerrar">
+    <div class="b-cards">
+      <div class="card w3">
+        <h4>Por qué no basta el estado automático</h4>
+        <p>Los programas marcan como resuelto el choque que no reaparece al relanzar la prueba. Eso pasa si se corrigió, pero también si el elemento se borró, se renombró su sistema o salió de la selección de la prueba.</p>
+      </div>
+      <div class="card w3">
+        <h4>Cierre en dos firmas</h4>
+        <ol class="vsteps"><li>El autor corrige y marca la incidencia como resuelta.</li><li>Publica la nueva versión.</li><li>El coordinador relanza la prueba y mira el sitio.</li><li>Solo entonces la cierra.</li></ol>
+      </div>
+      <div class="card w6 y"><span class="c-label">Ojo con los estados</span><p>Cada herramienta tiene su lista: nueva, activa, revisada, aprobada y resuelta en una; nueva, modificada, resuelta y desaparecida en otra. En BCF 3.0 los estados válidos se fijan en <code>extensions.xml</code>: conviene acordar una lista y su equivalencia.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-herramientas">
+    <div class="b-cards">
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Herramienta</th><th>Nivel</th><th>Qué aporta</th><th>Coste</th></tr></thead>
+          <tbody>
+            <tr><td>IfcTester</td><td>IFC propio</td><td>Valida un IFC contra un IDS; informe HTML o BCF</td><td>Gratis</td></tr>
+            <tr><td>IfcClash</td><td>Federado IFC</td><td>Choques, holguras y agrupación; exporta BCF</td><td>Gratis</td></tr>
+            <tr><td>BIMcollab Zoom</td><td>Federado IFC</td><td>IDS, choques e incidencias en el mismo visor</td><td>Licencia</td></tr>
+            <tr class="is-key"><td>Solibri</td><td>Federado IFC</td><td>Reglas, matriz y IDS</td><td>Desde Essential</td></tr>
+            <tr><td>Navisworks Manage</td><td>Federado mixto</td><td>Pruebas, estados y 4D</td><td>Licencia</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w3 k"><span class="c-label">Un orden que funciona</span><p>Primero el autor en su programa, después su IFC contra el IDS y por último la matriz en el federado.</p></div>
+      <div class="card w3"><h4>Para consultar</h4><p><a href="https://docs.ifcopenshell.org/ifctester.html" target="_blank" rel="noopener">IfcTester</a> · <a href="https://technical.buildingsmart.org/services/validation-service/" target="_blank" rel="noopener">validador de buildingSMART</a> · <a href="https://helpcenter.bimcollab.com/portal/en/kb/articles/how-to-perform-a-clash-detection-with-bimcollab-zoom" target="_blank" rel="noopener">Zoom</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-glosario">
+<div class="b-cards"><div class="card w6">
+<dl class="glossary">
+      <dt>Interferencia (choque, colisión)</dt><dd>Par de elementos que se cruzan o que están más cerca de lo permitido.</dd>
+      <dt>Dura</dt><dd>Los volúmenes se intersecan.</dd>
+      <dt>Holgura</dt><dd>Los elementos invaden una distancia libre exigida.</dd>
+      <dt>Secuencia o 4D</dt><dd>Ocupan el mismo espacio en el mismo periodo de obra.</dd>
+      <dt>Tolerancia</dt><dd>Cifra que decide qué cuenta como choque: penetración mínima o distancia libre.</dd>
+      <dt>Matriz de detección</dt><dd>Tabla que fija qué disciplinas se cruzan, con qué tipo de prueba y tolerancia.</dd>
+      <dt>Agrupación</dt><dd>Reunir choques con la misma causa para decidir una vez.</dd>
+      <dt>Falso positivo</dt><dd>Resultado que no es un problema real.</dd>
+      <dt>Incidencia</dt><dd>Problema con vista, elementos, responsable, fecha y estado.</dd>
+      <dt>BCF</dt><dd>BIM Collaboration Format: formato abierto de buildingSMART para incidencias sobre modelos.</dd>
+      <dt>BCF API</dt><dd>Servicio web para leer y escribir incidencias BCF sin archivos.</dd>
+      <dt>GlobalId</dt><dd>Identificador IFC de 22 caracteres que une la incidencia con el elemento.</dd>
+    </dl>
+</div></div>
+  </template>
+
   <template id="l2-fuentes">
-    <div class="b-cards"><div class="card w6 y"><span class="c-label">Sin fuentes</span><p>Artículo ficticio de relleno: no tiene fuentes porque su contenido es inventado.</p></div></div>
+<div class="b-cards"><div class="card w6">
+<p>Prioridad a la documentación oficial de cada fabricante, a buildingSMART y a los estudios académicos con datos. Lo no confirmado lleva <span class="tag">Por confirmar</span> y la lectura propia, <span class="tag">Inferido</span>. La base completa (323 fuentes valoradas y glosario) está en la carpeta del proyecto.</p>
+</div></div>
+<div class="b-cards">
+<div class="card w6">
+<h4>Estudios y guías de coordinación</h4>
+<ul class="sources">
+          <li><a href="https://www.sciencedirect.com/science/article/pii/S0926580525006843" target="_blank" rel="noopener">Ailem y Boton (2026): falsos positivos y aprendizaje automático</a> · <a href="https://itcon.org/papers/2016_16.content.05645.pdf" target="_blank" rel="noopener">Bockstael e Issa (2016)</a> · <a href="https://www.mdpi.com/2075-5309/7/3/75" target="_blank" rel="noopener">Akponeware y Adamu (2017)</a></li>
+          <li><a href="https://ro.ecu.edu.au/ecuworks/2401/" target="_blank" rel="noopener">Love y Edwards (2005)</a> · <a href="https://www.asce.org/publications-and-news/civil-engineering-source/article/2026/01/22/how-much-does-field-rework-in-construction-actually-cost" target="_blank" rel="noopener">ASCE (2026)</a> · <a href="https://ascelibrary.com/doi/10.1061/%28ASCE%29LM.1943-5630.0000127" target="_blank" rel="noopener">Azhar (2011)</a> · <a href="https://nrl.northumbria.ac.uk/id/eprint/45184" target="_blank" rel="noopener">Chahrour et al. (2021)</a></li>
+          <li><a href="https://www.biminnz.co.nz/s/BIM-Handbook_APPENDIX_Bv4-kpes.pdf" target="_blank" rel="noopener">NZ BIM Handbook</a> · <a href="https://www.globalbim.org/wp-content/uploads/2024/01/bim-guide-v2-2.pdf" target="_blank" rel="noopener">HDB BIM Guide</a> · <a href="https://www.nibs.org/files/pdfs/nbimsv3/NBIMS-US_V3_5.5_MEP_Spatial_Coordination_Requirements.pdf" target="_blank" rel="noopener">NBIMS-US 5.5</a> · <a href="https://www.ashghal.gov.qa/en/Services/GIS%20and%20CAD%20Manuals/ASHGHAL%20BIM%20STANDARD/S0301_Clash%20Detection%20Matrix%20Template%20Guide_V1.pdf" target="_blank" rel="noopener">Ashghal</a> · <a href="https://bimforum.org/wp-content/uploads/2024/12/LOD-Spec-2025-Part-I-Official.pdf" target="_blank" rel="noopener">LOD Spec 2025</a></li>
+          <li><a href="https://bimcorner.com/the-one-bim-coordination-rule-nobody-ever-told-you/" target="_blank" rel="noopener">BIM Corner</a> · <a href="https://catenda.com/glossary/bim-coordination-process" target="_blank" rel="noopener">Catenda</a> · <a href="https://bimtrack.co/blog/blog-posts/grouping-clashes-with-bim-track-101" target="_blank" rel="noopener">BIM Track</a> · <a href="https://aecmag.com/bim/revizto-clash-detection-added-to-bim-collaboration-platform/" target="_blank" rel="noopener">AEC Magazine</a></li>
+        </ul>
+</div>
+<div class="card w6">
+<h4>Normas y España</h4>
+<ul class="sources">
+          <li><a href="https://www.cdbb.cam.ac.uk/system/files/documents/InformationManagementaccordingtoBSENISO19650GuidancePart1Concepts.pdf" target="_blank" rel="noopener">Guía ISO 19650, parte 1</a> · <a href="https://committee.iso.org/es/sites/isoorg/contents/data/standard/08/97/89704.html" target="_blank" rel="noopener">ISO/DIS 19650-2</a> · <a href="https://constructionmanagement.co.uk/new-level-of-information-need-standard-published/" target="_blank" rel="noopener">EN ISO 7817-1</a></li>
+          <li><a href="https://www.civil-mercantil.com/sites/civil-mercantil.com/files/NCL013234.pdf" target="_blank" rel="noopener">Orden PCM/818/2023</a> · <a href="https://cdn.mitma.gob.es/portal-web-drupal/cbim/pdf/resumen_ejecutivo_es_a4_web.pdf" target="_blank" rel="noopener">Plan BIM</a> · <a href="https://cibim.transportes.gob.es/recursos_cbim/bb_gt1_estrategia_sg1.1_glosario_de_terminos.pdf" target="_blank" rel="noopener">glosario es.BIM</a> · <a href="https://www.euskadi.eus/contenidos/informacion/ets_bim/es_def/adjuntos/2024/AN8CoordinacionControlCalidad.pdf" target="_blank" rel="noopener">ETS</a> · <a href="https://docs.itec.cat/e/Guia-de-Licitacion-BIM-ESP-junio2021.pdf" target="_blank" rel="noopener">ITeC</a></li>
+        </ul>
+</div>
+<div class="card w6">
+<h4>BCF e IFC</h4>
+<ul class="sources">
+          <li><a href="https://technical.buildingsmart.org/standards/bcf/" target="_blank" rel="noopener">buildingSMART: BCF</a> · <a href="https://github.com/buildingSMART/BCF-XML/tree/release_3_0/Documentation" target="_blank" rel="noopener">BCF-XML 3.0</a> · <a href="https://github.com/buildingSMART/BCF-API/tree/release_3_0" target="_blank" rel="noopener">BCF API 3.0</a> · <a href="https://github.com/buildingSMART/foundation-API" target="_blank" rel="noopener">Foundation API</a> · <a href="https://www.buildingsmart.es/bim/openbim/bcf/" target="_blank" rel="noopener">buildingSMART Spain</a></li>
+          <li><a href="https://standards.buildingsmart.org/IFC/RELEASE/IFC4_3/HTML/lexical/IfcGloballyUniqueId.htm" target="_blank" rel="noopener">IfcGloballyUniqueId</a> · <a href="https://blog.autodesk.io/consistency-of-ifc-guid-and-uniqueid/" target="_blank" rel="noopener">Revit: GUID y UniqueId</a> · <a href="https://www.buildingsmart.org/standards/bsi-standards/information-delivery-specification-ids/" target="_blank" rel="noopener">IDS</a></li>
+        </ul>
+</div>
+<div class="card w6">
+<h4>Software y plataformas</h4>
+<ul class="sources">
+          <li><a href="https://help.autodesk.com/cloudhelp/2022/ENU/Navisworks/files/GUID-27EA59E6-1A15-4372-9D7D-90508936B512.htm" target="_blank" rel="noopener">Navisworks</a> · <a href="https://help.autodesk.com/cloudhelp/2027/ENU/Revit-Collaborate/files/GUID-890A9FE0-EFF4-4CFB-9E81-B0DE1A132BEC.htm" target="_blank" rel="noopener">Revit</a> · <a href="https://help.autodesk.com/cloudhelp/ENU/Coord-GS/files/About_Model_Coord.html" target="_blank" rel="noopener">Model Coordination</a> · <a href="https://help.solibri.com/hc/en-us/articles/23765423193111-245-Clash-Detection-Matrix" target="_blank" rel="noopener">Solibri</a></li>
+          <li><a href="https://help.graphisoft.com/AC/29/SPA/_AC29_Help/080_Collaboration/080_Collaboration-64.htm" target="_blank" rel="noopener">Archicad</a> · <a href="https://support.tekla.com/doc/tekla-structures/2025/mod_finding_clashes_using_ccm" target="_blank" rel="noopener">Tekla</a> · <a href="https://doc.allplan.com/x/rJP2" target="_blank" rel="noopener">Bimplus</a> · <a href="https://help.bricsys.com/en-us/document/command-reference/i/interfere-command" target="_blank" rel="noopener">BricsCAD</a> · <a href="https://raw.githubusercontent.com/IfcOpenShell/IfcOpenShell/v0.8.0/src/ifcclash/ifcclash/ifcclash.py" target="_blank" rel="noopener">IfcClash</a></li>
+          <li><a href="https://help.revizto.com/hc/en-us/articles/4413526515215" target="_blank" rel="noopener">Revizto</a> · <a href="https://help.trimble.com/doc/trimble-connect/trimble-connect/connect-for-windows/clashes/clash-sets-listing" target="_blank" rel="noopener">Trimble Connect</a> · <a href="https://help.aconex.com/models/defining-clash-tests/" target="_blank" rel="noopener">Aconex</a> · <a href="https://helpcenter.bimcollab.com/portal/en/kb/articles/setting-tolerances-for-clash-detection" target="_blank" rel="noopener">BIMcollab</a> · <a href="https://v2.support.procore.com/es-es/faq-how-can-i-prevent-import-errors-when-using-the-coordination-issues-tool" target="_blank" rel="noopener">Procore</a></li>
+        </ul>
+</div>
+</div>
   </template>
 
   <script src="../../assets/js/serie.js"></script>
+  <script src="../../assets/js/paises.js"></script>
   <script src="../../assets/js/web.js"></script>
   <script src="../../assets/js/precision.js"></script>
 </body>

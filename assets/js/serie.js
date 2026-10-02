@@ -35,15 +35,14 @@ window.SERIE = [
     estado: 'relleno'
   },
   {
-    // Artículo ficticio de relleno (arquitectura de la web): sustituir o borrar
     slug: 'deteccion-de-interferencias',
     numero: '04',
     titulo: 'Detección de interferencias',
-    resumen: 'Encontrar los choques en el modelo antes que en la obra.',
+    resumen: 'Tipos de choque, tolerancias, matriz y agrupación para cualquier programa; después ISO 19650 y BCF, Navisworks, Solibri y la nube, el viaje de una incidencia y cómo se cierra de verdad.',
     tema: 'Coordinación',
-    fecha: '2026-12',
-    lectura: '6 ideas',
-    estado: 'relleno'
+    fecha: '2026-10',
+    lectura: '34 ideas',
+    estado: 'borrador'
   },
   {
     // Artículo ficticio de relleno (arquitectura de la web): sustituir o borrar
