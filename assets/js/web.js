@@ -170,7 +170,9 @@
   const groupOf = (i) => { const k = caps.slice(0, i + 1).filter((c, j) => slides[j].dataset.cap).length - 1; return k; };
   const openGroup = (k) => document.querySelectorAll('.nav-group').forEach((li) => {
     const on = +li.dataset.g === k;
-    li.classList.toggle('is-open', on); li.classList.toggle('is-here', on);
+    li.classList.toggle('is-here', on);
+    if (li.closest('#deck-nav')) return; // escritorio: solo portada y bloques; cada bloque se despliega al pulsarlo
+    li.classList.toggle('is-open', on);
     li.querySelector('.nav-cap').setAttribute('aria-expanded', on);
   });
   document.querySelectorAll('.nav-cap').forEach((btn) => btn.addEventListener('click', (e) => {
@@ -307,6 +309,7 @@
     document.querySelectorAll('.paises').forEach((el) => { el.querySelector('select').value = p.id; el.querySelector('.paises-out').innerHTML = paisCard(p); });
     document.querySelectorAll('.paises-tabla tr[data-p]').forEach((tr) => tr.classList.toggle('is-key', tr.dataset.p === p.id));
     document.querySelectorAll('[data-crs-chip]').forEach((b) => { b.innerHTML = `<span class="label">Tu sistema</span><b>${p.nombre} · EPSG ${sysId}</b><i>cambiar</i>`; });
+    document.querySelectorAll('[data-crs-menu]').forEach((b) => { b.innerHTML = `<span>Tu sistema</span><span class="mono">EPSG ${sysId}</span>`; });
     paisTexts();
     document.dispatchEvent(new CustomEvent('bf-crs'));
   };
@@ -372,6 +375,14 @@
     };
     const kn = document.querySelector('#deck-nav > .kicker-y'); if (kn) kn.after(chip());
     const so = document.querySelector('#deck-sheet > ol'); if (so) so.before(chip());
+    // En escritorio el menú de diapositivas solo lleva el índice: «Tu sistema» pasa al cartucho
+    const mn = document.querySelector('main.deck') && document.querySelector('#menu-content nav');
+    if (mn) {
+      const b = document.createElement('button');
+      b.type = 'button'; b.className = 'menu-link bf-menu-btn'; b.setAttribute('data-crs-menu', '');
+      b.addEventListener('click', (e) => { e.stopPropagation(); crsDialog(); });
+      mn.appendChild(b);
+    }
     crsDraw();
     if (document.querySelector('main.deck') && !ls('bf-crs-ok') && !/[?&]sin-bienvenida/.test(location.search)) crsDialog();
   }
