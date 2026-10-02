@@ -131,7 +131,7 @@
   }
 })();
 
-// Capa «Precisión» v0.3: lectura de cifras, cursor de CAD y cubiertas trazadas
+// Capa «Precisión» v0.3: cursor de CAD y cubiertas trazadas
 (function () {
   const calma = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const fino = matchMedia('(pointer: fine)').matches;
@@ -141,27 +141,7 @@
     els.forEach((el) => io.observe(el));
   };
 
-  // ---------- Cifras que se «leen» como en una estación total: las cifras ruedan y se fijan de izquierda a derecha ----------
-  const leer = (el) => {
-    const nodos = [];
-    const w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
-    while (w.nextNode()) if (/\d/.test(w.currentNode.nodeValue)) nodos.push([w.currentNode, w.currentNode.nodeValue]);
-    if (!nodos.length) return;
-    const total = nodos.reduce((n, [, t]) => n + (t.match(/\d/g) || []).length, 0);
-    const dur = 650 + total * 45, t0 = performance.now();
-    el.classList.add('pz-reading');
-    const paso = (t) => {
-      const fijas = Math.floor(((t - t0) / dur) * (total + 1));
-      let k = 0;
-      nodos.forEach(([n, fin]) => {
-        n.nodeValue = fin.replace(/\d/g, (d) => (k++ < fijas ? d : String((Math.random() * 10) | 0)));
-      });
-      if (t - t0 < dur) requestAnimationFrame(paso);
-      else { nodos.forEach(([n, fin]) => (n.nodeValue = fin)); el.classList.remove('pz-reading'); }
-    };
-    requestAnimationFrame(paso);
-  };
-  if (!calma) ver([...document.querySelectorAll('.slide .c-num, .stat b')].filter((el) => !el.querySelector('[data-pais]') && !el.closest('[data-pais]')), leer, 0.6);
+  // Sin efecto de contador en las cifras (Álex: fuera); salen fijas desde el principio
 
   // ---------- Cursor de CAD: sobre un dibujo, retícula y coordenadas locales del dibujo ----------
   if (fino) document.querySelectorAll('.card svg.draw').forEach((svg) => {
