@@ -29,7 +29,7 @@ Mismo patrón que el portfolio:
 1. Copiar `articulos/_plantilla/` a `articulos/<slug>/` (slug en minúsculas, sin tildes, con guiones).
 2. En el nuevo `index.html`: cambiar `data-slug="SLUG"` por el slug y rellenar título, descripción y diapositivas.
 3. Cada diapositiva es un `<section class="slide" id="…" data-nav="Título del menú">` dentro de `<main class="deck">`; su ficha es `<template id="l2-<id>">` y se abre con `data-l2="<id>"`. La numeración y el menú se generan solos.
-4. Dibujar su pictograma en `assets/img/iconos/<slug>.svg` (mismo estilo que los demás: viewBox 96, trazo negro 4, una sola pieza amarilla). La cubierta de la portada y la ficha del artículo se generan solas con él.
+4. Dibujar su ilustración de cubierta en `assets/img/cubiertas/<slug>.svg` (320×200, trazo negro 3, una sola pieza amarilla) y su pictograma en `assets/img/iconos/<slug>.svg` (96, trazo 4). La cubierta de la portada y la ficha del artículo se generan solas.
 5. Añadir la ficha en `assets/js/serie.js`, en el orden de la serie. `estado`: `borrador`, `publicado`, `proximamente` (se lista sin enlace) o `relleno` (artículo ficticio para probar la web; sustituir o borrar antes de publicar).
 
 ## Bloques disponibles

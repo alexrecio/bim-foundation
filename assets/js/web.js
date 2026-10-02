@@ -70,11 +70,11 @@
     return m ? `${meses[+m - 1]} ${y}` : y || '';
   };
 
-  // Identidad común: cada artículo tiene la misma «cubierta» (número, pictograma y tema sobre papel cuadriculado)
+  // Identidad común: cada artículo tiene la misma «cubierta» (número, ilustración y tema sobre papel cuadriculado)
   const ESTADOS = { borrador: 'Borrador', proximamente: 'Próximamente', relleno: 'Relleno ficticio' };
   const icono = (a) => `${root}assets/img/iconos/${a.slug || '_plantilla'}.svg`;
   const cover = (a) => `<div class="cover" aria-hidden="true"><span class="cover-n">${a.numero || 'NN'}</span>` +
-    `<img src="${icono(a)}" alt="" onerror="this.src='${root}assets/img/iconos/_plantilla.svg'">` +
+    `<img src="${root}assets/img/cubiertas/${a.slug || '_plantilla'}.svg" alt="" onerror="this.src='${root}assets/img/cubiertas/_plantilla.svg'">` +
     `<span class="cover-t">${a.tema || 'Tema'}</span><span class="cover-bf">BF</span></div>`;
 
   // Portada de la web: rejilla de artículos con su cubierta
@@ -85,8 +85,9 @@
       const estado = ESTADOS[a.estado];
       return `<li class="article-item${soon ? ' is-soon' : ''}"><a href="${root}articulos/${a.slug}/">
         ${cover(a)}
-        <div class="article-body"><h3>${a.titulo}</h3><p>${a.resumen}</p></div>
-        <div class="meta">${fmtFecha(a.fecha)} · ${a.lectura}${estado ? ` <span class="soon">${estado}</span>` : ''}</div>
+        <div class="article-body"><h3>${a.titulo}</h3>
+          <div class="meta">${fmtFecha(a.fecha)} · ${a.lectura}${estado ? ` <span class="soon">${estado}</span>` : ''}</div>
+          <p>${a.resumen}</p></div>
       </a></li>`;
     }).join('');
   }
