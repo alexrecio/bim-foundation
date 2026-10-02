@@ -2520,7 +2520,7 @@
     <div class="b-cards">
       <div class="card w4 k">
         <h4>Zwei Anforderungen an die Georeferenzierung</h4>
-<pre><code>&lt;specification name="CRS del proyecto" ifcVersion="IFC4"&gt;
+<pre><code>&lt;specification name="Projekt-KRS" ifcVersion="IFC4"&gt;
   &lt;applicability minOccurs="1" maxOccurs="unbounded"&gt;
     &lt;entity&gt;&lt;name&gt;&lt;simpleValue&gt;IFCPROJECTEDCRS&lt;/simpleValue&gt;&lt;/name&gt;&lt;/entity&gt;
   &lt;/applicability&gt;
@@ -2531,7 +2531,7 @@
     &lt;/attribute&gt;
   &lt;/requirements&gt;
 &lt;/specification&gt;
-&lt;specification name="Conversión al mapa" ifcVersion="IFC4"&gt;
+&lt;specification name="Kartenumrechnung" ifcVersion="IFC4"&gt;
   &lt;applicability minOccurs="1" maxOccurs="unbounded"&gt;
     &lt;entity&gt;&lt;name&gt;&lt;simpleValue&gt;IFCMAPCONVERSION&lt;/simpleValue&gt;&lt;/name&gt;&lt;/entity&gt;
   &lt;/applicability&gt;
@@ -2576,10 +2576,10 @@
 from ifcopenshell.util.geolocation import auto_xyz2enh
 
 modelo = ifcopenshell.open("modelo.ifc")
-e, n, h = auto_xyz2enh(modelo, 10.0, 20.0, 0.0)   # testigo, en local
-topo = (<span data-pais="topo-e">440010.000</span>, <span data-pais="topo-n">4474020.000</span>, 650.000)          # lista del topógrafo
+e, n, h = auto_xyz2enh(modelo, 10.0, 20.0, 0.0)   # Kontrollpunkt, lokal
+topo = (<span data-pais="topo-e">440010.000</span>, <span data-pais="topo-n">4474020.000</span>, 650.000)          # Liste der Vermessung
 error = max(abs(a - b) for a, b in zip((e, n, h), topo))
-print("OK" if error &lt; 0.01 else f"Desvío de {error:.3f} m")</code></pre>
+print("OK" if error &lt; 0.01 else f"Abweichung von {error:.3f} m")</code></pre>
         <p class="table-note">Getestet mit IfcOpenShell 0.9.0. Die Funktion wendet die <code>IfcMapConversion</code> der Datei an (bzw. <code>ePSet_MapConversion</code> in IFC2x3).</p>
       </div>
       <div class="card w2 y">
