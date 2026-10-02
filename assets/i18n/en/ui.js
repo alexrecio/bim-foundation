@@ -90,7 +90,7 @@
     num: '[data-pais], .pz-origin, .pz-hud, .lector-out, .lector-far, .crs-prev, [data-crs-chip]',
     // Series catalogue (assets/js/serie.js): translated fields per slug
     serie: {
-      'coordenadas-compartidas': { titulo: 'Shared coordinates in BIM', resumen: 'First the concepts that hold for any program (geodesy, surveying, precision and transformation); then standards, software, platforms, interoperability and quality control.', tema: 'Georeferencing' },
+      'coordenadas-compartidas': { titulo: 'Coordinate systems in BIM', resumen: 'First the concepts that hold for any program (geodesy, surveying, precision and transformation); then standards, software, platforms, interoperability and quality control.', tema: 'Georeferencing' },
       'niveles-de-informacion': { titulo: 'Level of information need', resumen: 'LOD, LOI and level of information need (ISO 7817-1): what to ask of each element, why and at which milestone, and how to check it with IFC and IDS.', tema: 'Information' },
       'entorno-comun-de-datos': { titulo: 'Common data environment (CDE)', resumen: 'What a CDE is under ISO 19650 and how it is applied: containers, four states, approval gates, metadata, naming and roles; then national annexes, software, platforms, OpenCDE and quality control.', tema: 'Information management' },
       'deteccion-de-interferencias': { titulo: 'Clash detection', resumen: 'Clash types, tolerances, matrix and grouping for any program; then ISO 19650 and BCF, Navisworks, Solibri and the cloud, the journey of an issue and how it is really closed.', tema: 'Coordination' },

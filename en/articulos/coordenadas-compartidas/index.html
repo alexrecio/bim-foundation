@@ -6,11 +6,11 @@
   <!-- Draft: remove noindex on publishing -->
   <meta name="robots" content="noindex, nofollow">
   <!-- Translation of articulos/coordenadas-compartidas/index.html at this git blob (herramientas/i18n.mjs flags it when the Spanish page changes) -->
-  <meta name="bf-fuente" content="articulos/coordenadas-compartidas/index.html@ec743e04655d623f87a24b6c8418a72ee8945847">
-  <title>Shared coordinates in BIM | bimkernel</title>
+  <meta name="bf-fuente" content="articulos/coordenadas-compartidas/index.html@8e49d45fdf64a5132d0bd8d7281cd1cf3b0929f8">
+  <title>Coordinate systems in BIM | bimkernel</title>
   <meta name="description" content="How shared coordinates work in Revit, Civil 3D, IFC and the rest of BIM software, with the Spanish geodetic framework (ETRS89, EPSG, Alicante heights).">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Shared coordinates in BIM · bimkernel">
+  <meta property="og:title" content="Coordinate systems in BIM · bimkernel">
   <meta property="og:description" content="Internal Origin, Project Base Point and Survey Point: the model stays put and what moves is the coordinate system.">
   <link rel="icon" href="../../../assets/img/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="../../../assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
@@ -33,13 +33,13 @@
 
   <!-- Slide menu: filled from each <section> data-nav -->
   <aside id="deck-nav" aria-label="Slides">
-    <span class="kicker-y">Coordinates · 42 ideas</span>
+    <span class="kicker-y">Coordinates · 41 ideas</span>
     <ol></ol>
   </aside>
   <div id="deck-bar">
     <div id="deck-sheet"><ol></ol></div>
     <button type="button" id="deck-bar-btn" aria-expanded="false" aria-controls="deck-sheet">
-      <span class="n">01/42</span><span class="t">Cover</span>
+      <span class="n">01/41</span><span class="t">Cover</span>
       <span class="chev" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M3 9l4-4 4 4" fill="none" stroke="#fff" stroke-width="2"/></svg></span>
     </button>
   </div>
@@ -57,8 +57,8 @@
         <div class="b-title">
           <p class="hero-id"><a href="../../" style="text-decoration:none">bimkernel · 01</a></p>
           <span class="kicker-y lg">Reality · model · site</span>
-          <h1 class="display">Shared<br>coordinates<br><span class="hl-y">in BIM<span class="dot">.</span></span></h1>
-          <p class="slide-lead">A project describes something that does not exist yet. Coordinates say where it will exist.</p>
+          <h1 class="display">Coordinate<br>systems<br><span class="hl-y">in BIM<span class="dot">.</span></span></h1>
+          <p class="slide-lead">The tool that translates physical reality into digital data with precision, and puts it back in its place.</p>
           <div class="slide-actions"><a class="btn" href="#porque">Start <span aria-hidden="true">↓</span></a></div>
         </div>
         <div class="b-cards">
@@ -66,7 +66,7 @@
           <div class="card w6 g">
             <span class="c-label">The article in six blocks</span>
             <ol class="mapa">
-              <li class="is-key"><a href="#porque"><b>I</b><span>General concepts</span><em>18 ideas · the why, the Earth and the computer</em></a></li>
+              <li class="is-key"><a href="#porque"><b>I</b><span>General concepts</span><em>17 ideas · the why, the Earth and the computer</em></a></li>
               <li><a href="#espana"><b>II</b><span>Standards</span><em>3 ideas · EPSG, IFC, ISO 19650</em></a></li>
               <li><a href="#limites"><b>III</b><span>Software</span><em>7 ideas · Revit, Survey Point, campuses and building types</em></a></li>
               <li><a href="#coordinacion"><b>IV</b><span>Platforms</span><em>2 ideas · viewers and cloud</em></a></li>
@@ -84,58 +84,26 @@
         <div class="b-title">
           <span class="slide-n"></span>
           <span class="kicker-y">A · Why coordinates</span>
-          <h2 class="display">Drawing what does not exist yet<span class="dot">.</span></h2>
-          <p class="slide-lead">A project describes a future asset on a medium that is not physical. Coordinates tie it to a specific place on Earth.</p>
+          <h2 class="display">Without coordinates, the model is nowhere<span class="dot">.</span></h2>
+          <p class="slide-lead">What is measured, what is designed and what is built are digital data about something physical. One and the same coordinate system ties them to their place on Earth.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="porque"><span class="plus">+</span> See detail</button></div>
         </div>
         <div class="b-cards">
           <div class="card w6">
-            <span class="c-label">Ground and model, one number</span>
-            <svg class="draw" viewBox="0 0 640 200" role="img" aria-label="On the left, the ground with a survey nail; on the right, a screen with the building model; a yellow line carrying the E, N and H coordinates joins the nail to the corner of the building">
-              <path d="M10 170 C70 160 110 150 160 156 S250 172 290 164" fill="none" stroke="#000" stroke-width="3" stroke-linecap="round"/>
-              <path d="M150 156 V128" stroke="#000" stroke-width="3" stroke-linecap="round"/><circle cx="150" cy="122" r="7" fill="#fff" stroke="#000" stroke-width="3"/>
-              <g font-family="JetBrains Mono, monospace" font-size="12"><text x="10" y="194">REALITY · measured</text><text x="104" y="118">nail</text></g>
-              <rect x="380" y="20" width="250" height="150" rx="6" fill="#fff" stroke="#000" stroke-width="3"/><path d="M470 170 V186 M440 186 H500" stroke="#000" stroke-width="3" stroke-linecap="round"/>
-              <path d="M430 140 V80 L480 56 L560 74 V128 Z M430 80 L510 98 L560 74 M510 98 V150" fill="none" stroke="#000" stroke-width="2.5" stroke-linejoin="round"/>
-              <path d="M430 140 L510 150 L560 128" fill="none" stroke="#000" stroke-width="2.5" stroke-linejoin="round"/>
-              <text x="392" y="40" font-family="JetBrains Mono, monospace" font-size="12">MODEL · designed</text>
-              <path d="M158 122 C240 100 340 120 424 140" fill="none" stroke="#FFFF00" stroke-width="6" stroke-linecap="round"/>
-              <path d="M158 122 C240 100 340 120 424 140" fill="none" stroke="#000" stroke-width="1.5" stroke-dasharray="4 5"/>
-              <rect x="240" y="76" width="96" height="26" rx="13" fill="#000"/><text x="288" y="94" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="13" font-weight="700" fill="#FFFF00">E · N · H</text>
-            </svg>
-          </div>
-          <div class="card w2"><span class="c-label">What it is</span><span class="c-title">A future asset</span></div>
-          <div class="card w2"><span class="c-label">Where it lives</span><span class="c-title">On a digital medium</span></div>
-          <div class="card w2 k"><span class="c-label">What ties it down</span><span class="c-title">A coordinate system</span></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ========== THE CYCLE ========== -->
-    <section class="slide" id="ciclo" data-nav="Measure, encode, build">
-      <div class="bento">
-        <div class="b-title">
-          <span class="slide-n"></span>
-          <span class="kicker-y">From reality to data and back</span>
-          <h2 class="display">Measure, encode, build<span class="dot">.</span></h2>
-          <p class="slide-lead">BIM starts by measuring what exists and ends by setting out what was designed. If the system changes along the way, the building does not land where it was designed.</p>
-          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="ciclo"><span class="plus">+</span> See the stages</button></div>
-        </div>
-        <div class="b-cards">
-          <div class="card w6">
             <span class="c-label">Six stages, one system</span>
-            <svg class="draw" viewBox="0 0 640 210" role="img" aria-label="Six-stage cycle: reality, measure, encode, design, set out and operate, which returns to reality; all share one coordinate system">
+            <svg class="draw" viewBox="0 0 640 210" role="img" aria-label="Six-stage cycle starting from reality: measure, encode, design, coordinate, set out and operate, which returns to reality; all share one coordinate system">
               <g font-family="JetBrains Mono, monospace" font-size="11" text-anchor="middle">
-                <circle cx="50" cy="70" r="40" fill="#000"/><text x="50" y="74" fill="#fff" font-weight="700">REALITY</text>
-                <circle cx="158" cy="70" r="40" fill="#fff" stroke="#000" stroke-width="3"/><text x="158" y="74">measure</text>
-                <circle cx="266" cy="70" r="40" fill="#fff" stroke="#000" stroke-width="3"/><text x="266" y="74">encode</text>
-                <circle cx="374" cy="70" r="40" fill="#fff" stroke="#000" stroke-width="3"/><text x="374" y="74">design</text>
-                <circle cx="482" cy="70" r="40" fill="#fff" stroke="#000" stroke-width="3"/><text x="482" y="74">set out</text>
-                <circle cx="590" cy="70" r="40" fill="#fff" stroke="#000" stroke-width="3"/><text x="590" y="74">operate</text>
+                <circle cx="44" cy="70" r="37" fill="#000"/><text x="44" y="74" fill="#fff" font-weight="700">REALITY</text>
+                <circle cx="136" cy="70" r="37" fill="#fff" stroke="#000" stroke-width="3"/><text x="136" y="74">measure</text>
+                <circle cx="228" cy="70" r="37" fill="#fff" stroke="#000" stroke-width="3"/><text x="228" y="74">encode</text>
+                <circle cx="320" cy="70" r="37" fill="#fff" stroke="#000" stroke-width="3"/><text x="320" y="74">design</text>
+                <circle cx="412" cy="70" r="37" fill="#fff" stroke="#000" stroke-width="3"/><text x="412" y="74">coordinate</text>
+                <circle cx="504" cy="70" r="37" fill="#fff" stroke="#000" stroke-width="3"/><text x="504" y="74">set out</text>
+                <circle cx="596" cy="70" r="37" fill="#fff" stroke="#000" stroke-width="3"/><text x="596" y="74">operate</text>
               </g>
-              <g stroke="#000" stroke-width="2"><path d="M90 70 H114 M198 70 H222 M306 70 H330 M414 70 H438 M522 70 H546"/></g>
-              <g fill="#000"><polygon points="124,70 114,65 114,75"/><polygon points="232,70 222,65 222,75"/><polygon points="340,70 330,65 330,75"/><polygon points="448,70 438,65 438,75"/><polygon points="556,70 546,65 546,75"/></g>
-              <path d="M590 112 V132 H50 V118" fill="none" stroke="#000" stroke-width="2" stroke-dasharray="6 5"/><polygon points="50,112 45,122 55,122" fill="#000"/>
+              <g stroke="#000" stroke-width="2"><path d="M82 70 H92 M174 70 H184 M266 70 H276 M358 70 H368 M450 70 H460 M542 70 H552"/></g>
+              <g fill="#000"><polygon points="98,70 90,65 90,75"/><polygon points="190,70 182,65 182,75"/><polygon points="282,70 274,65 274,75"/><polygon points="374,70 366,65 366,75"/><polygon points="466,70 458,65 458,75"/><polygon points="558,70 550,65 550,75"/></g>
+              <path d="M596 109 V132 H44 V118" fill="none" stroke="#000" stroke-width="2" stroke-dasharray="6 5"/><polygon points="44,110 39,120 49,120" fill="#000"/>
               <rect x="20" y="150" width="600" height="40" rx="20" fill="#FFFF00" stroke="#000" stroke-width="2.5"/>
               <text x="320" y="176" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="14" font-weight="700">one and the same coordinate system · EPSG <tspan data-pais="epsg">25830</tspan></text>
             </svg>
@@ -390,7 +358,7 @@
             <div class="row"><span style="width:26px;height:3px;background:#000;transform:rotate(-38deg)"></span><span class="c-title">Project</span></div>
           </div>
           <div class="card w6 k">
-            <span class="c-label">Grid convergence in Spain</span>
+            <span class="c-label">Convergence at the edge of a UTM zone</span>
             <div class="row" style="justify-content:space-between;flex-wrap:wrap"><b class="c-num">≈ 2°</b><span class="c-text">between true and grid north at the zone edges</span></div>
           </div>
         </div>
@@ -1554,11 +1522,14 @@
 <div class="b-cards">
 <div class="card w6">
 <div class="table-wrap"><table>
-<thead><tr><th>Three worlds</th><th>What it is</th><th>How it relates to the others</th></tr></thead>
+<thead><tr><th>Stage <span class="tag">Inferred</span></th><th>Who</th><th>Which coordinates</th><th>What can go wrong</th></tr></thead>
 <tbody>
-<tr><td>Reality</td><td>The ground, what is built, buried utilities</td><td>It is measured: the surveyor turns it into points with coordinates</td></tr>
-<tr class="is-key"><td>Model</td><td>The information about an asset that does not exist yet</td><td>It is designed on those points and in the same system</td></tr>
-<tr><td>Site</td><td>The built asset</td><td>It is set out: the model's coordinates go back to the ground</td></tr>
+<tr><td>Measure</td><td>Surveyor</td><td>Those of the official geodetic network</td><td>Delivering in a local system without saying which (<a href="#topografia">from the field to the model</a>)</td></tr>
+<tr><td>Encode</td><td>Surveyor and BIM team</td><td>Points, clouds and terrain in that system</td><td>Numbers so large that the program loses precision (<a href="#limite">far from the origin</a>)</td></tr>
+<tr class="is-key"><td>Design</td><td>Each discipline</td><td>A local origin close to the building and a transformation to the official system</td><td>Everyone choosing their own origin (<a href="#principio">the golden rule</a>)</td></tr>
+<tr><td>Coordinate</td><td>BIM coordinator</td><td>The same ones for every model</td><td>Models shifted, rotated or at another elevation (<a href="#problema">no common system</a>)</td></tr>
+<tr><td>Set out</td><td>Contractor</td><td>The site's setting-out control points</td><td>Mixing up grid and ground distances (<a href="#escala">scale</a>)</td></tr>
+<tr><td>Operate</td><td>Owner</td><td>Those of the delivered model</td><td>Losing the georeference in the final model (<a href="#ifc">IFC</a>)</td></tr>
 </tbody>
 </table></div>
 </div>
@@ -1575,32 +1546,14 @@
 <li>How long it really is (<a href="#escala">scale</a>).</li>
 </ul>
 </div>
-<div class="card w6"><p class="table-note" style="margin:0">Sources: <a href="https://www.iso.org/standard/68078.html" target="_blank" rel="noopener">ISO 19650-1:2018, concepts</a> · <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2007-15822" target="_blank" rel="noopener">Royal Decree 1071/2007, official geodetic system</a>.</p></div>
-</div>
-  </template>
-
-  <template id="l2-ciclo">
-<div class="b-cards">
-<div class="card w6">
-<div class="table-wrap"><table>
-<thead><tr><th>Stage</th><th>Who</th><th>Which coordinates</th><th>What can go wrong</th></tr></thead>
-<tbody>
-<tr><td>Measure</td><td>Surveyor</td><td>Those of the official geodetic network</td><td>Delivering in a local system without saying which (<a href="#topografia">from the field to the model</a>)</td></tr>
-<tr><td>Encode</td><td>Surveyor and BIM team</td><td>Points, clouds and terrain in that system</td><td>Numbers so large that the program loses precision (<a href="#limite">far from the origin</a>)</td></tr>
-<tr class="is-key"><td>Design</td><td>Each discipline</td><td>A local origin close to the building and a transformation to the official system</td><td>Everyone choosing their own origin (<a href="#principio">the golden rule</a>)</td></tr>
-<tr><td>Coordinate</td><td>BIM coordinator</td><td>The same ones for every model</td><td>Models shifted, rotated or at another elevation (<a href="#problema">no common system</a>)</td></tr>
-<tr><td>Set out</td><td>Contractor</td><td>The site's setting-out control points</td><td>Mixing up grid and ground distances (<a href="#escala">scale</a>)</td></tr>
-<tr><td>Operate</td><td>Owner</td><td>Those of the delivered model</td><td>Losing the georeference in the final model (<a href="#ifc">IFC</a>)</td></tr>
-</tbody>
-</table></div>
-</div>
-<div class="card w6 k">
+<div class="card w6 y">
 <h4>One decision, at the start</h4>
 <p>The system is chosen before measuring and written into the BIM execution plan. Changing it halfway through the project means transforming everything that already exists, and every transformation is a chance for error. <span class="tag">Inferred</span></p>
 </div>
-<div class="card w6"><p class="table-note" style="margin:0">Sources: <a href="https://www.iso.org/standard/68080.html" target="_blank" rel="noopener">ISO 19650-2:2018, delivery phase</a> · <a href="https://www.boe.es/diario_boe/txt.php?id=BOE-A-2023-16784" target="_blank" rel="noopener">Order PCM/818/2023, Spanish government BIM Plan</a>.</p></div>
+<div class="card w6"><p class="table-note" style="margin:0">Sources: <a href="https://www.iso.org/standard/68078.html" target="_blank" rel="noopener">ISO 19650-1:2018, concepts</a> · <a href="https://www.iso.org/standard/68080.html" target="_blank" rel="noopener">ISO 19650-2:2018, delivery of information</a> (the cycle stages are our own reading) · <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2007-15822" target="_blank" rel="noopener">Royal Decree 1071/2007, official geodetic system</a>.</p></div>
 </div>
   </template>
+
 
 
   <template id="l2-problema">
@@ -2109,7 +2062,7 @@
           <tbody>
             <tr><td>Geographic</td><td>The direction of the North Pole. Many programs call it "true north".</td></tr>
             <tr class="is-key"><td>Grid</td><td>The Y axis of the UTM projection.</td></tr>
-            <tr><td>Magnetic</td><td>The compass one. Not used in BIM.</td></tr>
+            <tr><td>Magnetic</td><td>The compass one. Hardly used in BIM.</td></tr>
             <tr><td>Project</td><td>The building's axis, the one drawn pointing up.</td></tr>
           </tbody>
         </table></div>
