@@ -42,7 +42,7 @@ ALIAS = {
     'C22': ['LoGeoRef'],
     'C23': ['IFC 4.3', 'IFC4.3', 'alineación'],
     'C24': ['exportación IFC', 'exportar IFC', 'exportador IFC'],
-    'C25': ['BEP', 'EIR', 'ISO 19650'],
+    'C25': ['estrategia de coordenadas', 'requisitos de coordenadas'],  # BEP/EIR/ISO 19650: términos P de la base 06
     'C26': ['nube de puntos', 'nubes de puntos'],
     'C27': ['topografía', 'replanteo', 'GNSS', 'estación total'],
     'C28': ['BIM-GIS', 'GIS', 'GeoBIM'],

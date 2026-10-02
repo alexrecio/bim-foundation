@@ -527,9 +527,8 @@ window.BF_GLOSARIO = [
    "C32"
   ],
   "al": [
-   "BEP",
-   "EIR",
-   "ISO 19650"
+   "estrategia de coordenadas",
+   "requisitos de coordenadas"
   ]
  },
  {
