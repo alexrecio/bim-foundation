@@ -1653,7 +1653,8 @@
    "Kollisionen",
    "Clash",
    "Clashes"
-  ]
+  ],
+  "h": "ff543fa0f4"
  },
  "D02": {
   "t": "Harte Kollision",
@@ -1667,7 +1668,8 @@
    "harte Kollisionen",
    "harten Kollisionen",
    "hard clash"
-  ]
+  ],
+  "h": "12f9abf755"
  },
  "D03": {
   "t": "Weiche Kollision (Abstandskollision)",
@@ -1683,7 +1685,8 @@
    "Abstandskollision",
    "Abstandskollisionen",
    "clearance"
-  ]
+  ],
+  "h": "a0412826cd"
  },
  "D04": {
   "t": "Ablaufkollision / zeitliche Kollision (4D)",
@@ -1697,7 +1700,8 @@
    "zeitliche Kollision",
    "zeitliche Kollisionen",
    "4D"
-  ]
+  ],
+  "h": "124b340416"
  },
  "D05": {
   "t": "Prüftoleranz",
@@ -1710,7 +1714,8 @@
    "Toleranzen",
    "Prüftoleranz",
    "Prüftoleranzen"
-  ]
+  ],
+  "h": "61b90fa6c4"
  },
  "D06": {
   "t": "Kollisionsmatrix (Prüfplan)",
@@ -1725,7 +1730,8 @@
    "Prüfplan",
    "Matrix",
    "clash matrix"
-  ]
+  ],
+  "h": "9a4c8e0e66"
  },
  "D07": {
   "t": "Gruppierung von Kollisionen",
@@ -1738,7 +1744,8 @@
    "Gruppierungen",
    "gruppieren",
    "gruppiert"
-  ]
+  ],
+  "h": "3f25c75668"
  },
  "D08": {
   "t": "Falschmeldung (False Positive)",
@@ -1752,7 +1759,8 @@
    "False Positive",
    "False Positives",
    "false positive"
-  ]
+  ],
+  "h": "b2aa6ac999"
  },
  "D09": {
   "t": "Räumliche Koordination / Koordinationsmodell",
@@ -1766,7 +1774,8 @@
    "3D-Koordination",
    "Koordinationsmodell",
    "Koordinationsmodells"
-  ]
+  ],
+  "h": "4023d4a479"
  },
  "D10": {
   "t": "Problem (Issue / Topic)",
@@ -1781,7 +1790,8 @@
    "Topics",
    "Aufgabe",
    "Aufgaben"
-  ]
+  ],
+  "h": "cfaa3c6de1"
  },
  "D11": {
   "t": "Ansichtspunkt und Snapshot",
@@ -1795,7 +1805,8 @@
    "Viewpoint",
    "Viewpoints",
    "Snapshot"
-  ]
+  ],
+  "h": "2f49bec4c7"
  },
  "D12": {
   "t": "Duplikate",
@@ -1808,7 +1819,8 @@
    "Duplikate",
    "Duplikaten",
    "doppelte Elemente"
-  ]
+  ],
+  "h": "e0fd420c91"
  },
  "D13": {
   "t": "Lösungshierarchie (wer weicht aus)",
@@ -1821,7 +1833,8 @@
    "Lösungshierarchie",
    "Vorfahrtsregel",
    "Vorrangregel"
-  ]
+  ],
+  "h": "feb7f28725"
  },
  "D14": {
   "t": "BCF (BIM Collaboration Format)",
@@ -1832,7 +1845,8 @@
   "al": [
    "BCF",
    "BIM Collaboration Format"
-  ]
+  ],
+  "h": "3f2a0ea80b"
  },
  "D15": {
   "t": "BCF API / OpenCDE",
@@ -1844,7 +1858,8 @@
    "BCF API",
    "OpenCDE",
    "Foundation API"
-  ]
+  ],
+  "h": "cc57a431a8"
  },
  "D16": {
   "t": "ISO 19650 und Koordination",
@@ -1856,7 +1871,8 @@
    "Föderationsstrategie",
    "TIDP",
    "MIDP"
-  ]
+  ],
+  "h": "3873e74db7"
  },
  "D17": {
   "t": "IFC-Objektkennung (GlobalId)",
@@ -1869,7 +1885,8 @@
    "IfcGloballyUniqueId",
    "IFC GUID",
    "IFC-GUID"
-  ]
+  ],
+  "h": "681c0a2d8c"
  },
  "D18": {
   "t": "Auswahlset / Suchset",
@@ -1885,7 +1902,8 @@
    "search set",
    "search sets",
    "selection set"
-  ]
+  ],
+  "h": "38944e108a"
  },
  "D19": {
   "t": "Ausschlussregeln und Regelsätze",
@@ -1901,7 +1919,8 @@
    "Regelsatzes",
    "ruleset",
    "rulesets"
-  ]
+  ],
+  "h": "d0264a2bb8"
  },
  "D20": {
   "t": "Freiraum / Wartungs- und Zugangsbereich",
@@ -1915,7 +1934,8 @@
    "Wartungsbereich",
    "Wartungsbereiche",
    "Zugangsbereich"
-  ]
+  ],
+  "h": "28f9c6f46d"
  },
  "D21": {
   "t": "Automatische Kollisionsprüfung in der Cloud",
@@ -1926,7 +1946,8 @@
   "al": [
    "automatische Kollisionsprüfung",
    "automatischen Kollisionsprüfung"
-  ]
+  ],
+  "h": "456df01484"
  },
  "D22": {
   "t": "Status und Lebenszyklus eines Problems",
@@ -1938,7 +1959,8 @@
    "Status des Problems",
    "Lebenszyklus",
    "Issue-Status"
-  ]
+  ],
+  "h": "75a427f7d4"
  },
  "D23": {
   "t": "Koordinationskennzahlen (KPI)",
@@ -1951,7 +1973,8 @@
    "Kennzahl",
    "KPI",
    "KPIs"
-  ]
+  ],
+  "h": "8023de8594"
  },
  "D24": {
   "t": "Koordinationsbesprechung",
@@ -1962,7 +1985,8 @@
   "al": [
    "Koordinationsbesprechung",
    "Koordinationsbesprechungen"
-  ]
+  ],
+  "h": "d844a01d24"
  },
  "D25": {
   "t": "Informationsbedarfstiefe und Prüfreife des Modells",
@@ -1976,7 +2000,8 @@
    "LOIN",
    "Informationsbedarfstiefe",
    "Level of Information Need"
-  ]
+  ],
+  "h": "9831d1e34d"
  },
  "D26": {
   "t": "Abschlussprüfung",
@@ -1988,7 +2013,8 @@
    "Abschlussprüfung",
    "Abschlussprüfungen",
    "re-run"
-  ]
+  ],
+  "h": "bdcaa21806"
  },
  "P01": {
   "t": "BIM-Abwicklungsplan (BAP)",
@@ -2004,7 +2030,8 @@
    "BAP",
    "BEP",
    "BIM execution plan"
-  ]
+  ],
+  "h": "35d44b20f1"
  },
  "P02": {
   "t": "Vorvertraglicher BAP",
@@ -2019,7 +2046,8 @@
    "Vor-BAP",
    "pre-BEP",
    "pre-appointment BEP"
-  ]
+  ],
+  "h": "aacb86454b"
  },
  "P03": {
   "t": "BAP nach Vergabe (bestätigter BAP)",
@@ -2032,7 +2060,8 @@
    "bestätigter BAP",
    "bestätigten BAP",
    "post-appointment BEP"
-  ]
+  ],
+  "h": "72ceb44d75"
  },
  "P04": {
   "t": "Auftraggeber-Informationsanforderungen (AIA / EIR)",
@@ -2046,7 +2075,8 @@
    "AIA",
    "EIR",
    "exchange information requirements"
-  ]
+  ],
+  "h": "515d5f3bab"
  },
  "P05": {
   "t": "Organisatorische Informationsanforderungen (OIR)",
@@ -2058,7 +2088,8 @@
    "OIR",
    "organisatorische Informationsanforderungen",
    "organisatorischen Informationsanforderungen"
-  ]
+  ],
+  "h": "d720b23b00"
  },
  "P06": {
   "t": "Projekt-Informationsanforderungen (PIR)",
@@ -2069,7 +2100,8 @@
   "al": [
    "PIR",
    "Projekt-Informationsanforderungen"
-  ]
+  ],
+  "h": "7728c95bc2"
  },
  "P07": {
   "t": "Asset-Informationsanforderungen (AIR)",
@@ -2080,7 +2112,8 @@
   "al": [
    "AIR",
    "Asset-Informationsanforderungen"
-  ]
+  ],
+  "h": "f14bba1675"
  },
  "P08": {
   "t": "Projekt-Informationsmodell (PIM)",
@@ -2092,7 +2125,8 @@
    "PIM",
    "Projekt-Informationsmodell",
    "Projekt-Informationsmodells"
-  ]
+  ],
+  "h": "2f8d1c8337"
  },
  "P09": {
   "t": "Asset-Informationsmodell (AIM)",
@@ -2104,7 +2138,8 @@
    "AIM",
    "Asset-Informationsmodell",
    "Asset-Informationsmodells"
-  ]
+  ],
+  "h": "b769083d7b"
  },
  "P10": {
   "t": "Auftraggeber",
@@ -2116,7 +2151,8 @@
    "Auftraggeber",
    "Auftraggebers",
    "appointing party"
-  ]
+  ],
+  "h": "60cca94f81"
  },
  "P11": {
   "t": "Federführender Auftragnehmer",
@@ -2130,7 +2166,8 @@
    "federführenden Auftragnehmers",
    "federführende Auftragnehmer",
    "lead appointed party"
-  ]
+  ],
+  "h": "a53a79ae18"
  },
  "P12": {
   "t": "Auftragnehmer",
@@ -2143,7 +2180,8 @@
    "Auftragnehmers",
    "Auftragnehmern",
    "appointed party"
-  ]
+  ],
+  "h": "87a88181ef"
  },
  "P13": {
   "t": "Lieferteam",
@@ -2155,7 +2193,8 @@
    "Lieferteam",
    "Lieferteams",
    "delivery team"
-  ]
+  ],
+  "h": "e7221d54f0"
  },
  "P14": {
   "t": "Aufgabenteam",
@@ -2167,7 +2206,8 @@
    "Aufgabenteam",
    "Aufgabenteams",
    "task team"
-  ]
+  ],
+  "h": "b3156d92f0"
  },
  "P15": {
   "t": "Projektteam",
@@ -2179,7 +2219,8 @@
    "Projektteam",
    "Projektteams",
    "project team"
-  ]
+  ],
+  "h": "05905c9874"
  },
  "P16": {
   "t": "Verantwortlichkeitsmatrix",
@@ -2191,7 +2232,8 @@
    "Verantwortlichkeitsmatrix",
    "Verantwortlichkeitsmatrizen",
    "responsibility matrix"
-  ]
+  ],
+  "h": "20a4e19f9d"
  },
  "P17": {
   "t": "Teil-Informationslieferplan (TIDP)",
@@ -2204,7 +2246,8 @@
    "Teil-Informationslieferplan",
    "Teil-Informationslieferplans",
    "Teil-Informationslieferpläne"
-  ]
+  ],
+  "h": "ee12a40096"
  },
  "P18": {
   "t": "Master-Informationslieferplan (MIDP)",
@@ -2216,7 +2259,8 @@
    "MIDP",
    "Master-Informationslieferplan",
    "Master-Informationslieferplans"
-  ]
+  ],
+  "h": "1d8f9e33a0"
  },
  "P19": {
   "t": "Meilenstein der Informationslieferung",
@@ -2232,7 +2276,8 @@
    "Liefermeilensteine",
    "Datenübergabepunkt",
    "Datenübergabepunkte"
-  ]
+  ],
+  "h": "b5d2570125"
  },
  "P20": {
   "t": "Föderationsstrategie",
@@ -2243,7 +2288,8 @@
   "al": [
    "Föderationsstrategie",
    "Föderationsstrategien"
-  ]
+  ],
+  "h": "3726626d1d"
  },
  "P21": {
   "t": "Informationsstandard des Projekts",
@@ -2255,7 +2301,8 @@
    "Informationsstandard",
    "Informationsstandards",
    "Informationsstandard des Projekts"
-  ]
+  ],
+  "h": "33f61cef52"
  },
  "P22": {
   "t": "Methoden und Verfahren der Informationserstellung",
@@ -2267,7 +2314,8 @@
    "Methoden und Verfahren der Informationserstellung",
    "Methoden der Informationserstellung",
    "Erstellungsmethoden"
-  ]
+  ],
+  "h": "c87375427d"
  },
  "P23": {
   "t": "Informationsprotokoll",
@@ -2279,7 +2327,8 @@
    "Informationsprotokoll",
    "Informationsprotokolls",
    "Information Protocol"
-  ]
+  ],
+  "h": "4bea1b4e75"
  },
  "P24": {
   "t": "Informationscontainer",
@@ -2294,7 +2343,8 @@
    "Container",
    "Containern",
    "Containers"
-  ]
+  ],
+  "h": "8356c14178"
  },
  "P25": {
   "t": "Status in der CDE",
@@ -2308,7 +2358,8 @@
    "in Bearbeitung",
    "work in progress",
    "WIP"
-  ]
+  ],
+  "h": "c0eb2daa65"
  },
  "P26": {
   "t": "Statuscode",
@@ -2320,7 +2371,8 @@
    "Statuscode",
    "Statuscodes",
    "status code"
-  ]
+  ],
+  "h": "56a99f823e"
  },
  "P27": {
   "t": "Revisionscode",
@@ -2332,7 +2384,8 @@
    "Revisionscode",
    "Revisionscodes",
    "revision code"
-  ]
+  ],
+  "h": "ea5de4a421"
  },
  "P28": {
   "t": "Namenskonvention",
@@ -2345,7 +2398,8 @@
    "Namenskonventionen",
    "Benennungskonvention",
    "naming convention"
-  ]
+  ],
+  "h": "cca59de3f4"
  },
  "P29": {
   "t": "Mobilisierungsplan",
@@ -2357,7 +2411,8 @@
    "Mobilisierungsplan",
    "Mobilisierungsplans",
    "Mobilisierung"
-  ]
+  ],
+  "h": "81b727c30b"
  },
  "P30": {
   "t": "Informationsmanagementprozess",
@@ -2370,7 +2425,8 @@
    "Informationsmanagements",
    "Informationsmanagementprozess",
    "Informationsmanagementprozesses"
-  ]
+  ],
+  "h": "44e336387d"
  },
  "P31": {
   "t": "Normenreihe ISO 19650",
@@ -2382,7 +2438,8 @@
    "ISO 19650",
    "DIN EN ISO 19650",
    "UNE-EN ISO 19650"
-  ]
+  ],
+  "h": "06ee1e92b6"
  },
  "P32": {
   "t": "BIM-Anwendungsfälle",
@@ -2396,7 +2453,8 @@
    "BIM-Anwendungsfällen",
    "BIM-Anwendungsfalls",
    "BIM uses"
-  ]
+  ],
+  "h": "8bb279e036"
  },
  "P33": {
   "t": "Plan BIM für die öffentliche Auftragsvergabe (Spanien)",
@@ -2408,7 +2466,8 @@
    "Plan BIM",
    "Orden PCM/818/2023",
    "Plan de Incorporación de la Metodología BIM"
-  ]
+  ],
+  "h": "d7dfaab76f"
  },
  "P34": {
   "t": "BIM-Stufe (spanischer Plan BIM)",
@@ -2420,7 +2479,8 @@
    "BIM-Stufe",
    "BIM-Stufen",
    "BIM Level"
-  ]
+  ],
+  "h": "2a0628f201"
  },
  "P35": {
   "t": "Interministerielle BIM-Kommission (CIBIM)",
@@ -2432,7 +2492,8 @@
    "CIBIM",
    "CBIM",
    "Comisión Interministerial BIM"
-  ]
+  ],
+  "h": "66dfa24cbd"
  },
  "P36": {
   "t": "Britischer nationaler Anhang",
@@ -2447,7 +2508,8 @@
    "britischer nationaler Anhang",
    "britischen nationalen Anhang",
    "UK National Annex"
-  ]
+  ],
+  "h": "6725d5485a"
  },
  "P37": {
   "t": "Informationsrisikoregister",
@@ -2460,7 +2522,8 @@
    "Risikoregisters",
    "Informationsrisikoregister",
    "Informationsrisikoregisters"
-  ]
+  ],
+  "h": "3bad9ac056"
  },
  "P38": {
   "t": "Informationserstellungsplan (vorgeschlagen)",
@@ -2471,6 +2534,7 @@
   "al": [
    "Information Production Plan",
    "Informationserstellungsplan"
-  ]
+  ],
+  "h": "1c20b024ff"
  }
 }

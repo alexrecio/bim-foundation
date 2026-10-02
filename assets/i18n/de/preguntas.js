@@ -59,5 +59,107 @@ window.BF_PREGUNTAS = [
   "coordenadas-compartidas",
   "calidad",
   "VI"
+ ],
+ [
+  "Was bedeutet ein LOD 300 eigentlich?",
+  "niveles-de-informacion",
+  "escalera",
+  "I"
+ ],
+ [
+  "Fordere ich im Vertrag LOD, LOI oder LOIN?",
+  "niveles-de-informacion",
+  "requisito",
+  "I"
+ ],
+ [
+  "Welche Norm ersetzt die EN 17412-1?",
+  "niveles-de-informacion",
+  "iso7817",
+  "II"
+ ],
+ [
+  "Ist die Detailgenauigkeit „Fein“ der Ansicht ein LOD 400?",
+  "niveles-de-informacion",
+  "vista",
+  "III"
+ ],
+ [
+  "Wie prüfe ich, ob die Türen ihre Daten mitbringen?",
+  "niveles-de-informacion",
+  "ids",
+  "VI"
+ ],
+ [
+  "Warum erscheinen Tausende Kollisionen, die gar keine sind?",
+  "deteccion-de-interferencias",
+  "ruido",
+  "I"
+ ],
+ [
+  "Welche Toleranz stelle ich in einer Kollisionsprüfung ein?",
+  "deteccion-de-interferencias",
+  "tolerancia",
+  "I"
+ ],
+ [
+  "Wer weicht aus, wenn zwei TGA-Leitungen kollidieren?",
+  "deteccion-de-interferencias",
+  "quien-mueve",
+  "I"
+ ],
+ [
+  "Welche BCF-Version verwende ich, und warum gehen Issues verloren?",
+  "deteccion-de-interferencias",
+  "bcf-versiones",
+  "II"
+ ],
+ [
+  "Was muss ein BAP enthalten?",
+  "bep-plan-de-ejecucion",
+  "contenido",
+  "I"
+ ],
+ [
+  "Was ist der Unterschied zwischen AIA und BAP?",
+  "bep-plan-de-ejecucion",
+  "bep",
+  "I"
+ ],
+ [
+  "Welche BIM-Stufe verlangt der Plan BIM in Spanien?",
+  "bep-plan-de-ejecucion",
+  "espana",
+  "II"
+ ],
+ [
+  "Wie bewerte ich den BAP eines Bieters?",
+  "bep-plan-de-ejecucion",
+  "evaluar",
+  "VI"
+ ],
+ [
+  "Was unterscheidet ein BIM-Modell von einem digitalen Zwilling?",
+  "gemelos-digitales",
+  "tres-niveles",
+  "I"
+ ],
+ [
+  "Welche Daten muss ich in der Leistungsbeschreibung fordern, um einen Zwilling zu erhalten?",
+  "gemelos-digitales",
+  "entrega",
+  "V"
+ ],
+ [
+  "Wie verknüpfe ich einen Sensor im Gebäude mit seinem Element im Modell?",
+  "gemelos-digitales",
+  "identificadores",
+  "V"
+ ],
+ [
+  "Wie prüfe ich, ob die Daten eines Zwillings verlässlich sind?",
+  "gemelos-digitales",
+  "calidad",
+  "VI"
  ]
 ];
