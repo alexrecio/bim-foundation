@@ -580,7 +580,7 @@
  },
  "N07": {
   "t": "Actors (appointing / appointed party)",
-  "d": "Who requests the information (appointing party: the client or the lead contractor) and who produces it (appointed party). Every requirement identifies them.",
+  "d": "Who requests the information and who produces it. In ISO 19650 terminology: appointing party (the client), lead appointed party and appointed party. Every requirement identifies them.",
   "ej": "The client requests; the architecture team delivers the doors at detailed design and the joiner during construction.",
   "eq": "Responsibility matrix in the BEP; requirements management platforms with one IDS per actor.",
   "err": "Not assigning a responsible party: the data falls into no man's land between two disciplines.",
@@ -589,7 +589,7 @@
    "appointing party",
    "appointed party"
   ],
-  "h": "393fe03931"
+  "h": "b8c0f547b6"
  },
  "N08": {
   "t": "Over-modelling / information waste",
@@ -606,7 +606,7 @@
  },
  "N09": {
   "t": "Level of Development (LOD)",
-  "d": "Scale from 100 to 500 (plus 350) indicating how far the geometry and information of an element can be relied on. It emerged around 2004-2005 (Vico) and the AIA adopted it in E202-2008.",
+  "d": "Scale from 100 to 500 (plus 350) indicating how far the geometry and information of an element can be relied on. It emerged around 2004-2005 in a Graphisoft team (Vico Software from 2007) and the AIA adopted it in E202-2008.",
   "ej": "LOD 300: quantity, size, shape, location and orientation measurable in the model.",
   "eq": "BIMForum LOD Specification (definitions per element); BEP element matrices.",
   "err": "Applying it to the whole model (“LOD 300 model”); BIMForum: “There is no such thing as an LOD ### model”.",
@@ -616,7 +616,7 @@
    "LOD 300",
    "LOD 350"
   ],
-  "h": "456482d5d3"
+  "h": "8410f3ce69"
  },
  "N10": {
   "t": "Level of Detail",
@@ -754,7 +754,7 @@
  },
  "N20": {
   "t": "Data templates (ISO 23386 / ISO 23387)",
-  "d": "ISO 23386 sets out how to describe properties and maintain interconnected dictionaries; ISO 23387 defines data templates that group the properties of each object type.",
+  "d": "ISO 23386 sets out how to describe properties and maintain interconnected dictionaries; ISO 23387 (current edition from 2025) defines data templates that group the properties of each object type.",
   "ej": "Fire door data template with its fire resistance class and allowed values.",
   "eq": "bSDD; requirements management platforms; property import in Allplan and Archicad.",
   "err": "Inventing different property names on every project.",
@@ -764,7 +764,7 @@
    "ISO 23386",
    "ISO 23387"
   ],
-  "h": "54f385bea8"
+  "h": "649c9800f3"
  },
  "N21": {
   "t": "buildingSMART Data Dictionary (bSDD)",
@@ -1109,7 +1109,7 @@
   "t": "Construction Operations Building information exchange (COBie)",
   "d": "Exchange specification (usually a spreadsheet or IFC) with spaces, systems, components, types and documents for handover to maintenance; created by USACE in 2007.",
   "ej": "Handing the owner a COBie workbook with all terminal units and their warranties.",
-  "eq": "NBIMS-US (COBie v3 in development, 2023 draft); BS 1192-4:2014 in the UK; COBie exporters in Revit, Archicad.",
+  "eq": "NBIMS-US V4 (COBie 3, published in 2023; version 2.4 from NBIMS-US V3 remains widespread); BS 1192-4:2014 in the UK (withdrawn in 2022); COBie exporters in Revit, Archicad.",
   "err": "Filling in COBie 'by hand' at the end of construction without linking it to the model GUIDs.",
   "al": [
    "COBie",
@@ -1117,7 +1117,7 @@
    "COBie spreadsheet",
    "COBie workbook"
   ],
-  "h": "892c3e337d"
+  "h": "5b7f5f39b4"
  },
  "G18": {
   "t": "Information Delivery Specification (IDS)",
@@ -1855,7 +1855,7 @@
    "pre-BEP",
    "pre-contract BEP"
   ],
-  "h": "aacb86454b"
+  "h": "db489c6a73"
  },
  "P03": {
   "t": "Post-appointment BEP",
@@ -1883,7 +1883,7 @@
    "EIRs",
    "information requirements"
   ],
-  "h": "515d5f3bab"
+  "h": "f6724589b6"
  },
  "P05": {
   "t": "Organizational information requirements (OIR)",
@@ -1948,7 +1948,7 @@
  },
  "P10": {
   "t": "Appointing party",
-  "d": "Receiver of information concerning works, goods or services: usually the client or whoever manages information on its behalf. It writes the EIR and accepts the information.",
+  "d": "Receiver of information concerning works or services: usually the client or whoever manages information on its behalf. It writes the EIR and accepts the information.",
   "ej": "A ministry or a public works agency tendering a project.",
   "eq": "ISO 19650: appointing party; PAS 1192: employer.",
   "err": "Simply calling it «the client» when in fact a delegated information manager is acting.",
@@ -1956,7 +1956,7 @@
    "appointing party",
    "appointing parties"
   ],
-  "h": "60cca94f81"
+  "h": "ed23bb83d5"
  },
  "P11": {
   "t": "Lead appointed party",
@@ -1968,7 +1968,7 @@
    "lead appointed party",
    "lead appointed parties"
   ],
-  "h": "a53a79ae18"
+  "h": "52667abe2a"
  },
  "P12": {
   "t": "Appointed party",
@@ -1980,7 +1980,7 @@
    "appointed party",
    "appointed parties"
   ],
-  "h": "87a88181ef"
+  "h": "3e85e97271"
  },
  "P13": {
   "t": "Delivery team",
@@ -1992,7 +1992,7 @@
    "delivery team",
    "delivery teams"
   ],
-  "h": "e7221d54f0"
+  "h": "f969c2dda1"
  },
  "P14": {
   "t": "Task team",
@@ -2004,7 +2004,7 @@
    "task team",
    "task teams"
   ],
-  "h": "b3156d92f0"
+  "h": "6103879eb4"
  },
  "P15": {
   "t": "Project team",
@@ -2016,7 +2016,7 @@
    "project team",
    "project teams"
   ],
-  "h": "05905c9874"
+  "h": "d2f0f3bb65"
  },
  "P16": {
   "t": "Responsibility matrix",
@@ -2056,7 +2056,7 @@
    "MIDP",
    "MIDPs"
   ],
-  "h": "1d8f9e33a0"
+  "h": "a4d8d2f642"
  },
  "P19": {
   "t": "Information delivery milestone",
@@ -2070,7 +2070,7 @@
    "delivery milestone",
    "delivery milestones"
   ],
-  "h": "b5d2570125"
+  "h": "b41d7b5171"
  },
  "P20": {
   "t": "Federation strategy",
