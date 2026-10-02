@@ -141,8 +141,21 @@
   // Capítulos (hilo narrativo): data-cap en la primera slide de cada capítulo
   let cap = '';
   const caps = slides.map((s) => (cap = s.dataset.cap || cap));
-  const list = () => slides.map((s, i) => (s.dataset.cap ? `<li class="nav-cap">${s.dataset.cap}</li>` : '') +
-    `<li class="nav-item"><a href="#${s.id}" data-i="${i}"><span>${pad(i + 1)}</span>${titleOf(s)}</a></li>`).join('');
+  // Menú plegable por capítulos: solo se despliega el del visitante (los demás se abren al pulsar su cabecera)
+  const item = (s, i) => `<li class="nav-item"><a href="#${s.id}" data-i="${i}"><span>${pad(i + 1)}</span>${titleOf(s)}</a></li>`;
+  const list = () => {
+    let html = '', g = -1, open = false;
+    slides.forEach((s, i) => {
+      if (s.dataset.cap) {
+        if (open) html += '</ol></li>';
+        g++; open = true;
+        const n = caps.filter((c) => c === s.dataset.cap).length;
+        html += `<li class="nav-group" data-g="${g}"><button type="button" class="nav-cap" aria-expanded="false"><b>${s.dataset.cap}</b><em>${n}</em><i aria-hidden="true"></i></button><ol>`;
+      }
+      html += item(s, i);
+    });
+    return html + (open ? '</ol></li>' : '');
+  };
   slides.forEach((s, i) => {
     const n = s.querySelector('.slide-n');
     if (n) n.innerHTML = `${pad(i + 1)} / ${total}` + (caps[i] ? `<b class="slide-cap">${caps[i]}</b>` : '');
@@ -152,6 +165,17 @@
   const sheet = document.querySelector('#deck-sheet ol');
   if (side) side.innerHTML = list();
   if (sheet) sheet.innerHTML = list();
+  const groupOf = (i) => { const k = caps.slice(0, i + 1).filter((c, j) => slides[j].dataset.cap).length - 1; return k; };
+  const openGroup = (k) => document.querySelectorAll('.nav-group').forEach((li) => {
+    const on = +li.dataset.g === k;
+    li.classList.toggle('is-open', on); li.classList.toggle('is-here', on);
+    li.querySelector('.nav-cap').setAttribute('aria-expanded', on);
+  });
+  document.querySelectorAll('.nav-cap').forEach((btn) => btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const li = btn.parentElement; const on = li.classList.toggle('is-open');
+    btn.setAttribute('aria-expanded', on);
+  }));
   const bar = document.getElementById('deck-bar');
   const barBtn = document.getElementById('deck-bar-btn');
   if (barBtn) barBtn.addEventListener('click', (e) => {
@@ -160,11 +184,12 @@
     if (cur) sheet.parentElement.scrollTop = cur.offsetTop - sheet.parentElement.clientHeight / 2;
   });
   document.addEventListener('click', (e) => { if (bar && !bar.contains(e.target)) bar.classList.remove('is-open'); });
-  if (sheet) sheet.addEventListener('click', () => bar.classList.remove('is-open'));
+  if (sheet) sheet.addEventListener('click', (e) => { if (e.target.closest('a')) bar.classList.remove('is-open'); });
 
   let current = -1;
   const setCurrent = (i) => {
     if (i === current) return;
+    if (current < 0 || groupOf(i) !== groupOf(current)) openGroup(groupOf(i));
     current = i;
     document.querySelectorAll('.nav-item a').forEach((a) => {
       const k = +a.dataset.i;

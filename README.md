@@ -22,7 +22,7 @@ Mismo patrón que el portfolio:
 - **Capa 2 · detalle.** El botón «Ver detalle» de cada diapositiva abre una ficha (`<template id="l2-…">`) con los pasos, tablas, matices y fuentes. **Ningún texto se repite entre capas**: la ficha solo añade lo que la diapositiva no dice (los datos sí pueden repetirse cuando aportan).
 - **Bloques a ancho completo.** Cada diapositiva es un `.bento`: a la izquierda el titular (`.b-title`) y a la derecha una rejilla de tarjetas (`.b-cards`) con cifras, esquemas y dibujos SVG. En móvil se apila y las tarjetas pasan a dos columnas.
 - **Bloques.** `data-cap` en la primera slide de cada bloque agrupa el menú y rotula la numeración. Orden fijo: I · Conceptos generales (sin software), II · Estándares, III · Software, IV · Plataformas, V · Interoperabilidad, VI · Control de calidad.
-- **Menú de diapositivas.** Lateral en escritorio y barra inferior desplegable en móvil, con el título de cada slide (`data-nav`) y la slide actual marcada.
+- **Menú de diapositivas.** Lateral en escritorio y barra inferior desplegable en móvil, con el título de cada slide (`data-nav`) y la slide actual marcada. Plegable por bloques: solo se despliega el del visitante; las demás cabeceras se abren al pulsarlas.
 - Navegación: rueda, flechas o el menú; Esc cierra la ficha, y `#detalle-<id>` enlaza directamente a una ficha.
 
 ## Añadir un artículo

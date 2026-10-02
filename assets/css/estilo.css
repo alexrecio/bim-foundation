@@ -493,10 +493,19 @@ body.l2-lock { overflow: hidden; }
 
 /* ---------- Hilo narrativo: capítulos ---------- */
 /* data-cap="I · El problema" en la primera slide de cada capítulo: cabecera en el menú y rótulo junto a la numeración */
-.nav-cap { margin: 12px 0 4px; padding: 0 8px; font-family: var(--mono); font-size: 9.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--black); display: flex; align-items: center; gap: 8px; }
-.nav-cap::after { content: ""; flex: 1; height: 1px; background: var(--s200); }
-.nav-cap:first-child { margin-top: 0; }
-#deck-sheet .nav-cap { margin: 14px 0 4px; }
+/* Menú plegable por capítulos: solo el del visitante desplegado */
+.nav-group { list-style: none; }
+.nav-group > ol { display: none; list-style: none; margin: 0 0 6px; padding: 0; }
+.nav-group.is-open > ol { display: block; }
+.nav-cap { width: 100%; margin: 2px 0; padding: 8px; border: 0; border-radius: 6px; background: none; cursor: pointer; text-align: left; font-family: var(--mono); font-size: 9.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--s600); display: flex; align-items: center; gap: 8px; }
+.nav-cap b { font-weight: 700; flex: 1; }
+.nav-cap em { font-style: normal; color: var(--s400); }
+.nav-cap i { width: 8px; height: 8px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(-45deg); transition: transform .2s; flex: none; }
+.nav-group.is-open > .nav-cap i { transform: rotate(45deg); }
+.nav-cap:hover { background: var(--s50); color: var(--black); }
+.nav-group.is-here > .nav-cap { color: var(--black); }
+.nav-group.is-here > .nav-cap em { background: var(--accent); color: var(--black); padding: 1px 6px; border-radius: 9999px; }
+#deck-sheet .nav-cap { padding: 12px 8px; font-size: 11px; }
 .slide-cap { display: inline-block; margin-left: 10px; padding-left: 10px; border-left: 1px solid var(--s300); color: var(--black); font-weight: 700; }
 .slide.is-cap-start .slide-cap { background: var(--black); color: var(--accent); border: 0; padding: 2px 8px; }
 
