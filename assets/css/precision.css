@@ -220,3 +220,78 @@ body.l2-lock .pz-hud { display: none; }
 .sis-p { margin: 0; font-size: 15px; line-height: 1.5; color: var(--s700); }
 .card.y .sis-p { color: var(--black); }
 #sis-plot svg.draw { max-height: 240px; }
+
+/* ---------- Extensión del lenguaje de la portada al resto de la web ---------- */
+.pz-host { position: relative; isolation: isolate; }
+/* Papel milimetrado que se desvanece alrededor del origen */
+.pz-origin .paper, .pz-block .paper {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(var(--hair-2) 1px, transparent 1px), linear-gradient(90deg, var(--hair-2) 1px, transparent 1px),
+    linear-gradient(var(--hair) 1px, transparent 1px), linear-gradient(90deg, var(--hair) 1px, transparent 1px);
+  background-size: 40px 40px, 40px 40px, 8px 8px, 8px 8px;
+}
+.pz-origin .paper {
+  -webkit-mask-image: radial-gradient(circle 520px at var(--ox) var(--oy), #000 0%, rgba(0,0,0,.45) 50%, transparent 100%);
+  mask-image: radial-gradient(circle 520px at var(--ox) var(--oy), #000 0%, rgba(0,0,0,.45) 50%, transparent 100%);
+}
+.pz-origin.has-paper .h { opacity: .85; }
+/* Primera lámina de cada bloque: papel en la esquina superior derecha y numeral en hueco */
+.pz-block { position: absolute; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
+.pz-block .paper {
+  -webkit-mask-image: radial-gradient(ellipse 60% 70% at 100% 0%, #000 0%, rgba(0,0,0,.4) 45%, transparent 85%);
+  mask-image: radial-gradient(ellipse 60% 70% at 100% 0%, #000 0%, rgba(0,0,0,.4) 45%, transparent 85%);
+}
+.pz-block b {
+  position: absolute; left: calc(var(--pad) + 8px); bottom: -.14em; font-size: clamp(8rem, 17vw, 17rem); line-height: 1; font-weight: 900; letter-spacing: -.06em;
+  color: transparent; -webkit-text-stroke: 1.5px var(--s200);
+}
+
+/* Pie = cajetín de plano */
+.pz-cajetin {
+  width: 100%; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border: 1.5px solid var(--black);
+  text-transform: none; letter-spacing: 0; color: var(--black);
+}
+.pz-cajetin > div { padding: 8px 10px; border-right: 1px solid var(--s300); border-bottom: 1px solid var(--s300); min-width: 0; }
+.pz-cajetin span { display: block; font-family: var(--mono); font-size: 9px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--s500); }
+.pz-cajetin b { display: block; margin-top: 2px; font-size: 13px; font-weight: 900; text-transform: uppercase; letter-spacing: -.01em; line-height: 1.2; overflow-wrap: anywhere; }
+.pz-cajetin .c-proy b::after { content: "."; background: var(--accent); padding: 0 .08em; margin-left: .04em; }
+.pz-cajetin .c-doc, .pz-cajetin .c-aut { grid-column: 1 / -1; }
+.pz-cajetin .c-rev b { font-family: var(--mono); font-feature-settings: "zero" 1, "tnum" 1; }
+@media (min-width: 900px) {
+  .pz-cajetin { grid-template-columns: 1.2fr 2.4fr .7fr .6fr .8fr .5fr 1.6fr; }
+  .pz-cajetin .c-doc, .pz-cajetin .c-aut { grid-column: auto; }
+  .pz-cajetin > div { border-bottom: 0; }
+  .pz-cajetin > div:last-child { border-right: 0; }
+}
+
+/* Portada: lista de artículos como índice de láminas */
+.series-head::after { content: ""; display: block; height: 7px; width: min(100%, 241px); margin-top: 18px;
+  background: repeating-linear-gradient(90deg, var(--black) 0 1px, transparent 1px 40px) bottom right / 100% 7px no-repeat,
+              repeating-linear-gradient(90deg, var(--s400) 0 1px, transparent 1px 8px) bottom right / 100% 4px no-repeat,
+              linear-gradient(var(--s300), var(--s300)) bottom right / 100% 1px no-repeat; }
+.article-item a { position: relative; --reg-c: var(--black); }
+.article-item a::after {
+  content: ""; position: absolute; inset: -8px; pointer-events: none; opacity: 0; transition: opacity var(--t-fast) ease;
+  background:
+    linear-gradient(var(--reg-c), var(--reg-c)) top left / var(--reg) 1.5px, linear-gradient(var(--reg-c), var(--reg-c)) top left / 1.5px var(--reg),
+    linear-gradient(var(--reg-c), var(--reg-c)) top right / var(--reg) 1.5px, linear-gradient(var(--reg-c), var(--reg-c)) top right / 1.5px var(--reg),
+    linear-gradient(var(--reg-c), var(--reg-c)) bottom left / var(--reg) 1.5px, linear-gradient(var(--reg-c), var(--reg-c)) bottom left / 1.5px var(--reg),
+    linear-gradient(var(--reg-c), var(--reg-c)) bottom right / var(--reg) 1.5px, linear-gradient(var(--reg-c), var(--reg-c)) bottom right / 1.5px var(--reg);
+  background-repeat: no-repeat;
+}
+.article-item a:hover::after, .article-item a:focus-visible::after { opacity: 1; }
+.article-item.is-soon a::after { content: none; }
+
+/* Capa 2: la ficha emergente es una hoja de detalle sobre papel milimetrado */
+.l2-panel {
+  background-color: var(--s50);
+  background-image: linear-gradient(var(--hair) 1px, transparent 1px), linear-gradient(90deg, var(--hair) 1px, transparent 1px);
+  background-size: 8px 8px; background-attachment: local;
+}
+.l2-head { position: relative; padding-bottom: 14px; }
+.l2-head::after { content: ""; position: absolute; left: 0; right: 56px; bottom: 0; height: 7px;
+  background: repeating-linear-gradient(90deg, var(--black) 0 1px, transparent 1px 40px) bottom left / 100% 7px no-repeat,
+              repeating-linear-gradient(90deg, var(--s400) 0 1px, transparent 1px 8px) bottom left / 100% 4px no-repeat,
+              linear-gradient(var(--black), var(--black)) bottom left / 100% 1px no-repeat; }
+@media (min-width: 1200px) and (pointer: fine) { footer.site { padding-bottom: 72px; } }

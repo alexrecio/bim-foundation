@@ -47,34 +47,78 @@
   }
 
   // ---------- Portada de la web: cruz del origen sobre el plano milimetrado ----------
-  const hero = document.querySelector('body > main:not(.deck) .hero');
-  if (hero) {
+  // Origen técnico reutilizable: plano milimetrado + ejes + cruz del origen (+ pieza colocada, opcional)
+  const PIEZA = '<g class="part"><path class="plot" pathLength="1" d="M15 6 L200 76"/>' +
+    '<g transform="translate(200 76) rotate(-14)"><rect class="fill" x="0" y="-62" width="128" height="76" fill="#FFFF00"/>' +
+    '<path class="plot" pathLength="1" d="M0 14 V-62 H128 V14 Z M14 -48 H58 V-14 H14 Z M72 -48 H114 V-30 H72 Z"/></g></g>';
+  const PIEZA_TXT = '<g class="part" font-family="JetBrains Mono, monospace" font-size="10" font-weight="700" letter-spacing="1">' +
+    '<text x="34" y="9" transform="rotate(22.3 34 9)">ΔE 412,318  ΔN 88,104</text><text x="318" y="-12">θ −14°</text></g>';
+  const origen = (box, pos, { pieza = false, xy = 'E 0,000 · N 0,000', papel = false } = {}) => {
     const o = document.createElement('div');
-    o.className = 'pz-origin'; o.setAttribute('aria-hidden', 'true');
-    o.innerHTML = '<i class="h"></i><i class="v"></i>' +
+    o.className = 'pz-origin' + (papel ? ' has-paper' : ''); o.setAttribute('aria-hidden', 'true');
+    o.innerHTML = (papel ? '<i class="paper"></i>' : '') + '<i class="h"></i><i class="v"></i>' +
       '<svg viewBox="0 0 1 1"><g fill="none" stroke="#000" stroke-width="1.5" stroke-linecap="round">' +
-      '<circle r="11"/><circle r="26" stroke-width="1" stroke-dasharray="3 4"/>' +
-      '<g class="part"><path class="plot" pathLength="1" d="M15 6 L200 76"/>' +
-      '<g transform="translate(200 76) rotate(-14)"><rect class="fill" x="0" y="-62" width="128" height="76" fill="#FFFF00"/>' +
-      '<path class="plot" pathLength="1" d="M0 14 V-62 H128 V14 Z M14 -48 H58 V-14 H14 Z M72 -48 H114 V-30 H72 Z"/></g>' +
-      '</g></g>' +
-      '<circle r="2.5" fill="#000"/>' +
-      '<g class="part" font-family="JetBrains Mono, monospace" font-size="10" font-weight="700" letter-spacing="1">' +
-      '<text x="34" y="9" transform="rotate(22.3 34 9)">ΔE 412,318  ΔN 88,104</text><text x="318" y="-12">θ −14°</text></g></svg>' +
-      '<span class="lbl xy">E 0,000 · N 0,000</span><span class="lbl e">E →</span><span class="lbl n">↑ N</span>';
-    hero.prepend(o);
+      '<circle r="11"/><circle r="26" stroke-width="1" stroke-dasharray="3 4"/>' + (pieza ? PIEZA : '') + '</g>' +
+      '<circle r="2.5" fill="#000"/>' + (pieza ? PIEZA_TXT : '') + '</svg>' +
+      `<span class="lbl xy">${xy}</span><span class="lbl e">E →</span><span class="lbl n">↑ N</span>`;
+    box.classList.add('pz-host');
+    box.prepend(o);
     const place = () => {
-      const r = hero.getBoundingClientRect();
-      const side = hero.querySelector('.hero-side');
-      const s = side ? side.getBoundingClientRect() : null;
-      const wide = innerWidth >= 1280 && s;
-      const x = wide ? s.left - r.left - 36 : r.width * 0.86;
-      const y = wide ? Math.min(s.bottom - r.top + 28, r.height - 130) : r.height * 0.86;
-      o.style.setProperty('--ox', Math.round(x) + 'px');
-      o.style.setProperty('--oy', Math.round(y) + 'px');
+      const p = pos(box.getBoundingClientRect());
+      o.style.setProperty('--ox', Math.round(p[0]) + 'px');
+      o.style.setProperty('--oy', Math.round(p[1]) + 'px');
     };
     place(); addEventListener('resize', place);
     if (document.fonts) document.fonts.ready.then(place);
+    return o;
+  };
+
+  // Portada de la web
+  const hero = document.querySelector('body > main:not(.deck) .hero');
+  if (hero) origen(hero, (r) => {
+    const s = hero.querySelector('.hero-side').getBoundingClientRect();
+    return innerWidth >= 1280 ? [s.left - r.left - 36, Math.min(s.bottom - r.top + 28, r.height - 130)] : [r.width * 0.86, r.height * 0.86];
+  }, { pieza: true });
+
+  // Portada de cada artículo: el origen es el del sistema del lector
+  const portada = slides[0] && !slides[0].dataset.cap ? slides[0] : null;
+  if (portada && portada.querySelector('.b-cards')) {
+    const crs = () => { const b = document.querySelector('[data-crs-chip] b'); const m = b && b.textContent.match(/EPSG\s*\d+/); return m ? m[0] : 'EPSG ····'; };
+    const o = origen(portada, (r) => {
+      const c = portada.querySelector('.b-cards').getBoundingClientRect();
+      const t = portada.querySelector('.b-title').getBoundingClientRect();
+      return innerWidth >= 1000 ? [c.left - r.left - 8, Math.min(t.bottom - r.top + 40, r.height - 60)] : [r.width - 28, t.top - r.top - 24];
+    }, { xy: `${crs()} · E 0,000 · N 0,000`, papel: true });
+    document.addEventListener('bf-crs', () => { o.querySelector('.lbl.xy').textContent = `${crs()} · E 0,000 · N 0,000`; });
+  }
+
+  // Primera lámina de cada bloque (I–VI): papel milimetrado en la esquina y el numeral del bloque, en hueco
+  slides.filter((s) => s.dataset.cap).forEach((s) => {
+    const n = document.createElement('div');
+    n.className = 'pz-block'; n.setAttribute('aria-hidden', 'true');
+    n.innerHTML = `<i class="paper"></i><b>${s.dataset.cap.split('·')[0].trim()}</b>`;
+    s.classList.add('pz-host'); s.prepend(n);
+  });
+
+  // ---------- Pie como cajetín de plano: proyecto, documento, hoja, escala, fecha, revisión ----------
+  const pie = document.querySelector('footer.site .wrap');
+  if (pie && !pie.querySelector('.pz-cajetin')) {
+    const autor = (pie.textContent.match(/Diseñada y desarrollada por ([^·]+)/) || [])[1] || 'Alejandro García Nicolás';
+    const doc_ = art ? art.titulo : (document.title.split('|').map((t) => t.trim()).find((t) => t && t !== 'BIM Foundation') || 'Índice de la serie');
+    const meses = ['ENE','FEB','MAR','ABR','MAY','JUN','JUL','AGO','SEP','OCT','NOV','DIC'];
+    const f = art && art.fecha ? art.fecha.split('-') : null;
+    const fecha = f ? `${meses[+f[1] - 1]} ${f[0]}` : String(new Date().getFullYear());
+    const celda = (k, v, cls = '') => `<div class="${cls}"><span>${k}</span><b>${v}</b></div>`;
+    // Sustituye solo la línea de autoría original; lo demás que haya en el pie se conserva
+    [...pie.children].filter((el) => el.matches('span') && (/Diseñada|BIM Foundation ·/.test(el.textContent) || el.classList.contains('sep'))).forEach((el) => el.remove());
+    pie.insertAdjacentHTML('afterbegin', `<div class="pz-cajetin">` +
+      celda('Proyecto', 'BIM Foundation', 'c-proy') +
+      celda('Documento', doc_, 'c-doc') +
+      celda('Hoja', art ? `BF·${art.numero}` : 'BF·00') +
+      celda('Escala', '1:1') +
+      celda('Fecha', fecha) +
+      celda('Rev.', art && art.estado === 'publicado' ? '1.0' : '0.1', 'c-rev') +
+      celda('Diseño y desarrollo', autor.trim(), 'c-aut') + `</div>`);
   }
 
   // ---------- Lector de coordenadas: dónde está el puntero, en milímetros de pantalla ----------
