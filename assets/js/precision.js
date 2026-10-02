@@ -185,11 +185,11 @@
     const bentos = [...document.querySelectorAll('.slide .bento')];
     document.documentElement.classList.add('pz-x');
     bentos.forEach((b) => tarjetas(b).forEach((c) => { c.style.clipPath = 'inset(50% 50% 50% 50%)'; }));
-    // Dos variantes en prueba (?cruz=cascada | ?cruz=global, se recuerda): crucetas tarjeta a tarjeta, o una sola
+    // Dos variantes (?cruz=cascada | global, la elegida): crucetas tarjeta a tarjeta, o una sola
     // que abre la rejilla entera de la lámina como un único recuadro
-    let modo = new URLSearchParams(location.search).get('cruz');
-    try { if (modo) localStorage.setItem('k-cruz', modo); else modo = localStorage.getItem('k-cruz'); } catch (e) {}
-    modo = (modo === 'global' || modo === 'una') ? 'global' : 'cascada';
+    let modo = new URLSearchParams(location.search).get('cruz');   // la cascada solo con ?cruz=cascada, sin recordarla
+    try { localStorage.removeItem('k-cruz'); } catch (e) {}
+    modo = modo === 'cascada' ? 'cascada' : 'global';   // por defecto, la global
     if (modo === 'global') bentos.forEach((b) => { tarjetas(b).forEach((c) => { c.style.clipPath = ''; }); const g = b.querySelector('.b-cards'); if (g) g.style.clipPath = 'inset(50% 50% 50% 50%)'; });
     let capa = null;
     const libre = new Map();   // cascada por lámina: la siguiente tarjeta espera a que la anterior vaya avanzada

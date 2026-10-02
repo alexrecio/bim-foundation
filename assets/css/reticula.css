@@ -9,15 +9,10 @@ html.rt {
   --line: rgba(0, 0, 0, .28);
   --cross: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='17' height='17'%3E%3Cpath d='M8.5 0v17M0 8.5h17' stroke='%23000' stroke-width='1.2'/%3E%3C/svg%3E");
   --cross-g: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cpath d='M120 111v18M111 120h18' stroke='%23000' stroke-opacity='.55' stroke-width='1.2'/%3E%3C/svg%3E");
-  background: #F4F4F1;
+  background: #FFFFFF;
 }
-/* Fondo fijo: cruces cada 48 px, retícula mayor discontinua y un halo amarillo muy suave que da vida al esmerilado */
-.rt-bg { position: fixed; inset: 0; z-index: -2; pointer-events: none;
-  --g: 240px;
-  background:
-    radial-gradient(circle 420px at 78% 32%, rgba(255,255,0,.55), rgba(255,255,0,0) 70%),
-    radial-gradient(circle 360px at 18% 82%, rgba(0,0,0,.06), rgba(0,0,0,0) 70%),
-    radial-gradient(circle, rgba(0,0,0,.14) .8px, transparent 1.2px) 0 0 / 24px 24px; }
+/* Fondo blanco del todo (Álex): sin gris, sin halos ni patrón */
+.rt-bg { display: none; }
 html.rt .slide { background: transparent; border-bottom: 0; }
 html.rt .slide::before { content: none; }                  /* fuera las marcas de esquina: mandan las cruces */
 html.rt .pz-block .paper { display: none; }
@@ -66,14 +61,14 @@ html.rt .rt-intro .rt-frame { width: 100%; }
 .rt-hint { margin-top: 32px; font-size: 11px; color: var(--s500); text-transform: uppercase; letter-spacing: .1em; }
 @media (max-width: 999px) { .rt .card { padding: 16px; } }
 
-html.rt body { background: #F4F4F1; }
+html.rt body { background: #FFFFFF; }
 
 /* Términos del glosario en la frase de cada slide: píldoras, como en la referencia */
 html.rt .slide-lead .gl-term { display: inline-block; padding: 0 .75em; border: 1px solid var(--black); border-radius: 9999px; line-height: 1.9; text-decoration: none; background: rgba(255,255,255,.55); }
 html.rt .slide-lead .gl-term:hover, html.rt .slide-lead .gl-term[aria-expanded="true"] { background: var(--accent); }
 
 /* Menú lateral de slides y barra móvil: vidrio */
-html.rt #deck-nav { background: rgba(244,244,241,.72); -webkit-backdrop-filter: blur(16px) saturate(140%); backdrop-filter: blur(16px) saturate(140%); border-right: 0; }
+html.rt #deck-nav { background: rgba(255,255,255,.72); -webkit-backdrop-filter: blur(16px) saturate(140%); backdrop-filter: blur(16px) saturate(140%); border-right: 0; }
 html.rt .nav-item a, html.rt .nav-cap { border-radius: 0; }
 html.rt #deck-sheet { border-radius: 0; background: rgba(255,255,255,.85); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); }
 html.rt #nav-capsule { background: rgba(255,255,255,.7); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); }
@@ -95,7 +90,7 @@ html.rt .card.ficha .cover, html.rt .cover { border-style: dashed; }
 html.rt .mapa a { border-radius: 0; background: rgba(255,255,255,.6); border-style: dashed; }
 
 /* Capa 2: panel de vidrio sobre el fondo fijo */
-html.rt .l2-panel { border-radius: 0; background-color: rgba(244,244,241,.82); -webkit-backdrop-filter: blur(20px) saturate(140%); backdrop-filter: blur(20px) saturate(140%); outline: 1px dashed var(--line); }
+html.rt .l2-panel { border-radius: 0; background-color: rgba(255,255,255,.82); -webkit-backdrop-filter: blur(20px) saturate(140%); backdrop-filter: blur(20px) saturate(140%); outline: 1px dashed var(--line); }
 html.rt #l2-modal { background: rgba(0,0,0,.35); }
 html.rt .l2-body .card::after { content: ""; }
 
