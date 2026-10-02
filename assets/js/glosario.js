@@ -263,8 +263,8 @@ window.BF_GLOSARIO = [
   "t": "Punto de reconocimiento / Survey Point (y equivalentes)",
   "en": "Survey point",
   "b": "III",
-  "d": "Punto que materializa en el modelo el origen del sistema de coordenadas real o compartido. Define la traslación (y con el norte, la rotación) entre el sistema local y el sistema topográfico.",
-  "ej": "Coincidente con una base de replanteo con coordenadas ETRS89 / UTM 30N conocidas.",
+  "d": "Marca que muestra coordenadas del sistema compartido o topográfico. Con clip está en el origen de ese sistema y moverla recoloca el sistema respecto al modelo; sin clip se lleva a un punto conocido (una base de replanteo) sin cambiar nada, solo para leer o comprobar coordenadas.",
+  "ej": "Sin clip, colocada sobre una base de replanteo con coordenadas ETRS89 / UTM 30N conocidas para comprobar que el modelo las lee bien.",
   "eq": "Revit: Punto de reconocimiento (con o sin clip); Archicad (AC25+): Survey Point; Allplan 2026 y Vectorworks: Survey Point; BricsCAD: Survey Location; Tekla: base point con E/N; IFC: IfcMapConversion.",
   "err": "Mover el punto con clip cuando se quería sin clip (o al revés), desplazando todo el sistema compartido.",
   "rel": [
