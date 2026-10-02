@@ -3103,7 +3103,7 @@ window.BF_GLOSARIO = [
   "t": "GuBIMclass",
   "en": "GuBIMclass",
   "b": "II",
-  "d": "Spanish system that classifies elements by their main function, created by GuBIMCat (v1.0 2017, v1.2 Nov. 2017) and adopted by Infraestructures.cat.",
+  "d": "Spanish system that classifies elements by their main function, created by GuBIMCat (v1.0 2017, v1.2 July 2017) and adopted by Infraestructures.cat.",
   "ej": "40.10.10.10 Partitions; 20.10.40.10 Ground-bearing slabs; 30.10.10 Façades.",
   "eq": "Archicad: Classification Manager XML; Revit: Assembly Code and Classification Manager; Navisworks: search XML.",
   "err": "Using codes copied from third parties without checking them against the official table 1.2.",

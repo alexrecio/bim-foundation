@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <!-- Translation of articulos/clasificacion-bim/index.html at this git blob (herramientas/i18n.mjs flags it when the Spanish page changes) -->
-  <meta name="bf-fuente" content="articulos/clasificacion-bim/index.html@c8dae7f9c9677262276610eedeb07bfdcfae68a2">
+  <meta name="bf-fuente" content="articulos/clasificacion-bim/index.html@68c42f980bca70e951d3d7e41b4f6041f03a576f">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Draft: remove noindex on publishing -->
   <meta name="robots" content="noindex, nofollow">
@@ -581,12 +581,12 @@
           </div>
           <div class="card w3">
             <span class="c-label">Origin</span>
-            <span class="c-title">Danish CCS and Swedish CoClass</span>
-            <span class="c-foot">turned into a standard in 2018</span>
+            <span class="c-title">ISO 81346 and the Danish CCS</span>
+            <span class="c-foot">construction classes in part 12 (2018)</span>
           </div>
           <div class="card w3 y">
             <span class="c-label">Used by</span>
-            <span class="c-title">DK · CZ · EE · PL · SK</span>
+            <span class="c-title">DK · EE · CZ · SE · LT</span>
             <span class="c-foot">in the CCI collaboration</span>
           </div>
         </div>
@@ -1245,7 +1245,7 @@
     <div class="b-cards">
       <div class="card w3">
         <h4>What a data dictionary is</h4>
-        <p>A published list of classes and properties, each with a definition, unit, value type and a unique, stable identifier (often a web address). It is governed by ISO 12006-3 and the ISO 23386 / ISO 23387 series.</p>
+        <p>A published list of classes and properties, each with a definition, unit, value type and a unique, stable identifier (often a web address). It is governed by ISO 12006-3 and ISO 23386.</p>
       </div>
       <div class="card w3 y">
         <span class="c-label">Key idea</span>
@@ -1418,8 +1418,8 @@
     <div class="b-cards">
       <div class="card w3">
         <h4>Classification plus identification</h4>
-        <p>ISO/IEC 81346 comes from industry: every component of a plant carries a designation that combines aspects. Part 12 (2018) provides the classes for construction works and building services, based on the Danish CCS and on CoClass.</p>
-        <p>CCI (Construction Classification International) is its application, developed by Molio with partners from Czechia, Estonia, Poland and Slovakia.</p>
+        <p>ISO/IEC 81346 comes from industry: every component of a plant carries a designation that combines aspects. Part 12 (2018) provides the classes for construction works and building services. That these classes derive from the Danish CCS and CoClass is our own reading, based on their resemblance. <span class="tag">Inferred</span></p>
+        <p>CCI (Construction Classification International) is its application, based on ISO 81346 and the Danish CCS (Cuneco, 2011-2015). The CCI collaboration is made up of Denmark, Estonia, Czechia, Sweden and Lithuania.</p>
       </div>
       <div class="card w3 g">
         <h4>What the aspect is for</h4>
@@ -1442,7 +1442,7 @@
       <div class="card w3">
         <h4>GuBIMclass</h4>
         <p>It was created by the Catalan BIM user group (GuBIMCat) in 2017 from the classification used by Infraestructures.cat, after reviewing OmniClass, UniFormat, MasterFormat, Uniclass and SfB. Criterion: the main function of the element, so that the code does not change between stages.</p>
-        <p>Version 1.2 (November 2017) is the latest published in its official repository, in Spanish and Catalan, with files for Archicad, Revit and Navisworks.</p>
+        <p>Version 1.2 (July 2017; the Archicad XML was published in November) is the latest published in its official repository, in Spanish and Catalan, with files for Archicad, Revit and Navisworks.</p>
       </div>
       <div class="card w3 g">
         <h4>Other systems in use</h4>
@@ -1475,7 +1475,7 @@
       <div class="card w3">
         <h4>How the IFC exporter reads it</h4>
         <ol class="vsteps">
-          <li>If the type has an <code>Assembly Code</code>, it creates the “Uniformat” classification without anyone asking for it.</li>
+          <li>If the type has an <code>Assembly Code</code>, it creates the “Uniformat” classification without anyone asking for it, unless a Uniformat classification of your own already exists.</li>
           <li>It reads <code>ClassificationCode</code> and <code>ClassificationCode(2)</code> to <code>(10)</code>, or the names set in <span class="ui">Export IFC › Modify Setup › Classification Settings</span>.</li>
           <li>It splits system, code and title using the syntax <code>[System]code:title</code>.</li>
           <li>It creates one <code>IfcClassification</code> per system and one reference per code.</li>
@@ -1553,8 +1553,8 @@
     <div class="b-cards">
       <div class="card w3">
         <h4>What it is</h4>
-        <p>The buildingSMART Data Dictionary is the former IFD library. It applies ISO 12006-3, 23386 and 23387: classes and properties with a definition, translations, relations and a web address that does not change.</p>
-        <p>Each publisher (NBS, Molio, ETIM, buildingSMART…) publishes its dictionary in versions: preview, active, inactive.</p>
+        <p>The buildingSMART Data Dictionary is the former IFD library. It applies ISO 12006-3 and ISO 23386: classes and properties with a definition, translations, relations and a web address that does not change.</p>
+        <p>Each publisher (NBS, Molio, ETIM, buildingSMART…) publishes its dictionary in versions; each class and property is either active or inactive.</p>
       </div>
       <div class="card w3 y">
         <span class="c-label">Key idea</span>
@@ -1567,6 +1567,7 @@
           <tbody>
             <tr class="is-key"><td>IsEqualTo / IsSimilarTo</td><td>Equivalences between different systems</td></tr>
             <tr><td>IsChildOf / IsParentOf</td><td>The hierarchy within a system</td></tr>
+            <tr><td>HasReference / HasMaterial</td><td>References to other classes and materials</td></tr>
             <tr><td>HasPart / IsPartOf</td><td>Composition</td></tr>
             <tr><td>Related IFC class</td><td>Which IFC entity the class is used with</td></tr>
           </tbody>
@@ -1729,7 +1730,7 @@
         <ul>
           <li><code>system</code> is compared with the system name exactly as written.</li>
           <li><code>uri</code> is not checked.</li>
-          <li>A child code passes if its parent is in the IFC (full classification).</li>
+          <li>If the IDS asks for a parent code, an object classified with a child also passes, provided the IFC has the full hierarchy. This is how IfcTester handles it. <span class="tag">Inferred</span></li>
         </ul>
       </div>
       <div class="card w6">
