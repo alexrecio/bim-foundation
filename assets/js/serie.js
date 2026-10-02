@@ -6,7 +6,7 @@ window.SERIE = [
   {
     slug: 'coordenadas-compartidas',
     numero: '01',
-    titulo: 'Coordenadas compartidas en BIM',
+    titulo: 'Sistemas de coordenadas en BIM',
     resumen: 'Primero los conceptos que valen para cualquier programa (geodesia, topografía, precisión y transformación); después estándares, software, plataformas, interoperabilidad y control de calidad.',
     tema: 'Georreferenciación',
     fecha: '2026-10',
