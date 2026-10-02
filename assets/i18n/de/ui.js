@@ -90,13 +90,13 @@
     num: '',
     // Katalog der Serie (assets/js/serie.js): übersetzte Felder je Slug
     serie: {
-      'coordenadas-compartidas': { titulo: 'Gemeinsame Koordinaten in BIM', resumen: 'Zuerst die Grundlagen, die für jedes Programm gelten (Geodäsie, Vermessung, Genauigkeit und Transformation); danach Normen, Software, Plattformen, Interoperabilität und Qualitätsprüfung.', tema: 'Georeferenzierung' },
-      'niveles-de-informacion': { titulo: 'Informationsbedarfstiefe', resumen: 'In jeder Phase genau das Nötige anfordern: nicht mehr Geometrie und nicht weniger Daten.', tema: 'Information' },
-      'entorno-comun-de-datos': { titulo: 'Gemeinsame Datenumgebung', resumen: 'Ein einziger Ort, an dem Informationen einen Status, eine Version und einen Verantwortlichen haben.', tema: 'Management' },
-      'deteccion-de-interferencias': { titulo: 'Kollisionsprüfung', resumen: 'Kollisionen im Modell finden, bevor sie die Baustelle erreichen.', tema: 'Koordination' },
-      'clasificacion-bim': { titulo: 'Klassifikationssysteme', resumen: 'Ein gemeinsamer Code, damit jedes Bauteil in jeder Phase verstanden wird.', tema: 'Daten' },
-      'bep-plan-de-ejecucion': { titulo: 'BIM-Abwicklungsplan', resumen: 'Das Dokument, das die Auftraggeber-Informationsanforderungen in einen Arbeitsplan übersetzt.', tema: 'Management' },
-      'gemelos-digitales': { titulo: 'Digitale Zwillinge', resumen: 'Vom Übergabemodell zum Betriebsmodell, das mit Sensoren verbunden ist.', tema: 'Betrieb' }
+      'coordenadas-compartidas': { titulo: 'Koordinatensysteme in BIM', lectura: '41 Ideen', resumen: 'Zuerst die Grundlagen, die für jedes Programm gelten (Geodäsie, Vermessung, Genauigkeit und Transformation); danach Normen, Software, Plattformen, Interoperabilität und Qualitätsprüfung.', tema: 'Georeferenzierung' },
+      'niveles-de-informacion': { titulo: 'Informationsbedarfstiefe', lectura: '34 Ideen', resumen: 'In jeder Phase genau das Nötige anfordern: nicht mehr Geometrie und nicht weniger Daten.', tema: 'Information' },
+      'entorno-comun-de-datos': { titulo: 'Gemeinsame Datenumgebung', lectura: '39 Ideen', resumen: 'Ein einziger Ort, an dem Informationen einen Status, eine Version und einen Verantwortlichen haben.', tema: 'Management' },
+      'deteccion-de-interferencias': { titulo: 'Kollisionsprüfung', lectura: '34 Ideen', resumen: 'Kollisionen im Modell finden, bevor sie die Baustelle erreichen.', tema: 'Koordination' },
+      'clasificacion-bim': { titulo: 'Klassifikationssysteme', lectura: '28 Ideen', resumen: 'Ein gemeinsamer Code, damit jedes Bauteil in jeder Phase verstanden wird.', tema: 'Daten' },
+      'bep-plan-de-ejecucion': { titulo: 'BIM-Abwicklungsplan', lectura: '29 Ideen', resumen: 'Das Dokument, das die Auftraggeber-Informationsanforderungen in einen Arbeitsplan übersetzt.', tema: 'Management' },
+      'gemelos-digitales': { titulo: 'Digitale Zwillinge', lectura: '32 Ideen', resumen: 'Vom Übergabemodell zum Betriebsmodell, das mit Sensoren verbunden ist.', tema: 'Betrieb' }
     }
   };
 })();
