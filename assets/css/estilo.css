@@ -413,11 +413,11 @@ body:has(.deck) footer.site { padding-left: var(--side); }
   #deck-nav ol { list-style: none; margin: 0; padding: 0; overflow-y: auto; flex: 1; }
 }
 .nav-item a {
-  display: grid; grid-template-columns: 30px 1fr; align-items: baseline; padding: 6px 8px; border-radius: 4px; text-decoration: none;
-  font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: .03em; line-height: 1.25; color: var(--s400);
+  display: grid; grid-template-columns: 26px 1fr; align-items: baseline; padding: 5px 8px; border-radius: 4px; text-decoration: none;
+  font-size: 12px; font-weight: 500; line-height: 1.3; color: var(--s400);
   transition: background .2s, color .2s;
 }
-.nav-item a span { font-family: var(--mono); font-size: 10px; font-weight: 700; }
+.nav-item a span { font-family: var(--mono); font-size: 9.5px; font-weight: 700; }
 .nav-item a:hover { color: var(--black); background: var(--s50); }
 .nav-item a.is-current { background: var(--black); color: var(--white); }
 .nav-item a.is-current span { color: var(--accent); }
@@ -442,7 +442,7 @@ body:has(.deck) footer.site { padding-left: var(--side); }
 }
 #deck-bar.is-open #deck-sheet { display: block; }
 #deck-sheet ol { list-style: none; margin: 0; padding: 0; }
-#deck-sheet .nav-item a { padding: 10px 8px; font-size: 13px; }
+#deck-sheet .nav-item a { padding: 9px 8px; font-size: 13px; }
 @media (min-width: 640px) { #deck-bar { left: auto; width: 420px; } }
 
 /* Capa 2: ficha emergente (como la ficha de los casos del CV) */
@@ -497,15 +497,16 @@ body.l2-lock { overflow: hidden; }
 .nav-group { list-style: none; }
 .nav-group > ol { display: none; list-style: none; margin: 0 0 6px; padding: 0; }
 .nav-group.is-open > ol { display: block; }
-.nav-cap { width: 100%; margin: 2px 0; padding: 8px; border: 0; border-radius: 6px; background: none; cursor: pointer; text-align: left; font-family: var(--mono); font-size: 9.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--s600); display: flex; align-items: center; gap: 8px; }
-.nav-cap b { font-weight: 700; flex: 1; }
-.nav-cap em { font-style: normal; color: var(--s400); }
+.nav-cap { width: 100%; margin: 4px 0 2px; padding: 9px 8px; border: 0; border-radius: 6px; background: none; cursor: pointer; text-align: left; font-family: var(--sans); font-size: 14px; font-weight: 900; text-transform: uppercase; letter-spacing: -.01em; line-height: 1.15; color: var(--s600); display: flex; align-items: center; gap: 8px; }
+.nav-group + .nav-group > .nav-cap { border-top: 1px solid var(--s100); border-radius: 0 0 6px 6px; }
+.nav-cap b { font-weight: 900; flex: 1; }
+.nav-cap em { font-style: normal; font-family: var(--mono); font-size: 10px; font-weight: 700; letter-spacing: 0; color: var(--s400); }
 .nav-cap i { width: 8px; height: 8px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(-45deg); transition: transform .2s; flex: none; }
 .nav-group.is-open > .nav-cap i { transform: rotate(45deg); }
 .nav-cap:hover { background: var(--s50); color: var(--black); }
 .nav-group.is-here > .nav-cap { color: var(--black); }
 .nav-group.is-here > .nav-cap em { background: var(--accent); color: var(--black); padding: 1px 6px; border-radius: 9999px; }
-#deck-sheet .nav-cap { padding: 12px 8px; font-size: 11px; }
+#deck-sheet .nav-cap { padding: 12px 8px; font-size: 16px; }
 .slide-cap { display: inline-block; margin-left: 10px; padding-left: 10px; border-left: 1px solid var(--s300); color: var(--black); font-weight: 700; }
 .slide.is-cap-start .slide-cap { background: var(--black); color: var(--accent); border: 0; padding: 2px 8px; }
 
