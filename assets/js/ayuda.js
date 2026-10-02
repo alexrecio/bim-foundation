@@ -449,4 +449,41 @@
     };
     destacar(); addEventListener('hashchange', destacar);
   });
+
+  // ---------- Idioma: siempre a la vista y a un clic (los enlaces y el destino los da idioma.js) ----------
+  // Artículo: fila «Idioma» en el menú de diapositivas (lateral y hoja móvil). Resto de páginas: botón fijo arriba a la derecha.
+  // Si el navegador o una elección anterior piden otro idioma en el que existe esta página, se ofrece una vez, sin redirigir.
+  const conIdiomas = (fn, n = 0) => {
+    if (window.BF_I18N && window.BF_I18N.preparado) return window.BF_I18N.preparado(fn);
+    if (n < 50) setTimeout(() => conIdiomas(fn, n + 1), 100);
+  };
+  conIdiomas(() => {
+    const I18N = window.BF_I18N;
+    const L = I18N.idiomas();
+    if (L.length < 2) return;
+    const grupo = (cls) => `<div class="bf-lang ${cls}" role="group" aria-label="Idioma · Language" data-i18n-no>${L.map((x) => x.actual
+      ? `<span class="is-current" lang="${x.l}" title="${x.n}">${x.l.toUpperCase()}</span>`
+      : `<a href="${I18N.destino(x.l)}" hreflang="${x.l}" lang="${x.l}" title="${x.n}${x.existe ? '' : ' · home'}" data-lang-to="${x.l}">${x.l.toUpperCase()}</a>`).join('')}</div>`;
+    if (esArticulo) document.querySelectorAll('.bf-tools').forEach((t) => t.insertAdjacentHTML('afterend', `<div class="bf-lang-fila"><span class="label">Idioma</span>${grupo('')}</div>`));
+    // Botón fijo: en los artículos solo cuando no se ve el menú lateral (móvil y tableta)
+    if (!document.getElementById('bf-lang-fijo')) document.body.insertAdjacentHTML('beforeend', `<div id="bf-lang-fijo"${esArticulo ? ' class="en-articulo"' : ''}>${grupo('')}</div>`);
+    // Sugerencia única
+    const ls = (k, v) => { try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch (e) { /* sin almacenamiento */ } return null; };
+    const navegador = ((navigator.languages || [navigator.language || ''])[0] || '').slice(0, 2).toLowerCase();
+    const pref = ls('bf-lang') || navegador;
+    const otro = L.find((x) => x.l === pref && !x.actual && x.existe);
+    if (!otro || ls('bf-lang-aviso') === pref + '>' + I18N.lang) return;
+    const TXT = {
+      es: ['Esta página también está en español.', 'Leer en español'],
+      en: ['This page is also available in English.', 'Read in English'],
+      de: ['Diese Seite gibt es auch auf Deutsch.', 'Auf Deutsch lesen']
+    };
+    const QUEDAR = { es: 'Seguir en español', en: 'Stay in English', de: 'Auf Deutsch bleiben' };
+    const t = TXT[otro.l]; if (!t) return;
+    document.body.insertAdjacentHTML('beforeend', `<div id="bf-lang-aviso" role="status" data-i18n-no lang="${otro.l}">
+      <span class="label">${otro.l.toUpperCase()} · ${otro.n}</span><p>${t[0]}</p>
+      <div><a class="btn" href="${I18N.destino(otro.l)}" data-lang-to="${otro.l}">${t[1]}</a><button type="button" class="crs-skip" lang="${I18N.lang}">${QUEDAR[I18N.lang] || 'OK'}</button></div></div>`);
+    const av = document.getElementById('bf-lang-aviso');
+    av.querySelector('button').addEventListener('click', () => { ls('bf-lang', I18N.lang); ls('bf-lang-aviso', pref + '>' + I18N.lang); av.remove(); });
+  });
 })();

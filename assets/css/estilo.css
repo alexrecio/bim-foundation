@@ -817,3 +817,16 @@ kbd { display: inline-block; min-width: 1.6em; padding: 1px 5px; border: 1px sol
 .bf-lang .is-current { background: var(--black); color: var(--white); }
 /* En móvil el menú no cabe entero: se desliza en horizontal para llegar al idioma */
 @media (max-width: 767px) { #nav-capsule.menu-open #menu-content { max-width: calc(100vw - 32px - 58px); overflow-x: auto; scrollbar-width: none; } #menu-content::-webkit-scrollbar { display: none; } }
+
+/* ---------- Idioma a la vista (assets/js/ayuda.js): fila en el menú de diapositivas, botón fijo y sugerencia única ---------- */
+.bf-lang-fila { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin: 0 0 10px; }
+.bf-lang-fila .bf-lang { margin: 0; padding: 0; border: 0; }
+.bf-lang-fila .bf-lang a, .bf-lang-fila .bf-lang span { min-width: 30px; height: 28px; }
+#bf-lang-fijo { position: fixed; top: 24px; right: 16px; z-index: 90; padding: 4px; background: var(--white); border: 1px solid var(--s200); border-radius: 9999px; box-shadow: 0 4px 24px rgba(0,0,0,.04); }
+@media (min-width: 768px) { #bf-lang-fijo { right: 24px; } }
+#bf-lang-fijo .bf-lang { margin: 0; padding: 0; border: 0; }
+#bf-lang-aviso { position: fixed; z-index: 250; left: 16px; right: 16px; bottom: 84px; display: flex; flex-direction: column; gap: 8px; padding: 16px 18px; background: var(--white); border: 2px solid var(--black); border-radius: 8px; box-shadow: 0 20px 60px rgba(0,0,0,.2); }
+@media (min-width: 640px) { #bf-lang-aviso { left: auto; right: 24px; bottom: 24px; width: 360px; } }
+#bf-lang-aviso p { margin: 0; font-weight: 800; line-height: 1.35; }
+#bf-lang-aviso > div { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+@media (min-width: 1200px) { #bf-lang-fijo.en-articulo { display: none; } }

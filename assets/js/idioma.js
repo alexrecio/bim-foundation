@@ -22,7 +22,23 @@
   if (lang !== 'es') aqui = aqui.replace(new RegExp('^' + lang + '/'), '');
   aqui = clave(aqui);
 
-  window.BF_I18N = { lang, url, existe, aqui };
+  // Destino del cambio de idioma: la misma página y, en un artículo, la diapositiva que se está leyendo AHORA (no la de la carga)
+  const slideActual = () => {
+    if (!/^articulos\//.test(aqui)) return '';
+    const a = document.querySelector('.nav-item a.is-current');
+    return a ? a.getAttribute('href') : location.hash.replace(/^#detalle-.*/, '');
+  };
+  const destino = (l) => root + (l === 'es' ? '' : l + '/') + (existe(l, aqui) ? aqui + slideActual() : '');
+  // Lista para pintar selectores (menú del cartucho, menú de diapositivas, botón fijo): [{ l, n, actual, existe }]
+  const idiomas = () => LANGS.filter(([l]) => existe(l, '') || l === lang).map(([l, n]) => ({ l, n, actual: l === lang, existe: existe(l, aqui) }));
+  window.BF_I18N = { lang, url, existe, aqui, destino, idiomas, LANGS };
+  // Cualquier enlace [data-lang-to] (estén donde estén) recalcula su destino al pulsarlo y recuerda la elección
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest && e.target.closest('[data-lang-to]');
+    if (!a) return;
+    a.setAttribute('href', destino(a.dataset.langTo));
+    ls('bf-lang', a.dataset.langTo);
+  }, true);
 
   // ---------- Datos traducidos de la serie (ui.js: BF_I18N_UI.serie) ----------
   const UI = window.BF_I18N_UI || {};
@@ -40,7 +56,6 @@
       return l === lang ? `<span class="is-current" lang="${l}" title="${n}">${l.toUpperCase()}</span>`
         : `<a href="${destino}" hreflang="${l}" lang="${l}" title="${n}${existe(l, aqui) ? '' : ' · home'}" data-lang-to="${l}">${l.toUpperCase()}</a>`;
     }).join('')}</div>`);
-    nav.querySelectorAll('[data-lang-to]').forEach((a) => a.addEventListener('click', () => ls('bf-lang', a.dataset.langTo)));
   };
   const conPaginas = (fn) => {
     if (window.BF_PAGINAS) return fn();
@@ -49,7 +64,10 @@
     document.head.appendChild(s);
   };
   const listo = (fn) => (document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', fn) : fn());
-  listo(() => conPaginas(selector));
+  // Otros scripts (ayuda.js) esperan a saber qué páginas hay en cada idioma: BF_I18N.preparado(fn)
+  const espera = [];
+  window.BF_I18N.preparado = (fn) => (window.BF_PAGINAS ? fn() : espera.push(fn));
+  listo(() => conPaginas(() => { selector(); espera.splice(0).forEach((fn) => fn()); }));
   if (lang === 'es') return;
 
   // ---------- Traducción de los textos que generan web.js, ayuda.js y precision.js ----------
