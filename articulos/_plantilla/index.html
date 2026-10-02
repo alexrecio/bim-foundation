@@ -24,15 +24,24 @@
       <nav>
         <a class="menu-link" href="../../">Inicio</a>
         <a class="menu-link" href="../../#articulos">Artículos</a>
-        <a class="menu-link is-current" href="#">NN · Tema corto</a>
+        <a class="menu-link is-current" href="#portada">NN · Tema corto</a>
       </nav>
     </div>
   </div>
 
-  <main>
-    <!-- Plantilla de artículo. Copiar esta carpeta a articulos/<slug>/, sustituir SLUG y los textos en MAYÚSCULAS,
-         y añadir la ficha del artículo en assets/js/serie.js. El índice lateral y los números de sección se generan solos. -->
-    <header class="hero">
+  <!--
+    Plantilla de artículo en dos capas. Copiar esta carpeta a articulos/<slug>/, sustituir SLUG y los textos en MAYÚSCULAS
+    y añadir la ficha del artículo en assets/js/serie.js.
+
+    Capa 1 = una diapositiva por idea, legible en 15 segundos: antetítulo, titular (máx. ~6 palabras), una frase
+    (máx. ~20 palabras) y un visual (cifra, chips, flujo, barras, iconos). ≈40 palabras en total.
+    Capa 2 = la ficha que abre el botón data-l2="X" (<template id="l2-X">). Solo añade lo que la diapositiva no dice:
+    ningún texto se repite entre capas (los datos sí pueden repetirse si aportan).
+    El contador, los puntos laterales y la numeración se generan solos.
+  -->
+  <main class="deck">
+
+    <section class="slide" id="portada">
       <div class="wrap">
         <div class="hero-grid">
           <div>
@@ -41,62 +50,91 @@
             <h1 class="display">Título<br>en dos o tres<br><span class="hl-y">líneas<span class="dot">.</span></span></h1>
           </div>
           <div class="hero-side">
-            <p class="hero-lead">Entradilla: la idea fuerza del artículo en dos o tres frases.</p>
-            <a class="btn" href="#seccion-1">Empezar a leer <span aria-hidden="true">↓</span></a>
-            <div class="hero-meta"><span>Alejandro García Nicolás</span><span>Mes 2026</span><span>NN min</span></div>
+            <p class="hero-lead">La idea fuerza del artículo en una frase.</p>
+            <a class="btn" href="#idea-1">Empezar <span aria-hidden="true">↓</span></a>
+            <div class="hero-meta"><span>Alejandro García Nicolás</span><span>Mes 2026</span><span>NN ideas · 15 s cada una</span></div>
           </div>
         </div>
-        <!-- Opcional: cuatro cifras clave -->
-        <div class="stats">
-          <div class="stat"><b>CIFRA</b><span>Qué significa la cifra.</span></div>
-          <div class="stat"><b>CIFRA</b><span>Qué significa la cifra.</span></div>
-          <div class="stat"><b>CIFRA</b><span>Qué significa la cifra.</span></div>
-          <div class="stat"><b>CIFRA</b><span>Qué significa la cifra.</span></div>
+      </div>
+    </section>
+
+    <!-- Diapositiva tipo: cifra grande -->
+    <section class="slide" id="idea-1">
+      <div class="wrap"><div class="slide-grid">
+        <div>
+          <span class="slide-n"></span>
+          <span class="kicker-y">ANTETÍTULO</span>
+          <h2 class="display">Titular de la idea<span class="dot">.</span></h2>
+          <p class="slide-lead">Una frase que explica la idea.</p>
+          <div class="slide-actions"><button type="button" class="btn ghost l2-btn" data-l2="idea-1"><span class="plus">+</span> Ver detalle</button></div>
         </div>
-      </div>
-    </header>
+        <div class="slide-visual">
+          <div class="big-num">00<small> ud</small></div>
+          <span class="big-cap">Qué significa la cifra</span>
+        </div>
+      </div></div>
+    </section>
 
-    <div class="wrap">
-      <div class="article-grid">
-        <aside class="toc custom-scroll" aria-label="Índice del artículo">
-          <span class="kicker-y">Índice</span>
-          <ol></ol>
-        </aside>
+    <!-- Diapositiva tipo: chips o flujo (también: .eq, .bars, .top3, .cards3, SVG) -->
+    <section class="slide" id="idea-2">
+      <div class="wrap"><div class="slide-grid">
+        <div>
+          <span class="slide-n"></span>
+          <span class="kicker-y">ANTETÍTULO</span>
+          <h2 class="display">Titular de la idea<span class="dot">.</span></h2>
+          <p class="slide-lead">Una frase que explica la idea.</p>
+          <div class="slide-actions"><button type="button" class="btn ghost l2-btn" data-l2="idea-2"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="slide-visual">
+          <div class="flow"><span class="chip">Paso</span><span class="arrow">→</span><span class="chip y">Paso clave</span><span class="arrow">→</span><span class="chip k">Resultado</span></div>
+        </div>
+      </div></div>
+    </section>
 
-        <article class="prose">
-          <!-- Cada sección: <section id> + .sec-head con .sec-num vacío y un h2.display (data-short = texto corto para el índice) -->
-          <section id="seccion-1">
-            <div class="sec-head"><span class="sec-num"></span><h2 class="display" data-short="Título corto">Título de la sección<span class="dot">.</span></h2></div>
-            <p class="lead">Entradilla de la sección.</p>
-            <p>Texto normal. Los nombres de menús y comandos van con <span class="ui">Menú › Comando</span> y el código con <code>IfcEntidad</code>.</p>
-            <h3>Subapartado</h3>
-            <ol class="steps"><li>Paso numerado.</li><li>Último paso (sale en amarillo).</li></ol>
-            <div class="callout"><span class="kicker-y">Idea clave</span><p>Aviso destacado.</p></div>
-            <div class="callout dark"><p class="label">Ojo</p><p>Advertencia importante.</p></div>
-            <div class="quote"><p>«Cita textual».</p><cite>Autor · Fuente</cite></div>
-            <div class="table-wrap"><table>
-              <thead><tr><th>Columna</th><th>Columna</th></tr></thead>
-              <tbody><tr><td>Dato</td><td>Dato</td></tr><tr class="is-key"><td>Fila destacada</td><td>Dato</td></tr></tbody>
-            </table></div>
-            <p>Dato pendiente de verificar <span class="tag">Por confirmar</span></p>
-          </section>
-
-          <section id="fuentes">
-            <div class="sec-head"><span class="sec-num"></span><h2 class="display" data-short="Fuentes">Fuentes<span class="dot">.</span></h2></div>
-            <ul class="sources"><li><a href="https://" target="_blank" rel="noopener">Fuente</a></li></ul>
-          </section>
-
-          <nav id="series-nav" class="series-nav" aria-label="Navegación de la serie"></nav>
-        </article>
-      </div>
-    </div>
+    <section class="slide" id="cierre">
+      <div class="wrap"><div class="slide-grid">
+        <div>
+          <span class="slide-n"></span>
+          <span class="kicker-y">En resumen</span>
+          <h2 class="display">La idea que hay que recordar<span class="dot">.</span></h2>
+          <div class="slide-actions"><button type="button" class="btn ghost l2-btn" data-l2="fuentes"><span class="plus">+</span> Fuentes</button></div>
+        </div>
+        <div class="slide-visual"><nav id="series-nav" class="series-nav" style="margin-top:0" aria-label="Navegación de la serie"></nav></div>
+      </div></div>
+    </section>
   </main>
+
+  <nav id="deck-dots" aria-label="Diapositivas"></nav>
+  <div id="deck-count" aria-hidden="true"></div>
 
   <footer class="site">
     <div class="wrap">
       <span>Diseñada y desarrollada por Alejandro García Nicolás</span><span class="sep">·</span><span class="mono">BIM Foundation · 2026</span>
     </div>
   </footer>
+
+  <div id="l2-modal" role="dialog" aria-modal="true" aria-label="Detalle">
+    <div class="l2-panel custom-scroll">
+      <button type="button" class="l2-close" aria-label="Cerrar" title="Cerrar">✕</button>
+      <div id="l2-body" class="l2-body prose"></div>
+    </div>
+  </div>
+
+  <!-- ============================== CAPA 2 ============================== -->
+  <!-- Bloques disponibles: l2-cols, h3, p, ul, steps, callout, callout dark, callout check, quote, table-wrap, formula, pre, glossary, sources, tag -->
+  <template id="l2-idea-1">
+    <div class="l2-cols">
+      <div><h3>Subapartado</h3><p>Detalle que la diapositiva no dice, con su fuente.</p></div>
+      <div><div class="callout"><span class="kicker-y">Idea clave</span><p>Aviso destacado.</p></div></div>
+    </div>
+  </template>
+  <template id="l2-idea-2">
+    <ol class="steps"><li>Paso detallado.</li><li>Último paso.</li></ol>
+    <p>Dato pendiente de verificar <span class="tag">Por confirmar</span></p>
+  </template>
+  <template id="l2-fuentes">
+    <ul class="sources"><li><a href="https://" target="_blank" rel="noopener">Fuente</a></li></ul>
+  </template>
 
   <script src="../../assets/js/serie.js"></script>
   <script src="../../assets/js/web.js"></script>

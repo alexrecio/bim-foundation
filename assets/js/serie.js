@@ -10,7 +10,7 @@ window.SERIE = [
     resumen: 'Origen interno, punto base y punto de reconocimiento; Revit, Civil 3D, IFC y el resto del software BIM, con los códigos EPSG y el marco geodésico español.',
     tema: 'Georreferenciación',
     fecha: '2026-10',
-    lectura: '35 min',
+    lectura: '18 ideas',
     estado: 'borrador' // borrador | publicado | proximamente
   }
 ];
