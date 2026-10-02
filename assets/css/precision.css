@@ -302,15 +302,8 @@ body.l2-lock .pz-hud { display: none; }
 .card.k .c-num.pz-reading { color: var(--s300); }
 .c-num, .stat b { transition: color .25s ease; }
 
-/* Apertura en cruz: las tarjetas no suben ni se funden, las descubren dos crucetas que atraviesan la pantalla */
+/* Sin efecto de entrada de lámina: las crucetas mareaban (Álex); las tarjetas entran con el fundido de «Movimiento» */
 .slide .bento { position: relative; }
-.pz-x.pz-motion .slide.pz-wait .b-cards > .card { opacity: 1; transform: none; }
-.pz-xl { position: fixed; inset: 0; pointer-events: none; z-index: 250; overflow: hidden; }
-.pz-xl i { position: absolute; left: 0; top: 0; background: var(--black); opacity: .55; transition: opacity .35s ease; will-change: transform; }
-.pz-xl i.h { width: 100%; height: 1px; margin-top: -.5px; }
-.pz-xl i.v { height: 100%; width: 1px; margin-left: -.5px; }
-.pz-xl i.out { opacity: 0; }
-@media print { .pz-xl { display: none; } }
 
 /* Cursor de CAD sobre los dibujos */
 .pz-cad { position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity .15s; z-index: 2; }

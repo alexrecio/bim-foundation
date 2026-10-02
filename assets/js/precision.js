@@ -146,7 +146,7 @@
   }
 })();
 
-// Capa «Precisión» v0.3: lectura de cifras, cursor de CAD, apertura en cruz de las tarjetas y cubiertas trazadas
+// Capa «Precisión» v0.3: lectura de cifras, cursor de CAD y cubiertas trazadas
 (function () {
   const calma = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const fino = matchMedia('(pointer: fine)').matches;
@@ -177,61 +177,6 @@
     requestAnimationFrame(paso);
   };
   if (!calma) ver([...document.querySelectorAll('.slide .c-num, .stat b')].filter((el) => !el.querySelector('[data-pais]') && !el.closest('[data-pais]')), leer, 0.6);
-
-  // ---------- Apertura en cruz: dos crucetas a pantalla completa salen del centro de cada tarjeta
-  // hacia sus esquinas superior izquierda e inferior derecha y van descubriendo el contenido (una vez) ----------
-  const tarjetas = (b) => [...b.querySelectorAll('.b-cards > .card')];
-  if (!calma && 'IntersectionObserver' in window) {
-    const bentos = [...document.querySelectorAll('.slide .bento')];
-    document.documentElement.classList.add('pz-x');
-    bentos.forEach((b) => tarjetas(b).forEach((c) => { c.style.clipPath = 'inset(50% 50% 50% 50%)'; }));
-    // Dos variantes (?cruz=cascada | global, la elegida): crucetas tarjeta a tarjeta, o una sola
-    // que abre la rejilla entera de la lámina como un único recuadro
-    let modo = new URLSearchParams(location.search).get('cruz');   // la cascada solo con ?cruz=cascada, sin recordarla
-    try { localStorage.removeItem('k-cruz'); } catch (e) {}
-    modo = modo === 'cascada' ? 'cascada' : 'global';   // por defecto, la global
-    if (modo === 'global') bentos.forEach((b) => { tarjetas(b).forEach((c) => { c.style.clipPath = ''; }); const g = b.querySelector('.b-cards'); if (g) g.style.clipPath = 'inset(50% 50% 50% 50%)'; });
-    let capa = null;
-    const libre = new Map();   // cascada por lámina: la siguiente tarjeta espera a que la anterior vaya avanzada
-    const DUR = 760, SOLAPE = 0.72;
-    const suave = (t) => 1 - Math.pow(1 - t, 3);
-    const abre = (c, inicio) => {
-      if (!capa) { capa = document.createElement('div'); capa.className = 'pz-xl'; capa.setAttribute('aria-hidden', 'true'); document.body.appendChild(capa); }
-      const ls = ['h', 'v', 'h', 'v'].map((k) => { const l = document.createElement('i'); l.className = k; capa.appendChild(l); return l; });
-      ls.forEach((l) => { l.style.opacity = '0'; });
-      const fin = () => { c.style.clipPath = ''; ls.forEach((l) => { l.style.opacity = ''; l.classList.add('out'); setTimeout(() => l.remove(), 400); }); };
-      const paso = (ts) => {
-        if (ts < inicio) { requestAnimationFrame(paso); return; }
-        const p = suave(Math.min(1, (ts - inicio) / DUR));
-        const r = c.getBoundingClientRect(), q = (1 - p) / 2;
-        const x1 = r.left + r.width * q, y1 = r.top + r.height * q, x2 = r.right - r.width * q, y2 = r.bottom - r.height * q;
-        ls[0].style.transform = `translateY(${y1}px)`; ls[1].style.transform = `translateX(${x1}px)`;
-        ls[2].style.transform = `translateY(${y2}px)`; ls[3].style.transform = `translateX(${x2}px)`;
-        ls.forEach((l) => { l.style.opacity = ''; });
-        c.style.clipPath = `inset(${q * 100}% ${q * 100}% ${q * 100}% ${q * 100}%)`;
-        if (ts - inicio < DUR) requestAnimationFrame(paso); else fin();
-      };
-      requestAnimationFrame(paso);
-    };
-    // Cada tarjeta se abre al asomar (en móvil una lámina puede medir varias pantallas).
-    // Sin IntersectionObserver: Chromium descuenta el clip-path y una tarjeta cerrada nunca «intersecta».
-    let pendientes = modo === 'global' ? bentos.map((b) => b.querySelector('.b-cards')).filter(Boolean) : bentos.flatMap(tarjetas), cola = 0;
-    const mira = () => {
-      cola = 0;
-      const ahora = performance.now(), vistas = [];
-      pendientes = pendientes.filter((c) => {
-        const r = c.getBoundingClientRect();
-        if (r.top < innerHeight * 0.88 && r.bottom > innerHeight * 0.06 && r.width) { vistas.push(c); return false; }
-        return true;
-      });
-      if (modo === 'cascada') vistas.forEach((c) => { const b = c.closest('.bento'), t = Math.max(ahora, libre.get(b) || 0); const n = tarjetas(b).length; libre.set(b, t + Math.min(DUR * SOLAPE, 1600 / Math.max(1, n - 1))); abre(c, t); });
-      else vistas.forEach((g) => abre(g, ahora));
-      if (!pendientes.length) { removeEventListener('scroll', pide, true); removeEventListener('resize', pide); }
-    };
-    const pide = () => { if (!cola) cola = requestAnimationFrame(mira); };
-    addEventListener('scroll', pide, { passive: true, capture: true }); addEventListener('resize', pide);
-    requestAnimationFrame(() => requestAnimationFrame(pide));
-  }
 
   // ---------- Cursor de CAD: sobre un dibujo, retícula y coordenadas locales del dibujo ----------
   if (fino) document.querySelectorAll('.card svg.draw').forEach((svg) => {
@@ -349,12 +294,3 @@
   document.body.appendChild(sw);
 })();
 
-// Menú recogido (retícula): cada bloque deja su numeral en data-n para mostrarlo en la regla estrecha
-(function () {
-  const marca = () => document.querySelectorAll('#deck-nav .nav-cap b').forEach((b) => {
-    const cap = b.closest('.nav-cap'); if (cap.dataset.n) return;
-    const n = (b.textContent || '').split('·')[0].trim(); if (n) cap.dataset.n = n;
-  });
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', () => setTimeout(marca, 0)); else setTimeout(marca, 0);
-  setTimeout(marca, 800);
-})();
