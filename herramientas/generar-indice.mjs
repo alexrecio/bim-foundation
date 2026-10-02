@@ -61,6 +61,7 @@ for (const art of SERIE) {
 const CC = 'coordenadas-compartidas';
 const NI = 'niveles-de-informacion';
 const DI = 'deteccion-de-interferencias';
+const GD = 'gemelos-digitales';
 const MANUAL = {
   C01: [CC, 'problema principio origenes'], C02: [CC, 'coordenadas paises'], C06: [CC, 'coordenadas principio origenes'],
   C11: [CC, 'origenes survey limites'], C12: [CC, 'origenes survey'], C13: [CC, 'survey otros'], C14: [CC, 'revit campus tipologias'],
@@ -76,7 +77,13 @@ const MANUAL = {
   D06: [DI, 'matriz'], D07: [DI, 'agrupar'], D08: [DI, 'ruido'], D09: [DI, 'ciclo iso19650'], D10: [DI, 'incidencia'],
   D11: [DI, 'incidencia bcf-dentro'], D12: [DI, 'tipos ruido'], D13: [DI, 'quien-mueve'], D14: [DI, 'bcf bcf-dentro bcf-versiones'],
   D15: [DI, 'bcf-api'], D16: [DI, 'iso19650'], D17: [DI, 'guid ida-vuelta'], D18: [DI, 'navisworks'], D19: [DI, 'navisworks solibri'],
-  D20: [DI, 'holguras'], D21: [DI, 'nube'], D22: [DI, 'cerrar'], D23: [DI, 'kpi'], D24: [DI, 'ciclo'], D25: [DI, 'aptitud'], D26: [DI, 'cerrar']
+  D20: [DI, 'holguras'], D21: [DI, 'nube'], D22: [DI, 'cerrar'], D23: [DI, 'kpi'], D24: [DI, 'ciclo'], D25: [DI, 'aptitud'], D26: [DI, 'cerrar'],
+  // Artículo 07 · gemelos digitales
+  G01: [GD, 'definicion tres-niveles'], G02: [GD, 'tres-niveles'], G03: [GD, 'tres-niveles'], G05: [GD, 'madurez'], G08: [GD, 'iso19650'], G09: [GD, 'iso19650'],
+  G10: [GD, 'iso19650 entrega'], G13: [GD, 'ifc normas'], G14: [GD, 'identificadores ifc'], G15: [GD, 'ifc'], G16: [GD, 'ifc'], G17: [GD, 'entrega'], G18: [GD, 'ids entrega'],
+  G19: [GD, 'ontologias shacl'], G21: [GD, 'ontologias'], G25: [GD, 'grafo plataformas'], G29: [GD, 'itwin'], G30: [GD, 'grafo'], G31: [GD, 'componentes'],
+  G32: [GD, 'protocolos'], G34: [GD, 'protocolos'], G35: [GD, 'usos'], G36: [GD, 'usos casos'], G37: [GD, 'frecuencia datos-sensor'], G38: [GD, 'datos-sensor'],
+  G39: [GD, 'shacl'], G40: [GD, 'ontologias'], G41: [GD, 'entrega'], G42: [GD, 'casos mapa'], G43: [GD, 'frecuencia']
 };
 // Dónde se explica cada término: puntuación por campo (titular > antetítulo/frase > tarjetas > capa 2)
 const norm = (s) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
