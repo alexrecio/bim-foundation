@@ -70,19 +70,40 @@
     return m ? `${meses[+m - 1]} ${y}` : y || '';
   };
 
-  // Portada: lista de artículos
+  // Identidad común: cada artículo tiene la misma «cubierta» (número, pictograma y tema sobre papel cuadriculado)
+  const ESTADOS = { borrador: 'Borrador', proximamente: 'Próximamente', relleno: 'Relleno ficticio' };
+  const icono = (a) => `${root}assets/img/iconos/${a.slug || '_plantilla'}.svg`;
+  const cover = (a) => `<div class="cover" aria-hidden="true"><span class="cover-n">${a.numero || 'NN'}</span>` +
+    `<img src="${icono(a)}" alt="" onerror="this.src='${root}assets/img/iconos/_plantilla.svg'">` +
+    `<span class="cover-t">${a.tema || 'Tema'}</span><span class="cover-bf">BF</span></div>`;
+
+  // Portada de la web: rejilla de artículos con su cubierta
   const list = document.getElementById('article-list');
   if (list) {
     list.innerHTML = serie.map((a) => {
       const soon = a.estado === 'proximamente';
-      const estado = { borrador: 'Borrador', proximamente: 'Próximamente', relleno: 'Relleno ficticio' }[a.estado];
+      const estado = ESTADOS[a.estado];
       return `<li class="article-item${soon ? ' is-soon' : ''}"><a href="${root}articulos/${a.slug}/">
-        <span class="n">${a.numero}</span>
-        <div><h3>${a.titulo}</h3><p>${a.resumen}</p></div>
-        <div class="meta">${a.tema}<br>${fmtFecha(a.fecha)} · ${a.lectura}${estado ? `<br><span class="soon">${estado}</span>` : ''}</div>
+        ${cover(a)}
+        <div class="article-body"><h3>${a.titulo}</h3><p>${a.resumen}</p></div>
+        <div class="meta">${fmtFecha(a.fecha)} · ${a.lectura}${estado ? ` <span class="soon">${estado}</span>` : ''}</div>
       </a></li>`;
     }).join('');
   }
+
+  // Artículo: ficha de identidad en la portada ([data-ficha]) y pictograma en el menú de diapositivas
+  const slugActual = document.documentElement.dataset.slug;
+  const actual = serie.find((a) => a.slug === slugActual) || { slug: '', numero: 'NN', titulo: document.title.split(' | ')[0], tema: 'Tema', lectura: '', fecha: '' };
+  document.querySelectorAll('[data-ficha]').forEach((el) => {
+    const estado = ESTADOS[actual.estado];
+    el.innerHTML = `${cover(actual)}<div class="ficha-info">
+      <span class="c-label">Serie BIM Foundation</span>
+      <span class="c-title">Artículo ${actual.numero}</span>
+      <div class="chips"><span class="chip y">${actual.lectura}</span>${actual.fecha ? `<span class="chip">${fmtFecha(actual.fecha)}</span>` : ''}</div>
+      ${estado ? `<span class="badge n">${estado}</span>` : ''}</div>`;
+  });
+  const dn = document.querySelector('#deck-nav > .kicker-y');
+  if (dn) dn.insertAdjacentHTML('beforebegin', `<img class="deck-ico" src="${icono(actual)}" alt="">`);
 
   // Artículo: anterior / siguiente
   const nav = document.getElementById('series-nav');
@@ -106,8 +127,11 @@
   // Titular de portada: reduce el tamaño si una palabra larga no cabe en su columna
   const fit = () => document.querySelectorAll('.slide h1.display').forEach((h) => {
     h.style.fontSize = '';
+    // Medir sin cortes de palabra: si una palabra no cabe, se reduce el tamaño en vez de partirla
+    Object.assign(h.style, { overflowWrap: 'normal', wordBreak: 'normal', hyphens: 'manual' });
     let size = parseFloat(getComputedStyle(h).fontSize);
     while (h.scrollWidth > h.clientWidth + 1 && size > 24) { size -= 2; h.style.fontSize = size + 'px'; }
+    if (h.scrollWidth > h.clientWidth + 1) Object.assign(h.style, { overflowWrap: '', wordBreak: '', hyphens: '' });
   });
   fit(); addEventListener('resize', fit); if (document.fonts) document.fonts.ready.then(fit);
   const titleOf = (s) => s.dataset.nav || ((s.querySelector('h1, h2') || {}).textContent || '').replace(/\.$/, '');

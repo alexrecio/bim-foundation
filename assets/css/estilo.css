@@ -262,21 +262,41 @@ figure.diagram figcaption { margin-top: 10px; font-family: var(--mono); font-siz
 .series-head { display: flex; flex-direction: column; align-items: flex-end; text-align: right; padding: 64px 0 40px; }
 .series-head h2 { font-size: clamp(2.6rem, 5vw, 3.8rem); }
 .series-head p { font-size: 18px; font-weight: 300; color: var(--s500); max-width: 36rem; margin: 16px 0 0; }
-.article-list { list-style: none; margin: 0; padding: 0 0 96px; border-top: 2px solid var(--black); }
-.article-item a {
-  display: grid; grid-template-columns: 1fr; gap: 8px 32px; padding: 28px 0; border-bottom: 1px solid var(--s200);
-  text-decoration: none; transition: background .2s;
-}
-@media (min-width: 900px) { .article-item a { grid-template-columns: 120px 1fr 280px; align-items: start; } }
-.article-item a:hover { background: var(--s50); }
-.article-item .n { font-size: 56px; font-weight: 900; letter-spacing: -.05em; line-height: .9; color: var(--s200); transition: color .2s; }
-.article-item a:hover .n { color: var(--black); }
-.article-item h3 { margin: 0 0 8px; font-size: clamp(1.4rem, 2.4vw, 2rem); font-weight: 900; text-transform: uppercase; letter-spacing: -.04em; line-height: 1; }
-.article-item p { margin: 0; color: var(--s500); font-size: 15px; line-height: 1.6; max-width: 60ch; }
-.article-item .meta { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: .1em; color: var(--s600); line-height: 1.9; }
-.article-item .meta .soon { background: var(--s100); padding: 1px 6px; }
+.article-list { list-style: none; margin: 0; padding: 32px 0 96px; border-top: 2px solid var(--black); display: grid; grid-template-columns: minmax(0, 1fr); gap: 32px 20px; }
+@media (min-width: 640px) { .article-list { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1100px) { .article-list { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.article-item a { display: flex; flex-direction: column; gap: 14px; height: 100%; text-decoration: none; }
+.article-item h3 { margin: 0 0 8px; font-size: clamp(1.3rem, 2vw, 1.6rem); font-weight: 900; text-transform: uppercase; letter-spacing: -.04em; line-height: 1; }
+.article-item p { margin: 0; color: var(--s500); font-size: 15px; line-height: 1.55; }
+.article-item .meta { margin-top: auto; font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: .1em; color: var(--s600); line-height: 1.9; }
+.article-item .meta .soon { background: var(--s100); padding: 1px 6px; margin-left: 4px; }
+.article-item a:hover .cover { border-color: var(--black); }
+.article-item a:hover .cover-n { color: var(--black); }
+.article-item a:hover .cover img { transform: scale(1.06); }
 .article-item.is-soon a { pointer-events: none; }
 .article-item.is-soon h3 { color: var(--s400); }
+.article-item.is-soon .cover { opacity: .5; }
+
+/* ---------- Identidad común de los artículos: cubierta y ficha ---------- */
+/* Cubierta = papel cuadriculado + número + pictograma (assets/img/iconos/<slug>.svg, trazo negro 4, un solo relleno amarillo) + tema + sello BF */
+.cover {
+  position: relative; aspect-ratio: 4 / 3; border: 1px solid var(--s200); border-radius: 6px; overflow: hidden; transition: border-color .2s;
+  background-color: var(--s50);
+  background-image: linear-gradient(var(--s200) 1px, transparent 1px), linear-gradient(90deg, var(--s200) 1px, transparent 1px);
+  background-size: 24px 24px; background-position: -1px -1px;
+}
+.cover img { position: absolute; left: 50%; top: 50%; width: 38%; height: auto; margin: -19% 0 0 -19%; transition: transform .3s; }
+.cover-n { position: absolute; left: 14px; top: 8px; font-size: clamp(2.4rem, 4vw, 3.4rem); font-weight: 900; letter-spacing: -.05em; line-height: 1; color: var(--s300); transition: color .2s; }
+.cover-t { position: absolute; left: 14px; bottom: 12px; background: var(--accent); color: var(--black); font-family: var(--mono); font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; padding: 2px 6px; }
+.cover-bf { position: absolute; right: 12px; bottom: 10px; width: 28px; height: 28px; border-radius: 9999px; background: var(--black); color: var(--white); display: flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 900; letter-spacing: -.02em; }
+/* Ficha de identidad en la portada de cada artículo (<div class="card w6 ficha" data-ficha></div>, la rellena web.js) */
+.card.ficha { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; padding: 12px; }
+@media (min-width: 560px) { .card.ficha { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); align-items: center; } }
+.card.ficha .cover { border-color: var(--s200); }
+.card.ficha .cover-n { color: var(--black); }
+.ficha-info { display: flex; flex-direction: column; gap: 10px; align-items: flex-start; padding: 4px 8px 8px; }
+.ficha-info .c-title { font-size: clamp(1.2rem, 1.8vw, 1.6rem); }
+.deck-ico { display: block; width: 44px; height: 44px; margin: 0 0 10px; }
 
 /* ---------- Pie ---------- */
 footer.site {
