@@ -24,14 +24,20 @@
       <nav>
         <a class="menu-link" href="../../">Inicio</a>
         <a class="menu-link" href="../../#articulos">Artículos</a>
-        <a class="menu-link is-current" href="#">01 · Coordenadas</a>
+        <a class="menu-link is-current" href="#portada">01 · Coordenadas</a>
       </nav>
     </div>
   </div>
 
-  <main>
-    <!-- ============================== CABECERA ============================== -->
-    <header class="hero">
+  <!--
+    Regla de capas
+    Capa 1 = una diapositiva por idea, legible en 15 segundos: antetítulo, titular, una frase y un visual (≈40 palabras como máximo).
+    Capa 2 = la ficha que abre «Ver detalle» (<template id="l2-…">). Solo añade lo que la diapositiva no dice: ningún texto se repite entre capas.
+  -->
+  <main class="deck">
+
+    <!-- 01 · PORTADA -->
+    <section class="slide" id="portada">
       <div class="wrap">
         <div class="hero-grid">
           <div>
@@ -40,617 +46,798 @@
             <h1 class="display">Coordenadas<br>compartidas<br><span class="hl-y">en BIM<span class="dot">.</span></span></h1>
           </div>
           <div class="hero-side">
-            <p class="hero-lead">El modelo se queda quieto cerca del origen. Lo que se mueve es el sistema de coordenadas. Entender esa idea evita la mitad de los problemas de federación, replanteo e IFC.</p>
-            <a class="btn" href="#por-que">Empezar a leer <span aria-hidden="true">↓</span></a>
-            <div class="hero-meta"><span>Alejandro García Nicolás</span><span>Octubre 2026</span><span>35 min</span></div>
+            <p class="hero-lead">El modelo se queda quieto. Lo que se mueve es el sistema de coordenadas.</p>
+            <a class="btn" href="#problema">Empezar <span aria-hidden="true">↓</span></a>
+            <div class="hero-meta"><span>Alejandro García Nicolás</span><span>Octubre 2026</span><span>18 ideas · 15 s cada una</span></div>
           </div>
         </div>
-        <div class="stats">
-          <div class="stat"><b>16 km</b><span>Radio máximo de geometría alrededor del origen interno de Revit.</span></div>
-          <div class="stat"><b>~30 %</b><span>Herramientas que leyeron bien la georreferenciación de un IFC en el GeoBIM Benchmark 2019.</span></div>
-          <div class="stat"><b>3</b><span>Orígenes que hay que distinguir en cualquier programa BIM.</span></div>
-          <div class="stat"><b>EPSG 25830</b><span>ETRS89 / UTM 30N, el sistema más habitual en la península.</span></div>
+      </div>
+    </section>
+
+    <!-- 02 · EL PROBLEMA -->
+    <section class="slide" id="problema">
+      <div class="wrap"><div class="slide-grid">
+        <div>
+          <span class="slide-n"></span>
+          <span class="kicker-y">El problema</span>
+          <h2 class="display">Modelos que no encajan<span class="dot">.</span></h2>
+          <p class="slide-lead">Cada disciplina modela en su programa. Sin un sistema común, al federar llegan desplazados, girados o a otra cota.</p>
+          <div class="slide-actions"><button type="button" class="btn ghost l2-btn" data-l2="problema"><span class="plus">+</span> Ver detalle</button></div>
         </div>
-      </div>
-    </header>
+        <div class="slide-visual">
+          <div class="big-num">~30<small> %</small></div>
+          <span class="big-cap">de las herramientas leyó bien un IFC georreferenciado (GeoBIM Benchmark 2019)</span>
+        </div>
+      </div></div>
+    </section>
 
-    <div class="wrap">
-      <div class="article-grid">
-        <aside class="toc custom-scroll" aria-label="Índice del artículo">
-          <span class="kicker-y">Índice</span>
-          <ol></ol>
-        </aside>
+    <!-- 03 · LÍMITE -->
+    <section class="slide" id="limite">
+      <div class="wrap"><div class="slide-grid">
+        <div>
+          <span class="slide-n"></span>
+          <span class="kicker-y">Coma flotante</span>
+          <h2 class="display">Lejos del origen, todo baila<span class="dot">.</span></h2>
+          <p class="slide-lead">Los programas BIM pierden precisión con números grandes. Por eso no se modela directamente en coordenadas UTM.</p>
+          <div class="slide-actions"><button type="button" class="btn ghost l2-btn" data-l2="limite"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="slide-visual">
+          <div class="big-num">16<small> km</small></div>
+          <span class="big-cap">Radio máximo de geometría alrededor del origen interno de Revit</span>
+        </div>
+      </div></div>
+    </section>
 
-        <article class="prose">
+    <!-- 04 · PRINCIPIO -->
+    <section class="slide" id="principio">
+      <div class="wrap"><div class="slide-grid">
+        <div>
+          <span class="slide-n"></span>
+          <span class="kicker-y">La regla de oro</span>
+          <h2 class="display">Modela en local, ubica aparte<span class="dot">.</span></h2>
+          <p class="slide-lead">La geometría vive cerca del origen. Una transformación la coloca en el mundo real.</p>
+          <div class="slide-actions"><button type="button" class="btn ghost l2-btn" data-l2="principio"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="slide-visual">
+          <div class="eq">
+            <div class="eq-row"><b>Modelo local</b><span>junto al origen</span></div>
+            <div class="eq-row"><b>+ Desplazamiento</b><span>Este · Norte · cota</span></div>
+            <div class="eq-row"><b>+ Rotación</b><span>ángulo al norte</span></div>
+            <div class="eq-row" style="border-bottom:2px solid #000"><b class="hl-y">= Mundo real</b><span>UTM</span></div>
+          </div>
+        </div>
+      </div></div>
+    </section>
 
-          <!-- ============================== 01 ============================== -->
-          <section id="por-que">
-            <div class="sec-head"><span class="sec-num"></span><h2 class="display" data-short="Por qué importan">Por qué importan las coordenadas<span class="dot">.</span></h2></div>
-            <p class="lead">Cada disciplina modela en su programa, y al final todos los modelos tienen que encajar: en la federación (Navisworks, Autodesk Docs, BIMcollab, Solibri) y en el replanteo en obra. Si no comparten un sistema común, llegan desplazados, girados o a distinta cota.</p>
-            <p>Hay además una razón técnica. Los programas BIM trabajan en coma flotante, y lejos del origen se pierde precisión: la geometría parpadea, las cotas «bailan» y los encuentros dejan de cerrar. Por eso los fabricantes ponen límites:</p>
-            <ul>
-              <li>En Revit, toda la geometría, propia o vinculada, debe estar a menos de <strong>16 km (10 millas)</strong> del origen interno. El famoso «límite de 20 millas» (32 km) es el diámetro de esa zona.</li>
-              <li>Bonsai (antes BlenderBIM) avisa de errores milimétricos a partir de unos <strong>5 km</strong> del origen.</li>
-            </ul>
-            <p>Unas coordenadas UTM en España rondan los 400 000 m en X y los 4 400 000 m en Y. Modelar directamente ahí no es una opción.</p>
-            <div class="quote">
-              <p>«Modelar el proyecto cerca del Punto de Origen… a continuación le indicaremos cuáles son las coordenadas correctas para esa zona, pero sin mover los elementos del modelo».</p>
-              <cite>Modelical · Coordenadas en Revit</cite>
+    <!-- 05 · MARCO ESPAÑOL -->
+    <section class="slide" id="espana">
+      <div class="wrap"><div class="slide-grid">
+        <div>
+          <span class="slide-n"></span>
+          <span class="kicker-y">Geodesia en España</span>
+          <h2 class="display">ETRS89, UTM y Alicante<span class="dot">.</span></h2>
+          <p class="slide-lead">Es el marco oficial. En el BEP, en Civil 3D y en el IFC se escribe con un código EPSG.</p>
+          <div class="slide-actions"><button type="button" class="btn ghost l2-btn" data-l2="espana"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="slide-visual">
+          <div class="chips">
+            <span class="chip"><span class="mono">EPSG</span>25829</span>
+            <span class="chip y"><span class="mono">EPSG</span>25830</span>
+            <span class="chip"><span class="mono">EPSG</span>25831</span>
+            <span class="chip"><span class="mono">EPSG</span>4083</span>
+            <span class="chip"><span class="mono">EPSG</span>4082</span>
+          </div>
+          <span class="big-cap">Husos 29–31 en la península · 27–28 en Canarias</span>
+        </div>
+      </div></div>
+    </section>
+
+    <!-- 06 · ALTURAS Y ESCALA -->
+    <section class="slide" id="escala">
+      <div class="wrap"><div class="slide-grid">
+        <div>
+          <span class="slide-n"></span>
+          <span class="kicker-y">Alturas y escala</span>
+          <h2 class="display">Un metro UTM no es un metro de obra<span class="dot">.</span></h2>
+          <p class="slide-lead">La proyección deforma las distancias. Hay que decidir si el modelo trabaja en cuadrícula o en terreno.</p>
+          <div class="slide-actions"><button type="button" class="btn ghost l2-btn" data-l2="escala"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="slide-visual">
+          <div class="big-num">4<small> cm</small></div>
+          <span class="big-cap">Error en 100 m con una diferencia de escala de 400 ppm</span>
+        </div>
+      </div></div>
+    </section>
+
+    <!-- 07 · NORTES -->
+    <section class="slide" id="nortes">
+      <div class="wrap"><div class="slide-grid">
+        <div>
+          <span class="slide-n"></span>
+          <span class="kicker-y">Orientación</span>
+          <h2 class="display">Cuatro nortes<span class="dot">.</span></h2>
+          <p class="slide-lead">En IFC, la rotación se mide respecto al norte de cuadrícula, no al geográfico.</p>
+          <div class="slide-actions"><button type="button" class="btn ghost l2-btn" data-l2="nortes"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="slide-visual">
+          <figure class="diagram" style="margin:0;max-width:360px">
+            <svg viewBox="0 0 300 260" role="img" aria-label="Cuatro flechas: norte de cuadrícula vertical, geográfico ligeramente girado, magnético más girado y de proyecto según el edificio.">
+              <g transform="translate(150,215)" font-family="JetBrains Mono, monospace" font-size="11">
+                <g transform="rotate(-3)"><line x1="0" y1="0" x2="0" y2="-170" stroke="#8F8F87" stroke-width="3"/><text x="-84" y="-176" fill="#666">geográfico</text></g>
+                <line x1="0" y1="0" x2="0" y2="-180" stroke="#000" stroke-width="6"/><polygon points="-9,-170 0,-195 9,-170" fill="#000"/>
+                <rect x="6" y="-208" width="78" height="17" fill="#FFFF00"/><text x="10" y="-196" fill="#000" font-weight="700">cuadrícula</text>
+                <g transform="rotate(8)"><line x1="0" y1="0" x2="0" y2="-150" stroke="#D5D5CB" stroke-width="3" stroke-dasharray="6 5"/><text x="8" y="-140" fill="#8F8F87">magnético</text></g>
+                <g transform="rotate(-38)"><line x1="0" y1="0" x2="0" y2="-150" stroke="#000" stroke-width="3"/><polygon points="-6,-142 0,-160 6,-142" fill="#000"/><text x="-40" y="-166" fill="#000">proyecto</text></g>
+                <circle r="6" fill="#000"/>
+              </g>
+            </svg>
+          </figure>
+        </div>
+      </div></div>
+    </section>
+
+    <!-- 08 · TRES ORÍGENES -->
+    <section class="slide" id="origenes">
+      <div class="wrap"><div class="slide-grid">
+        <div>
+          <span class="slide-n"></span>
+          <span class="kicker-y">El concepto universal</span>
+          <h2 class="display">Tres orígenes<span class="dot">.</span></h2>
+          <p class="slide-lead">Solo el punto de reconocimiento conecta el modelo con el mundo real.</p>
+          <div class="slide-actions"><button type="button" class="btn ghost l2-btn" data-l2="origenes"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="slide-visual">
+          <div class="cards3">
+            <div class="card3">
+              <svg viewBox="0 0 44 44" aria-hidden="true"><line x1="10" y1="34" x2="38" y2="34" stroke="#000" stroke-width="3"/><line x1="10" y1="34" x2="10" y2="6" stroke="#000" stroke-width="3"/><polygon points="38,30 44,34 38,38" fill="#000"/><polygon points="6,6 10,0 14,6" fill="#000"/><rect x="7" y="31" width="6" height="6" fill="#FFFF00" stroke="#000" stroke-width="1.5"/></svg>
+              <b>Origen interno</b><p>Fijo</p>
             </div>
-            <p>Todos los fabricantes coinciden en este principio: <strong>se modela en local y la ubicación real se expresa con una transformación</strong> (un desplazamiento, una rotación y, a veces, un factor de escala). El resto del artículo explica cómo lo resuelve cada programa.</p>
-            <div class="callout dark">
-              <p class="label">El problema, en cifras</p>
-              <p>En el GeoBIM Benchmark de 2019 solo alrededor del <strong>30 %</strong> de las herramientas probadas interpretó bien la georreferenciación de un IFC. Un estudio de TU Delft observó que la latitud y longitud de <code>IfcSite</code> están «casi siempre a cero, en una ubicación completamente errónea o con una aproximación muy burda».</p>
+            <div class="card3">
+              <svg viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="15" fill="#fff" stroke="#000" stroke-width="3"/><line x1="22" y1="3" x2="22" y2="41" stroke="#000" stroke-width="2"/><line x1="3" y1="22" x2="41" y2="22" stroke="#000" stroke-width="2"/></svg>
+              <b>Punto base</b><p>Local</p>
             </div>
-          </section>
-
-          <!-- ============================== 02 ============================== -->
-          <section id="geodesia">
-            <div class="sec-head"><span class="sec-num"></span><h2 class="display" data-short="Geodesia mínima">Geodesia mínima para BIM<span class="dot">.</span></h2></div>
-            <p class="lead">No hace falta ser topógrafo, pero sí saber qué significa cada número que llega en un plano de replanteo.</p>
-
-            <h3>El marco legal en España</h3>
-            <p>El <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2007-15822" target="_blank" rel="noopener">Real Decreto 1071/2007</a> fija <strong>ETRS89</strong> como sistema de referencia oficial en la península y Baleares, y <strong>REGCAN95</strong> en Canarias. Las altitudes se refieren al nivel medio del mar en <strong>Alicante</strong> (red REDNAP) y la proyección oficial es <strong>UTM</strong>. El antiguo ED50 sigue apareciendo en cartografía antigua: mezclarlo con ETRS89 desplaza del orden de 200 m.</p>
-
-            <h3>Los códigos EPSG que hay que conocer</h3>
-            <p>Un código EPSG identifica de forma inequívoca un sistema de referencia. Es lo que se escribe en el BEP, en Civil 3D y en el IFC.</p>
-            <div class="table-wrap"><table>
-              <thead><tr><th>EPSG</th><th>Sistema</th><th>Ámbito</th></tr></thead>
-              <tbody>
-                <tr><td class="num">25829</td><td>ETRS89 / UTM 29N</td><td>Galicia y oeste peninsular</td></tr>
-                <tr class="is-key"><td class="num">25830</td><td>ETRS89 / UTM 30N</td><td>Centro peninsular (el más habitual)</td></tr>
-                <tr><td class="num">25831</td><td>ETRS89 / UTM 31N</td><td>Cataluña y Baleares</td></tr>
-                <tr><td class="num">4083</td><td>REGCAN95 / UTM 28N</td><td>Canarias al este de 18° W</td></tr>
-                <tr><td class="num">4082</td><td>REGCAN95 / UTM 27N</td><td>El Hierro y La Palma (oeste de 18° W)</td></tr>
-                <tr><td class="num">5782</td><td>Alicante height</td><td>Sistema vertical: altitudes en la península</td></tr>
-              </tbody>
-            </table></div>
-            <p class="table-note">Fuentes: <a href="https://epsg.io/25830" target="_blank" rel="noopener">epsg.io/25830</a>, <a href="https://epsg.io/4083" target="_blank" rel="noopener">epsg.io/4083</a>, <a href="https://epsg.io/5782" target="_blank" rel="noopener">epsg.io/5782</a>.</p>
-
-            <h3>Alturas: elipsoidal frente a ortométrica</h3>
-            <p>Un receptor GNSS da la <strong>altura elipsoidal (h)</strong>. La oficial, la que aparece en los planos, es la <strong>ortométrica (H)</strong>, referida al nivel del mar en Alicante. Se relacionan con la ondulación del geoide, <span class="mono">N = h − H</span>, que en España se obtiene del modelo <strong>EGM08-REDNAP</strong> del IGN (precisión de unos 3,8 cm). La diferencia entre ambas alturas ronda los 50 m en la península: confundirlas no pasa desapercibido, pero mezclarlas en un mismo proyecto sí.</p>
-
-            <h3>Coordenadas locales frente a proyectadas</h3>
-            <p>Las coordenadas <strong>locales</strong> tienen un origen cómodo y miden «a cinta métrica». Las <strong>UTM</strong> son números grandes y llevan incorporada la deformación de la proyección: un metro en la cuadrícula no es exactamente un metro en el terreno.</p>
-
-            <h3>El factor de escala</h3>
-            <ul>
-              <li>En UTM, el factor de escala vale <span class="mono">k0 = 0,9996</span> en el meridiano central del huso y crece hacia los bordes.</li>
-              <li>El <strong>factor combinado</strong> es el factor de cuadrícula multiplicado por el factor de elevación. En una obra de 100 m, una diferencia de 400 ppm son 4 cm.</li>
-              <li>Revit no documenta ningún factor de escala, ni de cuadrícula ni combinado, para las coordenadas compartidas: solo guarda traslación, cota y rotación (<a href="https://help.autodesk.com/cloudhelp/2026/ENU/Revit-Model/files/GUID-95563197-F844-45EE-AAA1-5DB7FEFC76BD.htm" target="_blank" rel="noopener">ayuda de Revit</a>). Si Civil 3D trabaja con factor de escala, hay que decidir en el BEP si el sistema compartido es de <strong>cuadrícula</strong> (UTM) o de <strong>terreno</strong>, y quién aplica la corrección.</li>
-            </ul>
-
-            <h3>Los cuatro nortes</h3>
-            <div class="table-wrap"><table>
-              <thead><tr><th>Norte</th><th>Qué es</th></tr></thead>
-              <tbody>
-                <tr><td>Geográfico (verdadero)</td><td>La dirección del polo norte geográfico.</td></tr>
-                <tr><td>De cuadrícula</td><td>El eje Y de la proyección UTM.</td></tr>
-                <tr><td>Magnético</td><td>El que marca la brújula. No se usa en BIM.</td></tr>
-                <tr><td>De proyecto</td><td>El eje del edificio, el que se pone «hacia arriba» en las plantas.</td></tr>
-              </tbody>
-            </table></div>
-            <p>El ángulo entre el norte geográfico y el de cuadrícula se llama <strong>convergencia de meridianos</strong> y en los bordes de los husos españoles ronda los 2°. Es importante porque en IFC la rotación de <code>IfcMapConversion</code> se mide respecto al <strong>norte de cuadrícula</strong>, mientras que muchos programas hablan de «norte verdadero».</p>
-          </section>
-
-          <!-- ============================== 03 ============================== -->
-          <section id="tres-origenes">
-            <div class="sec-head"><span class="sec-num"></span><h2 class="display" data-short="Los tres orígenes">Los tres orígenes<span class="dot">.</span></h2></div>
-            <p class="lead">Es el concepto universal. Cada programa le pone nombres distintos, pero todos separan el origen del motor, una referencia local del proyecto y el vínculo con el mundo real. Lo explicamos con Revit.</p>
-
-            <div class="cards3">
-              <div class="card3">
-                <svg viewBox="0 0 44 44" aria-hidden="true"><line x1="10" y1="34" x2="38" y2="34" stroke="#000" stroke-width="3"/><line x1="10" y1="34" x2="10" y2="6" stroke="#000" stroke-width="3"/><polygon points="38,30 44,34 38,38" fill="#000"/><polygon points="6,6 10,0 14,6" fill="#000"/><rect x="7" y="31" width="6" height="6" fill="#FFFF00" stroke="#000" stroke-width="1.5"/></svg>
-                <b>Origen interno</b>
-                <p>El 0,0,0 del motor de Revit. No se mueve nunca. Se puede mostrar en las vistas desde Revit 2020.2.</p>
-              </div>
-              <div class="card3">
-                <svg viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="15" fill="#fff" stroke="#000" stroke-width="3"/><line x1="22" y1="3" x2="22" y2="41" stroke="#000" stroke-width="2"/><line x1="3" y1="22" x2="41" y2="22" stroke="#000" stroke-width="2"/></svg>
-                <b>Punto base del proyecto</b>
-                <p>Referencia local para replanteo y cotas del propio proyecto. No se comparte con otros modelos.</p>
-              </div>
-              <div class="card3">
-                <svg viewBox="0 0 44 44" aria-hidden="true"><polygon points="22,4 41,38 3,38" fill="#FFFF00" stroke="#000" stroke-width="3" stroke-linejoin="round"/><line x1="22" y1="18" x2="22" y2="32" stroke="#000" stroke-width="2"/><line x1="15" y1="25" x2="29" y2="25" stroke="#000" stroke-width="2"/></svg>
-                <b>Punto de reconocimiento</b>
-                <p>Survey Point. Origen del sistema de coordenadas compartidas: el vínculo con el mundo real.</p>
-              </div>
+            <div class="card3">
+              <svg viewBox="0 0 44 44" aria-hidden="true"><polygon points="22,4 41,38 3,38" fill="#FFFF00" stroke="#000" stroke-width="3" stroke-linejoin="round"/><line x1="22" y1="18" x2="22" y2="32" stroke="#000" stroke-width="2"/><line x1="15" y1="25" x2="29" y2="25" stroke="#000" stroke-width="2"/></svg>
+              <b>Punto de reconocimiento</b><p>Compartido</p>
             </div>
+          </div>
+        </div>
+      </div></div>
+    </section>
 
-            <figure class="diagram">
-              <svg viewBox="0 0 760 330" role="img" aria-label="El modelo se dibuja junto al origen interno; el punto de reconocimiento lleva las coordenadas UTM y la rotación al norte de cuadrícula.">
-                <rect x="0" y="0" width="760" height="330" fill="#F7F7F4"/>
-                <!-- cuadrícula UTM -->
-                <g stroke="#E3E3DB" stroke-width="1">
-                  <line x1="0" y1="55" x2="760" y2="55"/><line x1="0" y1="110" x2="760" y2="110"/><line x1="0" y1="165" x2="760" y2="165"/><line x1="0" y1="220" x2="760" y2="220"/><line x1="0" y1="275" x2="760" y2="275"/>
-                  <line x1="95" y1="0" x2="95" y2="330"/><line x1="190" y1="0" x2="190" y2="330"/><line x1="285" y1="0" x2="285" y2="330"/><line x1="380" y1="0" x2="380" y2="330"/><line x1="475" y1="0" x2="475" y2="330"/><line x1="570" y1="0" x2="570" y2="330"/><line x1="665" y1="0" x2="665" y2="330"/>
-                </g>
-                <text x="16" y="24" font-family="JetBrains Mono, monospace" font-size="11" fill="#666">MUNDO REAL · ETRS89 / UTM 30N (EPSG:25830)</text>
-                <!-- origen UTM lejano -->
-                <g transform="translate(40,300)">
-                  <line x1="0" y1="0" x2="34" y2="0" stroke="#8F8F87" stroke-width="2"/><line x1="0" y1="0" x2="0" y2="-34" stroke="#8F8F87" stroke-width="2"/>
-                  <text x="8" y="-12" font-family="JetBrains Mono, monospace" font-size="10" fill="#8F8F87">0,0 UTM (a cientos de km)</text>
-                </g>
-                <line x1="44" y1="296" x2="455" y2="178" stroke="#8F8F87" stroke-width="1.5" stroke-dasharray="5 5"/>
-                <text x="150" y="250" font-family="JetBrains Mono, monospace" font-size="11" fill="#3D3D3D" transform="rotate(-16 150 250)">E 440 125,250 · N 4 474 310,800</text>
-                <!-- sistema del proyecto, girado -->
-                <g transform="translate(470,175) rotate(-14)">
-                  <rect x="-10" y="-120" width="210" height="130" fill="#fff" stroke="#000" stroke-width="2.5"/>
-                  <rect x="20" y="-95" width="70" height="80" fill="#EFEFEA" stroke="#000" stroke-width="1"/>
-                  <rect x="100" y="-95" width="80" height="50" fill="#EFEFEA" stroke="#000" stroke-width="1"/>
-                  <text x="20" y="-104" font-family="Inter, sans-serif" font-weight="900" font-size="12" fill="#000">MODELO (cerca del origen)</text>
-                  <!-- origen interno -->
-                  <line x1="0" y1="0" x2="46" y2="0" stroke="#000" stroke-width="3"/><line x1="0" y1="0" x2="0" y2="-46" stroke="#000" stroke-width="3"/>
-                  <rect x="-4" y="-4" width="8" height="8" fill="#FFFF00" stroke="#000" stroke-width="1.5"/>
-                </g>
-                <!-- survey point -->
-                <polygon points="455,166 467,188 443,188" fill="#FFFF00" stroke="#000" stroke-width="2" stroke-linejoin="round"/>
-                <!-- nortes -->
-                <g transform="translate(700,90)">
-                  <line x1="0" y1="40" x2="0" y2="-10" stroke="#000" stroke-width="2"/><polygon points="-5,-6 0,-18 5,-6" fill="#000"/>
-                  <text x="-24" y="56" font-family="JetBrains Mono, monospace" font-size="10" fill="#000">N cuadrícula</text>
-                  <g transform="rotate(-14 0 40)"><line x1="0" y1="40" x2="0" y2="-4" stroke="#8F8F87" stroke-width="2" stroke-dasharray="3 3"/></g>
-                  <text x="-70" y="-6" font-family="JetBrains Mono, monospace" font-size="10" fill="#8F8F87">N proyecto</text>
-                </g>
-                <text x="476" y="214" font-family="JetBrains Mono, monospace" font-size="11" fill="#000">Survey Point = transformación</text>
-                <text x="476" y="229" font-family="JetBrains Mono, monospace" font-size="11" fill="#666">desplazamiento + rotación (+ cota)</text>
-              </svg>
-              <figcaption>El modelo vive junto al origen interno. El punto de reconocimiento guarda dónde está ese origen en el mundo real y cuánto está girado.</figcaption>
-            </figure>
+    <!-- 09 · REVIT -->
+    <section class="slide" id="revit">
+      <div class="wrap"><div class="slide-grid">
+        <div>
+          <span class="slide-n"></span>
+          <span class="kicker-y">Revit</span>
+          <h2 class="display">Adquirir o publicar<span class="dot">.</span></h2>
+          <p class="slide-lead">Un solo modelo fija las coordenadas y los demás las adquieren. Con un DWG, siempre adquirir.</p>
+          <div class="slide-actions"><button type="button" class="btn ghost l2-btn" data-l2="revit"><span class="plus">+</span> Ver los pasos</button></div>
+        </div>
+        <div class="slide-visual">
+          <div class="flow">
+            <span class="chip">DWG topográfico</span><span class="arrow">→</span>
+            <span class="chip y">Modelo de emplazamiento</span><span class="arrow">→</span>
+            <span class="chip k">Arquitectura · Estructura · Instalaciones</span>
+          </div>
+          <span class="big-cap">Adquirir · Publicar · Adquirir</span>
+        </div>
+      </div></div>
+    </section>
 
-            <h3>Revit no mueve el modelo, mueve los sistemas</h3>
-            <p>Es la diferencia clave con AutoCAD, que desplaza la geometría respecto al SCU. En Revit el modelo se queda quieto y lo que cambia es dónde se colocan los sistemas de coordenadas respecto a él.</p>
+    <!-- 10 · CIVIL 3D -->
+    <section class="slide" id="civil3d">
+      <div class="wrap"><div class="slide-grid">
+        <div>
+          <span class="slide-n"></span>
+          <span class="kicker-y">Civil 3D ↔ Revit</span>
+          <h2 class="display">Dos puntos, mismo orden<span class="dot">.</span></h2>
+          <p class="slide-lead">Civil 3D conoce el sistema de referencia; Revit solo guarda una transformación. El puente son dos puntos comunes.</p>
+          <div class="slide-actions"><button type="button" class="btn ghost l2-btn" data-l2="civil3d"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="slide-visual">
+          <div class="flow">
+            <span class="chip k">Civil 3D</span><span class="arrow">→</span>
+            <span class="chip y"><span class="mono">XML</span>Punto A · Punto B</span><span class="arrow">→</span>
+            <span class="chip">Revit</span>
+          </div>
+          <span class="big-cap">Orden invertido = modelo girado 180°</span>
+        </div>
+      </div></div>
+    </section>
 
-            <h3>«Coordenadas» no es lo mismo que «coordenadas compartidas»</h3>
-            <p>Dos archivos pueden mostrar los mismos números en el punto de reconocimiento sin estar enlazados. Como dice Modelical, <em>«no compartirán coordenadas a menos que se haya llevado a cabo ese proceso de compartir coordenadas»</em>. Compartir es una relación explícita entre archivos (Adquirir o Publicar), no una coincidencia numérica.</p>
+    <!-- 11 · COORDINACIÓN -->
+    <section class="slide" id="coordinacion">
+      <div class="wrap"><div class="slide-grid">
+        <div>
+          <span class="slide-n"></span>
+          <span class="kicker-y">Federación</span>
+          <h2 class="display">Mover en el visor es un parche<span class="dot">.</span></h2>
+          <p class="slide-lead">Si un modelo llega fuera de sitio, se corrige en el archivo de origen, no en Navisworks ni en la nube.</p>
+          <div class="slide-actions"><button type="button" class="btn ghost l2-btn" data-l2="coordinacion"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="slide-visual">
+          <div class="chips">
+            <span class="chip">Navisworks</span><span class="chip">Autodesk Docs</span><span class="chip">BIMcollab Zoom</span><span class="chip">Solibri</span>
+          </div>
+          <span class="big-cap">Cada visor lee la georreferenciación a su manera</span>
+        </div>
+      </div></div>
+    </section>
 
-            <h3>Mover el punto de reconocimiento: con clip y sin clip</h3>
-            <div class="table-wrap"><table>
-              <thead><tr><th>Estado</th><th>Qué pasa al moverlo</th></tr></thead>
-              <tbody>
-                <tr><td>Con clip</td><td>Se desplaza todo el sistema de coordenadas compartidas respecto al modelo. Las coordenadas de todos los elementos cambian.</td></tr>
-                <tr><td>Sin clip</td><td>Solo se recoloca el marcador y cambian sus valores. El sistema compartido y el modelo no se mueven.</td></tr>
-              </tbody>
-            </table></div>
-            <p class="table-note">Fuente: <a href="https://help.autodesk.com/cloudhelp/2027/ENU/Revit-Model/files/GUID-4EAEF1B1-CC5B-4484-9727-91ACD90B0B78.htm" target="_blank" rel="noopener">Ayuda de Revit 2027 · Move the Survey Point</a>. Modelical tiene una tabla muy didáctica con los cuatro casos.</p>
+    <!-- 12 · IFC -->
+    <section class="slide" id="ifc">
+      <div class="wrap"><div class="slide-grid">
+        <div>
+          <span class="slide-n"></span>
+          <span class="kicker-y">IFC y openBIM</span>
+          <h2 class="display">En IFC, solo una forma es la buena<span class="dot">.</span></h2>
+          <p class="slide-lead">Desde IFC4: IfcMapConversion más un sistema EPSG. Es el nivel LoGeoRef 50.</p>
+          <div class="slide-actions"><button type="button" class="btn ghost l2-btn" data-l2="ifc"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="slide-visual">
+          <div class="bars" aria-label="Niveles LoGeoRef">
+            <div class="bar"><span>10</span><i style="width:20%"></i></div>
+            <div class="bar"><span>20</span><i style="width:36%"></i></div>
+            <div class="bar"><span>30</span><i style="width:52%"></i></div>
+            <div class="bar"><span>40</span><i style="width:68%"></i></div>
+            <div class="bar is-key"><span>50</span><i style="width:100%"></i></div>
+          </div>
+          <span class="big-cap">Niveles LoGeoRef · HTW Dresden</span>
+        </div>
+      </div></div>
+    </section>
 
-            <h3 id="v-pbp">¿Y el punto base del proyecto?</h3>
-            <p>Desde Revit 2020.2 el punto base del proyecto <strong>no sirve para georreferenciar</strong>. Ya no tiene icono de clip (lo confirmó el soporte de Autodesk), aunque la ayuda actual todavía habla de «desanclarlo». Moverlo solo cambia las coordenadas que se miden desde él: las coordenadas compartidas y el modelo no se mueven (<a href="https://help.autodesk.com/cloudhelp/2027/ENU/Revit-Model/files/GUID-A973AC69-7095-4C09-BD7E-E3B6EAF36ABB.htm" target="_blank" rel="noopener">ayuda de Revit 2027</a>). Para recolocar el proyecto respecto al sistema compartido se usa <span class="ui">Gestionar › Ubicación › Reubicar proyecto</span>, <span class="ui">Especificar coordenadas en punto</span> o se mueve el punto de reconocimiento con clip.</p>
+    <!-- 13 · OTROS PROGRAMAS -->
+    <section class="slide" id="otros">
+      <div class="wrap"><div class="slide-grid">
+        <div>
+          <span class="slide-n"></span>
+          <span class="kicker-y">Otros programas</span>
+          <h2 class="display">Mismos puntos, otros nombres<span class="dot">.</span></h2>
+          <p class="slide-lead">Archicad, Tekla, Allplan, Vectorworks, BricsCAD y Bonsai separan los mismos tres orígenes.</p>
+          <div class="slide-actions"><button type="button" class="btn ghost l2-btn" data-l2="otros"><span class="plus">+</span> Ver equivalencias</button></div>
+        </div>
+        <div class="slide-visual">
+          <div class="chips">
+            <span class="chip y">Survey Point</span><span class="chip">Base point</span><span class="chip">Survey Location</span><span class="chip">Global Origin</span><span class="chip">False Origin</span><span class="chip k">IfcMapConversion</span>
+          </div>
+          <span class="big-cap">El «punto de reconocimiento» en cada programa</span>
+        </div>
+      </div></div>
+    </section>
 
-            <div class="callout">
-              <span class="kicker-y">Regla práctica</span>
-              <p>Cuando todo esté configurado, fija con <strong>pin</strong> el origen interno, el punto base y el punto de reconocimiento, y deja este último con clip. Casi todos los desplazamientos «misteriosos» empiezan por uno de estos tres puntos movido sin querer.</p>
-            </div>
-          </section>
+    <!-- 14 · NUBES DE PUNTOS -->
+    <section class="slide" id="nubes">
+      <div class="wrap"><div class="slide-grid">
+        <div>
+          <span class="slide-n"></span>
+          <span class="kicker-y">Nubes de puntos</span>
+          <h2 class="display">Primero traslación, luego rotación<span class="dot">.</span></h2>
+          <p class="slide-lead">Una nube en UTM se acerca al origen antes de entrar en Revit. El orden de las operaciones importa.</p>
+          <div class="slide-actions"><button type="button" class="btn ghost l2-btn" data-l2="nubes"><span class="plus">+</span> Ver el flujo</button></div>
+        </div>
+        <div class="slide-visual">
+          <div class="flow">
+            <span class="chip">ReCap</span><span class="arrow">→</span><span class="chip">Dynamo</span><span class="arrow">→</span><span class="chip y">CloudCompare</span><span class="arrow">→</span><span class="chip">ReCap</span><span class="arrow">→</span><span class="chip k">Revit</span>
+          </div>
+        </div>
+      </div></div>
+    </section>
 
-          <!-- ============================== 04 ============================== -->
-          <section id="revit">
-            <div class="sec-head"><span class="sec-num"></span><h2 class="display" data-short="Revit paso a paso">Revit paso a paso<span class="dot">.</span></h2></div>
-            <p class="lead">Hay cuatro situaciones típicas: conocer las coordenadas de un punto, recibir un DWG topográfico, coordinar varios RVT y trabajar en la nube.</p>
+    <!-- 15 · ERRORES -->
+    <section class="slide" id="errores">
+      <div class="wrap"><div class="slide-grid">
+        <div>
+          <span class="slide-n"></span>
+          <span class="kicker-y">Errores comunes</span>
+          <h2 class="display">Los tres que más se repiten<span class="dot">.</span></h2>
+          <div class="slide-actions"><button type="button" class="btn ghost l2-btn" data-l2="errores"><span class="plus">+</span> Ver los quince</button></div>
+        </div>
+        <div class="slide-visual">
+          <ol class="top3">
+            <li>Vincular un DWG en UTM origen a origen.</li>
+            <li>Creer que coinciden porque los números coinciden.</li>
+            <li>IFC con la posición sumada dos veces.</li>
+          </ol>
+        </div>
+      </div></div>
+    </section>
 
-            <h3>1. Especificar coordenadas en un punto (sin DWG)</h3>
-            <p><span class="ui">Gestionar › Coordenadas › Especificar coordenadas en punto</span>. Se elige un punto conocido del modelo y se introducen Norte, Este, cota y ángulo al norte verdadero. Es el camino más directo cuando el topógrafo da las coordenadas de dos o tres puntos.</p>
+    <!-- 16 · BEP -->
+    <section class="slide" id="bep">
+      <div class="wrap"><div class="slide-grid">
+        <div>
+          <span class="slide-n"></span>
+          <span class="kicker-y">BEP · ISO 19650</span>
+          <h2 class="display">Decídelo una vez y escríbelo<span class="dot">.</span></h2>
+          <p class="slide-lead">La estrategia de coordenadas va en el BEP desde el primer día. Si no, cada disciplina la interpreta a su manera.</p>
+          <div class="slide-actions"><button type="button" class="btn ghost l2-btn" data-l2="bep"><span class="plus">+</span> Ver checklist</button></div>
+        </div>
+        <div class="slide-visual">
+          <div class="chips">
+            <span class="chip">EPSG</span><span class="chip">Datum vertical</span><span class="chip">Cuadrícula o terreno</span><span class="chip y">Puntos de control</span><span class="chip">Norte</span><span class="chip">Unidades</span><span class="chip k">Responsable del emplazamiento</span><span class="chip">Esquema IFC</span>
+          </div>
+        </div>
+      </div></div>
+    </section>
 
-            <h3>2. Compartir con un DWG topográfico</h3>
-            <ol class="steps">
-              <li>Abrir una vista en <strong>Norte de proyecto</strong>.</li>
-              <li>Vincular el DWG <strong>Centro a centro</strong> (nunca Origen a origen si viene en UTM).</li>
-              <li>Mover y rotar el DWG para alinearlo sobre puntos comunes.</li>
-              <li>En las propiedades del DWG, <span class="ui">Emplazamiento compartido</span> › <strong>Adquirir</strong> y luego <strong>Reconciliar</strong>. Con un DWG nunca se usa <em>Publicar</em>.</li>
-              <li>El punto de reconocimiento se recoloca solo. Después, fijar el DWG con pin o eliminarlo.</li>
-            </ol>
+    <!-- 17 · VERIFICACIÓN -->
+    <section class="slide" id="herramientas">
+      <div class="wrap"><div class="slide-grid">
+        <div>
+          <span class="slide-n"></span>
+          <span class="kicker-y">Verificación</span>
+          <h2 class="display">Comprueba antes de entregar<span class="dot">.</span></h2>
+          <p class="slide-lead">Un cubo testigo en los puntos de control y un visor neutro descubren los errores en minutos.</p>
+          <div class="slide-actions"><button type="button" class="btn ghost l2-btn" data-l2="herramientas"><span class="plus">+</span> Ver herramientas</button></div>
+        </div>
+        <div class="slide-visual">
+          <div class="chips">
+            <span class="chip y">IFCGeoRefChecker</span><span class="chip">IfcOpenShell</span><span class="chip">IfcGref</span><span class="chip">IFC Georeferencer</span><span class="chip">epsg.io</span>
+          </div>
+        </div>
+      </div></div>
+    </section>
 
-            <h3>3. Modelo maestro de emplazamiento (Revit–Revit)</h3>
-            <ol class="steps">
-              <li>Las disciplinas se vinculan entre sí <strong>Origen a origen</strong> mientras se modelan.</li>
-              <li>Un modelo de emplazamiento adquiere las coordenadas del topográfico.</li>
-              <li>En ese modelo se vincula la arquitectura, se coloca en planta, rotación y <strong>cota</strong>, y se hace <strong>Publicar</strong>.</li>
-              <li>Las demás disciplinas <strong>adquieren</strong> del emplazamiento.</li>
-              <li>A partir de ahí, todo se vincula con <strong>Automático – Por coordenadas compartidas</strong>.</li>
-            </ol>
-
-            <h3>4. En la nube (Autodesk Docs y Cloud Worksharing)</h3>
-            <p>En modelos en la nube, <em>Publicar</em> puede estar desactivado. Entonces solo se puede <strong>adquirir</strong> del maestro, y las posiciones se reparten con <span class="ui">Transferir normas de proyecto</span>.</p>
-
-            <h3>Posiciones con nombre</h3>
-            <p>Sirven para repetir el mismo edificio en varios puntos de una parcela. Cuando un vínculo tiene varias posiciones, los comandos Adquirir y Publicar no funcionan y hay que usar <span class="ui">Emplazamiento compartido</span> en las propiedades del vínculo.</p>
-
-            <h3>Resetear las coordenadas</h3>
-            <ul>
-              <li>Vincular <strong>Origen a origen</strong> un archivo limpio y adquirir sus coordenadas.</li>
-              <li>Desde Revit 2021: <span class="ui">Gestionar › Resetear coordenadas compartidas</span>.</li>
-            </ul>
-
-            <h3>Caso real: llega una topografía nueva</h3>
-            <p>Modelical describe un proyecto con tres RVT al que llega una topografía municipal con otras coordenadas:</p>
-            <ol class="steps">
-              <li>Si el DWG nuevo es un «guardar como» del antiguo, marcarlo antes como <strong>No compartir coordenadas</strong>.</li>
-              <li>Repetir <strong>Adquirir › Reconciliar</strong> en cada RVT.</li>
-              <li>Revincular <strong>Por coordenadas compartidas</strong> para validar que todo encaja.</li>
-            </ol>
-
-            <h3>Exportar</h3>
-            <ul>
-              <li><strong>DWG:</strong> <span class="ui">Base del sistema de coordenadas = Compartidas</span>, exportando <strong>vistas, no planos</strong>.</li>
-              <li><strong>IFC:</strong> ver la sección de IFC más abajo.</li>
-            </ul>
-
-            <div class="callout">
-              <span class="kicker-y">Consejos de Modelical</span>
-              <ul>
-                <li>Vincular y recargar siempre en una vista en Norte de proyecto.</li>
-                <li>Descargar los vínculos antes de adquirir.</li>
-                <li>No mover vínculos para «arreglar» las coordenadas del anfitrión.</li>
-                <li>Revisar si el DWG tiene SCP adicionales.</li>
-              </ul>
-            </div>
-          </section>
-
-          <!-- ============================== 05 ============================== -->
-          <section id="civil3d">
-            <div class="sec-head"><span class="sec-num"></span><h2 class="display" data-short="Civil 3D y Revit">Civil 3D y Revit<span class="dot">.</span></h2></div>
-            <p class="lead">Civil 3D sí sabe qué es un sistema de referencia; Revit solo guarda una transformación. El puente entre ambos es donde más errores aparecen.</p>
-
-            <h3>Configurar el dibujo en Civil 3D</h3>
-            <ul>
-              <li><span class="ui">Configuración del dibujo › Unidades y zona</span>, o el comando <code>GEOCSASSIGN</code>, que admite códigos EPSG (por ejemplo, 25830).</li>
-              <li>En la pestaña <span class="ui">Transformación</span> está el <strong>factor de escala de cuadrícula</strong>: unidad, definido por el usuario, punto de referencia o prismoidal.</li>
-            </ul>
-
-            <h3>Shared Reference Point</h3>
-            <ol class="steps">
-              <li>En Civil 3D: <span class="ui">Toolbox › Export Shared Reference Points for Autodesk Revit</span>. Elegir dos puntos <strong>a la misma cota</strong> y guardar el XML.</li>
-              <li>En Revit: <span class="ui">Import Shared Coordinates from XML File</span> y elegir los mismos puntos <strong>en el mismo orden</strong>.</li>
-              <li><span class="ui">Gestionar › Ubicación › Emplazamiento › Hacer actual</span>.</li>
-            </ol>
-            <div class="callout dark">
-              <p class="label">Ojo</p>
-              <p>Si se invierte el orden de los dos puntos, el modelo gira 180°.</p>
-            </div>
-
-            <h3>La alternativa: vincular el DWG y adquirir</h3>
-            <p>Se vincula el DWG de Civil 3D y se <strong>adquieren</strong> sus coordenadas. Revit rellena entonces el sistema GIS y la latitud y longitud desde el DWG. Si la ubicación geográfica del DWG está mal asignada, las coordenadas UTM resultantes también lo estarán; en el foro de Autodesk en español hay casos documentados.</p>
-            <p>Una nota sobre unidades: Revit no admite el pie topográfico de EE. UU. En España es irrelevante, pero conviene saberlo si llegan archivos de fuera.</p>
-
-            <h3 id="v-motor">Novedad de 2026: un motor de geolocalización común</h3>
-            <p>Según <a href="https://www.geoweeknews.com/articles/autodesk-quietly-unified-its-coordinate-systems/" target="_blank" rel="noopener">Geo Week News</a> (septiembre de 2026), Autodesk ha unificado el motor de geolocalización de Forma, Revit y Civil 3D, por ahora solo en flujos conectados de Revit. No hemos encontrado documentación oficial que lo confirme. <span class="tag">Por confirmar</span></p>
-            <p>Lo documentado hoy es que Revit obtiene el sistema de coordenadas GIS de un DWG vinculado al <strong>adquirir coordenadas</strong>. La interfaz no permite asignar directamente un código EPSG; solo la API lo admite.</p>
-          </section>
-
-          <!-- ============================== 06 ============================== -->
-          <section id="coordinacion">
-            <div class="sec-head"><span class="sec-num"></span><h2 class="display" data-short="Navisworks y visores">Navisworks, la nube y los visores<span class="dot">.</span></h2></div>
-
-            <h3>Navisworks</h3>
-            <ul>
-              <li>El exportador NWC de Revit tiene la opción <span class="ui">Coordinates</span>: <strong>Shared</strong> (por defecto) o <em>Project Internal</em>.</li>
-              <li><span class="ui">Units and Transform</span> corrige archivos uno a uno. Debe usarse solo como parche documentado: lo correcto es arreglar el origen en el archivo fuente.</li>
-            </ul>
-
-            <h3>Autodesk Docs y ACC</h3>
-            <p>La opción <em>Transform</em> de Model Coordination y Design Collaboration mueve el modelo solo en la nube y no cambia el archivo original. Es útil para revisar, no para resolver.</p>
-
-            <h3>BIMcollab Zoom</h3>
-            <ul>
-              <li>Por defecto alinea los modelos por el origen global del IFC.</li>
-              <li>Desde la versión 9.3 tiene <span class="ui">Use georeferencing</span>, <strong>desactivado por defecto</strong>, que lee <code>IfcMapConversion</code>. No lee los property sets de IFC2x3 ni la latitud y longitud.</li>
-              <li>Si se mezclan IFC con y sin <code>IfcMapConversion</code>, los modelos quedan desalineados.</li>
-            </ul>
-
-            <h3 id="v-solibri">Solibri</h3>
-            <p>Las coordenadas muy grandes provocan parpadeo. Desde la <a href="https://www.solibri.com/articles/solibri-25-12-0-release-notes" target="_blank" rel="noopener">versión 25.12</a>, Solibri lee <code>IfcMapConversion</code> e <code>IfcProjectedCRS</code> y los muestra como propiedades del proyecto para usarlos en reglas. No consta que los use para colocar los modelos.</p>
-          </section>
-
-          <!-- ============================== 07 ============================== -->
-          <section id="ifc">
-            <div class="sec-head"><span class="sec-num"></span><h2 class="display" data-short="IFC y openBIM">IFC y openBIM<span class="dot">.</span></h2></div>
-            <p class="lead">IFC permite llevar la ubicación de tres maneras, y lo habitual es que un mismo archivo mezcle varias.</p>
-
-            <ol class="steps">
-              <li><code>IfcSite.RefLatitude / RefLongitude / RefElevation</code>, en WGS84. Es aproximada e informativa.</li>
-              <li>Coordenadas grandes en el <code>ObjectPlacement</code> de <code>IfcSite</code> o en el <code>WorldCoordinateSystem</code> del contexto, más <code>TrueNorth</code>.</li>
-              <li><strong><code>IfcMapConversion</code> + <code>IfcProjectedCRS</code></strong> (IFC4 o posterior). Es el método correcto.</li>
-            </ol>
-
-            <h3>IfcMapConversion</h3>
-            <p>Describe la transformación del sistema local del modelo al sistema proyectado. Sus atributos son <code>Eastings</code>, <code>Northings</code>, <code>OrthogonalHeight</code>, <code>XAxisAbscissa</code> y <code>XAxisOrdinate</code> (que definen la rotación) y un único <code>Scale</code>, pensado para convertir unidades.</p>
-            <div class="formula">
-              E = s·cos θ·x − s·sin θ·y + Eastings<br>
-              N = s·sin θ·x + s·cos θ·y + Northings<br>
-              H = z + OrthogonalHeight<br>
-              <span style="color:var(--s500)">con θ = atan2(XAxisOrdinate, XAxisAbscissa)</span>
-            </div>
-            <p>Si existe <code>IfcMapConversion</code>, el <code>TrueNorth</code> del contexto pasa a ser solo informativo: manda la conversión.</p>
-
-            <h3>IfcProjectedCRS</h3>
-            <p>Identifica el sistema de destino: <code>Name</code> con el código EPSG (por ejemplo, <code>EPSG:25830</code>), <code>GeodeticDatum</code>, <code>VerticalDatum</code>, <code>MapProjection</code>, <code>MapZone</code> y <code>MapUnit</code>.</p>
-
-            <h3>Ejemplo para España (IFC4)</h3>
-            <p>Un edificio en el huso 30, girado unos 2° respecto al norte de cuadrícula:</p>
-<pre><code><span class="c">/* Sistema de destino: ETRS89 / UTM 30N, altitudes de Alicante */</span>
-#20=IFCPROJECTEDCRS('<span class="y">EPSG:25830</span>','ETRS89 / UTM zone 30N','EPSG:6258','EPSG:5180','UTM','30N',#10);
-<span class="c">/* Origen local → E, N, H; rotación (cos θ, sin θ); escala */</span>
-#21=IFCMAPCONVERSION(#11,#20,<span class="y">440125.250,4474310.800,655.320</span>,0.9993908,0.0348995,1.);</code></pre>
-            <p><code>GeodeticDatum</code> y <code>VerticalDatum</code> llevan códigos de <strong>datum</strong>, no de sistema: <code>EPSG:6258</code> (ETRS89) y <code>EPSG:5180</code> (Alicante). El sistema vertical «Alicante height» es el <code>EPSG:5782</code>, pero no es lo que pide este atributo; así lo ilustra la propia <a href="https://standards.buildingsmart.org/IFC/RELEASE/IFC4_3/HTML/lexical/IfcProjectedCRS.htm" target="_blank" rel="noopener">especificación IFC4.3</a> con el ejemplo alemán. Ojo: Alicante solo cubre la península; Baleares y Canarias tienen datums verticales propios.</p>
-            <div class="callout dark">
-              <p class="label">Ojo con Scale</p>
-              <p><code>Scale</code> convierte unidades: si el modelo está en milímetros y el CRS en metros, debe valer <strong>0,001</strong>. En el repositorio del exportador IFC de Revit hay un caso real con este error (<a href="https://github.com/autodesk/revit-ifc/issues/784" target="_blank" rel="noopener">revit-ifc #784</a>). No es el sitio para meter el factor combinado de la proyección salvo que esté pactado.</p>
-            </div>
-
-            <h3>Lo nuevo en IFC4.3</h3>
-            <ul id="v-ifc43">
-              <li><strong><code>IfcMapConversionScaled</code></strong>, con <code>FactorX</code>, <code>FactorY</code> y <code>FactorZ</code> para aplicar factores de escala pactados por eje.</li>
-              <li><strong><code>IfcRigidOperation</code></strong>: solo desplazamiento, sin rotación ni escala.</li>
-              <li><strong><code>IfcGeographicCRS</code></strong> y <strong><code>IfcWellKnownText</code></strong>, para definir el sistema en WKT.</li>
-              <li>Regla <em>NameOrWKT</em>: el CRS tiene que llevar un código EPSG o una definición WKT.</li>
-            </ul>
-
-            <h3>Y en IFC2x3</h3>
-            <p>IFC2x3 no tiene estas entidades. Se emulan con los property sets <code>ePSet_MapConversion</code> y <code>ePSet_ProjectedCRS</code>, que muchos visores no leen. Si el proyecto necesita georreferenciación fiable, la recomendación es IFC4 o IFC4.3.</p>
-
-            <h3>Niveles LoGeoRef</h3>
-            <p>Clemen y Görne (HTW Dresden) clasificaron la calidad de la georreferenciación de un IFC en cinco niveles:</p>
-            <div class="table-wrap"><table>
-              <thead><tr><th>Nivel</th><th>Qué contiene</th></tr></thead>
-              <tbody>
-                <tr><td class="num">10</td><td>Dirección postal (<code>IfcPostalAddress</code>)</td></tr>
-                <tr><td class="num">20</td><td>Latitud, longitud y elevación en <code>IfcSite</code></td></tr>
-                <tr><td class="num">30</td><td>Coordenadas reales en el placement del elemento espacial superior</td></tr>
-                <tr><td class="num">40</td><td><code>WorldCoordinateSystem</code> y <code>TrueNorth</code> del contexto</td></tr>
-                <tr class="is-key"><td class="num">50</td><td><code>IfcMapConversion</code> + <code>IfcProjectedCRS</code> con EPSG: el nivel recomendado</td></tr>
-              </tbody>
-            </table></div>
-            <p>Los BIM Fit Check alemanes de 2025 exigían LoGeoRef 50 como requisito obligatorio.</p>
-
-            <h3>De Revit a IFC</h3>
-            <ul>
-              <li><span class="ui">Coordinate Base</span> tiene seis opciones: Shared Coordinates, Survey Point, Project Base Point, Internal Origin y sus variantes «orientadas al norte verdadero».</li>
-              <li>Si se indica un código EPSG y se exporta en IFC4, Revit escribe <code>IfcMapConversion</code>.</li>
-              <li><strong>Cuidado con el doble desplazamiento:</strong> las coordenadas pueden acabar a la vez en <code>IfcMapConversion</code> y en el placement de <code>IfcSite</code>, y el visor las suma. Se corrige con IfcPatch o revisando la configuración de exportación.</li>
-            </ul>
-
-            <h3>Referencias españolas</h3>
-            <ul>
-              <li>La guía de arquitectura de <a href="https://cibim.transportes.gob.es/recursos_cbim/bb_gt3_procesos_sg3.6_guia_uso_arquitectura.pdf" target="_blank" rel="noopener">es.BIM</a> pide un «punto base de coordinación del proyecto… georeferenciado en X, Y y Z», la orientación referida al norte del sistema de coordenadas y al menos dos puntos documentados.</li>
-              <li>El <a href="https://www.euskadi.eus/contenidos/informacion/ets_bim/es_def/adjuntos/2024/AN8CoordinacionControlCalidad.pdf" target="_blank" rel="noopener">manual BIM de ETS</a> (Euskadi) propone un objeto físico «Punto Base» para comprobar el modelo federado.</li>
-            </ul>
-            <p>La guía de referencia internacional es la <a href="https://www.buildingsmart.org/wp-content/uploads/2020/02/User-Guide-for-Geo-referencing-in-IFC-v2.0.pdf" target="_blank" rel="noopener"><em>User Guide for Geo-referencing in IFC</em> v2.0</a> de buildingSMART (2020). Existe una versión 3.0, pero solo la pueden descargar los usuarios registrados en el <a href="https://ucm.buildingsmart.org/use-case-details/2047/en" target="_blank" rel="noopener">UCM de buildingSMART</a>.</p>
-          </section>
-
-          <!-- ============================== 08 ============================== -->
-          <section id="otros">
-            <div class="sec-head"><span class="sec-num"></span><h2 class="display" data-short="Otros programas">Otros programas<span class="dot">.</span></h2></div>
-            <p class="lead">Los tres orígenes existen en todos, con otros nombres. Esta tabla sirve de traductor.</p>
-            <div class="table-wrap"><table>
-              <thead><tr><th>Revit</th><th>Archicad</th><th>Tekla</th><th>Allplan 2026</th><th>Vectorworks</th><th>BricsCAD BIM</th><th>Bonsai / IFC</th></tr></thead>
-              <tbody>
-                <tr><td>Origen interno</td><td>Project Origin</td><td>Model origin</td><td>Punto global 0,0,0</td><td>Internal Origin</td><td>WCS 0,0,0</td><td>Origen local</td></tr>
-                <tr><td>Punto base</td><td>Project Origin (IFC Site Location)</td><td>Project base point</td><td>Base Point</td><td>User Origin</td><td>Project Location</td><td>Placement de IfcSite</td></tr>
-                <tr><td>Survey Point</td><td>Survey Point (desde AC25)</td><td>Base point con E/N</td><td>Survey Point</td><td>Survey Point</td><td>Survey Location</td><td>IfcMapConversion</td></tr>
-                <tr><td>Norte verdadero</td><td>Project North (ángulo)</td><td>Angle to North</td><td>True North</td><td>Angle to true north</td><td>NORTHDIRECTION</td><td>XAxisAbscissa / Ordinate</td></tr>
-              </tbody>
-            </table></div>
-            <p class="table-note">Equivalencias orientativas: el comportamiento exacto cambia entre versiones.</p>
-
-            <h3>Archicad</h3>
-            <ul>
-              <li>Survey Point nativo desde Archicad 25. En Teamwork hay que reservar <span class="ui">Locations Settings</span> para cambiarlo.</li>
-              <li>En la exportación IFC, la opción recomendada es <span class="ui">Survey Point and Project Origin</span>: escribe <code>IfcMapConversion</code> en IFC4 y property sets en IFC2x3.</li>
-              <li><strong>Ojo con los ángulos:</strong> Revit los mide en sentido horario desde +Y y Archicad en sentido antihorario desde +X.</li>
-            </ul>
-            <h3>Tekla Structures</h3>
-            <ul>
-              <li>Los <em>base points</em> llevan Este, Norte, cota, ángulo al norte y latitud y longitud.</li>
-              <li>Al exportar IFC4 se elige entre <code>IfcMapConversion</code> e «IfcSite coordinate system». Tekla recomienda la segunda para ver los modelos en Trimble Connect, porque muchos visores no leen <code>IfcMapConversion</code>.</li>
-              <li>Tekla no toma la cota del punto base de Revit: conviene comprobarla a mano.</li>
-            </ul>
-            <h3>Allplan</h3>
-            <ul>
-              <li>La versión 2026 separa Survey Point, Base Point y True North, de forma muy parecida a Revit.</li>
-              <li>Problema conocido: Revit ignora el gran desplazamiento de <code>IfcSite</code> de los IFC de Allplan y los vincula fuera de sitio.</li>
-            </ul>
-            <h3>Bentley (MicroStation, OpenRoads, iTwin)</h3>
-            <ul>
-              <li>El DGN tiene un sistema geográfico (datum y proyección), un Global Origin y sistemas auxiliares (ACS).</li>
-              <li>iTwin distingue geolocalización lineal y proyectada, con ECEF y la extensión del proyecto.</li>
-            </ul>
-            <h3>Vectorworks y BricsCAD BIM</h3>
-            <ul>
-              <li>Vectorworks tiene Internal Origin, User Origin y Survey Point, y su exportación IFC4 escribe el CRS.</li>
-              <li>BricsCAD BIM V25 separa Survey, Project y Site Location.</li>
-            </ul>
-            <h3>Bonsai (BlenderBIM)</h3>
-            <ul>
-              <li>Georreferenciación completa, con <em>False Origin</em> para trabajar con coordenadas grandes.</li>
-              <li>Su documentación lo dice claro: «los modelos IFC2X3 no se pueden georreferenciar».</li>
-              <li><code>TrueNorth</code> se usa solo como referencia.</li>
-            </ul>
-            <h3>ArcGIS Pro y GeoBIM</h3>
-            <p>ArcGIS usa archivos <code>.prj</code> y <code>.wld3</code> e ignora la ubicación geográfica interna de Revit. Para IFC pide IFC4 o IFC4.3 con <code>IfcMapConversion</code>.</p>
-            <h3>SketchUp</h3>
-            <p>No exporta <code>IfcProjectedCRS</code> de forma nativa. Se completa después con IfcOpenShell o IfcGref.</p>
-          </section>
-
-          <!-- ============================== 09 ============================== -->
-          <section id="nubes">
-            <div class="sec-head"><span class="sec-num"></span><h2 class="display" data-short="Nubes de puntos">Nubes de puntos georreferenciadas<span class="dot">.</span></h2></div>
-            <p class="lead">Una nube de puntos en UTM es el caso extremo: millones de puntos lejos del origen.</p>
-            <p>Con coordenadas UTM a más de unos 30 km del origen interno aparece el «baile de puntos». Modelical propone este flujo:</p>
-            <ol class="steps">
-              <li><strong>ReCap:</strong> exportar la nube en E57.</li>
-              <li><strong>Dynamo:</strong> calcular las matrices de traslación y rotación a partir de las coordenadas compartidas del modelo.</li>
-              <li><strong>CloudCompare:</strong> usar el <em>Global Shift</em>, aplicar <strong>primero la traslación y después la rotación</strong> y resetear el shift.</li>
-              <li><strong>ReCap:</strong> volver a indexar como <code>.rcp</code>.</li>
-              <li><strong>Revit:</strong> vincular la nube <strong>origen a origen</strong>.</li>
-            </ol>
-            <p>En proyectos pequeños, de unos 100 m o menos, lo más sencillo es pedir al topógrafo la nube directamente en coordenadas locales.</p>
-          </section>
-
-          <!-- ============================== 10 ============================== -->
-          <section id="errores">
-            <div class="sec-head"><span class="sec-num"></span><h2 class="display" data-short="Errores comunes">Quince errores comunes<span class="dot">.</span></h2></div>
-            <ol class="errors">
-              <li>Vincular un DWG en UTM <strong>Origen a origen</strong>: la geometría queda a kilómetros y parpadea.</li>
-              <li>Confundir «estar en las mismas coordenadas» con «compartir coordenadas».</li>
-              <li>Mover el punto de reconocimiento con clip cuando se quería sin clip, o al revés.</li>
-              <li>Mover el punto base del proyecto creyendo que así se georreferencia.</li>
-              <li>Usar <em>Publicar</em> con un DWG, o intentarlo en la nube, donde está desactivado.</li>
-              <li>Vincular en una vista en Norte verdadero en lugar de Norte de proyecto.</li>
-              <li>No fijar con pin los puntos, el DWG o los vínculos.</li>
-              <li>Invertir el orden de los puntos en Shared Reference Point (giro de 180°) o usar puntos a distinta cota.</li>
-              <li>Un DWG de Civil 3D con la ubicación geográfica mal asignada, que da UTM erróneas.</li>
-              <li>Exportar a DWG planos en vez de vistas con la opción «Compartidas».</li>
-              <li>IFC con <strong>doble desplazamiento</strong> (<code>IfcMapConversion</code> e <code>IfcSite</code> a la vez).</li>
-              <li>Entregar IFC2x3 con property sets que los visores no leen, o mezclar IFC con y sin <code>IfcMapConversion</code>.</li>
-              <li>Confundir los nortes: magnético o geográfico en lugar de cuadrícula, o un <code>TrueNorth</code> incoherente.</li>
-              <li>Mezclar ED50 con ETRS89, equivocarse de huso (en Canarias son el 27 y el 28) o mezclar alturas elipsoidales y ortométricas.</li>
-              <li>Usar mal <code>Scale</code> en <code>IfcMapConversion</code>: no poner 0,001 entre mm y m, o meter el factor combinado sin pactarlo.</li>
-            </ol>
-          </section>
-
-          <!-- ============================== 11 ============================== -->
-          <section id="bep">
-            <div class="sec-head"><span class="sec-num"></span><h2 class="display" data-short="Buenas prácticas y BEP">Buenas prácticas y BEP<span class="dot">.</span></h2></div>
-            <p class="lead">La estrategia de coordenadas se decide una vez, al principio, y se escribe. Si no está en el BEP, cada disciplina la interpretará a su manera.</p>
-
-            <h3>Qué fijar en el EIR o el BEP (ISO 19650)</h3>
-            <ul class="checklist">
-              <li>El sistema horizontal con su código EPSG y el datum vertical.</li>
-              <li>Si se trabaja en cuadrícula o en terreno, y con qué factor de escala.</li>
-              <li>Uno o varios puntos de control con coordenadas locales y UTM. La guía es.BIM pide al menos dos.</li>
-              <li>El ángulo respecto al norte de cuadrícula.</li>
-              <li>Las unidades.</li>
-              <li>Quién es el responsable del <strong>modelo maestro de emplazamiento</strong>.</li>
-              <li>El esquema IFC (IFC4 o IFC4.3) y la opción de exportación de coordenadas de cada programa.</li>
-            </ul>
-
-            <h3>Flujo recomendado</h3>
-            <p>Es el consenso entre fabricantes y guías:</p>
-            <ol class="steps">
-              <li>Modelar cerca del origen, con el norte de proyecto hacia arriba.</li>
-              <li>Un solo modelo maestro crea las coordenadas; los demás las adquieren.</li>
-              <li>Cada programa configura su equivalente al punto de reconocimiento con los mismos valores.</li>
-              <li>Exportar a IFC4 con <code>IfcMapConversion</code> (LoGeoRef 50) y un <code>IfcSite</code> coherente mientras haya visores que no la lean.</li>
-              <li>Colocar un <strong>objeto testigo</strong> (un cubo de 1 m³ o un «Punto Base» físico) en los puntos de control y validar pronto en un visor neutro.</li>
-              <li>No usar el <em>Transform</em> de Navisworks o de la nube como solución permanente.</li>
-            </ol>
-
-            <div class="callout check">
-              <span class="kicker-y">Checklist de control</span>
-              <ul class="checklist">
-                <li>Emplazamiento compartido de cada vínculo revisado.</li>
-                <li>Coordenadas leídas en los objetos testigo.</li>
-                <li>Una vista en Norte verdadero para comprobar la rotación.</li>
-                <li>Informe de IFCGeoRefChecker de cada IFC entregado.</li>
-                <li>Alineación comprobada en BIMcollab Zoom con la georreferenciación activada.</li>
-              </ul>
-            </div>
-          </section>
-
-          <!-- ============================== 12 ============================== -->
-          <section id="herramientas">
-            <div class="sec-head"><span class="sec-num"></span><h2 class="display" data-short="Herramientas">Herramientas de verificación<span class="dot">.</span></h2></div>
-            <div class="table-wrap"><table>
-              <thead><tr><th>Herramienta</th><th>Para qué sirve</th></tr></thead>
-              <tbody>
-                <tr><td><a href="https://github.com/dd-bim/City2BIM/wiki/IFCGeoRefChecker" target="_blank" rel="noopener">IFCGeoRefChecker</a></td><td>Informe del nivel LoGeoRef (10 a 50) de un IFC. De HTW Dresden.</td></tr>
-                <tr><td><a href="https://docs.ifcopenshell.org/autoapi/ifcopenshell/api/georeference/index.html" target="_blank" rel="noopener">Bonsai / IfcOpenShell / IfcPatch</a></td><td>Editar, convertir y parchear la georreferenciación de un IFC.</td></tr>
-                <tr><td><a href="https://ifcgref.bk.tudelft.nl/templates/guid.html" target="_blank" rel="noopener">IfcGref</a></td><td>Calcular <code>IfcMapConversion</code> a partir de puntos y un EPSG. De TU Delft.</td></tr>
-                <tr><td><a href="https://osarch.org/2026/06/04/ifc-georeferencer-browser-based-georeferencing/" target="_blank" rel="noopener">IFC Georeferencer</a></td><td>Ajuste Helmert en el navegador (2026).</td></tr>
-                <tr><td>BIMcollab Zoom 9.3 o posterior</td><td>Comprobar la alineación con la georreferenciación activada.</td></tr>
-                <tr><td><a href="https://epsg.io" target="_blank" rel="noopener">epsg.io</a></td><td>Consultar códigos y parámetros de sistemas de referencia.</td></tr>
-              </tbody>
-            </table></div>
-            <p>No existe un IDS oficial para la georreferenciación. En teoría, IDS 1.0 puede exigir atributos de <code>IfcProjectedCRS</code> o <code>IfcMapConversion</code>, pero no comprobar que estén bien relacionados entre sí, así que conviene completarlo con IFCGeoRefChecker o con scripts.</p>
-          </section>
-
-          <!-- ============================== 13 ============================== -->
-          <section id="glosario">
-            <div class="sec-head"><span class="sec-num"></span><h2 class="display" data-short="Glosario">Glosario<span class="dot">.</span></h2></div>
-            <dl class="glossary">
-              <dt>CRS</dt><dd>Sistema de referencia de coordenadas. Define datum, proyección y unidades.</dd>
-              <dt>Datum</dt><dd>Modelo de la Tierra (elipsoide y su posición) al que se refieren las coordenadas. En España, ETRS89.</dd>
-              <dt>EPSG</dt><dd>Registro de sistemas de referencia con un código numérico para cada uno.</dd>
-              <dt>UTM</dt><dd>Proyección Universal Transversa de Mercator. Divide la Tierra en husos de 6°.</dd>
-              <dt>Huso</dt><dd>Cada franja de la UTM. La península ocupa el 29, el 30 y el 31; Canarias, el 27 y el 28.</dd>
-              <dt>Altura ortométrica</dt><dd>Altitud sobre el nivel medio del mar (en España, en Alicante). La de los planos.</dd>
-              <dt>Altura elipsoidal</dt><dd>Altura sobre el elipsoide. La que da directamente un GNSS.</dd>
-              <dt>Convergencia</dt><dd>Ángulo entre el norte geográfico y el norte de cuadrícula.</dd>
-              <dt>Factor combinado</dt><dd>Producto del factor de escala de la proyección y del factor de elevación.</dd>
-              <dt>Origen interno</dt><dd>El 0,0,0 fijo del motor de Revit.</dd>
-              <dt>Punto base</dt><dd>Referencia local del proyecto en Revit. No se comparte.</dd>
-              <dt>Survey Point</dt><dd>Punto de reconocimiento: el origen de las coordenadas compartidas.</dd>
-              <dt>Adquirir / Publicar</dt><dd>Tomar las coordenadas de un vínculo, o imponer las propias a un vínculo.</dd>
-              <dt>IfcMapConversion</dt><dd>Entidad IFC4 que transforma el sistema local del modelo al sistema proyectado.</dd>
-              <dt>LoGeoRef</dt><dd>Nivel de georreferenciación de un IFC, de 10 a 50.</dd>
-            </dl>
-          </section>
-
-          <!-- ============================== 14 ============================== -->
-          <section id="fuentes">
-            <div class="sec-head"><span class="sec-num"></span><h2 class="display" data-short="Fuentes">Fuentes<span class="dot">.</span></h2></div>
-            <p>Hemos priorizado la documentación oficial de cada fabricante y de buildingSMART. Los datos que no hemos podido confirmar llevan la etiqueta <span class="tag">Por confirmar</span>.</p>
-            <h3>Modelical</h3>
-            <ul class="sources">
-              <li>Sarai Zaballa (2023, act. 2024). <a href="https://www.modelical.com/es/coordenadas-en-revit/" target="_blank" rel="noopener">Coordenadas en Revit</a>.</li>
-              <li>Frantxo Tabanera (2024). <a href="https://www.modelical.com/es/gdocs/reconciliar-modelos-con-coordenadas-compartidas-helpdesk/" target="_blank" rel="noopener">Reconciliar modelos con coordenadas compartidas</a>.</li>
-              <li>Iván Pajares (2024). <a href="https://www.modelical.com/es/gdocs/nubes-de-puntos-coordenadas-georreferenciadas-locales/" target="_blank" rel="noopener">Nubes de puntos georreferenciadas</a>.</li>
-            </ul>
-            <h3>Autodesk</h3>
-            <ul class="sources">
-              <li><a href="https://help.autodesk.com/cloudhelp/2023/ENU/Revit-Model/files/GUID-3F79BF5A-F051-49F3-951E-D3E86F51BECC.htm" target="_blank" rel="noopener">Revit: límite de distancia al origen interno</a></li>
-              <li><a href="https://help.autodesk.com/cloudhelp/2023/ENU/Revit-Model/files/GUID-D4358965-4574-4C5F-9430-9ECD63BA847E.htm" target="_blank" rel="noopener">Revit: puntos de referencia del proyecto</a></li>
-              <li><a href="https://help.autodesk.com/cloudhelp/2027/ENU/Revit-Model/files/GUID-4EAEF1B1-CC5B-4484-9727-91ACD90B0B78.htm" target="_blank" rel="noopener">Revit 2027: mover el punto de reconocimiento</a></li>
-              <li><a href="https://help.autodesk.com/cloudhelp/2023/ENU/Revit-Model/files/GUID-89298C90-FD56-4DA2-9DA2-84D29BA8A21E.htm" target="_blank" rel="noopener">Revit: especificar coordenadas en un punto</a></li>
-              <li><a href="https://help.autodesk.com/cloudhelp/2025/ENU/Revit-Collaborate/files/GUID-70C407EB-AFCF-4EB3-A959-CDC5BFBFA97C.htm" target="_blank" rel="noopener">Revit: coordenadas compartidas entre modelos</a> · <a href="https://bimpure.com/blog/12-steps-to-create-a-shared-site-in-revit" target="_blank" rel="noopener">BIMpure: 12 pasos para un emplazamiento compartido</a></li>
-              <li><a href="https://help.autodesk.com/cloudhelp/2025/ENU/Revit-Collaborate/files/GUID-E4D2529C-7939-4A0F-82F5-36ABC9D8A3D1.htm" target="_blank" rel="noopener">Revit: coordenadas en Cloud Worksharing</a></li>
-              <li><a href="https://help.autodesk.com/cloudhelp/2025/ENU/Revit-Collaborate/files/GUID-008933F3-DE4C-471F-890A-1A4B82D9C808.htm" target="_blank" rel="noopener">Revit: posiciones con nombre</a></li>
-              <li><a href="https://help.autodesk.com/cloudhelp/2023/ENU/Revit-DocumentPresent/files/GUID-DE0C0484-D7E8-4726-BAB9-9866663DB65F.htm" target="_blank" rel="noopener">Revit: exportar a DWG</a></li>
-              <li><a href="https://help.autodesk.com/cloudhelp/2026/ENU/RevitLT-DocumentPresent/files/GUID-E029E3AD-1639-4446-A935-C9796BC34C95.htm" target="_blank" rel="noopener">Revit: opciones de coordenadas en la exportación IFC</a></li>
-              <li><a href="https://help.autodesk.com/cloudhelp/2026/ENU/Civil3D-UserGuide/files/GUID-75B8A4F1-CB5E-4D11-9504-4F16690A5825.htm" target="_blank" rel="noopener">Civil 3D: sistema de coordenadas del dibujo</a> · <a href="https://help.autodesk.com/cloudhelp/2024/ENG/Civil3D-UserGuide/files/GUID-D54E5026-E7EA-481D-8FAD-C3BBDCF189A6.htm" target="_blank" rel="noopener">factor de escala</a></li>
-              <li><a href="https://help.autodesk.com/cloudhelp/2025/ENU/Revit-HaveYouTried/files/GUID-948650CB-2C8B-4248-BB75-D3DBC96C39B8.htm" target="_blank" rel="noopener">Shared Reference Point entre Civil 3D y Revit</a></li>
-              <li><a href="https://help.autodesk.com/cloudhelp/2025/ENU/Navisworks/files/GUID-6225D16D-0C54-404F-8874-8DCFD7AF739F.htm" target="_blank" rel="noopener">Navisworks: opciones del lector de Revit</a></li>
-              <li><a href="https://help.autodesk.com/cloudhelp/ENU/BIM360D-Model-Coordination/files/BIM360D_Model_Coordination_Transform_Models_html.html" target="_blank" rel="noopener">Model Coordination: transformar modelos</a></li>
-            </ul>
-            <h3>IFC y buildingSMART</h3>
-            <ul class="sources">
-              <li><a href="https://www.buildingsmart.org/wp-content/uploads/2020/02/User-Guide-for-Geo-referencing-in-IFC-v2.0.pdf" target="_blank" rel="noopener">buildingSMART (2020). User Guide for Geo-referencing in IFC v2.0</a></li>
-              <li><a href="https://standards.buildingsmart.org/IFC/RELEASE/IFC4/ADD2_TC1/HTML/schema/ifcrepresentationresource/lexical/ifcmapconversion.htm" target="_blank" rel="noopener">IFC4: IfcMapConversion</a> · <a href="https://standards.buildingsmart.org/IFC/RELEASE/IFC4_3/HTML/lexical/IfcProjectedCRS.htm" target="_blank" rel="noopener">IFC4.3: IfcProjectedCRS</a> · <a href="https://standards.buildingsmart.org/IFC/RELEASE/IFC4_3/HTML/lexical/IfcMapConversionScaled.htm" target="_blank" rel="noopener">IfcMapConversionScaled</a> · <a href="https://standards.buildingsmart.org/IFC/RELEASE/IFC4_3/HTML/lexical/IfcSite.htm" target="_blank" rel="noopener">IfcSite</a></li>
-              <li><a href="https://github.com/dd-bim/City2BIM/wiki/IFCGeoRefChecker" target="_blank" rel="noopener">HTW Dresden: LoGeoRef e IFCGeoRefChecker</a></li>
-              <li><a href="https://www.buildingsmart.de/sites/default/files/2025-02/BIMFitCheck_Info.pdf" target="_blank" rel="noopener">buildingSMART Deutschland: BIM Fit Check 2025</a></li>
-              <li><a href="https://arxiv.org/pdf/2007.10951" target="_blank" rel="noopener">Noardo et al. GeoBIM Benchmark 2019</a> · <a href="https://3d.bk.tudelft.nl/pdfs/18_georeferencing.pdf" target="_blank" rel="noopener">TU Delft: georreferenciación en IFC</a></li>
-              <li><a href="https://wiki.osarch.org/revit-setup-for-openbim-revit-ifc-geolocation/" target="_blank" rel="noopener">OSArch: Revit e IFC, geolocalización</a></li>
-            </ul>
-            <h3>Geodesia en España</h3>
-            <ul class="sources">
-              <li><a href="https://www.boe.es/buscar/act.php?id=BOE-A-2007-15822" target="_blank" rel="noopener">Real Decreto 1071/2007, sistema geodésico de referencia oficial</a></li>
-              <li><a href="https://datos-geodesia.ign.es/geoide/EGM08-REDNAP_Spain_IGN.pdf" target="_blank" rel="noopener">IGN: geoide EGM08-REDNAP</a></li>
-              <li><a href="https://cibim.transportes.gob.es/recursos_cbim/bb_gt3_procesos_sg3.6_guia_uso_arquitectura.pdf" target="_blank" rel="noopener">es.BIM: guía de uso en arquitectura</a> · <a href="https://www.euskadi.eus/contenidos/informacion/ets_bim/es_def/adjuntos/2024/AN8CoordinacionControlCalidad.pdf" target="_blank" rel="noopener">ETS Euskadi: coordinación y control de calidad</a></li>
-            </ul>
-            <h3>Otros fabricantes</h3>
-            <ul class="sources">
-              <li><a href="https://help.graphisoft.com/AC/29/INT/_AC29_Help/020_Configuration/020_Configuration-37.htm" target="_blank" rel="noopener">Archicad 29: ubicación del proyecto</a></li>
-              <li><a href="https://support.tekla.com/doc/tekla-structures/2025/int_exporting_into_ifc" target="_blank" rel="noopener">Tekla Structures 2025: exportar a IFC</a></li>
-              <li><a href="https://www.allplan.com/products/allplan-2026-features/modeling-management-collaboration/" target="_blank" rel="noopener">Allplan 2026: novedades</a></li>
-              <li><a href="https://www.itwinjs.org/learning/geolocation" target="_blank" rel="noopener">iTwin.js: geolocalización</a></li>
-              <li><a href="https://app-help.vectorworks.net/2025/eng/VW2025_Guide/IFC/Exporting_IFC_projects.htm" target="_blank" rel="noopener">Vectorworks 2025: exportar IFC</a></li>
-              <li><a href="https://help.bricsys.com/en-us/document/bricscad-bim/project-collaboration/model-federation-and-geo-referencing" target="_blank" rel="noopener">BricsCAD BIM: federación y georreferenciación</a></li>
-              <li><a href="https://docs-unstable.bonsaibim.org/guides/authoring/advanced_modeling/georeferencing.html" target="_blank" rel="noopener">Bonsai: georreferenciación</a></li>
-              <li><a href="https://doc.arcgis.com/en/geobim/latest/get-started/georeferencing-workflows.htm" target="_blank" rel="noopener">ArcGIS GeoBIM: flujos de georreferenciación</a></li>
-              <li><a href="https://helpcenter.bimcollab.com/en/articles/326917-coordinating-ifc-models-with-world-coordinate-system-information" target="_blank" rel="noopener">BIMcollab: coordinar IFC con coordenadas reales</a></li>
-            </ul>
-          </section>
-
-          <nav id="series-nav" class="series-nav" aria-label="Navegación de la serie"></nav>
-        </article>
-      </div>
-    </div>
+    <!-- 18 · CIERRE -->
+    <section class="slide" id="cierre">
+      <div class="wrap"><div class="slide-grid">
+        <div>
+          <span class="slide-n"></span>
+          <span class="kicker-y">En resumen</span>
+          <h2 class="display">Un origen, un maestro, un EPSG<span class="dot">.</span></h2>
+          <p class="slide-lead">Modelar cerca del origen, que un solo modelo mande y exportar a IFC4 con IfcMapConversion.</p>
+          <div class="slide-actions">
+            <button type="button" class="btn ghost l2-btn" data-l2="glosario"><span class="plus">+</span> Glosario</button>
+            <button type="button" class="btn ghost l2-btn" data-l2="fuentes"><span class="plus">+</span> Fuentes</button>
+          </div>
+        </div>
+        <div class="slide-visual">
+          <nav id="series-nav" class="series-nav" style="margin-top:0" aria-label="Navegación de la serie"></nav>
+        </div>
+      </div></div>
+    </section>
   </main>
+
+  <nav id="deck-dots" aria-label="Diapositivas"></nav>
+  <div id="deck-count" aria-hidden="true"></div>
 
   <footer class="site">
     <div class="wrap">
       <span>Diseñada y desarrollada por Alejandro García Nicolás</span><span class="sep">·</span><span class="mono">BIM Foundation · 2026</span>
     </div>
   </footer>
+
+  <!-- Ficha de capa 2 -->
+  <div id="l2-modal" role="dialog" aria-modal="true" aria-label="Detalle">
+    <div class="l2-panel custom-scroll">
+      <button type="button" class="l2-close" aria-label="Cerrar" title="Cerrar">✕</button>
+      <div id="l2-body" class="l2-body prose"></div>
+    </div>
+  </div>
+
+  <!-- ============================== CAPA 2 ============================== -->
+
+  <template id="l2-problema">
+    <div class="l2-cols">
+      <div>
+        <h3>Dónde se nota</h3>
+        <p>En la federación (Navisworks, Autodesk Docs, BIMcollab, Solibri) y, sobre todo, en el replanteo en obra.</p>
+        <h3>El dato de TU Delft</h3>
+        <p>Un estudio de TU Delft observó que la latitud y longitud de <code>IfcSite</code> están «casi siempre a cero, en una ubicación completamente errónea o con una aproximación muy burda».</p>
+      </div>
+      <div>
+        <h3>De dónde sale el 30 %</h3>
+        <p>Del <a href="https://arxiv.org/pdf/2007.10951" target="_blank" rel="noopener">GeoBIM Benchmark 2019</a>: se pidió a distintos programas que interpretaran la georreferenciación de un mismo IFC y solo alrededor de un tercio lo hizo bien.</p>
+        <div class="callout"><span class="kicker-y">Lo que viene</span><p>Primero los conceptos (origen, geodesia, nortes), después cada programa y al final cómo dejarlo por escrito y comprobarlo.</p></div>
+      </div>
+    </div>
+  </template>
+
+  <template id="l2-limite">
+    <div class="l2-cols">
+      <div>
+        <h3>Por qué pasa</h3>
+        <p>Los programas BIM guardan la geometría en coma flotante. Cuanto más grande es el número, menos decimales útiles quedan: la geometría parpadea, las cotas «bailan» y los encuentros dejan de cerrar.</p>
+        <h3>Los límites de cada fabricante</h3>
+        <ul>
+          <li><strong>Revit:</strong> toda la geometría, propia o vinculada, debe quedar dentro de ese radio. El famoso «límite de 20 millas» (32 km) es el diámetro, no el radio.</li>
+          <li><strong>Bonsai</strong> (antes BlenderBIM) avisa de errores milimétricos a partir de unos 5 km del origen.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Cuánto es una coordenada UTM</h3>
+        <p>En España ronda los 400 000 m en X y los 4 400 000 m en Y: cientos de veces más lejos de lo que el motor tolera.</p>
+        <p class="table-note" style="margin-top:0">Fuentes: <a href="https://help.autodesk.com/cloudhelp/2026/ENU/Revit-Model/files/GUID-3F79BF5A-F051-49F3-951E-D3E86F51BECC.htm" target="_blank" rel="noopener">ayuda de Revit</a> · <a href="https://docs-unstable.bonsaibim.org/guides/authoring/advanced_modeling/georeferencing.html" target="_blank" rel="noopener">documentación de Bonsai</a>.</p>
+      </div>
+    </div>
+  </template>
+
+  <template id="l2-principio">
+    <div class="quote">
+      <p>«Modelar el proyecto cerca del Punto de Origen… a continuación le indicaremos cuáles son las coordenadas correctas para esa zona, pero sin mover los elementos del modelo».</p>
+      <cite>Modelical · <a href="https://www.modelical.com/es/coordenadas-en-revit/" target="_blank" rel="noopener">Coordenadas en Revit</a></cite>
+    </div>
+    <div class="l2-cols">
+      <div>
+        <h3>Revit frente a AutoCAD</h3>
+        <p>AutoCAD desplaza la geometría respecto al SCU. Revit hace lo contrario: deja el modelo quieto y recoloca los sistemas de coordenadas respecto a él.</p>
+      </div>
+      <div>
+        <h3>A veces, también escala</h3>
+        <p>La transformación puede incluir un factor de escala. Es raro en Revit, pero aparece en Civil 3D y en IFC (lo vemos en las diapositivas de escala e IFC).</p>
+      </div>
+    </div>
+  </template>
+
+  <template id="l2-espana">
+    <div class="l2-cols">
+      <div>
+        <h3>El marco legal</h3>
+        <p>El <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2007-15822" target="_blank" rel="noopener">Real Decreto 1071/2007</a> fija ETRS89 en la península y Baleares y REGCAN95 en Canarias. Las altitudes se refieren al nivel medio del mar en Alicante (red REDNAP) y la proyección oficial es UTM.</p>
+        <div class="callout dark"><p class="label">Ojo con ED50</p><p>El antiguo sistema sigue apareciendo en cartografía heredada. Mezclarlo con ETRS89 desplaza del orden de 200 m.</p></div>
+      </div>
+      <div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>EPSG</th><th>Sistema</th><th>Ámbito</th></tr></thead>
+          <tbody>
+            <tr><td class="num">25829</td><td>ETRS89 / UTM 29N</td><td>Galicia y oeste</td></tr>
+            <tr class="is-key"><td class="num">25830</td><td>ETRS89 / UTM 30N</td><td>Centro (el más habitual)</td></tr>
+            <tr><td class="num">25831</td><td>ETRS89 / UTM 31N</td><td>Cataluña y Baleares</td></tr>
+            <tr><td class="num">4083</td><td>REGCAN95 / UTM 28N</td><td>Canarias al este de 18° W</td></tr>
+            <tr><td class="num">4082</td><td>REGCAN95 / UTM 27N</td><td>El Hierro y La Palma</td></tr>
+            <tr><td class="num">5782</td><td>Alicante height</td><td>Sistema vertical peninsular</td></tr>
+          </tbody>
+        </table></div>
+        <p class="table-note">Fuente: <a href="https://epsg.io/25830" target="_blank" rel="noopener">epsg.io</a>.</p>
+      </div>
+    </div>
+  </template>
+
+  <template id="l2-escala">
+    <div class="l2-cols">
+      <div>
+        <h3>El factor de escala</h3>
+        <ul>
+          <li>En UTM vale <span class="mono">k0 = 0,9996</span> en el meridiano central del huso y crece hacia los bordes.</li>
+          <li>El <strong>factor combinado</strong> multiplica el factor de cuadrícula por el de elevación (<a href="https://pro.arcgis.com/es/pro-app/2.7/help/editing/introduction-to-ground-to-grid.htm" target="_blank" rel="noopener">Esri</a>).</li>
+          <li>Revit no documenta ningún factor de escala para las coordenadas compartidas: solo traslación, cota y rotación (<a href="https://help.autodesk.com/cloudhelp/2026/ENU/Revit-Model/files/GUID-95563197-F844-45EE-AAA1-5DB7FEFC76BD.htm" target="_blank" rel="noopener">ayuda de Revit</a>). Si Civil 3D trabaja con factor, el BEP dice quién aplica la corrección.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Elipsoidal frente a ortométrica</h3>
+        <p>Un GNSS da la altura <strong>elipsoidal (h)</strong>. La de los planos es la <strong>ortométrica (H)</strong>, sobre el nivel del mar en Alicante. Se relacionan con <span class="mono">N = h − H</span>, que en España da el geoide <a href="https://datos-geodesia.ign.es/geoide/EGM08-REDNAP_Spain_IGN.pdf" target="_blank" rel="noopener">EGM08-REDNAP</a> del IGN (unos 3,8 cm de precisión). La diferencia ronda los 50 m en la península.</p>
+        <h3>Local frente a proyectada</h3>
+        <p>Las coordenadas locales tienen un origen cómodo y miden «a cinta métrica». Las UTM son números grandes y llevan la deformación de la proyección.</p>
+      </div>
+    </div>
+  </template>
+
+  <template id="l2-nortes">
+    <div class="l2-cols">
+      <div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Norte</th><th>Qué es</th></tr></thead>
+          <tbody>
+            <tr><td>Geográfico</td><td>Dirección del polo norte. Muchos programas lo llaman «norte verdadero».</td></tr>
+            <tr class="is-key"><td>Cuadrícula</td><td>El eje Y de la proyección UTM.</td></tr>
+            <tr><td>Magnético</td><td>El de la brújula. No se usa en BIM.</td></tr>
+            <tr><td>Proyecto</td><td>El eje del edificio, el que se dibuja hacia arriba.</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div>
+        <h3>La convergencia de meridianos</h3>
+        <p>Es el ángulo entre el norte geográfico y el de cuadrícula. En los bordes de los husos españoles ronda los 2°, suficiente para descuadrar un edificio largo (<a href="https://support.esri.com/en-us/knowledge-base/faq-what-is-a-grid-convergence-angle-000020700" target="_blank" rel="noopener">Esri</a>).</p>
+        <h3>Archicad y Revit no giran igual</h3>
+        <p>Revit mide los ángulos en sentido horario desde +Y; Archicad, en sentido antihorario desde +X.</p>
+      </div>
+    </div>
+  </template>
+
+  <template id="l2-origenes">
+    <figure class="diagram">
+      <svg viewBox="0 0 760 300" role="img" aria-label="El modelo se dibuja junto al origen interno; el punto de reconocimiento lleva las coordenadas UTM y la rotación.">
+        <rect x="0" y="0" width="760" height="300" fill="#F7F7F4"/>
+        <g stroke="#E3E3DB" stroke-width="1"><line x1="0" y1="60" x2="760" y2="60"/><line x1="0" y1="120" x2="760" y2="120"/><line x1="0" y1="180" x2="760" y2="180"/><line x1="0" y1="240" x2="760" y2="240"/><line x1="152" y1="0" x2="152" y2="300"/><line x1="304" y1="0" x2="304" y2="300"/><line x1="456" y1="0" x2="456" y2="300"/><line x1="608" y1="0" x2="608" y2="300"/></g>
+        <text x="16" y="24" font-family="JetBrains Mono, monospace" font-size="11" fill="#666">MUNDO REAL · ETRS89 / UTM 30N (EPSG:25830)</text>
+        <g transform="translate(40,275)"><line x1="0" y1="0" x2="34" y2="0" stroke="#8F8F87" stroke-width="2"/><line x1="0" y1="0" x2="0" y2="-34" stroke="#8F8F87" stroke-width="2"/><text x="8" y="-12" font-family="JetBrains Mono, monospace" font-size="10" fill="#8F8F87">0,0 UTM (a cientos de km)</text></g>
+        <line x1="44" y1="271" x2="455" y2="160" stroke="#8F8F87" stroke-width="1.5" stroke-dasharray="5 5"/>
+        <text x="150" y="228" font-family="JetBrains Mono, monospace" font-size="11" fill="#3D3D3D" transform="rotate(-15 150 228)">E 440 125,250 · N 4 474 310,800</text>
+        <g transform="translate(470,160) rotate(-14)">
+          <rect x="-10" y="-110" width="210" height="120" fill="#fff" stroke="#000" stroke-width="2.5"/>
+          <rect x="20" y="-85" width="70" height="70" fill="#EFEFEA" stroke="#000"/><rect x="100" y="-85" width="80" height="45" fill="#EFEFEA" stroke="#000"/>
+          <text x="20" y="-94" font-family="Inter, sans-serif" font-weight="900" font-size="12" fill="#000">MODELO (cerca del origen)</text>
+          <line x1="0" y1="0" x2="46" y2="0" stroke="#000" stroke-width="3"/><line x1="0" y1="0" x2="0" y2="-46" stroke="#000" stroke-width="3"/><rect x="-4" y="-4" width="8" height="8" fill="#FFFF00" stroke="#000" stroke-width="1.5"/>
+        </g>
+        <polygon points="455,150 467,172 443,172" fill="#FFFF00" stroke="#000" stroke-width="2" stroke-linejoin="round"/>
+        <text x="476" y="200" font-family="JetBrains Mono, monospace" font-size="11" fill="#000">Survey Point = transformación</text>
+        <text x="476" y="215" font-family="JetBrains Mono, monospace" font-size="11" fill="#666">desplazamiento + rotación (+ cota)</text>
+      </svg>
+      <figcaption>Ejemplo en Revit: el modelo vive junto al origen interno y el punto de reconocimiento guarda dónde está en UTM y cuánto gira.</figcaption>
+    </figure>
+    <div class="l2-cols">
+      <div>
+        <h3>Qué hace cada uno en Revit</h3>
+        <ul>
+          <li><strong>Origen interno:</strong> el 0,0,0 del motor. Se puede mostrar en las vistas desde Revit 2020.2.</li>
+          <li><strong>Punto base del proyecto:</strong> referencia para el replanteo y las cotas del propio proyecto. No se comparte con otros archivos.</li>
+          <li><strong>Punto de reconocimiento (Survey Point):</strong> origen de las coordenadas compartidas.</li>
+        </ul>
+        <h3>«Coordenadas» no es «coordenadas compartidas»</h3>
+        <p>Dos archivos pueden mostrar los mismos números sin estar enlazados. Compartir es una relación explícita entre archivos (Adquirir o Publicar), no una coincidencia numérica (Modelical).</p>
+      </div>
+      <div>
+        <h3>Mover el Survey Point</h3>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Estado</th><th>Al moverlo</th></tr></thead>
+          <tbody>
+            <tr><td>Con clip</td><td>Se desplaza todo el sistema compartido respecto al modelo.</td></tr>
+            <tr><td>Sin clip</td><td>Solo cambian el marcador y sus valores.</td></tr>
+          </tbody>
+        </table></div>
+        <h3>¿Y el punto base?</h3>
+        <p>Desde Revit 2020.2 no tiene icono de clip, aunque la ayuda aún hable de «desanclarlo». Moverlo solo cambia las coordenadas medidas desde él (<a href="https://help.autodesk.com/cloudhelp/2027/ENU/Revit-Model/files/GUID-A973AC69-7095-4C09-BD7E-E3B6EAF36ABB.htm" target="_blank" rel="noopener">ayuda de Revit 2027</a>). Para recolocar el proyecto: <span class="ui">Gestionar › Ubicación › Reubicar proyecto</span>.</p>
+        <div class="callout"><span class="kicker-y">Regla práctica</span><p>Con todo configurado, fija con pin los tres puntos y deja el Survey Point con clip.</p></div>
+      </div>
+    </div>
+  </template>
+
+  <template id="l2-revit">
+    <div class="l2-cols">
+      <div>
+        <h3>Con un DWG topográfico</h3>
+        <ol class="steps">
+          <li>Abrir una vista en <strong>Norte de proyecto</strong>.</li>
+          <li>Vincular el DWG <strong>Centro a centro</strong>.</li>
+          <li>Mover y rotar el DWG sobre puntos comunes.</li>
+          <li><span class="ui">Emplazamiento compartido</span> › Adquirir › Reconciliar.</li>
+          <li>Fijar el DWG con pin o eliminarlo.</li>
+        </ol>
+        <h3>Sin DWG</h3>
+        <p><span class="ui">Gestionar › Coordenadas › Especificar coordenadas en punto</span>: Norte, Este, cota y ángulo de un punto conocido.</p>
+        <h3>En la nube</h3>
+        <p>En Cloud Worksharing <em>Publicar</em> puede estar desactivado: solo se adquiere del maestro y las posiciones se reparten con <span class="ui">Transferir normas de proyecto</span>.</p>
+      </div>
+      <div>
+        <h3>Varios RVT</h3>
+        <ol class="steps">
+          <li>Las disciplinas se vinculan Origen a origen mientras modelan.</li>
+          <li>El emplazamiento coloca la arquitectura (planta, giro y cota) y <strong>publica</strong>.</li>
+          <li>A partir de ahí: <strong>Automático – Por coordenadas compartidas</strong>.</li>
+        </ol>
+        <h3>Otros casos</h3>
+        <ul>
+          <li><strong>Posiciones con nombre:</strong> el mismo edificio en varios sitios de la parcela. Se gestionan desde las propiedades del vínculo.</li>
+          <li><strong>Resetear:</strong> vincular Origen a origen un archivo limpio y adquirir, o (desde 2021) <span class="ui">Resetear coordenadas compartidas</span>.</li>
+          <li><strong>Topografía nueva:</strong> si el DWG es un «guardar como» del anterior, marcarlo antes como «No compartir coordenadas»; luego repetir Adquirir › Reconciliar en cada RVT.</li>
+          <li><strong>Exportar a DWG:</strong> coordenadas «Compartidas», exportando vistas, no planos.</li>
+        </ul>
+        <div class="callout"><span class="kicker-y">Consejos de Modelical</span><p>Descargar los vínculos antes de adquirir, no mover vínculos para arreglar el anfitrión y revisar si el DWG tiene SCP adicionales.</p></div>
+      </div>
+    </div>
+  </template>
+
+  <template id="l2-civil3d">
+    <div class="l2-cols">
+      <div>
+        <h3>Preparar el dibujo de Civil 3D</h3>
+        <ul>
+          <li><span class="ui">Configuración del dibujo › Unidades y zona</span> o el comando <code>GEOCSASSIGN</code>, que acepta códigos EPSG.</li>
+          <li>En <span class="ui">Transformación</span> está el factor de escala de cuadrícula.</li>
+        </ul>
+        <h3>Shared Reference Point</h3>
+        <ol class="steps">
+          <li>Civil 3D: <span class="ui">Toolbox › Export Shared Reference Points for Autodesk Revit</span>, con dos puntos a la misma cota.</li>
+          <li>Revit: <span class="ui">Import Shared Coordinates from XML File</span>.</li>
+          <li><span class="ui">Gestionar › Ubicación › Emplazamiento › Hacer actual</span>.</li>
+        </ol>
+      </div>
+      <div>
+        <h3>Alternativa: vincular el DWG y adquirir</h3>
+        <p>Revit toma el sistema GIS y la latitud y longitud del DWG. Si la ubicación geográfica del DWG está mal asignada, las coordenadas resultantes también.</p>
+        <h3>Novedad de 2026</h3>
+        <p>Según <a href="https://www.geoweeknews.com/articles/autodesk-quietly-unified-its-coordinate-systems/" target="_blank" rel="noopener">Geo Week News</a>, Autodesk ha unificado el motor de geolocalización de Forma, Revit y Civil 3D, por ahora en flujos conectados. No hay documentación oficial. <span class="tag">Por confirmar</span></p>
+        <p>Hoy, en la interfaz de Revit no se puede asignar un EPSG directamente; solo la API lo admite.</p>
+      </div>
+    </div>
+  </template>
+
+  <template id="l2-coordinacion">
+    <div class="l2-cols">
+      <div>
+        <h3>Navisworks</h3>
+        <p>El exportador NWC de Revit usa por defecto las coordenadas <strong>Shared</strong>. <span class="ui">Units and Transform</span> solo como parche documentado.</p>
+        <h3>Autodesk Docs y ACC</h3>
+        <p><em>Transform</em> en Model Coordination mueve el modelo solo en la nube: el archivo original no cambia.</p>
+      </div>
+      <div>
+        <h3>BIMcollab Zoom</h3>
+        <p>Desde la 9.3, <span class="ui">Use georeferencing</span> lee <code>IfcMapConversion</code>, pero viene <strong>desactivado</strong>. No lee los property sets de IFC2x3 ni la latitud y longitud, y mezclar IFC con y sin conversión los desalinea.</p>
+        <h3>Solibri</h3>
+        <p>Desde la 25.12 lee <code>IfcMapConversion</code> e <code>IfcProjectedCRS</code> como propiedades del proyecto para reglas; no consta que los use para colocar modelos. Con coordenadas grandes, parpadea.</p>
+      </div>
+    </div>
+  </template>
+
+  <template id="l2-ifc">
+    <div class="l2-cols">
+      <div>
+        <h3>Tres formas de llevar la ubicación</h3>
+        <ol class="steps">
+          <li><code>IfcSite.RefLatitude/RefLongitude</code> en WGS84: aproximada e informativa.</li>
+          <li>Coordenadas grandes en el placement de <code>IfcSite</code> o en el contexto, con <code>TrueNorth</code>.</li>
+          <li><code>IfcMapConversion</code> + <code>IfcProjectedCRS</code>: la correcta. Si existe, manda sobre <code>TrueNorth</code>.</li>
+        </ol>
+        <h3>La transformación</h3>
+        <div class="formula">E = s·cos θ·x − s·sin θ·y + Eastings<br>N = s·sin θ·x + s·cos θ·y + Northings<br>H = z + OrthogonalHeight<br><span style="color:var(--s500)">θ = atan2(XAxisOrdinate, XAxisAbscissa)</span></div>
+        <p><code>Scale</code> es único y convierte unidades: 0,001 si el modelo está en mm y el CRS en m. En IFC4.3, <code>IfcMapConversionScaled</code> añade <code>FactorX/Y/Z</code> para factores pactados.</p>
+      </div>
+      <div>
+        <h3>Ejemplo para España (IFC4)</h3>
+<pre><code>#20=IFCPROJECTEDCRS('<span class="y">EPSG:25830</span>','ETRS89 / UTM zone 30N','EPSG:6258','EPSG:5180','UTM','30N',#10);
+#21=IFCMAPCONVERSION(#11,#20,<span class="y">440125.250,4474310.800,655.320</span>,0.9993908,0.0348995,1.);</code></pre>
+        <p><code>GeodeticDatum</code> y <code>VerticalDatum</code> llevan códigos de datum: 6258 (ETRS89) y 5180 (Alicante), no el 5782 del sistema vertical (<a href="https://standards.buildingsmart.org/IFC/RELEASE/IFC4_3/HTML/lexical/IfcProjectedCRS.htm" target="_blank" rel="noopener">IFC4.3</a>).</p>
+        <h3>Desde Revit</h3>
+        <p>Con un EPSG y exportando a IFC4 escribe <code>IfcMapConversion</code>. Ojo con el doble desplazamiento: la posición también en <code>IfcSite</code>.</p>
+        <h3>IFC2x3 y referencias</h3>
+        <p>IFC2x3 lo emula con <code>ePSet_MapConversion</code>, que pocos visores leen. La guía es.BIM pide al menos dos puntos documentados; la <a href="https://www.buildingsmart.org/wp-content/uploads/2020/02/User-Guide-for-Geo-referencing-in-IFC-v2.0.pdf" target="_blank" rel="noopener">guía de buildingSMART v2.0</a> es la referencia pública (la v3.0 es solo para registrados). Los BIM Fit Check alemanes de 2025 exigían LoGeoRef 50.</p>
+      </div>
+    </div>
+  </template>
+
+  <template id="l2-otros">
+    <div class="table-wrap"><table>
+      <thead><tr><th>Revit</th><th>Archicad</th><th>Tekla</th><th>Allplan 2026</th><th>Vectorworks</th><th>BricsCAD BIM</th><th>Bonsai / IFC</th></tr></thead>
+      <tbody>
+        <tr><td>Origen interno</td><td>Project Origin</td><td>Model origin</td><td>Punto global 0,0,0</td><td>Internal Origin</td><td>WCS 0,0,0</td><td>Origen local</td></tr>
+        <tr><td>Punto base</td><td>Project Origin (IFC Site)</td><td>Project base point</td><td>Base Point</td><td>User Origin</td><td>Project Location</td><td>Placement de IfcSite</td></tr>
+        <tr class="is-key"><td>Survey Point</td><td>Survey Point (AC25+)</td><td>Base point con E/N</td><td>Survey Point</td><td>Survey Point</td><td>Survey Location</td><td>IfcMapConversion</td></tr>
+        <tr><td>Norte verdadero</td><td>Project North</td><td>Angle to North</td><td>True North</td><td>Angle to true north</td><td>NORTHDIRECTION</td><td>XAxisAbscissa / Ordinate</td></tr>
+      </tbody>
+    </table></div>
+    <div class="l2-cols">
+      <div>
+        <ul>
+          <li><strong>Archicad:</strong> exportar IFC con «Survey Point and Project Origin». En Teamwork, reservar Locations Settings.</li>
+          <li><strong>Tekla:</strong> recomienda «IfcSite coordinate system» para Trimble Connect. No toma la cota del punto base de Revit.</li>
+          <li><strong>Allplan:</strong> Revit ignora el gran desplazamiento de IfcSite de sus IFC.</li>
+        </ul>
+      </div>
+      <div>
+        <ul>
+          <li><strong>Bentley:</strong> el DGN tiene sistema geográfico y Global Origin; iTwin distingue geolocalización lineal y proyectada.</li>
+          <li><strong>Bonsai:</strong> False Origin para coordenadas grandes; IFC2x3 no se puede georreferenciar.</li>
+          <li><strong>ArcGIS GeoBIM</strong> pide IFC4 con IfcMapConversion. <strong>SketchUp</strong> no exporta el CRS: se completa con IfcOpenShell o IfcGref.</li>
+        </ul>
+      </div>
+    </div>
+  </template>
+
+  <template id="l2-nubes">
+    <ol class="steps">
+      <li><strong>ReCap:</strong> exportar la nube en E57.</li>
+      <li><strong>Dynamo:</strong> calcular las matrices de traslación y rotación a partir de las coordenadas compartidas del modelo.</li>
+      <li><strong>CloudCompare:</strong> usar el Global Shift, aplicar las dos matrices y resetear el shift.</li>
+      <li><strong>ReCap:</strong> volver a indexar como <code>.rcp</code>.</li>
+      <li><strong>Revit:</strong> vincular la nube origen a origen.</li>
+    </ol>
+    <p>El «baile de puntos» aparece a más de unos 30 km del origen. En obras de unos 100 m o menos, lo más sencillo es pedir la nube al topógrafo en coordenadas locales. Fuente: <a href="https://www.modelical.com/es/gdocs/nubes-de-puntos-coordenadas-georreferenciadas-locales/" target="_blank" rel="noopener">Modelical</a>.</p>
+  </template>
+
+  <template id="l2-errores">
+    <p>Además de los tres de la diapositiva:</p>
+    <ol class="errors" start="4" style="counter-reset: err 3">
+      <li>Mover el Survey Point con clip cuando se quería sin clip, o al revés.</li>
+      <li>Mover el punto base creyendo que así se georreferencia.</li>
+      <li>Usar <em>Publicar</em> con un DWG o en la nube.</li>
+      <li>Vincular en Norte verdadero en lugar de Norte de proyecto.</li>
+      <li>No fijar con pin los puntos, el DWG o los vínculos.</li>
+      <li>Invertir el orden de los puntos de Civil 3D o usar puntos a distinta cota.</li>
+      <li>Un DWG con la ubicación geográfica mal asignada.</li>
+      <li>Exportar planos en vez de vistas a DWG.</li>
+      <li>Entregar IFC2x3 o mezclar IFC con y sin IfcMapConversion.</li>
+      <li>Confundir los nortes o tener un TrueNorth incoherente.</li>
+      <li>Mezclar ED50 y ETRS89, equivocarse de huso o mezclar alturas elipsoidales y ortométricas.</li>
+      <li>Usar mal <code>Scale</code>: no poner 0,001 entre mm y m.</li>
+    </ol>
+  </template>
+
+  <template id="l2-bep">
+    <div class="l2-cols">
+      <div>
+        <h3>Flujo recomendado</h3>
+        <ol class="steps">
+          <li>Modelar cerca del origen, con el norte de proyecto hacia arriba.</li>
+          <li>Un solo modelo maestro crea las coordenadas; los demás las adquieren.</li>
+          <li>Cada programa configura su Survey Point con los mismos valores.</li>
+          <li>Exportar a IFC4 con IfcMapConversion y un IfcSite coherente.</li>
+          <li>Validar pronto en un visor neutro.</li>
+        </ol>
+      </div>
+      <div>
+        <div class="callout check">
+          <span class="kicker-y">Checklist de control</span>
+          <ul class="checklist">
+            <li>Emplazamiento compartido de cada vínculo revisado.</li>
+            <li>Coordenadas leídas en los objetos testigo.</li>
+            <li>Una vista en Norte verdadero para comprobar el giro.</li>
+            <li>Informe de IFCGeoRefChecker de cada IFC.</li>
+            <li>BIMcollab Zoom con la georreferenciación activada.</li>
+          </ul>
+        </div>
+        <p>La guía de arquitectura de <a href="https://cibim.transportes.gob.es/recursos_cbim/bb_gt3_procesos_sg3.6_guia_uso_arquitectura.pdf" target="_blank" rel="noopener">es.BIM</a> pide al menos dos puntos de control documentados, y el <a href="https://www.euskadi.eus/contenidos/informacion/ets_bim/es_def/adjuntos/2024/AN8CoordinacionControlCalidad.pdf" target="_blank" rel="noopener">manual de ETS</a> propone un objeto físico «Punto Base».</p>
+      </div>
+    </div>
+  </template>
+
+  <template id="l2-herramientas">
+    <div class="table-wrap"><table>
+      <thead><tr><th>Herramienta</th><th>Para qué sirve</th></tr></thead>
+      <tbody>
+        <tr><td><a href="https://github.com/dd-bim/City2BIM/wiki/IFCGeoRefChecker" target="_blank" rel="noopener">IFCGeoRefChecker</a></td><td>Informe del nivel LoGeoRef de un IFC (HTW Dresden).</td></tr>
+        <tr><td><a href="https://docs.ifcopenshell.org/autoapi/ifcopenshell/api/georeference/index.html" target="_blank" rel="noopener">IfcOpenShell / Bonsai / IfcPatch</a></td><td>Editar y parchear la georreferenciación.</td></tr>
+        <tr><td><a href="https://ifcgref.bk.tudelft.nl/templates/guid.html" target="_blank" rel="noopener">IfcGref</a></td><td>Calcular IfcMapConversion desde puntos y un EPSG (TU Delft).</td></tr>
+        <tr><td><a href="https://osarch.org/2026/06/04/ifc-georeferencer-browser-based-georeferencing/" target="_blank" rel="noopener">IFC Georeferencer</a></td><td>Ajuste Helmert en el navegador (2026).</td></tr>
+        <tr><td><a href="https://epsg.io" target="_blank" rel="noopener">epsg.io</a></td><td>Consultar códigos y parámetros.</td></tr>
+      </tbody>
+    </table></div>
+    <p>No hay un IDS oficial para la georreferenciación. IDS 1.0 puede exigir atributos de IfcProjectedCRS o IfcMapConversion, pero no comprobar que estén bien relacionados, así que conviene completarlo con estas herramientas.</p>
+  </template>
+
+  <template id="l2-glosario">
+    <dl class="glossary">
+      <dt>CRS</dt><dd>Sistema de referencia de coordenadas: datum, proyección y unidades.</dd>
+      <dt>Datum</dt><dd>Modelo de la Tierra al que se refieren las coordenadas. En España, ETRS89.</dd>
+      <dt>EPSG</dt><dd>Registro con un código numérico para cada sistema de referencia.</dd>
+      <dt>UTM</dt><dd>Proyección Universal Transversa de Mercator, en husos de 6°.</dd>
+      <dt>Altura ortométrica</dt><dd>Altitud sobre el nivel medio del mar. La de los planos.</dd>
+      <dt>Altura elipsoidal</dt><dd>Altura sobre el elipsoide. La que da un GNSS.</dd>
+      <dt>Convergencia</dt><dd>Ángulo entre el norte geográfico y el de cuadrícula.</dd>
+      <dt>Factor combinado</dt><dd>Factor de escala de la proyección por el de elevación.</dd>
+      <dt>Adquirir / Publicar</dt><dd>Tomar las coordenadas de un vínculo, o imponerle las propias.</dd>
+      <dt>LoGeoRef</dt><dd>Nivel de georreferenciación de un IFC, de 10 a 50.</dd>
+    </dl>
+  </template>
+
+  <template id="l2-fuentes">
+    <p>Prioridad a la documentación oficial de cada fabricante y de buildingSMART. Lo no confirmado lleva <span class="tag">Por confirmar</span>.</p>
+    <div class="l2-cols">
+      <div>
+        <h3>Modelical</h3>
+        <ul class="sources">
+          <li>Sarai Zaballa (2023, act. 2024). <a href="https://www.modelical.com/es/coordenadas-en-revit/" target="_blank" rel="noopener">Coordenadas en Revit</a>.</li>
+          <li>Frantxo Tabanera (2024). <a href="https://www.modelical.com/es/gdocs/reconciliar-modelos-con-coordenadas-compartidas-helpdesk/" target="_blank" rel="noopener">Reconciliar modelos con coordenadas compartidas</a>.</li>
+          <li>Iván Pajares (2024). <a href="https://www.modelical.com/es/gdocs/nubes-de-puntos-coordenadas-georreferenciadas-locales/" target="_blank" rel="noopener">Nubes de puntos georreferenciadas</a>.</li>
+        </ul>
+        <h3>Autodesk</h3>
+        <ul class="sources">
+          <li><a href="https://help.autodesk.com/cloudhelp/2023/ENU/Revit-Model/files/GUID-D4358965-4574-4C5F-9430-9ECD63BA847E.htm" target="_blank" rel="noopener">Revit: puntos de referencia</a> · <a href="https://help.autodesk.com/cloudhelp/2027/ENU/Revit-Model/files/GUID-4EAEF1B1-CC5B-4484-9727-91ACD90B0B78.htm" target="_blank" rel="noopener">mover el Survey Point</a> · <a href="https://help.autodesk.com/cloudhelp/2023/ENU/Revit-Model/files/GUID-89298C90-FD56-4DA2-9DA2-84D29BA8A21E.htm" target="_blank" rel="noopener">especificar coordenadas</a></li>
+          <li><a href="https://help.autodesk.com/cloudhelp/2025/ENU/Revit-Collaborate/files/GUID-70C407EB-AFCF-4EB3-A959-CDC5BFBFA97C.htm" target="_blank" rel="noopener">Coordenadas compartidas entre modelos</a> · <a href="https://bimpure.com/blog/12-steps-to-create-a-shared-site-in-revit" target="_blank" rel="noopener">BIMpure</a></li>
+          <li><a href="https://help.autodesk.com/cloudhelp/2026/ENU/RevitLT-DocumentPresent/files/GUID-E029E3AD-1639-4446-A935-C9796BC34C95.htm" target="_blank" rel="noopener">Exportación IFC</a> · <a href="https://help.autodesk.com/cloudhelp/2023/ENU/Revit-DocumentPresent/files/GUID-DE0C0484-D7E8-4726-BAB9-9866663DB65F.htm" target="_blank" rel="noopener">exportación DWG</a></li>
+          <li><a href="https://help.autodesk.com/cloudhelp/2026/ENU/Civil3D-UserGuide/files/GUID-75B8A4F1-CB5E-4D11-9504-4F16690A5825.htm" target="_blank" rel="noopener">Civil 3D: sistema de coordenadas</a> · <a href="https://help.autodesk.com/cloudhelp/2025/ENU/Revit-HaveYouTried/files/GUID-948650CB-2C8B-4248-BB75-D3DBC96C39B8.htm" target="_blank" rel="noopener">Shared Reference Point</a></li>
+          <li><a href="https://help.autodesk.com/cloudhelp/2025/ENU/Navisworks/files/GUID-6225D16D-0C54-404F-8874-8DCFD7AF739F.htm" target="_blank" rel="noopener">Navisworks</a> · <a href="https://help.autodesk.com/cloudhelp/ENU/BIM360D-Model-Coordination/files/BIM360D_Model_Coordination_Transform_Models_html.html" target="_blank" rel="noopener">Model Coordination</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>IFC y geodesia</h3>
+        <ul class="sources">
+          <li><a href="https://standards.buildingsmart.org/IFC/RELEASE/IFC4/ADD2_TC1/HTML/schema/ifcrepresentationresource/lexical/ifcmapconversion.htm" target="_blank" rel="noopener">IfcMapConversion</a> · <a href="https://standards.buildingsmart.org/IFC/RELEASE/IFC4_3/HTML/lexical/IfcMapConversionScaled.htm" target="_blank" rel="noopener">IfcMapConversionScaled</a> · <a href="https://standards.buildingsmart.org/IFC/RELEASE/IFC4_3/HTML/lexical/IfcSite.htm" target="_blank" rel="noopener">IfcSite</a></li>
+          <li><a href="https://github.com/dd-bim/City2BIM/wiki/IFCGeoRefChecker" target="_blank" rel="noopener">HTW Dresden: LoGeoRef</a> · <a href="https://www.buildingsmart.de/sites/default/files/2025-02/BIMFitCheck_Info.pdf" target="_blank" rel="noopener">BIM Fit Check 2025</a></li>
+          <li><a href="https://3d.bk.tudelft.nl/pdfs/18_georeferencing.pdf" target="_blank" rel="noopener">TU Delft: georreferenciación en IFC</a> · <a href="https://wiki.osarch.org/revit-setup-for-openbim-revit-ifc-geolocation/" target="_blank" rel="noopener">OSArch</a> · <a href="https://github.com/autodesk/revit-ifc/issues/784" target="_blank" rel="noopener">revit-ifc #784</a></li>
+          <li><a href="https://epsg.io/5180-datum" target="_blank" rel="noopener">EPSG:5180</a> · <a href="https://epsg.io/6258-datum" target="_blank" rel="noopener">EPSG:6258</a> · <a href="https://ucm.buildingsmart.org/use-case-details/2047/en" target="_blank" rel="noopener">buildingSMART UCM</a></li>
+        </ul>
+        <h3>Otros fabricantes</h3>
+        <ul class="sources">
+          <li><a href="https://help.graphisoft.com/AC/29/INT/_AC29_Help/020_Configuration/020_Configuration-37.htm" target="_blank" rel="noopener">Archicad</a> · <a href="https://support.tekla.com/doc/tekla-structures/2025/int_exporting_into_ifc" target="_blank" rel="noopener">Tekla</a> · <a href="https://www.allplan.com/products/allplan-2026-features/modeling-management-collaboration/" target="_blank" rel="noopener">Allplan</a> · <a href="https://www.itwinjs.org/learning/geolocation" target="_blank" rel="noopener">iTwin</a></li>
+          <li><a href="https://app-help.vectorworks.net/2025/eng/VW2025_Guide/IFC/Exporting_IFC_projects.htm" target="_blank" rel="noopener">Vectorworks</a> · <a href="https://help.bricsys.com/en-us/document/bricscad-bim/project-collaboration/model-federation-and-geo-referencing" target="_blank" rel="noopener">BricsCAD</a> · <a href="https://doc.arcgis.com/en/geobim/latest/get-started/georeferencing-workflows.htm" target="_blank" rel="noopener">ArcGIS GeoBIM</a></li>
+          <li><a href="https://helpcenter.bimcollab.com/en/articles/326917-coordinating-ifc-models-with-world-coordinate-system-information" target="_blank" rel="noopener">BIMcollab</a> · <a href="https://www.solibri.com/articles/solibri-25-12-0-release-notes" target="_blank" rel="noopener">Solibri 25.12</a></li>
+        </ul>
+      </div>
+    </div>
+  </template>
 
   <script src="../../assets/js/serie.js"></script>
   <script src="../../assets/js/web.js"></script>

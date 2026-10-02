@@ -226,8 +226,8 @@ figure.diagram figcaption { margin-top: 10px; font-family: var(--mono); font-siz
 /* Errores comunes: lista numerada grande */
 .errors { list-style: none; padding: 0 !important; margin: 8px 0 24px; counter-reset: err; display: grid; grid-template-columns: 1fr; gap: 0 32px; }
 @media (min-width: 720px) { .errors { grid-template-columns: 1fr 1fr; } }
-.errors li { counter-increment: err; display: grid; grid-template-columns: 40px 1fr; padding: 12px 0; margin: 0; border-top: 1px solid var(--s200); font-size: 15px; line-height: 1.5; }
-.errors li::before { content: counter(err, decimal-leading-zero); font-family: var(--mono); font-size: 12px; font-weight: 700; color: var(--s400); padding-top: 2px; }
+.errors li { counter-increment: err; position: relative; padding: 12px 0 12px 40px; margin: 0; border-top: 1px solid var(--s200); font-size: 15px; line-height: 1.5; }
+.errors li::before { content: counter(err, decimal-leading-zero); position: absolute; left: 0; top: 14px; font-family: var(--mono); font-size: 12px; font-weight: 700; color: var(--s400); }
 
 /* Checklist */
 .checklist { list-style: none; padding: 0 !important; }
@@ -291,3 +291,99 @@ footer.site .sep { color: var(--black); background: var(--accent); padding: 0 3p
   main { padding-left: 0; }
   .hero { min-height: 0; }
 }
+
+/* ==========================================================================
+   Artículo en dos capas (mismo patrón que el portfolio)
+   Capa 1: una diapositiva a pantalla completa por idea, legible en 15 s
+   (antetítulo, titular, una frase y un visual). Capa 2: ficha emergente con
+   el detalle, que no repite ningún texto de su diapositiva.
+   ========================================================================== */
+@media (min-width: 1024px) and (min-height: 680px) { html:has(.deck) { scroll-snap-type: y mandatory; } }
+.slide {
+  position: relative; min-height: 100vh; min-height: 100svh; display: flex; flex-direction: column; justify-content: center;
+  padding: 104px 0 72px; scroll-snap-align: start; border-bottom: 1px solid var(--s100);
+}
+.slide-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 40px 64px; align-items: center; }
+@media (min-width: 1100px) { .slide-grid { grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); } }
+.slide-n { display: block; font-family: var(--mono); font-size: 11px; font-weight: 700; letter-spacing: .1em; color: var(--s400); margin-bottom: 14px; }
+.slide .kicker-y { margin-bottom: 20px; }
+.slide h2 { font-size: clamp(2.3rem, 5.4vw, 4.4rem); }
+.slide h1.display { font-size: clamp(2.5rem, 7.2vw, 5.4rem); line-height: 1; }
+@media (max-width: 480px) { .slide h2 { font-size: 2rem; } }
+.slide-lead { margin: 24px 0 0; max-width: 34ch; font-size: 19px; line-height: 1.55; color: var(--s700); }
+@media (min-width: 1024px) { .slide-lead { font-size: 21px; } }
+.slide-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 32px; }
+.l2-btn .plus { display: inline-block; font-size: 15px; line-height: 1; transition: transform .3s; }
+.l2-btn:hover .plus { transform: rotate(90deg); }
+.slide-visual { min-width: 0; }
+
+/* Contador de diapositivas y puntos de navegación */
+#deck-count { position: fixed; right: 20px; bottom: 20px; z-index: 90; font-family: var(--mono); font-size: 11px; font-weight: 700; letter-spacing: .1em; background: var(--white); padding: 4px 8px; border: 1px solid var(--s200); border-radius: 9999px; }
+#deck-count b { background: var(--accent); padding: 0 3px; }
+#deck-dots { display: none; }
+@media (min-width: 1024px) {
+  #deck-dots { display: flex; flex-direction: column; gap: 8px; position: fixed; right: 26px; top: 50%; transform: translateY(-50%); z-index: 90; }
+  #deck-dots a { width: 8px; height: 8px; border-radius: 9999px; background: var(--s200); transition: background .2s, transform .2s; }
+  #deck-dots a:hover { background: var(--s500); }
+  #deck-dots a.is-current { background: var(--black); transform: scale(1.4); }
+}
+
+/* Visuales de capa 1 */
+.big-num { font-size: clamp(5rem, 13vw, 11rem); font-weight: 900; letter-spacing: -.06em; line-height: .85; }
+.big-num small { font-size: .35em; letter-spacing: -.03em; }
+.big-cap { display: block; margin-top: 14px; font-family: var(--mono); font-size: 12px; text-transform: uppercase; letter-spacing: .1em; color: var(--s600); }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { display: inline-flex; align-items: baseline; gap: 8px; padding: 10px 14px; border: 1px solid var(--black); border-radius: 4px; font-size: 15px; font-weight: 800; line-height: 1.2; background: var(--white); }
+.chip .mono { font-size: 11px; font-weight: 700; color: var(--s500); }
+.chip.y { background: var(--accent); }
+.chip.k { background: var(--black); color: var(--white); }
+.chip.k .mono { color: var(--s300); }
+.flow { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.flow .arrow { font-weight: 900; color: var(--s400); }
+.eq { display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; }
+.eq-row { display: grid; grid-template-columns: 1fr auto; align-items: baseline; gap: 16px; padding: 14px 0; border-top: 2px solid var(--black); }
+.eq-row b { font-size: clamp(1.6rem, 3vw, 2.6rem); font-weight: 900; letter-spacing: -.04em; line-height: 1; }
+.eq-row span { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: .1em; color: var(--s600); text-align: right; }
+.bars { display: grid; gap: 6px; }
+.bar { display: grid; grid-template-columns: 44px 1fr; align-items: center; gap: 12px; font-family: var(--mono); font-size: 12px; font-weight: 700; }
+.bar i { display: block; height: 26px; background: var(--s200); }
+.bar.is-key i { background: var(--accent); border: 1px solid var(--black); }
+.top3 { list-style: none; margin: 0; padding: 0; counter-reset: t3; }
+.top3 li { counter-increment: t3; display: grid; grid-template-columns: 64px 1fr; align-items: baseline; padding: 16px 0; border-top: 2px solid var(--black); font-size: clamp(1.1rem, 1.8vw, 1.45rem); font-weight: 800; line-height: 1.25; letter-spacing: -.01em; }
+.top3 li::before { content: counter(t3, decimal-leading-zero); font-size: 2.2em; font-weight: 900; letter-spacing: -.05em; line-height: .8; color: var(--s200); }
+.slide .cards3 { margin: 0; }
+.slide .card3 b { font-size: 17px; }
+
+/* Capa 2: ficha emergente (como la ficha de los casos del CV) */
+#l2-modal { position: fixed; inset: 0; z-index: 205; display: none; align-items: center; justify-content: center; padding: 12px; background: rgba(0,0,0,.5); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); }
+@media (min-width: 1024px) { #l2-modal { padding: 32px; } }
+#l2-modal.is-visible { display: flex; }
+.l2-panel {
+  position: relative; width: 100%; max-width: 72rem; max-height: 92vh; overflow-y: auto; background: var(--white); border-radius: 8px;
+  box-shadow: 0 25px 50px -12px rgba(0,0,0,.25); transform: translateY(24px) scale(.98); opacity: 0;
+  transition: transform .45s cubic-bezier(.2,.8,.2,1), opacity .35s ease;
+}
+#l2-modal.is-open .l2-panel { transform: none; opacity: 1; }
+.l2-close {
+  position: sticky; top: 16px; float: right; margin-right: 16px; z-index: 2; width: 40px; height: 40px; border-radius: 9999px; cursor: pointer;
+  background: rgba(255,255,255,.9); border: 1px solid var(--s200); font-size: 14px; font-weight: 900; color: var(--black); transition: background .2s, color .2s;
+}
+.l2-close:hover { background: var(--black); color: var(--white); }
+.l2-body { padding: 28px 24px 40px; }
+@media (min-width: 1024px) { .l2-body { padding: 36px 48px 48px; } }
+.l2-head { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; padding-right: 56px; margin-bottom: 28px; }
+.l2-head .label { color: var(--s500); }
+.l2-cols { display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px 48px; }
+@media (min-width: 900px) { .l2-cols { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } }
+.l2-body.prose { max-width: none; }
+.l2-body.prose h3:first-child, .l2-cols > div > h3:first-child { margin-top: 0; }
+body.l2-lock { overflow: hidden; }
+@media print { #deck-count, #deck-dots, .slide-actions { display: none !important; } .slide { min-height: 0; break-inside: avoid; } }
+
+.prose code { overflow-wrap: anywhere; }
+@media (max-width: 719px) {
+  .slide .cards3 { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+  .slide .card3 svg { width: 32px; height: 32px; }
+  .slide .card3 b { font-size: 12px; overflow-wrap: anywhere; }
+}
+.eq-row b.hl-y { justify-self: start; }
