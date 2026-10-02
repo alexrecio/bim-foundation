@@ -407,7 +407,7 @@ body:has(.deck) footer.site { padding-left: var(--side); }
 @media (min-width: 1200px) {
   #deck-nav {
     display: flex; flex-direction: column; position: fixed; left: 0; top: 0; bottom: 0; width: var(--side); z-index: 95;
-    padding: var(--nav-top, 100px) 16px 20px 20px; background: var(--white); transition: padding-top .35s ease;
+    padding: var(--nav-top, 100px) 16px 20px 20px; background: var(--white);
   }
   #deck-nav .kicker-y { margin-bottom: 12px; }
   /* Solo el índice (portada + bloques con su contador): sistema, buscar, ayuda e idioma viven en el cartucho */
@@ -417,7 +417,10 @@ body:has(.deck) footer.site { padding-left: var(--side); }
   #deck-nav ol { scrollbar-width: none; -ms-overflow-style: none; overscroll-behavior: contain; }
   #deck-nav ol::-webkit-scrollbar { display: none; }
 }
-@media (min-width: 1200px) and (prefers-reduced-motion: reduce) { #deck-nav { transition: none; } }
+/* Sin menú en la portada del artículo: se oculta mientras la portada está en pantalla */
+#deck-nav, #deck-bar { transition: opacity .3s ease, visibility .3s; }
+html.en-portada #deck-nav, html.en-portada #deck-bar { opacity: 0; visibility: hidden; pointer-events: none; }
+@media (prefers-reduced-motion: reduce) { #deck-nav, #deck-bar { transition: none; } }
 .nav-item a {
   display: grid; grid-template-columns: 26px 1fr; align-items: baseline; padding: 5px 8px; border-radius: 4px; text-decoration: none;
   font-size: 12px; font-weight: 500; line-height: 1.3; color: var(--s400);

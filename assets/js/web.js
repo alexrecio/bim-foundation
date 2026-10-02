@@ -154,7 +154,7 @@
         const n = caps.filter((c) => c === s.dataset.cap).length;
         html += `<li class="nav-group" data-g="${g}"><button type="button" class="nav-cap" aria-expanded="false"><b>${s.dataset.cap}</b><em>${n}</em><i aria-hidden="true"></i></button><ol>`;
       }
-      html += item(s, i);
+      if (open) html += item(s, i); // la portada no sale en el menú
     });
     return html + (open ? '</ol></li>' : '');
   };
@@ -196,15 +196,16 @@
   if (sheet) sheet.addEventListener('click', (e) => { if (e.target.closest('a')) bar.classList.remove('is-open'); });
 
   let current = -1;
-  // El menú lateral arranca a la altura del bloque de contenidos de la slide en pantalla
+  // El menú lateral, fijo a la altura del bloque de contenidos de la primera slide tras la portada
   const alinearMenu = () => {
-    const s = slides[current];
+    const s = slides[1];
     const b = s && (s.querySelector('.bento') || s.firstElementChild);
     if (!side || !b) return;
     const top = b.getBoundingClientRect().top - s.getBoundingClientRect().top;
     side.parentElement.style.setProperty('--nav-top', Math.max(100, Math.round(top)) + 'px');
   };
-  addEventListener('resize', alinearMenu);
+  alinearMenu(); addEventListener('resize', alinearMenu);
+  if (document.fonts) document.fonts.ready.then(alinearMenu);
   const setCurrent = (i) => {
     if (i === current) return;
     if (current < 0 || groupOf(i) !== groupOf(current)) openGroup(groupOf(i));
@@ -215,7 +216,7 @@
       a.classList.toggle('is-done', k < i);
       if (k === i) a.setAttribute('aria-current', 'step'); else a.removeAttribute('aria-current');
     });
-    alinearMenu();
+    document.documentElement.classList.toggle('en-portada', i === 0); // sin menú en la portada
     const cur = side && side.querySelector('a.is-current');
     if (cur) cur.scrollIntoView({ block: 'nearest' });
     if (barBtn) barBtn.querySelector('.n').textContent = `${pad(i + 1)}/${total}`, barBtn.querySelector('.t').textContent = titleOf(slides[i]);
