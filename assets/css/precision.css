@@ -157,6 +157,7 @@ body { font-feature-settings: "cv11" 1; } /* Inter: «a» de un solo piso, más 
 @keyframes pz-plot { to { stroke-dashoffset: 0; } }
 @keyframes pz-fade { to { opacity: 1; } }
 @media (prefers-reduced-motion: reduce) { .pz-origin .plot, .pz-origin .fill { animation: none; stroke-dashoffset: 0; opacity: 1; } }
+.slide .pz-origin .plot, .slide .pz-origin .fill { animation: none; stroke-dashoffset: 0; opacity: 1; }   /* en las slides, sin trazado de plóter */
 @media (max-width: 1279px) { .pz-origin { opacity: .3; } .pz-origin .lbl, .pz-origin .part { display: none; } }
 .hero-side { position: relative; }
 

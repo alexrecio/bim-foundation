@@ -15,28 +15,13 @@
     s.dataset.pzStamp = `kernel://${art ? art.numero : '00'}/${pad(i + 1)}${cap ? ' · ' + cap : ''}  [${pad(i + 1)}/${pad(slides.length)}]`;
   });
 
-  // ---------- Movimiento: entrada de tarjetas y trazado de los dibujos ----------
+  // ---------- Movimiento: entrada suave de titular y tarjetas ----------
   if (!calma && 'IntersectionObserver' in window && slides.length) {
     doc.classList.add('pz-motion');
-    const plotable = 'path, line, polyline, polygon, circle, ellipse, rect';
     slides.forEach((s) => {
       [...s.querySelectorAll('.b-title > *')].forEach((el, i) => el.style.setProperty('--i', i));
       [...s.querySelectorAll('.b-cards > .card')].forEach((el, i) => el.style.setProperty('--i', i + 2));
-      s.querySelectorAll('.b-cards svg').forEach((svg) => {
-        let k = 0;
-        svg.querySelectorAll(plotable).forEach((el) => {
-          if (el.closest('defs, clipPath, mask, pattern, marker, symbol')) return;
-          const cs = getComputedStyle(el);
-          const trazo = cs.stroke && cs.stroke !== 'none' && parseFloat(cs.strokeWidth) > 0;
-          const discontinuo = cs.strokeDasharray && cs.strokeDasharray !== 'none';
-          const relleno = cs.fill && cs.fill !== 'none' && !/rgba\(.*, 0\)$/.test(cs.fill);
-          if (trazo && !discontinuo) {
-            el.setAttribute('pathLength', '1');
-            el.classList.add('pz-plot');
-            el.style.setProperty('--i', Math.min(k++, 14));
-          } else if (relleno && !trazo) el.classList.add('pz-fill');
-        });
-      });
+      // Sin trazado de plóter en los dibujos de las slides (Álex: no aporta); los dibujos aparecen completos con su tarjeta
       s.classList.add('pz-wait');
     });
     const entra = (s) => { s.classList.remove('pz-wait'); s.classList.add('pz-in'); io.unobserve(s); };
