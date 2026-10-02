@@ -302,15 +302,15 @@ body.l2-lock .pz-hud { display: none; }
 .card.k .c-num.pz-reading { color: var(--s300); }
 .c-num, .stat b { transition: color .25s ease; }
 
-/* Escaneo de lámina: una línea negra con cabeza amarilla barre la rejilla de arriba abajo */
+/* Apertura en cruz: las tarjetas no suben ni se funden, las descubren dos crucetas que atraviesan la pantalla */
 .slide .bento { position: relative; }
-.slide .bento.pz-scan::after {
-  content: ""; position: absolute; left: -12px; right: -12px; top: 0; height: 1px; pointer-events: none; z-index: 3;
-  background: linear-gradient(90deg, transparent, var(--black) 8%, var(--black) 92%, transparent);
-  box-shadow: 0 0 0 .5px rgba(255,255,0,.9), 0 6px 18px rgba(255,255,0,.35);
-  animation: pz-scan 1.1s var(--ease-plot) forwards;
-}
-@keyframes pz-scan { 0% { top: 0; opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { top: 100%; opacity: 0; } }
+.pz-x.pz-motion .slide.pz-wait .b-cards > .card { opacity: 1; transform: none; }
+.pz-xl { position: fixed; inset: 0; pointer-events: none; z-index: 250; overflow: hidden; }
+.pz-xl i { position: absolute; left: 0; top: 0; background: var(--black); opacity: .55; transition: opacity .35s ease; will-change: transform; }
+.pz-xl i.h { width: 100%; height: 1px; margin-top: -.5px; }
+.pz-xl i.v { height: 100%; width: 1px; margin-left: -.5px; }
+.pz-xl i.out { opacity: 0; }
+@media print { .pz-xl { display: none; } }
 
 /* Cursor de CAD sobre los dibujos */
 .pz-cad { position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity .15s; z-index: 2; }
@@ -333,7 +333,6 @@ body.l2-lock .pz-hud { display: none; }
 .pz-in.pz-cover-svg .pz-plot { stroke-dasharray: 1; stroke-dashoffset: 0; transition: stroke-dashoffset 1.3s var(--ease-plot); transition-delay: calc(var(--i, 0) * 60ms); }
 .pz-wait.pz-cover-svg .pz-fill { opacity: 0; }
 .pz-in.pz-cover-svg .pz-fill { opacity: 1; transition: opacity .5s ease .8s; }
-@media (prefers-reduced-motion: reduce) { .slide .bento.pz-scan::after { display: none; } }
 .sis-mark img { display: block; margin: auto; } .sis-mark { min-height: 200px; justify-content: space-between; } .sis-lockup .display { margin: 0; }
 
 /* ==========================================================================
