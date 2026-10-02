@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Borrador: quitar noindex al publicar -->
   <meta name="robots" content="noindex, nofollow">
-  <title>Niveles de información (relleno) | BIM Foundation</title>
-  <meta name="description" content="Artículo ficticio de relleno.">
+  <title>Niveles de información en BIM | BIM Foundation</title>
+  <meta name="description" content="LOD, LOI y nivel de información necesario (LOIN, ISO 7817-1): qué pedir de cada elemento, para qué, en qué hito y cómo comprobarlo con IFC e IDS.">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Niveles de información (relleno) · BIM Foundation">
-  <meta property="og:description" content="Pedir lo justo en cada fase: ni más geometría ni menos datos.">
+  <meta property="og:title" content="Niveles de información en BIM · BIM Foundation">
+  <meta property="og:description" content="No existe un modelo LOD 300: se pide información de cada elemento, para un propósito y en un hito concretos.">
   <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="../../assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="../../assets/css/estilo.css">
@@ -28,121 +28,921 @@
     </div>
   </div>
 
-  <!-- ARTÍCULO FICTICIO DE RELLENO para trabajar la arquitectura de la web. Sustituir o borrar antes de publicar. -->
+  <!-- Menú de diapositivas: se rellena con data-nav de cada <section> -->
   <aside id="deck-nav" aria-label="Diapositivas">
-    <span class="kicker-y">Niveles · 6 ideas</span>
+    <span class="kicker-y">Niveles · 34 ideas</span>
     <ol></ol>
   </aside>
   <div id="deck-bar">
     <div id="deck-sheet"><ol></ol></div>
     <button type="button" id="deck-bar-btn" aria-expanded="false" aria-controls="deck-sheet">
-      <span class="n">01</span><span class="t">Portada</span>
+      <span class="n">01/34</span><span class="t">Portada</span>
       <span class="chev" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M3 9l4-4 4 4" fill="none" stroke="#fff" stroke-width="2"/></svg></span>
     </button>
   </div>
 
+  <!--
+    Regla de capas
+    Capa 1 = una diapositiva por idea, legible en 15 segundos: titular + tarjetas visuales (cifras, diagramas, chips) con rótulos breves.
+    Capa 2 = la ficha que abre «Ver detalle» (<template id="l2-…">), también en tarjetas. Solo añade lo que la diapositiva no dice.
+    Investigación y base de fuentes: /mnt/project-files/fuentes/02-niveles-informacion/
+  -->
   <main class="deck">
 
+    <!-- ========== PORTADA ========== -->
     <section class="slide" id="portada" data-nav="Portada">
       <div class="bento">
         <div class="b-title">
           <p class="hero-id"><a href="../../" style="text-decoration:none">BIM Foundation · 02</a></p>
           <span class="kicker-y lg">LOD · LOI · LOIN</span>
           <h1 class="display">Niveles de<br><span class="hl-y">información<span class="dot">.</span></span></h1>
-          <p class="slide-lead">Pedir lo justo en cada fase: ni más geometría ni menos datos.</p>
-          <div class="slide-actions"><a class="btn" href="#confusion">Empezar <span aria-hidden="true">↓</span></a></div>
+          <p class="slide-lead">No existe un modelo LOD 300. Se pide la información de cada elemento, para un propósito y en un hito.</p>
+          <div class="slide-actions"><a class="btn" href="#problema">Empezar <span aria-hidden="true">↓</span></a></div>
         </div>
         <div class="b-cards">
           <div class="card w6 ficha" data-ficha></div>
-          <div class="card w6 y"><span class="c-label">Artículo de relleno</span><span class="c-title">Contenido ficticio para probar la arquitectura de la web</span><span class="c-foot">Textos y cifras inventados · no usar como referencia</span></div>
+          <div class="card w6 g">
+            <span class="c-label">El artículo en seis bloques</span>
+            <ol class="mapa">
+              <li class="is-key"><a href="#problema"><b>I</b><span>Conceptos generales</span><em>12 ideas · para cualquier programa</em></a></li>
+              <li><a href="#historia"><b>II</b><span>Estándares</span><em>7 ideas · ISO 7817, ISO 19650, BIMForum</em></a></li>
+              <li><a href="#vista"><b>III</b><span>Software</span><em>4 ideas · vistas, parámetros e IDS</em></a></li>
+              <li><a href="#gestores"><b>IV</b><span>Plataformas</span><em>2 ideas · matrices y nube</em></a></li>
+              <li><a href="#ifc"><b>V</b><span>Interoperabilidad</span><em>3 ideas · IFC, IDS y COBie</em></a></li>
+              <li><a href="#calidad"><b>VI</b><span>Control de calidad</span><em>4 ideas · comprobar cada entrega</em></a></li>
+            </ol>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="slide" id="confusion" data-nav="La confusión">
+    <!-- ========== I · EL PROBLEMA ========== -->
+    <section class="slide" id="problema" data-cap="I · Conceptos generales" data-nav="¿Qué es un LOD 300?">
       <div class="bento">
         <div class="b-title">
           <span class="slide-n"></span>
           <span class="kicker-y">El problema</span>
-          <h2 class="display">LOD no es un número mágico<span class="dot">.</span></h2>
-          <p class="slide-lead">Cada empresa entiende algo distinto por LOD 300.</p>
-          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="confusion"><span class="plus">+</span> Ver detalle</button></div>
+          <h2 class="display">¿Qué es un LOD 300?<span class="dot">.</span></h2>
+          <p class="slide-lead">El contrato pide «modelo LOD 300». Quien lo pide piensa en una cosa y quien modela, en otra. Nadie sabe qué se entrega hasta que llega.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="problema"><span class="plus">+</span> Ver detalle</button></div>
         </div>
         <div class="b-cards">
-          <div class="card w2 k"><span class="c-label">Definiciones distintas</span><b class="c-num">7<small>tipos</small></b><span class="c-foot">Relleno: cifra inventada</span></div>
-          <div class="card w2 "><span class="c-label">Geometría</span><span class="c-title">LOD</span><span class="badge y">G</span></div>
-          <div class="card w2 g"><span class="c-label">Datos</span><span class="c-title">LOI</span><span class="badge y">I</span></div>
-          <div class="card w6 g"><span class="c-label">Del pliego al modelo</span><div class="flow"><span class="chip">Pliego</span><span class="arrow">→</span><span class="chip">BEP</span><span class="arrow">→</span><span class="chip y">Matriz</span><span class="arrow">→</span><span class="chip k">Modelo</span></div></div>
+          <div class="card w3">
+            <span class="c-label">Lo que pide el cliente</span>
+            <svg class="draw" viewBox="0 0 200 120" aria-hidden="true"><rect x="60" y="14" width="56" height="96" fill="#fff" stroke="#000" stroke-width="3"/><path d="M60 14 L100 24 L100 104 L60 110 Z" fill="#EFEFEA" stroke="#000" stroke-width="2.5"/><circle cx="94" cy="64" r="3" fill="#000"/><g font-family="JetBrains Mono, monospace" font-size="10"><text x="124" y="30">EI2 60</text><text x="124" y="50">U = 1,8</text><text x="124" y="70">fabricante</text><text x="124" y="90">garantía</text></g></svg>
+            <span class="c-title">Puerta con datos</span>
+          </div>
+          <div class="card w3">
+            <span class="c-label">Lo que entrega el modelador</span>
+            <svg class="draw" viewBox="0 0 200 120" aria-hidden="true"><rect x="30" y="14" width="56" height="96" fill="#fff" stroke="#000" stroke-width="3"/><path d="M30 14 L70 24 L70 104 L30 110 Z" fill="#EFEFEA" stroke="#000" stroke-width="2.5"/><path d="M36 30 h28 M36 40 h28 M36 50 h28" stroke="#000" stroke-width="1.5"/><circle cx="64" cy="64" r="4" fill="#000"/><path d="M64 64 h10" stroke="#000" stroke-width="3"/><text x="104" y="64" font-family="JetBrains Mono, monospace" font-size="11">sin datos</text></svg>
+            <span class="c-title">Puerta muy dibujada</span>
+          </div>
+          <div class="card w3 k">
+            <span class="c-label">Publicaciones que aplican el LOD</span>
+            <b class="c-num xl">48<small>%</small></b>
+            <span class="c-text">al modelo entero, no a cada elemento</span>
+          </div>
+          <div class="card w3 y">
+            <span class="c-label">La especificación lo dice claro</span>
+            <span class="c-title">«No existe un modelo LOD ###»</span>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="slide" id="loin" data-nav="LOIN">
+    <!-- ========== I · LA PREGUNTA ========== -->
+    <section class="slide" id="pregunta" data-nav="Cuánta y para qué">
       <div class="bento">
         <div class="b-title">
           <span class="slide-n"></span>
-          <span class="kicker-y">La norma</span>
-          <h2 class="display">Necesidad de información<span class="dot">.</span></h2>
-          <p class="slide-lead">La ISO 7817 sustituye la escala única por propósito, fase y actor.</p>
-          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="loin"><span class="plus">+</span> Ver detalle</button></div>
+          <span class="kicker-y">El principio</span>
+          <h2 class="display">Tanta como haga falta<span class="dot">.</span></h2>
+          <p class="slide-lead">Y tan poca como sea posible. La información necesaria no se decide con un número, sino con cuatro preguntas previas.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="pregunta"><span class="plus">+</span> Ver detalle</button></div>
         </div>
         <div class="b-cards">
-          <div class="card w6 g"><span class="c-label">Tres dimensiones</span><svg class="draw" viewBox="0 0 620 140" aria-hidden="true"><rect x="10" y="48" width="184" height="82" rx="6" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="22" y="118" font-family="Inter, sans-serif" font-weight="900" font-size="14">Geometría</text><rect x="210" y="34" width="184" height="96" rx="6" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="222" y="118" font-family="Inter, sans-serif" font-weight="900" font-size="14">Datos</text><rect x="410" y="20" width="184" height="110" rx="6" fill="#FFFF00" stroke="#000" stroke-width="2.5"/><text x="422" y="118" font-family="Inter, sans-serif" font-weight="900" font-size="14">Documentos</text></svg></div>
-          <div class="card w6 "><span class="c-label">Se define por</span><div class="chips"><span class="chip y">Propósito</span><span class="chip">Fase</span><span class="chip">Actor</span><span class="chip k">Hito</span></div></div>
+          <div class="card w3 y"><span class="c-label">01 · Para qué</span><span class="c-title">Propósito</span><span class="c-foot">coste, incendio, coordinación…</span></div>
+          <div class="card w3"><span class="c-label">02 · Cuándo</span><span class="c-title">Hito</span><span class="c-foot">anteproyecto, ejecución, entrega…</span></div>
+          <div class="card w3"><span class="c-label">03 · Quién</span><span class="c-title">Actores</span><span class="c-foot">quien pide y quien entrega</span></div>
+          <div class="card w3 k"><span class="c-label">04 · De qué</span><span class="c-title">Objeto</span><span class="c-foot">puerta, muro, pilar, espacio…</span></div>
         </div>
       </div>
     </section>
 
-    <section class="slide" id="matriz" data-nav="La matriz">
+    <!-- ========== I · TRES TIPOS ========== -->
+    <section class="slide" id="tipos" data-nav="Geometría, datos y documentos">
       <div class="bento">
         <div class="b-title">
           <span class="slide-n"></span>
-          <span class="kicker-y">Herramienta</span>
-          <h2 class="display">Una tabla para todo el equipo<span class="dot">.</span></h2>
-          <p class="slide-lead">Filas de elementos, columnas de fases y en cada celda lo que se entrega.</p>
-          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="matriz"><span class="plus">+</span> Ver detalle</button></div>
+          <span class="kicker-y">Qué se pide</span>
+          <h2 class="display">Tres clases de información<span class="dot">.</span></h2>
+          <p class="slide-lead">Lo que se dibuja, lo que se escribe y lo que se adjunta. Cada una se pide por separado y con su propio nivel.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="tipos"><span class="plus">+</span> Ver detalle</button></div>
         </div>
         <div class="b-cards">
-          <div class="card w6"><span class="c-label">Celdas rellenas por fase</span><div class="bars"><div class="bar"><span>F1</span><i style="width:25%">anteproyecto</i></div><div class="bar"><span>F2</span><i style="width:55%">básico</i></div><div class="bar is-key"><span>F3</span><i style="width:85%">ejecución</i></div><div class="bar"><span>F4</span><i style="width:60%">as built</i></div></div></div>
-          <div class="card w3 y"><span class="c-label">Elementos</span><b class="c-num">120<small>filas</small></b><span class="c-foot">Relleno</span></div>
-          <div class="card w3 "><span class="c-label">Fases</span><b class="c-num">4<small>col.</small></b><span class="c-foot">Relleno</span></div>
+          <div class="card w2">
+            <span class="c-label">Geométrica</span>
+            <svg class="draw" viewBox="0 0 120 100" aria-hidden="true"><path d="M30 30 L70 14 L100 30 L100 76 L60 92 L30 76 Z" fill="#fff" stroke="#000" stroke-width="3"/><path d="M30 30 L60 46 L100 30 M60 46 V92" fill="none" stroke="#000" stroke-width="3"/><path d="M60 46 L100 30 L100 76 L60 92 Z" fill="#FFFF00" stroke="#000" stroke-width="3"/></svg>
+            <span class="c-title">Forma</span>
+          </div>
+          <div class="card w2">
+            <span class="c-label">Alfanumérica</span>
+            <svg class="draw" viewBox="0 0 120 100" aria-hidden="true"><rect x="16" y="14" width="88" height="74" rx="4" fill="#fff" stroke="#000" stroke-width="3"/><path d="M16 36 H104 M16 58 H104 M54 14 V88" stroke="#000" stroke-width="2"/><g font-family="JetBrains Mono, monospace" font-size="9"><text x="22" y="29">tipo</text><text x="60" y="29">P-01</text><text x="22" y="51">fuego</text><text x="60" y="51">EI2 60</text><text x="22" y="73">U</text><text x="60" y="73">1,8</text></g></svg>
+            <span class="c-title">Datos</span>
+          </div>
+          <div class="card w2">
+            <span class="c-label">Documentación</span>
+            <svg class="draw" viewBox="0 0 120 100" aria-hidden="true"><path d="M30 10 H76 L94 28 V92 H30 Z" fill="#fff" stroke="#000" stroke-width="3"/><path d="M76 10 V28 H94" fill="none" stroke="#000" stroke-width="3"/><path d="M40 44 H84 M40 56 H84 M40 68 H70" stroke="#000" stroke-width="2"/><circle cx="78" cy="80" r="9" fill="#FFFF00" stroke="#000" stroke-width="2.5"/></svg>
+            <span class="c-title">Anexos</span>
+          </div>
+          <div class="card w6 g">
+            <span class="c-label">Una misma puerta, tres preguntas</span>
+            <div class="flow"><span class="chip">¿Cabe y por dónde abre?</span><span class="arrow">·</span><span class="chip y">¿Qué resistencia al fuego tiene?</span><span class="arrow">·</span><span class="chip k">¿Dónde está su certificado?</span></div>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="slide" id="errores" data-nav="Errores">
+    <!-- ========== I · GEOMETRÍA ========== -->
+    <section class="slide" id="geometria" data-nav="Cinco aspectos de la forma">
       <div class="bento">
         <div class="b-title">
           <span class="slide-n"></span>
-          <span class="kicker-y">Lo que falla</span>
-          <h2 class="display">Sobremodelar cuesta caro<span class="dot">.</span></h2>
-          <p class="slide-lead">Detalle de más en fases tempranas: horas que nadie usa.</p>
-          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="errores"><span class="plus">+</span> Ver detalle</button></div>
+          <span class="kicker-y">Información geométrica</span>
+          <h2 class="display">La forma, en cinco preguntas<span class="dot">.</span></h2>
+          <p class="slide-lead">«Más detalle» no dice nada. Se precisa cuánto detalle, cuántas dimensiones, cuán exacta la posición, qué aspecto y si se puede deformar.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="geometria"><span class="plus">+</span> Ver detalle</button></div>
         </div>
         <div class="b-cards">
-          <div class="card w3 k"><span class="c-label">Horas perdidas</span><b class="c-num">30<small>%</small></b><span class="c-foot">Relleno</span></div>
-          <div class="card w3 "><span class="c-label">Síntomas</span><div class="chips"><span class="chip">Archivos pesados</span><span class="chip y">Cambios lentos</span><span class="chip">Datos vacíos</span></div></div>
-          <div class="card w6 g"><span class="c-label">Cómo evitarlo</span><div class="flow"><span class="chip">Propósito</span><span class="arrow">→</span><span class="chip">Matriz</span><span class="arrow">→</span><span class="chip y">Revisión</span><span class="arrow">→</span><span class="chip k">Entrega</span></div></div>
+          <div class="card w2">
+            <span class="c-label">Detalle</span>
+            <svg class="ico" viewBox="0 0 40 40" aria-hidden="true"><rect x="6" y="6" width="12" height="28" fill="none" stroke="#000" stroke-width="2.5"/><rect x="24" y="6" width="12" height="28" fill="none" stroke="#000" stroke-width="2.5"/><path d="M24 12 h12 M24 18 h12 M24 24 h12 M33 28 v4" stroke="#000" stroke-width="1.5"/></svg>
+            <span class="c-title">De simple a fino</span>
+          </div>
+          <div class="card w2">
+            <span class="c-label">Dimensionalidad</span>
+            <svg class="ico" viewBox="0 0 40 40" aria-hidden="true"><circle cx="6" cy="20" r="3" fill="#000"/><path d="M12 20 h8" stroke="#000" stroke-width="2.5"/><path d="M23 14 l8 0 0 12 -8 0z" fill="none" stroke="#000" stroke-width="2.5"/><path d="M31 14 l5 -4 0 12 -5 4" fill="none" stroke="#000" stroke-width="2.5"/></svg>
+            <span class="c-title">0D a 3D</span>
+          </div>
+          <div class="card w2">
+            <span class="c-label">Ubicación</span>
+            <svg class="ico" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 4 C12 4 8 10 8 16 C8 25 20 36 20 36 C20 36 32 25 32 16 C32 10 28 4 20 4 Z" fill="none" stroke="#000" stroke-width="2.5"/><circle cx="20" cy="16" r="4" fill="#000"/></svg>
+            <span class="c-title">Relativa o absoluta</span>
+          </div>
+          <div class="card w3">
+            <span class="c-label">Apariencia</span>
+            <svg class="ico" viewBox="0 0 40 40" aria-hidden="true"><rect x="5" y="8" width="14" height="24" fill="#fff" stroke="#000" stroke-width="2.5"/><rect x="21" y="8" width="14" height="24" fill="#FFFF00" stroke="#000" stroke-width="2.5"/><path d="M21 14 l14 6 M21 22 l14 6" stroke="#000" stroke-width="1.5"/></svg>
+            <span class="c-title">Símbolo o realista</span>
+          </div>
+          <div class="card w3 k">
+            <span class="c-label">Comportamiento paramétrico</span>
+            <svg class="ico" viewBox="0 0 40 40" aria-hidden="true"><rect x="6" y="12" width="16" height="22" fill="none" stroke="#fff" stroke-width="2.5"/><rect x="6" y="12" width="28" height="22" fill="none" stroke="#FFFF00" stroke-width="2" stroke-dasharray="3 3"/><path d="M24 6 h10 M30 2 l4 4 -4 4" fill="none" stroke="#FFFF00" stroke-width="2.5"/></svg>
+            <span class="c-title">Fijo o editable</span>
+          </div>
         </div>
       </div>
     </section>
 
+    <!-- ========== I · DATOS ========== -->
+    <section class="slide" id="datos" data-nav="Identificar y describir">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Información alfanumérica</span>
+          <h2 class="display">Primero, saber qué es<span class="dot">.</span></h2>
+          <p class="slide-lead">Los datos tienen dos partes: identificar el objeto sin ambigüedad y describirlo con propiedades que tengan nombre, valor y unidad.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="datos"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w3 y">
+            <span class="c-label">01 · Identificación</span>
+            <span class="c-title">Nombre, tipo, código</span>
+            <div class="chips"><span class="chip">P-01</span><span class="chip">Puerta cortafuegos</span><span class="chip k">clasificación</span></div>
+          </div>
+          <div class="card w3">
+            <span class="c-label">02 · Contenido</span>
+            <span class="c-title">Propiedad = valor + unidad</span>
+            <div class="chips"><span class="chip">FireRating <span class="mono">EI2 60</span></span><span class="chip">U <span class="mono">W/m²K</span></span></div>
+          </div>
+          <div class="card w6 g">
+            <span class="c-label">Una propiedad bien pedida</span>
+            <div class="flow"><span class="chip">Nombre normalizado</span><span class="arrow">+</span><span class="chip">Tipo de dato</span><span class="arrow">+</span><span class="chip">Unidad</span><span class="arrow">+</span><span class="chip y">Valores admitidos</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== I · DETALLE NO ES FIABILIDAD ========== -->
+    <section class="slide" id="detalle" data-nav="Detalle no es fiabilidad">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">La confusión de fondo</span>
+          <h2 class="display">Dibujado no es decidido<span class="dot">.</span></h2>
+          <p class="slide-lead">Una puerta puede estar dibujada con su manilla y no estar decidida. El detalle es lo que se mete; el desarrollo, lo que se puede usar con confianza.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="detalle"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w3">
+            <span class="c-label">Level of Detail</span>
+            <span class="c-title">Cuánto se ve</span>
+            <svg class="draw" viewBox="0 0 200 90" aria-hidden="true"><rect x="20" y="10" width="40" height="72" fill="#fff" stroke="#000" stroke-width="3"/><path d="M26 18 h28 M26 26 h28 M26 34 h28 M26 42 h28" stroke="#000" stroke-width="1.5"/><circle cx="54" cy="50" r="3" fill="#000"/><path d="M80 46 h40" stroke="#000" stroke-width="2.5"/><polygon points="126,46 116,41 116,51" fill="#000"/><text x="134" y="50" font-family="JetBrains Mono, monospace" font-size="11">entrada</text></svg>
+          </div>
+          <div class="card w3 y">
+            <span class="c-label">Level of Development</span>
+            <span class="c-title">Cuánto vale</span>
+            <svg class="draw" viewBox="0 0 200 90" aria-hidden="true"><rect x="20" y="10" width="40" height="72" fill="#fff" stroke="#000" stroke-width="3"/><path d="M28 48 l8 8 16 -18" fill="none" stroke="#000" stroke-width="4"/><path d="M80 46 h40" stroke="#000" stroke-width="2.5"/><polygon points="126,46 116,41 116,51" fill="#000"/><text x="134" y="50" font-family="JetBrains Mono, monospace" font-size="11">salida</text></svg>
+          </div>
+          <div class="card w6 k">
+            <span class="c-label">La trampa</span>
+            <span class="c-title">Un objeto de catálogo muy detallado parece decidido aunque sea un marcador</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== I · LA ESCALERA ========== -->
+    <section class="slide" id="escalera" data-nav="La escala 100-500">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">La escala más usada</span>
+          <h2 class="display">De 100 a 500<span class="dot">.</span></h2>
+          <p class="slide-lead">Cinco escalones de fiabilidad por elemento, más el 350 para coordinar oficios. Pulsa cada nivel y mira qué cambia en una puerta.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="escalera"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w6">
+            <span class="c-label">Una puerta, nivel a nivel</span>
+            <div class="niv-lod" style="display:grid;gap:10px">
+              <div class="lector-bar" role="group" aria-label="Nivel de desarrollo">
+                <button type="button" class="chip" data-lod="100">100</button>
+                <button type="button" class="chip" data-lod="200">200</button>
+                <button type="button" class="chip is-on" data-lod="300" aria-pressed="true">300</button>
+                <button type="button" class="chip" data-lod="350">350</button>
+                <button type="button" class="chip" data-lod="400">400</button>
+                <button type="button" class="chip" data-lod="500">500</button>
+              </div>
+              <svg class="lector-svg" viewBox="0 0 560 220" role="img" aria-label="Alzado y planta de una puerta en el nivel elegido"></svg>
+              <div class="lector-out">
+                <div><span class="label">Forma</span><b data-o="g"></b></div>
+                <div><span class="label">Datos</span><b data-o="i"></b></div>
+                <div class="is-key"><span class="label">Sirve para</span><b data-o="u"></b></div>
+                <div class="k"><span class="label">Fiabilidad</span><b data-o="f"></b></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== I · POR ELEMENTO ========== -->
+    <section class="slide" id="elemento" data-nav="Por elemento, no por modelo">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">La unidad de medida</span>
+          <h2 class="display">Cada elemento, su nivel<span class="dot">.</span></h2>
+          <p class="slide-lead">En un mismo hito la estructura puede estar cerrada y el mobiliario apenas esbozado. Por eso se pide elemento a elemento, en una matriz.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="elemento"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w6">
+            <span class="c-label">Un hito, niveles distintos</span>
+            <svg class="draw" viewBox="0 0 560 200" role="img" aria-label="Matriz: estructura en 350, fachada en 300, instalaciones en 300, puertas en 200, mobiliario en 100">
+              <g font-family="JetBrains Mono, monospace" font-size="12">
+                <text x="0" y="34">Estructura</text><text x="0" y="68">Fachada</text><text x="0" y="102">Instalaciones</text><text x="0" y="136">Puertas</text><text x="0" y="170">Mobiliario</text>
+                <text x="140" y="194" fill="#666">100</text><text x="220" y="194" fill="#666">200</text><text x="300" y="194" fill="#666">300</text><text x="380" y="194" fill="#666">350</text><text x="460" y="194" fill="#666">400</text>
+              </g>
+              <g stroke="#B9B9B0" stroke-width="1"><line x1="150" y1="10" x2="150" y2="180"/><line x1="230" y1="10" x2="230" y2="180"/><line x1="310" y1="10" x2="310" y2="180"/><line x1="390" y1="10" x2="390" y2="180"/><line x1="470" y1="10" x2="470" y2="180"/></g>
+              <rect x="120" y="18" width="270" height="22" fill="#000"/>
+              <rect x="120" y="52" width="190" height="22" fill="#fff" stroke="#000" stroke-width="2.5"/>
+              <rect x="120" y="86" width="190" height="22" fill="#fff" stroke="#000" stroke-width="2.5"/>
+              <rect x="120" y="120" width="110" height="22" fill="#FFFF00" stroke="#000" stroke-width="2.5"/>
+              <rect x="120" y="154" width="30" height="22" fill="#fff" stroke="#000" stroke-width="2.5"/>
+            </svg>
+            <span class="c-foot">Ejemplo de un hito de proyecto de ejecución</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== I · SOBREMODELADO ========== -->
+    <section class="slide" id="sobremodelado" data-nav="Más no es mejor">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">El coste oculto</span>
+          <h2 class="display">Más no es mejor<span class="dot">.</span></h2>
+          <p class="slide-lead">Cada dato pedido hay que crearlo, comprobarlo y mantenerlo. Lo que nadie va a usar es trabajo perdido y ruido para el que busca.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="sobremodelado"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w3 k">
+            <span class="c-label">Requisitos por fase · 5 048 analizados</span>
+            <svg class="draw" viewBox="0 0 240 130" aria-hidden="true"><g fill="#fff"><rect x="14" y="108" width="32" height="12"/><rect x="58" y="80" width="32" height="40"/><rect x="102" y="52" width="32" height="68"/><rect x="146" y="10" width="32" height="110" fill="#FFFF00"/><rect x="190" y="38" width="32" height="82"/></g><g font-family="JetBrains Mono, monospace" font-size="10" fill="#fff"><text x="14" y="102">660</text><text x="140" y="6" fill="#FFFF00">4 750</text><text x="188" y="32">3 485</text></g></svg>
+            <span class="c-foot">de la fase 1 a la 5</span>
+          </div>
+          <div class="card w3">
+            <span class="c-label">Solo las puertas</span>
+            <b class="c-num">172<small>requisitos</small></b>
+            <span class="c-foot">repartidos en 16 propósitos</span>
+          </div>
+          <div class="card w6 y">
+            <span class="c-label">La regla</span>
+            <span class="c-title">Cada dato pedido debe tener alguien que lo use</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== I · HITOS ========== -->
+    <section class="slide" id="hitos" data-nav="Cada hito, su nivel">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">El calendario</span>
+          <h2 class="display">La información madura<span class="dot">.</span></h2>
+          <p class="slide-lead">Se pide lo que se puede decidir en cada hito. Pedir pronto un dato que aún no se conoce obliga a inventarlo.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="hitos"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w6">
+            <span class="c-label">Una puerta a lo largo del proyecto</span>
+            <svg class="draw" viewBox="0 0 560 170" role="img" aria-label="Hitos: estudio previo, anteproyecto, ejecución, obra y entrega; la información de la puerta crece en cada uno">
+              <line x1="20" y1="120" x2="540" y2="120" stroke="#000" stroke-width="3"/>
+              <g fill="#fff" stroke="#000" stroke-width="3"><circle cx="40" cy="120" r="9"/><circle cx="160" cy="120" r="9"/><circle cx="280" cy="120" r="9" fill="#FFFF00"/><circle cx="400" cy="120" r="9"/><circle cx="520" cy="120" r="9" fill="#000"/></g>
+              <g font-family="JetBrains Mono, monospace" font-size="11" text-anchor="middle"><text x="40" y="150">Estudio</text><text x="160" y="150">Anteproyecto</text><text x="280" y="150">Ejecución</text><text x="400" y="150">Obra</text><text x="520" y="150">Entrega</text></g>
+              <g font-family="JetBrains Mono, monospace" font-size="10" text-anchor="middle" fill="#333"><text x="40" y="96">hueco</text><text x="160" y="96">tamaño</text><text x="160" y="82">tipo</text><text x="280" y="96">medidas</text><text x="280" y="82">fuego · U</text><text x="280" y="68">sentido</text><text x="400" y="96">fabricante</text><text x="400" y="82">modelo</text><text x="400" y="68">herrajes</text><text x="520" y="96">nº serie</text><text x="520" y="82">garantía</text><text x="520" y="68">manual</text><text x="520" y="54">mantenimiento</text></g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== I · EXACTITUD DE LO MEDIDO ========== -->
+    <section class="slide" id="exactitud" data-nav="Lo medido, con tolerancia">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Edificio existente</span>
+          <h2 class="display">Lo medido tiene tolerancia<span class="dot">.</span></h2>
+          <p class="slide-lead">Si el modelo nace de un levantamiento, el nivel también dice cuánto se separa lo modelado de la realidad.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="exactitud"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w4">
+            <span class="c-label">Niveles de exactitud (LOA), al 95 %</span>
+            <div class="bars">
+              <div class="bar"><span>10</span><i style="width:100%">más de 5 cm</i></div>
+              <div class="bar"><span>20</span><i style="width:80%">15 mm a 5 cm</i></div>
+              <div class="bar is-key"><span>30</span><i style="width:60%">5 a 15 mm</i></div>
+              <div class="bar"><span>40</span><i style="width:40%">1 a 5 mm</i></div>
+              <div class="bar"><span>50</span><i style="width:22%">0 a 1 mm</i></div>
+            </div>
+          </div>
+          <div class="card w2 k">
+            <span class="c-label">Se pide por separado</span>
+            <span class="c-title">Lo medido y lo representado</span>
+            <span class="c-foot">pueden tener niveles distintos</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== I · LA SOLUCIÓN ========== -->
+    <section class="slide" id="requisito" data-nav="De la etiqueta al requisito">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">La solución</span>
+          <h2 class="display">Del número al requisito<span class="dot">.</span></h2>
+          <p class="slide-lead">Elige un objeto y un propósito: el nivel de información necesario sale de esa pareja, no de una etiqueta para todo el modelo.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="requisito"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w6">
+            <span class="c-label">Constructor de requisitos · hito: <b data-o="h">Proyecto de ejecución</b></span>
+            <div class="niv-loin" style="display:grid;gap:10px">
+              <div class="lector-bar" role="group" aria-label="Objeto">
+                <span class="label">Objeto</span>
+                <button type="button" class="chip is-on" data-obj="puerta" aria-pressed="true">Puerta</button>
+                <button type="button" class="chip" data-obj="muro">Muro</button>
+                <button type="button" class="chip" data-obj="pilar">Pilar</button>
+              </div>
+              <div class="lector-bar" role="group" aria-label="Propósito">
+                <span class="label">Propósito</span>
+                <button type="button" class="chip is-on" data-pro="coordinar" aria-pressed="true">Coordinar</button>
+                <button type="button" class="chip" data-pro="medir">Medir y presupuestar</button>
+                <button type="button" class="chip" data-pro="incendio">Incendio</button>
+                <button type="button" class="chip" data-pro="mantener">Mantener</button>
+              </div>
+              <div class="lector-out">
+                <div><span class="label">Geometría</span><b data-o="g"></b></div>
+                <div><span class="label">Identificación</span><b data-o="id"></b></div>
+                <div class="is-key"><span class="label">Propiedades</span><b data-o="p"></b></div>
+                <div class="k"><span class="label">Documentos</span><b data-o="d"></b></div>
+              </div>
+              <span class="c-foot">Ejemplo orientativo: cada proyecto fija sus propios requisitos</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== II · HISTORIA ========== -->
+    <section class="slide" id="historia" data-cap="II · Estándares" data-nav="De LOD a LOIN">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Veinte años de siglas</span>
+          <h2 class="display">De LOD a LOIN<span class="dot">.</span></h2>
+          <p class="slide-lead">Empezó como una escala de un fabricante de software y ha acabado en norma ISO. Por el camino cambió de nombre tres veces.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="historia"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w6">
+            <span class="c-label">Línea de tiempo</span>
+            <svg class="draw" viewBox="0 0 560 190" role="img" aria-label="Línea de tiempo: 2004-2005 Level of Detail; 2008 AIA E202; 2013 BIMForum y LOD 350; 2018 ISO 19650; 2020 EN 17412-1; 2024 ISO 7817-1">
+              <line x1="16" y1="100" x2="544" y2="100" stroke="#000" stroke-width="3"/>
+              <g stroke="#000" stroke-width="3" fill="#fff"><circle cx="30" cy="100" r="8"/><circle cx="120" cy="100" r="8"/><circle cx="215" cy="100" r="8"/><circle cx="320" cy="100" r="8"/><circle cx="415" cy="100" r="8"/><circle cx="520" cy="100" r="11" fill="#FFFF00"/></g>
+              <g font-family="JetBrains Mono, monospace" font-size="12" font-weight="700"><text x="12" y="76">2004-05</text><text x="104" y="136">2008</text><text x="199" y="76">2013</text><text x="304" y="136">2018</text><text x="399" y="76">2020</text><text x="504" y="136">2024</text></g>
+              <g font-family="JetBrains Mono, monospace" font-size="10.5" fill="#333"><text x="12" y="58">Level of Detail</text><text x="80" y="154">AIA E202</text><text x="80" y="168">Level of Development</text><text x="180" y="58">BIMForum · LOD 350</text><text x="290" y="154">ISO 19650</text><text x="290" y="168">«nivel necesario»</text><text x="385" y="58">EN 17412-1</text><text x="470" y="154">ISO 7817-1</text><text x="470" y="168">LOIN</text></g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== II · ISO 7817-1 ========== -->
+    <section class="slide" id="iso7817" data-nav="ISO 7817-1 en un esquema">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">ISO 7817-1:2024</span>
+          <h2 class="display">La norma en un esquema<span class="dot">.</span></h2>
+          <p class="slide-lead">Cuatro preguntas previas y tres clases de información, cada una con sus aspectos. No define niveles numerados: define cómo describirlos.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="iso7817"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w6">
+            <span class="c-label">Nivel de información necesario</span>
+            <svg class="draw" viewBox="0 0 560 220" role="img" aria-label="Esquema de ISO 7817-1: propósito, hito, actores y objeto determinan la información geométrica, alfanumérica y la documentación">
+              <g font-family="Inter, sans-serif" font-weight="900" font-size="13" text-anchor="middle">
+                <rect x="10" y="10" width="120" height="34" rx="17" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="70" y="32">PROPÓSITO</text>
+                <rect x="148" y="10" width="120" height="34" rx="17" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="208" y="32">HITO</text>
+                <rect x="286" y="10" width="120" height="34" rx="17" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="346" y="32">ACTORES</text>
+                <rect x="424" y="10" width="120" height="34" rx="17" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="484" y="32">OBJETO</text>
+                <rect x="170" y="70" width="220" height="38" rx="4" fill="#FFFF00" stroke="#000" stroke-width="3"/><text x="280" y="94">NIVEL NECESARIO</text>
+              </g>
+              <g stroke="#000" stroke-width="2"><path d="M70 44 L220 70 M208 44 L250 70 M346 44 L310 70 M484 44 L340 70"/><path d="M200 108 L90 130 M280 108 L280 130 M360 108 L470 130"/></g>
+              <g font-family="Inter, sans-serif" font-weight="900" font-size="12" text-anchor="middle">
+                <rect x="10" y="130" width="170" height="30" fill="#000"/><text x="95" y="150" fill="#fff">GEOMÉTRICA</text>
+                <rect x="195" y="130" width="170" height="30" fill="#000"/><text x="280" y="150" fill="#fff">ALFANUMÉRICA</text>
+                <rect x="380" y="130" width="170" height="30" fill="#000"/><text x="465" y="150" fill="#fff">DOCUMENTACIÓN</text>
+              </g>
+              <g font-family="JetBrains Mono, monospace" font-size="10" fill="#333" text-anchor="middle">
+                <text x="95" y="178">detalle · dimensionalidad</text><text x="95" y="192">ubicación · apariencia</text><text x="95" y="206">comportamiento paramétrico</text>
+                <text x="280" y="178">identificación</text><text x="280" y="192">contenido</text>
+                <text x="465" y="178">documentos que</text><text x="465" y="192">acompañan al objeto</text>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== II · ISO 19650 ========== -->
+    <section class="slide" id="iso19650" data-nav="Dentro de ISO 19650">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">ISO 19650</span>
+          <h2 class="display">Va dentro del contrato<span class="dot">.</span></h2>
+          <p class="slide-lead">Los requisitos de la organización bajan al proyecto y al intercambio. Ahí, en cada requisito, se fija el nivel de información necesario.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="iso19650"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w4 g">
+            <span class="c-label">De la organización al intercambio</span>
+            <div class="flow"><span class="chip">OIR</span><span class="arrow">→</span><span class="chip">AIR · PIR</span><span class="arrow">→</span><span class="chip y">EIR + nivel necesario</span><span class="arrow">→</span><span class="chip k">Entrega</span></div>
+          </div>
+          <div class="card w2 k">
+            <span class="c-label">Quién pide</span>
+            <span class="c-title">Parte que designa</span>
+            <span class="c-foot">el cliente o el contratista principal</span>
+          </div>
+          <div class="card w3">
+            <span class="c-label">Quién planifica</span>
+            <span class="c-title">Plan de entregas</span>
+            <span class="c-foot">qué contenedor, quién y cuándo</span>
+          </div>
+          <div class="card w3 y">
+            <span class="c-label">Quién comprueba</span>
+            <span class="c-title">Cada entrega contra su requisito</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== II · BIMFORUM ========== -->
+    <section class="slide" id="bimforum" data-nav="La especificación BIMForum">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">BIMForum LOD Specification</span>
+          <h2 class="display">El diccionario de los LOD<span class="dot">.</span></h2>
+          <p class="slide-lead">Define qué significa cada nivel para cada tipo de elemento, con ilustraciones. Desde 2025 traduce cada nivel a los aspectos de la ISO 7817-1.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="bimforum"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w2 y">
+            <span class="c-label">Primera edición</span>
+            <b class="c-num">2013</b>
+            <span class="c-foot">anual desde entonces</span>
+          </div>
+          <div class="card w2">
+            <span class="c-label">Nivel añadido</span>
+            <b class="c-num">350</b>
+            <span class="c-foot">interfaces entre oficios</span>
+          </div>
+          <div class="card w2 k">
+            <span class="c-label">En español</span>
+            <b class="c-num">2024</b>
+            <span class="c-foot">y 2025, con BIMForum Ecuador</span>
+          </div>
+          <div class="card w6 g">
+            <span class="c-label">LOD 300 en la edición 2025</span>
+            <div class="chips"><span class="chip">Detalle: alto</span><span class="chip">Dimensionalidad: 3D precisa</span><span class="chip y">Ubicación: precisa, absoluta</span><span class="chip">Apariencia: geometría precisa</span><span class="chip k">Paramétrico: ninguno</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== II · PAÍSES ========== -->
+    <section class="slide" id="paises" data-nav="Cada país, sus siglas">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Mapa de siglas</span>
+          <h2 class="display">Cada país, sus siglas<span class="dot">.</span></h2>
+          <p class="slide-lead">El mismo concepto se llama LOD en Estados Unidos, LOG y LOI en Alemania y NDI en Chile. Europa converge en el nivel de información necesario.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="paises"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w2"><span class="c-label">Estados Unidos</span><span class="c-title">LOD 100-500</span><span class="c-foot">AIA · BIMForum</span></div>
+          <div class="card w2"><span class="c-label">Reino Unido</span><span class="c-title">LOD + LOI</span><span class="c-foot">sustituidos por LOIN</span></div>
+          <div class="card w2"><span class="c-label">Alemania</span><span class="c-title">LOG + LOI</span><span class="c-foot">la guía federal pasa a LOIN</span></div>
+          <div class="card w2"><span class="c-label">Chile</span><span class="c-title">NDI</span><span class="c-foot">niveles de información</span></div>
+          <div class="card w2"><span class="c-label">Perú</span><span class="c-title">Matriz LOIN</span><span class="c-foot">con LOD y LOI dentro</span></div>
+          <div class="card w2 y"><span class="c-label">España</span><span class="c-title">UNE-EN ISO 7817-1</span><span class="c-foot">desde 2025</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== II · DICCIONARIOS ========== -->
+    <section class="slide" id="diccionarios" data-nav="Propiedades con diccionario">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Diccionarios de datos</span>
+          <h2 class="display">Que «fuego» signifique lo mismo<span class="dot">.</span></h2>
+          <p class="slide-lead">Pedir una propiedad sirve de poco si cada uno la llama distinto. Los diccionarios fijan nombre, tipo, unidad y valores admitidos.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="diccionarios"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w2"><span class="c-label">ISO 23386</span><span class="c-title">Cómo definir una propiedad</span></div>
+          <div class="card w2"><span class="c-label">ISO 23387</span><span class="c-title">Plantillas de datos por objeto</span></div>
+          <div class="card w2 y"><span class="c-label">bSDD</span><span class="c-title">El diccionario en línea</span><span class="c-foot">buildingSMART</span></div>
+          <div class="card w6 g">
+            <span class="c-label">Tres nombres, una propiedad</span>
+            <div class="flow"><span class="chip">RF</span><span class="arrow">·</span><span class="chip">Resist_Fuego</span><span class="arrow">·</span><span class="chip">EI</span><span class="arrow">→</span><span class="chip k">Pset_DoorCommon.FireRating</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== II · LO QUE VIENE ========== -->
+    <section class="slide" id="partes" data-nav="Partes 2 y 3">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">En preparación</span>
+          <h2 class="display">Guía y formato digital<span class="dot">.</span></h2>
+          <p class="slide-lead">La parte 1 explica el concepto. La 2 enseñará a aplicarlo con ejemplos y la 3 lo convierte en un fichero que leen las máquinas.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="partes"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w2 k"><span class="c-label">Parte 1</span><span class="c-title">Conceptos</span><span class="c-foot">publicada en 2024</span></div>
+          <div class="card w2"><span class="c-label">Parte 2</span><span class="c-title">Guía de aplicación</span><span class="c-foot">especificación técnica en curso</span></div>
+          <div class="card w2 y"><span class="c-label">Parte 3</span><span class="c-title">Modelo de datos y esquema</span><span class="c-foot">UML + XSD, en curso</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== III · VISTA ========== -->
+    <section class="slide" id="vista" data-cap="III · Software" data-nav="Grueso, medio, fino">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">La primera trampa</span>
+          <h2 class="display">«Fino» no es LOD 400<span class="dot">.</span></h2>
+          <p class="slide-lead">Los programas tienen un nivel de detalle de vista que solo decide qué líneas se dibujan a cada escala. No dice nada de lo que vale el elemento.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="vista"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w3">
+            <span class="c-label">Revit</span>
+            <div class="chips"><span class="chip">Bajo</span><span class="chip">Medio</span><span class="chip y">Alto</span></div>
+            <span class="c-foot">ligado a la escala de la vista</span>
+          </div>
+          <div class="card w3">
+            <span class="c-label">Archicad</span>
+            <div class="chips"><span class="chip">Esquemático</span><span class="chip">Simplificado</span><span class="chip y">Completo</span></div>
+            <span class="c-foot">opciones de vista del modelo</span>
+          </div>
+          <div class="card w6 k">
+            <span class="c-label">Y otra más al exportar a IFC</span>
+            <span class="c-title">El «Level of Detail» del exportador de Revit solo cambia la teselación</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== III · PARÁMETROS ========== -->
+    <section class="slide" id="parametros" data-nav="Los datos, en propiedades">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Dónde viven los datos</span>
+          <h2 class="display">Cada programa, su cajón<span class="dot">.</span></h2>
+          <p class="slide-lead">Parámetros, propiedades, atributos: el nombre cambia, la idea no. Lo importante es definirlos una vez y reutilizarlos en todo el proyecto.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="parametros"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w3"><span class="c-label">Revit</span><span class="c-title">Parámetros compartidos</span><span class="c-foot">un TXT común a familias y proyectos</span></div>
+          <div class="card w3"><span class="c-label">Archicad</span><span class="c-title">Propiedades y expresiones</span><span class="c-foot">Administrador de propiedades</span></div>
+          <div class="card w3"><span class="c-label">Allplan</span><span class="c-title">Atributos</span><span class="c-foot">con bSDD integrado desde 2026</span></div>
+          <div class="card w3 y"><span class="c-label">Tekla</span><span class="c-title">Property sets</span><span class="c-foot">sincronizados con Trimble Connect</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== III · EXPORTAR ========== -->
+    <section class="slide" id="exportar" data-nav="Del parámetro al Pset">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">El paso que se olvida</span>
+          <h2 class="display">Del parámetro al IFC<span class="dot">.</span></h2>
+          <p class="slide-lead">Un dato bien rellenado en el programa no llega al IFC si nadie dice en qué conjunto de propiedades debe salir. Eso se configura en el exportador.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="exportar"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w6 g">
+            <span class="c-label">Ruta de un dato</span>
+            <div class="flow"><span class="chip">Parámetro nativo</span><span class="arrow">→</span><span class="chip">Tabla de correspondencias</span><span class="arrow">→</span><span class="chip y">Pset del IFC</span><span class="arrow">→</span><span class="chip k">Comprobación</span></div>
+          </div>
+          <div class="card w3"><span class="c-label">Revit</span><span class="c-title">Conjuntos definidos por el usuario</span><span class="c-foot">pestaña Property Sets</span></div>
+          <div class="card w3"><span class="c-label">Archicad</span><span class="c-title">Traductores IFC</span><span class="c-foot">asignar propiedades a la exportación</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== III · LEER EL IDS ========== -->
+    <section class="slide" id="leer-ids" data-nav="El programa lee el requisito">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Novedad 2024-2026</span>
+          <h2 class="display">El requisito entra en el programa<span class="dot">.</span></h2>
+          <p class="slide-lead">Varios programas ya importan un IDS y crean las propiedades que pide. Así se modela sabiendo qué se va a comprobar.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="leer-ids"><span class="plus">+</span> Comparar</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w2"><span class="c-label">Archicad</span><span class="c-title">Importa</span><span class="c-foot">desde la 28</span></div>
+          <div class="card w2"><span class="c-label">Allplan</span><span class="c-title">Importa y valida</span><span class="c-foot">2026</span></div>
+          <div class="card w2"><span class="c-label">Vectorworks</span><span class="c-title">Importa y valida</span><span class="c-foot">desde 2024</span></div>
+          <div class="card w2"><span class="c-label">BricsCAD</span><span class="c-title">Importa</span><span class="c-foot">V25</span></div>
+          <div class="card w2"><span class="c-label">Bonsai</span><span class="c-title">Edita y valida</span><span class="c-foot">IfcTester integrado</span></div>
+          <div class="card w2 k"><span class="c-label">Revit</span><span class="c-title">Con complementos</span><span class="c-foot">nada nativo en 2027.2</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== IV · GESTORES DE REQUISITOS ========== -->
+    <section class="slide" id="gestores" data-cap="IV · Plataformas" data-nav="La matriz fuera del modelo">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Gestores de requisitos</span>
+          <h2 class="display">La matriz, en una base de datos<span class="dot">.</span></h2>
+          <p class="slide-lead">Una hoja de cálculo se queda corta con cientos de objetos y hitos. Hay plataformas que guardan los requisitos y los exportan para modelar y comprobar.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="gestores"><span class="plus">+</span> Comparar</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w6 g">
+            <span class="c-label">Lo que hacen</span>
+            <div class="flow"><span class="chip">Objetos × hitos × propósitos</span><span class="arrow">→</span><span class="chip">Responsable</span><span class="arrow">→</span><span class="chip y">IDS o reglas</span><span class="arrow">→</span><span class="chip k">Comprobador</span></div>
+          </div>
+          <div class="card w2"><span class="c-label">dRofus</span><span class="c-title">Espacios y equipos</span></div>
+          <div class="card w2"><span class="c-label">BIMQ</span><span class="c-title">Requisitos por fase</span></div>
+          <div class="card w2 y"><span class="c-label">Cobuilder Require</span><span class="c-title">LOIN → IDS</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== IV · NUBE ========== -->
+    <section class="slide" id="nube" data-nav="Comprobar en la nube">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Entornos comunes de datos</span>
+          <h2 class="display">La nube aún va por detrás<span class="dot">.</span></h2>
+          <p class="slide-lead">Los visores en la nube filtran por propiedades, pero comprobar un IDS dentro de la plataforma todavía es la excepción y suele ser de pago aparte.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="nube"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w3"><span class="c-label">Autodesk Construction Cloud</span><span class="c-title">Filtros por propiedad</span><span class="c-foot">sin IDS nativo</span></div>
+          <div class="card w3"><span class="c-label">Trimble Connect</span><span class="c-title">IDS con extensión</span><span class="c-foot">de un tercero, de pago</span></div>
+          <div class="card w3"><span class="c-label">BIMcollab</span><span class="c-title">IDS en Zoom</span><span class="c-foot">plantillas descargables</span></div>
+          <div class="card w3 k"><span class="c-label">Dalux · Speckle</span><span class="c-title">Reglas propias</span><span class="c-foot">sin IDS documentado</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== V · IFC ========== -->
+    <section class="slide" id="ifc" data-cap="V · Interoperabilidad" data-nav="Dónde va cada dato en IFC">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">IFC</span>
+          <h2 class="display">Un sitio para cada dato<span class="dot">.</span></h2>
+          <p class="slide-lead">El IFC ya tiene casilla para casi todo lo que pide un nivel de información. Usar la estándar antes que inventar una propia es medio camino.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="ifc"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w2"><span class="c-label">Qué es</span><span class="c-title">Clase y tipo</span><span class="c-foot">IfcDoor · PredefinedType</span></div>
+          <div class="card w2 y"><span class="c-label">Cómo es</span><span class="c-title">Psets</span><span class="c-foot">Pset_DoorCommon</span></div>
+          <div class="card w2"><span class="c-label">Cuánto</span><span class="c-title">Cantidades</span><span class="c-foot">Qto_DoorBaseQuantities</span></div>
+          <div class="card w2"><span class="c-label">Cómo se codifica</span><span class="c-title">Clasificación</span><span class="c-foot">IfcClassificationReference</span></div>
+          <div class="card w2"><span class="c-label">De qué está hecho</span><span class="c-title">Material</span><span class="c-foot">IfcMaterial</span></div>
+          <div class="card w2 k"><span class="c-label">Qué lo acompaña</span><span class="c-title">Documentos</span><span class="c-foot">IfcDocumentReference</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== V · DEL LOIN AL IDS ========== -->
+    <section class="slide" id="loin-ids" data-nav="Del LOIN al IDS">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">IDS</span>
+          <h2 class="display">Medio requisito en un fichero<span class="dot">.</span></h2>
+          <p class="slide-lead">El IDS lleva el propósito y el hito en su cabecera y exige datos del IFC. La geometría se queda fuera: no la puede pedir.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="loin-ids"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w3 y">
+            <span class="c-label">Sí cabe en un IDS</span>
+            <div class="chips"><span class="chip">Propósito</span><span class="chip">Hito</span><span class="chip">Identificación</span><span class="chip">Propiedades</span><span class="chip">Clasificación</span><span class="chip">Material</span></div>
+          </div>
+          <div class="card w3 k">
+            <span class="c-label">No cabe</span>
+            <div class="chips"><span class="chip">Detalle</span><span class="chip">Dimensionalidad</span><span class="chip">Apariencia</span><span class="chip">Documentos</span></div>
+          </div>
+          <div class="card w6 g">
+            <span class="c-label">Un IDS por cada pareja</span>
+            <div class="flow"><span class="chip">Hito</span><span class="arrow">×</span><span class="chip">Propósito</span><span class="arrow">→</span><span class="chip y">un fichero .ids</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== V · COBIE ========== -->
+    <section class="slide" id="cobie" data-nav="COBie: la entrega final">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">COBie</span>
+          <h2 class="display">Lo que necesita el mantenedor<span class="dot">.</span></h2>
+          <p class="slide-lead">Al terminar la obra no hace falta toda la geometría: hace falta saber qué equipos hay, dónde están y cómo mantenerlos. COBie es ese subconjunto.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="cobie"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w3 y"><span class="c-label">COBie v3</span><b class="c-num">2023</b><span class="c-foot">dentro de NBIMS-US V4</span></div>
+          <div class="card w3"><span class="c-label">Formatos</span><div class="chips"><span class="chip">Hoja de cálculo</span><span class="chip">IFC</span><span class="chip">STEP</span><span class="chip k">JSON</span></div></div>
+          <div class="card w6 g">
+            <span class="c-label">Del edificio al equipo</span>
+            <div class="flow"><span class="chip">Instalación</span><span class="arrow">→</span><span class="chip">Planta</span><span class="arrow">→</span><span class="chip">Espacio</span><span class="arrow">→</span><span class="chip">Tipo</span><span class="arrow">→</span><span class="chip y">Componente</span><span class="arrow">→</span><span class="chip k">Garantía · repuestos · tareas</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== VI · QUÉ COMPROBAR ========== -->
+    <section class="slide" id="calidad" data-cap="VI · Control de calidad" data-nav="Qué comprobar">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Control de calidad</span>
+          <h2 class="display">Cuatro preguntas por entrega<span class="dot">.</span></h2>
+          <p class="slide-lead">Que esté, que tenga valor, que el valor sea válido y que la forma responda a lo pedido. Las tres primeras se automatizan; la cuarta, no del todo.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="calidad"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w3 y"><span class="c-label">01 · ¿Está?</span><span class="c-title">La propiedad existe</span><span class="c-foot">en el conjunto correcto</span></div>
+          <div class="card w3"><span class="c-label">02 · ¿Tiene valor?</span><span class="c-title">No está vacía</span><span class="c-foot">ni con «pendiente»</span></div>
+          <div class="card w3"><span class="c-label">03 · ¿Es válido?</span><span class="c-title">Formato y lista</span><span class="c-foot">EI2 60, no «60 min»</span></div>
+          <div class="card w3 k"><span class="c-label">04 · ¿Y la forma?</span><span class="c-title">Revisión geométrica</span><span class="c-foot">reglas y ojo experto</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== VI · IDS DE PUERTAS ========== -->
+    <section class="slide" id="ids" data-nav="Un IDS de puertas">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">IDS</span>
+          <h2 class="display">Tres puertas, una pasa<span class="dot">.</span></h2>
+          <p class="slide-lead">Un IDS pide a cada puerta su resistencia al fuego con formato de clasificación europea y si es exterior. Lo comprobamos en tres puertas de prueba.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="ids"><span class="plus">+</span> Ver el IDS</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w2 y"><span class="c-label">P-01</span><b class="c-num">✓</b><span class="c-foot">EI2 60-C5</span></div>
+          <div class="card w2"><span class="c-label">P-02</span><b class="c-num">✗</b><span class="c-foot">sin resistencia al fuego</span></div>
+          <div class="card w2 k"><span class="c-label">P-03</span><b class="c-num">✗</b><span class="c-foot">«60 min» no cumple el formato</span></div>
+          <div class="card w6 g">
+            <span class="c-label">Cabecera del fichero</span>
+            <div class="chips"><span class="chip">purpose: seguridad en caso de incendio</span><span class="chip y">milestone: proyecto de ejecución</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== VI · COMPROBADORES ========== -->
+    <section class="slide" id="comprobadores" data-nav="Quién lo comprueba">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Las herramientas</span>
+          <h2 class="display">El mismo IDS, varios jueces<span class="dot">.</span></h2>
+          <p class="slide-lead">Como el IDS es abierto, quien entrega y quien recibe pueden comprobarlo con herramientas distintas y obtener el mismo resultado.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="comprobadores"><span class="plus">+</span> Comparar</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w2 y"><span class="c-label">IfcTester</span><span class="c-title">Gratis</span><span class="c-foot">consola, web, Python</span></div>
+          <div class="card w2"><span class="c-label">Solibri</span><span class="c-title">Regla 244</span><span class="c-foot">desde 2023</span></div>
+          <div class="card w2"><span class="c-label">BIMcollab Zoom</span><span class="c-title">Validación IDS</span><span class="c-foot">con cardinalidad</span></div>
+          <div class="card w6 k">
+            <span class="c-label">Ojo</span>
+            <span class="c-title">El validador de buildingSMART revisa que el IFC sea IFC, no que cumpla tu IDS</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== VI · LA FORMA ========== -->
+    <section class="slide" id="forma" data-nav="La forma se revisa aparte">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">El hueco</span>
+          <h2 class="display">La forma se revisa aparte<span class="dot">.</span></h2>
+          <p class="slide-lead">Ningún estándar abierto comprueba todavía si una geometría tiene el detalle pedido. Se combinan reglas, medición y una revisión por muestreo.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="forma"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w2"><span class="c-label">01</span><span class="c-title">Clase correcta</span><span class="c-foot">nada de proxies</span></div>
+          <div class="card w2"><span class="c-label">02</span><span class="c-title">Medidas</span><span class="c-foot">cantidades contra datos</span></div>
+          <div class="card w2 y"><span class="c-label">03</span><span class="c-title">Muestreo</span><span class="c-foot">ficha de cada nivel</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== CIERRE ========== -->
     <section class="slide" id="cierre" data-nav="En resumen">
       <div class="bento">
         <div class="b-title">
           <span class="slide-n"></span>
           <span class="kicker-y">En resumen</span>
-          <h2 class="display">Tres reglas<span class="dot">.</span></h2>
-          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="fuentes"><span class="plus">+</span> Fuentes</button></div>
+          <h2 class="display">Cuatro reglas<span class="dot">.</span></h2>
+          <div class="slide-actions">
+            <button type="button" class="btn l2-btn" data-l2="glosario"><span class="plus">+</span> Glosario</button>
+            <button type="button" class="btn ghost l2-btn" data-l2="fuentes"><span class="plus">+</span> Fuentes</button>
+          </div>
         </div>
         <div class="b-cards">
-          <div class="card w2 k"><span class="step-n">1</span><span class="c-title">Propósito primero</span></div>
-          <div class="card w2"><span class="step-n">2</span><span class="c-title">Matriz compartida</span></div>
-          <div class="card w2 y"><span class="step-n">3</span><span class="c-title">Revisar por hito</span></div>
-          <div class="card w6"><nav id="series-nav" class="series-nav" style="margin-top:0" aria-label="Navegación de la serie"></nav></div>
+          <div class="card w3 y"><span class="c-label">01</span><span class="c-title">Para qué</span><span class="c-foot">cada dato, con su usuario</span></div>
+          <div class="card w3"><span class="c-label">02</span><span class="c-title">Por elemento</span><span class="c-foot">nunca «modelo LOD 300»</span></div>
+          <div class="card w3 k"><span class="c-label">03</span><span class="c-title">Por hito</span><span class="c-foot">lo que ya se puede decidir</span></div>
+          <div class="card w3"><span class="c-label">04</span><span class="c-title">Comprobable</span><span class="c-foot">IDS para los datos, revisión para la forma</span></div>
+          <div class="card w6"><nav id="series-nav" class="series-nav" style="margin-top:0;border-top:0;padding-top:0" aria-label="Navegación de la serie"></nav></div>
         </div>
       </div>
     </section>
+
   </main>
 
   <footer class="site">
@@ -158,49 +958,896 @@
     </div>
   </div>
 
-  <!-- ============================== CAPA 2 (relleno) ============================== -->
-  <template id="l2-confusion">
+  <!-- ============================== CAPA 2 ============================== -->
+  <!-- Capa 2 = ficha «Ver detalle» en tarjetas. Solo añade lo que la slide no dice. -->
+
+  <template id="l2-problema">
     <div class="b-cards">
-      <div class="card w3"><h4>Qué hay detrás</h4><p>Texto de relleno sobre la confusión. Aquí irá la explicación completa con ejemplos y matices. <span class="tag">Relleno</span></p></div>
-      <div class="card w3 y"><span class="c-label">Idea clave</span><p>Un aviso destacado de relleno para probar la tarjeta amarilla.</p></div>
-      <div class="card w6"><h4>Pasos de ejemplo</h4><ol class="vsteps"><li>Primer paso ficticio.</li><li>Segundo paso ficticio con <span class="ui">Menú › Comando</span>.</li><li>Resultado esperado.</li></ol></div>
-      <div class="card w6"><div class="table-wrap"><table><thead><tr><th>Concepto</th><th>Valor</th><th>Nota</th></tr></thead><tbody><tr><td>Ejemplo A</td><td class="num">10</td><td>Relleno</td></tr><tr class="is-key"><td>Ejemplo B</td><td class="num">20</td><td>Fila clave</td></tr><tr><td>Ejemplo C</td><td class="num">30</td><td>Relleno</td></tr></tbody></table></div></div>
+      <div class="card w3">
+        <h4>Por qué falla la etiqueta</h4>
+        <p>«LOD 300» resume en tres cifras decisiones que son distintas: cuánta forma, qué datos, qué documentos, para qué uso y en qué momento. Cada parte rellena lo que falta con su propia costumbre.</p>
+        <p>El resultado son modelos con mucho dibujo y pocos datos útiles, o al revés, y discusiones al recibir la entrega.</p>
+      </div>
+      <div class="card w3 k">
+        <h4>Lo que dice la literatura</h4>
+        <p>Abualdenien y Borrmann revisaron 58 guías y 299 publicaciones: el 48 % aplica el nivel al modelo completo y solo el 37 % lo aplica elemento a elemento.</p>
+        <p>La especificación de BIMForum lo advierte desde hace una década: «There is no such thing as an LOD ### model».</p>
+      </div>
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Lo que pide el pliego</th><th>Lo que entiende cada uno</th><th>Lo que falta</th></tr></thead>
+          <tbody>
+            <tr><td>«Modelo LOD 300»</td><td>Todo el modelo con el mismo nivel</td><td>Qué elementos y en qué hito</td></tr>
+            <tr><td>«LOD 300 de puertas»</td><td>Puerta bien dibujada</td><td>Qué datos y en qué propiedad</td></tr>
+            <tr class="is-key"><td>Requisito completo</td><td>Puerta · propósito · hito · actor</td><td>Nada: se puede comprobar</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://itcon.org/paper/2022/18" target="_blank" rel="noopener">Abualdenien y Borrmann, ITcon 2022</a> · <a href="https://bimforum.org/wp-content/uploads/2022/06/BIMForum_LOD_2015_reprint.pdf" target="_blank" rel="noopener">BIMForum LOD Specification 2015</a> · <a href="https://www.mepcontent.com/en/news/detail/3537/lod--a-confusing-guideline-/" target="_blank" rel="noopener">MEPcontent: LOD, a confusing guideline</a>.</p></div>
     </div>
   </template>
 
-  <template id="l2-loin">
+  <template id="l2-pregunta">
     <div class="b-cards">
-      <div class="card w3"><h4>Qué hay detrás</h4><p>Texto de relleno sobre loin. Aquí irá la explicación completa con ejemplos y matices. <span class="tag">Relleno</span></p></div>
-      <div class="card w3 y"><span class="c-label">Idea clave</span><p>Un aviso destacado de relleno para probar la tarjeta amarilla.</p></div>
-      <div class="card w6"><h4>Pasos de ejemplo</h4><ol class="vsteps"><li>Primer paso ficticio.</li><li>Segundo paso ficticio con <span class="ui">Menú › Comando</span>.</li><li>Resultado esperado.</li></ol></div>
-      <div class="card w6"><div class="table-wrap"><table><thead><tr><th>Concepto</th><th>Valor</th><th>Nota</th></tr></thead><tbody><tr><td>Ejemplo A</td><td class="num">10</td><td>Relleno</td></tr><tr class="is-key"><td>Ejemplo B</td><td class="num">20</td><td>Fila clave</td></tr><tr><td>Ejemplo C</td><td class="num">30</td><td>Relleno</td></tr></tbody></table></div></div>
+      <div class="card w3 y">
+        <h4>El lema</h4>
+        <p>«So viel wie nötig, so wenig wie möglich»: tanta información como sea necesaria y tan poca como sea posible. Lo usa la divulgación alemana para resumir el nivel de información necesario.</p>
+      </div>
+      <div class="card w3">
+        <h4>Las cuatro preguntas previas</h4>
+        <ol class="vsteps">
+          <li><strong>Propósito:</strong> qué uso se va a dar a la información.</li>
+          <li><strong>Hito:</strong> en qué entrega se necesita.</li>
+          <li><strong>Actores:</strong> quién la pide y quién la produce.</li>
+          <li><strong>Objeto:</strong> de qué elemento o sistema se habla.</li>
+        </ol>
+      </div>
+      <div class="card w6">
+        <h4>Ejemplo: una puerta cortafuegos</h4>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Para justificar el incendio</th><th>Hace falta</th><th>No hace falta</th></tr></thead>
+          <tbody>
+            <tr><td>Geometría</td><td>Paso libre y sentido de apertura</td><td>La manilla dibujada</td></tr>
+            <tr class="is-key"><td>Datos</td><td>Clase de resistencia al fuego, material</td><td>Coste de compra</td></tr>
+            <tr><td>Documentos</td><td>Certificado de ensayo</td><td>Plan de mantenimiento</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://www.baunetzwissen.de/integrales-planen/fachwissen/modellinhalte/was-bedeutet-loin-8062492" target="_blank" rel="noopener">BauNetz Wissen: Was bedeutet LOIN?</a> · <a href="https://www.iso.org/standard/82914.html" target="_blank" rel="noopener">ISO 7817-1:2024</a>.</p></div>
     </div>
   </template>
 
-  <template id="l2-matriz">
+  <template id="l2-tipos">
     <div class="b-cards">
-      <div class="card w3"><h4>Qué hay detrás</h4><p>Texto de relleno sobre la matriz. Aquí irá la explicación completa con ejemplos y matices. <span class="tag">Relleno</span></p></div>
-      <div class="card w3 y"><span class="c-label">Idea clave</span><p>Un aviso destacado de relleno para probar la tarjeta amarilla.</p></div>
-      <div class="card w6"><h4>Pasos de ejemplo</h4><ol class="vsteps"><li>Primer paso ficticio.</li><li>Segundo paso ficticio con <span class="ui">Menú › Comando</span>.</li><li>Resultado esperado.</li></ol></div>
-      <div class="card w6"><div class="table-wrap"><table><thead><tr><th>Concepto</th><th>Valor</th><th>Nota</th></tr></thead><tbody><tr><td>Ejemplo A</td><td class="num">10</td><td>Relleno</td></tr><tr class="is-key"><td>Ejemplo B</td><td class="num">20</td><td>Fila clave</td></tr><tr><td>Ejemplo C</td><td class="num">30</td><td>Relleno</td></tr></tbody></table></div></div>
+      <div class="card w2"><h4>Geométrica</h4><p>Cómo es el objeto en el espacio: forma, tamaño, posición y aspecto.</p></div>
+      <div class="card w2"><h4>Alfanumérica</h4><p>Lo que se escribe: nombre, código, clasificación y propiedades con su valor.</p></div>
+      <div class="card w2"><h4>Documentación</h4><p>Lo que acompaña al objeto pero no cabe en él: fichas técnicas, certificados, fotografías, manuales, planos de taller.</p></div>
+      <div class="card w3 y">
+        <h4>Se piden por separado</h4>
+        <p>Una puerta puede necesitar poca geometría y muchos datos (para mantener) o mucha geometría y pocos datos (para coordinar instalaciones). Por eso no basta un único número.</p>
+      </div>
+      <div class="card w3">
+        <h4>La documentación también tiene nivel</h4>
+        <p>Se precisa qué documento, en qué formato y con qué contenido: «certificado de ensayo en PDF firmado» es un requisito; «documentación técnica» no lo es.</p>
+      </div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuente: <a href="https://www.iso.org/standard/82914.html" target="_blank" rel="noopener">ISO 7817-1:2024, Level of information need — Concepts and principles</a> · <a href="https://www.thenbs.com/knowledge/level-of-detail-lod-and-digital-plans-of-work" target="_blank" rel="noopener">NBS: Level of detail and digital plans of work</a>.</p></div>
     </div>
   </template>
 
-  <template id="l2-errores">
+  <template id="l2-geometria">
     <div class="b-cards">
-      <div class="card w3"><h4>Qué hay detrás</h4><p>Texto de relleno sobre errores. Aquí irá la explicación completa con ejemplos y matices. <span class="tag">Relleno</span></p></div>
-      <div class="card w3 y"><span class="c-label">Idea clave</span><p>Un aviso destacado de relleno para probar la tarjeta amarilla.</p></div>
-      <div class="card w6"><h4>Pasos de ejemplo</h4><ol class="vsteps"><li>Primer paso ficticio.</li><li>Segundo paso ficticio con <span class="ui">Menú › Comando</span>.</li><li>Resultado esperado.</li></ol></div>
-      <div class="card w6"><div class="table-wrap"><table><thead><tr><th>Concepto</th><th>Valor</th><th>Nota</th></tr></thead><tbody><tr><td>Ejemplo A</td><td class="num">10</td><td>Relleno</td></tr><tr class="is-key"><td>Ejemplo B</td><td class="num">20</td><td>Fila clave</td></tr><tr><td>Ejemplo C</td><td class="num">30</td><td>Relleno</td></tr></tbody></table></div></div>
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Aspecto</th><th>Qué pregunta</th><th>Valores típicos</th><th>Ejemplo · puerta</th></tr></thead>
+          <tbody>
+            <tr><td>Detalle</td><td>¿Cuánta complejidad tiene la forma?</td><td>bajo · medio · alto</td><td>Hoja y marco, sin herrajes</td></tr>
+            <tr><td>Dimensionalidad</td><td>¿Cuántas dimensiones?</td><td>0D · 1D · 2D · 3D</td><td>3D</td></tr>
+            <tr class="is-key"><td>Ubicación</td><td>¿Posición aproximada o exacta, relativa o absoluta?</td><td>relativa · absoluta</td><td>Absoluta, en su muro</td></tr>
+            <tr><td>Apariencia</td><td>¿Símbolo o aspecto real?</td><td>simbólica · realista</td><td>Simbólica</td></tr>
+            <tr><td>Comportamiento paramétrico</td><td>¿Se puede cambiar su forma?</td><td>sin · con parámetros</td><td>Sin: medidas fijas</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w3 y">
+        <h4>Escalas libres</h4>
+        <p>La norma nombra los aspectos pero no impone valores: cada proyecto define su escala (por ejemplo, bajo, medio y alto) y la explica con un dibujo.</p>
+      </div>
+      <div class="card w3">
+        <h4>BIMForum ya los usa</h4>
+        <p>La especificación 2025 describe cada nivel con estos cinco aspectos. Su LOD 300 equivale a detalle alto, 3D precisa, ubicación precisa y absoluta, geometría precisa y sin comportamiento paramétrico.</p>
+      </div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://www.iso.org/standard/82914.html" target="_blank" rel="noopener">ISO 7817-1:2024</a> · <a href="https://bimforum.org/wp-content/uploads/2026/02/2025-LOD-Part-I-Espanol.pdf" target="_blank" rel="noopener">BIMForum LOD 2025, parte I (español)</a>.</p></div>
     </div>
+  </template>
+
+  <template id="l2-datos">
+    <div class="b-cards">
+      <div class="card w3">
+        <h4>Identificación</h4>
+        <ul>
+          <li>Nombre o código único (P-01).</li>
+          <li>Tipo (puerta cortafuegos de una hoja).</li>
+          <li>Clasificación en un sistema común del proyecto.</li>
+        </ul>
+        <p>Sin identificación no se puede contar, filtrar ni comprobar.</p>
+      </div>
+      <div class="card w3">
+        <h4>Contenido</h4>
+        <p>Propiedades con nombre, tipo de dato, unidad y, cuando se puede, lista de valores admitidos. «Resistencia al fuego: texto libre» deja pasar «60 min», «EI60» y «sí».</p>
+      </div>
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Propiedad</th><th>Tipo de dato</th><th>Unidad</th><th>Valores admitidos</th></tr></thead>
+          <tbody>
+            <tr class="is-key"><td>Resistencia al fuego</td><td>Texto</td><td>—</td><td>EI2 30-C5, EI2 60-C5, EI2 90-C5</td></tr>
+            <tr><td>Transmitancia térmica</td><td>Número</td><td>W/(m²·K)</td><td>0,5 a 5,0</td></tr>
+            <tr><td>Exterior</td><td>Booleano</td><td>—</td><td>verdadero · falso</td></tr>
+          </tbody>
+        </table></div>
+        <p class="table-note">Ejemplo con la clasificación europea de resistencia al fuego (EN 13501-2). Cada país usa su propia clasificación.</p>
+      </div>
+    </div>
+  </template>
+
+  <template id="l2-detalle">
+    <div class="b-cards">
+      <div class="card w6">
+        <blockquote class="quote" style="margin:0"><p>«Level of Detail can be thought of as input to the element, while Level of Development is reliable output».</p><cite>BIMForum · <a href="https://bimforum.org/wp-content/uploads/2022/06/BIMForum_LOD_2015_reprint.pdf" target="_blank" rel="noopener">LOD Specification 2015</a></cite></blockquote>
+      </div>
+      <div class="card w3">
+        <h4>Por qué importa</h4>
+        <p>Un objeto descargado de un catálogo trae cientos de líneas y parece definitivo. Si el diseño aún no ha elegido ese producto, el detalle engaña: no se puede medir, comprar ni coordinar con él.</p>
+      </div>
+      <div class="card w3 y">
+        <h4>Y el LOIN, ¿qué mide?</h4>
+        <p>Ninguna de las dos: dice qué información hace falta para una tarea. «LOIN neither describes the reliability of the provided information nor defines the maturity of the design», según Abualdenien y Borrmann.</p>
+      </div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://bimforum.org/wp-content/uploads/2022/06/BIMForum_LOD_2015_reprint.pdf" target="_blank" rel="noopener">BIMForum 2015</a> · <a href="https://itcon.org/papers/2022_18-ITcon-Abualdenien.pdf" target="_blank" rel="noopener">ITcon 2022</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-escalera">
+    <div class="b-cards">
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Nivel</th><th>Definición resumida</th><th>Uso típico</th></tr></thead>
+          <tbody>
+            <tr><td>100</td><td>Símbolo o representación genérica; la información se deduce de otros elementos</td><td>Estudios de volumen</td></tr>
+            <tr><td>200</td><td>Sistema u objeto genérico con cantidad, tamaño, forma y posición aproximados</td><td>Anteproyecto</td></tr>
+            <tr class="is-key"><td>300</td><td>Cantidad, tamaño, forma, ubicación y orientación medibles en el modelo</td><td>Proyecto de ejecución</td></tr>
+            <tr><td>350</td><td>Lo anterior más las interfaces con otros sistemas</td><td>Coordinación entre oficios</td></tr>
+            <tr><td>400</td><td>Con detalle suficiente para fabricar y montar</td><td>Taller y montaje</td></tr>
+            <tr><td>500</td><td>Verificado en obra (no lo define BIMForum)</td><td>Modelo final de obra</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w3">
+        <h4>Origen</h4>
+        <p>La escala nació hacia 2004-2005 en una herramienta de Vico Software, como «Level of Detail» de 100 a 500. El AIA la adoptó en el documento E202-2008 como «Level of Development».</p>
+      </div>
+      <div class="card w3 y">
+        <h4>Lo que no hace</h4>
+        <p>BIMForum no fija qué nivel toca en cada fase: «esa determinación se deja a cada equipo de proyecto».</p>
+      </div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://bimforum.org/wp-content/uploads/2024/11/LOD-Spec-2024-Part-I-official-Spanish.pdf" target="_blank" rel="noopener">BIMForum LOD 2024 (español)</a> · <a href="https://www.structuremag.org/article/creating-clarity-and-scoping-profits-in-bim-with-lod-350/" target="_blank" rel="noopener">STRUCTURE: LOD 350</a> · <a href="https://app.bimsupporters.com/knowledge-base/kb/comparison-of-popular-lod-concepts/" target="_blank" rel="noopener">BIM Supporters: comparativa de LOD</a> · <a href="https://www.engineering.com/story/what-is-lod-or-level-of-detail" target="_blank" rel="noopener">Boeykens, engineering.com</a>. El dibujo de la puerta es una interpretación propia de cada nivel. <span class="tag">Inferido</span></p></div>
+    </div>
+  </template>
+
+  <template id="l2-elemento">
+    <div class="b-cards">
+      <div class="card w3">
+        <h4>La matriz de elementos</h4>
+        <p>Filas: los elementos o sistemas, ordenados por una clasificación. Columnas: los hitos. En cada celda, el nivel pedido y quién es el responsable de modelarlo.</p>
+        <p>En Estados Unidos se llama Model Element Table; en otros países, matriz de progresión del modelo o matriz LOIN.</p>
+      </div>
+      <div class="card w3 y">
+        <h4>Un caso real</h4>
+        <p>En la infraestructura vial de Bogotá, distintas entidades necesitaban niveles distintos en una misma fase: no fue posible asignar un nivel único al modelo (Calixto, 2023).</p>
+      </div>
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Elemento</th><th>Anteproyecto</th><th>Ejecución</th><th>Obra</th><th>Responsable</th></tr></thead>
+          <tbody>
+            <tr><td>Estructura</td><td>200</td><td>350</td><td>400</td><td>Ingeniería de estructuras</td></tr>
+            <tr class="is-key"><td>Puertas</td><td>100</td><td>300</td><td>400</td><td>Arquitectura, después carpintero</td></tr>
+            <tr><td>Mobiliario</td><td>—</td><td>100</td><td>200</td><td>Interiorismo</td></tr>
+          </tbody>
+        </table></div>
+        <p class="table-note">Ejemplo orientativo.</p>
+      </div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://www.redalyc.org/journal/911/91178599008/91178599008.pdf" target="_blank" rel="noopener">Calixto (2023), Redalyc</a> · <a href="https://bimforum.org/LOD/" target="_blank" rel="noopener">BIMForum LOD</a> · <a href="https://architektur-informatik.scix.net/pdfs/w78-2022-paper_752.pdf" target="_blank" rel="noopener">encuesta en Brasil, CIB W78 2022</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-sobremodelado">
+    <div class="b-cards">
+      <div class="card w3 k">
+        <h4>El dato</h4>
+        <p>Martinez y Bolpagni analizaron 5 048 especificaciones de requisitos (80 objetos, 22 propósitos). Los requisitos pasan de 660 en la fase 1 a 4 750 en la fase 4 y bajan a 3 485 en la 5.</p>
+      </div>
+      <div class="card w3">
+        <h4>Trabajo sin valor</h4>
+        <p>Una encuesta en Brasil (539 respuestas) identificó como desperdicio «introducir o comprobar parámetros que no se necesitan en ese hito». El 56 % no conocía las matrices de elementos.</p>
+      </div>
+      <div class="card w3 y">
+        <h4>Los LOD excesivos</h4>
+        <p>La edición 2025 de BIMForum refuerza sus párrafos para ayudar a quien modela a responder a peticiones de niveles excesivamente altos.</p>
+      </div>
+      <div class="card w3">
+        <h4>Cómo evitarlo</h4>
+        <ol class="vsteps">
+          <li>Cada requisito, con su propósito y su usuario.</li>
+          <li>Sin propósito, fuera.</li>
+          <li>Revisar la matriz en cada hito.</li>
+        </ol>
+      </div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://ec-3.org/wp-content/uploads/2026/08/EC32026_219.pdf" target="_blank" rel="noopener">Martinez y Bolpagni, EC3 2026</a> · <a href="https://architektur-informatik.scix.net/pdfs/w78-2022-paper_752.pdf" target="_blank" rel="noopener">CIB W78 2022</a> · <a href="https://bimforum.org/wp-content/uploads/2026/01/LOD-Spec-2025-Part-I-Official.pdf" target="_blank" rel="noopener">BIMForum LOD 2025</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-hitos">
+    <div class="b-cards">
+      <div class="card w3">
+        <h4>Qué es un hito</h4>
+        <p>Un momento acordado de intercambio de información: el fin de una fase, una licitación, una solicitud de licencia, la recepción. El nivel necesario se fija para cada uno.</p>
+      </div>
+      <div class="card w3 y">
+        <h4>Los datos tienen dueño temporal</h4>
+        <p>El fabricante de la puerta se conoce cuando se contrata, no en proyecto. Pedirlo antes obliga a poner un «genérico» que nadie podrá comprobar.</p>
+      </div>
+      <div class="card w6">
+        <div class="bars">
+          <div class="bar"><span>Estudio</span><i style="width:12%">hueco</i></div>
+          <div class="bar"><span>Anteproyecto</span><i style="width:30%">tipo y tamaño</i></div>
+          <div class="bar is-key"><span>Ejecución</span><i style="width:60%">medidas, fuego, U, sentido</i></div>
+          <div class="bar"><span>Obra</span><i style="width:80%">fabricante, modelo, herrajes</i></div>
+          <div class="bar"><span>Entrega</span><i style="width:100%">serie, garantía, manual</i></div>
+        </div>
+        <p class="table-note">Ejemplo orientativo de una puerta. Las fases cambian de nombre en cada país.</p>
+      </div>
+    </div>
+  </template>
+
+  <template id="l2-exactitud">
+    <div class="b-cards">
+      <div class="card w3">
+        <h4>De dónde sale</h4>
+        <p>La USIBD (Estados Unidos) publica la LOA Specification: v1.0 en 2014, v3.0 en 2019 y v3.1 en enero de 2025. Mide la desviación con un 95 % de confianza.</p>
+      </div>
+      <div class="card w3 y">
+        <h4>Dos valores distintos</h4>
+        <p>La exactitud con que se midió (la nube de puntos) y la exactitud con que se representó (el modelo). Un muro medido a ±5 mm puede modelarse plano y vertical a ±2 cm.</p>
+      </div>
+      <div class="card w3">
+        <h4>Matiz</h4>
+        <p>Las fuentes no coinciden en el LOA10: unas dan de 5 a 15 cm y otras «más de 5 cm» sin tope. <span class="tag">Por confirmar</span></p>
+      </div>
+      <div class="card w3 k">
+        <h4>Lo que la guía no dice</h4>
+        <p>Bonduel y otros advierten que la especificación no fija qué método usar para evaluar la exactitud: hay que acordarlo en el proyecto.</p>
+      </div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://lidarmag.com/2025/02/09/usibd-a-new-chapter-for-2025/" target="_blank" rel="noopener">LIDAR Magazine: USIBD 2025</a> · <a href="https://isprs-archives.copernicus.org/articles/XLII-2-W8/45/2017/isprs-archives-XLII-2-W8-45-2017.pdf" target="_blank" rel="noopener">Bonduel et al., ISPRS 2017</a> · <a href="https://www.shelidon.it/bimpill-livello-di-accuratezza-di-un-rilievo/2" target="_blank" rel="noopener">Shelidon</a> · <a href="https://assets.metrolinx.com/image/upload/v1750962792/Documents/Engineering/Metrolinx_Level_of_Information_Need_Guide_BIM.pdf" target="_blank" rel="noopener">Metrolinx: LOIN con LOA</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-requisito">
+    <div class="b-cards">
+      <div class="card w3 y">
+        <h4>Una línea de requisito</h4>
+        <p><strong>Objeto</strong> puerta · <strong>propósito</strong> seguridad en caso de incendio · <strong>hito</strong> proyecto de ejecución · <strong>pide</strong> el cliente · <strong>entrega</strong> arquitectura.</p>
+        <p>Y debajo, qué geometría, qué datos y qué documentos.</p>
+      </div>
+      <div class="card w3">
+        <h4>Cómo se escribe en la práctica</h4>
+        <ol class="vsteps">
+          <li>Listar los propósitos del proyecto.</li>
+          <li>Para cada uno, los objetos implicados.</li>
+          <li>Para cada pareja, los tres tipos de información.</li>
+          <li>Repetir por hito y asignar responsable.</li>
+        </ol>
+      </div>
+      <div class="card w6">
+        <h4>Varias parejas, un mismo objeto</h4>
+        <p>Si la puerta interesa para coordinar y para incendio, se suman los requisitos de ambos propósitos. Lo que no pide ningún propósito, no se pide.</p>
+      </div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://www.iso.org/standard/82914.html" target="_blank" rel="noopener">ISO 7817-1:2024</a> · <a href="https://fib-bund.de/Inhalt/Themen/BIM_fuer_Bundesbauten/BIM_AH_LOIN-Konzept.pdf" target="_blank" rel="noopener">Arbeitshilfe LOIN-Konzept (Alemania)</a> · <a href="https://www.globalbim.org/wp-content/uploads/2024/01/instructivo_matriz_RD0005_2021EF6301-2.pdf" target="_blank" rel="noopener">Plan BIM Perú: matriz de nivel de información necesaria</a>. Los valores del constructor son un ejemplo propio. <span class="tag">Inferido</span></p></div>
+    </div>
+  </template>
+
+  <template id="l2-historia">
+    <div class="b-cards">
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Año</th><th>Hito</th><th>Qué aporta</th></tr></thead>
+          <tbody>
+            <tr><td>2004-05</td><td>Vico Software</td><td>Escala 100-500 «Level of Detail»</td></tr>
+            <tr><td>2008</td><td>AIA E202-2008</td><td>«Level of Development» en contratos de Estados Unidos</td></tr>
+            <tr><td>2013</td><td>BIMForum LOD Specification</td><td>Definiciones por elemento y nuevo LOD 350</td></tr>
+            <tr><td>2013-15</td><td>Reino Unido (PAS 1192-2, NBS)</td><td>LOD gráfico y LOI no gráfico</td></tr>
+            <tr><td>2018</td><td>ISO 19650-1</td><td>Concepto de nivel de información necesario</td></tr>
+            <tr><td>2020</td><td>EN 17412-1</td><td>Primera norma del concepto (CEN)</td></tr>
+            <tr class="is-key"><td>2024</td><td>ISO 7817-1</td><td>La sustituye a escala mundial</td></tr>
+            <tr><td>2025</td><td>UNE-EN ISO 7817-1 · BIMForum 2025</td><td>Adopción en España; los LOD se describen con aspectos ISO</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w3">
+        <h4>Sin cambios de fondo</h4>
+        <p>Según Marzia Bolpagni, la ISO 7817-1 sustituye a la EN 17412-1 sin cambios sustanciales y se aleja de etiquetas simples como LOD, LOG o LOI.</p>
+      </div>
+      <div class="card w3 y">
+        <h4>Matiz de fechas</h4>
+        <p>Las fuentes sitúan el trabajo de Vico en 2004 o en 2005; por eso aparece como «2004-05».</p>
+      </div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://bimforum.org/wp-content/uploads/2022/06/BIMForum_LOD_2015_reprint.pdf" target="_blank" rel="noopener">BIMForum 2015</a> · <a href="https://www.bdcnetwork.com/home/article/55144799/level-of-development-will-a-new-standard-bring-clarity-to-bim-model-detail" target="_blank" rel="noopener">BD+C 2013</a> · <a href="https://www.thenbs.com/knowledge/level-of-detail-lod-and-digital-plans-of-work" target="_blank" rel="noopener">NBS</a> · <a href="https://constructionmanagement.co.uk/new-level-of-information-need-standard-published/" target="_blank" rel="noopener">Construction Management, 2024</a> · <a href="https://www.en.une.org/encuentra-tu-norma/busca-tu-norma/norma?c=N0065673" target="_blank" rel="noopener">UNE</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-iso7817">
+    <div class="b-cards">
+      <div class="card w3">
+        <h4>Qué es</h4>
+        <p><em>Building information modelling — Level of information need — Part 1: Concepts and principles</em>. Da el método para especificar la información de cada objeto y entrega.</p>
+      </div>
+      <div class="card w3 k">
+        <h4>Qué no es</h4>
+        <p>No es una lista de niveles 100-500 ni dice qué hay que pedir en cada fase. Da la estructura; el contenido lo pone cada proyecto o cada país.</p>
+      </div>
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Edición</th><th>Estado</th></tr></thead>
+          <tbody>
+            <tr><td>EN 17412-1:2020 · UNE-EN 17412-1:2021</td><td>Anuladas; la UNE desde el 22-01-2025</td></tr>
+            <tr class="is-key"><td>ISO 7817-1:2024 · EN ISO 7817-1:2024</td><td>Vigente</td></tr>
+            <tr><td>UNE-EN ISO 7817-1:2025</td><td>Vigente en España</td></tr>
+          </tbody>
+        </table></div>
+        <p class="table-note">Ojo con los pliegos: uno de la Junta de Andalucía de octubre de 2025 aún cita la UNE-EN 17412-1 anulada.</p>
+      </div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://www.iso.org/standard/82914.html" target="_blank" rel="noopener">ISO 7817-1:2024</a> · <a href="https://www.en.une.org/encuentra-tu-norma/busca-tu-norma/norma?c=N0065673" target="_blank" rel="noopener">UNE-EN 17412-1:2021</a> · <a href="https://www.en.une.org/encuentra-tu-norma/busca-tu-norma/iso?c=082914" target="_blank" rel="noopener">ISO 7817-1 en UNE</a> · <a href="https://www.juntadeandalucia.es/haciendayadministracionpublica/apl/pdc_sirec_documentacion/rest/descargar/documento/361751" target="_blank" rel="noopener">pliego de Huércal-Overa</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-iso19650">
+    <div class="b-cards">
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Sigla</th><th>Nombre</th><th>Qué recoge</th></tr></thead>
+          <tbody>
+            <tr><td>OIR</td><td>Requisitos de información de la organización</td><td>Lo que la organización necesita para sus objetivos</td></tr>
+            <tr><td>AIR</td><td>Requisitos de información del activo</td><td>Lo necesario para explotar el edificio o la infraestructura</td></tr>
+            <tr><td>PIR</td><td>Requisitos de información del proyecto</td><td>Lo necesario para las decisiones del proyecto</td></tr>
+            <tr class="is-key"><td>EIR</td><td>Requisitos de intercambio de información</td><td>Qué se entrega en cada contrato, con su nivel necesario</td></tr>
+            <tr><td>TIDP · MIDP</td><td>Planes de entrega de cada equipo y del proyecto</td><td>Qué contenedor, quién y cuándo</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w3">
+        <h4>Dónde encaja</h4>
+        <p>ISO 19650 pide que cada requisito de información lleve su nivel necesario, y la ISO 7817-1 explica cómo escribirlo. Una sin la otra se queda a medias.</p>
+      </div>
+      <div class="card w3 y">
+        <h4>Con la parte 4</h4>
+        <p>La ISO 7817-1 alinea su terminología con ISO 19650-4, la parte de intercambio de información.</p>
+      </div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://www.iso.org/standard/68078.html" target="_blank" rel="noopener">ISO 19650-1:2018</a> · <a href="https://www.iso.org/standard/68080.html" target="_blank" rel="noopener">ISO 19650-2:2018</a> · <a href="https://constructionmanagement.co.uk/new-level-of-information-need-standard-published/" target="_blank" rel="noopener">Construction Management, 2024</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-bimforum">
+    <div class="b-cards">
+      <div class="card w3">
+        <h4>Cómo está hecha</h4>
+        <p>Parte I en PDF, con definiciones e ilustraciones de cada elemento ordenado por Uniformat; parte II en hoja de cálculo, con los atributos. Se publica casi cada año.</p>
+      </div>
+      <div class="card w3 y">
+        <h4>Novedad 2025</h4>
+        <p>Cada nivel lleva un bloque con los requisitos de los aspectos de la ISO 7817-1, y el umbral fijo de 15 cm para modelar huecos se sustituye por criterios según el material.</p>
+      </div>
+      <div class="card w6">
+        <blockquote class="quote" style="margin:0"><p>«El Elemento Modelo, tal y como ha sido diseñado, está representado gráficamente dentro del Modelo de tal forma que su cantidad, tamaño, forma, ubicación y orientación pueden ser medidos».</p><cite>LOD 300 · <a href="https://bimforum.org/wp-content/uploads/2024/11/LOD-Spec-2024-Part-I-official-Spanish.pdf" target="_blank" rel="noopener">traducción oficial 2024</a></cite></blockquote>
+      </div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://bimforum.org/LOD/" target="_blank" rel="noopener">BIMForum LOD</a> · <a href="https://bimforum.org/official-release-2025-lod-specification/" target="_blank" rel="noopener">edición 2025</a> · <a href="https://bimforum.org/2025-lod-specification-in-spanish/" target="_blank" rel="noopener">versión española 2025</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-paises">
+    <div class="b-cards">
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>País</th><th>Siglas</th><th>Referencia</th></tr></thead>
+          <tbody>
+            <tr><td>Estados Unidos</td><td>LOD 100-500 (+350)</td><td>AIA E202/G202 · BIMForum</td></tr>
+            <tr><td>Reino Unido</td><td>LOD + LOI → LOIN</td><td>NBS BIM Toolkit, sustituido por ISO 19650 y LOIN</td></tr>
+            <tr><td>Alemania</td><td>LOG + LOI → LOIN</td><td>Guía federal Arbeitshilfe LOIN-Konzept (2022)</td></tr>
+            <tr><td>Francia</td><td>ND · NDI · LoIN</td><td>niveau de développement, d'information, d'information nécessaire</td></tr>
+            <tr><td>Chile</td><td>NDI 1-3</td><td>MINVU · Planbim</td></tr>
+            <tr><td>Perú</td><td>Nivel de información necesaria</td><td>Plan BIM Perú, matriz con LOD y LOI</td></tr>
+            <tr class="is-key"><td>España</td><td>Nivel de información necesario</td><td>UNE-EN ISO 7817-1:2025</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w3 y">
+        <h4>La fórmula que se repite</h4>
+        <p>Muchas guías resumen «LOD = LOG + LOI». La norma no suma etiquetas: describe el propósito, el hito, los actores y el objeto, y después las tres clases de información.</p>
+      </div>
+      <div class="card w3">
+        <h4>Otras escalas</h4>
+        <p>En patrimonio se han propuesto escalas propias, como los diez «Grades of Generation» de Banfi (2017), que no deben confundirse con el LOD.</p>
+      </div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://fib-bund.de/Inhalt/Themen/BIM_fuer_Bundesbauten/BIM_AH_LOIN-Konzept.pdf" target="_blank" rel="noopener">Alemania</a> · <a href="https://bim.brandenburg.de/sixcms/media.php/9/20250516_Glossar_V3.pdf" target="_blank" rel="noopener">glosario de Brandeburgo</a> · <a href="https://www.rapport-congresdesnotaires.fr/2021-rapport-du-117e-congres/les-differents-niveaux-de-detail-de-la-maquette-du-bim-lod" target="_blank" rel="noopener">Francia</a> · <a href="https://www.minvu.gob.cl/wp-content/uploads/2023/07/minvu-bim-pro-ds49-sdi.pdf" target="_blank" rel="noopener">Chile</a> · <a href="https://www.globalbim.org/wp-content/uploads/2024/01/instructivo_matriz_RD0005_2021EF6301-2.pdf" target="_blank" rel="noopener">Perú</a> · <a href="https://www.thenbs.com/knowledge/level-of-detail-lod-and-digital-plans-of-work" target="_blank" rel="noopener">Reino Unido</a> · <a href="https://re.public.polimi.it/retrieve/e0c31c0b-455d-4599-e053-1705fe0aef77/Fabrizio%20Banfi%202017%20-%20BIM%20Orientation.pdf" target="_blank" rel="noopener">Banfi</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-diccionarios">
+    <div class="b-cards">
+      <div class="card w3">
+        <h4>ISO 23386 e ISO 23387</h4>
+        <p>La primera da el método para describir propiedades y mantener diccionarios interconectados; la segunda, las plantillas de datos que agrupan las propiedades de cada tipo de objeto.</p>
+      </div>
+      <div class="card w3 y">
+        <h4>bSDD</h4>
+        <p>El diccionario de datos de buildingSMART sigue el modelo de ISO 23386: diccionario, clase, propiedad y la propiedad dentro de una clase, que puede llevar valores admitidos (por ejemplo, REI30 a REI120).</p>
+      </div>
+      <div class="card w6">
+        <h4>Cómo se usa</h4>
+        <p>Los requisitos enlazan a una propiedad del diccionario en vez de inventar su nombre. Programas como Allplan 2026 y los editores IDS consultan el bSDD directamente; su API se renovó en 2025.</p>
+      </div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://technical.buildingsmart.org/services/bsdd/data-structure/" target="_blank" rel="noopener">estructura del bSDD</a> · <a href="https://forums.buildingsmart.org/t/bsdd-tech-updates/4889?page=2" target="_blank" rel="noopener">novedades técnicas del bSDD</a> · <a href="https://www.iso.org/standard/75401.html" target="_blank" rel="noopener">ISO 23386:2020</a> · <a href="https://www.iso.org/standard/75403.html" target="_blank" rel="noopener">ISO 23387:2020</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-partes">
+    <div class="b-cards">
+      <div class="card w3">
+        <h4>Parte 2 · guía</h4>
+        <p>ISO/DTS 7817-2: árboles de decisión, ejemplos de edificación e infraestructura, plantillas de hoja de cálculo y relación con EIR, BEP, ISO 19650 e ISO 29481. Etapa 50.20 desde el 17-09-2026.</p>
+      </div>
+      <div class="card w3 y">
+        <h4>Parte 3 · esquema</h4>
+        <p>ISO/DIS 7817-3: modelo UML y esquema XSD para intercambiar el nivel de información necesario entre programas, alineado con ISO 23387. Votación DIS cerrada el 06-05-2026.</p>
+      </div>
+      <div class="card w6 k">
+        <h4>Aviso</h4>
+        <p>Ya hay bibliotecas que leen los borradores de la parte 3, pero el esquema puede cambiar hasta que se publique.</p>
+      </div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://www.iso.org/standard/89075.html" target="_blank" rel="noopener">ISO/DTS 7817-2</a> · <a href="https://www.iso.org/standard/89077.html" target="_blank" rel="noopener">ISO/DIS 7817-3</a> · <a href="https://forums.buildingsmart.org/t/iso-7817-3-under-development-and-ids/5533" target="_blank" rel="noopener">foro de buildingSMART</a> · <a href="https://docs.rs/openbim-loin" target="_blank" rel="noopener">openbim-loin</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-vista">
+    <div class="b-cards">
+      <div class="card w3">
+        <h4>Revit</h4>
+        <p>El nivel de detalle (Bajo, Medio, Alto) es una propiedad de la vista ligada por defecto a su escala. En el editor de familias, «Family Element Visibility Settings» decide qué geometría aparece en cada uno.</p>
+      </div>
+      <div class="card w3">
+        <h4>Archicad</h4>
+        <p>Las opciones de vista del modelo fijan el detalle de los objetos en planta y en 3D. En los objetos GDL no hay un parámetro común: cada biblioteca usa el suyo.</p>
+      </div>
+      <div class="card w3 k">
+        <h4>La trampa del exportador</h4>
+        <p>En la exportación IFC de Revit, la pestaña «Level of Detail» (Extra Low a High) solo cambia cuántos triángulos tiene la geometría curva.</p>
+      </div>
+      <div class="card w3 y">
+        <h4>Úsalo a tu favor</h4>
+        <p>Una familia bien hecha muestra poco en vistas generales y mucho en detalles. Es una buena práctica gráfica, pero no un nivel contractual. <span class="tag">Inferido</span></p>
+      </div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://help.autodesk.com/cloudhelp/2024/ENU/Revit-Customize/files/GUID-0BB861D5-27CB-4276-93AE-F2E949B0D466.htm" target="_blank" rel="noopener">Revit: Detail Levels</a> · <a href="https://help.autodesk.com/cloudhelp/2024/ENU/Revit-Customize/files/GUID-749AEB1E-1B01-46BC-9790-3473BC769211.htm" target="_blank" rel="noopener">visibilidad en familias</a> · <a href="https://help.autodesk.com/cloudhelp/2027/ENU/Revit-DocumentPresent/files/GUID-E029E3AD-1639-4446-A935-C9796BC34C95.htm" target="_blank" rel="noopener">exportación IFC</a> · <a href="https://help.graphisoft.com/AC/27/INT/_AC27_Help/140_UserInterfaceDialogBoxes/140_UserInterfaceDialogBoxes-41.htm" target="_blank" rel="noopener">Archicad: opciones de vista</a> · <a href="https://gdl.graphisoft.com/forums/topic/lod-settings/" target="_blank" rel="noopener">foro GDL</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-parametros">
+    <div class="b-cards">
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Programa</th><th>Dónde se definen</th><th>Detalle</th></tr></thead>
+          <tbody>
+            <tr><td>Revit</td><td>Parámetros compartidos</td><td>Archivo de texto común; necesarios para etiquetas y tablas multicategoría</td></tr>
+            <tr><td>Archicad</td><td>Administrador de propiedades</td><td>Propiedades fijas o por expresión, con tipo de dato y disponibilidad por clasificación</td></tr>
+            <tr><td>Allplan</td><td>Atributos</td><td>Importación desde IDS y más de 300 diccionarios bSDD en 2026</td></tr>
+            <tr class="is-key"><td>Tekla</td><td>Property sets de Trimble Connect</td><td>Sincronización en ambos sentidos en 2026; sintaxis PSET.&lt;biblioteca&gt;.&lt;Pset&gt;.&lt;propiedad&gt;</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w3 y">
+        <h4>Una plantilla para todos</h4>
+        <p>Definir los parámetros una vez en la plantilla del proyecto, con el mismo nombre que pide el requisito, evita la mitad de los errores de entrega. <span class="tag">Inferido</span></p>
+      </div>
+      <div class="card w3">
+        <h4>Forzar la clase IFC</h4>
+        <p>En Revit, los parámetros <code>IFCExportAs</code> e <code>IFCExportType</code> fijan la clase y el tipo IFC de una familia que no tiene categoría propia.</p>
+      </div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://help.autodesk.com/cloudhelp/2023/ENU/Revit-Model/files/GUID-E7D12B71-C50D-46D8-886B-8E0C2B285988.htm" target="_blank" rel="noopener">Revit: parámetros compartidos</a> · <a href="https://help.autodesk.com/cloudhelp/2018/ENU/Revit-DocumentPresent/files/GUID-7119A8C3-A0EE-4568-8C35-750410D867C9.htm" target="_blank" rel="noopener">IFCExportAs</a> · <a href="https://help.graphisoft.com/AC/28/INT/_AC28_Help/045_PropertiesClassifications/045_PropertiesClassifications-10.htm" target="_blank" rel="noopener">Archicad: propiedades por expresión</a> · <a href="https://www.allplan.com/products/allplan-2026-features/modeling-management-collaboration/" target="_blank" rel="noopener">Allplan 2026</a> · <a href="https://support.tekla.com/doc/tekla-structures/2026/rel_trimble_connect_property_sets" target="_blank" rel="noopener">Tekla 2026</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-exportar">
+    <div class="b-cards">
+      <div class="card w4 k">
+        <h4>Revit: un Pset propio en texto</h4>
+<pre><code>#PropertySet: BF_Puertas  T  IfcDoor
+	ResistenciaFuego	Label	BF_Fuego
+	Exterior	Boolean	BF_Exterior</code></pre>
+        <p class="table-note" style="color:#ccc">Nombre del conjunto, I (ejemplar) o T (tipo), clase IFC; después, separado por tabuladores, propiedad IFC, tipo de dato y parámetro de Revit.</p>
+      </div>
+      <div class="card w2">
+        <h4>Opciones de Revit</h4>
+        <ul>
+          <li>Conjuntos de Revit</li>
+          <li>Conjuntos comunes IFC</li>
+          <li>Cantidades base</li>
+          <li>Definidos por el usuario</li>
+          <li>Tabla de correspondencias</li>
+        </ul>
+      </div>
+      <div class="card w3">
+        <h4>Archicad</h4>
+        <p>En <span class="ui">Archivo › Interoperabilidad › IFC › Traductores IFC</span>, «Asignar propiedades IFC para la exportación» muestra un árbol de clases IFC; lo asignado a una clase lo heredan sus hijas.</p>
+      </div>
+      <div class="card w3 y">
+        <h4>Regla de oro</h4>
+        <p>Lo que tiene un sitio estándar va a su Pset de buildingSMART (<code>Pset_DoorCommon.FireRating</code>). Los conjuntos propios no deben empezar por «Pset_».</p>
+      </div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://help.autodesk.com/cloudhelp/2026/ENU/Revit-DocumentPresent/files/GUID-0968B3FF-832B-4155-8B36-E848ACC97B95.htm" target="_blank" rel="noopener">Revit: propiedades definidas por el usuario</a> · <a href="https://help.autodesk.com/cloudhelp/2027/ENU/Revit-DocumentPresent/files/GUID-E029E3AD-1639-4446-A935-C9796BC34C95.htm" target="_blank" rel="noopener">opciones de exportación</a> · <a href="https://help.graphisoft.com/AC/28/INT/_AC28_Help/121_IFC/121_IFC-38.htm" target="_blank" rel="noopener">Archicad: mapeo de propiedades</a> · <a href="https://www.digigo.nu/en/?p=15091" target="_blank" rel="noopener">BIM basis IDS (digiGO)</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-leer-ids">
+    <div class="b-cards">
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Programa</th><th>Importa IDS</th><th>Valida IDS</th><th>Dónde</th></tr></thead>
+          <tbody>
+            <tr><td>Archicad 28-29</td><td>Sí: crea propiedades y clasificaciones</td><td>No nativo</td><td>Archivo › Interoperabilidad › IDS</td></tr>
+            <tr><td>Allplan 2026</td><td>Sí</td><td>Sí</td><td>Paleta de información</td></tr>
+            <tr><td>Vectorworks 2024+</td><td>Sí</td><td>Sí, informe BCF u hoja</td><td>Data Manager</td></tr>
+            <tr><td>BricsCAD BIM V25</td><td>Sí</td><td>—</td><td>Panel de propiedades</td></tr>
+            <tr><td>Bonsai</td><td>Sí</td><td>Sí</td><td>IfcTester integrado e IfcTester.org</td></tr>
+            <tr class="is-key"><td>Revit 2027.2</td><td>Con complemento</td><td>Con complemento</td><td>IDS4Revit, IDS Inspector</td></tr>
+            <tr><td>Tekla 2026</td><td>—</td><td>—</td><td>Psets sincronizados con Trimble Connect</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w3">
+        <h4>Ventaja</h4>
+        <p>Quien modela recibe las propiedades ya creadas, con el nombre y el tipo exactos. Desaparecen los errores de tecleo.</p>
+      </div>
+      <div class="card w3 y">
+        <h4>Límite</h4>
+        <p>Importar no es cumplir: la propiedad aparece vacía y alguien tiene que rellenarla con un valor válido.</p>
+      </div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://help.graphisoft.com/AC/29/INT/_AC29_Help/120_Interoperability/120_Interoperability-17.htm" target="_blank" rel="noopener">Archicad 29</a> · <a href="https://www.allplan.com/products/allplan-2026-features/modeling-management-collaboration/" target="_blank" rel="noopener">Allplan 2026</a> · <a href="https://app-help.vectorworks.net/2024/eng/VW2024_Guide/DataManager/BIM_management_with_IDS.htm" target="_blank" rel="noopener">Vectorworks 2024</a> · <a href="https://bricscad.octave.com/blog/simplifying-bim-deliveries-with-ids-in-bricscad-bim-v25" target="_blank" rel="noopener">BricsCAD V25</a> · <a href="https://osarch.org/2025/11/20/bonsai-0-8-4-released/" target="_blank" rel="noopener">Bonsai 0.8.4</a> · <a href="https://www.autodesk.com/blogs/aec/2026/07/22/whats-new-in-revit-2027-2/" target="_blank" rel="noopener">Revit 2027.2</a> · <a href="https://docs.ids4revit.diroots.com/docs/Pages/IDS4Revit/IDS4Revit.html" target="_blank" rel="noopener">IDS4Revit</a> · <a href="https://marketplace.autodesk.com/apps/586f7e37-09c5-4f1e-bfbd-41c79d63c409" target="_blank" rel="noopener">IDS Inspector</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-gestores">
+    <div class="b-cards">
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Plataforma</th><th>Enfoque</th><th>Salida</th></tr></thead>
+          <tbody>
+            <tr><td>dRofus</td><td>Programa de espacios y equipamiento enlazado al modelo</td><td>Datos sincronizados con el programa de autoría</td></tr>
+            <tr><td>Plannerly</td><td>Alcance de LOD/LOIN: quién modela qué, cuándo y con qué nivel</td><td>Contrato, BEP y verificación</td></tr>
+            <tr><td>BIMQ</td><td>Requisitos por fase y caso de uso, con IFC y bSDD</td><td>Mapeos IFC y reglas para comprobadores</td></tr>
+            <tr class="is-key"><td>Cobuilder Require</td><td>Nivel de información necesario por actor, hito y propósito</td><td>Una carpeta por actor y un IDS por hito y propósito</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w3 y">
+        <h4>Lo que ganan frente a una hoja</h4>
+        <p>Una sola fuente de verdad, historial de cambios y exportación automática a los ficheros que leen los programas.</p>
+      </div>
+      <div class="card w3">
+        <h4>Lo que se pierde por el camino</h4>
+        <p>Al pasar a IDS solo viaja lo alfanumérico; lo que no tiene casilla IFC acaba en un Pset propio del fabricante del gestor.</p>
+      </div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://www.drofus.com/en/product" target="_blank" rel="noopener">dRofus</a> · <a href="https://www.autodesk.com/integrations/partner/plannerly" target="_blank" rel="noopener">Plannerly</a> · <a href="https://allplan.com/blog/bimq" target="_blank" rel="noopener">BIMQ</a> · <a href="https://cobuilder.com/en/cobuilder-require/ids-export/" target="_blank" rel="noopener">Cobuilder Require</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-nube">
+    <div class="b-cards">
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Plataforma</th><th>Qué hace hoy</th></tr></thead>
+          <tbody>
+            <tr><td>Autodesk Construction Cloud</td><td>Filtros propiedad-operador-valor en Model Coordination; la validación IDS sigue pedida como idea en el foro de Autodesk (octubre de 2025)</td></tr>
+            <tr><td>Trimble Connect</td><td>«IDS Validator» de Construsoft, de pago por proyecto: marca en 3D lo que no cumple y exporta CSV</td></tr>
+            <tr class="is-key"><td>BIMcollab</td><td>Validación IDS en Zoom, con cardinalidad desde la 9.9, y plantillas descargables (una en español)</td></tr>
+            <tr><td>Dalux</td><td>Comprobaciones por propósito con reglas propias</td></tr>
+            <tr><td>Speckle</td><td>Validación de propiedades con reglas propias</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w3 y">
+        <h4>Qué pedir a la plataforma</h4>
+        <p>Que guarde el IDS junto al contenedor, que compruebe al subir y que el resultado viaje como incidencia BCF. <span class="tag">Inferido</span></p>
+      </div>
+      <div class="card w3">
+        <h4>Cambio de nombre</h4>
+        <p>Autodesk Construction Cloud pasó a integrarse en la marca Autodesk Forma en 2026; las fuentes difieren en la fecha exacta. <span class="tag">Por confirmar</span></p>
+      </div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://help.autodesk.com/cloudhelp/ENU/BIM360D-Model-Coordination/files/BIM360D_Model_Coord_Object_Filters.html" target="_blank" rel="noopener">Model Coordination: filtros</a> · <a href="https://forums.autodesk.com/t5/acc-ideas/ids-writer-in-specification-tab-within-docs-for-ifc-validation/m-p/13865143" target="_blank" rel="noopener">ACC Ideas</a> · <a href="https://shop.construsoft.com/products/ids-validator" target="_blank" rel="noopener">IDS Validator</a> · <a href="https://helpcenter.bimcollab.com/portal/en/kb/articles/ids-property-validation-in-bimcollab-zoom" target="_blank" rel="noopener">BIMcollab Zoom</a> · <a href="https://helpcenter.bimcollab.com/portal/en/kb/articles/ids-downloads" target="_blank" rel="noopener">plantillas IDS</a> · <a href="https://www.dalux.com/?p=272194" target="_blank" rel="noopener">Dalux</a> · <a href="https://docs.speckle.systems/workflows/model-validation-workflow.md" target="_blank" rel="noopener">Speckle</a> · <a href="https://architosh.com/2026/03/autodesk-construction-cloud-acc-is-now-autodesk-forma/" target="_blank" rel="noopener">Architosh</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-ifc">
+    <div class="b-cards">
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Información pedida</th><th>Dónde va en IFC</th><th>Ejemplo · puerta</th></tr></thead>
+          <tbody>
+            <tr><td>Qué es</td><td>Clase, <code>PredefinedType</code>, tipo</td><td><code>IfcDoor</code> · <code>DOOR</code></td></tr>
+            <tr><td>Nombre y código</td><td>Atributos <code>Name</code>, <code>Tag</code></td><td>P-01</td></tr>
+            <tr class="is-key"><td>Propiedades</td><td>Conjuntos de propiedades</td><td><code>Pset_DoorCommon.FireRating</code> (IfcLabel), <code>IsExternal</code> (IfcBoolean)</td></tr>
+            <tr><td>Cantidades</td><td>Conjuntos de cantidades</td><td><code>Qto_DoorBaseQuantities</code></td></tr>
+            <tr><td>Clasificación</td><td><code>IfcClassificationReference</code> por <code>IfcRelAssociatesClassification</code></td><td>código del sistema del proyecto</td></tr>
+            <tr><td>Material</td><td><code>IfcMaterial</code> y sus conjuntos</td><td>madera, acero</td></tr>
+            <tr><td>Documentos</td><td><code>IfcDocumentReference</code> por <code>IfcRelAssociatesDocument</code></td><td>enlace al certificado</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w3">
+        <h4>FireRating es texto</h4>
+        <p>En IFC 4.3 es un <code>IfcLabel</code> que se rellena «según la clasificación nacional de seguridad contra incendios». El formato lo fija el requisito, no el IFC.</p>
+      </div>
+      <div class="card w3 k">
+        <h4>El peor enemigo</h4>
+        <p><code>IfcBuildingElementProxy</code>: un elemento sin clase. En un proyecto ferroviario estudiado, el 100 % de los túneles salió así y perdió su significado.</p>
+      </div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://standards.buildingsmart.org/IFC/DEV/IFC4_3/HTML/lexical/Pset_DoorCommon.html" target="_blank" rel="noopener">Pset_DoorCommon</a> · <a href="https://standards.buildingsmart.org/IFC/RELEASE/IFC4_3/HTML/lexical/IfcClassificationReference.htm" target="_blank" rel="noopener">IfcClassificationReference</a> · <a href="https://standards.buildingsmart.org/IFC/RELEASE/IFC4_3/HTML/lexical/Qto_WallBaseQuantities.htm" target="_blank" rel="noopener">conjuntos de cantidades</a> · <a href="https://discovery-pp.ucl.ac.uk/10114579/1/isprs-annals-VI-4-W1-2020-61-2020.pdf" target="_blank" rel="noopener">Floros et al., 2020</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-loin-ids">
+    <div class="b-cards">
+      <div class="card w3">
+        <h4>Encaje directo</h4>
+        <p>La cabecera de un IDS 1.0 tiene los campos <code>purpose</code> y <code>milestone</code>. Cada especificación dice a qué objetos se aplica (aplicabilidad) y qué deben tener (requisitos), con seis facetas: entidad, atributo, clasificación, propiedad, material y parte de.</p>
+      </div>
+      <div class="card w3 k">
+        <h4>Dos posturas</h4>
+        <p>buildingSMART presenta el IDS como el estándar para definir el nivel de información necesario. Miembros de CEN/TC 442 matizan que no son lo mismo: el IDS está ligado a IFC y es solo alfanumérico.</p>
+      </div>
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Aspecto del nivel necesario</th><th>En un IDS</th></tr></thead>
+          <tbody>
+            <tr><td>Propósito, hito</td><td>Cabecera <code>purpose</code>, <code>milestone</code></td></tr>
+            <tr><td>Objeto</td><td>Aplicabilidad: entidad, tipo, clasificación</td></tr>
+            <tr class="is-key"><td>Información alfanumérica</td><td>Requisitos: atributos, propiedades, material</td></tr>
+            <tr><td>Geometría</td><td>No: «IDS does not have the capability to define the details of geometry»</td></tr>
+            <tr><td>Documentación</td><td>Solo indirectamente, como propiedad con un enlace <span class="tag">Inferido</span></td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://www.buildingsmart.org/?p=25444" target="_blank" rel="noopener">buildingSMART: qué es IDS</a> · <a href="https://technical.buildingsmart.org/projects/information-delivery-specification-ids/" target="_blank" rel="noopener">página técnica de IDS</a> · <a href="https://forums.buildingsmart.org/t/iso-7817-3-under-development-and-ids/5533" target="_blank" rel="noopener">foro: ISO 7817-3 e IDS</a> · <a href="https://itcon.org/paper/2025/30" target="_blank" rel="noopener">Akbas, Bolpagni, Borrmann et al., ITcon 2025</a> · <a href="https://cobuilder.com/en/cobuilder-require/ids-export/" target="_blank" rel="noopener">Cobuilder: un IDS por hito y propósito</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-cobie">
+    <div class="b-cards">
+      <div class="card w3">
+        <h4>Qué es</h4>
+        <p>Construction Operations Building information exchange: el subconjunto de datos que necesita quien mantiene el edificio. Es parte de la norma estadounidense NBIMS-US.</p>
+      </div>
+      <div class="card w3 y">
+        <h4>Novedad de la v3</h4>
+        <p>Publicada en 2023 dentro de NBIMS-US V4, con 58 cambios, y añade JSON a los formatos de hoja de cálculo, IFC y STEP.</p>
+      </div>
+      <div class="card w3">
+        <h4>En el Reino Unido</h4>
+        <p>El código de práctica BS 1192-4:2014, que lo aplicaba, figura como retirado desde septiembre de 2022.</p>
+      </div>
+      <div class="card w3 k">
+        <h4>Relación con el nivel necesario</h4>
+        <p>COBie es un nivel de información ya escrito para un propósito (mantener) y un hito (entrega). Sirve de punto de partida, no de requisito universal. <span class="tag">Inferido</span></p>
+      </div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://www.nibs.org/nbims/cobie/v3" target="_blank" rel="noopener">NIBS: COBie v3</a> · <a href="https://nibs.org/nbims/v3/cobie/1-1/" target="_blank" rel="noopener">NBIMS-US V3: COBie</a> · <a href="https://knowledge.bsigroup.com/products/collaborative-production-of-information-fulfilling-employer-s-information-exchange-requirements-using-cobie-code-of-practice" target="_blank" rel="noopener">BSI: BS 1192-4</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-calidad">
+    <div class="b-cards">
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Pregunta</th><th>Cómo se comprueba</th><th>Automático</th></tr></thead>
+          <tbody>
+            <tr><td>¿Está la propiedad?</td><td>IDS: faceta propiedad, obligatoria</td><td>Sí</td></tr>
+            <tr><td>¿Tiene valor?</td><td>IDS: obligatoria con valor</td><td>Sí</td></tr>
+            <tr class="is-key"><td>¿Es válido?</td><td>IDS: lista, patrón o rango; tipo de dato</td><td>Sí</td></tr>
+            <tr><td>¿Es verdad?</td><td>Contraste con ficha técnica o pedido</td><td>No</td></tr>
+            <tr><td>¿La forma es la pedida?</td><td>Reglas de comprobador y revisión por muestreo</td><td>En parte</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w3 y">
+        <h4>Cuándo</h4>
+        <ol class="vsteps">
+          <li>Al contratar: el IDS acompaña al EIR.</li>
+          <li>Al modelar: el programa importa el IDS.</li>
+          <li>Antes de entregar: quien entrega lo comprueba.</li>
+          <li>Al recibir: quien pide repite la prueba.</li>
+        </ol>
+      </div>
+      <div class="card w3">
+        <h4>Un detalle que se olvida</h4>
+        <p>Comprobar también el propio IDS: la herramienta IDS-Audit-tool de buildingSMART revisa que el fichero sea coherente con el esquema IFC y con los Psets reservados.</p>
+      </div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://github.com/buildingSMART/IDS/blob/master/Documentation/developer-guide.md" target="_blank" rel="noopener">IDS: guía para desarrolladores</a> · <a href="https://github.com/buildingSMART/IDS-Audit-tool" target="_blank" rel="noopener">IDS-Audit-tool</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-ids">
+    <div class="b-cards">
+      <div class="card w4 k">
+        <h4>El IDS completo</h4>
+<pre><code>&lt;info&gt;
+  &lt;title&gt;Puertas · proyecto de ejecución&lt;/title&gt;
+  &lt;purpose&gt;Justificar la seguridad en caso de incendio&lt;/purpose&gt;
+  &lt;milestone&gt;Proyecto de ejecución&lt;/milestone&gt;
+&lt;/info&gt;
+&lt;specification name="Puertas: resistencia al fuego" ifcVersion="IFC4"&gt;
+  &lt;applicability minOccurs="0" maxOccurs="unbounded"&gt;
+    &lt;entity&gt;&lt;name&gt;&lt;simpleValue&gt;IFCDOOR&lt;/simpleValue&gt;&lt;/name&gt;&lt;/entity&gt;
+  &lt;/applicability&gt;
+  &lt;requirements&gt;
+    &lt;property dataType="IFCLABEL"&gt;
+      &lt;propertySet&gt;&lt;simpleValue&gt;Pset_DoorCommon&lt;/simpleValue&gt;&lt;/propertySet&gt;
+      &lt;baseName&gt;&lt;simpleValue&gt;FireRating&lt;/simpleValue&gt;&lt;/baseName&gt;
+      &lt;value&gt;&lt;xs:restriction base="xs:string"&gt;
+        &lt;xs:pattern value="EI2? \d+(-C\d)?"/&gt;
+      &lt;/xs:restriction&gt;&lt;/value&gt;
+    &lt;/property&gt;
+    &lt;property dataType="IFCBOOLEAN"&gt;
+      &lt;propertySet&gt;&lt;simpleValue&gt;Pset_DoorCommon&lt;/simpleValue&gt;&lt;/propertySet&gt;
+      &lt;baseName&gt;&lt;simpleValue&gt;IsExternal&lt;/simpleValue&gt;&lt;/baseName&gt;
+    &lt;/property&gt;
+  &lt;/requirements&gt;
+&lt;/specification&gt;</code></pre>
+      </div>
+      <div class="card w2">
+        <h4>Resultado</h4>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Puerta</th><th>Fuego</th><th>Ext.</th></tr></thead>
+          <tbody>
+            <tr class="is-key"><td>P-01</td><td>✓</td><td>✓</td></tr>
+            <tr><td>P-02</td><td>✗</td><td>✓</td></tr>
+            <tr><td>P-03</td><td>✗</td><td>✓</td></tr>
+          </tbody>
+        </table></div>
+        <p class="table-note">IfcTester 0.9.0: «1/3». P-02 no tiene la propiedad; P-03 tiene «60 min», que no cumple el patrón.</p>
+      </div>
+      <div class="card w3 y">
+        <h4>Cómo leerlo</h4>
+        <ul>
+          <li><strong>Aplicabilidad:</strong> todas las <code>IfcDoor</code>.</li>
+          <li><strong>Requisitos:</strong> <code>FireRating</code> como texto que empiece por EI o EI2, seguido de minutos y, si acaso, la clase C de autocierre.</li>
+          <li><code>IsExternal</code> solo tiene que existir y ser booleano.</li>
+        </ul>
+      </div>
+      <div class="card w3">
+        <h4>Para tu país</h4>
+        <p>El patrón sigue la clasificación europea. Donde se usen horas, minutos u otra norma, se cambia el patrón o se da una lista cerrada de valores.</p>
+      </div>
+      <div class="card w6"><p class="table-note" style="margin:0">Probado con IfcTester 0.9.0 sobre un IFC4 de tres puertas generado con IfcOpenShell 0.9.0. Fuentes: <a href="https://www.buildingsmart.org/standards/bsi-standards/information-delivery-specifications-ids/" target="_blank" rel="noopener">buildingSMART IDS</a> · <a href="https://hepia.hesge.ch/sites/default/files/publication/documents/conference_bim2024_domer_schatz_slides_ids.pdf" target="_blank" rel="noopener">HEPIA: IDS de puertas con EI30/EI60/EI90</a> · <a href="https://docs.ifcopenshell.org/ifctester.html" target="_blank" rel="noopener">IfcTester</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-comprobadores">
+    <div class="b-cards">
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Herramienta</th><th>Coste</th><th>Cómo</th><th>Informe</th></tr></thead>
+          <tbody>
+            <tr class="is-key"><td>IfcTester</td><td>Gratis (LGPL)</td><td>Consola, web o Python; IfcTester.org en el navegador</td><td>Consola, HTML, JSON, ODS, BCF</td></tr>
+            <tr><td>Solibri</td><td>Licencia</td><td>Regla 244 «IDS Validation» desde la 9.13.6 (nov. 2023)</td><td>Pasa · falla · no aplica</td></tr>
+            <tr><td>BIMcollab Zoom</td><td>Licencia</td><td>Pestaña de conflictos; cardinalidad desde la 9.9</td><td>Incidencias BCF</td></tr>
+            <tr><td>usBIM.IDS (ACCA)</td><td>Licencia</td><td>Edición y comprobación en línea</td><td>Informe web</td></tr>
+            <tr><td>xbim IDS Validator</td><td>Abierto</td><td>Biblioteca .NET; 100 % de la batería oficial de pruebas</td><td>Para integrar</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w3 k">
+        <h4>Lo que no hace el validador oficial</h4>
+        <p>El Validation Service de buildingSMART comprueba sintaxis, esquema, reglas normativas y bSDD, pero no los requisitos del proyecto ni el IDS.</p>
+      </div>
+      <div class="card w3 y">
+        <h4>Trampa conocida</h4>
+        <p>Ninguna herramienta probada en una tesis de Chalmers (2025) aceptaba <code>IfcElement</code> o <code>IfcBuildingElement</code> como entidad genérica: hay que enumerar las clases concretas.</p>
+      </div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://pypi.org/project/ifctester/0.7.10" target="_blank" rel="noopener">IfcTester</a> · <a href="https://help.solibri.com/hc/en-us/articles/19053798036375-244-IDS-Validation" target="_blank" rel="noopener">Solibri, regla 244</a> · <a href="https://www.solibri.com/articles/release-highlights-release-9-13-6" target="_blank" rel="noopener">Solibri 9.13.6</a> · <a href="https://helpcenter.bimcollab.com/portal/en/kb/articles/ids-property-validation-in-bimcollab-zoom" target="_blank" rel="noopener">BIMcollab Zoom</a> · <a href="https://technical.buildingsmart.org/resources/software-implementations/entry/616/" target="_blank" rel="noopener">usBIM.IDS</a> · <a href="https://www.nuget.org/packages/xbim.ids.validator.core" target="_blank" rel="noopener">xbim</a> · <a href="https://technical.buildingsmart.org/services/validation-service/" target="_blank" rel="noopener">Validation Service</a> · <a href="https://odr.chalmers.se/bitstreams/8df81e49-fb20-438a-8c23-0b5b5e4d9d86/download" target="_blank" rel="noopener">Chalmers 2025</a>. La lista de implementaciones de buildingSMART es autodeclarada, no una certificación.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-forma">
+    <div class="b-cards">
+      <div class="card w3">
+        <h4>01 · Clase correcta</h4>
+        <p>Con IDS sí se puede prohibir <code>IfcBuildingElementProxy</code> (cardinalidad «prohibida») para que cada objeto tenga su clase.</p>
+      </div>
+      <div class="card w3">
+        <h4>02 · Medidas</h4>
+        <p>Comparar las cantidades calculadas del modelo con las propiedades declaradas (ancho, alto) detecta geometrías genéricas que no se han ajustado. <span class="tag">Inferido</span></p>
+      </div>
+      <div class="card w3 y">
+        <h4>03 · Muestreo con ficha</h4>
+        <p>Una ficha ilustrada por nivel, como las de BIMForum, y una revisión de una muestra de cada categoría en cada hito.</p>
+      </div>
+      <div class="card w3 k">
+        <h4>04 · Lo que viene</h4>
+        <p>El esquema de la ISO 7817-3 sí recoge los aspectos geométricos; cuando se publique, las herramientas podrán leerlos, aunque comprobarlos automáticamente seguirá siendo difícil. <span class="tag">Inferido</span></p>
+      </div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://www.buildingsmart.org/?p=25444" target="_blank" rel="noopener">buildingSMART: límites de IDS</a> · <a href="https://itcon.org/paper/2022/33" target="_blank" rel="noopener">Piazzi, Feng y Kassem, ITcon 2022: la geometría se especifica con criterios subjetivos</a> · <a href="https://www.iso.org/standard/89077.html" target="_blank" rel="noopener">ISO/DIS 7817-3</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-glosario">
+<div class="b-cards"><div class="card w6">
+<dl class="glossary">
+      <dt>LOIN</dt><dd>Nivel de información necesario: qué geometría, datos y documentos hacen falta de un objeto, para un propósito y en un hito.</dd>
+      <dt>LOD</dt><dd>Level of Development: escala 100-500 de fiabilidad de un elemento. A veces, Level of Detail.</dd>
+      <dt>LOG</dt><dd>Nivel de información geométrica, usado en Alemania.</dd>
+      <dt>LOI</dt><dd>Nivel de información alfanumérica.</dd>
+      <dt>LOA</dt><dd>Nivel de exactitud de un levantamiento o de su representación.</dd>
+      <dt>Hito</dt><dd>Momento acordado de entrega de información.</dd>
+      <dt>Propósito</dt><dd>Uso que se dará a la información.</dd>
+      <dt>EIR</dt><dd>Requisitos de intercambio de información de un contrato.</dd>
+      <dt>Matriz de elementos</dt><dd>Tabla de elementos por hitos con el nivel pedido y su responsable.</dd>
+      <dt>Pset</dt><dd>Conjunto de propiedades de un objeto IFC.</dd>
+      <dt>IDS</dt><dd>Fichero XML de buildingSMART con requisitos comprobables de un IFC.</dd>
+      <dt>bSDD</dt><dd>Diccionario de datos en línea de buildingSMART.</dd>
+      <dt>COBie</dt><dd>Subconjunto de datos para la explotación y el mantenimiento.</dd>
+    </dl>
+</div></div>
   </template>
 
   <template id="l2-fuentes">
-    <div class="b-cards"><div class="card w6 y"><span class="c-label">Sin fuentes</span><p>Artículo ficticio de relleno: no tiene fuentes porque su contenido es inventado.</p></div></div>
+<div class="b-cards"><div class="card w6">
+<p>Prioridad a las normas, a la documentación oficial de cada fabricante y a la literatura revisada. Lo no confirmado lleva <span class="tag">Por confirmar</span>; lo deducido, <span class="tag">Inferido</span>. Base completa de fuentes con valoración en la carpeta del proyecto.</p>
+</div></div>
+<div class="b-cards">
+<div class="card w6">
+<h4>Normas</h4>
+<ul class="sources">
+          <li><a href="https://www.iso.org/standard/82914.html" target="_blank" rel="noopener">ISO 7817-1:2024</a> · <a href="https://www.iso.org/standard/89075.html" target="_blank" rel="noopener">ISO/DTS 7817-2</a> · <a href="https://www.iso.org/standard/89077.html" target="_blank" rel="noopener">ISO/DIS 7817-3</a></li>
+          <li><a href="https://www.en.une.org/encuentra-tu-norma/busca-tu-norma/norma?c=N0065673" target="_blank" rel="noopener">UNE-EN 17412-1:2021 (anulada)</a> · <a href="https://www.en.une.org/encuentra-tu-norma/busca-tu-norma/iso?c=082914" target="_blank" rel="noopener">ISO 7817-1 en UNE</a></li>
+          <li><a href="https://www.iso.org/standard/68078.html" target="_blank" rel="noopener">ISO 19650-1</a> · <a href="https://committee.iso.org/standard/81261.html?browse=ics" target="_blank" rel="noopener">ISO 29481-3</a> · <a href="https://technical.buildingsmart.org/services/bsdd/data-structure/" target="_blank" rel="noopener">bSDD</a></li>
+        </ul>
+</div>
+<div class="card w6">
+<h4>BIMForum y guías</h4>
+<ul class="sources">
+          <li><a href="https://bimforum.org/LOD/" target="_blank" rel="noopener">BIMForum LOD Specification</a> · <a href="https://bimforum.org/wp-content/uploads/2026/02/2025-LOD-Part-I-Espanol.pdf" target="_blank" rel="noopener">edición 2025 en español</a> · <a href="https://bimforum.org/wp-content/uploads/2022/06/BIMForum_LOD_2015_reprint.pdf" target="_blank" rel="noopener">edición 2015</a></li>
+          <li><a href="https://fib-bund.de/Inhalt/Themen/BIM_fuer_Bundesbauten/BIM_AH_LOIN-Konzept.pdf" target="_blank" rel="noopener">Arbeitshilfe LOIN-Konzept</a> · <a href="https://www.globalbim.org/wp-content/uploads/2024/01/instructivo_matriz_RD0005_2021EF6301-2.pdf" target="_blank" rel="noopener">Plan BIM Perú</a> · <a href="https://www.minvu.gob.cl/wp-content/uploads/2023/07/minvu-bim-pro-ds49-sdi.pdf" target="_blank" rel="noopener">MINVU Chile</a> · <a href="https://assets.metrolinx.com/image/upload/v1750962792/Documents/Engineering/Metrolinx_Level_of_Information_Need_Guide_BIM.pdf" target="_blank" rel="noopener">Metrolinx</a></li>
+          <li><a href="https://www.thenbs.com/knowledge/level-of-detail-lod-and-digital-plans-of-work" target="_blank" rel="noopener">NBS</a> · <a href="https://www.baunetzwissen.de/integrales-planen/fachwissen/modellinhalte/was-bedeutet-loin-8062492" target="_blank" rel="noopener">BauNetz Wissen</a> · <a href="https://constructionmanagement.co.uk/new-level-of-information-need-standard-published/" target="_blank" rel="noopener">Bolpagni, 2024</a></li>
+        </ul>
+</div>
+<div class="card w6">
+<h4>Investigación</h4>
+<ul class="sources">
+          <li>Abualdenien y Borrmann (2022). <a href="https://itcon.org/paper/2022/18" target="_blank" rel="noopener">Levels of detail, development, definition, and information need</a>. ITcon.</li>
+          <li>Akbas, Bolpagni, Borrmann et al. (2025). <a href="https://itcon.org/paper/2025/30" target="_blank" rel="noopener">Integration of level of information need and IDS</a>. ITcon.</li>
+          <li>Martinez y Bolpagni (2026). <a href="https://ec-3.org/wp-content/uploads/2026/08/EC32026_219.pdf" target="_blank" rel="noopener">Object-level analysis of level of information requirements</a>. EC3.</li>
+          <li>Piazzi, Feng y Kassem (2022). <a href="https://itcon.org/paper/2022/33" target="_blank" rel="noopener">Specification of graphical exchange information</a>. ITcon.</li>
+        </ul>
+</div>
+<div class="card w6">
+<h4>Software y comprobación</h4>
+<ul class="sources">
+          <li><a href="https://help.autodesk.com/cloudhelp/2024/ENU/Revit-Customize/files/GUID-0BB861D5-27CB-4276-93AE-F2E949B0D466.htm" target="_blank" rel="noopener">Revit</a> · <a href="https://help.graphisoft.com/AC/29/INT/_AC29_Help/120_Interoperability/120_Interoperability-17.htm" target="_blank" rel="noopener">Archicad</a> · <a href="https://www.allplan.com/products/allplan-2026-features/modeling-management-collaboration/" target="_blank" rel="noopener">Allplan</a> · <a href="https://support.tekla.com/doc/tekla-structures/2026/rel_trimble_connect_property_sets" target="_blank" rel="noopener">Tekla</a> · <a href="https://app-help.vectorworks.net/2024/eng/VW2024_Guide/DataManager/BIM_management_with_IDS.htm" target="_blank" rel="noopener">Vectorworks</a></li>
+          <li><a href="https://www.buildingsmart.org/standards/bsi-standards/information-delivery-specifications-ids/" target="_blank" rel="noopener">buildingSMART IDS</a> · <a href="https://docs.ifcopenshell.org/ifctester.html" target="_blank" rel="noopener">IfcTester</a> · <a href="https://help.solibri.com/hc/en-us/articles/19053798036375-244-IDS-Validation" target="_blank" rel="noopener">Solibri</a> · <a href="https://helpcenter.bimcollab.com/portal/en/kb/articles/ids-property-validation-in-bimcollab-zoom" target="_blank" rel="noopener">BIMcollab</a></li>
+          <li><a href="https://cobuilder.com/en/cobuilder-require/ids-export/" target="_blank" rel="noopener">Cobuilder Require</a> · <a href="https://www.nibs.org/nbims/cobie/v3" target="_blank" rel="noopener">COBie v3</a></li>
+        </ul>
+</div>
+</div>
   </template>
 
   <script src="../../assets/js/serie.js"></script>
+  <script src="../../assets/js/paises.js"></script>
   <script src="../../assets/js/web.js"></script>
   <script src="../../assets/js/precision.js"></script>
+  <script src="niveles.js"></script>
 </body>
 </html>

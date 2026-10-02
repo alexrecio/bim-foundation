@@ -14,15 +14,14 @@ window.SERIE = [
     estado: 'borrador' // borrador | publicado | proximamente | relleno (ficticio)
   },
   {
-    // Artículo ficticio de relleno (arquitectura de la web): sustituir o borrar
     slug: 'niveles-de-informacion',
     numero: '02',
     titulo: 'Niveles de información',
-    resumen: 'Pedir lo justo en cada fase: ni más geometría ni menos datos.',
+    resumen: 'LOD, LOI y nivel de información necesario (ISO 7817-1): qué pedir de cada elemento, para qué y en qué hito, y cómo comprobarlo con IFC e IDS.',
     tema: 'Información',
-    fecha: '2026-11',
-    lectura: '6 ideas',
-    estado: 'relleno'
+    fecha: '2026-10',
+    lectura: '34 ideas',
+    estado: 'borrador'
   },
   {
     // Artículo ficticio de relleno (arquitectura de la web): sustituir o borrar

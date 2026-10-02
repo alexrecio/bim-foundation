@@ -59,12 +59,17 @@ for (const art of SERIE) {
 
 // Dónde se explica cada término: primero las diapositivas fijadas a mano (revisadas), después las que encuentra el texto
 const CC = 'coordenadas-compartidas';
+const NI = 'niveles-de-informacion';
 const MANUAL = {
   C01: [CC, 'problema principio origenes'], C02: [CC, 'coordenadas paises'], C06: [CC, 'coordenadas principio origenes'],
   C11: [CC, 'origenes survey limites'], C12: [CC, 'origenes survey'], C13: [CC, 'survey otros'], C14: [CC, 'revit campus tipologias'],
   C15: [CC, 'limite decimales bytes cribar'], C16: [CC, 'cribar principio nubes'], C18: [CC, 'ifc'], C19: [CC, 'ifc errores'],
   C20: [CC, 'ifc espana'], C21: [CC, 'ifc nortes'], C23: [CC, 'ifc'], C24: [CC, 'errores civil3d'], C28: [CC, 'plataformas'],
-  C30: [CC, 'plataformas coordinacion'], C31: [CC, 'civil3d errores'], C32: [CC, 'calidad opciones ids herramientas'], C34: [CC, 'herramientas']
+  C30: [CC, 'plataformas coordinacion'], C31: [CC, 'civil3d errores'], C32: [CC, 'calidad opciones ids herramientas'], C34: [CC, 'herramientas'],
+  // Artículo 02 · niveles de información
+  N01: [NI, 'requisito pregunta iso7817'], N04: [NI, 'tipos'], N08: [NI, 'sobremodelado'], N09: [NI, 'escalera detalle elemento'],
+  N10: [NI, 'detalle vista'], N12: [NI, 'exactitud'], N18: [NI, 'historia'], N19: [NI, 'historia paises'], N22: [NI, 'elemento'],
+  N29: [NI, 'loin-ids'], N30: [NI, 'calidad ids comprobadores forma'], N32: [NI, 'partes']
 };
 // Dónde se explica cada término: puntuación por campo (titular > antetítulo/frase > tarjetas > capa 2)
 const norm = (s) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();

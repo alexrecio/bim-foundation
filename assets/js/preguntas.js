@@ -11,5 +11,10 @@ window.BF_PREGUNTAS = [
   ['¿Adquirir o publicar coordenadas en Revit?', 'coordenadas-compartidas', 'revit', 'III'],
   ['¿Cómo meto una nube de puntos en UTM?', 'coordenadas-compartidas', 'nubes', 'III'],
   ['¿Muevo el modelo en el visor o en el original?', 'coordenadas-compartidas', 'coordinacion', 'IV'],
-  ['¿Cómo compruebo que un modelo está donde debe?', 'coordenadas-compartidas', 'calidad', 'VI']
+  ['¿Cómo compruebo que un modelo está donde debe?', 'coordenadas-compartidas', 'calidad', 'VI'],
+  ['¿Qué significa realmente un LOD 300?', 'niveles-de-informacion', 'escalera', 'I'],
+  ['¿Pido LOD, LOI o LOIN en el contrato?', 'niveles-de-informacion', 'requisito', 'I'],
+  ['¿Qué norma sustituye a la EN 17412-1?', 'niveles-de-informacion', 'iso7817', 'II'],
+  ['¿El nivel de detalle «alto» de la vista es un LOD 400?', 'niveles-de-informacion', 'vista', 'III'],
+  ['¿Cómo compruebo que las puertas traen sus datos?', 'niveles-de-informacion', 'ids', 'VI']
 ];
