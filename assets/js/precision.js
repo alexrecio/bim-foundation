@@ -270,3 +270,29 @@
   setTimeout(sig, 160);
   ['pointerdown', 'keydown', 'wheel', 'touchstart'].forEach((ev) => addEventListener(ev, cerrar, { once: true, passive: true }));
 })();
+
+// Tema «Retícula» (mockup): ?tema=reticula lo activa y se recuerda; ?tema=clasico vuelve al actual
+(function () {
+  const html = document.documentElement;
+  const q = new URLSearchParams(location.search).get('tema');
+  let tema = q, probado = !!q;
+  try { if (q) localStorage.setItem('k-tema', q); else { tema = localStorage.getItem('k-tema'); probado = !!tema; } } catch (e) { /* sin almacenamiento: solo por URL */ }
+  const root = html.dataset.root || './';
+  if (tema === 'reticula' && !html.classList.contains('rt')) {
+    html.style.visibility = 'hidden';
+    const l = document.createElement('link');
+    l.rel = 'stylesheet'; l.href = root + 'assets/css/reticula.css';
+    const ver = () => { html.style.visibility = ''; };
+    l.onload = ver; l.onerror = ver; setTimeout(ver, 1200);
+    document.head.appendChild(l);
+    html.classList.add('rt');
+    const bg = document.createElement('div'); bg.className = 'rt-bg'; bg.setAttribute('aria-hidden', 'true');
+    document.body.prepend(bg);
+  }
+  if (!probado) return;
+  const enlace = (t) => { const u = new URL(location.href); u.searchParams.set('tema', t); return u.pathname + u.search + u.hash; };
+  const sw = document.createElement('div');
+  sw.className = 'rt-switch';
+  sw.innerHTML = `<a href="${enlace('reticula')}" class="${tema === 'reticula' ? 'is-on' : ''}">Retícula</a><a href="${enlace('clasico')}" class="${tema !== 'reticula' ? 'is-on' : ''}">Actual</a>`;
+  document.body.appendChild(sw);
+})();
