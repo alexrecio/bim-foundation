@@ -1110,7 +1110,7 @@ window.BF_GLOSARIO = [
   "t": "Akteure (Auftraggeber / Auftragnehmer)",
   "en": "Actores (parte contratante / parte contratada)",
   "b": "I",
-  "d": "Wer die Informationen anfordert (Auftraggeber: der Bauherr oder der federführende Auftragnehmer) und wer sie erstellt (Auftragnehmer). Jede Anforderung benennt beide.",
+  "d": "Wer die Informationen anfordert und wer sie erstellt. In der Terminologie der DIN EN ISO 19650: Auftraggeber (der Bauherr), federführender Auftragnehmer und Auftragnehmer. Jede Anforderung benennt sie.",
   "ej": "Der Bauherr fordert an; das Architekturbüro liefert die Türen in der Ausführungsplanung, der Schreiner in der Bauausführung.",
   "eq": "Verantwortlichkeitsmatrix des BAP; Anforderungsmanager mit einer IDS je Akteur.",
   "err": "Keinen Verantwortlichen zuweisen: Die Information bleibt im Niemandsland zwischen zwei Fachdisziplinen.",
