@@ -100,7 +100,7 @@
   document.querySelectorAll('[data-ficha]').forEach((el) => {
     const estado = ESTADOS[actual.estado];
     el.innerHTML = `${cover(actual)}<div class="ficha-info">
-      <span class="c-label">Serie kernel</span>
+      <span class="c-label">Serie bimkernel</span>
       <span class="c-title">Artículo ${actual.numero}</span>
       <div class="chips"><span class="chip y">${actual.lectura}</span>${actual.fecha ? `<span class="chip">${fmtFecha(actual.fecha)}</span>` : ''}</div>
       ${estado ? `<span class="badge n">${estado}</span>` : ''}</div>`;

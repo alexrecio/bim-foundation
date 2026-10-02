@@ -7,7 +7,7 @@
     // Navigation and states
     'Inicio': 'Home', 'Idioma': 'Language', 'Artículos': 'Articles', 'Glosario': 'Glossary', 'Buscar': 'Search', 'Ayuda': 'Help', 'Menú': 'Menu', 'Cerrar': 'Close',
     'Borrador': 'Draft', 'Próximamente': 'Coming soon', 'Relleno ficticio': 'Fictitious filler', 'Ficticio': 'Fictitious',
-    'Serie kernel': 'kernel series', 'Tema': 'Topic', 'Primer artículo': 'First article',
+    'Serie bimkernel': 'bimkernel series', 'Tema': 'Topic', 'Primer artículo': 'First article',
     '← Anterior': '← Previous', 'Siguiente →': 'Next →', 'Por confirmar': 'To be confirmed', 'Inferido': 'Inferred',
     'Diapositivas': 'Slides', 'Ver detalle': 'See detail', 'Capa 2': 'Layer 2', 'Capa 1': 'Layer 1', '15 segundos': '15 seconds',
     // Blocks
