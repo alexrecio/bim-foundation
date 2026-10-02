@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es" data-root="./">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Borrador: quitar noindex al publicar -->
+  <meta name="robots" content="noindex, nofollow">
+  <title>BIM Foundation | Artículos sobre BIM</title>
+  <meta name="description" content="Serie de artículos divulgativos sobre BIM en español: los fundamentos que todo el mundo usa y casi nadie explica.">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap">
+  <link rel="stylesheet" href="assets/css/estilo.css">
+</head>
+<body>
+  <div id="nav-capsule">
+    <button id="menu-trigger" aria-label="Menú" aria-expanded="false">BF</button>
+    <div id="menu-content">
+      <nav>
+        <a class="menu-link is-current" href="./">Inicio</a>
+        <a class="menu-link" href="#articulos">Artículos</a>
+      </nav>
+    </div>
+  </div>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <div class="hero-grid">
+          <div>
+            <p class="hero-id">BIM Foundation</p>
+            <span class="kicker-y lg">Serie de artículos · BIM en español</span>
+            <h1 class="display">Los cimientos<br>del BIM, bien<br><span class="hl-y">explicados<span class="dot">.</span></span></h1>
+          </div>
+          <div class="hero-side">
+            <p class="hero-lead">Artículos divulgativos sobre lo que todo el mundo usa en BIM y casi nadie explica: conceptos, flujos entre programas y errores reales, con fuentes y en el contexto español.</p>
+            <a class="btn" href="#articulos">Ver artículos <span aria-hidden="true">↓</span></a>
+            <div class="hero-meta"><span>Revit</span><span>Civil 3D</span><span>IFC</span><span>openBIM</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="articulos">
+      <div class="wrap">
+        <div class="series-head">
+          <span class="kicker-y" style="margin-bottom:16px">Artículos</span>
+          <h2 class="display">Uno a uno<span class="dot">.</span></h2>
+          <p>Cada artículo se lee de forma independiente y cita sus fuentes. Los datos que no hemos podido confirmar van marcados.</p>
+        </div>
+        <ol id="article-list" class="article-list"></ol>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site">
+    <div class="wrap">
+      <span>Diseñada y desarrollada por Alejandro García Nicolás</span><span class="sep">·</span><span class="mono">BIM Foundation · 2026</span>
+    </div>
+  </footer>
+
+  <script src="assets/js/serie.js"></script>
+  <script src="assets/js/web.js"></script>
+</body>
+</html>
