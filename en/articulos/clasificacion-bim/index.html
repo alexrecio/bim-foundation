@@ -1,0 +1,1874 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en" data-root="../../../" data-slug="clasificacion-bim">
+<head>
+  <meta charset="UTF-8">
+  <!-- Translation of articulos/clasificacion-bim/index.html at this git blob (herramientas/i18n.mjs flags it when the Spanish page changes) -->
+  <meta name="bf-fuente" content="articulos/clasificacion-bim/index.html@c8dae7f9c9677262276610eedeb07bfdcfae68a2">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Draft: remove noindex on publishing -->
+  <meta name="robots" content="noindex, nofollow">
+  <title>Classification systems in BIM | kernel</title>
+  <meta name="description" content="What classifying means in BIM and how it is done with Uniclass, OmniClass, CCI and GuBIMclass: tables, codes, IFC, bSDD, Revit, Archicad and quality control with IDS and IfcOpenShell.">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Classification systems in BIM · kernel">
+  <meta property="og:description" content="The modeller chooses the name; the classification code is the same for everyone. How to choose a system, carry it into IFC and check it.">
+  <link rel="icon" href="../../../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="../../../assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../../assets/css/estilo.css">
+  <link rel="stylesheet" href="../../../assets/css/precision.css">
+</head>
+<body>
+  <div id="progress" aria-hidden="true"></div>
+  <div id="nav-capsule">
+    <button id="menu-trigger" aria-label="Menu" aria-expanded="false">k</button>
+    <div id="menu-content">
+      <nav>
+        <a class="menu-link" href="../../">Home</a>
+        <a class="menu-link" href="../../#articulos">Articles</a>
+        <a class="menu-link is-current" href="#portada">05 · Classification</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Slide menu: filled from the data-nav of each <section> -->
+  <aside id="deck-nav" aria-label="Slides">
+    <span class="kicker-y">Classification · 28 ideas</span>
+    <ol></ol>
+  </aside>
+  <div id="deck-bar">
+    <div id="deck-sheet"><ol></ol></div>
+    <button type="button" id="deck-bar-btn" aria-expanded="false" aria-controls="deck-sheet">
+      <span class="n">01/28</span><span class="t">Cover</span>
+      <span class="chev" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M3 9l4-4 4 4" fill="none" stroke="#fff" stroke-width="2"/></svg></span>
+    </button>
+  </div>
+
+  <!--
+    Layer rule
+    Layer 1 = one slide per idea, readable in 15 seconds: headline + visual cards (figures, diagrams, chips) with short labels.
+    Layer 2 = the panel opened by "See detail" (<template id="l2-…">), also in cards. It only adds what the slide does not say.
+  -->
+  <main class="deck">
+
+    <!-- ========== COVER ========== -->
+    <section class="slide" id="portada" data-nav="Cover">
+      <div class="bento">
+        <div class="b-title">
+          <p class="hero-id"><a href="../../" style="text-decoration:none">kernel · 05</a></p>
+          <span class="kicker-y lg">Concepts · standards · software</span>
+          <h1 class="display">Classification<br><span class="hl-y">systems<span class="dot">.</span></span></h1>
+          <p class="slide-lead">The modeller chooses the name. The classification code is the same for everyone.</p>
+          <div class="slide-actions"><a class="btn" href="#problema">Start <span aria-hidden="true">↓</span></a></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w6 ficha" data-ficha></div>
+          <div class="card w6 g">
+            <span class="c-label">The article in six blocks</span>
+            <ol class="mapa">
+              <li class="is-key"><a href="#problema"><b>I</b><span>General concepts</span><em>8 ideas · for any system and program</em></a></li>
+              <li><a href="#iso"><b>II</b><span>Standards</span><em>6 ideas · ISO 12006-2, Uniclass, OmniClass, CCI, GuBIMclass</em></a></li>
+              <li><a href="#revit"><b>III</b><span>Software</span><em>3 ideas · Revit, Archicad and others</em></a></li>
+              <li><a href="#bsdd"><b>IV</b><span>Platforms</span><em>2 ideas · bSDD, browsers and viewers</em></a></li>
+              <li><a href="#ifc"><b>V</b><span>Interoperability</span><em>3 ideas · IFC, mapping and errors</em></a></li>
+              <li><a href="#calidad"><b>VI</b><span>Quality control</span><em>4 ideas · IDS, IfcOpenShell and viewers</em></a></li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== I · THE PROBLEM ========== -->
+    <section class="slide" id="problema" data-cap="I · General concepts" data-nav="The problem">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">The problem</span>
+          <h2 class="display">Five names for the same wall<span class="dot">.</span></h2>
+          <p class="slide-lead">Every company, program and person names things their own way. Without a common code, neither quantities nor searches add up.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="problema"><span class="plus">+</span> See detail</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w4 g">
+            <span class="c-label">The same object, five labels</span>
+            <svg class="draw" viewBox="0 0 420 170" role="img" aria-label="A wall in the centre with five different names around it">
+              <rect x="160" y="58" width="100" height="54" fill="#EFEFEA" stroke="#000" stroke-width="3"/>
+              <path d="M160 72h100M160 86h100M160 100h100" stroke="#000" stroke-width="1"/><path d="M185 58v14M235 58v14M210 72v14M185 86v14M235 86v14M210 100v12" stroke="#000" stroke-width="1"/>
+              <g font-family="JetBrains Mono, monospace" font-size="12">
+                <rect x="4" y="10" width="128" height="26" rx="13" fill="#fff" stroke="#000" stroke-width="2"/><text x="68" y="28" text-anchor="middle">Ext. wall 30</text>
+                <rect x="288" y="10" width="128" height="26" rx="13" fill="#fff" stroke="#000" stroke-width="2"/><text x="352" y="28" text-anchor="middle">FACH_tipo_A</text>
+                <rect x="4" y="72" width="128" height="26" rx="13" fill="#fff" stroke="#000" stroke-width="2"/><text x="68" y="90" text-anchor="middle">Enclosure</text>
+                <rect x="288" y="72" width="128" height="26" rx="13" fill="#fff" stroke="#000" stroke-width="2"/><text x="352" y="90" text-anchor="middle">M-01</text>
+                <rect x="146" y="134" width="128" height="26" rx="13" fill="#fff" stroke="#000" stroke-width="2"/><text x="210" y="152" text-anchor="middle">Half-brick wall</text>
+              </g>
+              <path d="M132 23 L160 60M288 23 L260 60M132 85 H160M288 85 H260M210 112 V134" stroke="#8F8F87" stroke-width="1.5" stroke-dasharray="4 4"/>
+            </svg>
+          </div>
+          <div class="card w2 k">
+            <span class="c-label">What happens</span>
+            <span class="c-title" style="color:var(--accent)">Nobody adds up the same</span>
+            <span class="c-foot">the "walls" filter misses half of them</span>
+          </div>
+          <div class="card w3">
+            <span class="c-label">Where it hurts</span>
+            <div class="chips"><span class="chip">Quantities</span><span class="chip">Searches</span><span class="chip">Maintenance</span><span class="chip">Requirements</span></div>
+          </div>
+          <div class="card w3 y">
+            <span class="c-label">The way out</span>
+            <span class="c-title">A code from a common table</span>
+            <span class="c-foot">the name can stay free</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== I · WHAT CLASSIFYING IS ========== -->
+    <section class="slide" id="clasificar" data-nav="What classifying is">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Definition</span>
+          <h2 class="display">Classifying says what it is<span class="dot">.</span></h2>
+          <p class="slide-lead">A classification code groups objects by what they have in common. It does not say which one each is or what it is like.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="clasificar"><span class="plus">+</span> See detail</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w6 g">
+            <span class="c-label">Four different pieces of data on the same door</span>
+            <svg class="draw" viewBox="0 0 640 150" role="img" aria-label="A door with four labels: name, classification, identifier and properties">
+              <rect x="20" y="20" width="70" height="116" fill="#fff" stroke="#000" stroke-width="3"/><circle cx="76" cy="80" r="4" fill="#000"/>
+              <path d="M90 78 H120" stroke="#000" stroke-width="2"/>
+              <g font-family="JetBrains Mono, monospace" font-size="12">
+                <rect x="126" y="12" width="118" height="58" rx="6" fill="#fff" stroke="#000" stroke-width="2"/><text x="136" y="32" font-family="Inter, sans-serif" font-weight="900" font-size="13">NAME</text><text x="136" y="54">D-Timber-82</text>
+                <rect x="254" y="12" width="118" height="58" rx="6" fill="#FFFF00" stroke="#000" stroke-width="2.5"/><text x="264" y="32" font-family="Inter, sans-serif" font-weight="900" font-size="13">CLASS</text><text x="264" y="54">door</text>
+                <rect x="382" y="12" width="118" height="58" rx="6" fill="#fff" stroke="#000" stroke-width="2"/><text x="392" y="32" font-family="Inter, sans-serif" font-weight="900" font-size="13">IDENTIFIER</text><text x="392" y="54">D-2.14</text>
+                <rect x="510" y="12" width="118" height="58" rx="6" fill="#fff" stroke="#000" stroke-width="2"/><text x="520" y="32" font-family="Inter, sans-serif" font-weight="900" font-size="13">PROPERTIES</text><text x="520" y="54">EI2 30 · 820</text>
+                <text x="136" y="96" fill="#666">chosen by</text><text x="136" y="112" fill="#666">the modeller</text>
+                <text x="264" y="96">what it is</text><text x="264" y="112">(common table)</text>
+                <text x="392" y="96" fill="#666">which one</text><text x="392" y="112" fill="#666">(unique)</text>
+                <text x="520" y="96" fill="#666">what it is like</text><text x="520" y="112" fill="#666">(values)</text>
+              </g>
+            </svg>
+          </div>
+          <div class="card w3">
+            <span class="c-label">What makes it useful</span>
+            <span class="c-title">The same for everyone</span>
+            <span class="c-foot">the same object, the same code, whoever models it</span>
+          </div>
+          <div class="card w3 k">
+            <span class="c-label">What it is not</span>
+            <span class="c-title" style="color:var(--accent)">A family name</span>
+            <span class="c-foot">each office makes that up</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== I · SEVERAL VIEWS ========== -->
+    <section class="slide" id="facetas" data-nav="One object, several views">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Facets</span>
+          <h2 class="display">One object, several tables<span class="dot">.</span></h2>
+          <p class="slide-lead">The same door is part of a space, an element with a function, a product that is bought and work that is carried out. Each view has its own table.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="facetas"><span class="plus">+</span> See detail</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w4 g">
+            <span class="c-label">One door, five possible codes</span>
+            <svg class="draw" viewBox="0 0 440 200" role="img" aria-label="A door in the centre and five views: space, element, system, product and work">
+              <rect x="190" y="62" width="60" height="96" fill="#FFFF00" stroke="#000" stroke-width="3"/><circle cx="238" cy="112" r="4" fill="#000"/>
+              <g stroke="#000" stroke-width="2"><path d="M190 80 L120 34"/><path d="M190 120 L110 110"/><path d="M220 158 L220 178"/><path d="M250 80 L320 34"/><path d="M250 120 L330 110"/></g>
+              <g font-family="Inter, sans-serif" font-weight="900" font-size="14">
+                <rect x="20" y="16" width="104" height="34" rx="17" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="72" y="38" text-anchor="middle">SPACE</text>
+                <rect x="6" y="94" width="104" height="34" rx="17" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="58" y="116" text-anchor="middle">ELEMENT</text>
+                <rect x="316" y="16" width="104" height="34" rx="17" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="368" y="38" text-anchor="middle">SYSTEM</text>
+                <rect x="330" y="94" width="104" height="34" rx="17" fill="#000" stroke="#000" stroke-width="2.5"/><text x="382" y="116" text-anchor="middle" fill="#fff">PRODUCT</text>
+                <rect x="168" y="168" width="104" height="30" rx="15" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="220" y="188" text-anchor="middle">WORK</text>
+              </g>
+            </svg>
+          </div>
+          <div class="card w2 k">
+            <span class="c-label">That is why</span>
+            <span class="c-title" style="color:var(--accent)">Faceted</span>
+            <span class="c-foot">several independent tables that are combined</span>
+          </div>
+          <div class="card w3">
+            <span class="c-label">The question each table answers</span>
+            <ul class="checklist" style="margin:0">
+              <li>Where is it? · space</li>
+              <li>What does it do? · element or system</li>
+              <li>What is bought? · product</li>
+            </ul>
+          </div>
+          <div class="card w3 y">
+            <span class="c-label">You do not need them all</span>
+            <span class="c-title">Only those each use calls for</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== I · HIERARCHY ========== -->
+    <section class="slide" id="jerarquia" data-nav="How to read a code">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Hierarchy</span>
+          <h2 class="display">A code reads from general to specific<span class="dot">.</span></h2>
+          <p class="slide-lead">Each pair of digits goes down one level. Trimming the code from the right gives a broader class that is still valid.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="jerarquia"><span class="plus">+</span> See detail</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w6 g">
+            <span class="c-label">Anatomy of a hierarchical code (generic example)</span>
+            <svg class="draw" viewBox="0 0 660 170" role="img" aria-label="Code TT_11_22_33_44 broken down into table, group, subgroup, section and object">
+              <g font-family="JetBrains Mono, monospace" font-weight="700" font-size="30">
+                <rect x="20" y="16" width="78" height="52" rx="6" fill="#000"/><text x="59" y="53" text-anchor="middle" fill="#FFFF00">TT</text>
+                <text x="108" y="53">_</text>
+                <rect x="128" y="16" width="78" height="52" rx="6" fill="#fff" stroke="#000" stroke-width="3"/><text x="167" y="53" text-anchor="middle">11</text>
+                <text x="216" y="53">_</text>
+                <rect x="236" y="16" width="78" height="52" rx="6" fill="#fff" stroke="#000" stroke-width="3"/><text x="275" y="53" text-anchor="middle">22</text>
+                <text x="324" y="53">_</text>
+                <rect x="344" y="16" width="78" height="52" rx="6" fill="#fff" stroke="#000" stroke-width="3"/><text x="383" y="53" text-anchor="middle">33</text>
+                <text x="432" y="53">_</text>
+                <rect x="452" y="16" width="78" height="52" rx="6" fill="#FFFF00" stroke="#000" stroke-width="3"/><text x="491" y="53" text-anchor="middle">44</text>
+              </g>
+              <g font-family="Inter, sans-serif" font-weight="900" font-size="13" text-anchor="middle">
+                <text x="59" y="94">TABLE</text><text x="167" y="94">GROUP</text><text x="275" y="94">SUBGROUP</text><text x="383" y="94">SECTION</text><text x="491" y="94">OBJECT</text>
+              </g>
+              <path d="M20 122 H530" stroke="#000" stroke-width="2"/><polygon points="540,122 528,116 528,128" fill="#000"/>
+              <g font-family="JetBrains Mono, monospace" font-size="12" fill="#666"><text x="20" y="146">general</text><text x="530" y="146" text-anchor="end">specific</text></g>
+              <g font-family="JetBrains Mono, monospace" font-size="12"><text x="560" y="30">TT_11</text><text x="560" y="52">TT_11_22</text><text x="560" y="74">TT_11_22_33</text><text x="560" y="96" font-weight="700">…_44</text></g>
+            </svg>
+          </div>
+          <div class="card w2">
+            <span class="c-label">Prefix</span>
+            <span class="c-title">The table</span>
+            <span class="c-foot">says which view is used</span>
+          </div>
+          <div class="card w2">
+            <span class="c-label">Each level</span>
+            <span class="c-title">A pair of digits</span>
+            <span class="c-foot">or a fixed group of digits</span>
+          </div>
+          <div class="card w2 y">
+            <span class="c-label">Tip</span>
+            <span class="c-title">Trim = group</span>
+            <span class="c-foot">a filter on the prefix catches the whole family</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== I · USES ========== -->
+    <section class="slide" id="usos" data-nav="What it is for">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">The why</span>
+          <h2 class="display">One code, five uses<span class="dot">.</span></h2>
+          <p class="slide-lead">The code is the stable link between the model and everything that comes after: cost estimate, specification, searches, requirements and maintenance.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="usos"><span class="plus">+</span> See detail</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w2">
+            <svg class="ico" viewBox="0 0 44 44" aria-hidden="true"><rect x="8" y="4" width="28" height="36" rx="3" fill="#fff" stroke="#000" stroke-width="2.5"/><path d="M14 14h16M14 22h16M14 30h10" stroke="#000" stroke-width="2"/><rect x="26" y="27" width="8" height="8" fill="#FFFF00" stroke="#000" stroke-width="1.5"/></svg>
+            <span class="c-title">Quantify and estimate</span><span class="c-foot">each cost item, its objects</span>
+          </div>
+          <div class="card w2">
+            <svg class="ico" viewBox="0 0 44 44" aria-hidden="true"><path d="M10 4h18l8 8v28H10z" fill="#fff" stroke="#000" stroke-width="2.5"/><path d="M28 4v8h8" fill="none" stroke="#000" stroke-width="2"/><path d="M15 20h16M15 26h16M15 32h12" stroke="#000" stroke-width="2"/></svg>
+            <span class="c-title">Specify</span><span class="c-foot">link to the specification</span>
+          </div>
+          <div class="card w2">
+            <svg class="ico" viewBox="0 0 44 44" aria-hidden="true"><circle cx="18" cy="18" r="11" fill="#fff" stroke="#000" stroke-width="2.5"/><path d="M26 26l12 12" stroke="#000" stroke-width="3"/><circle cx="18" cy="18" r="4" fill="#FFFF00" stroke="#000" stroke-width="1.5"/></svg>
+            <span class="c-title">Search and filter</span><span class="c-foot">in any viewer</span>
+          </div>
+          <div class="card w3">
+            <svg class="ico" viewBox="0 0 44 44" aria-hidden="true"><rect x="6" y="6" width="32" height="32" rx="3" fill="#fff" stroke="#000" stroke-width="2.5"/><path d="M13 22l6 6 12-13" fill="none" stroke="#000" stroke-width="3"/></svg>
+            <span class="c-title">Require and check</span><span class="c-foot">"every element of this class has…"</span>
+          </div>
+          <div class="card w3 k">
+            <svg class="ico" viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="8" fill="#FFFF00" stroke="#fff" stroke-width="2.5"/><path d="M22 4v8M22 32v8M4 22h8M32 22h8M9 9l6 6M29 29l6 6M35 9l-6 6M9 35l6-6" stroke="#fff" stroke-width="2.5"/></svg>
+            <span class="c-title" style="color:#fff">Maintain</span><span class="c-foot">the asset stays recognisable for decades</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== I · EACH USE, ITS TABLE ========== -->
+    <section class="slide" id="elegir" data-nav="Each use, its table">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Choosing</span>
+          <h2 class="display">Each use calls for its table<span class="dot">.</span></h2>
+          <p class="slide-lead">Before classifying you need to know what for. Cost estimating looks at elements and work; maintenance, at products and spaces.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="elegir"><span class="plus">+</span> See detail</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w6">
+            <div class="table-wrap"><table>
+              <thead><tr><th>Use</th><th>Space</th><th>Element</th><th>System</th><th>Product</th><th>Work</th></tr></thead>
+              <tbody>
+                <tr><td>Cost estimate at design stage</td><td></td><td>●</td><td>●</td><td></td><td></td></tr>
+                <tr class="is-key"><td>Construction quantities</td><td></td><td></td><td>○</td><td>○</td><td>●</td></tr>
+                <tr><td>Specification</td><td></td><td></td><td>●</td><td>●</td><td>○</td></tr>
+                <tr><td>Space programme</td><td>●</td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>Asset maintenance</td><td>○</td><td></td><td>○</td><td>●</td><td></td></tr>
+              </tbody>
+            </table></div>
+            <p class="table-note">● main table · ○ complementary. Own reading based on the ISO 12006-2 framework. <span class="tag">Inferred</span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== I · CLASS AND PROPERTIES ========== -->
+    <section class="slide" id="diccionario" data-nav="Class and properties">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Data dictionaries</span>
+          <h2 class="display">The class says what; the properties, how<span class="dot">.</span></h2>
+          <p class="slide-lead">A data dictionary links each class to its properties, units and a unique identifier on the web. That is how a machine understands the code.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="diccionario"><span class="plus">+</span> See detail</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w4 g">
+            <span class="c-label">A class in a dictionary</span>
+            <svg class="draw" viewBox="0 0 440 170" role="img" aria-label="A class with its web identifier linked to three properties with units">
+              <rect x="10" y="50" width="150" height="70" rx="6" fill="#FFFF00" stroke="#000" stroke-width="3"/>
+              <text x="24" y="80" font-family="Inter, sans-serif" font-weight="900" font-size="16">CLASS</text>
+              <text x="24" y="102" font-family="JetBrains Mono, monospace" font-size="12">Door</text>
+              <text x="10" y="142" font-family="JetBrains Mono, monospace" font-size="11" fill="#666">https://…/class/door</text>
+              <g stroke="#000" stroke-width="2"><path d="M160 85 H200"/><path d="M200 30 V140"/><path d="M200 30 H230M200 85 H230M200 140 H230"/></g>
+              <g font-family="JetBrains Mono, monospace" font-size="12">
+                <rect x="230" y="14" width="200" height="32" rx="16" fill="#fff" stroke="#000" stroke-width="2"/><text x="244" y="35">Fire resistance · EI</text>
+                <rect x="230" y="69" width="200" height="32" rx="16" fill="#fff" stroke="#000" stroke-width="2"/><text x="244" y="90">Width · mm</text>
+                <rect x="230" y="124" width="200" height="32" rx="16" fill="#fff" stroke="#000" stroke-width="2"/><text x="244" y="145">U-value · W/m²K</text>
+              </g>
+            </svg>
+          </div>
+          <div class="card w2 k">
+            <span class="c-label">The key</span>
+            <span class="c-title" style="color:var(--accent)">A link, not a text</span>
+            <span class="c-foot">the code points to a published definition</span>
+          </div>
+          <div class="card w3">
+            <span class="c-label">Classification</span>
+            <span class="c-title">Groups</span>
+            <span class="c-foot">same code for the whole class</span>
+          </div>
+          <div class="card w3">
+            <span class="c-label">Properties</span>
+            <span class="c-title">Describe</span>
+            <span class="c-foot">a different value per object</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== I · GOLDEN RULE ========== -->
+    <section class="slide" id="regla" data-nav="The golden rule">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">The golden rule</span>
+          <h2 class="display">One system, one edition, in writing<span class="dot">.</span></h2>
+          <p class="slide-lead">Decide before modelling which system, which tables and which version. A code without its edition is a number that can change meaning.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="regla"><span class="plus">+</span> See detail</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w2 y"><span class="step-n">1</span><span class="c-title">Which system</span><span class="c-foot">one, for the whole team</span></div>
+          <div class="card w2"><span class="step-n">2</span><span class="c-title">Which tables</span><span class="c-foot">those the uses call for</span></div>
+          <div class="card w2"><span class="step-n">3</span><span class="c-title">Which edition</span><span class="c-foot">fixed date or version</span></div>
+          <div class="card w3"><span class="step-n">4</span><span class="c-title">Which objects</span><span class="c-foot">and to what depth of the code</span></div>
+          <div class="card w3 k"><span class="step-n">5</span><span class="c-title" style="color:#fff">How it is checked</span><span class="c-foot">before each delivery</span></div>
+        </div>
+      </div>
+    </section>
+    <!-- ========== II · ISO 12006-2 ========== -->
+    <section class="slide" id="iso" data-cap="II · Standards" data-nav="The framework: ISO 12006-2">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">ISO 12006-2</span>
+          <h2 class="display">One framework, many systems<span class="dot">.</span></h2>
+          <p class="slide-lead">The international standard contains no codes: it says which tables a system should have. Each country fills them with its own content.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="iso"><span class="plus">+</span> See detail</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w6 g">
+            <span class="c-label">Four categories of information</span>
+            <svg class="draw" viewBox="0 0 660 150" role="img" aria-label="Resources and processes produce results, which are described by properties">
+              <g font-family="Inter, sans-serif" font-weight="900" font-size="15" text-anchor="middle">
+                <rect x="10" y="20" width="140" height="56" rx="6" fill="#fff" stroke="#000" stroke-width="3"/><text x="80" y="54">RESOURCES</text>
+                <rect x="180" y="20" width="140" height="56" rx="6" fill="#fff" stroke="#000" stroke-width="3"/><text x="250" y="54">PROCESSES</text>
+                <rect x="350" y="20" width="140" height="56" rx="6" fill="#FFFF00" stroke="#000" stroke-width="3"/><text x="420" y="54">RESULTS</text>
+                <rect x="520" y="20" width="130" height="56" rx="6" fill="#000"/><text x="585" y="54" fill="#fff">PROPERTIES</text>
+              </g>
+              <g stroke="#000" stroke-width="2.5"><path d="M150 48 H172"/><path d="M320 48 H342"/><path d="M490 48 H512" stroke-dasharray="5 4"/></g>
+              <polygon points="178,48 168,43 168,53" fill="#000"/><polygon points="348,48 338,43 338,53" fill="#000"/>
+              <g font-family="JetBrains Mono, monospace" font-size="11" fill="#444">
+                <text x="10" y="100">products · agents</text><text x="10" y="116">aids · information</text>
+                <text x="180" y="100">management · stages</text><text x="180" y="116">activities</text>
+                <text x="350" y="100">complexes · entities</text><text x="350" y="116">spaces · elements</text><text x="350" y="132">work results</text>
+                <text x="520" y="100">describe</text><text x="520" y="116">all of them</text>
+              </g>
+            </svg>
+          </div>
+          <div class="card w2 k">
+            <span class="c-label">Current edition</span>
+            <b class="c-num">2015</b>
+            <span class="c-foot">revision under way</span>
+          </div>
+          <div class="card w2">
+            <span class="c-label">Provides</span>
+            <span class="c-title">Table titles</span>
+            <span class="c-foot">not their content</span>
+          </div>
+          <div class="card w2 y">
+            <span class="c-label">Followed by</span>
+            <span class="c-title">Uniclass, OmniClass, CoClass, CCI</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== II · EACH COUNTRY, ITS SYSTEM ========== -->
+    <section class="slide" id="mapa" data-nav="Each country, its own system">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Overview</span>
+          <h2 class="display">Each country, its own system<span class="dot">.</span></h2>
+          <p class="slide-lead">There is no worldwide classification. There are families born from the same standard and almost always tied to each country's specification or price database.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="mapa"><span class="plus">+</span> See detail</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w6">
+            <div class="table-wrap"><table>
+              <thead><tr><th>Country or region</th><th>System</th><th>Maintained by</th><th>Sample code</th></tr></thead>
+              <tbody>
+                <tr><td>United Kingdom</td><td>Uniclass</td><td>NBS</td><td class="mono">EF_25_10</td></tr>
+                <tr><td>USA and Canada</td><td>OmniClass · MasterFormat · UniFormat</td><td>CSI · CSC</td><td class="mono">03 30 00</td></tr>
+                <tr><td>Denmark and CCI</td><td>CCS / CCI (ISO 81346-12)</td><td>Molio and partners</td><td class="mono">L-BD</td></tr>
+                <tr><td>Sweden</td><td>CoClass</td><td>Svensk Byggtjänst</td><td class="mono">—</td></tr>
+                <tr><td>Netherlands</td><td>NL-SfB</td><td>DigiGO</td><td class="mono">21</td></tr>
+                <tr><td>Germany</td><td>DIN 276 (costs)</td><td>DIN</td><td class="mono">300</td></tr>
+                <tr class="is-key"><td>Spain</td><td>GuBIMclass</td><td>GuBIMCat</td><td class="mono">40.10.10.10</td></tr>
+              </tbody>
+            </table></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== II · UNICLASS ========== -->
+    <section class="slide" id="uniclass" data-nav="Uniclass">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Uniclass</span>
+          <h2 class="display">Fifteen tables, four revisions a year<span class="dot">.</span></h2>
+          <p class="slide-lead">The British system is the most active, and it is free. An office partition gets one code for each point of view.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="uniclass"><span class="plus">+</span> See detail</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w6 g">
+            <span class="c-label">An office partition in Uniclass</span>
+            <svg class="draw" viewBox="0 0 680 150" role="img" aria-label="Chain of Uniclass codes: office space, wall element, gypsum board partition system and fire-resistant board product">
+              <g font-family="JetBrains Mono, monospace" font-weight="700" font-size="14">
+                <rect x="6" y="20" width="150" height="44" rx="22" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="81" y="47" text-anchor="middle">SL_20_15_59</text>
+                <rect x="176" y="20" width="150" height="44" rx="22" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="251" y="47" text-anchor="middle">EF_25_10</text>
+                <rect x="346" y="20" width="160" height="44" rx="22" fill="#FFFF00" stroke="#000" stroke-width="2.5"/><text x="426" y="47" text-anchor="middle">Ss_25_10_30_35</text>
+                <rect x="526" y="20" width="150" height="44" rx="22" fill="#000"/><text x="601" y="47" text-anchor="middle" fill="#fff" font-size="13">Pr_25_71_35_33</text>
+              </g>
+              <g font-family="Inter, sans-serif" font-weight="900" font-size="12" text-anchor="middle">
+                <text x="81" y="88">SPACE</text><text x="251" y="88">ELEMENT</text><text x="426" y="88">SYSTEM</text><text x="601" y="88">PRODUCT</text>
+              </g>
+              <g font-family="JetBrains Mono, monospace" font-size="11" fill="#555" text-anchor="middle">
+                <text x="81" y="108">Offices</text><text x="251" y="108">Walls</text><text x="426" y="108">Gypsum board</text><text x="426" y="122">partition systems</text><text x="601" y="108">Fire-resistant</text><text x="601" y="122">gypsum plasterboards</text>
+              </g>
+            </svg>
+          </div>
+          <div class="card w2 k">
+            <span class="c-label">Tables</span>
+            <b class="c-num">15</b>
+            <span class="c-foot">from Ac to Zz</span>
+          </div>
+          <div class="card w2">
+            <span class="c-label">Revision</span>
+            <b class="c-num">×4<small>/year</small></b>
+            <span class="c-foot">January, April, July, October</span>
+          </div>
+          <div class="card w2 y">
+            <span class="c-label">Licence</span>
+            <span class="c-title">CC BY-ND 4.0</span>
+            <span class="c-foot">free, including for commercial use</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== II · OMNICLASS, MASTERFORMAT, UNIFORMAT ========== -->
+    <section class="slide" id="omniclass" data-nav="OmniClass and the CSI family">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">OmniClass · MasterFormat · UniFormat</span>
+          <h2 class="display">Three systems for three moments<span class="dot">.</span></h2>
+          <p class="slide-lead">In North America, UniFormat organises the cost estimate by elements, MasterFormat the specification by work results, and OmniClass brings both together in 15 tables.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="omniclass"><span class="plus">+</span> See detail</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w2">
+            <span class="c-label">UniFormat</span>
+            <b class="c-num" style="font-family:var(--mono)">B2010</b>
+            <span class="c-foot">elements · early cost</span>
+          </div>
+          <div class="card w2 y">
+            <span class="c-label">MasterFormat</span>
+            <b class="c-num" style="font-family:var(--mono)">03 30 00</b>
+            <span class="c-foot">work results · specification</span>
+          </div>
+          <div class="card w2 k">
+            <span class="c-label">OmniClass</span>
+            <b class="c-num" style="font-family:var(--mono);color:var(--accent)">13-15 11 34 11</b>
+            <span class="c-foot">table 13: an office space</span>
+          </div>
+          <div class="card w4 g">
+            <span class="c-label">The 15 OmniClass tables</span>
+            <div class="chips"><span class="chip">11 · 12 entities</span><span class="chip">13 · 14 spaces</span><span class="chip y">21 elements</span><span class="chip y">22 work results</span><span class="chip y">23 products</span><span class="chip">31 phases</span><span class="chip">32 services</span><span class="chip">33 disciplines</span><span class="chip">34 roles</span><span class="chip">35 tools</span><span class="chip">36 information</span><span class="chip">41 materials</span><span class="chip">49 properties</span></div>
+          </div>
+          <div class="card w2">
+            <span class="c-label">Watch out</span>
+            <span class="c-title">Tables dated 2010–2013</span>
+            <span class="c-foot">little activity since then</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== II · CCI AND ISO 81346 ========== -->
+    <section class="slide" id="cci" data-nav="CCI and ISO 81346">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">CCI · ISO 81346-12</span>
+          <h2 class="display">Classify and designate every part<span class="dot">.</span></h2>
+          <p class="slide-lead">The Nordic school combines both: what type each object is, and a unique designation that says what function it serves, what it is made of and where it is.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="cci"><span class="plus">+</span> See detail</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w4 g">
+            <span class="c-label">Three aspects of a reference designation</span>
+            <svg class="draw" viewBox="0 0 440 150" role="img" aria-label="Three prefixes: equals for function, hyphen for product and plus for location">
+              <g font-family="JetBrains Mono, monospace" font-weight="700" font-size="40" text-anchor="middle">
+                <rect x="10" y="14" width="120" height="70" rx="6" fill="#fff" stroke="#000" stroke-width="3"/><text x="70" y="64">=</text>
+                <rect x="160" y="14" width="120" height="70" rx="6" fill="#FFFF00" stroke="#000" stroke-width="3"/><text x="220" y="64">-</text>
+                <rect x="310" y="14" width="120" height="70" rx="6" fill="#000"/><text x="370" y="64" fill="#fff">+</text>
+              </g>
+              <g font-family="Inter, sans-serif" font-weight="900" font-size="14" text-anchor="middle"><text x="70" y="112">FUNCTION</text><text x="220" y="112">PRODUCT</text><text x="370" y="112">LOCATION</text></g>
+              <g font-family="JetBrains Mono, monospace" font-size="11" fill="#555" text-anchor="middle"><text x="70" y="132">what it is for</text><text x="220" y="132">what it is made of</text><text x="370" y="132">where it is</text></g>
+            </svg>
+          </div>
+          <div class="card w2 k">
+            <span class="c-label">Example in CCI</span>
+            <b class="c-num" style="font-family:var(--mono);color:var(--accent)">L-BD</b>
+            <span class="c-foot">Wall structure</span>
+          </div>
+          <div class="card w3">
+            <span class="c-label">Origin</span>
+            <span class="c-title">Danish CCS and Swedish CoClass</span>
+            <span class="c-foot">turned into a standard in 2018</span>
+          </div>
+          <div class="card w3 y">
+            <span class="c-label">Used by</span>
+            <span class="c-title">DK · CZ · EE · PL · SK</span>
+            <span class="c-foot">in the CCI collaboration</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== II · EXAMPLE: SPAIN ========== -->
+    <section class="slide" id="espana" data-nav="Example: Spain">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Example: Spain</span>
+          <h2 class="display">No official table, GuBIMclass in practice<span class="dot">.</span></h2>
+          <p class="slide-lead">There is no mandatory national table. The most widely used one was born in Catalonia: it classifies each element by its main function on four levels.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="espana"><span class="plus">+</span> See detail</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w4 g">
+            <span class="c-label">A partition in GuBIMclass 1.2</span>
+            <svg class="draw" viewBox="0 0 440 160" role="img" aria-label="Code 40.10.10.10 Partitions broken down into its four levels">
+              <g font-family="JetBrains Mono, monospace" font-weight="700" font-size="30">
+                <rect x="10" y="10" width="70" height="50" rx="6" fill="#fff" stroke="#000" stroke-width="3"/><text x="45" y="46" text-anchor="middle">40</text><text x="88" y="46">.</text>
+                <rect x="104" y="10" width="70" height="50" rx="6" fill="#fff" stroke="#000" stroke-width="3"/><text x="139" y="46" text-anchor="middle">10</text><text x="182" y="46">.</text>
+                <rect x="198" y="10" width="70" height="50" rx="6" fill="#fff" stroke="#000" stroke-width="3"/><text x="233" y="46" text-anchor="middle">10</text><text x="276" y="46">.</text>
+                <rect x="292" y="10" width="70" height="50" rx="6" fill="#FFFF00" stroke="#000" stroke-width="3"/><text x="327" y="46" text-anchor="middle">10</text>
+              </g>
+              <g font-family="JetBrains Mono, monospace" font-size="12">
+                <text x="10" y="88"><tspan font-weight="700">40</tspan> Interior partitioning and finishes</text>
+                <text x="10" y="108"><tspan font-weight="700">40.10</tspan> … vertical interior</text>
+                <text x="10" y="128"><tspan font-weight="700">40.10.10</tspan> Vertical interior partitioning</text>
+                <text x="10" y="150"><tspan font-weight="700">40.10.10.10</tspan> <tspan font-weight="700" fill="#000">Partitions</tspan></text>
+              </g>
+            </svg>
+          </div>
+          <div class="card w2 k">
+            <span class="c-label">Codes</span>
+            <b class="c-num" style="color:var(--accent)">533</b>
+            <span class="c-foot">9 groups · 4 levels</span>
+          </div>
+          <div class="card w3">
+            <span class="c-label">Water sector tenders (2022)</span>
+            <div class="table-wrap"><table>
+              <tbody>
+                <tr class="is-key"><td>GuBIMclass</td><td class="num">28 %</td></tr>
+                <tr><td>In-house</td><td class="num">22 %</td></tr>
+                <tr><td>Not defined</td><td class="num">22 %</td></tr>
+                <tr><td>Uniclass</td><td class="num">19 %</td></tr>
+              </tbody>
+            </table></div>
+          </div>
+          <div class="card w3 y">
+            <span class="c-label">And the cost estimate</span>
+            <span class="c-title">The BC3 item code</span>
+            <span class="c-foot">acts as a cost classification, in parallel</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ========== III · REVIT ========== -->
+    <section class="slide" id="revit" data-cap="III · Software" data-nav="Revit: where the code goes">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Revit</span>
+          <h2 class="display">Three fields and a parameter<span class="dot">.</span></h2>
+          <p class="slide-lead">It ships with UniFormat and OmniClass. Any other system is written into a parameter with a fixed name and syntax so that IFC understands it.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="revit"><span class="plus">+</span> See detail</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w2">
+            <span class="c-label">Assembly Code</span>
+            <span class="c-title">UniFormat</span>
+            <span class="c-foot">appears in the IFC as “Uniformat”</span>
+          </div>
+          <div class="card w2">
+            <span class="c-label">OmniClass Number</span>
+            <span class="c-title">Table 23</span>
+            <span class="c-foot">in the families</span>
+          </div>
+          <div class="card w2 g">
+            <span class="c-label">Keynote</span>
+            <span class="c-title">Keynote</span>
+            <span class="c-foot">annotates drawings; not an IFC classification</span>
+          </div>
+          <div class="card w6 k">
+            <span class="c-label">The ClassificationCode parameter</span>
+            <div class="flow"><span class="chip y">[Uniclass]</span><span class="chip">Ss_25_10_30_35</span><span class="chip">:Gypsum board partition systems</span></div>
+            <span class="c-foot">system in square brackets · code · colon and title · up to 10 parameters: ClassificationCode(2)…(10)</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== III · ARCHICAD ========== -->
+    <section class="slide" id="archicad" data-nav="Archicad: Classification Manager">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Archicad</span>
+          <h2 class="display">Classification is native<span class="dot">.</span></h2>
+          <p class="slide-lead">Since 2017, each element can carry codes from several systems at once, and the systems are imported as files.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="archicad"><span class="plus">+</span> See detail</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w4 g">
+            <span class="c-label">One wall, three systems</span>
+            <svg class="draw" viewBox="0 0 420 140" role="img" aria-label="A wall with codes from three different systems at once">
+              <rect x="10" y="40" width="110" height="60" fill="#EFEFEA" stroke="#000" stroke-width="3"/>
+              <path d="M10 60h110M10 80h110M46 40v20M84 40v20M28 60v20M66 60v20M104 60v20M46 80v20M84 80v20" stroke="#000" stroke-width="1"/>
+              <g stroke="#000" stroke-width="2"><path d="M120 70 H150"/><path d="M150 26 V114"/><path d="M150 26 H170M150 70 H170M150 114 H170"/></g>
+              <g font-family="JetBrains Mono, monospace" font-size="13">
+                <rect x="170" y="10" width="244" height="32" rx="16" fill="#FFFF00" stroke="#000" stroke-width="2"/><text x="184" y="31">GuBIMclass · 40.10.10.10</text>
+                <rect x="170" y="54" width="244" height="32" rx="16" fill="#fff" stroke="#000" stroke-width="2"/><text x="184" y="75">Uniclass · EF_25_10</text>
+                <rect x="170" y="98" width="244" height="32" rx="16" fill="#fff" stroke="#000" stroke-width="2"/><text x="184" y="119">In-house · WALL-INT</text>
+              </g>
+            </svg>
+          </div>
+          <div class="card w2 k">
+            <span class="c-label">Classification Manager</span>
+            <b class="c-num" style="color:var(--accent)">AC21</b>
+            <span class="c-foot">since 2017</span>
+          </div>
+          <div class="card w3">
+            <span class="c-label">Comes in via</span>
+            <span class="c-title">XML, IDS or national packages</span>
+          </div>
+          <div class="card w3 y">
+            <span class="c-label">GuBIMclass</span>
+            <span class="c-title">Official XML for Archicad</span>
+            <span class="c-foot">with rules that assign it automatically</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== III · OTHER PROGRAMS ========== -->
+    <section class="slide" id="otros" data-nav="Other programs">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Other programs</span>
+          <h2 class="display">Each program, its own field<span class="dot">.</span></h2>
+          <p class="slide-lead">The data sits in a different place in each program, but the common destination is the same: a classification in the IFC with system and code.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="otros"><span class="plus">+</span> See detail</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w6">
+            <div class="table-wrap"><table>
+              <thead><tr><th>Program</th><th>Where it is classified</th><th>Extra</th></tr></thead>
+              <tbody>
+                <tr><td>Tekla Structures</td><td>Organizer: categories with code</td><td>Exports the code to IFC</td></tr>
+                <tr><td>BricsCAD BIM</td><td>Object classification codes</td><td>Loadable tables</td></tr>
+                <tr class="is-key"><td>Bonsai</td><td>Direct IFC classification</td><td>Searches bSDD without leaving</td></tr>
+                <tr><td>Navisworks</td><td>Does not classify: filters</td><td>Search sets by code</td></tr>
+                <tr><td>Presto</td><td>BC3 item code</td><td>Measures the model by item</td></tr>
+              </tbody>
+            </table></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== IV · BSDD ========== -->
+    <section class="slide" id="bsdd" data-cap="IV · Platforms" data-nav="bSDD: the shared dictionary">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">bSDD</span>
+          <h2 class="display">A dictionary on the internet<span class="dot">.</span></h2>
+          <p class="slide-lead">buildingSMART publishes hundreds of classifications on a single platform, with a fixed web address for each class. Programs query it through its API.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="bsdd"><span class="plus">+</span> See detail</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w2 k">
+            <span class="c-label">Dictionaries</span>
+            <b class="c-num" style="color:var(--accent)">300+</b>
+            <span class="c-foot">IFC, Uniclass, CCI, ETIM…</span>
+          </div>
+          <div class="card w4 g">
+            <span class="c-label">Each class, one address</span>
+            <span class="c-text mono" style="font-size:13px;word-break:break-all">identifier.buildingsmart.org/uri/molio/cciconstruction/1.0/class/L-BD</span>
+            <div class="chips" style="margin-top:10px"><span class="chip">publisher</span><span class="chip">dictionary</span><span class="chip y">version</span><span class="chip k">class</span></div>
+          </div>
+          <div class="card w3">
+            <span class="c-label">For the modeller</span>
+            <span class="c-title">Search and assign</span>
+            <span class="c-foot">from the program, with a plug-in</span>
+          </div>
+          <div class="card w3 y">
+            <span class="c-label">Cost</span>
+            <b class="c-num">€0</b>
+            <span class="c-foot">free lookup and open API</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== IV · VIEWERS AND SEARCH TOOLS ========== -->
+    <section class="slide" id="visores" data-nav="Search tools and viewers">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Platforms</span>
+          <h2 class="display">Find the code and use it<span class="dot">.</span></h2>
+          <p class="slide-lead">The official search tools give you the right code; viewers and the common data environment turn it into filters, colours and saved views.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="visores"><span class="plus">+</span> See detail</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w3">
+            <span class="c-label">Search</span>
+            <div class="chips"><span class="chip">uniclass.thenbs.com</span><span class="chip">search.bsdd</span><span class="chip">GuBIMclass tables</span></div>
+          </div>
+          <div class="card w3 k">
+            <span class="c-label">Use</span>
+            <span class="c-title" style="color:#fff">Colour by code</span>
+            <span class="c-foot">whatever shows up grey is not classified</span>
+          </div>
+          <div class="card w2">
+            <span class="c-label">BIMcollab Zoom</span>
+            <span class="c-title">Smart Views</span>
+          </div>
+          <div class="card w2">
+            <span class="c-label">Navisworks</span>
+            <span class="c-title">Search Sets</span>
+          </div>
+          <div class="card w2 y">
+            <span class="c-label">Solibri</span>
+            <span class="c-title">Rule-based classification</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ========== V · CLASSIFICATION IN IFC ========== -->
+    <section class="slide" id="ifc" data-cap="V · Interoperability" data-nav="Classification in IFC">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">IFC</span>
+          <h2 class="display">Three entities carry the code<span class="dot">.</span></h2>
+          <p class="slide-lead">The system, the code and the link to the objects are kept separate. That way the same object can carry several systems without mixing them.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="ifc"><span class="plus">+</span> See detail</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w6 g">
+            <span class="c-label">From the wall to the system</span>
+            <svg class="draw" viewBox="0 0 680 170" role="img" aria-label="IfcWall linked by IfcRelAssociatesClassification to IfcClassificationReference, which points to IfcClassification">
+              <g font-family="JetBrains Mono, monospace" font-weight="700" font-size="13">
+                <rect x="6" y="40" width="120" height="56" rx="6" fill="#fff" stroke="#000" stroke-width="3"/><text x="66" y="73" text-anchor="middle">IfcWall</text>
+                <rect x="160" y="40" width="190" height="56" rx="6" fill="#fff" stroke="#000" stroke-width="2.5" stroke-dasharray="6 4"/><text x="255" y="66" text-anchor="middle" font-size="12">IfcRelAssociates</text><text x="255" y="84" text-anchor="middle" font-size="12">Classification</text>
+                <rect x="384" y="40" width="150" height="56" rx="6" fill="#FFFF00" stroke="#000" stroke-width="3"/><text x="459" y="66" text-anchor="middle" font-size="12">IfcClassification</text><text x="459" y="84" text-anchor="middle" font-size="12">Reference</text>
+                <rect x="560" y="40" width="114" height="56" rx="6" fill="#000"/><text x="617" y="66" text-anchor="middle" font-size="12" fill="#fff">IfcClassi-</text><text x="617" y="84" text-anchor="middle" font-size="12" fill="#fff">fication</text>
+              </g>
+              <g stroke="#000" stroke-width="2.5"><path d="M126 68 H152"/><path d="M350 68 H376"/><path d="M534 68 H552"/></g>
+              <polygon points="158,68 148,63 148,73" fill="#000"/><polygon points="382,68 372,63 372,73" fill="#000"/><polygon points="558,68 548,63 548,73" fill="#000"/>
+              <g font-family="JetBrains Mono, monospace" font-size="11" fill="#444" text-anchor="middle">
+                <text x="66" y="122">the object (or its type)</text>
+                <text x="255" y="122">the link</text><text x="255" y="138">one to many</text>
+                <text x="459" y="122">Identification</text><text x="459" y="138" font-weight="700" fill="#000">EF_25_10 · Walls</text>
+                <text x="617" y="122">Name · Edition</text><text x="617" y="138" font-weight="700" fill="#000">Uniclass</text>
+              </g>
+            </svg>
+          </div>
+          <div class="card w3">
+            <span class="c-label">From IFC2x3 to IFC4</span>
+            <span class="c-title">ItemReference → Identification</span>
+            <span class="c-foot">the code changed its name</span>
+          </div>
+          <div class="card w3 k">
+            <span class="c-label">Watch out</span>
+            <span class="c-title" style="color:var(--accent)">Not in a loose property</span>
+            <span class="c-foot">a “Code” Pset is not an IFC classification</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== V · TRANSLATING BETWEEN SYSTEMS ========== -->
+    <section class="slide" id="mapeo" data-nav="Translating between systems">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Mapping</span>
+          <h2 class="display">Translating is not copying<span class="dot">.</span></h2>
+          <p class="slide-lead">Systems look at things with different criteria and there is almost never a one-to-one equivalence. Better to keep each system in its own place than to convert one into another.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="mapeo"><span class="plus">+</span> See detail</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w4 g">
+            <span class="c-label">One code, several destinations</span>
+            <svg class="draw" viewBox="0 0 440 150" role="img" aria-label="A code in one system corresponds to one, several or none in the other">
+              <g font-family="JetBrains Mono, monospace" font-size="13">
+                <rect x="6" y="56" width="130" height="38" rx="19" fill="#FFFF00" stroke="#000" stroke-width="2.5"/><text x="71" y="80" text-anchor="middle" font-weight="700">40.10.10.10</text>
+                <rect x="280" y="8" width="154" height="34" rx="17" fill="#fff" stroke="#000" stroke-width="2"/><text x="357" y="30" text-anchor="middle">EF_25_10</text>
+                <rect x="280" y="58" width="154" height="34" rx="17" fill="#fff" stroke="#000" stroke-width="2"/><text x="357" y="80" text-anchor="middle">Ss_25_10_30</text>
+                <rect x="280" y="108" width="154" height="34" rx="17" fill="#fff" stroke="#000" stroke-width="2"/><text x="357" y="130" text-anchor="middle">masonry? other?</text>
+              </g>
+              <g stroke="#000" stroke-width="2"><path d="M136 70 L280 26"/><path d="M136 75 L280 75"/><path d="M136 80 L280 124" stroke-dasharray="5 4"/></g>
+              <g font-family="JetBrains Mono, monospace" font-size="11" fill="#555"><text x="160" y="40">function</text><text x="170" y="70">system</text><text x="150" y="122">which?</text></g>
+            </svg>
+          </div>
+          <div class="card w2 k">
+            <span class="c-label">Rule</span>
+            <span class="c-title" style="color:var(--accent)">Each system in its place</span><span class="c-foot">one IFC classification per system</span>
+          </div>
+          <div class="card w3">
+            <span class="c-label">Bridges</span>
+            <span class="c-title">Mapping tables</span>
+            <span class="c-foot">in-house, or bSDD relations</span>
+          </div>
+          <div class="card w3 y">
+            <span class="c-label">For the facility manager</span>
+            <span class="c-title">COBie: Category column</span>
+            <span class="c-foot">“code: title”</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== V · COMMON ERRORS ========== -->
+    <section class="slide" id="errores" data-nav="Common mistakes">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">What breaks</span>
+          <h2 class="display">Six mistakes that empty your filters<span class="dot">.</span></h2>
+          <p class="slide-lead">Nearly all happen on export: the code exists in the model but arrives with no system, under another name or in another field.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="errores"><span class="plus">+</span> See detail</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w2"><span class="step-n">1</span><span class="c-title">By software category</span><span class="c-foot">not every “wall” is a wall</span></div>
+          <div class="card w2 y"><span class="step-n">2</span><span class="c-title">No system or edition</span><span class="c-foot">“Default Classification”</span></div>
+          <div class="card w2"><span class="step-n">3</span><span class="c-title">Different name</span><span class="c-foot">“Uniclass 2015” ≠ “Uniclass”</span></div>
+          <div class="card w2"><span class="step-n">4</span><span class="c-title">Mixed tables</span><span class="c-foot">Pr where Ss belonged</span></div>
+          <div class="card w2 k"><span class="step-n">5</span><span class="c-title" style="color:#fff">Code and title together</span><span class="c-foot">in a single field</span></div>
+          <div class="card w2"><span class="step-n">6</span><span class="c-title">In a property</span><span class="c-foot">instead of an IFC classification</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== VI · WHAT TO CHECK ========== -->
+    <section class="slide" id="calidad" data-cap="VI · Quality control" data-nav="What to check">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Quality control</span>
+          <h2 class="display">Five questions for every object<span class="dot">.</span></h2>
+          <p class="slide-lead">Having a code is not enough. It must belong to the agreed system, come from the right table, exist in that edition and match what the object is.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="calidad"><span class="plus">+</span> See detail</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w6 g">
+            <span class="c-label">From easiest to hardest to automate</span>
+            <svg class="draw" viewBox="0 0 680 120" role="img" aria-label="Five checks as a staircase: has a code, exact system, right table, exists in the edition, consistent with the object">
+              <g font-family="Inter, sans-serif" font-weight="900" font-size="12" text-anchor="middle">
+                <rect x="6" y="70" width="124" height="44" rx="6" fill="#FFFF00" stroke="#000" stroke-width="2.5"/><text x="68" y="90">HAS A</text><text x="68" y="105">CODE?</text>
+                <rect x="140" y="56" width="124" height="58" rx="6" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="202" y="83">EXACT</text><text x="202" y="98">SYSTEM?</text>
+                <rect x="274" y="42" width="124" height="72" rx="6" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="336" y="76">RIGHT</text><text x="336" y="91">TABLE?</text>
+                <rect x="408" y="28" width="124" height="86" rx="6" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="470" y="69">EXISTS IN</text><text x="470" y="84">THE EDITION?</text>
+                <rect x="542" y="14" width="132" height="100" rx="6" fill="#000"/><text x="608" y="62" fill="#fff">MATCHES</text><text x="608" y="77" fill="#fff">THE OBJECT?</text>
+              </g>
+            </svg>
+          </div>
+          <div class="card w2"><span class="c-label">1 · 2 · 3</span><span class="c-title">IDS</span><span class="c-foot">in any checker</span></div>
+          <div class="card w2"><span class="c-label">4</span><span class="c-title">Script</span><span class="c-foot">against the edition’s table</span></div>
+          <div class="card w2 y"><span class="c-label">5</span><span class="c-title">Eyes and rules</span><span class="c-foot">a person reviews the doubtful ones</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== VI · IDS ========== -->
+    <section class="slide" id="ids" data-nav="IDS">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">IDS</span>
+          <h2 class="display">The requirement, in a file<span class="dot">.</span></h2>
+          <p class="slide-lead">An IDS says “every wall carries a code from this table and this system”. Every checker reads it the same way, and one different letter in the system name is enough to fail.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="ids"><span class="plus">+</span> See an example</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w2 y">
+            <span class="c-label">IDS 1.0</span>
+            <b class="c-num">2024</b>
+            <span class="c-foot">final standard</span>
+          </div>
+          <div class="card w4 g">
+            <span class="c-label">Classification facet</span>
+            <div class="chips"><span class="chip k">system · required</span><span class="chip y">value · pattern</span><span class="chip">uri</span><span class="chip">cardinality</span></div>
+          </div>
+          <div class="card w6">
+            <div class="table-wrap"><table>
+              <thead><tr><th>Test IFC</th><th>Walls OK</th><th>Walls wrong</th><th>Result</th></tr></thead>
+              <tbody>
+                <tr class="is-key"><td>Code EF_25_10 or a child</td><td class="num">2</td><td class="num">0</td><td>Pass</td></tr>
+                <tr><td>One wall with no code</td><td class="num">1</td><td class="num">1</td><td>Fail</td></tr>
+                <tr><td>One wall with a systems (Ss) code</td><td class="num">1</td><td class="num">1</td><td>Fail</td></tr>
+                <tr><td>System named “Uniclass 2015”</td><td class="num">0</td><td class="num">2</td><td>Fail</td></tr>
+              </tbody>
+            </table></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== VI · IFCOPENSHELL ========== -->
+    <section class="slide" id="ifcopenshell" data-nav="IfcOpenShell">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">IfcOpenShell</span>
+          <h2 class="display">Check against the table<span class="dot">.</span></h2>
+          <p class="slide-lead">An IDS does not know whether a code exists. A Python script compares every code in the IFC with the official list for the agreed edition.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="ifcopenshell"><span class="plus">+</span> See the script</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w4">
+            <span class="c-label">Workflow</span>
+            <svg class="draw" viewBox="0 0 400 130" aria-hidden="true">
+              <rect x="0" y="44" width="90" height="62" rx="6" fill="#fff" stroke="#000" stroke-width="3"/><text x="45" y="82" text-anchor="middle" font-family="Inter, sans-serif" font-weight="900" font-size="18">IFC</text>
+              <rect x="0" y="4" width="90" height="30" rx="15" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="45" y="24" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="13" font-weight="700">table.txt</text>
+              <path d="M96 75 L128 75" stroke="#000" stroke-width="3"/><polygon points="128,68 138,75 128,82" fill="#000"/>
+              <rect x="142" y="30" width="120" height="90" rx="6" fill="#000"/><text x="154" y="64" font-family="JetBrains Mono, monospace" font-size="13" fill="#fff">import</text><text x="154" y="84" font-family="JetBrains Mono, monospace" font-size="13" fill="#fff">ifcopenshell</text><text x="154" y="106" font-family="JetBrains Mono, monospace" font-size="12" fill="#999">python</text>
+              <path d="M268 75 L292 75" stroke="#000" stroke-width="3"/><polygon points="292,68 302,75 292,82" fill="#000"/>
+              <rect x="306" y="30" width="94" height="90" rx="6" fill="#FFFF00" stroke="#000" stroke-width="3"/><text x="353" y="62" text-anchor="middle" font-family="Inter, sans-serif" font-weight="900" font-size="15">REPORT</text><text x="353" y="86" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="12">ok · none</text><text x="353" y="104" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="12">outside</text>
+            </svg>
+          </div>
+          <div class="card w2 k">
+            <span class="c-label">Inherits</span>
+            <span class="c-title" style="color:var(--accent)">Type code</span>
+            <span class="c-foot">counted on every instance</span>
+          </div>
+          <div class="card w3">
+            <span class="c-label">Three bins</span>
+            <div class="chips"><span class="chip y">ok</span><span class="chip">no code</span><span class="chip k">not in the table</span></div>
+          </div>
+          <div class="card w3">
+            <span class="c-label">Cost</span>
+            <b class="c-num">0 €</b>
+            <span class="c-foot">open source</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== VI · IN EACH PROGRAM ========== -->
+    <section class="slide" id="herramientas" data-nav="In each program">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Tools</span>
+          <h2 class="display">Check before you export<span class="dot">.</span></h2>
+          <p class="slide-lead">The cheapest error is the one spotted in the authoring program: a schedule or a colour filter by code before every delivery.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="herramientas"><span class="plus">+</span> See detail</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w3"><span class="c-label">Revit</span><span class="c-title">Type schedule with the empty parameter</span><span class="c-foot">and a view filter by code</span></div>
+          <div class="card w3"><span class="c-label">Archicad</span><span class="c-title">Find unclassified elements</span><span class="c-foot">and Graphic Overrides by class</span></div>
+          <div class="card w2"><span class="c-label">Solibri</span><span class="c-title">IDS and rules</span></div>
+          <div class="card w2"><span class="c-label">BIMcollab Zoom</span><span class="c-title">Smart View</span></div>
+          <div class="card w2 y"><span class="c-label">Navisworks</span><span class="c-title">Empty Search Set = good</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== CLOSING ========== -->
+    <section class="slide" id="cierre" data-nav="In summary">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">In summary</span>
+          <h2 class="display">Four rules<span class="dot">.</span></h2>
+          <div class="slide-actions">
+            <button type="button" class="btn l2-btn" data-l2="glosario"><span class="plus">+</span> Glossary</button>
+            <button type="button" class="btn ghost l2-btn" data-l2="fuentes"><span class="plus">+</span> Sources</button>
+          </div>
+        </div>
+        <div class="b-cards">
+          <div class="card w3 y"><span class="c-label">01</span><span class="c-title">One use, one table</span><span class="c-foot">decided before modelling</span></div>
+          <div class="card w3"><span class="c-label">02</span><span class="c-title">One system with its edition</span><span class="c-foot">in writing in the plan</span></div>
+          <div class="card w3 k"><span class="c-label">03</span><span class="c-title">One IFC classification</span><span class="c-foot">system + code, not a property</span></div>
+          <div class="card w3"><span class="c-label">04</span><span class="c-title">One check</span><span class="c-foot">IDS + the edition’s table</span></div>
+          <div class="card w6"><nav id="series-nav" class="series-nav" style="margin-top:0;border-top:0;padding-top:0" aria-label="Series navigation"></nav></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site">
+    <div class="wrap">
+      <span>Designed and developed by Alejandro García Nicolás</span><span class="sep">·</span><span class="mono">kernel · 2026</span>
+    </div>
+  </footer>
+
+  <div id="l2-modal" role="dialog" aria-modal="true" aria-label="Detail">
+    <div class="l2-panel custom-scroll">
+      <button type="button" class="l2-close" aria-label="Close" title="Close">✕</button>
+      <div id="l2-body" class="l2-body prose"></div>
+    </div>
+  </div>
+
+  <!-- ============================== LAYER 2 ============================== -->
+  <!-- Layer 2 = “See detail” sheet in cards. Only adds what the slide does not say. -->
+
+  <template id="l2-problema">
+    <div class="b-cards">
+      <div class="card w3">
+        <h4>Why the name is not enough</h4>
+        <p>A type name is chosen by whoever models it and tends to mix what the object is with what it is like (“Ext. wall 30”). It changes between offices, languages and projects, and sometimes between stages of the same project.</p>
+        <p>A text filter (“contains wall”) fails with “Cladding”, “FACH_tipo_A” or “Muro”. A quantity take-off grouped by name gives as many items as there are ways of writing it.</p>
+      </div>
+      <div class="card w3 y">
+        <span class="c-label">Key idea</span>
+        <p>Classification does not replace the name: it complements it with a piece of data that is the same for everyone because it comes from a published table.</p>
+      </div>
+      <div class="card w6">
+        <h4>What breaks without a shared classification</h4>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Task</th><th>Without a shared code</th><th>With a shared code</th></tr></thead>
+          <tbody>
+            <tr><td>Measuring the walls</td><td>Check every name by hand</td><td>Group by code</td></tr>
+            <tr><td>Linking to the cost estimate</td><td>A mapping table for each project</td><td>Same code in model and prices</td></tr>
+            <tr><td>Requesting information</td><td>“Walls must carry…” (which ones?)</td><td>“Objects of class X must carry…”</td></tr>
+            <tr class="is-key"><td>Maintaining the building</td><td>The facility manager does not recognise the names</td><td>The asset can be found for decades</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+    </div>
+  </template>
+
+  <template id="l2-clasificar">
+    <div class="b-cards">
+      <div class="card w3">
+        <h4>Classify, code, identify</h4>
+        <p><strong>Classifying</strong> is sorting objects into classes by shared characteristics. <strong>Coding</strong> is giving each class a short, stable code. <strong>Identifying</strong> is giving each specific object a unique label (door D-2.14, the model GUID).</p>
+        <p>A hundred doors share a class and a code; each one has its own identifier.</p>
+      </div>
+      <div class="card w3 g">
+        <h4>And properties</h4>
+        <p>Fire resistance, width or manufacturer describe what each object is like. They can differ between two doors of the same class.</p>
+        <p>Typical mistake: putting properties inside the code (“door EI2 30”) and multiplying the classes.</p>
+      </div>
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Data</th><th>Answers</th><th>Same across the class?</th><th>Who sets it?</th></tr></thead>
+          <tbody>
+            <tr><td>Type name</td><td>What do I call it?</td><td>Not necessarily</td><td>Whoever models</td></tr>
+            <tr class="is-key"><td>Classification code</td><td>What is it?</td><td>Yes</td><td>The chosen system</td></tr>
+            <tr><td>Identifier</td><td>Which one is it?</td><td>No: unique</td><td>The project or the program</td></tr>
+            <tr><td>Properties</td><td>What is it like?</td><td>No</td><td>The information requirements</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+    </div>
+  </template>
+
+  <template id="l2-facetas">
+    <div class="b-cards">
+      <div class="card w3">
+        <h4>Enumerative or faceted</h4>
+        <p>An <strong>enumerative</strong> classification is a single tree: each object falls on one branch and only one. It is easy to use, but forces you to pick one viewpoint.</p>
+        <p>A <strong>faceted</strong> one has several independent tables, each with its own viewpoint. The same object can carry a code from each table and they combine without conflict.</p>
+      </div>
+      <div class="card w3 y">
+        <span class="c-label">Key idea</span>
+        <p>Current systems are faceted because the international framework (ISO 12006-2) separates spaces, elements, systems, products, work, stages and more.</p>
+      </div>
+      <div class="card w6">
+        <h4>The same door, seen by each table</h4>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Viewpoint</th><th>Question</th><th>Answer for the door</th></tr></thead>
+          <tbody>
+            <tr><td>Space</td><td>Where is it?</td><td>In a classroom</td></tr>
+            <tr><td>Element</td><td>Which part of the building is it?</td><td>Doors and windows</td></tr>
+            <tr><td>System</td><td>With which technical solution?</td><td>Internal door</td></tr>
+            <tr class="is-key"><td>Product</td><td>What is bought?</td><td>Timber leaf, hinges, handle</td></tr>
+            <tr><td>Work</td><td>What is built?</td><td>Timber joinery</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+    </div>
+  </template>
+
+  <template id="l2-jerarquia">
+    <div class="b-cards">
+      <div class="card w3">
+        <h4>Why hierarchical</h4>
+        <p>A hierarchical code works at every stage: at first the group (“walls”) is enough; as the design develops, levels are added down to the specific object. The short code is still correct, just less precise.</p>
+        <p>In a filter, “starts with TT_11” picks up every class below it.</p>
+      </div>
+      <div class="card w3 g">
+        <h4>What not to do</h4>
+        <ul>
+          <li>Invent levels that do not exist in the published table.</li>
+          <li>Read the code as a number (dropping zeros, sorting it as a figure).</li>
+          <li>Change the separators: <code>_</code>, <code>.</code> or a space are part of each system’s code.</li>
+        </ul>
+      </div>
+      <div class="card w6">
+        <h4>Depth by stage</h4>
+        <div class="bars">
+          <div class="bar"><span>Concept</span><i style="width:30%">group</i></div>
+          <div class="bar"><span>Outline</span><i style="width:55%">subgroup</i></div>
+          <div class="bar"><span>Construction</span><i style="width:80%">section</i></div>
+          <div class="bar is-key"><span>As built</span><i style="width:100%">object</i></div>
+        </div>
+        <p class="table-note">Indicative scheme; the depth required at each stage is set by the specification or the project plan. <span class="tag">Inferred</span></p>
+      </div>
+    </div>
+  </template>
+
+  <template id="l2-usos">
+    <div class="b-cards">
+      <div class="card w3">
+        <h4>From model to cost estimate</h4>
+        <p>If every item in the price database and every object in the model carry the same code, the quantity take-off groups itself. That is why many countries tied their classification to their price database or their standard specification.</p>
+      </div>
+      <div class="card w3">
+        <h4>From model to maintenance</h4>
+        <p>The facility manager needs to recognise the asset (a pump, a fire door) even when the design model no longer exists. The product or system code travels with the handover data.</p>
+      </div>
+      <div class="card w3 g">
+        <h4>Search and filter</h4>
+        <p>A viewer does not understand “FACH_tipo_A”, but it does group by a classification field. Selection sets, smart views and schedules are built once and work for every project.</p>
+      </div>
+      <div class="card w3 y">
+        <h4>Request and check</h4>
+        <p>Information requirements are written by class: “all objects of class X must have property Y”. Without classification, the requirement does not know which objects it applies to.</p>
+      </div>
+    </div>
+  </template>
+
+  <template id="l2-elegir">
+    <div class="b-cards">
+      <div class="card w3">
+        <h4>How to read the table</h4>
+        <p>Early cost estimates are made by elements and systems, because it is not yet known which product will be bought. Construction quantities are measured by work (work items). Maintenance looks at products (what has to be replaced) within spaces.</p>
+      </div>
+      <div class="card w3 g">
+        <h4>In practice</h4>
+        <ul>
+          <li>Write down the list of uses for the project.</li>
+          <li>Choose one table for each use, not two.</li>
+          <li>State which object categories carry each table.</li>
+          <li>Leave the other tables as optional.</li>
+        </ul>
+      </div>
+      <div class="card w6 k">
+        <h4>Beware of mixing</h4>
+        <p>Putting an elements code for some objects and a products code for others in the same field breaks any filter. Each table, its own field.</p>
+      </div>
+    </div>
+  </template>
+
+  <template id="l2-diccionario">
+    <div class="b-cards">
+      <div class="card w3">
+        <h4>What a data dictionary is</h4>
+        <p>A published list of classes and properties, each with a definition, unit, value type and a unique, stable identifier (often a web address). It is governed by ISO 12006-3 and the ISO 23386 / ISO 23387 series.</p>
+      </div>
+      <div class="card w3 y">
+        <span class="c-label">Key idea</span>
+        <p>The classification code says which class the object belongs to; the dictionary says which properties are expected for that class and what each one means.</p>
+      </div>
+      <div class="card w6">
+        <h4>Text versus link</h4>
+        <div class="table-wrap"><table>
+          <thead><tr><th></th><th>Code as text</th><th>Code as link</th></tr></thead>
+          <tbody>
+            <tr><td>What the object stores</td><td>“TT_11_22”</td><td>“TT_11_22” + address of its definition</td></tr>
+            <tr><td>Edition</td><td>Has to be assumed</td><td>Comes in the link</td></tr>
+            <tr class="is-key"><td>A machine can</td><td>Compare text strings</td><td>Read definition, properties and translations</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+    </div>
+  </template>
+
+  <template id="l2-regla">
+    <div class="b-cards">
+      <div class="card w3">
+        <h4>Where it is written</h4>
+        <p>In the client’s requirements and in the project execution plan: system, tables, edition, which objects it applies to, which field it goes in and how it will be checked. If the client does not ask for it, the team proposes it and the client accepts it.</p>
+      </div>
+      <div class="card w3 g">
+        <h4>Why the edition</h4>
+        <p>Tables are revised: codes are added, split and sometimes withdrawn. A code without an edition may not exist in the version someone else uses, or may mean something different. The safe approach is to fix an edition at the start and change it only by explicit decision.</p>
+      </div>
+      <div class="card w6">
+        <div class="callout check">
+          <span class="kicker-y">Before modelling</span>
+          <ul class="checklist">
+            <li>System and tables per use, in writing.</li>
+            <li>Edition fixed (date or version).</li>
+            <li>List of object categories that carry a code, and to what level.</li>
+            <li>Field or property where each table goes.</li>
+            <li>Templates and libraries already classified.</li>
+            <li>Automatic check before every delivery.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </template>
+  <template id="l2-iso">
+    <div class="b-cards">
+      <div class="card w3">
+        <h4>What the standard does</h4>
+        <p>ISO 12006-2:2015 organises construction information into resources, processes, results and properties, and proposes a list of tables (construction complexes, construction entities, spaces, elements, work results, products, agents, aids, information, stages, properties…).</p>
+        <p>It says so itself: it gives recommended table titles, not their content. That is why two systems that comply with the standard do not have the same codes.</p>
+      </div>
+      <div class="card w3 g">
+        <h4>Under revision</h4>
+        <p>The new edition will be titled <em>Framework for classification and breakdown structures</em>: it adds breakdown structures and the whole life cycle. There are public BSI and DIN drafts from 2025; the final publication date is <span class="tag">To be confirmed</span>.</p>
+      </div>
+      <div class="card w6">
+        <h4>The framework tables and their equivalents</h4>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Framework table</th><th>Uniclass</th><th>OmniClass</th><th>Example</th></tr></thead>
+          <tbody>
+            <tr><td>Construction complexes</td><td class="mono">Co</td><td class="mono">11 · 12</td><td>A campus</td></tr>
+            <tr><td>Construction entities</td><td class="mono">En</td><td class="mono">11 · 12</td><td>An office building</td></tr>
+            <tr><td>Spaces</td><td class="mono">SL</td><td class="mono">13 · 14</td><td>An office</td></tr>
+            <tr class="is-key"><td>Elements</td><td class="mono">EF · Ss</td><td class="mono">21</td><td>A wall</td></tr>
+            <tr><td>Work results</td><td class="mono">Ss</td><td class="mono">22</td><td>Brickwork</td></tr>
+            <tr><td>Products</td><td class="mono">Pr</td><td class="mono">23</td><td>A plasterboard sheet</td></tr>
+            <tr><td>Stages and activities</td><td class="mono">Ac · PM</td><td class="mono">31 · 32</td><td>Design, testing</td></tr>
+            <tr><td>Information</td><td class="mono">FI</td><td class="mono">36</td><td>A 3D model</td></tr>
+            <tr><td>Properties</td><td class="mono">PC</td><td class="mono">49</td><td>Fire resistance</td></tr>
+          </tbody>
+        </table></div>
+        <p class="table-note">Approximate mapping: each system divides elements in its own way (Uniclass separates function EF and system Ss). <span class="tag">Inferred</span></p>
+      </div>
+      <div class="card w6"><p class="table-note" style="margin:0">Sources: <a href="https://www.iso.org/standard/61753.html" target="_blank" rel="noopener">ISO 12006-2:2015</a> · <a href="https://standardsdevelopment.bsigroup.com/projects/2022-02317" target="_blank" rel="noopener">BSI, revision in progress</a> · <a href="https://itc.scix.net/pdfs/w78-2016-paper-038.pdf" target="_blank" rel="noopener">CIB W78 2016</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-mapa">
+    <div class="b-cards">
+      <div class="card w3">
+        <h4>Why each has its own</h4>
+        <p>Classification was born to organise specifications and prices, and each country had its own. Uniclass links to NBS specifications and to the NRM measurement rules; MasterFormat, to the North American specification; DIN 276, to German cost planning.</p>
+      </div>
+      <div class="card w3 g">
+        <h4>What is not clear</h4>
+        <ul>
+          <li>Latin America: the national standards of Chile and Colombia compare systems, but which one they require has not been confirmed. <span class="tag">To be confirmed</span></li>
+          <li>Australia: NATSPEC adopted Uniclass. New Zealand, France and Singapore: <span class="tag">To be confirmed</span></li>
+          <li>Exact NL-SfB titles (21 = external walls). <span class="tag">To be confirmed</span></li>
+        </ul>
+      </div>
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>System</th><th>Type</th><th>Tables</th><th>Revision cycle</th></tr></thead>
+          <tbody>
+            <tr class="is-key"><td>Uniclass</td><td>Faceted</td><td>15</td><td>Quarterly</td></tr>
+            <tr><td>OmniClass</td><td>Faceted</td><td>15</td><td>Tables from 2010–2013</td></tr>
+            <tr><td>MasterFormat</td><td>Enumerative (work)</td><td>1</td><td>2020 edition</td></tr>
+            <tr><td>UniFormat II (ASTM E1557)</td><td>Enumerative (elements)</td><td>1</td><td>ASTM standard</td></tr>
+            <tr><td>CCI</td><td>Faceted + designation</td><td>Several, ISO 81346-12</td><td>Active</td></tr>
+            <tr><td>CoClass</td><td>Faceted</td><td>Several</td><td>Active</td></tr>
+            <tr><td>NL-SfB</td><td>Enumerative</td><td>1</td><td>Stable</td></tr>
+            <tr><td>DIN 276</td><td>Enumerative (costs)</td><td>1</td><td>2018 edition</td></tr>
+            <tr><td>GuBIMclass</td><td>Enumerative (function)</td><td>1</td><td>v1.2 from 2017</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w6"><p class="table-note" style="margin:0">Sources: <a href="https://www.mdpi.com/2075-5309/12/5/656" target="_blank" rel="noopener">comparative study (MDPI Buildings, 2022)</a> · <a href="https://www.thenbs.com/knowledge/the-adoption-of-uniclass-2015-in-australia" target="_blank" rel="noopener">NBS: Uniclass in Australia</a> · <a href="https://www.digigo.nu/wp-content/uploads/2023/11/White_Paper_NL-SfB.pdf" target="_blank" rel="noopener">DigiGO: NL-SfB</a> · <a href="https://www.dinmedia.de/de/norm/din-276/293154016" target="_blank" rel="noopener">DIN 276</a> · <a href="https://www.buildbim.cl/wp-content/uploads/2020/02/BuildBIM_Tabla-Comparativa-de-Sistemas-de-Clasificación-1-op.pdf" target="_blank" rel="noopener">BuildBIM (Chile)</a> · <a href="https://bim.minvivienda.gov.co/sites/default/files/doc-bim-2022-09/estandar-bim_alta-resolucion_v1.1.pdf" target="_blank" rel="noopener">Colombian BIM standard</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-uniclass">
+    <div class="b-cards">
+      <div class="card w3">
+        <h4>How it is written</h4>
+        <p>Two table letters and pairs of digits separated by underscores: <code>Ss_25_10_30_35</code> is group 25 (wall and barrier systems), subgroup 10 (framed wall systems), section 30 (framed partition systems) and object 35 (plasterboard).</p>
+        <p>NBS publishes each table with its version number: in July 2026, Ss and Pr were at 1.43.</p>
+      </div>
+      <div class="card w3 y">
+        <span class="c-label">New in July 2026</span>
+        <p>42 new codes and 5 modified, a mapping to the NRM3 measurement rules and a search tool for withdrawn codes with their replacement. Proof that you have to fix the edition.</p>
+      </div>
+      <div class="card w6">
+        <h4>The 15 tables</h4>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Table</th><th>Classifies</th><th>Table</th><th>Classifies</th></tr></thead>
+          <tbody>
+            <tr><td class="mono">Co</td><td>Complexes</td><td class="mono">TE</td><td>Tools and equipment</td></tr>
+            <tr><td class="mono">En</td><td>Entities</td><td class="mono">PM</td><td>Project management</td></tr>
+            <tr><td class="mono">SL</td><td>Spaces / locations</td><td class="mono">Ro</td><td>Roles</td></tr>
+            <tr class="is-key"><td class="mono">EF</td><td>Elements / functions</td><td class="mono">RK</td><td>Risk</td></tr>
+            <tr class="is-key"><td class="mono">Ss</td><td>Systems</td><td class="mono">Ma</td><td>Materials</td></tr>
+            <tr class="is-key"><td class="mono">Pr</td><td>Products</td><td class="mono">PC</td><td>Properties and characteristics</td></tr>
+            <tr><td class="mono">Ac</td><td>Activities</td><td class="mono">FI</td><td>Form of information</td></tr>
+            <tr><td class="mono">Zz</td><td>CAD (layers)</td><td></td><td></td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w6"><p class="table-note" style="margin:0">Sources: <a href="https://uniclass.thenbs.com/Download" target="_blank" rel="noopener">Uniclass: download, versions and licence</a> · <a href="https://www.thenbs.com/knowledge/uniclass-july-2026-update" target="_blank" rel="noopener">July 2026 update</a> · <a href="https://uniclass.thenbs.com/taxon/ss_25_10_30_35" target="_blank" rel="noopener">Ss_25_10_30_35</a> · <a href="https://uniclass.thenbs.com/taxon/ef_25_10" target="_blank" rel="noopener">EF_25_10</a> · <a href="https://uniclass.thenbs.com/taxon/sl_20_15_59" target="_blank" rel="noopener">SL_20_15_59</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-omniclass">
+    <div class="b-cards">
+      <div class="card w3">
+        <h4>Where it comes from</h4>
+        <p>OmniClass brings together earlier systems: MasterFormat for work results (table 22), UniFormat for elements (table 21) and EPIC for products (table 23). It follows the ISO 12006-2 framework.</p>
+        <p>Codes use a hyphen and spaces: <code>13-15 11 34 11</code>. Revit ships table 23 in the “OmniClass Number” type parameter.</p>
+      </div>
+      <div class="card w3 g">
+        <h4>Status</h4>
+        <p>In the US National BIM Standard (NBIMS-US V3) some tables are standards and others remain drafts, dated between 2010 and 2013. No recent revisions have been found <span class="tag">To be confirmed</span>. MasterFormat, on the other hand, is maintained: 2020 edition.</p>
+      </div>
+      <div class="card w6">
+        <div class="table-wrap"><table>
+          <thead><tr><th>System</th><th>Organises</th><th>Code</th><th>Meaning</th></tr></thead>
+          <tbody>
+            <tr><td>UniFormat II</td><td>Elements</td><td class="mono">B2010</td><td>Exterior walls</td></tr>
+            <tr><td>UniFormat II</td><td>Elements</td><td class="mono">C1010</td><td>Partitions</td></tr>
+            <tr class="is-key"><td>MasterFormat</td><td>Specification work results</td><td class="mono">03 30 00</td><td>Cast-in-place concrete</td></tr>
+            <tr><td>OmniClass 13</td><td>Spaces by function</td><td class="mono">13-15 11 34 11</td><td>Office</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w6"><p class="table-note" style="margin:0">Sources: <a href="https://www.csiresources.org/standards-omniclass-about" target="_blank" rel="noopener">CSI: About OmniClass</a> · <a href="https://www.nibs.org/files/pdfs/nbimsv3/NBIMS-US_V3_2.4_OmniClass_Intro.pdf" target="_blank" rel="noopener">NBIMS-US V3, OmniClass</a> · <a href="https://www.csiresources.org/mf-faqs" target="_blank" rel="noopener">MasterFormat FAQ</a> · <a href="https://nvlpubs.nist.gov/nistpubs/Legacy/IR/nistir6389.pdf" target="_blank" rel="noopener">NISTIR 6389 (UniFormat II)</a> · <a href="https://www.thenbs.com/knowledge/omniclass-a-critique" target="_blank" rel="noopener">NBS: OmniClass, a critique</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-cci">
+    <div class="b-cards">
+      <div class="card w3">
+        <h4>Classification plus identification</h4>
+        <p>ISO/IEC 81346 comes from industry: every component of a plant carries a designation that combines aspects. Part 12 (2018) provides the classes for construction works and building services, based on the Danish CCS and on CoClass.</p>
+        <p>CCI (Construction Classification International) is its application, developed by Molio with partners from Czechia, Estonia, Poland and Slovakia.</p>
+      </div>
+      <div class="card w3 g">
+        <h4>What the aspect is for</h4>
+        <p>A pump is one physical component (product), performs the function “pump water to the tank” (function) and sits in the plant room (location). If it is replaced by another model, the product changes but the function does not: maintenance keeps its history.</p>
+      </div>
+      <div class="card w6 k">
+        <h4>CCI in an IFC (published in bSDD)</h4>
+<pre><code>#1=IFCCLASSIFICATION('Molio','1.0','2023-08-27','CCI Construction',$,
+   'https://identifier.buildingsmart.org/uri/molio/cciconstruction/1.0',('.'));
+#2=IFCCLASSIFICATIONREFERENCE(
+   'https://identifier.buildingsmart.org/uri/molio/cciconstruction/1.0/class/L-BD',
+   'L-BD','Wall structure',#1,$,$);</code></pre>
+      </div>
+      <div class="card w6"><p class="table-note" style="margin:0">Sources: <a href="https://connect.snv.ch/en/iso-81346-12-2018" target="_blank" rel="noopener">ISO 81346-12:2018</a> · <a href="https://globalbim.org/info-collection/cci-a-classification-system-for-the-21st-century/" target="_blank" rel="noopener">CCI, a system for the 21st century</a> · <a href="https://raw.githubusercontent.com/buildingSMART/bSDD/master/Documentation/bSDD-IFC%20documentation.md" target="_blank" rel="noopener">bSDD: referencing in IFC and IDS</a> · <a href="https://vbn.aau.dk/ws/files/777678026/2025-04-28_Klassifikationssystemer.pdf" target="_blank" rel="noopener">Aalborg University, 2025</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-espana">
+    <div class="b-cards">
+      <div class="card w3">
+        <h4>GuBIMclass</h4>
+        <p>It was created by the Catalan BIM user group (GuBIMCat) in 2017 from the classification used by Infraestructures.cat, after reviewing OmniClass, UniFormat, MasterFormat, Uniclass and SfB. Criterion: the main function of the element, so that the code does not change between stages.</p>
+        <p>Version 1.2 (November 2017) is the latest published in its official repository, in Spanish and Catalan, with files for Archicad, Revit and Navisworks.</p>
+      </div>
+      <div class="card w3 g">
+        <h4>Other systems in use</h4>
+        <ul>
+          <li><strong>AeasBIMClass</strong> (water sector, AEAS): four tables, for example <code>AO.03.03.01.01.00</code>, horizontal centrifugal pump.</li>
+          <li><strong>BC3 cost item code</strong> (FIEBDC-3 format): links the model to the project’s price database.</li>
+          <li>Uniclass, in international teams.</li>
+        </ul>
+        <p>That no national regulation mandates a table is <span class="tag">To be confirmed</span>.</p>
+      </div>
+      <div class="card w6">
+        <h4>The nine groups of GuBIMclass 1.2</h4>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Code</th><th>Group</th><th>Code</th><th>Group</th></tr></thead>
+          <tbody>
+            <tr><td class="mono">00</td><td>Preliminary works and general setting out</td><td class="mono">50</td><td>Conditioning, building services and utilities</td></tr>
+            <tr><td class="mono">10</td><td>Site preparation and foundations</td><td class="mono">60</td><td>Equipment and furniture</td></tr>
+            <tr><td class="mono">20</td><td>Structural system</td><td class="mono">70</td><td>External works</td></tr>
+            <tr><td class="mono">30</td><td>Envelope and exterior finishes</td><td class="mono">80</td><td>Temporary works and installations</td></tr>
+            <tr class="is-key"><td class="mono">40</td><td>Partitioning and interior finishes</td><td></td><td></td></tr>
+          </tbody>
+        </table></div>
+        <p class="table-note">533 codes: 9 at level 1, 39 at level 2, 123 at level 3 and 362 at level 4 (own count on the official Spanish 1.2 table).</p>
+      </div>
+      <div class="card w6"><p class="table-note" style="margin:0">Sources: <a href="https://github.com/GuBIMCat/GuBIMClass" target="_blank" rel="noopener">GuBIMCat: official GuBIMclass repository</a> · <a href="https://www.bimcommunity.com/?p=53519" target="_blank" rel="noopener">GuBIMclass 1.2 for Archicad</a> · <a href="https://www.mapa.gob.es/dam/jcr:9ae873eb-f5cb-4eeb-b1f4-89c28a7fe43e/6.%20Presentaci%C3%B3n%20Ministerio%20Agricultura%20-%20AeasBIMClass%202026.pdf" target="_blank" rel="noopener">AeasBIMClass (MAPA, 2026)</a> · <a href="https://mapa.gob.es/images/ca/ponencia2_tcm34-631232.pdf" target="_blank" rel="noopener">survey of water-sector tender specifications (2022)</a>.</p></div>
+    </div>
+  </template>
+  <template id="l2-revit">
+    <div class="b-cards">
+      <div class="card w3">
+        <h4>How the IFC exporter reads it</h4>
+        <ol class="vsteps">
+          <li>If the type has an <code>Assembly Code</code>, it creates the “Uniformat” classification without anyone asking for it.</li>
+          <li>It reads <code>ClassificationCode</code> and <code>ClassificationCode(2)</code> to <code>(10)</code>, or the names set in <span class="ui">Export IFC › Modify Setup › Classification Settings</span>.</li>
+          <li>It splits system, code and title using the syntax <code>[System]code:title</code>.</li>
+          <li>It creates one <code>IfcClassification</code> per system and one reference per code.</li>
+        </ol>
+      </div>
+      <div class="card w3 y">
+        <span class="c-label">The trap</span>
+        <p>If the value does not carry the system in square brackets and no system is configured, the IFC comes out with a system called <strong>“Default Classification”</strong>. Any requirement expecting “Uniclass” or “GuBIMclass” fails.</p>
+      </div>
+      <div class="card w6">
+        <h4>Example parameter values</h4>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Value entered</th><th>System in the IFC</th><th>Code</th></tr></thead>
+          <tbody>
+            <tr class="is-key"><td class="mono">[Uniclass]Ss_25_10_30_35:Gypsum board partition systems</td><td>Uniclass</td><td class="mono">Ss_25_10_30_35</td></tr>
+            <tr><td class="mono">[GuBIMclass]40.10.10.10:Tabiques</td><td>GuBIMclass</td><td class="mono">40.10.10.10</td></tr>
+            <tr><td class="mono">40.10.10.10</td><td>Default Classification</td><td class="mono">40.10.10.10</td></tr>
+          </tbody>
+        </table></div>
+        <p class="table-note">The classification settings also hold the source, edition, date and web address of each system. GuBIMCat also publishes the table as an Assembly Code file and as a database for the Classification Manager add-in.</p>
+      </div>
+      <div class="card w6"><p class="table-note" style="margin:0">Sources: <a href="https://raw.githubusercontent.com/Autodesk/revit-ifc/master/Source/Revit.IFC.Export/Exporter/PropertySet/ClassificationUtil.cs" target="_blank" rel="noopener">Revit IFC exporter source code (ClassificationUtil.cs)</a> · <a href="https://wiki.osarch.org/index.php/Revit_setup_for_OpenBIM/Revit_IFC_classifications" target="_blank" rel="noopener">OSArch: IFC classifications in Revit</a> · <a href="https://user.buildingsmart.org/knowledge-base/how-to-deal-with-ifcclassification-using-revit-2020/" target="_blank" rel="noopener">buildingSMART: IfcClassification with Revit</a> · <a href="https://github.com/GuBIMCat/GuBIMClass" target="_blank" rel="noopener">GuBIMclass for Revit</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-archicad">
+    <div class="b-cards">
+      <div class="card w3">
+        <h4>How it works</h4>
+        <p>The Classification Manager stores systems with name, version, date and source. Each element, zone or property can carry one class from each system, and properties can depend on the class.</p>
+        <p>The IFC translator maps each system to its own <code>IfcClassification</code>.</p>
+      </div>
+      <div class="card w3 g">
+        <h4>How systems get in</h4>
+        <ul>
+          <li>Classification Manager XML (GuBIMclass publishes its own, in Spanish and Catalan).</li>
+          <li>Graphisoft BIM content packages by country.</li>
+          <li>From an IDS, which brings properties and classifications (Archicad 28).</li>
+          <li>Direct connection to bSDD: <span class="tag">To be confirmed</span></li>
+        </ul>
+      </div>
+      <div class="card w6 k">
+        <h4>Predefined rules</h4>
+        <p>The GuBIMclass package includes rules that assign the code by tool and element attributes. Review them: they classify by how it was modelled (Wall tool), not always by function (a parapet modelled as a wall).</p>
+      </div>
+      <div class="card w6"><p class="table-note" style="margin:0">Sources: <a href="https://help.graphisoft.com/AC/28/INT/_AC28_Help/045_PropertiesClassifications/045_PropertiesClassifications-1.htm" target="_blank" rel="noopener">Archicad 28: properties and classifications</a> · <a href="https://help.graphisoft.com/AC/28/INT/_AC28_Help/120_Interoperability/120_Interoperability-17.htm" target="_blank" rel="noopener">importing with IDS</a> · <a href="https://www.graphisoft.com/en-us/downloads/archicad/bim_data/" target="_blank" rel="noopener">BIM content packages</a> · <a href="https://www.bimcommunity.com/?p=53519" target="_blank" rel="noopener">GuBIMclass 1.2 for Archicad 21</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-otros">
+    <div class="b-cards">
+      <div class="card w3">
+        <h4>Bonsai and IfcOpenShell</h4>
+        <p>They work directly on the IFC: they load a system from a library, add references to types or elements and search bSDD classes from the panel. Instances inherit the code from their type.</p>
+      </div>
+      <div class="card w3 g">
+        <h4>Presto and the cost estimate</h4>
+        <p>With the Cost-It add-in, each Revit type is linked to a BC3 cost item and Presto takes off quantities from the model. The cost item code works as a cost classification, separate from the element one.</p>
+      </div>
+      <div class="card w6">
+        <h4>What to check in any program</h4>
+        <ul class="checklist">
+          <li>Is the type, the instance or both classified?</li>
+          <li>Does the exporter write the exact system name and its edition?</li>
+          <li>Does it support several systems at once?</li>
+          <li>Can it import the official table instead of typing it in?</li>
+        </ul>
+        <p class="table-note">Details for Allplan, Vectorworks and Tekla in their documentation; not every version has been verified. <span class="tag">To be confirmed</span></p>
+      </div>
+      <div class="card w6"><p class="table-note" style="margin:0">Sources: <a href="https://support.tekla.com/article/how-to-add-classification-code-to-objects-in-organizer-and-export-it-to-ifc" target="_blank" rel="noopener">Tekla: code in Organizer and IFC</a> · <a href="https://help.bricsys.com/en-us/document/bricscad-bim/building-data/classification-codes" target="_blank" rel="noopener">BricsCAD: classification codes</a> · <a href="https://docs.ifcopenshell.org/bsdd.html" target="_blank" rel="noopener">IfcOpenShell and bSDD</a> · <a href="https://editeca.com/wp-content/uploads/2024/07/Mediciones-cost-it-y-presto.pdf" target="_blank" rel="noopener">Cost-It and Presto</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-bsdd">
+    <div class="b-cards">
+      <div class="card w3">
+        <h4>What it is</h4>
+        <p>The buildingSMART Data Dictionary is the former IFD library. It applies ISO 12006-3, 23386 and 23387: classes and properties with a definition, translations, relations and a web address that does not change.</p>
+        <p>Each publisher (NBS, Molio, ETIM, buildingSMART…) publishes its dictionary in versions: preview, active, inactive.</p>
+      </div>
+      <div class="card w3 y">
+        <span class="c-label">Key idea</span>
+        <p>With bSDD the code stops being loose text: the IFC stores the class address and anyone can read what it means, in which version and with which properties.</p>
+      </div>
+      <div class="card w6">
+        <h4>Relations between classes</h4>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Relation</th><th>What it is for</th></tr></thead>
+          <tbody>
+            <tr class="is-key"><td>IsEqualTo / IsSimilarTo</td><td>Equivalences between different systems</td></tr>
+            <tr><td>IsChildOf / IsParentOf</td><td>The hierarchy within a system</td></tr>
+            <tr><td>HasPart / IsPartOf</td><td>Composition</td></tr>
+            <tr><td>Related IFC class</td><td>Which IFC entity the class is used with</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w6"><p class="table-note" style="margin:0">Sources: <a href="https://www.buildingsmart.org/users/services/buildingsmart-data-dictionary" target="_blank" rel="noopener">buildingSMART: bSDD</a> · <a href="https://technical.buildingsmart.org/?p=4578" target="_blank" rel="noopener">bSDD data structure</a> · <a href="https://github.com/buildingSMART/bSDD" target="_blank" rel="noopener">bSDD on GitHub</a> · <a href="https://www.thenbs.com/knowledge/what-is-the-buildingsmart-data-dictionary" target="_blank" rel="noopener">NBS: what is bSDD</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-visores">
+    <div class="b-cards">
+      <div class="card w3">
+        <h4>Official search tools</h4>
+        <ul>
+          <li><a href="https://uniclass.thenbs.com" target="_blank" rel="noopener">Uniclass</a>: search, Excel download, versions and withdrawn codes.</li>
+          <li><a href="https://search.bsdd.buildingsmart.org" target="_blank" rel="noopener">bSDD</a>: all published dictionaries.</li>
+          <li><a href="https://github.com/GuBIMCat/GuBIMClass" target="_blank" rel="noopener">GuBIMclass</a>: table in Excel and PDF.</li>
+        </ul>
+      </div>
+      <div class="card w3 g">
+        <h4>In the viewer</h4>
+        <p>A view coloured by code reveals at a glance what is missing: everything grey is unclassified. Saved as a template, it works on every project using the same system.</p>
+        <p>BIMcollab Zoom also lets you classify in the viewer (Smart Properties) when you cannot go back to the original model.</p>
+      </div>
+      <div class="card w6 k">
+        <h4>Beware of classifying in the viewer</h4>
+        <p>What you add in the viewer does not go back to the authoring model. It is fine for coordinating or taking off a delivery, but the right code has to originate in the original. <span class="tag">Inferred</span></p>
+      </div>
+      <div class="card w6"><p class="table-note" style="margin:0">Sources: <a href="https://www.bimcollab.com/en/go/smart-properties" target="_blank" rel="noopener">BIMcollab: Smart Properties</a> · <a href="https://help.solibri.com/hc/en-us/articles/1500003953741" target="_blank" rel="noopener">Solibri: Classification</a> · <a href="https://github.com/GuBIMCat/GuBIMClass" target="_blank" rel="noopener">GuBIMclass for Navisworks</a>.</p></div>
+    </div>
+  </template>
+  <template id="l2-ifc">
+    <div class="b-cards">
+      <div class="card w4 k">
+        <h4>A classified wall, in the file</h4>
+<pre><code>#6=IFCCLASSIFICATION('NBS','2026-07',$,'Uniclass',$,$,$);
+#11=IFCCLASSIFICATIONREFERENCE($,'EF_25_10','Walls',#6,$,$);
+#10=IFCWALL('3B0hS1v2X5…',$,'Muro ext. 30',…);
+#12=IFCRELASSOCIATESCLASSIFICATION('3EE4M4iF…',$,$,$,(#10,#13),#11);</code></pre>
+        <p class="table-note">IFC4 generated and read with IfcOpenShell 0.9.0. A single relationship associates the same code with several objects.</p>
+      </div>
+      <div class="card w2 y">
+        <h4>Lightweight or full</h4>
+        <p>Lightweight: the reference points directly to the system. Full: it points to its parent code, which points to its own, and the IFC reproduces the hierarchy.</p>
+      </div>
+      <div class="card w6">
+        <h4>What changes between versions</h4>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Data</th><th>IFC2x3</th><th>IFC4</th><th>IFC4.3</th><th>IDS 1.0</th></tr></thead>
+          <tbody>
+            <tr><td>System name</td><td class="mono">Name</td><td class="mono">Name</td><td class="mono">Name</td><td class="mono">system</td></tr>
+            <tr><td>Edition</td><td>Mandatory</td><td>Optional</td><td>Optional</td><td>—</td></tr>
+            <tr><td>System web address</td><td>—</td><td class="mono">Location</td><td class="mono">Specification</td><td class="mono">uri</td></tr>
+            <tr class="is-key"><td>Code</td><td class="mono">ItemReference</td><td class="mono">Identification</td><td class="mono">Identification</td><td class="mono">value</td></tr>
+            <tr><td>Code separators</td><td>—</td><td class="mono">ReferenceTokens</td><td class="mono">ReferenceTokens</td><td>—</td></tr>
+          </tbody>
+        </table></div>
+        <p class="table-note">If the type is classified, its instances inherit the code. Materials are classified separately.</p>
+      </div>
+      <div class="card w6"><p class="table-note" style="margin:0">Sources: <a href="https://raw.githubusercontent.com/buildingSMART/IFC4.3.x-development/master/docs/schemas/resource/IfcExternalReferenceResource/Entities/IfcClassification.md" target="_blank" rel="noopener">IfcClassification</a> · <a href="https://raw.githubusercontent.com/buildingSMART/IFC4.3.x-development/master/docs/schemas/resource/IfcExternalReferenceResource/Entities/IfcClassificationReference.md" target="_blank" rel="noopener">IfcClassificationReference</a> · <a href="https://standards.buildingsmart.org/IFC/DEV/IFC4_3/HTML/lexical/IfcRelAssociatesClassification.html" target="_blank" rel="noopener">IfcRelAssociatesClassification</a> · <a href="https://technical.buildingsmart.org/services/bsdd/referencing-bsdd-in-ids-and-ifc/" target="_blank" rel="noopener">buildingSMART: referencing bSDD in IFC and IDS</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-mapeo">
+    <div class="b-cards">
+      <div class="card w3">
+        <h4>Why there is no exact equivalence</h4>
+        <p>GuBIMclass classifies by main function; Uniclass separates function (EF) and technical solution (Ss); UniFormat, by elements for cost. A “partition” in one system may be a wall, a framed system or a masonry system in another.</p>
+      </div>
+      <div class="card w3 g">
+        <h4>How to do it right</h4>
+        <ul>
+          <li>Each system in its own <code>IfcClassification</code>, never two in the same field.</li>
+          <li>The mapping, in a versioned project or company table.</li>
+          <li>If both systems are in bSDD, their equivalence relations.</li>
+          <li>The cost estimate code (BC3) as just another system.</li>
+        </ul>
+      </div>
+      <div class="card w6">
+        <h4>One partition, four systems at once</h4>
+        <div class="table-wrap"><table>
+          <thead><tr><th>System in the IFC</th><th>Code</th><th>For whom</th></tr></thead>
+          <tbody>
+            <tr class="is-key"><td>GuBIMclass</td><td class="mono">40.10.10.10</td><td>Catalan public client</td></tr>
+            <tr><td>Uniclass</td><td class="mono">Ss_25_10_30_35</td><td>International partner</td></tr>
+            <tr><td>Project cost estimate (BC3)</td><td class="mono">cost item code</td><td>Quantity take-off</td></tr>
+            <tr><td>COBie (Category column)</td><td class="mono">Ss_25_10_30_35: Gypsum board…</td><td>Maintenance</td></tr>
+          </tbody>
+        </table></div>
+        <p class="table-note">Illustrative example. NBS also maintains the mapping of Uniclass to the UK NRM measurement rules.</p>
+      </div>
+      <div class="card w6"><p class="table-note" style="margin:0">Sources: <a href="https://technical.buildingsmart.org/?p=4578" target="_blank" rel="noopener">bSDD: relations between classes</a> · <a href="https://www.thenbs.com/knowledge/uniclass-july-2026-update" target="_blank" rel="noopener">Uniclass and NRM3</a> · <a href="https://nibs.org/nbims/v3/cobie/4-3/" target="_blank" rel="noopener">COBie (NBIMS-US V3)</a> · <a href="https://vbn.aau.dk/ws/files/777678026/2025-04-28_Klassifikationssystemer.pdf" target="_blank" rel="noopener">Aalborg University: translating between systems</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-errores">
+    <ol class="errors">
+      <li>Classifying by the program’s category: a parapet or a plinth modelled as a wall are not walls.</li>
+      <li>Exporting without a system name or edition: the IFC says “Default Classification”.</li>
+      <li>Writing the system differently from the requirement: “Uniclass 2015”, “UniClass”, “Uniclass ” with a space.</li>
+      <li>Mixing tables in the same field: products where systems were required.</li>
+      <li>Storing the whole “Ss_25_10_30_35 Gypsum board…” in the code: filtering by code no longer works.</li>
+      <li>Using a custom property (“Classification_code”) instead of IFC classification: the IDS requirement must use the classification facet.</li>
+      <li>Classifying types in one model and instances in another without saying so.</li>
+      <li>Copying codes from an old table: the code may have been withdrawn.</li>
+    </ol>
+  </template>
+
+  <template id="l2-calidad">
+    <div class="b-cards">
+      <div class="card w3">
+        <h4>What can be automated</h4>
+        <p>The first three questions (has a code, from the exact system, from the right table) fit in an IDS. Whether the code exists in the agreed edition needs the official code list. Whether it fits the object (a door code on a wall) can only be narrowed down with rules.</p>
+      </div>
+      <div class="card w3 y">
+        <span class="c-label">Key idea</span>
+        <p>Check at every delivery, not at the end: a code wrongly assigned to a family or type is repeated in all its instances.</p>
+      </div>
+      <div class="card w6">
+        <div class="callout check">
+          <span class="kicker-y">Control checklist</span>
+          <ul class="checklist">
+            <li>Classification IDS run on every IFC.</li>
+            <li>Codes compared with the table of the agreed edition.</li>
+            <li>View coloured by code: nothing grey.</li>
+            <li>Human sampling of doubtful classes.</li>
+            <li>Report attached to the delivery (BCF, HTML or spreadsheet).</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <template id="l2-ids">
+    <div class="b-cards">
+      <div class="card w4 k">
+        <h4>Every wall, with Uniclass code EF_25_10 or a child</h4>
+<pre><code>&lt;ids:specification name="Walls with Uniclass code EF_25_10"
+    ifcVersion="IFC4 IFC4X3_ADD2"&gt;
+  &lt;ids:applicability minOccurs="1" maxOccurs="unbounded"&gt;
+    &lt;ids:entity&gt;&lt;ids:name&gt;
+      &lt;ids:simpleValue&gt;IFCWALL&lt;/ids:simpleValue&gt;
+    &lt;/ids:name&gt;&lt;/ids:entity&gt;
+  &lt;/ids:applicability&gt;
+  &lt;ids:requirements&gt;
+    &lt;ids:classification cardinality="required"&gt;
+      &lt;ids:value&gt;&lt;xs:restriction base="xs:string"&gt;
+        &lt;xs:pattern value="EF_25_10(_\d{2})*"/&gt;
+      &lt;/xs:restriction&gt;&lt;/ids:value&gt;
+      &lt;ids:system&gt;
+        &lt;ids:simpleValue&gt;Uniclass&lt;/ids:simpleValue&gt;
+      &lt;/ids:system&gt;
+    &lt;/ids:classification&gt;
+  &lt;/ids:requirements&gt;
+&lt;/ids:specification&gt;</code></pre>
+        <p class="table-note">Validated against the official IDS 1.0 schema and tested with IfcTester 0.9.0 on four test IFC files (table on the slide).</p>
+      </div>
+      <div class="card w2 y">
+        <h4>The small print</h4>
+        <ul>
+          <li><code>system</code> is compared with the system name exactly as written.</li>
+          <li><code>uri</code> is not checked.</li>
+          <li>A child code passes if its parent is in the IFC (full classification).</li>
+        </ul>
+      </div>
+      <div class="card w6">
+        <h4>Who reads it</h4>
+        <p>IfcTester (IfcOpenShell), Solibri, BIMcollab Zoom and more and more authoring programs. Archicad 28 also uses it the other way round: to import the properties and classifications it requires.</p>
+      </div>
+      <div class="card w6"><p class="table-note" style="margin:0">Sources: <a href="https://www.buildingsmart.org/?p=30065" target="_blank" rel="noopener">IDS 1.0, final standard (June 2024)</a> · <a href="https://raw.githubusercontent.com/buildingSMART/IDS/development/Documentation/UserManual/classification-facet.md" target="_blank" rel="noopener">IDS manual: classification facet</a> · <a href="https://raw.githubusercontent.com/buildingSMART/IDS/development/Schema/ids.xsd" target="_blank" rel="noopener">IDS 1.0 schema</a> · <a href="https://raw.githubusercontent.com/IfcOpenShell/IfcOpenShell/v0.8.0/src/ifctester/ifctester/facet.py" target="_blank" rel="noopener">IfcTester: facet.py</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-ifcopenshell">
+    <div class="b-cards">
+      <div class="card w4 k">
+        <h4>Auditing codes against the table</h4>
+<pre><code>import ifcopenshell
+import ifcopenshell.util.classification as uc
+from collections import Counter
+
+modelo = ifcopenshell.open("modelo.ifc")
+validos = set(open("tabla.txt").read().split())  # codes of the edition
+report = Counter()
+for el in modelo.by_type("IfcElement"):
+    refs = [r for r in uc.get_references(el)      # includes those of the type
+            if uc.get_classification(r).Name == "Uniclass"]
+    if not refs:
+        report["no code"] += 1
+    elif any(r.Identification not in validos for r in refs):
+        report["not in table"] += 1
+    else:
+        report["ok"] += 1
+print(dict(report))</code></pre>
+        <p class="table-note">Tested with IfcOpenShell 0.9.0. <code>tabla.txt</code> = the code column of the official Excel file for the agreed edition.</p>
+      </div>
+      <div class="card w2 y">
+        <h4>And the IDS</h4>
+<pre><code>python -m ifctester \
+  clasificacion.ids modelo.ifc \
+  -r Html -o informe.html</code></pre>
+        <p class="table-note">Reports in console, JSON, HTML, ODS, BCF or SQLite.</p>
+      </div>
+      <div class="card w6">
+        <h4>To fix in bulk</h4>
+<pre><code>import ifcopenshell.api
+sistema = ifcopenshell.api.run("classification.add_classification", modelo, classification="Uniclass")
+ifcopenshell.api.run("classification.add_reference", modelo, products=modelo.by_type("IfcWallType"),
+                     identification="EF_25_10", name="Walls", classification=sistema)</code></pre>
+        <p class="table-note">Classifying the type is enough: its instances inherit it. This fixes the deliverable, not the authoring model.</p>
+      </div>
+      <div class="card w6"><p class="table-note" style="margin:0">Sources: <a href="https://docs.ifcopenshell.org/ifctester.html" target="_blank" rel="noopener">IfcTester</a> · <a href="https://raw.githubusercontent.com/IfcOpenShell/IfcOpenShell/v0.8.0/src/ifcopenshell-python/ifcopenshell/api/classification/add_classification.py" target="_blank" rel="noopener">IfcOpenShell classification API</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-herramientas">
+    <div class="b-cards">
+      <div class="card w3">
+        <h4>In the source program</h4>
+        <ul>
+          <li>Revit: type schedule filtered by the empty parameter, and a view filter that colours each code.</li>
+          <li>Archicad: Find &amp; Select by classification and Graphic Override by class.</li>
+        </ul>
+      </div>
+      <div class="card w3 g">
+        <h4>In the viewer</h4>
+        <ul>
+          <li>Solibri: validation with IDS and rules on its own classification.</li>
+          <li>BIMcollab Zoom: Smart View coloured by code.</li>
+          <li>Navisworks: a “no code” search set that must come out empty.</li>
+        </ul>
+      </div>
+      <div class="card w6 k">
+        <h4>The check that counts</h4>
+        <p>The one on the delivered IFC. What looks right in the source program can be lost on export (unnamed system, unmapped parameter). <span class="tag">Inferred</span></p>
+      </div>
+    </div>
+  </template>
+
+  <template id="l2-glosario">
+<div class="b-cards"><div class="card w6">
+<dl class="glossary">
+      <dt>Classification</dt><dd>Grouping of objects into classes according to what they have in common, with one code per class.</dd>
+      <dt>Table</dt><dd>List of classes seen from a single point of view: spaces, elements, products…</dd>
+      <dt>Facet</dt><dd>Each independent view of an object; a faceted system combines several tables.</dd>
+      <dt>Identifier</dt><dd>Unique label of a specific object. It is not the class.</dd>
+      <dt>Reference designation</dt><dd>ISO 81346 identifier that combines function, product and location.</dd>
+      <dt>Edition</dt><dd>Version or date of the table used. Without it, the code may change meaning.</dd>
+      <dt>Data dictionary</dt><dd>Classes and properties published with a definition and a fixed web address (bSDD).</dd>
+      <dt>IfcClassification</dt><dd>The system inside the IFC: name, source, edition.</dd>
+      <dt>IfcClassificationReference</dt><dd>A specific code of the system.</dd>
+      <dt>Classification facet (IDS)</dt><dd>Requirement that asks objects for a system and a code.</dd>
+      <dt>Mapping</dt><dd>Correspondence table between two classification systems.</dd>
+    </dl>
+</div></div>
+  </template>
+
+  <template id="l2-fuentes">
+<div class="b-cards"><div class="card w6">
+<p>Official sources first: the publishers of each system, buildingSMART and the source code of the programs themselves. The full database (73 rated sources and glossary) is in the project folder. Anything unconfirmed is marked <span class="tag">To be confirmed</span>.</p>
+</div></div>
+<div class="b-cards">
+<div class="card w6">
+<h4>Standards and framework</h4>
+<ul class="sources">
+          <li><a href="https://www.iso.org/standard/61753.html" target="_blank" rel="noopener">ISO 12006-2:2015</a> · <a href="https://standardsdevelopment.bsigroup.com/projects/2022-02317" target="_blank" rel="noopener">BSI revision</a> · <a href="https://connect.snv.ch/en/iso-81346-12-2018" target="_blank" rel="noopener">ISO 81346-12:2018</a></li>
+          <li><a href="https://itc.scix.net/pdfs/w78-2016-paper-038.pdf" target="_blank" rel="noopener">CIB W78 2016: classification framework</a> · <a href="https://www.mdpi.com/2075-5309/12/5/656" target="_blank" rel="noopener">MDPI Buildings 2022: comparative study</a></li>
+        </ul>
+</div>
+<div class="card w6">
+<h4>Systems</h4>
+<ul class="sources">
+          <li><a href="https://uniclass.thenbs.com/Download" target="_blank" rel="noopener">Uniclass</a> · <a href="https://www.thenbs.com/knowledge/uniclass-july-2026-update" target="_blank" rel="noopener">July 2026</a> · <a href="https://www.thenbs.com/knowledge/the-adoption-of-uniclass-2015-in-australia" target="_blank" rel="noopener">Uniclass in Australia</a></li>
+          <li><a href="https://www.csiresources.org/standards-omniclass-about" target="_blank" rel="noopener">OmniClass</a> · <a href="https://www.nibs.org/files/pdfs/nbimsv3/NBIMS-US_V3_2.4_OmniClass_Intro.pdf" target="_blank" rel="noopener">NBIMS-US V3</a> · <a href="https://www.csiresources.org/mf-faqs" target="_blank" rel="noopener">MasterFormat</a> · <a href="https://nvlpubs.nist.gov/nistpubs/Legacy/IR/nistir6389.pdf" target="_blank" rel="noopener">UniFormat II</a></li>
+          <li><a href="https://globalbim.org/info-collection/cci-a-classification-system-for-the-21st-century/" target="_blank" rel="noopener">CCI</a> · <a href="https://byggtjanstcms.byggtjanst.se/contentassets/d56221107b144d7496f2a9795882f851/coclass-blad-20201124.pdf" target="_blank" rel="noopener">CoClass</a> · <a href="https://www.digigo.nu/wp-content/uploads/2023/11/White_Paper_NL-SfB.pdf" target="_blank" rel="noopener">NL-SfB</a> · <a href="https://www.dinmedia.de/de/norm/din-276/293154016" target="_blank" rel="noopener">DIN 276</a></li>
+          <li><a href="https://github.com/GuBIMCat/GuBIMClass" target="_blank" rel="noopener">GuBIMclass (GuBIMCat)</a> · <a href="https://www.bimcommunity.com/?p=52876" target="_blank" rel="noopener">2017 presentation</a> · <a href="https://www.mapa.gob.es/dam/jcr:9ae873eb-f5cb-4eeb-b1f4-89c28a7fe43e/6.%20Presentaci%C3%B3n%20Ministerio%20Agricultura%20-%20AeasBIMClass%202026.pdf" target="_blank" rel="noopener">AeasBIMClass</a></li>
+        </ul>
+</div>
+<div class="card w6">
+<h4>IFC, bSDD e IDS</h4>
+<ul class="sources">
+          <li><a href="https://raw.githubusercontent.com/buildingSMART/IFC4.3.x-development/master/docs/schemas/resource/IfcExternalReferenceResource/Entities/IfcClassification.md" target="_blank" rel="noopener">IfcClassification</a> · <a href="https://technical.buildingsmart.org/services/bsdd/referencing-bsdd-in-ids-and-ifc/" target="_blank" rel="noopener">referencing bSDD in IFC and IDS</a> · <a href="https://www.buildingsmart.org/users/services/buildingsmart-data-dictionary" target="_blank" rel="noopener">bSDD</a></li>
+          <li><a href="https://www.buildingsmart.org/?p=30065" target="_blank" rel="noopener">IDS 1.0</a> · <a href="https://raw.githubusercontent.com/buildingSMART/IDS/development/Documentation/UserManual/classification-facet.md" target="_blank" rel="noopener">classification facet</a> · <a href="https://docs.ifcopenshell.org/ifctester.html" target="_blank" rel="noopener">IfcTester</a></li>
+        </ul>
+</div>
+<div class="card w6">
+<h4>Programs</h4>
+<ul class="sources">
+          <li><a href="https://raw.githubusercontent.com/Autodesk/revit-ifc/master/Source/Revit.IFC.Export/Exporter/PropertySet/ClassificationUtil.cs" target="_blank" rel="noopener">Revit: IFC exporter</a> · <a href="https://wiki.osarch.org/index.php/Revit_setup_for_OpenBIM/Revit_IFC_classifications" target="_blank" rel="noopener">OSArch</a> · <a href="https://help.graphisoft.com/AC/28/INT/_AC28_Help/045_PropertiesClassifications/045_PropertiesClassifications-1.htm" target="_blank" rel="noopener">Archicad 28</a></li>
+          <li><a href="https://support.tekla.com/article/how-to-add-classification-code-to-objects-in-organizer-and-export-it-to-ifc" target="_blank" rel="noopener">Tekla</a> · <a href="https://help.bricsys.com/en-us/document/bricscad-bim/building-data/classification-codes" target="_blank" rel="noopener">BricsCAD</a> · <a href="https://docs.ifcopenshell.org/bsdd.html" target="_blank" rel="noopener">IfcOpenShell and bSDD</a> · <a href="https://help.solibri.com/hc/en-us/articles/1500003953741" target="_blank" rel="noopener">Solibri</a> · <a href="https://www.bimcollab.com/en/go/smart-properties" target="_blank" rel="noopener">BIMcollab</a></li>
+        </ul>
+</div>
+</div>
+  </template>
+
+  <script src="../../../assets/js/serie.js"></script>
+  <script src="../../../assets/js/paises.js"></script>
+  <script src="../../../assets/i18n/en/paises.js"></script>
+  <script src="../../../assets/i18n/paginas.js"></script>
+  <script src="../../../assets/i18n/en/ui.js"></script>
+  <script src="../../../assets/js/idioma.js"></script>
+  <script src="../../../assets/js/web.js"></script>
+  <script src="../../../assets/js/precision.js"></script>
+</body>
+</html>

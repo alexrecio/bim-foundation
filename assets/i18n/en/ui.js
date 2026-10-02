@@ -92,9 +92,9 @@
     serie: {
       'coordenadas-compartidas': { titulo: 'Shared coordinates in BIM', resumen: 'First the concepts that hold for any program (geodesy, surveying, precision and transformation); then standards, software, platforms, interoperability and quality control.', tema: 'Georeferencing' },
       'niveles-de-informacion': { titulo: 'Level of information need', resumen: 'LOD, LOI and level of information need (ISO 7817-1): what to ask of each element, why and at which milestone, and how to check it with IFC and IDS.', tema: 'Information' },
-      'entorno-comun-de-datos': { titulo: 'Common data environment', resumen: 'One single place where information has a status, a version and an owner.', tema: 'Management' },
+      'entorno-comun-de-datos': { titulo: 'Common data environment (CDE)', resumen: 'What a CDE is under ISO 19650 and how it is applied: containers, four states, approval gates, metadata, naming and roles; then national annexes, software, platforms, OpenCDE and quality control.', tema: 'Information management' },
       'deteccion-de-interferencias': { titulo: 'Clash detection', resumen: 'Clash types, tolerances, matrix and grouping for any program; then ISO 19650 and BCF, Navisworks, Solibri and the cloud, the journey of an issue and how it is really closed.', tema: 'Coordination' },
-      'clasificacion-bim': { titulo: 'Classification systems', resumen: 'A common code so that every element is understood at every stage.', tema: 'Data' },
+      'clasificacion-bim': { titulo: 'Classification systems', resumen: 'What classifying is and what it is for; Uniclass, OmniClass, CCI and GuBIMclass; how the code is carried into IFC and how it is checked with IDS.', tema: 'Data' },
       'bep-plan-de-ejecucion': { titulo: 'BIM execution plan', resumen: 'What the information requirements (OIR, PIR, AIR, EIR) ask for and how the BEP responds under ISO 19650: parties, matrix, delivery plans, CDE, the Spanish BIM Plan and how it is checked.', tema: 'Management' },
       'gemelos-digitales': { titulo: 'Digital twins in construction and engineering', resumen: 'What turns a model into a twin, which standards organise it (ISO 19650, IFC, Brick, DTDL), what software and platforms exist and how to check that its data is reliable.', tema: 'Operation' }
     }

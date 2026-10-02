@@ -813,7 +813,7 @@ window.BF_GLOSARIO = [
    "gemeinsamen Datenumgebung",
    "Common Data Environment",
    "Cloud",
-   "entorno común de datos"
+   "coordinación en la nube"
   ]
  },
  {

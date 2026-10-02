@@ -25,5 +25,14 @@
  "gemelos-digitales#tres-niveles": "What is the difference between a BIM model and a digital twin?",
  "gemelos-digitales#entrega": "What data should I ask for in the tender to get a twin?",
  "gemelos-digitales#identificadores": "How do I link a building sensor to its model element?",
- "gemelos-digitales#calidad": "How do I check that a twin’s data is reliable?"
+ "gemelos-digitales#calidad": "How do I check that a twin’s data is reliable?",
+ "clasificacion-bim#espana": "Which classification system do I use in Spain?",
+ "clasificacion-bim#mapa": "Uniclass, OmniClass or GuBIMclass?",
+ "clasificacion-bim#revit": "How do I export Revit classification to IFC?",
+ "clasificacion-bim#calidad": "How do I check that the whole model is classified?",
+ "entorno-comun-de-datos#estados": "Can I coordinate with a model that is still work in progress?",
+ "entorno-comun-de-datos#codigos": "What do S1, S2 or A1 mean on a file?",
+ "entorno-comun-de-datos#nombres": "How do I name files under ISO 19650?",
+ "entorno-comun-de-datos#autoria": "Is syncing to the cloud the same as sharing?",
+ "entorno-comun-de-datos#espana": "What does the Spanish BIM Plan require of the CDE?"
 }

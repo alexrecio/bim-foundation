@@ -139,6 +139,30 @@ window.BF_PREGUNTAS = [
   "VI"
  ],
  [
+  "Which classification system do I use in Spain?",
+  "clasificacion-bim",
+  "espana",
+  "II"
+ ],
+ [
+  "Uniclass, OmniClass or GuBIMclass?",
+  "clasificacion-bim",
+  "mapa",
+  "II"
+ ],
+ [
+  "How do I export Revit classification to IFC?",
+  "clasificacion-bim",
+  "revit",
+  "III"
+ ],
+ [
+  "How do I check that the whole model is classified?",
+  "clasificacion-bim",
+  "calidad",
+  "VI"
+ ],
+ [
   "What is the difference between a BIM model and a digital twin?",
   "gemelos-digitales",
   "tres-niveles",
@@ -161,5 +185,35 @@ window.BF_PREGUNTAS = [
   "gemelos-digitales",
   "calidad",
   "VI"
+ ],
+ [
+  "Can I coordinate with a model that is still work in progress?",
+  "entorno-comun-de-datos",
+  "estados",
+  "I"
+ ],
+ [
+  "What do S1, S2 or A1 mean on a file?",
+  "entorno-comun-de-datos",
+  "codigos",
+  "II"
+ ],
+ [
+  "How do I name files under ISO 19650?",
+  "entorno-comun-de-datos",
+  "nombres",
+  "I"
+ ],
+ [
+  "Is syncing to the cloud the same as sharing?",
+  "entorno-comun-de-datos",
+  "autoria",
+  "III"
+ ],
+ [
+  "What does the Spanish BIM Plan require of the CDE?",
+  "entorno-comun-de-datos",
+  "espana",
+  "II"
  ]
 ];
