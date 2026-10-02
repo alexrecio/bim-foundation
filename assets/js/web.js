@@ -215,7 +215,7 @@
   const SW = [
     ['Autodesk Construction Cloud', 'ACC', 'p', 'autodesk.svg'], ['Autodesk Docs', 'Do', 'p', 'autodesk.svg'], ['Trimble Connect', 'TC', 'p', 'trimble.svg'], ['BIMcollab Zoom', 'Zm', 'p', 'bimcollab.svg'], ['BIMcollab', 'BC', 'p', 'bimcollab.svg'],
     ['Model Checker', 'MC', 'p'], ['IFCGeoRefChecker', 'GR', 'p'], ['IfcOpenShell', 'IOS', 'p', 'ifcopenshell.png'], ['IfcTester', 'IT', 'p', 'ifctester.svg'], ['IfcGref', 'Gf', 'p'], ['IFC Georeferencer', 'Gr', 'p'],
-    ['Civil 3D', 'C3D', 'p'], ['Navisworks', 'Nw', 'p'], ['Revit', 'Rv', 'p', 'revit.svg'], ['Archicad', 'Ac', 'p', 'archicad.svg'], ['Tekla', 'Tk', 'p', 'tekla.svg'], ['Allplan', 'Al', 'p', 'allplan.svg'], ['Vectorworks', 'Vw', 'p', 'vectorworks.svg'],
+    ['Civil 3D', 'C3D', 'p', 'civil3d.svg'], ['Navisworks', 'Nw', 'p', 'navisworks.svg'], ['Revit', 'Rv', 'p', 'revit.svg'], ['Archicad', 'Ac', 'p', 'archicad.svg'], ['Tekla', 'Tk', 'p', 'tekla.svg'], ['Allplan', 'Al', 'p', 'allplan.svg'], ['Vectorworks', 'Vw', 'p', 'vectorworks.svg'],
     ['BricsCAD', 'Bc', 'p'], ['Bentley iTwin', 'iT', 'p', 'bentley.svg'], ['Bentley', 'Bn', 'p', 'bentley.svg'], ['Bonsai', 'Bo', 'p', 'bonsai.png'], ['Solibri', 'Sb', 'p'], ['ArcGIS', 'Ag', 'p', 'arcgis.svg'], ['Forma', 'Fo', 'p'],
     ['ReCap', 'Rc', 'p'], ['Dynamo', 'Dy', 'p', 'dynamo.png'], ['CloudCompare', 'CC', 'p', 'cloudcompare.svg'], ['epsg.io', 'ep', 'p'],
     ['IDS', 'IDS', 'e', 'ids.svg'], ['IFC', 'IFC', 'e', 'buildingsmart.png'], ['DWG', 'DWG', 'f'], ['RVT', 'RVT', 'f'], ['E57', 'E57', 'f'], ['LAS', 'LAS', 'f'], ['NWC', 'NWC', 'f'], ['XML', 'XML', 'f']
