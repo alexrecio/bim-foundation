@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="de" data-root="../" data-lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Borrador: quitar noindex al publicar -->
+  <meta name="bf-fuente" content="index.html@fb276d0537b51511a765c0a861240e572cb31ff3">
+  <meta name="robots" content="noindex, nofollow">
+  <title>BIM Foundation | Beiträge über BIM</title>
+  <meta name="description" content="Eine Beitragsreihe über BIM: die Grundlagen, die alle nutzen und kaum jemand erklärt.">
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="../assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../assets/css/estilo.css">
+  <link rel="stylesheet" href="../assets/css/precision.css">
+</head>
+<body>
+  <div id="nav-capsule">
+    <button id="menu-trigger" aria-label="Menü" aria-expanded="false">BF</button>
+    <div id="menu-content">
+      <nav>
+        <a class="menu-link is-current" href="./">Start</a>
+        <a class="menu-link" href="#articulos">Beiträge</a>
+        <a class="menu-link" href="glosario/">Glossar</a>
+      </nav>
+    </div>
+  </div>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <div class="hero-grid">
+          <div>
+            <p class="hero-id">BIM Foundation</p>
+            <span class="kicker-y lg">Beitragsreihe · BIM verständlich</span>
+            <h1 class="display">Die Grundlagen<br>von BIM, gut<br><span class="hl-y">erklärt<span class="dot">.</span></span></h1>
+          </div>
+          <div class="hero-side">
+            <p class="hero-lead">Beiträge über das, was in BIM alle nutzen und kaum jemand erklärt: Konzepte, Abläufe zwischen Programmen und echte Fehler, mit Quellen und am Beispiel Spaniens.</p>
+            <button type="button" class="bf-search-trigger" data-buscar><svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="6" fill="none" stroke="currentColor" stroke-width="2.5"/><path d="M13 13l5 5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg><span>Suchen Sie einen Begriff, eine Frage oder ein Programm …</span><kbd>/</kbd></button>
+            <div class="hero-acc"><a class="btn" href="#dudas">Mit Ihrer Frage beginnen <span aria-hidden="true">↓</span></a><a class="btn ghost" href="#articulos">Beiträge ansehen</a></div>
+            <div class="hero-meta"><button type="button" data-buscar data-buscar-q="Revit">Revit</button><button type="button" data-buscar data-buscar-q="Civil 3D">Civil 3D</button><button type="button" data-buscar data-buscar-q="IFC">IFC</button><a href="glosario/">Glossar</a></div>
+            <dl class="pz-spec">
+              <dt>Format</dt><dd>15-Sekunden-Folien + Details</dd>
+              <dt>Quellen</dt><dd>Offiziell und zitiert</dd>
+              <dt>Rahmen</dt><dd>International · openBIM</dd>
+              <dt>Status</dt><dd>Entwurf v0.1</dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="dudas">
+      <div class="wrap">
+        <div class="series-head">
+          <span class="kicker-y" style="margin-bottom:16px">Abkürzungen</span>
+          <h2 class="display">Beginnen Sie mit Ihrer Frage<span class="dot">.</span></h2>
+          <p>Die häufigsten Fragen, mit einem Klick zur Idee, die sie beantwortet.</p>
+        </div>
+        <ol id="bf-dudas" class="bf-dudas"></ol>
+      </div>
+    </section>
+
+    <section id="articulos">
+      <div class="wrap">
+        <div class="series-head">
+          <span class="kicker-y" style="margin-bottom:16px">Beiträge</span>
+          <h2 class="display">Einer nach dem anderen<span class="dot">.</span></h2>
+          <p>Jeder Beitrag ist für sich lesbar und nennt seine Quellen. Was wir nicht bestätigen konnten, ist gekennzeichnet.</p>
+        </div>
+        <div id="bf-filtros" class="bf-filtros"></div>
+        <ol id="article-list" class="article-list"></ol>
+      </div>
+    </section>
+
+    <section id="bloques">
+      <div class="wrap">
+        <div class="series-head">
+          <span class="kicker-y" style="margin-bottom:16px">Nach Blöcken</span>
+          <h2 class="display">Vom Allgemeinen zum Konkreten<span class="dot">.</span></h2>
+          <p>Alle Beiträge folgen denselben sechs Blöcken. Wählen Sie einen und Sie sehen seine Ideen in der ganzen Reihe.</p>
+        </div>
+        <ol id="bf-bloques" class="bf-bloques"></ol>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site">
+    <div class="wrap">
+      <span>Gestaltet und entwickelt von Alejandro García Nicolás</span><span class="sep">·</span><span class="mono">BIM Foundation · 2026</span>
+    </div>
+  </footer>
+
+  <script src="../assets/js/serie.js"></script>
+  <script src="../assets/js/web.js"></script>
+  <script src="../assets/js/precision.js"></script>
+</body>
+</html>
