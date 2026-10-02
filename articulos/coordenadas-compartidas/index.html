@@ -31,14 +31,14 @@
 
   <!-- Menú de diapositivas: se rellena con data-nav de cada <section> -->
   <aside id="deck-nav" aria-label="Diapositivas">
-    <span class="kicker-y">Coordenadas · 38 ideas</span>
+    <span class="kicker-y">Coordenadas · 39 ideas</span>
     <ol></ol>
     <div id="deck-progress" aria-hidden="true"><i></i></div>
   </aside>
   <div id="deck-bar">
     <div id="deck-sheet"><ol></ol></div>
     <button type="button" id="deck-bar-btn" aria-expanded="false" aria-controls="deck-sheet">
-      <span class="n">01/38</span><span class="t">Portada</span>
+      <span class="n">01/39</span><span class="t">Portada</span>
       <span class="chev" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M3 9l4-4 4 4" fill="none" stroke="#fff" stroke-width="2"/></svg></span>
     </button>
   </div>
@@ -65,8 +65,8 @@
           <div class="card w6 g">
             <span class="c-label">El artículo en seis bloques</span>
             <ol class="mapa">
-              <li class="is-key"><a href="#problema"><b>I</b><span>Conceptos generales</span><em>14 ideas · para cualquier programa</em></a></li>
-              <li><a href="#paises"><b>II</b><span>Estándares</span><em>4 ideas · cada país, EPSG, IFC, ISO 19650</em></a></li>
+              <li class="is-key"><a href="#problema"><b>I</b><span>Conceptos generales</span><em>16 ideas · para cualquier programa</em></a></li>
+              <li><a href="#espana"><b>II</b><span>Estándares</span><em>3 ideas · EPSG, IFC, ISO 19650</em></a></li>
               <li><a href="#limites"><b>III</b><span>Software</span><em>7 ideas · Revit, Survey Point, campus y tipologías</em></a></li>
               <li><a href="#coordinacion"><b>IV</b><span>Plataformas</span><em>2 ideas · visores y nube</em></a></li>
               <li><a href="#civil3d"><b>V</b><span>Interoperabilidad</span><em>2 ideas · intercambio y errores</em></a></li>
@@ -206,6 +206,47 @@
       </div>
     </section>
 
+    <!-- ========== REDES GEODÉSICAS ========== -->
+    <section class="slide" id="redes" data-nav="Redes geodésicas">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Redes geodésicas</span>
+          <h2 class="display">El datum está clavado en el suelo<span class="dot">.</span></h2>
+          <p class="slide-lead">Pilares, antenas GNSS fijas y clavos de nivelación con coordenadas oficiales. Todo levantamiento se apoya en ellos.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="redes"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w6 g">
+            <span class="c-label">Tres redes en el terreno</span>
+            <svg class="draw" viewBox="0 0 640 210" role="img" aria-label="Satélites, un vértice geodésico en una colina, una estación GNSS permanente en un edificio que envía correcciones a un receptor en obra y un clavo de nivelación en un muro">
+              <g stroke="#000" stroke-width="2" fill="#fff">
+                <g transform="translate(150 26)"><rect x="-8" y="-6" width="16" height="12"/><path d="M-8 0h-16M8 0h16" stroke-width="3"/></g>
+                <g transform="translate(470 20)"><rect x="-8" y="-6" width="16" height="12"/><path d="M-8 0h-16M8 0h16" stroke-width="3"/></g>
+              </g>
+              <g stroke="#999" stroke-width="1.5" stroke-dasharray="4 5" fill="none"><path d="M150 36 L104 104"/><path d="M150 36 L300 92"/><path d="M470 30 L300 92"/><path d="M470 30 L438 138"/></g>
+              <path d="M10 180 Q 100 92 190 180" fill="#fff" stroke="#000" stroke-width="3"/>
+              <rect x="96" y="104" width="16" height="34" fill="#fff" stroke="#000" stroke-width="3"/><path d="M92 104h24" stroke="#000" stroke-width="3"/>
+              <rect x="250" y="122" width="100" height="58" fill="#fff" stroke="#000" stroke-width="3"/><path d="M300 122 V96" stroke="#000" stroke-width="3"/>
+              <circle cx="300" cy="92" r="9" fill="#FFFF00" stroke="#000" stroke-width="3"/>
+              <g stroke="#000" stroke-width="2" fill="none"><path d="M318 82 a24 24 0 0 1 0 22"/><path d="M328 74 a36 36 0 0 1 0 38"/></g>
+              <path d="M340 100 Q 390 92 432 132" stroke="#000" stroke-width="1.5" stroke-dasharray="2 5" fill="none"/>
+              <path d="M438 140 V180" stroke="#000" stroke-width="3"/><rect x="428" y="130" width="20" height="10" rx="3" fill="#fff" stroke="#000" stroke-width="2.5"/>
+              <rect x="540" y="96" width="70" height="84" fill="#fff" stroke="#000" stroke-width="3"/><circle cx="575" cy="150" r="7" fill="#fff" stroke="#000" stroke-width="3"/><path d="M575 143v14M568 150h14" stroke="#000" stroke-width="1.5"/>
+              <path d="M0 180h640" stroke="#000" stroke-width="3"/>
+              <g font-family="JetBrains Mono, monospace" font-size="11" text-anchor="middle">
+                <text x="104" y="200">vértice</text><text x="300" y="200">estación permanente</text><text x="438" y="200">receptor</text><text x="575" y="200">clavo de nivelación</text>
+                <text x="392" y="84" fill="#666">correcciones</text>
+              </g>
+            </svg>
+          </div>
+          <div class="card w2 k"><span class="c-label">Red pasiva</span><span class="c-title" style="color:var(--accent)">Vértices</span><span class="c-foot">se visitan y se estaciona en ellos</span></div>
+          <div class="card w2 y"><span class="c-label">Red activa</span><span class="c-title">Estaciones GNSS</span><span class="c-foot">correcciones en tiempo real</span></div>
+          <div class="card w2"><span class="c-label">Nivelación</span><span class="c-title">Clavos</span><span class="c-foot">altitudes oficiales</span></div>
+        </div>
+      </div>
+    </section>
+
     <!-- ========== PROYECCIÓN ========== -->
     <section class="slide" id="proyeccion" data-nav="De la esfera al plano">
       <div class="bento">
@@ -327,6 +368,22 @@
             <span class="c-label">Decisión para el BEP</span>
             <div class="row"><span class="chip">Cuadrícula</span><span class="arrow" style="font-weight:900">o</span><span class="chip k">Terreno</span></div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== PAÍSES ========== -->
+    <section class="slide" id="paises" data-nav="Cada país, su marco">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Sistemas de referencia por país</span>
+          <h2 class="display">Cada país, su marco<span class="dot">.</span></h2>
+          <p class="slide-lead">Datum, proyección y altitudes los fija el organismo cartográfico de cada país. Elige el tuyo y copia su código EPSG.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="paises"><span class="plus">+</span> Ver todos</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w6"><div class="paises"></div></div>
         </div>
       </div>
     </section>
@@ -643,24 +700,7 @@
     </section>
 
     <!-- ========== ESPAÑA ========== -->
-    <!-- ========== PAÍSES ========== -->
-    <section class="slide" id="paises" data-cap="II · Estándares" data-nav="Cada país, su marco">
-      <div class="bento">
-        <div class="b-title">
-          <span class="slide-n"></span>
-          <span class="kicker-y">Geodesia por país</span>
-          <h2 class="display">Cada país, su marco<span class="dot">.</span></h2>
-          <p class="slide-lead">Datum, proyección y altitudes los fija el organismo cartográfico de cada país. Elige el tuyo y copia su código EPSG.</p>
-          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="paises"><span class="plus">+</span> Ver todos</button></div>
-        </div>
-        <div class="b-cards">
-          <div class="card w6"><div class="paises" data-def="ES"></div></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ========== ESPAÑA ========== -->
-    <section class="slide" id="espana" data-nav="Ejemplo: España">
+    <section class="slide" id="espana" data-cap="II · Estándares" data-nav="Ejemplo: España">
       <div class="bento">
         <div class="b-title">
           <span class="slide-n"></span>
@@ -1468,9 +1508,9 @@
         <div class="table-wrap"><table>
           <thead><tr><th>Tipo</th><th>Unidades</th><th>Para qué sirve</th><th>EPSG de ejemplo</th></tr></thead>
           <tbody>
-            <tr><td>Geográficas</td><td>grados (+ m)</td><td>Situar un punto en el mundo; lo que muestra un GPS</td><td class="num">4258 · ETRS89</td></tr>
+            <tr><td>Geográficas</td><td>grados (+ m)</td><td>Situar un punto en el mundo; lo que muestra un GPS</td><td class="num"><span data-pais="datum-epsg">4258</span> · <span data-pais="datum">ETRS89</span></td></tr>
             <tr><td>Geocéntricas</td><td>m</td><td>Cálculo interno del GNSS, desde el centro de la Tierra</td><td class="num">4936 · ETRS89</td></tr>
-            <tr class="is-key"><td>Proyectadas</td><td>m</td><td>Cartografía y proyecto: medir en un plano</td><td class="num">25830 · UTM 30N</td></tr>
+            <tr class="is-key"><td>Proyectadas</td><td>m</td><td>Cartografía y proyecto: medir en un plano</td><td class="num"><span data-pais="epsg">25830</span> · <span data-pais="epsg-nombre">huso 30</span></td></tr>
             <tr><td>Locales</td><td>m</td><td>Obra y modelo: números pequeños y cómodos</td><td>sin código: hay que documentar su relación</td></tr>
           </tbody>
         </table></div>
@@ -1483,9 +1523,46 @@
         <h4>Qué es un código EPSG</h4>
         <p>Un número de un registro público que identifica sin ambigüedad datum, tipo de coordenadas y proyección. Escribirlo evita describir el sistema con palabras.</p>
         <h4 style="margin-top:12px">Horizontal y vertical</h4>
-        <p>Las alturas tienen su propio sistema. Se combinan: por ejemplo, UTM 30N para la planta y altitudes de Alicante para la cota.</p>
+        <p>Las alturas tienen su propio sistema. Se combinan: en <span data-pais="nombre">España</span>, <span data-pais="proy">UTM</span> para la planta y <span data-pais="alt">Alicante</span> para la cota.</p>
       </div>
       <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://epsg.io/4258" target="_blank" rel="noopener">EPSG:4258</a> · <a href="https://epsg.io/4936" target="_blank" rel="noopener">EPSG:4936</a> · <a href="https://epsg.io/25830" target="_blank" rel="noopener">EPSG:25830</a> · <a href="https://standards.buildingsmart.org/IFC/RELEASE/IFC4_3/HTML/lexical/IfcCoordinateReferenceSystem.htm" target="_blank" rel="noopener">IFC4.3</a>.</p></div>
+    </div>
+  </template>
+
+  <template id="l2-redes">
+    <div class="b-cards">
+      <div class="card w6">
+        <h4>Tres redes, tres usos</h4>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Red</th><th>Qué es</th><th>Para qué sirve en obra</th></tr></thead>
+          <tbody>
+            <tr><td>Pasiva · vértices geodésicos</td><td>Pilares o señales con coordenadas oficiales, en lugares despejados</td><td>Estacionar el GNSS o la estación total y enlazar el levantamiento con el datum</td></tr>
+            <tr class="is-key"><td>Activa · estaciones permanentes</td><td>Antenas GNSS fijas que registran sin parar y publican sus datos</td><td>Posicionar en tiempo real (RTK) o calcular después, sin pisar un vértice</td></tr>
+            <tr><td>Nivelación · clavos</td><td>Señales en muros y obras de fábrica con altitud ortométrica</td><td>Dar cotas oficiales; el modelo de geoide enlaza estas altitudes con el GNSS</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w3 g">
+        <h4>De lo global a la obra</h4>
+        <svg class="draw" viewBox="0 0 300 200" role="img" aria-label="Marcos anidados: global, continental, red nacional y bases de obra">
+          <g font-family="JetBrains Mono, monospace" font-size="11">
+            <rect x="4" y="4" width="292" height="192" rx="10" fill="#fff" stroke="#000" stroke-width="2"/><text x="16" y="24">marco global · ITRF</text>
+            <rect x="24" y="36" width="252" height="150" rx="10" fill="#fff" stroke="#000" stroke-width="2"/><text x="36" y="56">continental · ETRS89, SIRGAS…</text>
+            <rect x="44" y="68" width="212" height="108" rx="10" fill="#fff" stroke="#000" stroke-width="2"/><text x="56" y="88">red nacional</text>
+            <rect x="64" y="100" width="172" height="66" rx="10" fill="#FFFF00" stroke="#000" stroke-width="2.5"/><text x="80" y="124" font-weight="700">bases de obra</text><text x="80" y="144" fill="#000">y modelo</text>
+          </g>
+        </svg>
+      </div>
+      <div class="card w3 k">
+        <h4>Los continentes se mueven</h4>
+        <p>Las placas se desplazan unos centímetros al año. ETRS89 va fijo a la placa euroasiática y GDA2020 a la australiana, así que sus coordenadas no cambian con el tiempo. SIRGAS las da en una época de referencia. WGS84 sigue al marco global: el mismo vértice cambia de año en año.</p>
+      </div>
+      <div class="card w6 y">
+        <span class="c-label">En <span data-pais="nombre">España</span></span>
+        <span class="c-title"><span data-pais="red">REGENTE · ERGNSS · REDNAP</span></span>
+        <p>Mantenida por <span data-pais="org">IGN</span>. Las bases de replanteo deberían enlazarse con ella y el informe topográfico, decir con qué vértices o estaciones.</p>
+      </div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2007-15822" target="_blank" rel="noopener">Real Decreto 1071/2007</a> (REGENTE, REDNAP y estaciones permanentes) · <a href="https://www.euref.eu" target="_blank" rel="noopener">EUREF</a> · <a href="https://sirgas.ipgh.org" target="_blank" rel="noopener">SIRGAS</a> · <a href="https://www.icsm.gov.au" target="_blank" rel="noopener">ICSM (GDA2020)</a> · <a href="https://itrf.ign.fr" target="_blank" rel="noopener">ITRF</a> · <a href="https://geodesy.noaa.gov/CORS/" target="_blank" rel="noopener">NOAA CORS</a>.</p></div>
     </div>
   </template>
 
@@ -1514,11 +1591,7 @@
 
   <template id="l2-topografia">
     <div class="b-cards">
-      <div class="card w3">
-        <h4>La red geodésica</h4>
-        <p>Vértices y estaciones permanentes con coordenadas oficiales materializan el datum en el terreno, y una red de nivelación hace lo mismo con las altitudes. Todo levantamiento serio parte de ellas.</p>
-      </div>
-      <div class="card w3 g">
+      <div class="card w6 g">
         <h4>Bases de replanteo</h4>
         <p>Puntos fijos en la obra con coordenadas en el sistema del proyecto. Desde ellos la estación total sitúa el resto. Si el modelo y las bases no comparten sistema, el replanteo no cuadra.</p>
       </div>
@@ -1778,9 +1851,9 @@
   <template id="l2-paises">
     <div class="b-cards">
       <div class="card w6">
-        <h4>Dieciséis marcos oficiales</h4>
+        <h4>Los marcos oficiales, país a país</h4>
         <div class="paises-tabla"></div>
-        <p class="table-note">En los países con varios husos o zonas, el código depende de dónde está la obra. Fila resaltada: el ejemplo que sigue el artículo.</p>
+        <p class="table-note">En los países con varios husos o zonas, el código depende de dónde está la obra. Fila resaltada: tu país.</p>
       </div>
       <div class="card w3 g">
         <h4>Cómo elegir el código</h4>
