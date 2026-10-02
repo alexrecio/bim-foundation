@@ -6,7 +6,7 @@
   <!-- Draft: remove noindex on publishing -->
   <meta name="robots" content="noindex, nofollow">
   <!-- Translation of articulos/coordenadas-compartidas/index.html at this git blob (herramientas/i18n.mjs flags it when the Spanish page changes) -->
-  <meta name="bf-fuente" content="articulos/coordenadas-compartidas/index.html@8e49d45fdf64a5132d0bd8d7281cd1cf3b0929f8">
+  <meta name="bf-fuente" content="articulos/coordenadas-compartidas/index.html@7a84d1f2a95891dd2b9a736e50ac3a1ff1ace1c8">
   <title>Coordinate systems in BIM | bimkernel</title>
   <meta name="description" content="How shared coordinates work in Revit, Civil 3D, IFC and the rest of BIM software, with the Spanish geodetic framework (ETRS89, EPSG, Alicante heights).">
   <meta property="og:type" content="article">
@@ -84,32 +84,30 @@
         <div class="b-title">
           <span class="slide-n"></span>
           <span class="kicker-y">A · Why coordinates</span>
-          <h2 class="display">Without coordinates, the model is nowhere<span class="dot">.</span></h2>
-          <p class="slide-lead">What is measured, what is designed and what is built are digital data about something physical. One and the same coordinate system ties them to their place on Earth.</p>
+          <h2 class="display">A translator between the real and the digital<span class="dot">.</span></h2>
+          <p class="slide-lead">Coordinates create a two-way link between the ground and the model. Without them, what is measured does not fall into place and what is designed does not go back to its own.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="porque"><span class="plus">+</span> See detail</button></div>
         </div>
         <div class="b-cards">
           <div class="card w6">
-            <span class="c-label">Six stages, one system</span>
-            <svg class="draw" viewBox="0 0 640 210" role="img" aria-label="Six-stage cycle starting from reality: measure, encode, design, coordinate, set out and operate, which returns to reality; all share one coordinate system">
-              <g font-family="JetBrains Mono, monospace" font-size="11" text-anchor="middle">
-                <circle cx="44" cy="70" r="37" fill="#000"/><text x="44" y="74" fill="#fff" font-weight="700">REALITY</text>
-                <circle cx="136" cy="70" r="37" fill="#fff" stroke="#000" stroke-width="3"/><text x="136" y="74">measure</text>
-                <circle cx="228" cy="70" r="37" fill="#fff" stroke="#000" stroke-width="3"/><text x="228" y="74">encode</text>
-                <circle cx="320" cy="70" r="37" fill="#fff" stroke="#000" stroke-width="3"/><text x="320" y="74">design</text>
-                <circle cx="412" cy="70" r="37" fill="#fff" stroke="#000" stroke-width="3"/><text x="412" y="74">coordinate</text>
-                <circle cx="504" cy="70" r="37" fill="#fff" stroke="#000" stroke-width="3"/><text x="504" y="74">set out</text>
-                <circle cx="596" cy="70" r="37" fill="#fff" stroke="#000" stroke-width="3"/><text x="596" y="74">operate</text>
-              </g>
-              <g stroke="#000" stroke-width="2"><path d="M82 70 H92 M174 70 H184 M266 70 H276 M358 70 H368 M450 70 H460 M542 70 H552"/></g>
-              <g fill="#000"><polygon points="98,70 90,65 90,75"/><polygon points="190,70 182,65 182,75"/><polygon points="282,70 274,65 274,75"/><polygon points="374,70 366,65 366,75"/><polygon points="466,70 458,65 458,75"/><polygon points="558,70 550,65 550,75"/></g>
-              <path d="M596 109 V132 H44 V118" fill="none" stroke="#000" stroke-width="2" stroke-dasharray="6 5"/><polygon points="44,110 39,120 49,120" fill="#000"/>
-              <rect x="20" y="150" width="600" height="40" rx="20" fill="#FFFF00" stroke="#000" stroke-width="2.5"/>
-              <text x="320" y="176" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="14" font-weight="700">one and the same coordinate system · EPSG <tspan data-pais="epsg">25830</tspan></text>
+            <span class="c-label">There and back, one number</span>
+            <svg class="draw" viewBox="0 0 640 200" role="img" aria-label="Two-way link. On the left, the ground with a survey nail; on the right, a screen with the building model; a yellow line with the E, N and H coordinates joins the nail to the corner of the building">
+              <path d="M10 170 C70 160 110 150 160 156 S250 172 290 164" fill="none" stroke="#000" stroke-width="3" stroke-linecap="round"/>
+              <path d="M150 156 V128" stroke="#000" stroke-width="3" stroke-linecap="round"/><circle cx="150" cy="122" r="7" fill="#fff" stroke="#000" stroke-width="3"/>
+              <g font-family="JetBrains Mono, monospace" font-size="12"><text x="10" y="194">REALITY · measured</text><text x="104" y="118">nail</text></g>
+              <rect x="380" y="20" width="250" height="150" rx="6" fill="#fff" stroke="#000" stroke-width="3"/><path d="M470 170 V186 M440 186 H500" stroke="#000" stroke-width="3" stroke-linecap="round"/>
+              <path d="M430 140 V80 L480 56 L560 74 V128 Z M430 80 L510 98 L560 74 M510 98 V150" fill="none" stroke="#000" stroke-width="2.5" stroke-linejoin="round"/>
+              <path d="M430 140 L510 150 L560 128" fill="none" stroke="#000" stroke-width="2.5" stroke-linejoin="round"/>
+              <text x="392" y="40" font-family="JetBrains Mono, monospace" font-size="12">MODEL · designed</text>
+              <path d="M158 122 C240 100 340 120 424 140" fill="none" stroke="#FFFF00" stroke-width="6" stroke-linecap="round"/>
+              <path d="M158 122 C240 100 340 120 424 140" fill="none" stroke="#000" stroke-width="1.5" stroke-dasharray="4 5"/>
+              <text x="250" y="66" font-family="JetBrains Mono, monospace" font-size="12">measure ▸</text><text x="236" y="152" font-family="JetBrains Mono, monospace" font-size="12">◂ set out</text><rect x="240" y="76" width="96" height="26" rx="13" fill="#000"/><text x="288" y="94" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="13" font-weight="700" fill="#FFFF00">E · N · H</text>
             </svg>
           </div>
-          <div class="card w2"><span class="c-label">Comes in through</span><span class="c-title">Surveying</span></div>
-          <div class="card w2"><span class="c-label">Goes out through</span><span class="c-title">Setting out</span></div>
+          <div class="card w4">
+            <span class="c-label">Six stages, one system</span>
+            <svg class="draw" viewBox="0 0 430 96" role="img" aria-label="Stages: reality, measure, encode, design, coordinate, set out and operate, and back to reality"><path d="M30 44 H402" stroke="#000" stroke-width="2"/><path d="M402 50 C402 74 30 74 30 56" fill="none" stroke="#000" stroke-width="1.5" stroke-dasharray="4 4"/><polygon points="30,50 26,58 34,58" fill="#000"/><circle cx="30" cy="44" r="6" fill="#000" stroke="#000" stroke-width="2.5"/><text x="30" y="26" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700">reality</text><circle cx="92" cy="44" r="6" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="92" y="92" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11">measure</text><circle cx="154" cy="44" r="6" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="154" y="26" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11">encode</text><circle cx="216" cy="44" r="6" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="216" y="92" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11">design</text><circle cx="278" cy="44" r="6" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="278" y="26" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11">coordinate</text><circle cx="340" cy="44" r="6" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="340" y="92" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11">set out</text><circle cx="402" cy="44" r="6" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="402" y="26" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11">operate</text></svg>
+          </div>
           <div class="card w2 k"><span class="c-label">Lasts</span><span class="c-title">The whole life of the asset</span></div>
         </div>
       </div>
