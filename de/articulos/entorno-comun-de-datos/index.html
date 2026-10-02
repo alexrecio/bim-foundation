@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Borrador: quitar noindex al publicar -->
-  <meta name="bf-fuente" content="articulos/entorno-comun-de-datos/index.html@35abe34e95b40baa6861e5ee0fb492600c49fb67">
+  <meta name="bf-fuente" content="articulos/entorno-comun-de-datos/index.html@d6ea8150442fdc282010e6dd10cb67bf3b0b3482">
   <meta name="robots" content="noindex, nofollow">
   <title>Gemeinsame Datenumgebung (CDE) | kernel</title>
   <meta name="description" content="Was eine gemeinsame Datenumgebung nach ISO 19650 ist: Informationscontainer, Status, Freigabeschritte, Metadaten, Dateibenennung, Rollen, Plattformen, OpenCDE und Qualitätsprüfung.">
@@ -899,7 +899,7 @@
         </div>
         <div class="b-cards">
           <div class="card w3">
-            <span class="c-label">In einer .bcfzip</span>
+            <span class="c-label">In einer .bcf</span>
             <div class="chips"><span class="chip k">markup.bcf</span><span class="chip">viewpoint.bcfv</span><span class="chip y">snapshot.png</span></div>
           </div>
           <div class="card w3 g"><span class="c-label">Zwei Wege</span><span class="c-title">Datei oder API</span><span class="c-foot">BCF-XML · BCF API</span></div>
@@ -1351,7 +1351,7 @@
             <tr><td>Aufgabenteam</td><td>Task team</td><td>Wer eine konkrete Aufgabe erstellt</td></tr>
           </tbody>
         </table></div>
-        <p class="table-note">Die spanischen Quellen (UNE-EN ISO 19650 laut Zigurat; IRAM-ISO 19650-1 in Argentinien) übersetzen uneinheitlich: „parte contratante“ neben „parte que designa“. <span class="tag">Noch zu bestätigen</span> am UNE-Text.</p>
+        <p class="table-note">Begriffe der UNE-EN ISO 19650-1:2019, in der die Beauftragung (<i>appointment</i>) als „contratación“ übersetzt wird. „Parte que designa“ und „parte designada“ sind wörtliche Übersetzungen aus dem Englischen, nicht die spanische Normterminologie. Quellen: Abschrift der UNE und <a href="https://espaciobim.com/iso-19650" target="_blank" rel="noopener">espacioBIM</a>; Sekundärquellen: Zigurat und IRAM-ISO 19650-1 (Argentinien).</p>
       </div>
       <div class="card w3">
         <h4>Wer die CDE einrichtet</h4>
@@ -1405,7 +1405,7 @@
       </div>
       <div class="card w6">
         <h4>COBie und die Übergabe</h4>
-        <p>COBie ist ein gängiger Weg, Anlagendaten an die Instandhaltung zu übergeben. Achtung: Die zugehörige britische Norm BS 1192-4:2014 wurde am 16.09.2022 zurückgezogen, und COBie v3 wird als IFC-Sicht mit JSON-Format neu definiert. Quellen: <a href="https://knowledge.bsigroup.com/products/collaborative-production-of-information-fulfilling-employer-s-information-exchange-requirements-using-cobie-code-of-practice" target="_blank" rel="noopener">BSI</a> · <a href="https://www.buildingsmart.org/wp-content/uploads/2022/11/COBie-v3-Standard_Executive-Summary_DRAFT061322.pdf" target="_blank" rel="noopener">buildingSMART</a>.</p>
+        <p>COBie ist ein gängiger Weg, Anlagendaten an die Instandhaltung zu übergeben. Achtung: Die zugehörige britische Norm BS 1192-4:2014 wurde am 16.09.2022 zurückgezogen, COBie 3 (IFC-Sicht mit JSON) veröffentlichte NIBS 2023 im Rahmen von NBIMS-US V4; 2.4 ist weiterhin die meistgenutzte Version. Quellen: <a href="https://www.nibs.org/nbims/v3/cobie" target="_blank" rel="noopener">NIBS</a> · <a href="https://knowledge.bsigroup.com/products/collaborative-production-of-information-fulfilling-employer-s-information-exchange-requirements-using-cobie-code-of-practice" target="_blank" rel="noopener">BSI</a> · <a href="https://www.buildingsmart.org/wp-content/uploads/2022/11/COBie-v3-Standard_Executive-Summary_DRAFT061322.pdf" target="_blank" rel="noopener">buildingSMART</a>.</p>
       </div>
       <div class="card w6 g"><span class="c-label">In der CDE</span><p>Der Schritt vom PIM zum AIM ist ein weiterer Übergang: Der Auftraggeber akzeptiert, was in das Asset-Modell eingeht. Der britische Anhang von 2018 hatte dafür die Codes S6 und S7; der von 2021 hat sie gestrichen.</p></div>
     </div>
@@ -1496,7 +1496,7 @@
           <tbody>
             <tr><td>Vereinigtes Königreich</td><td>Nationaler Anhang zu BS EN ISO 19650-2 (2018, rev. 2021)</td><td>S0–S7, A, B, CR · P/C</td></tr>
             <tr><td>Irland</td><td>Nationaler Anhang zu I.S. EN ISO 19650-2 (8-02-2021)</td><td>Zweck P1–P10, Annahme S, A, B, C, D</td></tr>
-            <tr><td>Kanada</td><td>Anhang von buildingSMART Canada (2021)</td><td>S0–S6, A, B, CR · OmniClass oder Uniclass</td></tr>
+            <tr><td>Kanada</td><td>Kanadischer nationaler Anhang (buildingSMART Canada, v1.0) <span class="tag">Noch zu bestätigen</span></td><td>S0–S6, A, B, CR · OmniClass oder Uniclass</td></tr>
             <tr><td>Deutschland</td><td>DIN SPEC 91391 (2019)</td><td>CDE-Funktionen, keine eigenen Codes</td></tr>
             <tr><td>USA</td><td>NBIMS-US v4</td><td>Orientiert sich an ISO 19650, übernimmt sie nicht</td></tr>
             <tr class="is-key"><td>Spanien</td><td>Kein nationaler Anhang</td><td>Legt jeder BAP oder jede Ausschreibung fest</td></tr>
@@ -1546,10 +1546,10 @@
           <thead><tr><th>Auftragswert</th><th>Einstieg</th><th>Mittel</th><th>Fortgeschritten</th><th>Integriert</th></tr></thead>
           <tbody>
             <tr class="is-key"><td>≥ 5.382.000 €</td><td class="num">1-04-2024</td><td class="num">1-10-2025</td><td class="num">1-10-2027</td><td class="num">1-04-2030</td></tr>
-            <tr><td>2.000.000–5.382.000 €</td><td class="num">1-10-2025</td><td class="num">1-04-2030</td><td>—</td><td>—</td></tr>
+            <tr><td>2.000.000–5.382.000 €</td><td class="num">1-10-2025</td><td class="num">1-10-2027</td><td class="num">1-04-2030</td><td>—</td></tr>
           </tbody>
         </table></div>
-        <p class="table-note">Abschnitt 4.3 der Verordnung. In der unteren Wertstufe wird die Einstiegsstufe ab dem 1-04-2024 empfohlen.</p>
+        <p class="table-note">Abschnitt 4.3 der <a href="https://www.boe.es/diario_boe/txt.php?id=BOE-A-2023-16723" target="_blank" rel="noopener">Verordnung (BOE-A-2023-16723)</a>. In der unteren Wertstufe wird die Einstiegsstufe ab dem 1-04-2024 empfohlen und ist ab dem 1-10-2025 verpflichtend. Der Schwellenwert ist der EU-Schwellenwert für Bauaufträge: 5.382.000 € in der Verordnung, fortgeschrieben nach Art. 20 LCSP (5.404.000 € ab dem 1-01-2026, <a href="https://eur-lex.europa.eu/eli/reg_del/2025/2152/oj" target="_blank" rel="noopener">Delegierte Verordnung (EU) 2025/2152</a>).</p>
       </div>
       <div class="card w3">
         <h4>Was jede Stufe verlangt</h4>
@@ -1583,8 +1583,8 @@
         <div class="table-wrap"><table>
           <thead><tr><th>Dokument</th><th>Abstimmung</th><th>Stand (2-10-2026)</th></tr></thead>
           <tbody>
-            <tr class="is-key"><td>ISO/DIS 19650-1 (Ausg. 2)</td><td class="num">10-03 bis 3-06-2026</td><td>40.93 · Entscheidung über neue DIS-Abstimmung</td></tr>
-            <tr><td>ISO/DIS 19650-2 „Prozess des Informationsmanagements“</td><td class="num">10-03 bis 3-06-2026</td><td>40.93 · ersetzt die Teile 2 und 3</td></tr>
+            <tr class="is-key"><td>ISO/DIS 19650-1 (Ausg. 2)</td><td class="num">10-03 bis 3-06-2026</td><td>40.93 · ISO beschloss, die DIS-Umfrage zu wiederholen</td></tr>
+            <tr><td>ISO/DIS 19650-2 „Prozess des Informationsmanagements“</td><td class="num">10-03 bis 3-06-2026</td><td>40.93 · wiederholt die DIS-Umfrage; ersetzt 19650-2:2018 und 19650-3:2020</td></tr>
             <tr><td>ISO/DIS 19650-3 (Ausg. 2, Leitlinien)</td><td class="num">13-05 bis 6-08-2026</td><td>Abstimmung abgeschlossen</td></tr>
           </tbody>
         </table></div>
@@ -1730,7 +1730,7 @@
       </div>
       <div class="card w3">
         <h4>Was das Kitemark misst</h4>
-        <p>BSI führte es im April 2021 für BIM-Software ein: Es bewertet, ob die Funktionen ISO 19650 entsprechen, den Sicherheitsansatz und den Kundensupport. Die ersten waren Asite, Llewellyn &amp; Partners und Zutec.</p>
+        <p>BSI führte es im März 2021 für BIM-Software ein: Es bewertet, ob die Funktionen ISO 19650 entsprechen, den Sicherheitsansatz und den Kundensupport. Die ersten waren Asite, Llewellyn &amp; Partners und Zutec.</p>
       </div>
       <div class="card w3">
         <h4>Und die Organisationen</h4>
@@ -1779,7 +1779,7 @@
       </div>
       <div class="card w3">
         <h4>Datei oder Server</h4>
-        <p>BCF-XML reist als .bcfzip; die BCF API speichert die Topics auf einem Server, und jedes Programm liest und schreibt sie live. BCF 3.0, 2021 vorgestellt, ergänzt einen Dokumentenordner.</p>
+        <p>BCF-XML reist in einer .bcf-Datei (Endung seit BCF 2.1; vorher .bcfzip, das viele Werkzeuge weiterhin akzeptieren); die BCF API speichert die Topics auf einem Server, und jedes Programm liest und schreibt sie live. BCF 3.0, 2021 vorgestellt, ergänzt einen Dokumentenordner.</p>
       </div>
       <div class="card w3">
         <h4>Warum es zur CDE passt</h4>
