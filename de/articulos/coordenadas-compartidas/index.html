@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Borrador: quitar noindex al publicar -->
-  <meta name="bf-fuente" content="articulos/coordenadas-compartidas/index.html@496bd582b0cdabf2dabb8c9bd0ef5695369df67a">
+  <meta name="bf-fuente" content="articulos/coordenadas-compartidas/index.html@ca456b20422e572e775e1ad765b4a12164b5ce4d">
   <meta name="robots" content="noindex, nofollow">
   <title>Gemeinsame Koordinaten in BIM | BIM Foundation</title>
   <meta name="description" content="Wie gemeinsame Koordinaten in Revit, Civil 3D, IFC und weiterer BIM-Software funktionieren, mit dem spanischen geodätischen Rahmen (ETRS89, EPSG, Höhen über Alicante).">
@@ -31,14 +31,14 @@
 
   <!-- Menú de diapositivas: se rellena con data-nav de cada <section> -->
   <aside id="deck-nav" aria-label="Folien">
-    <span class="kicker-y">Koordinaten · 39 Ideen</span>
+    <span class="kicker-y">Koordinaten · 40 Ideen</span>
     <ol></ol>
     <div id="deck-progress" aria-hidden="true"><i></i></div>
   </aside>
   <div id="deck-bar">
     <div id="deck-sheet"><ol></ol></div>
     <button type="button" id="deck-bar-btn" aria-expanded="false" aria-controls="deck-sheet">
-      <span class="n">01/39</span><span class="t">Titel</span>
+      <span class="n">01/40</span><span class="t">Titel</span>
       <span class="chev" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M3 9l4-4 4 4" fill="none" stroke="#fff" stroke-width="2"/></svg></span>
     </button>
   </div>
@@ -69,7 +69,7 @@
               <li><a href="#espana"><b>II</b><span>Normen und Standards</span><em>3 Ideen · EPSG, IFC, ISO 19650</em></a></li>
               <li><a href="#limites"><b>III</b><span>Software</span><em>7 Ideen · Revit, Survey Point, Campus und Typologien</em></a></li>
               <li><a href="#coordinacion"><b>IV</b><span>Plattformen</span><em>2 Ideen · Viewer und Cloud</em></a></li>
-              <li><a href="#civil3d"><b>V</b><span>Interoperabilität</span><em>2 Ideen · Austausch und Fehler</em></a></li>
+              <li><a href="#civil3d"><b>V</b><span>Interoperabilität</span><em>3 Ideen · Austausch und Fehler</em></a></li>
             <li><a href="#calidad"><b>VI</b><span>Qualitätsprüfung</span><em>8 Ideen · IDS, IfcOpenShell, Model Checker, Solibri</em></a></li>
             </ol>
           </div>
@@ -1117,6 +1117,44 @@
           <div class="card w3">
             <span class="c-label">Beide Punkte</span>
             <span class="c-title">Auf gleicher Höhe</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" id="dwg" data-nav="DWG in Revit">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">DWG in Revit</span>
+          <h2 class="display">Das schwebende CAD<span class="dot">.</span></h2>
+          <p class="slide-lead">Eine CAD-DWG liefert nur Ursprung und Drehung; eine Civil-3D-DWG mit zugewiesenem System zusätzlich ihren EPSG-Code. In beiden Fällen addiert sich die Höhe der Zeichnung zur Höhe der Ebene.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="dwg"><span class="plus">+</span> Details ansehen</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w3">
+            <span class="c-label">Was jede DWG mitbringt</span>
+            <svg class="draw" viewBox="0 0 250 320" role="img" aria-label="Eine CAD-DWG liefert Ursprung und Drehung; eine Civil-3D-DWG mit zugewiesenem System liefert Ursprung, Drehung, Breite und Länge sowie ihren EPSG-Code">
+              <path d="M10 10 H50 L66 26 V86 H10 Z" fill="#fff" stroke="#000" stroke-width="3" stroke-linejoin="round"/><path d="M50 10 V26 H66" fill="none" stroke="#000" stroke-width="2"/><text x="18" y="70" font-family="JetBrains Mono, monospace" font-size="13" font-weight="700">DWG</text>
+              <text x="82" y="40" font-family="Inter, sans-serif" font-weight="900" font-size="15">CAD</text><text x="82" y="58" font-family="JetBrains Mono, monospace" font-size="11" fill="#666">ohne System</text>
+              <g font-family="JetBrains Mono, monospace" font-size="13"><rect x="10" y="100" width="80" height="28" rx="14" fill="#fff" stroke="#000" stroke-width="2"/><text x="50" y="119" text-anchor="middle">Ursprung</text><rect x="98" y="100" width="64" height="28" rx="14" fill="#fff" stroke="#000" stroke-width="2"/><text x="130" y="119" text-anchor="middle">Drehung</text></g>
+              <path d="M10 152 H240" stroke="#000" stroke-width="1" stroke-dasharray="3 4"/>
+              <path d="M10 170 H50 L66 186 V246 H10 Z" fill="#000" stroke="#000" stroke-width="3" stroke-linejoin="round"/><text x="18" y="204" font-family="JetBrains Mono, monospace" font-size="10" fill="#fff">EPSG</text><text x="18" y="230" font-family="JetBrains Mono, monospace" font-size="13" font-weight="700" fill="#FFFF00">DWG</text>
+              <text x="82" y="200" font-family="Inter, sans-serif" font-weight="900" font-size="15">CIVIL 3D</text><text x="82" y="218" font-family="JetBrains Mono, monospace" font-size="11" fill="#666">System zugewiesen</text>
+              <g font-family="JetBrains Mono, monospace" font-size="13"><rect x="10" y="258" width="80" height="28" rx="14" fill="#fff" stroke="#000" stroke-width="2"/><text x="50" y="277" text-anchor="middle">Ursprung</text><rect x="98" y="258" width="64" height="28" rx="14" fill="#fff" stroke="#000" stroke-width="2"/><text x="130" y="277" text-anchor="middle">Drehung</text><rect x="170" y="258" width="76" height="28" rx="14" fill="#fff" stroke="#000" stroke-width="2"/><text x="208" y="277" text-anchor="middle">Breite·Länge</text>
+              <rect x="10" y="290" width="140" height="28" rx="14" fill="#FFFF00" stroke="#000" stroke-width="2"/><text x="80" y="309" text-anchor="middle" font-weight="700">EPSG <tspan data-pais="epsg">25830</tspan></text></g>
+            </svg>
+          </div>
+          <div class="card w3">
+            <span class="c-label">Die doppelte Höhe</span>
+            <svg class="draw" viewBox="0 0 250 320" role="img" aria-label="Eine Ebene auf +650 plus ein mit Z 650 gezeichnetes Gelände ergibt ein Gelände auf +1300, das schwebt">
+              <path d="M90 64 L130 48 L170 56 L210 40 L246 48 V72 H90 Z" fill="#FFFF00" stroke="#000" stroke-width="3" stroke-linejoin="round"/><text x="96" y="96" font-family="JetBrains Mono, monospace" font-size="14" font-weight="700">+1 300</text>
+              <path d="M4 180 H246" stroke="#000" stroke-width="2" stroke-dasharray="6 5"/><text x="96" y="200" font-family="JetBrains Mono, monospace" font-size="12">Ebene 0 = +650</text>
+              <path d="M90 180 L130 164 L170 172 L210 156 L246 164 V180" fill="none" stroke="#000" stroke-width="1.5" stroke-dasharray="4 4"/><text x="96" y="148" font-family="JetBrains Mono, monospace" font-size="11" fill="#666">gehört hierher</text>
+              <path d="M4 300 H246" stroke="#000" stroke-width="2"/><text x="96" y="292" font-family="JetBrains Mono, monospace" font-size="11" fill="#666">interner Ursprung · 0</text>
+              <g stroke="#000" stroke-width="1.5"><path d="M40 298 V184 M32 298 H48 M32 184 H48"/><path d="M40 176 V72 M32 176 H48 M32 72 H48"/></g>
+              <g font-family="JetBrains Mono, monospace" font-size="11"><text x="48" y="236">Ebene</text><text x="48" y="250" font-weight="700">+650</text><text x="48" y="118">Z DWG</text><text x="48" y="132" font-weight="700">+650</text></g>
+            </svg>
           </div>
         </div>
       </div>
@@ -2211,6 +2249,42 @@
 </div>
   </template>
 
+  <template id="l2-dwg">
+<div class="b-cards">
+<div class="card w6">
+<div class="table-wrap"><table>
+<thead><tr><th>Positionierung beim Verknüpfen</th><th>CAD-DWG</th><th>Civil-3D-DWG mit zugewiesenem System</th></tr></thead>
+<tbody>
+<tr><td>Automatisch – Mitte zu Mitte</td><td>Legt sie in die Modellmitte; ihre Koordinaten zählen nicht.</td><td>Ebenso. Das ist der erste Schritt, den Autodesk vor dem Übernehmen vorschlägt.</td></tr>
+<tr><td>Automatisch – Ursprung zu Ursprung</td><td>Der Nullpunkt der Zeichnung fällt auf den internen Ursprung. Wurde in Landeskoordinaten gezeichnet, liegt die Geometrie kilometerweit entfernt.</td><td>Passiert immer: Die Zeichnung liegt in projizierten Koordinaten.</td></tr>
+<tr><td>Automatisch – über gemeinsame Koordinaten</td><td>Funktioniert nur, wenn Revit die gemeinsamen Koordinaten bereits festgelegt hat.</td><td>Revit meldet, dass die Systeme abweichen, und bringt mit <span class="ui">Ausrichten</span> den Referenzpunkt der DWG mit dem Vermessungspunkt oder dem Projektbasispunkt zur Deckung.</td></tr>
+<tr><td>Koordinaten übernehmen</td><td>Das Weltkoordinatensystem (WKS) der Zeichnung wird zum gemeinsamen System: Sein Ursprung ist der Ursprung, seine Y-Achse Norden.</td><td>Zusätzlich erscheinen unter <span class="ui">Position</span> das GIS-System, Breite und Länge.</td></tr>
+</tbody>
+</table></div>
+</div>
+<div class="card w3">
+<h4>Warum es schwebt</h4>
+<p>Die Option <span class="ui">Platzieren auf</span> setzt den Ursprung der Zeichnung auf die gewählte Ebene. Alles mit einem Z-Wert steigt von dort aus nach oben.</p>
+<div class="formula">Endhöhe = Höhe der Ebene + Z der DWG<br><span class="y">650 + 650 = 1 300</span></div>
+<p>Das passiert, wenn die Ebenen in absoluten Höhen angelegt sind und die Vermessung ebenfalls echte Z-Werte geliefert hat: Die Höhe wird doppelt gezählt.</p>
+</div>
+<div class="card w3">
+<h4>So vermeiden Sie es</h4>
+<ol class="vsteps">
+<li>Im BAP festlegen, wer die Höhe trägt: die Zeichnung (echte Z-Werte) oder das Modell (Ebenen).</li>
+<li>Bringt die Zeichnung echte Z-Werte mit, sie auf einer Ebene mit interner Höhe 0 verknüpfen.</li>
+<li>Eine Höhenkote auf einen bekannten Punkt der DWG setzen und mit der Vermessung vergleichen.</li>
+</ol>
+</div>
+<div class="card w6">
+<h4>Auch 2D-Pläne schweben</h4>
+<p>Höhenlinien, Aufnahmepunkte oder aus einem 3D-Modell kopierte Linien behalten ihren Z-Wert. Im Grundriss fällt das nicht auf, in 3D und im Schnitt hängen sie in der Luft. Zwei Auswege: die Zeichnung vor dem Verknüpfen abflachen (<code>FLATTEN</code> in AutoCAD) oder sie mit <span class="ui">Nur aktuelle Ansicht</span> verknüpfen; dann gilt sie als Beschriftung und erscheint nicht in 3D-Ansichten.</p>
+</div>
+<div class="card w6"><p class="table-note" style="margin:0">Quellen: <a href="https://help.autodesk.com/cloudhelp/2021/ENU/Revit-Model/files/GUID-C922A152-0A30-4E27-BED2-BCE9FF2E5E30.htm" target="_blank" rel="noopener">Revit: Positionierung beim Importieren und Verknüpfen</a> · <a href="https://help.autodesk.com/cloudhelp/2024/ENU/Revit-Model/files/GUID-D184A004-D0BF-44D1-9C02-99480B129CAD.htm" target="_blank" rel="noopener">Optionen für CAD-Import und -Verknüpfung</a> · <a href="https://help.autodesk.com/cloudhelp/2014/ENU/Revit/files/GUID-651EE8A9-FCFC-4999-91C6-4628FBCED902.htm" target="_blank" rel="noopener">Koordinaten aus einer DWG übernehmen</a> · <a href="https://help.autodesk.com/cloudhelp/2027/ENU/Revit-Model/files/GUID-77BBFD78-8389-4FD4-8C95-929D92AAC590.htm" target="_blank" rel="noopener">DWG verknüpfen und übernehmen</a> · <a href="https://help.autodesk.com/cloudhelp/2027/ENU/Revit-Model/files/GUID-0C6D8890-73D9-4DAC-A0A6-84C45E54C6A8.htm" target="_blank" rel="noopener">über gemeinsame Koordinaten verknüpfen</a> · <a href="https://forums.autodesk.com/t5/revit-architecture-forum/shared-reference-point-wrong-elevation/td-p/11451665" target="_blank" rel="noopener">Autodesk-Forum: falsche Höhe</a>.</p></div>
+</div>
+  </template>
+
+
   <template id="l2-coordinacion">
 <div class="b-cards">
 <div class="card w6">
@@ -2681,6 +2755,10 @@ print("OK" if error &lt; 0.01 else f"Desvío de {error:.3f} m")</code></pre>
 
   <script src="../../../assets/js/serie.js"></script>
   <script src="../../../assets/js/paises.js"></script>
+  <script src="../../../assets/i18n/de/paises.js"></script>
+  <script src="../../../assets/i18n/paginas.js"></script>
+  <script src="../../../assets/i18n/de/ui.js"></script>
+  <script src="../../../assets/js/idioma.js"></script>
   <script src="../../../assets/js/web.js"></script>
   <script src="../../../assets/js/precision.js"></script>
 </body>

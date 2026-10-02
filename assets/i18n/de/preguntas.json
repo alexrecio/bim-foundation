@@ -1,0 +1,12 @@
+{
+ "coordenadas-compartidas#problema": "Warum liegen Modelle beim Föderieren an der falschen Stelle?",
+ "coordenadas-compartidas#paises": "Welchen EPSG-Code trage ich in den BAP und ins IFC ein?",
+ "coordenadas-compartidas#limite": "Warum zittert die Geometrie fern vom Ursprung?",
+ "coordenadas-compartidas#nortes": "Projektnord oder geografisch Nord?",
+ "coordenadas-compartidas#ifc": "Wie georeferenziert man ein IFC richtig?",
+ "coordenadas-compartidas#survey": "Ist der Vermessungspunkt der Koordinatenursprung?",
+ "coordenadas-compartidas#revit": "Koordinaten in Revit übernehmen oder veröffentlichen?",
+ "coordenadas-compartidas#nubes": "Wie bringe ich eine Punktwolke in UTM ins Modell?",
+ "coordenadas-compartidas#coordinacion": "Verschiebe ich das Modell im Viewer oder im Original?",
+ "coordenadas-compartidas#calidad": "Wie prüfe ich, ob ein Modell an der richtigen Stelle liegt?"
+}

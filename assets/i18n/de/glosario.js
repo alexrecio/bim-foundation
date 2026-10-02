@@ -1,0 +1,950 @@
+// Glosario (de). GENERADO por herramientas/i18n.mjs desde assets/i18n/de/glosario.json y assets/js/glosario.js: no editar a mano.
+window.BF_GLOSARIO = [
+ {
+  "id": "C01",
+  "slug": "georreferenciacion",
+  "t": "Georeferenzierung",
+  "en": "Georreferenciación",
+  "b": "I",
+  "d": "Verknüpfung des lokalen Systems eines Modells oder einer Zeichnung mit einem bekannten erdbezogenen Referenzsystem, sodass jeder Punkt des Modells eindeutige reale Koordinaten (E, N, H) erhält.",
+  "ej": "Modell eines Gebäudes in Madrid in ETRS89 / UTM 30N (EPSG:25830) mit Höhen über dem mittleren Meeresspiegel in Alicante.",
+  "eq": "Revit: Gemeinsame Koordinaten; Archicad/Allplan/Vectorworks: Survey Point; Tekla: base point; Bentley: GCS; IFC: IfcMapConversion + IfcProjectedCRS.",
+  "err": "Annehmen, dass die Eingabe von Breite/Länge am Projektstandort eine Georeferenzierung ist; damit wird das Projekt nur näherungsweise verortet.",
+  "rel": [
+   "C02",
+   "C13",
+   "C19",
+   "C20",
+   "C22"
+  ],
+  "al": [
+   "Georeferenzierung",
+   "georeferenziert",
+   "georeferenzierte",
+   "georeferenzierten",
+   "georeferenzieren",
+   "georeferencing",
+   "georreferenciación",
+   "georreferenciar",
+   "georreferenciado"
+  ]
+ },
+ {
+  "id": "C02",
+  "slug": "sistema-de-referencia-de-coordenadas",
+  "t": "Koordinatenreferenzsystem (KRS / CRS)",
+  "en": "Sistema de referencia de coordenadas (SRC / CRS)",
+  "b": "I",
+  "d": "Kombination aus einem Datum (Lagerung bezüglich der Erde) und einem Koordinatensystem (geografisch, projiziert oder vertikal), mit der sich Positionen eindeutig angeben lassen.",
+  "ej": "ETRS89 / UTM 30N (EPSG:25830) für die Lage + Alicante height (EPSG:5782) für die Höhe; zusammen bilden sie ein zusammengesetztes CRS.",
+  "eq": "Civil 3D: Koordinatenzone (GEOCSASSIGN); Bentley: GCS; ArcGIS/QGIS: KBS/CRS; IFC: IfcProjectedCRS / IfcGeographicCRS.",
+  "err": "Nur „UTM 30“ ohne Datum angeben: ED50 und ETRS89 in UTM 30 weichen in Spanien um rund 200 m voneinander ab.",
+  "rel": [
+   "C03",
+   "C04",
+   "C05",
+   "C07"
+  ],
+  "al": [
+   "Koordinatenreferenzsystem",
+   "Koordinatenreferenzsysteme",
+   "Koordinatenreferenzsystems",
+   "Referenzsystem",
+   "Koordinatensystem",
+   "Koordinatensysteme",
+   "Koordinatensystems",
+   "KRS",
+   "CRS",
+   "KBS",
+   "sistema de referencia",
+   "SRC",
+   "sistema de coordenadas"
+  ]
+ },
+ {
+  "id": "C03",
+  "slug": "datum-geodesico",
+  "t": "Geodätisches Datum",
+  "en": "Datum geodésico",
+  "b": "I",
+  "d": "Mathematisches Modell (Ellipsoid + Orientierung und Ursprung), das festlegt, wie sich die Koordinaten auf die reale Erde beziehen. Ein Datumswechsel verschiebt die Koordinaten, obwohl der physische Punkt derselbe bleibt.",
+  "ej": "Amtlich auf der Iberischen Halbinsel und den Balearen: ETRS89 (Ellipsoid GRS80); Kanaren: REGCAN95; historisch: ED50 (Internationales Ellipsoid 1924). WGS84 ist das Datum des GPS. Ohne Epoche ist es mehrdeutig: Es entfernt sich durch die Drift der Eurasischen Platte jährlich um etwa 2,5 cm von ETRS89, und heute beträgt der Unterschied mehrere Dezimeter.",
+  "eq": "Wird bei der Definition des CRS gewählt: Civil 3D, Bentley GCS, IfcProjectedCRS.GeodeticDatum.",
+  "err": "Alte Kartengrundlagen in ED50 ohne Transformation mit GNSS-Aufmessungen in ETRS89 mischen (Versätze von ~150–230 m).",
+  "rel": [
+   "C02",
+   "C16",
+   "C33"
+  ],
+  "al": [
+   "Datum",
+   "geodätisches Datum",
+   "geodätischen Datums",
+   "geodätische Datum",
+   "Datumswechsel",
+   "datum",
+   "datum geodésico"
+  ]
+ },
+ {
+  "id": "C04",
+  "slug": "codigo-epsg-wkt",
+  "t": "EPSG-Code / WKT",
+  "en": "Código EPSG / WKT",
+  "b": "II",
+  "d": "Numerische Kennung aus dem EPSG-Register (IOGP), die ein CRS, ein Datum oder eine Transformation eindeutig definiert. WKT (ISO 19162) ist die textuelle Alternative, die das CRS vollständig beschreibt.",
+  "ej": "EPSG:25829, 25830, 25831 (ETRS89 / UTM 29N, 30N, 31N); EPSG:4083 und 4082 (REGCAN95 / UTM 28N und 27N); EPSG:5782 (Höhen Alicante).",
+  "eq": "Revit (IFC-Exporter): EPSG-Feld; Civil 3D: GEOCSASSIGN akzeptiert EPSG-Codes; IFC: IfcProjectedCRS.Name = 'EPSG:25830'; IFC4.3: IfcWellKnownText.",
+  "err": "Den Namen des Systems ohne Code angeben, einen Code eines anderen Datums verwenden (23030 ist ED50 / UTM 30N) oder einen mit anderer Achsreihenfolge (3042 ist ETRS89 / UTM 30N in der Reihenfolge Nord-Ost).",
+  "rel": [
+   "C02",
+   "C20"
+  ],
+  "al": [
+   "EPSG",
+   "EPSG-Code",
+   "EPSG-Codes",
+   "WKT",
+   "código EPSG"
+  ]
+ },
+ {
+  "id": "C05",
+  "slug": "proyeccion-cartografica-utm-huso",
+  "t": "Kartenabbildung / UTM / Zone",
+  "en": "Proyección cartográfica / UTM / huso",
+  "b": "I",
+  "d": "Mathematische Abbildung von geografischen Koordinaten (Breite, Länge) in eine Ebene (Ost, Nord). UTM teilt die Erde in 6°-Zonen mit einem Maßstabsfaktor von 0,9996 auf dem Mittelmeridian.",
+  "ej": "Das spanische Festland liegt in den Zonen 29, 30 und 31, die Kanaren in 27 und 28. Ein Projekt bleibt in einer einzigen Zone, auch wenn es nahe der Zonengrenze liegt.",
+  "eq": "Parameter des CRS in allen Programmen; IFC: IfcProjectedCRS.MapProjection und MapZone.",
+  "err": "Innerhalb eines Projekts die Zone wechseln oder die Zone der Kanaren verwechseln.",
+  "rel": [
+   "C02",
+   "C08",
+   "C10"
+  ],
+  "al": [
+   "Kartenabbildung",
+   "Kartenprojektion",
+   "Projektion",
+   "UTM",
+   "UTM-Zone",
+   "Zone",
+   "Zonen",
+   "Mercator",
+   "proyección",
+   "huso"
+  ]
+ },
+ {
+  "id": "C06",
+  "slug": "coordenadas-locales-de-obra-vs-coordenadas-proyectadas",
+  "t": "Lokale Baustellenkoordinaten vs. projizierte Koordinaten (Landeskoordinaten)",
+  "en": "Coordenadas locales de obra vs. coordenadas proyectadas",
+  "b": "I",
+  "d": "Lokale Koordinaten haben einen für die Baustelle praktischen Ursprung und eine praktische Ausrichtung und messen „wie mit dem Maßband“; projizierte Koordinaten (z. B. UTM) sind große Zahlen und enthalten die Verzerrung der Abbildung. Eine verzerrungsarme Projektion (Low Distortion Projection, LDP) ist so ausgelegt, dass der Maßstab auf der Baustelle ~1 beträgt.",
+  "ej": "Kleines Projekt (≤100 m) in lokalen Koordinaten mit zwei oder mehr Verknüpfungspunkten zu UTM. Bei langen Linienbauwerken UTM mit gehandhabtem Maßstabsfaktor oder eine LDP: Die Deutsche Bahn kam bei 6.326 Bahnhöfen auf unter 5 ppm (Clemen und Romanschek, ISPRS 2025).",
+  "eq": "Revit: Projektbasispunkt vs. Vermessungspunkt; Tekla: base points; Trimble/Leica: lokale Baustellenkalibrierung (site calibration).",
+  "err": "Im BIM-Programm direkt in echten UTM-Koordinaten modellieren (Genauigkeitsverlust), statt lokal zu modellieren und zu transformieren.",
+  "rel": [
+   "C08",
+   "C12",
+   "C13",
+   "C15",
+   "C27"
+  ],
+  "al": [
+   "lokale Koordinaten",
+   "lokalen Koordinaten",
+   "Baustellenkoordinaten",
+   "Baustellenkoordinatensystem",
+   "projizierte Koordinaten",
+   "projizierten Koordinaten",
+   "Landeskoordinaten",
+   "lokales System",
+   "lokalen System",
+   "LDP",
+   "coordenadas locales",
+   "coordenadas proyectadas",
+   "sistema local"
+  ]
+ },
+ {
+  "id": "C07",
+  "slug": "alturas-elipsoidal-ortometrica-geoide",
+  "t": "Höhen: ellipsoidische Höhe, orthometrische Höhe, Geoid",
+  "en": "Alturas: elipsoidal, ortométrica, geoide",
+  "b": "I",
+  "d": "Die ellipsoidische Höhe (h) liefert GNSS bezogen auf das Ellipsoid; die orthometrische Höhe (H) ist die „Höhe über dem Meeresspiegel“ bezogen auf das Geoid. Beide hängen über die Geoidundulation zusammen: N = h − H. Das Höhendatum legt den Nullpunkt der Höhen fest.",
+  "ej": "In Spanien bezieht sich H auf den mittleren Meeresspiegel in Alicante (Netz REDNAP); das IGN veröffentlicht das Geoid EGM08-REDNAP (~3,8 cm Genauigkeit). Auf den Kanaren hat jede Insel ihren eigenen Bezug.",
+  "eq": "Revit: Höhe des Vermessungspunkts; IFC: IfcMapConversion.OrthogonalHeight und IfcProjectedCRS.VerticalDatum.",
+  "err": "Dem Modell ellipsoidische GNSS-Höhen als Höhenkoten geben (Fehler von ~50 m auf der Iberischen Halbinsel).",
+  "rel": [
+   "C03",
+   "C27",
+   "C33"
+  ],
+  "al": [
+   "Geoid",
+   "Geoids",
+   "Quasigeoid",
+   "ellipsoidische Höhe",
+   "ellipsoidischen Höhe",
+   "ellipsoidische Höhen",
+   "orthometrische Höhe",
+   "orthometrischen Höhe",
+   "Normalhöhe",
+   "Höhendatum",
+   "Höhenbezug",
+   "Geoidundulation",
+   "geoide",
+   "altura elipsoidal",
+   "altitud",
+   "ortométrica",
+   "datum vertical"
+  ]
+ },
+ {
+  "id": "C08",
+  "slug": "factor-de-escala-coeficiente-de-anamorfosis",
+  "t": "Maßstabsfaktor / Streckenreduktion (K)",
+  "en": "Factor de escala / coeficiente de anamorfosis (K)",
+  "b": "I",
+  "d": "Die im Gelände gemessene Strecke stimmt nicht mit der Strecke im UTM-Gitter überein. Der Gitterfaktor (Abbildungsreduktion) hängt von der Lage in der Zone ab, der Höhenfaktor (Höhenreduktion) von der Höhe über dem Ellipsoid; der kombinierte Faktor ist ihr Produkt. Es ist festzulegen, ob „im Gelände“ oder „im Gitter“ modelliert wird.",
+  "ej": "Typische Abweichungen von 100 bis 400 ppm in Spanien: 1 bis 4 cm pro 100 m. Die spanische Dienstanweisung für Straßen (Nota de Servicio 03/2024) verlangt, in der Vermessung den Verzerrungskoeffizienten (K) und die Meridiankonvergenz (W) anzugeben.",
+  "eq": "Civil 3D: Grid Scale Factor (Transformation); IFC: IfcMapConversion.Scale (Einheiten) und IfcMapConversionScaled (IFC4.3, FactorX/Y/Z); Trimble/Leica: Kalibrierung. Revit: wird nicht unterstützt (Festlegung im BAP).",
+  "err": "Die beiden Verwendungen von IfcMapConversion.Scale verwechseln: Der bSI-Leitfaden 2020, OSArch und Bonsai nutzen es als kombinierten Faktor, während IFC 4.3 ADD2 es der Einheitenumrechnung vorbehält und den Gitterfaktor in IfcMapConversionScaled verlagert. Ebenfalls ein Fehler: den Faktor bei langen Linienbauwerken zu ignorieren.",
+  "rel": [
+   "C05",
+   "C06",
+   "C19",
+   "C25"
+  ],
+  "al": [
+   "Maßstabsfaktor",
+   "Maßstabsfaktors",
+   "Maßstabsfaktoren",
+   "Streckenreduktion",
+   "Abbildungsreduktion",
+   "Höhenreduktion",
+   "kombinierter Faktor",
+   "kombinierten Faktor",
+   "Gitterfaktor",
+   "Scale Factor",
+   "factor de escala",
+   "anamorfosis",
+   "factor combinado"
+  ]
+ },
+ {
+  "id": "C09",
+  "slug": "nortes-verdadero-de-cuadricula-magnetico-de-proyecto",
+  "t": "Nordrichtungen: Geografisch Nord, Gitter-Nord, magnetisch Nord, Projektnord",
+  "en": "Nortes: verdadero, de cuadrícula, magnético, de proyecto",
+  "b": "I",
+  "d": "Geografisch Nord (rechtweisend): Richtung zum Pol. Gitter-Nord: N-Achse der Abbildung (UTM). Magnetisch Nord: Richtung der Kompassnadel. Projektnord: „Oben“-Richtung des Modells, ausgerichtet an den Gebäudeachsen für bequemes Arbeiten.",
+  "ej": "In Spanien kann der Unterschied zwischen geografisch Nord und UTM-Gitter-Nord (Meridiankonvergenz) an den Zonenrändern mehr als 2° betragen.",
+  "eq": "Revit: Projektnord / Geografisch Nord; Archicad: Project North; Tekla: angle to North; IFC: TrueNorth und Rotation von IfcMapConversion (bezogen auf Gitter-Nord).",
+  "err": "Als „Winkel zu Geografisch Nord“ unbemerkt den Winkel zum UTM-Gitter eingeben oder umgekehrt.",
+  "rel": [
+   "C10",
+   "C21"
+  ],
+  "al": [
+   "Geografisch Nord",
+   "geografisch Nord",
+   "geografischen Norden",
+   "Gitter-Nord",
+   "Gitternord",
+   "magnetisch Nord",
+   "magnetischen Norden",
+   "Projektnord",
+   "Projektnorden",
+   "Nordrichtung",
+   "Nordrichtungen",
+   "True North",
+   "Project North",
+   "norte verdadero",
+   "norte de cuadrícula",
+   "norte magnético",
+   "norte de proyecto"
+  ]
+ },
+ {
+  "id": "C10",
+  "slug": "convergencia-de-meridianos",
+  "t": "Meridiankonvergenz (W) / Drehwinkel",
+  "en": "Convergencia de meridianos (W) / ángulo de rotación",
+  "b": "I",
+  "d": "Winkel zwischen geografisch Nord und Gitter-Nord in einem Punkt. Bei BIM muss für den Drehwinkel der Transformation lokal→Welt angegeben werden, auf welche Nordrichtung er sich bezieht und in welchem Drehsinn er gemessen wird.",
+  "ej": "Null auf dem Mittelmeridian der Zone (3° W für Zone 30) und zu den Rändern hin zunehmend.",
+  "eq": "Revit: Winkel im Uhrzeigersinn gemessen; Archicad: gegen den Uhrzeigersinn ab +X; IFC: XAxisAbscissa / XAxisOrdinate (gegen den Uhrzeigersinn ab Ost).",
+  "err": "Drehsinn-Konventionen verschiedener Programme mischen (Revit vs. Archicad) und ein verdrehtes Modell erhalten.",
+  "rel": [
+   "C09",
+   "C19"
+  ],
+  "al": [
+   "Meridiankonvergenz",
+   "Konvergenz",
+   "Drehwinkel",
+   "Drehwinkels",
+   "grid convergence",
+   "convergencia",
+   "convergencia de meridianos"
+  ]
+ },
+ {
+  "id": "C11",
+  "slug": "origen-interno",
+  "t": "Interner Ursprung",
+  "en": "Origen interno",
+  "b": "III",
+  "d": "Fester Punkt 0,0,0 der Geometrie-Engine des Programms, auf den sich alle internen Koordinaten beziehen. Er bewegt sich nicht; die Geometrie sollte in seiner Nähe modelliert werden.",
+  "ej": "In Revit ist er seit Version 2020.2 sichtbar.",
+  "eq": "Revit: Interner Ursprung; Archicad: Project Origin; Tekla: model origin; Allplan: globaler Punkt 0,0,0; Vectorworks: Internal Origin; BricsCAD: WCS 0,0,0; Bonsai/IFC: lokaler Ursprung.",
+  "err": "Ein DWG in UTM „Ursprung auf Ursprung“ importieren: Die Geometrie liegt dann Kilometer vom internen Ursprung entfernt.",
+  "rel": [
+   "C12",
+   "C13",
+   "C15"
+  ],
+  "al": [
+   "Interner Ursprung",
+   "interner Ursprung",
+   "internen Ursprung",
+   "internen Ursprungs",
+   "internem Ursprung",
+   "Internal Origin",
+   "origen interno"
+  ]
+ },
+ {
+  "id": "C12",
+  "slug": "punto-base-del-proyecto",
+  "t": "Projektbasispunkt (und Entsprechungen)",
+  "en": "Punto base del proyecto (y equivalentes)",
+  "b": "III",
+  "d": "Lokale Referenz des Projekts, meist an einer Ecke oder einem Achsschnittpunkt, die zum Bemaßen und Abstecken in Gebäudekoordinaten dient. Sie ist nicht die Verbindung zur realen Welt.",
+  "ej": "Schnittpunkt der Achsen A-1 eines Tragwerks.",
+  "eq": "Revit: Projektbasispunkt; Tekla: project base point; Allplan 2026: Base Point; Vectorworks: User Origin; BricsCAD: Project Location; IFC: Placement von IfcSite/IfcBuilding.",
+  "err": "Den Projektbasispunkt verschieben in der Annahme, damit das Modell zu georeferenzieren.",
+  "rel": [
+   "C11",
+   "C13",
+   "C14"
+  ],
+  "al": [
+   "Projektbasispunkt",
+   "Projektbasispunkts",
+   "Projektbasispunktes",
+   "Basispunkt",
+   "Basispunkts",
+   "Project Base Point",
+   "punto base"
+  ]
+ },
+ {
+  "id": "C13",
+  "slug": "punto-de-reconocimiento-survey-point",
+  "t": "Vermessungspunkt / Survey Point (und Entsprechungen)",
+  "en": "Punto de reconocimiento / Survey Point (y equivalentes)",
+  "b": "III",
+  "d": "Punkt, der im Modell den Ursprung des realen bzw. gemeinsamen Koordinatensystems verkörpert. Er definiert die Verschiebung (und zusammen mit der Nordrichtung die Drehung) zwischen dem lokalen System und dem Vermessungssystem.",
+  "ej": "Fällt mit einem Absteckpunkt mit bekannten Koordinaten in ETRS89 / UTM 30N zusammen.",
+  "eq": "Revit: Vermessungspunkt (beschnitten oder unbeschnitten); Archicad (AC25+): Survey Point; Allplan 2026 und Vectorworks: Survey Point; BricsCAD: Survey Location; Tekla: base point mit E/N; IFC: IfcMapConversion.",
+  "err": "Den beschnittenen Punkt verschieben, obwohl der unbeschnittene gemeint war (oder umgekehrt), und damit das gesamte gemeinsame System versetzen.",
+  "rel": [
+   "C11",
+   "C12",
+   "C14",
+   "C19"
+  ],
+  "al": [
+   "Vermessungspunkt",
+   "Vermessungspunkts",
+   "Vermessungspunktes",
+   "Vermessungspunkte",
+   "Survey Point",
+   "punto de reconocimiento"
+  ]
+ },
+ {
+  "id": "C14",
+  "slug": "coordenadas-compartidas",
+  "t": "Gemeinsame Koordinaten (übernehmen / veröffentlichen)",
+  "en": "Coordenadas compartidas (adquirir / publicar)",
+  "b": "III",
+  "d": "Mechanismus, mit dem mehrere verknüpfte Modelle dasselbe Koordinatensystem verwenden. Man übernimmt das System eines anderen Modells oder veröffentlicht das eigene in dieses; benannte Standorte erlauben mehrere Positionen desselben Modells.",
+  "ej": "Master-Lageplanmodell, das die Koordinaten aus dem Vermessungsmodell übernimmt und sie an Architektur, Tragwerk und TGA veröffentlicht.",
+  "eq": "Revit: Koordinaten übernehmen / Koordinaten veröffentlichen, Shared Site, Relocate Project, Reset Shared Coordinates; ACC: bei Cloud Worksharing nur übernehmen; andere Programme: gleiche Logik mit ihrem Survey Point.",
+  "err": "„In denselben Koordinaten liegen“ mit „Koordinaten gemeinsam nutzen“ verwechseln; Veröffentlichen mit einem DWG verwenden.",
+  "rel": [
+   "C13",
+   "C17",
+   "C30"
+  ],
+  "al": [
+   "Gemeinsame Koordinaten",
+   "gemeinsame Koordinaten",
+   "gemeinsamen Koordinaten",
+   "Koordinaten übernehmen",
+   "Koordinaten veröffentlichen",
+   "Shared Coordinates",
+   "coordenadas compartidas",
+   "adquirir coordenadas",
+   "publicar coordenadas"
+  ]
+ },
+ {
+  "id": "C15",
+  "slug": "precision-en-coma-flotante-y-modelos-lejos-del-origen",
+  "t": "Gleitkommagenauigkeit und Modelle fern vom Ursprung",
+  "en": "Precisión en coma flotante y modelos lejos del origen",
+  "b": "I",
+  "d": "Grafik-Engines speichern Koordinaten mit einer begrenzten Zahl signifikanter Stellen: Fern vom Ursprung geht Genauigkeit verloren, die Geometrie „zittert“ und es treten Fehler auf. Deshalb wird nahe am Ursprung modelliert und eine Transformation angewendet (False Origin, falscher Ursprung).",
+  "ej": "Revit begrenzt die Geometrie auf 16 km (10 Meilen) vom internen Ursprung; Bonsai warnt ab etwa 5 km vor Fehlern im Millimeterbereich.",
+  "eq": "Revit: Entfernungsgrenze; Bonsai: False Origin; Navisworks/Solibri: Flackern bei großen Koordinaten; Bentley: Global Origin.",
+  "err": "Im BIM-Programm direkt in UTM-Koordinaten (400000, 4400000) modellieren.",
+  "rel": [
+   "C06",
+   "C11",
+   "C26"
+  ],
+  "al": [
+   "Gleitkomma",
+   "Gleitkommagenauigkeit",
+   "Gleitkommazahlen",
+   "einfache Genauigkeit",
+   "große Koordinaten",
+   "großen Koordinaten",
+   "float32",
+   "float64",
+   "False Origin",
+   "falscher Ursprung",
+   "falschen Ursprung",
+   "coma flotante",
+   "precisión simple",
+   "false origin"
+  ]
+ },
+ {
+  "id": "C16",
+  "slug": "transformacion-de-coordenadas",
+  "t": "Koordinatentransformation",
+  "en": "Transformación de coordenadas",
+  "b": "I",
+  "d": "Operation, die Koordinaten von einem System in ein anderes umrechnet: von lokal nach projiziert (Verschiebung + Drehung + Maßstab, Helmert-Transformation 2D/3D) oder zwischen Datumsangaben (z. B. ED50→ETRS89 mit dem NTv2-Gitter des IGN).",
+  "ej": "NTv2-Gitter: PENR2009 und BALR2009 des IGN (wenige cm), SPED2ETV2 aus dem EPSG-Register (EPSG:15932, 0,1–0,2 m) und das des ICGC in Katalonien (EPSG:5661). Es empfiehlt sich zu prüfen, welches jedes Programm verwendet.",
+  "eq": "IFC: IfcMapConversion (lokal→projiziert); CloudCompare: Global Shift; FME/PROJ/QGIS: Umprojektion; Civil 3D: Transformationen aus dem Katalog.",
+  "err": "Drehung und Verschiebung in umgekehrter Reihenfolge anwenden (im Modelical-Workflow mit Punktwolken wird zuerst verschoben und dann gedreht).",
+  "rel": [
+   "C03",
+   "C19",
+   "C26"
+  ],
+  "al": [
+   "Koordinatentransformation",
+   "Koordinatentransformationen",
+   "Transformation",
+   "Transformationen",
+   "transformieren",
+   "transformiert",
+   "Datumsübergang",
+   "Helmert",
+   "Helmert-Transformation",
+   "NTv2",
+   "transformación"
+  ]
+ },
+ {
+  "id": "C17",
+  "slug": "federacion-y-alineacion-de-modelos",
+  "t": "Modellföderation und Ausrichtung",
+  "en": "Federación y alineación de modelos",
+  "b": "IV",
+  "d": "Modelle verschiedener Fachdisziplinen und Programme in einem gemeinsamen Viewer zusammenführen, um sie zu koordinieren (Kollisionsprüfung, Prüfung). Das funktioniert nur, wenn alle dasselbe Koordinatensystem verwenden.",
+  "ej": "Architektur- (Archicad), Tragwerks- (Tekla) und TGA-Modelle (Revit), föderiert in Navisworks oder BIMcollab.",
+  "eq": "Navisworks: Units and Transform; ACC: Transform; BIMcollab Zoom: IFC Global Origin / Use georeferencing; Solibri; Trimble Connect; Dalux.",
+  "err": "Die Transform-Funktion des Viewers als Dauerlösung nutzen, statt den Ursprung im Quellmodell zu korrigieren.",
+  "rel": [
+   "C14",
+   "C24",
+   "C30",
+   "C32"
+  ],
+  "al": [
+   "Modellföderation",
+   "Föderation",
+   "föderieren",
+   "föderiert",
+   "föderierte",
+   "föderierten",
+   "Koordinationsmodell",
+   "Koordinationsmodells",
+   "Ausrichtung",
+   "federación",
+   "federar",
+   "federado"
+  ]
+ },
+ {
+  "id": "C18",
+  "slug": "ifcsite",
+  "t": "IfcSite (Breite, Länge, Höhe)",
+  "en": "IfcSite (latitud, longitud, elevación)",
+  "b": "II",
+  "d": "Attribute des IFC-Grundstücks, die eine Näherungsposition in WGS84 (Grad, Minuten, Sekunden) und eine Höhe angeben. Sie sind informativ: Sie definieren keine genaue Transformation.",
+  "ej": "Breite 40°25'N, Länge 3°42'W für ein Projekt in Madrid.",
+  "eq": "Revit: Projektstandort (Karte); Archicad: Project Location; alle IFC-Exporter.",
+  "err": "Breite/Länge von IfcSite als genaue Georeferenzierung betrachten oder auf 0 belassen (laut TU Delft häufig).",
+  "rel": [
+   "C19",
+   "C22",
+   "C29"
+  ],
+  "al": [
+   "IfcSite",
+   "RefLatitude",
+   "RefLongitude",
+   "RefElevation"
+  ]
+ },
+ {
+  "id": "C19",
+  "slug": "ifcmapconversion",
+  "t": "IfcMapConversion (sowie IfcMapConversionScaled, IfcRigidOperation)",
+  "en": "IfcMapConversion (y IfcMapConversionScaled, IfcRigidOperation)",
+  "b": "II",
+  "d": "IFC-Entität (seit IFC4), die die Transformation vom lokalen System des Modells in das Karten-CRS definiert: Eastings, Northings, OrthogonalHeight, Drehung (XAxisAbscissa/Ordinate) und Maßstab. IFC4.3 ergänzt IfcMapConversionScaled (FactorX/Y/Z) und IfcRigidOperation (nur Verschiebung).",
+  "ej": "IFCMAPCONVERSION(#ctx,#crs,440125.250,4474310.800,655.320,0.9993908,0.0348995,1.) für EPSG:25830.",
+  "eq": "Revit (IFC4 mit EPSG), Archicad (Survey Point and Project Origin), Tekla (Option IfcMapConversion), Vectorworks, Bonsai, Allplan; in IFC2x3 wird es mit ePSet_MapConversion nachgebildet.",
+  "err": "Doppelte Verschiebung: Koordinaten sowohl in IfcMapConversion als auch im Placement von IfcSite.",
+  "rel": [
+   "C13",
+   "C20",
+   "C21",
+   "C22",
+   "C24"
+  ],
+  "al": [
+   "IfcMapConversion",
+   "IfcMapConversionScaled",
+   "IfcRigidOperation",
+   "ePSet_MapConversion"
+  ]
+ },
+ {
+  "id": "C20",
+  "slug": "ifcprojectedcrs-ifcgeographiccrs",
+  "t": "IfcProjectedCRS / IfcGeographicCRS",
+  "en": "IfcProjectedCRS / IfcGeographicCRS",
+  "b": "II",
+  "d": "IFC-Entität, die das Ziel-CRS von IfcMapConversion beschreibt: Name (EPSG-Code), geodätisches Datum, Höhendatum, Abbildung, Zone und Einheiten. In IFC4.3 muss das CRS einen EPSG-Code oder ein WKT enthalten.",
+  "ej": "Name 'EPSG:25830', GeodeticDatum 'EPSG:6258' (ETRS89), VerticalDatum bezogen auf Alicante, MapZone '30N'.",
+  "eq": "EPSG-Feld im IFC-Exporter von Revit, Archicad, Vectorworks, Bonsai; IFC2x3: ePSet_ProjectedCRS.",
+  "err": "Den Namen leer lassen oder einen Freitext eintragen, den Viewer nicht auswerten können.",
+  "rel": [
+   "C04",
+   "C19"
+  ],
+  "al": [
+   "IfcProjectedCRS",
+   "IfcGeographicCRS",
+   "IfcCoordinateReferenceSystem",
+   "ePSet_ProjectedCRS"
+  ]
+ },
+ {
+  "id": "C21",
+  "slug": "contexto-geometrico-worldcoordinatesystem-y-truenorth",
+  "t": "Geometrischer Kontext: WorldCoordinateSystem und TrueNorth",
+  "en": "Contexto geométrico: WorldCoordinateSystem y TrueNorth",
+  "b": "II",
+  "d": "Darstellungskontext des IFC-Projekts, der das Weltkoordinatensystem und die Richtung nach geografisch Nord enthält. Ist IfcMapConversion vorhanden, ist TrueNorth nur informativ.",
+  "ej": "TrueNorth um 12° gegenüber der Y-Achse des Modells gedreht.",
+  "eq": "Revit „Coordinate Base“ mit den Varianten „oriented in True North“; alle Exporter.",
+  "err": "TrueNorth passt nicht zur Drehung von IfcMapConversion.",
+  "rel": [
+   "C09",
+   "C19",
+   "C22"
+  ],
+  "al": [
+   "TrueNorth",
+   "WorldCoordinateSystem",
+   "IfcGeometricRepresentationContext",
+   "Darstellungskontext"
+  ]
+ },
+ {
+  "id": "C22",
+  "slug": "logeoref-y-validacion-de-georreferenciacion-ifc",
+  "t": "LoGeoRef und Prüfung der IFC-Georeferenzierung",
+  "en": "LoGeoRef y validación de georreferenciación IFC",
+  "b": "II",
+  "d": "Klassifizierung (HTW Dresden), wie vollständig die Georeferenzierung eines IFC ist: 10 Postanschrift, 20 Breite/Länge in IfcSite, 30 Placement des obersten Elements, 40 WorldCoordinateSystem + TrueNorth, 50 IfcMapConversion + IfcProjectedCRS (empfohlen).",
+  "ej": "LoGeoRef 50 im BAP fordern und mit IfcGeoRefChecker, IfcGref oder IDS prüfen.",
+  "eq": "IfcGeoRefChecker, IfcGref (TU Delft), Bonsai, IDS-Validatoren, BIM Fit Check (buildingSMART Deutschland).",
+  "err": "Ein IFC als gültig akzeptieren, das nur LoGeoRef 20 (Breite/Länge) erreicht.",
+  "rel": [
+   "C18",
+   "C19",
+   "C20",
+   "C21",
+   "C32"
+  ],
+  "al": [
+   "LoGeoRef",
+   "Level of Georeferencing",
+   "IfcGeoRefChecker"
+  ]
+ },
+ {
+  "id": "C23",
+  "slug": "ifc-4-3-para-infraestructura-alineaciones-y-pk",
+  "t": "IFC 4.3 für Infrastruktur: Achsen (Alignment) und Stationierung",
+  "en": "IFC 4.3 para infraestructura: alineaciones y PK",
+  "b": "II",
+  "d": "IFC 4.3 (ISO 16739-1:2024) umfasst Straßen, Bahnen, Brücken und Häfen, mit Achsen (Lageplan, Gradiente, Querneigung) und linearer Referenzierung (Stationierung) sowie neuen Entitäten zur Georeferenzierung.",
+  "ej": "Autobahn-Hauptstrecke von Station 0+000 bis 12+500, georeferenziert in EPSG:25830.",
+  "eq": "Civil 3D, OpenRoads/OpenRail, Istram, Allplan Civil, Bonsai.",
+  "err": "Ein Linienbauwerk als generisches IFC4 exportieren und dabei Achse und Stationierung verlieren.",
+  "rel": [
+   "C19",
+   "C25",
+   "C27"
+  ],
+  "al": [
+   "IFC 4.3",
+   "IFC4.3",
+   "Achse",
+   "Achsen",
+   "Trassierung",
+   "Alignment",
+   "Stationierung",
+   "Station",
+   "lineare Referenzierung",
+   "alineación"
+  ]
+ },
+ {
+  "id": "C24",
+  "slug": "exportacion-importacion-ifc-con-coordenadas",
+  "t": "IFC-Export/-Import mit Koordinaten",
+  "en": "Exportación/importación IFC con coordenadas",
+  "b": "V",
+  "d": "Einstellungen des IFC-Exporters/-Importers jedes Programms, die bestimmen, welcher Ursprung geschrieben wird (intern, Projektbasispunkt, Vermessungspunkt, gemeinsam) und ob IfcMapConversion/IfcProjectedCRS oder in IFC2x3 Property Sets erzeugt werden.",
+  "ej": "Revit: Coordinate Base = Shared Coordinates + EPSG in IFC4; Archicad: Survey Point and Project Origin; Tekla: IfcMapConversion oder IfcSite.",
+  "eq": "Revit IFC exporter (6 Optionen für Coordinate Base); Archicad-Translator; Tekla IFC export; Vectorworks; Allplan; CYPE; BricsCAD.",
+  "err": "IFC-Dateien, die nach unterschiedlichen Kriterien exportiert wurden, im selben Viewer mischen.",
+  "rel": [
+   "C19",
+   "C20",
+   "C17"
+  ],
+  "al": [
+   "IFC-Export",
+   "IFC-Exports",
+   "IFC-Import",
+   "IFC-Exporter",
+   "IFC exportieren",
+   "IFC-Exportes",
+   "Coordinate Base",
+   "exportación IFC",
+   "exportar IFC",
+   "exportador IFC"
+  ]
+ },
+ {
+  "id": "C25",
+  "slug": "estrategia-de-coordenadas-en-eir-bep",
+  "t": "Koordinatenstrategie in AIA/BAP (ISO 19650)",
+  "en": "Estrategia de coordenadas en EIR/BEP (ISO 19650)",
+  "b": "II",
+  "d": "In den Auftraggeber-Informationsanforderungen (AIA) und im BIM-Abwicklungsplan (BAP) dokumentierte Vereinbarung, die CRS, Höhendatum, Kontrollpunkte, Drehung, Einheiten, Maßstabsfaktor, Verantwortlichen für das Lageplanmodell und Exportweise festlegt.",
+  "ej": "Der spanische Leitfaden es.BIM verlangt einen in X, Y, Z georeferenzierten „Koordinationsbasispunkt des Projekts“ außerhalb des Gebäudes mit positiven Koordinaten sowie mindestens zwei dokumentierte Punkte. Das ETS-Handbuch (Baskenland, 2024) legt ETRS89 (ETRF2000, Epoche 2017.0), UTM 30 und das Geoid EGM08-REDNAP fest.",
+  "eq": "Softwareunabhängig; wird in jedem Programm über den jeweiligen Survey Point umgesetzt.",
+  "err": "Die Strategie nicht zu Projektbeginn vereinbaren und den Versatz erst bei der ersten Föderation entdecken.",
+  "rel": [
+   "C01",
+   "C08",
+   "C13",
+   "C32"
+  ],
+  "al": [
+   "AIA",
+   "BAP",
+   "BIM-Abwicklungsplan",
+   "BIM-Abwicklungsplans",
+   "Auftraggeber-Informationsanforderungen",
+   "Koordinatenstrategie",
+   "BEP",
+   "EIR",
+   "ISO 19650",
+   "DIN EN ISO 19650"
+  ]
+ },
+ {
+  "id": "C26",
+  "slug": "nubes-de-puntos-georreferenciadas",
+  "t": "Georeferenzierte Punktwolken",
+  "en": "Nubes de puntos georreferenciadas",
+  "b": "III",
+  "d": "Laserscans oder photogrammetrische Aufnahmen, die in einem realen Koordinatensystem registriert sind. Wegen ihrer großen Koordinaten brauchen sie meist eine globale Verschiebung, bevor sie ins BIM-Programm übernommen werden.",
+  "ej": "Workflow ReCap → Dynamo → CloudCompare (Global Shift) → ReCap → Revit Ursprung auf Ursprung (Modelical).",
+  "eq": "ReCap, CloudCompare (Global Shift), Trimble RealWorks, Leica Cyclone; in Revit Einfügen Ursprung auf Ursprung oder über gemeinsame Koordinaten.",
+  "err": "„Tanzende Punkte“ beim Einfügen einer Punktwolke in UTM ohne Verschiebung.",
+  "rel": [
+   "C15",
+   "C16",
+   "C27"
+  ],
+  "al": [
+   "Punktwolke",
+   "Punktwolken",
+   "georeferenzierte Punktwolke",
+   "georeferenzierte Punktwolken",
+   "Laserscan",
+   "Laserscans",
+   "nube de puntos",
+   "nubes de puntos"
+  ]
+ },
+ {
+  "id": "C27",
+  "slug": "topografia-replanteo-y-gnss",
+  "t": "Vermessung, Absteckung und GNSS",
+  "en": "Topografía, replanteo y GNSS",
+  "b": "I",
+  "d": "Feldarbeiten, die das Gelände aufmessen und das Projekt auf der Baustelle abstecken. Sie erfordern Absteckpunkte mit bekannten Koordinaten und eine Kalibrierung, die das Baustellensystem mit GNSS verknüpft.",
+  "ej": "Netz von Absteckpunkten, angeschlossen an das Netz ERGNSS/REGENTE des IGN.",
+  "eq": "Trimble Business Center/Siteworks, Leica Infinity/Captivate (Baustellenkalibrierung), Civil 3D, Istram, TcpMDT.",
+  "err": "Mit Koordinaten aus einem Modell abstecken, das nicht das System des Vermessers verwendete.",
+  "rel": [
+   "C06",
+   "C07",
+   "C08",
+   "C26"
+  ],
+  "al": [
+   "Vermessung",
+   "vermessen",
+   "Absteckung",
+   "abstecken",
+   "Absteckpunkt",
+   "Absteckpunkte",
+   "GNSS",
+   "GNSS-Messung",
+   "Totalstation",
+   "Tachymeter",
+   "topografía",
+   "replanteo",
+   "estación total"
+  ]
+ },
+ {
+  "id": "C28",
+  "slug": "integracion-bim-gis",
+  "t": "BIM-GIS-Integration (GeoBIM)",
+  "en": "Integración BIM-GIS",
+  "b": "IV",
+  "d": "Gemeinsame Nutzung von BIM-Modellen und Geodaten (Kartengrundlagen, 3D-Stadtmodell) in derselben Umgebung; dazu muss das BIM-Modell korrekt georeferenziert sein und im richtigen CRS vorliegen.",
+  "ej": "IFC-Modell des Projekts, geladen auf die Kartengrundlage des IGN oder ein kommunales CityGML.",
+  "eq": "ArcGIS GeoBIM / ArcGIS Pro, QGIS, FME, Cesium (3D Tiles), Autodesk Forma, Bentley iTwin.",
+  "err": "Ein IFC ohne IfcMapConversion ins GIS übernehmen: Es erscheint im Ozean vor Ghana (0,0).",
+  "rel": [
+   "C02",
+   "C19",
+   "C29"
+  ],
+  "al": [
+   "BIM-GIS",
+   "BIM-GIS-Integration",
+   "GIS",
+   "GeoBIM"
+  ]
+ },
+ {
+  "id": "C29",
+  "slug": "geolocalizacion-ubicacion-del-proyecto",
+  "t": "Projektstandort / Geolokalisierung",
+  "en": "Geolocalización / ubicación del proyecto",
+  "b": "III",
+  "d": "Näherungsposition des Projekts (Adresse oder Breite/Länge) für Sonnenstand, Klima oder Kartenkontext. Ersetzt nicht die gemeinsamen Koordinaten.",
+  "ej": "Standort per Postanschrift in Revit oder Forma für Besonnungsstudien.",
+  "eq": "Revit: Standort (Internet-Kartendienst); Archicad: Project Location; Forma; IfcSite Breite/Länge; IfcPostalAddress.",
+  "err": "Annehmen, dass die Verortung auf der Karte das Modell bereits in korrekte UTM-Koordinaten bringt.",
+  "rel": [
+   "C18",
+   "C28"
+  ],
+  "al": [
+   "Projektstandort",
+   "Projektstandorts",
+   "Standort",
+   "Geolokalisierung",
+   "geolokalisiert",
+   "geolokalisieren",
+   "Project Location",
+   "geolocalización",
+   "ubicación del proyecto"
+  ]
+ },
+ {
+  "id": "C30",
+  "slug": "coordinacion-en-la-nube",
+  "t": "Koordination in der Cloud (CDE)",
+  "en": "Coordinación en la nube (CDE)",
+  "b": "IV",
+  "d": "Gemeinsame Datenumgebungen (ACC/BIM 360, Trimble Connect, Bentley iTwin, Dalux, BIMcollab Cloud, usBIM), in denen Modelle geteilt und föderiert werden; jede hat eigene Regeln für Koordinaten und Transformationen.",
+  "ej": "In ACC mit Cloud Worksharing kann Veröffentlichen deaktiviert sein, sodass nur aus dem Master übernommen werden kann.",
+  "eq": "ACC Model Coordination (Transform), Trimble Connect, iTwin (Geolokalisierung linear/projected), Dalux, usBIM.",
+  "err": "Das Modell nur in der Cloud transformieren und vergessen, dass das Original weiterhin versetzt ist.",
+  "rel": [
+   "C14",
+   "C17"
+  ],
+  "al": [
+   "CDE",
+   "gemeinsame Datenumgebung",
+   "gemeinsamen Datenumgebung",
+   "Common Data Environment",
+   "Cloud",
+   "entorno común de datos"
+  ]
+ },
+ {
+  "id": "C31",
+  "slug": "sistemas-de-coordenadas-cad",
+  "t": "CAD-Koordinatensysteme (WKS/BKS, DWG, DGN)",
+  "en": "Sistemas de coordenadas CAD (SCU/SCP, DWG, DGN)",
+  "b": "III",
+  "d": "Im CAD wird die Geometrie direkt in Koordinaten gezeichnet (WKS/WCS), das BKS/UCS ist ein Hilfssystem. DGN-Dateien von Bentley ergänzen GCS und Global Origin.",
+  "ej": "Vermessungsplan als DWG in UTM 30N mit einem gedrehten BKS, das beim Verknüpfen verwirrt.",
+  "eq": "AutoCAD/Civil 3D: WKS/BKS, GEOGRAPHICLOCATION; MicroStation: GCS, Global Origin, ACS; BricsCAD.",
+  "err": "Ein DWG mit zusätzlichen BKS verknüpfen, ohne sie zu prüfen.",
+  "rel": [
+   "C02",
+   "C11",
+   "C14"
+  ],
+  "al": [
+   "WKS",
+   "BKS",
+   "WCS",
+   "UCS",
+   "Weltkoordinatensystem",
+   "Benutzerkoordinatensystem",
+   "DWG",
+   "DGN",
+   "SCU",
+   "SCP"
+  ]
+ },
+ {
+  "id": "C32",
+  "slug": "errores-comunes-y-control-de-calidad-de-coordenadas",
+  "t": "Typische Fehler und Qualitätsprüfung von Koordinaten",
+  "en": "Errores comunes y control de calidad de coordenadas",
+  "b": "V",
+  "d": "Systematische Prüfungen, um Verschiebungen, Verdrehungen und Höhenfehler zu erkennen: Kontrollobjekte an Kontrollpunkten, Prüfung in einem neutralen Viewer, Kontrolle des LoGeoRef und Vergleich der Koordinaten bekannter Punkte.",
+  "ej": "Kontrollwürfel von 1 m³ oder physischer „Basispunkt“ (ETS-Handbuch der baskischen Regierung) an jedem Kontrollpunkt.",
+  "eq": "Navisworks, Solibri, BIMcollab, IfcGeoRefChecker, IfcGref, Bonsai, IDS.",
+  "err": "Nur visuell im Ursprungsprogramm prüfen.",
+  "rel": [
+   "C17",
+   "C22",
+   "C25"
+  ],
+  "al": [
+   "Qualitätsprüfung",
+   "Qualitätskontrolle",
+   "Kontrollpunkt",
+   "Kontrollpunkte",
+   "Kontrollpunkten",
+   "Kontrollwürfel",
+   "QA/QC",
+   "control de calidad"
+  ]
+ },
+ {
+  "id": "C33",
+  "slug": "marco-geodesico-y-legal-espanol",
+  "t": "Geodätischer und rechtlicher Rahmen Spaniens",
+  "en": "Marco geodésico y legal español",
+  "b": "I",
+  "d": "Das Königliche Dekret RD 1071/2007 legt ETRS89 (Iberische Halbinsel und Balearen) und REGCAN95 (Kanaren) als amtliche Systeme fest, ebenso die UTM-Abbildung und Höhen bezogen auf den mittleren Meeresspiegel in Alicante. Das IGN unterhält die Netze REGENTE, REDNAP und ERGNSS.",
+  "ej": "Öffentliches Projekt in Spanien: EPSG:25830 + REDNAP-Höhen (EPSG:5782). Die Orden PCM/818/2023 und der BIM-Plan des IGN verlangen As-built-Modelle in IFC 4.3, bezogen auf das amtliche geodätische System.",
+  "eq": "Betrifft die Wahl des CRS in allen Programmen.",
+  "err": "Bei neuen Aufträgen weiter ED50 verwenden oder Systeme der Kanaren und des Festlands mischen.",
+  "rel": [
+   "C02",
+   "C03",
+   "C04",
+   "C07"
+  ],
+  "al": [
+   "ETRS89",
+   "REGCAN95",
+   "RD 1071/2007",
+   "REDNAP",
+   "amtliches System",
+   "amtliche Bezugssystem"
+  ]
+ },
+ {
+  "id": "C34",
+  "slug": "unidades-y-conversion",
+  "t": "Einheiten und Umrechnung",
+  "en": "Unidades y conversión",
+  "b": "V",
+  "d": "Die Einheiten des Modells (mm, m, Fuß) und die des CRS (meist Meter) müssen zusammenpassen; in IFC rechnet das Feld Scale von IfcMapConversion Modelleinheiten in Karteneinheiten um.",
+  "ej": "Modell in Millimetern: Scale = 0,001, wenn das CRS in Metern ist.",
+  "eq": "Revit (Projekteinheiten; US Survey Foot wird nicht unterstützt), IFC Scale/MapUnit, Civil 3D (Zeichnungseinheiten).",
+  "err": "IFC in mm mit Scale = 1 und einem CRS in Metern exportieren (dokumentierter Fehler in revit-ifc #784).",
+  "rel": [
+   "C19",
+   "C20"
+  ],
+  "al": [
+   "Einheiten",
+   "Modelleinheiten",
+   "Projekteinheiten",
+   "Einheitenumrechnung",
+   "Umrechnung",
+   "MapUnit",
+   "unidades del modelo",
+   "conversión de unidades"
+  ]
+ },
+ {
+  "id": "C35",
+  "slug": "epoca-de-referencia-y-deriva-continental",
+  "t": "Referenzepoche und Plattenbewegung",
+  "en": "Época de referencia y deriva continental",
+  "b": "I",
+  "d": "Die tektonischen Platten bewegen sich einige Zentimeter pro Jahr, daher ändern sich die Koordinaten eines Punktes in einem globalen Bezugsrahmen (ITRF, WGS84) mit der Zeit. Ein „statisches“ Datum friert die Koordinaten zu einem Zeitpunkt (Epoche) ein; ein dynamisches Datum aktualisiert sie. Ohne Angabe der Epoche sind Koordinaten nicht zentimetergenau vergleichbar.",
+  "ej": "ETRS89 ist an die Eurasische Platte gebunden und ändert sich in Spanien kaum, entfernt sich aber um etwa 2,5 cm/Jahr von WGS84. Das ETS-Handbuch legt ETRF2000, Epoche 2017.0 fest. In Australien (GDA94→GDA2020) betrug der Sprung etwa 1,8 m.",
+  "eq": "Trimble Business Center, Leica Infinity, Civil 3D (Transformationen mit Datum); IFC: Breite/Länge in IfcSite in WGS84 ohne Epoche, daher nur metergenau.",
+  "err": "GNSS-Koordinaten in tagesaktuellem WGS84/ITRF mit ETRS89-Kartengrundlagen mischen oder in Australien MGA94- mit MGA2020-Daten (Gasleitung 300 mm versetzt im Fall Worrell).",
+  "rel": [
+   "C03",
+   "C16",
+   "C27",
+   "C18"
+  ],
+  "al": [
+   "Referenzepoche",
+   "Epoche",
+   "Plattenbewegung",
+   "Kontinentaldrift",
+   "dynamisches Datum",
+   "dynamischen Datum",
+   "ITRF",
+   "época de referencia",
+   "deriva continental",
+   "datum dinámico"
+  ]
+ }
+];
