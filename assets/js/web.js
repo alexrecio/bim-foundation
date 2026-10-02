@@ -168,16 +168,21 @@
   if (side) side.innerHTML = list();
   if (sheet) sheet.innerHTML = list();
   const groupOf = (i) => { const k = caps.slice(0, i + 1).filter((c, j) => slides[j].dataset.cap).length - 1; return k; };
+  // El bloque de la slide en pantalla está siempre abierto; el lector abre o cierra los demás a su elección
+  // (los que abre él siguen abiertos al cambiar de bloque; el que se abrió solo, se cierra al salir)
   const openGroup = (k) => document.querySelectorAll('.nav-group').forEach((li) => {
     const on = +li.dataset.g === k;
     li.classList.toggle('is-here', on);
-    if (li.closest('#deck-nav')) return; // escritorio: solo portada y bloques; cada bloque se despliega al pulsarlo
-    li.classList.toggle('is-open', on);
-    li.querySelector('.nav-cap').setAttribute('aria-expanded', on);
+    const abierto = on || li.dataset.lector === '1';
+    li.classList.toggle('is-open', abierto);
+    li.querySelector('.nav-cap').setAttribute('aria-expanded', abierto);
   });
   document.querySelectorAll('.nav-cap').forEach((btn) => btn.addEventListener('click', (e) => {
     e.stopPropagation();
-    const li = btn.parentElement; const on = li.classList.toggle('is-open');
+    const li = btn.parentElement;
+    if (li.classList.contains('is-here')) return; // el bloque actual no se cierra
+    const on = li.classList.toggle('is-open');
+    li.dataset.lector = on ? '1' : '';
     btn.setAttribute('aria-expanded', on);
   }));
   const bar = document.getElementById('deck-bar');
