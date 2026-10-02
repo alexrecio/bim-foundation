@@ -69,7 +69,7 @@
             <p class="lead">Cada disciplina modela en su programa, y al final todos los modelos tienen que encajar: en la federación (Navisworks, Autodesk Docs, BIMcollab, Solibri) y en el replanteo en obra. Si no comparten un sistema común, llegan desplazados, girados o a distinta cota.</p>
             <p>Hay además una razón técnica. Los programas BIM trabajan en coma flotante, y lejos del origen se pierde precisión: la geometría parpadea, las cotas «bailan» y los encuentros dejan de cerrar. Por eso los fabricantes ponen límites:</p>
             <ul>
-              <li>Revit solo admite geometría dentro de un radio de <strong>10 millas (16 km)</strong> alrededor del origen interno. El famoso «límite de 20 millas» es el diámetro.</li>
+              <li>En Revit, toda la geometría, propia o vinculada, debe estar a menos de <strong>16 km (10 millas)</strong> del origen interno. El famoso «límite de 20 millas» (32 km) es el diámetro de esa zona.</li>
               <li>Bonsai (antes BlenderBIM) avisa de errores milimétricos a partir de unos <strong>5 km</strong> del origen.</li>
             </ul>
             <p>Unas coordenadas UTM en España rondan los 400 000 m en X y los 4 400 000 m en Y. Modelar directamente ahí no es una opción.</p>
@@ -117,7 +117,7 @@
             <ul>
               <li>En UTM, el factor de escala vale <span class="mono">k0 = 0,9996</span> en el meridiano central del huso y crece hacia los bordes.</li>
               <li>El <strong>factor combinado</strong> es el factor de cuadrícula multiplicado por el factor de elevación. En una obra de 100 m, una diferencia de 400 ppm son 4 cm.</li>
-              <li id="v-escala">Revit no ofrece un factor de escala combinado para las coordenadas compartidas. Por eso hay que decidir en el BEP si el modelo se trabaja en <strong>cuadrícula</strong> (UTM) o en <strong>terreno</strong>, y quién aplica la corrección. <span class="tag">Por confirmar</span></li>
+              <li>Revit no documenta ningún factor de escala, ni de cuadrícula ni combinado, para las coordenadas compartidas: solo guarda traslación, cota y rotación (<a href="https://help.autodesk.com/cloudhelp/2026/ENU/Revit-Model/files/GUID-95563197-F844-45EE-AAA1-5DB7FEFC76BD.htm" target="_blank" rel="noopener">ayuda de Revit</a>). Si Civil 3D trabaja con factor de escala, hay que decidir en el BEP si el sistema compartido es de <strong>cuadrícula</strong> (UTM) o de <strong>terreno</strong>, y quién aplica la corrección.</li>
             </ul>
 
             <h3>Los cuatro nortes</h3>
@@ -142,7 +142,7 @@
               <div class="card3">
                 <svg viewBox="0 0 44 44" aria-hidden="true"><line x1="10" y1="34" x2="38" y2="34" stroke="#000" stroke-width="3"/><line x1="10" y1="34" x2="10" y2="6" stroke="#000" stroke-width="3"/><polygon points="38,30 44,34 38,38" fill="#000"/><polygon points="6,6 10,0 14,6" fill="#000"/><rect x="7" y="31" width="6" height="6" fill="#FFFF00" stroke="#000" stroke-width="1.5"/></svg>
                 <b>Origen interno</b>
-                <p>El 0,0,0 del motor de Revit. No se mueve nunca. Visible desde Revit 2020.2.</p>
+                <p>El 0,0,0 del motor de Revit. No se mueve nunca. Se puede mostrar en las vistas desde Revit 2020.2.</p>
               </div>
               <div class="card3">
                 <svg viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="15" fill="#fff" stroke="#000" stroke-width="3"/><line x1="22" y1="3" x2="22" y2="41" stroke="#000" stroke-width="2"/><line x1="3" y1="22" x2="41" y2="22" stroke="#000" stroke-width="2"/></svg>
@@ -214,7 +214,7 @@
             <p class="table-note">Fuente: <a href="https://help.autodesk.com/cloudhelp/2027/ENU/Revit-Model/files/GUID-4EAEF1B1-CC5B-4484-9727-91ACD90B0B78.htm" target="_blank" rel="noopener">Ayuda de Revit 2027 · Move the Survey Point</a>. Modelical tiene una tabla muy didáctica con los cuatro casos.</p>
 
             <h3 id="v-pbp">¿Y el punto base del proyecto?</h3>
-            <p>Desde Revit 2020.2 el punto base del proyecto <strong>no sirve para georreferenciar</strong>: moverlo cambia las coordenadas que se leen respecto a él, pero no mueve el modelo ni las coordenadas compartidas. Para recolocar el proyecto en el mundo se usa <span class="ui">Gestionar › Ubicación › Reubicar proyecto</span> o <span class="ui">Especificar coordenadas en punto</span>. <span class="tag">Por confirmar</span></p>
+            <p>Desde Revit 2020.2 el punto base del proyecto <strong>no sirve para georreferenciar</strong>. Ya no tiene icono de clip (lo confirmó el soporte de Autodesk), aunque la ayuda actual todavía habla de «desanclarlo». Moverlo solo cambia las coordenadas que se miden desde él: las coordenadas compartidas y el modelo no se mueven (<a href="https://help.autodesk.com/cloudhelp/2027/ENU/Revit-Model/files/GUID-A973AC69-7095-4C09-BD7E-E3B6EAF36ABB.htm" target="_blank" rel="noopener">ayuda de Revit 2027</a>). Para recolocar el proyecto respecto al sistema compartido se usa <span class="ui">Gestionar › Ubicación › Reubicar proyecto</span>, <span class="ui">Especificar coordenadas en punto</span> o se mueve el punto de reconocimiento con clip.</p>
 
             <div class="callout">
               <span class="kicker-y">Regla práctica</span>
@@ -312,7 +312,8 @@
             <p>Una nota sobre unidades: Revit no admite el pie topográfico de EE. UU. En España es irrelevante, pero conviene saberlo si llegan archivos de fuera.</p>
 
             <h3 id="v-motor">Novedad de 2026: un motor de geolocalización común</h3>
-            <p>Geo Week News publicó el 16 de septiembre de 2026 que Autodesk ha unificado la geolocalización entre Forma, Revit y Civil 3D, ya disponible en Revit «solo en flujos conectados». <span class="tag">Por confirmar</span></p>
+            <p>Según <a href="https://www.geoweeknews.com/articles/autodesk-quietly-unified-its-coordinate-systems/" target="_blank" rel="noopener">Geo Week News</a> (septiembre de 2026), Autodesk ha unificado el motor de geolocalización de Forma, Revit y Civil 3D, por ahora solo en flujos conectados de Revit. No hemos encontrado documentación oficial que lo confirme. <span class="tag">Por confirmar</span></p>
+            <p>Lo documentado hoy es que Revit obtiene el sistema de coordenadas GIS de un DWG vinculado al <strong>adquirir coordenadas</strong>. La interfaz no permite asignar directamente un código EPSG; solo la API lo admite.</p>
           </section>
 
           <!-- ============================== 06 ============================== -->
@@ -336,7 +337,7 @@
             </ul>
 
             <h3 id="v-solibri">Solibri</h3>
-            <p>Las coordenadas muy grandes provocan parpadeo. El soporte de <code>IfcMapConversion</code> no está claro en la documentación oficial. <span class="tag">Por confirmar</span></p>
+            <p>Las coordenadas muy grandes provocan parpadeo. Desde la <a href="https://www.solibri.com/articles/solibri-25-12-0-release-notes" target="_blank" rel="noopener">versión 25.12</a>, Solibri lee <code>IfcMapConversion</code> e <code>IfcProjectedCRS</code> y los muestra como propiedades del proyecto para usarlos en reglas. No consta que los use para colocar los modelos.</p>
           </section>
 
           <!-- ============================== 07 ============================== -->
@@ -351,7 +352,7 @@
             </ol>
 
             <h3>IfcMapConversion</h3>
-            <p>Describe la transformación del sistema local del modelo al sistema proyectado. Sus atributos son <code>Eastings</code>, <code>Northings</code>, <code>OrthogonalHeight</code>, <code>XAxisAbscissa</code> y <code>XAxisOrdinate</code> (que definen la rotación) y <code>Scale</code>.</p>
+            <p>Describe la transformación del sistema local del modelo al sistema proyectado. Sus atributos son <code>Eastings</code>, <code>Northings</code>, <code>OrthogonalHeight</code>, <code>XAxisAbscissa</code> y <code>XAxisOrdinate</code> (que definen la rotación) y un único <code>Scale</code>, pensado para convertir unidades.</p>
             <div class="formula">
               E = s·cos θ·x − s·sin θ·y + Eastings<br>
               N = s·sin θ·x + s·cos θ·y + Northings<br>
@@ -366,10 +367,10 @@
             <h3>Ejemplo para España (IFC4)</h3>
             <p>Un edificio en el huso 30, girado unos 2° respecto al norte de cuadrícula:</p>
 <pre><code><span class="c">/* Sistema de destino: ETRS89 / UTM 30N, altitudes de Alicante */</span>
-#20=IFCPROJECTEDCRS('<span class="y">EPSG:25830</span>','ETRS89 / UTM zone 30N','EPSG:6258','<span id="v-vdatum-code">EPSG:5782</span>','UTM','30N',#10);
+#20=IFCPROJECTEDCRS('<span class="y">EPSG:25830</span>','ETRS89 / UTM zone 30N','EPSG:6258','EPSG:5180','UTM','30N',#10);
 <span class="c">/* Origen local → E, N, H; rotación (cos θ, sin θ); escala */</span>
 #21=IFCMAPCONVERSION(#11,#20,<span class="y">440125.250,4474310.800,655.320</span>,0.9993908,0.0348995,1.);</code></pre>
-            <p id="v-vdatum">Queda por fijar si en <code>VerticalDatum</code> debe ir el código del datum vertical (EPSG:5180) o el del sistema vertical (EPSG:5782). <span class="tag">Por confirmar</span></p>
+            <p><code>GeodeticDatum</code> y <code>VerticalDatum</code> llevan códigos de <strong>datum</strong>, no de sistema: <code>EPSG:6258</code> (ETRS89) y <code>EPSG:5180</code> (Alicante). El sistema vertical «Alicante height» es el <code>EPSG:5782</code>, pero no es lo que pide este atributo; así lo ilustra la propia <a href="https://standards.buildingsmart.org/IFC/RELEASE/IFC4_3/HTML/lexical/IfcProjectedCRS.htm" target="_blank" rel="noopener">especificación IFC4.3</a> con el ejemplo alemán. Ojo: Alicante solo cubre la península; Baleares y Canarias tienen datums verticales propios.</p>
             <div class="callout dark">
               <p class="label">Ojo con Scale</p>
               <p><code>Scale</code> convierte unidades: si el modelo está en milímetros y el CRS en metros, debe valer <strong>0,001</strong>. En el repositorio del exportador IFC de Revit hay un caso real con este error (<a href="https://github.com/autodesk/revit-ifc/issues/784" target="_blank" rel="noopener">revit-ifc #784</a>). No es el sitio para meter el factor combinado de la proyección salvo que esté pactado.</p>
@@ -412,7 +413,7 @@
               <li>La guía de arquitectura de <a href="https://cibim.transportes.gob.es/recursos_cbim/bb_gt3_procesos_sg3.6_guia_uso_arquitectura.pdf" target="_blank" rel="noopener">es.BIM</a> pide un «punto base de coordinación del proyecto… georeferenciado en X, Y y Z», la orientación referida al norte del sistema de coordenadas y al menos dos puntos documentados.</li>
               <li>El <a href="https://www.euskadi.eus/contenidos/informacion/ets_bim/es_def/adjuntos/2024/AN8CoordinacionControlCalidad.pdf" target="_blank" rel="noopener">manual BIM de ETS</a> (Euskadi) propone un objeto físico «Punto Base» para comprobar el modelo federado.</li>
             </ul>
-            <p>La guía de referencia internacional es la <a href="https://www.buildingsmart.org/wp-content/uploads/2020/02/User-Guide-for-Geo-referencing-in-IFC-v2.0.pdf" target="_blank" rel="noopener"><em>User Guide for Geo-referencing in IFC</em> v2.0</a> de buildingSMART (2020).</p>
+            <p>La guía de referencia internacional es la <a href="https://www.buildingsmart.org/wp-content/uploads/2020/02/User-Guide-for-Geo-referencing-in-IFC-v2.0.pdf" target="_blank" rel="noopener"><em>User Guide for Geo-referencing in IFC</em> v2.0</a> de buildingSMART (2020). Existe una versión 3.0, pero solo la pueden descargar los usuarios registrados en el <a href="https://ucm.buildingsmart.org/use-case-details/2047/en" target="_blank" rel="noopener">UCM de buildingSMART</a>.</p>
           </section>
 
           <!-- ============================== 08 ============================== -->
@@ -439,7 +440,7 @@
             <h3>Tekla Structures</h3>
             <ul>
               <li>Los <em>base points</em> llevan Este, Norte, cota, ángulo al norte y latitud y longitud.</li>
-              <li>Al exportar IFC4 se elige entre <code>IfcMapConversion</code> e «IfcSite coordinate system». La segunda existe porque muchos visores, incluido Trimble Connect, no leen <code>IfcMapConversion</code>. <span class="tag" id="v-trimble">Por confirmar</span></li>
+              <li>Al exportar IFC4 se elige entre <code>IfcMapConversion</code> e «IfcSite coordinate system». Tekla recomienda la segunda para ver los modelos en Trimble Connect, porque muchos visores no leen <code>IfcMapConversion</code>.</li>
               <li>Tekla no toma la cota del punto base de Revit: conviene comprobarla a mano.</li>
             </ul>
             <h3>Allplan</h3>
@@ -559,7 +560,7 @@
                 <tr><td><a href="https://epsg.io" target="_blank" rel="noopener">epsg.io</a></td><td>Consultar códigos y parámetros de sistemas de referencia.</td></tr>
               </tbody>
             </table></div>
-            <p id="v-ids">No hemos encontrado un IDS oficial que compruebe <code>IfcMapConversion</code>. <span class="tag">Por confirmar</span></p>
+            <p>No existe un IDS oficial para la georreferenciación. En teoría, IDS 1.0 puede exigir atributos de <code>IfcProjectedCRS</code> o <code>IfcMapConversion</code>, pero no comprobar que estén bien relacionados entre sí, así que conviene completarlo con IFCGeoRefChecker o con scripts.</p>
           </section>
 
           <!-- ============================== 13 ============================== -->
