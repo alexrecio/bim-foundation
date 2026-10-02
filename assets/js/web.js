@@ -201,8 +201,6 @@
     });
     const cur = side && side.querySelector('a.is-current');
     if (cur) cur.scrollIntoView({ block: 'nearest' });
-    const p = document.querySelector('#deck-progress i');
-    if (p) p.style.width = ((i + 1) / slides.length * 100) + '%';
     if (barBtn) barBtn.querySelector('.n').textContent = `${pad(i + 1)}/${total}`, barBtn.querySelector('.t').textContent = titleOf(slides[i]);
   };
   const io = new IntersectionObserver((entries) => {

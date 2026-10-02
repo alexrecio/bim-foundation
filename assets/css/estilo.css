@@ -425,8 +425,6 @@ body:has(.deck) footer.site { padding-left: var(--side); }
 .nav-item a.is-current { background: var(--black); color: var(--white); }
 .nav-item a.is-current span { color: var(--accent); }
 .nav-item a.is-done { color: var(--s600); }
-#deck-progress { height: 3px; background: var(--s100); margin: 12px 8px 0; }
-#deck-progress i { display: block; height: 100%; width: 0; background: var(--black); transition: width .3s; }
 
 #deck-bar { position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 96; }
 @media (min-width: 1200px) { #deck-bar { display: none; } }
