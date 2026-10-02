@@ -579,12 +579,12 @@
           </div>
           <div class="card w3">
             <span class="c-label">Origen</span>
-            <span class="c-title">CCS danés y CoClass sueco</span>
-            <span class="c-foot">llevados a norma en 2018</span>
+            <span class="c-title">ISO 81346 y el CCS danés</span>
+            <span class="c-foot">clases de obra en la parte 12 (2018)</span>
           </div>
           <div class="card w3 y">
             <span class="c-label">Lo usan</span>
-            <span class="c-title">DK · CZ · EE · PL · SK</span>
+            <span class="c-title">DK · EE · CZ · SE · LT</span>
             <span class="c-foot">en la colaboración CCI</span>
           </div>
         </div>
@@ -1243,7 +1243,7 @@
     <div class="b-cards">
       <div class="card w3">
         <h4>Qué es un diccionario de datos</h4>
-        <p>Una lista publicada de clases y propiedades, cada una con definición, unidad, tipo de valor y un identificador único y estable (a menudo una dirección web). Lo regulan las normas ISO 12006-3 y la serie ISO 23386 / ISO 23387.</p>
+        <p>Una lista publicada de clases y propiedades, cada una con definición, unidad, tipo de valor y un identificador único y estable (a menudo una dirección web). Lo regulan las normas ISO 12006-3 e ISO 23386.</p>
       </div>
       <div class="card w3 y">
         <span class="c-label">Idea clave</span>
@@ -1416,8 +1416,8 @@
     <div class="b-cards">
       <div class="card w3">
         <h4>Clasificación más identificación</h4>
-        <p>ISO/IEC 81346 viene de la industria: cada pieza de una planta lleva una designación que combina aspectos. La parte 12 (2018) trae las clases para obras de construcción e instalaciones de edificación, a partir del CCS danés y de CoClass.</p>
-        <p>CCI (Construction Classification International) es su aplicación, desarrollada por Molio con socios de Chequia, Estonia, Polonia y Eslovaquia.</p>
+        <p>ISO/IEC 81346 viene de la industria: cada pieza de una planta lleva una designación que combina aspectos. La parte 12 (2018) trae las clases para obras de construcción e instalaciones de edificación. Que esas clases procedan del CCS danés y de CoClass es lectura propia por su parecido. <span class="tag">Inferido</span></p>
+        <p>CCI (Construction Classification International) es su aplicación, basada en ISO 81346 y en el CCS danés (Cuneco, 2011-2015). La colaboración CCI la forman Dinamarca, Estonia, Chequia, Suecia y Lituania.</p>
       </div>
       <div class="card w3 g">
         <h4>Para qué sirve el aspecto</h4>
@@ -1440,7 +1440,7 @@
       <div class="card w3">
         <h4>GuBIMclass</h4>
         <p>Lo creó el grupo de usuarios BIM de Cataluña (GuBIMCat) en 2017 a partir de la clasificación que usaba Infraestructures.cat, revisando antes OmniClass, UniFormat, MasterFormat, Uniclass y SfB. Criterio: la función principal del elemento, para que el código no cambie entre fases.</p>
-        <p>La versión 1.2 (noviembre de 2017) es la última publicada en su repositorio oficial, en español y catalán, con ficheros para Archicad, Revit y Navisworks.</p>
+        <p>La versión 1.2 (julio de 2017; el XML para Archicad se publicó en noviembre) es la última publicada en su repositorio oficial, en español y catalán, con ficheros para Archicad, Revit y Navisworks.</p>
       </div>
       <div class="card w3 g">
         <h4>Más sistemas en uso</h4>
@@ -1473,7 +1473,7 @@
       <div class="card w3">
         <h4>Cómo lo lee el exportador IFC</h4>
         <ol class="vsteps">
-          <li>Si el tipo tiene <code>Assembly Code</code>, crea la clasificación «Uniformat» sin que nadie la pida.</li>
+          <li>Si el tipo tiene <code>Assembly Code</code>, crea la clasificación «Uniformat» sin que nadie la pida, salvo que ya exista una clasificación Uniformat propia.</li>
           <li>Lee <code>ClassificationCode</code> y <code>ClassificationCode(2)</code> a <code>(10)</code>, o los nombres que se pongan en <span class="ui">Export IFC › Modify Setup › Classification Settings</span>.</li>
           <li>Separa sistema, código y título por la sintaxis <code>[Sistema]código:título</code>.</li>
           <li>Crea un <code>IfcClassification</code> por sistema y una referencia por código.</li>
@@ -1551,8 +1551,8 @@
     <div class="b-cards">
       <div class="card w3">
         <h4>Qué es</h4>
-        <p>El buildingSMART Data Dictionary es la antigua biblioteca IFD. Aplica las normas ISO 12006-3, 23386 y 23387: clases y propiedades con definición, traducciones, relaciones y una dirección web que no cambia.</p>
-        <p>Cada editor (NBS, Molio, ETIM, buildingSMART…) publica su diccionario por versiones: vista previa, activo, inactivo.</p>
+        <p>El buildingSMART Data Dictionary es la antigua biblioteca IFD. Aplica las normas ISO 12006-3 e ISO 23386: clases y propiedades con definición, traducciones, relaciones y una dirección web que no cambia.</p>
+        <p>Cada editor (NBS, Molio, ETIM, buildingSMART…) publica su diccionario por versiones; cada clase y propiedad está activa o inactiva.</p>
       </div>
       <div class="card w3 y">
         <span class="c-label">Idea clave</span>
@@ -1565,6 +1565,7 @@
           <tbody>
             <tr class="is-key"><td>IsEqualTo / IsSimilarTo</td><td>Equivalencias entre sistemas distintos</td></tr>
             <tr><td>IsChildOf / IsParentOf</td><td>La jerarquía dentro de un sistema</td></tr>
+            <tr><td>HasReference / HasMaterial</td><td>Referencias a otras clases y materiales</td></tr>
             <tr><td>HasPart / IsPartOf</td><td>Composición</td></tr>
             <tr><td>Clase IFC relacionada</td><td>Con qué entidad IFC se usa la clase</td></tr>
           </tbody>
@@ -1727,7 +1728,7 @@
         <ul>
           <li><code>system</code> se compara con el nombre del sistema tal cual.</li>
           <li><code>uri</code> no se comprueba.</li>
-          <li>Un código hijo cumple si su padre está en el IFC (clasificación completa).</li>
+          <li>Si el IDS pide un código padre, también cumple un objeto clasificado con un hijo, siempre que el IFC tenga la jerarquía completa. Es como lo resuelve IfcTester. <span class="tag">Inferido</span></li>
         </ul>
       </div>
       <div class="card w6">
