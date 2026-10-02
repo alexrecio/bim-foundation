@@ -185,10 +185,12 @@
     const bentos = [...document.querySelectorAll('.slide .bento')];
     document.documentElement.classList.add('pz-x');
     bentos.forEach((b) => tarjetas(b).forEach((c) => { c.style.clipPath = 'inset(50% 50% 50% 50%)'; }));
-    // Dos variantes en prueba (?cruz=cascada | ?cruz=una, se recuerda): crucetas de una en una, o solo en la tarjeta mayor
+    // Dos variantes en prueba (?cruz=cascada | ?cruz=global, se recuerda): crucetas tarjeta a tarjeta, o una sola
+    // que abre la rejilla entera de la lámina como un único recuadro
     let modo = new URLSearchParams(location.search).get('cruz');
     try { if (modo) localStorage.setItem('k-cruz', modo); else modo = localStorage.getItem('k-cruz'); } catch (e) {}
-    if (modo !== 'una') modo = 'cascada';
+    modo = (modo === 'global' || modo === 'una') ? 'global' : 'cascada';
+    if (modo === 'global') bentos.forEach((b) => { tarjetas(b).forEach((c) => { c.style.clipPath = ''; }); const g = b.querySelector('.b-cards'); if (g) g.style.clipPath = 'inset(50% 50% 50% 50%)'; });
     let capa = null;
     const libre = new Map();   // cascada por lámina: la siguiente tarjeta espera a que la anterior vaya avanzada
     const DUR = 760, SOLAPE = 0.72;
@@ -211,20 +213,9 @@
       };
       requestAnimationFrame(paso);
     };
-    // Variante «una»: el resto de tarjetas aparece sin cruceta, en cuanto la mayor está casi abierta
-    const funde = (c, espera) => {
-      c.style.opacity = '0'; c.style.clipPath = '';
-      setTimeout(() => { c.style.transition = 'opacity .45s ease'; c.style.opacity = ''; setTimeout(() => { c.style.transition = ''; }, 500); }, espera);
-    };
-    const mayor = new Map(), finMayor = new Map();
-    if (modo === 'una') bentos.forEach((b) => {
-      let m = null, a = -1;
-      tarjetas(b).forEach((c) => { const r = c.getBoundingClientRect(), s2 = r.width * r.height; if (s2 > a) { a = s2; m = c; } });
-      mayor.set(b, m);
-    });
     // Cada tarjeta se abre al asomar (en móvil una lámina puede medir varias pantallas).
     // Sin IntersectionObserver: Chromium descuenta el clip-path y una tarjeta cerrada nunca «intersecta».
-    let pendientes = bentos.flatMap(tarjetas), cola = 0;
+    let pendientes = modo === 'global' ? bentos.map((b) => b.querySelector('.b-cards')).filter(Boolean) : bentos.flatMap(tarjetas), cola = 0;
     const mira = () => {
       cola = 0;
       const ahora = performance.now(), vistas = [];
@@ -234,14 +225,7 @@
         return true;
       });
       if (modo === 'cascada') vistas.forEach((c) => { const b = c.closest('.bento'), t = Math.max(ahora, libre.get(b) || 0); const n = tarjetas(b).length; libre.set(b, t + Math.min(DUR * SOLAPE, 1600 / Math.max(1, n - 1))); abre(c, t); });
-      else {
-        vistas.filter((c) => mayor.get(c.closest('.bento')) === c).forEach((c) => { abre(c, ahora); finMayor.set(c.closest('.bento'), ahora + DUR * 0.6); });
-        let k = 0;
-        vistas.filter((c) => mayor.get(c.closest('.bento')) !== c).forEach((c) => {
-          const f = finMayor.get(c.closest('.bento'));
-          funde(c, Math.max(0, (f || ahora) - ahora) + k++ * 70);
-        });
-      }
+      else vistas.forEach((g) => abre(g, ahora));
       if (!pendientes.length) { removeEventListener('scroll', pide, true); removeEventListener('resize', pide); }
     };
     const pide = () => { if (!cola) cola = requestAnimationFrame(mira); };
