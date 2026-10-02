@@ -712,8 +712,8 @@
             <span class="c-label">Husos UTM · un EPSG por huso</span>
             <svg class="draw" viewBox="0 0 620 170" role="img" aria-label="Bandas de los husos 27 a 31 con su código EPSG">
               <g font-family="JetBrains Mono, monospace" font-size="12">
-                <rect x="0" y="40" width="110" height="90" fill="#fff" stroke="#000" stroke-width="2"/><text x="12" y="30">HUSO 27</text><text x="12" y="80" font-weight="700" font-size="15">4082</text><text x="12" y="104" fill="#666">El Hierro · La Palma</text>
-                <rect x="118" y="40" width="110" height="90" fill="#fff" stroke="#000" stroke-width="2"/><text x="130" y="30">HUSO 28</text><text x="130" y="80" font-weight="700" font-size="15">4083</text><text x="130" y="104" fill="#666">resto de Canarias</text>
+                <rect x="0" y="40" width="110" height="90" fill="#fff" stroke="#999" stroke-width="2" stroke-dasharray="5 4"/><text x="12" y="30" fill="#999">HUSO 27</text><text x="12" y="80" font-weight="700" font-size="15" fill="#999">4082</text><text x="12" y="104" fill="#999">sin uso oficial</text>
+                <rect x="118" y="40" width="110" height="90" fill="#fff" stroke="#000" stroke-width="2"/><text x="130" y="30">HUSO 28</text><text x="130" y="80" font-weight="700" font-size="15">4083</text><text x="130" y="104" fill="#666">toda Canarias</text>
                 <rect x="252" y="40" width="116" height="90" fill="#fff" stroke="#000" stroke-width="2"/><text x="264" y="30">HUSO 29</text><text x="264" y="80" font-weight="700" font-size="15">25829</text><text x="264" y="104" fill="#666">Galicia · oeste</text>
                 <rect x="376" y="40" width="116" height="90" fill="#FFFF00" stroke="#000" stroke-width="2.5"/><text x="388" y="30" font-weight="700">HUSO 30</text><text x="388" y="80" font-weight="700" font-size="15">25830</text><text x="388" y="104">centro</text>
                 <rect x="500" y="40" width="116" height="90" fill="#fff" stroke="#000" stroke-width="2"/><text x="512" y="30">HUSO 31</text><text x="512" y="80" font-weight="700" font-size="15">25831</text><text x="512" y="104" fill="#666">Cataluña · Baleares</text>
@@ -1068,7 +1068,7 @@
           <div class="card w3"><span class="c-label">Autodesk Docs</span><span class="c-title">Transform</span><span class="badge n">solo en la nube</span></div>
           <div class="card w3"><span class="c-label">Trimble Connect</span><span class="c-title">IfcSite</span><span class="badge n">lo que recomienda Tekla</span></div>
           <div class="card w3"><span class="c-label">Bentley iTwin</span><span class="c-title">Lineal o proyectada</span><span class="badge n">dos geolocalizaciones</span></div>
-          <div class="card w3 k"><span class="c-label">ArcGIS GeoBIM</span><span class="c-title">IFC4 + IfcMap&shy;Conversion</span><span class="badge y">imprescindible</span></div>
+          <div class="card w3 k"><span class="c-label">ArcGIS GeoBIM</span><span class="c-title">IFC4 + IfcMap&shy;Conversion</span><span class="badge y">recomendado</span></div>
           <div class="card w6">
             <span class="c-label">Lo que hace la plataforma</span>
             <svg class="draw" viewBox="0 0 620 170" role="img" aria-label="El archivo sube al entorno común de datos, que lo muestra colocado; el archivo original no cambia">
@@ -1110,7 +1110,7 @@
           </div>
           <div class="card w3 k">
             <span class="c-label">Orden invertido</span>
-            <div class="row"><svg class="ico" viewBox="0 0 40 40" aria-hidden="true"><path d="M30 10 A13 13 0 1 0 30 30" fill="none" stroke="#FFFF00" stroke-width="3"/><polygon points="26,4 34,10 26,16" fill="#FFFF00"/></svg><b class="c-num">180°</b></div>
+            <div class="row"><svg class="ico" viewBox="0 0 40 40" aria-hidden="true"><path d="M30 10 A13 13 0 1 0 30 30" fill="none" stroke="#FFFF00" stroke-width="3"/><polygon points="26,4 34,10 26,16" fill="#FFFF00"/></svg><b class="c-num">180°</b> <span class="tag">Inferido</span></div>
           </div>
           <div class="card w3">
             <span class="c-label">Los dos puntos</span>
@@ -1495,11 +1495,11 @@
 </div>
 <div class="card w3">
 <h4>El dato de TU Delft</h4>
-<p>Un estudio de TU Delft observó que la latitud y longitud de <code>IfcSite</code> están «casi siempre a cero, en una ubicación completamente errónea o con una aproximación muy burda».</p>
+<p>Un estudio de TU Delft observó que la latitud y longitud de <code>IfcSite</code> suelen estar a cero, mal situadas o muy aproximadas (<a href="https://3d.bk.tudelft.nl/pdfs/18_georeferencing.pdf" target="_blank" rel="noopener">Diakité y Zlatanova</a>). <span class="tag">Por confirmar</span></p>
 </div>
 <div class="card w3">
 <h4>De dónde sale el 30 %</h4>
-<p>Del <a href="https://arxiv.org/pdf/2007.10951" target="_blank" rel="noopener">GeoBIM Benchmark 2019</a>: se pidió a distintos programas que interpretaran la georreferenciación de un mismo IFC y solo alrededor de un tercio lo hizo bien.</p>
+<p>Del <a href="https://arxiv.org/pdf/2007.10951" target="_blank" rel="noopener">GeoBIM Benchmark 2019</a>: se pidió a distintos programas que interpretaran la georreferenciación de un mismo IFC y solo alrededor de un tercio lo hizo bien. <span class="tag">Por confirmar</span></p>
 </div>
 <div class="card w3 y">
 <span class="c-label">Lo que viene</span><p>Seis bloques: conceptos generales, estándares, software, plataformas, interoperabilidad y control de calidad. El primero vale para cualquier programa.</p>
@@ -1532,7 +1532,7 @@
       </div>
       <div class="card w6 k">
         <h4>Un datum que viaja con su placa</h4>
-        <p>ETRS89 está ligado a la placa euroasiática y WGS84 a la Tierra en su conjunto. Como la placa se mueve, los dos se separan unos centímetros cada año: para posicionar una obra no son intercambiables.</p>
+        <p>ETRS89 está ligado a la placa euroasiática y WGS84 está alineado con el ITRF, sin placa fija. Como la placa se mueve, los dos se separan unos centímetros cada año: para posicionar una obra no son intercambiables.</p>
       </div>
       <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2007-15822" target="_blank" rel="noopener">Real Decreto 1071/2007</a> · <a href="https://epsg.io/7019-ellipsoid" target="_blank" rel="noopener">EPSG:7019 (GRS 1980)</a> · <a href="https://www.euref.eu/" target="_blank" rel="noopener">EUREF</a>.</p></div>
     </div>
@@ -1633,7 +1633,7 @@
       </div>
       <div class="card w6">
         <h4>Un levantamiento en local</h4>
-        <p>Muchos topógrafos entregan en un sistema local: origen cómodo y sin deformación de proyección. Es válido, pero para georreferenciarlo hacen falta al menos dos puntos con coordenadas en los dos sistemas.</p>
+        <p>Muchos topógrafos entregan en un sistema local: origen cómodo y sin deformación de proyección. Es válido, pero para georreferenciarlo hacen falta al menos dos puntos con coordenadas en los dos sistemas; mejor tres, para comprobar.</p>
         <svg class="draw" viewBox="0 -20 640 200" role="img" aria-label="Rejilla local girada sobre la rejilla UTM con dos puntos comunes" style="margin-top:12px;max-height:170px">
           <g stroke="#D5D5CB"><path d="M20 20h300M20 60h300M20 100h300M20 140h300M40 10v140M120 10v140M200 10v140M280 10v140"/></g>
           <text x="20" y="14" font-family="JetBrains Mono, monospace" font-size="10" fill="#666">UTM</text>
@@ -1807,7 +1807,7 @@
 <div class="card w3">
 <h4>Los límites de cada fabricante</h4>
 <ul>
-          <li><strong>Revit:</strong> toda la geometría, propia o vinculada, debe quedar dentro de ese radio. El famoso «límite de 20 millas» (32 km) es el diámetro, no el radio.</li>
+          <li><strong>Revit:</strong> toda la geometría, propia o vinculada, debe quedar dentro de ese radio. Autodesk pide 16 km (10 millas) de radio; el plano de modelado mide 32 km (20 millas) de diámetro. El aviso de 20 millas al importar CAD sí las cuenta desde el origen del archivo.</li>
           <li><strong>Bonsai</strong> (antes BlenderBIM) avisa de errores milimétricos a partir de unos 5 km del origen.</li>
         </ul>
 </div>
@@ -1817,7 +1817,7 @@
       </div>
       <div class="card w6 y">
         <span class="c-label">Lectura nuestra <span class="tag">Inferido</span></span>
-        <p>A 16 km la precisión simple todavía resuelve el milímetro. Encaja con el radio que Autodesk fija para Revit, aunque Autodesk no publica el cálculo.</p>
+        <p>A 16 km la precisión simple ronda el milímetro: 0,98 mm en metros y 1,2 mm en los pies internos de Revit. Encaja con el radio que Autodesk fija para Revit, aunque Autodesk no publica el cálculo.</p>
       </div>
 <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://help.autodesk.com/cloudhelp/2026/ENU/Revit-Model/files/GUID-3F79BF5A-F051-49F3-951E-D3E86F51BECC.htm" target="_blank" rel="noopener">ayuda de Revit</a> · <a href="https://docs-unstable.bonsaibim.org/guides/authoring/advanced_modeling/georeferencing.html" target="_blank" rel="noopener">documentación de Bonsai</a> · <a href="https://www.revitapidocs.com/2024/c2fd995c-95c0-58fb-f5de-f3246cbc5600.htm" target="_blank" rel="noopener">Revit API, clase XYZ</a>.</p></div>
 </div>
@@ -1843,7 +1843,7 @@
 </div>
 <div class="card w6 y">
 <h4>Novedad de 2026</h4>
-<p>Autodesk anunció en su <a href="https://www.autodesk.com/blogs/aec/2026/09/15/civil-3d-the-next-forma-connected-client" target="_blank" rel="noopener">blog oficial</a> (15-09-2026) un motor de geolocalización unificado para Forma, Revit y Civil 3D. En Revit funciona en flujos conectados y en Civil 3D empieza como Tech Preview (<a href="https://www.geoweeknews.com/articles/autodesk-quietly-unified-its-coordinate-systems/" target="_blank" rel="noopener">Geo Week News</a>). No resuelve alturas ni el paso de terreno a cuadrícula.</p>
+<p>Autodesk anunció en su <a href="https://www.autodesk.com/blogs/aec/2026/09/15/civil-3d-the-next-forma-connected-client" target="_blank" rel="noopener">blog oficial</a> (15-09-2026) un motor de geolocalización unificado para Forma, Revit y Civil 3D. En Civil 3D empieza como Tech Preview. Según <a href="https://www.geoweeknews.com/articles/autodesk-quietly-unified-its-coordinate-systems/" target="_blank" rel="noopener">Geo Week News</a>, solo funciona conectado y no resuelve las alturas ni el paso de terreno a cuadrícula.</p>
 </div>
 <div class="card w6 k">
 <h4>Antes de subir a una plataforma</h4>
@@ -1903,7 +1903,7 @@
       <div class="card w3 k">
         <h4>Lo que cambia de un país a otro</h4>
         <ul>
-          <li>La unidad: metros en casi todos, pies topográficos en parte de Estados Unidos.</li>
+          <li>La unidad: metros en casi todos, pies topográficos en sistemas estatales heredados de Estados Unidos (el US survey foot es obsoleto desde el 1-1-2023).</li>
           <li>El orden de los ejes: algunos registros dan norte antes que este.</li>
           <li>El datum: los marcos continentales (ETRS89, SIRGAS, NAD83, GDA2020) se mueven con su placa; los antiguos, como OSGB36, necesitan una transformación desde el GNSS.</li>
         </ul>
@@ -1916,7 +1916,7 @@
 <div class="b-cards">
 <div class="card w3">
 <h4>El marco legal</h4>
-<p>El <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2007-15822" target="_blank" rel="noopener">Real Decreto 1071/2007</a> fija ETRS89 en la península y Baleares y REGCAN95 en Canarias. Las altitudes se refieren al nivel medio del mar en Alicante (red REDNAP) y la proyección oficial es UTM.</p>
+<p>El <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2007-15822" target="_blank" rel="noopener">Real Decreto 1071/2007</a> fija ETRS89 en la península y Baleares y REGCAN95 en Canarias. Las altitudes se refieren al nivel medio del mar en Alicante en la Península y al mareógrafo de cada isla en Baleares y Canarias (red REDNAP); la proyección oficial es UTM.</p>
 </div>
 <div class="card w3 k">
 <p class="c-label">Ojo con ED50</p><p>El antiguo sistema sigue apareciendo en cartografía heredada. Mezclarlo con ETRS89 desplaza del orden de 200 m.</p>
@@ -1928,8 +1928,8 @@
             <tr><td class="num">25829</td><td>ETRS89 / UTM 29N</td><td>Galicia y oeste</td></tr>
             <tr class="is-key"><td class="num">25830</td><td>ETRS89 / UTM 30N</td><td>Centro (el más habitual)</td></tr>
             <tr><td class="num">25831</td><td>ETRS89 / UTM 31N</td><td>Cataluña y Baleares</td></tr>
-            <tr><td class="num">4083</td><td>REGCAN95 / UTM 28N</td><td>Canarias al este de 18° W</td></tr>
-            <tr><td class="num">4082</td><td>REGCAN95 / UTM 27N</td><td>El Hierro y La Palma</td></tr>
+            <tr><td class="num">4083</td><td>REGCAN95 / UTM 28N</td><td>Canarias, todo el archipiélago (práctica oficial)</td></tr>
+            <tr><td class="num">4082</td><td>REGCAN95 / UTM 27N</td><td>Al oeste de 18° W (parte de El Hierro); la cartografía oficial no lo usa</td></tr>
             <tr><td class="num">5782</td><td>Alicante height</td><td>Sistema vertical peninsular</td></tr>
           </tbody>
         </table></div>
@@ -1937,7 +1937,7 @@
 </div>
 <div class="card w6 y">
 <h4>Por qué georreferenciar en España</h4>
-<p>El <a href="https://www.ign.es/web/servicios-ciudadano/plan-bim" target="_blank" rel="noopener">Plan BIM del IGN</a>, dentro de la <a href="https://www.civil-mercantil.com/sites/civil-mercantil.com/files/NCL013234.pdf" target="_blank" rel="noopener">Orden PCM/818/2023</a>, pide entregar el modelo as built en IFC 4.3 o superior, georreferenciado según el Real Decreto 1071/2007.</p>
+<p>El Plan BIM de la AGE (<a href="https://www.boe.es/diario_boe/txt.php?id=BOE-A-2023-16784" target="_blank" rel="noopener">Orden PCM/818/2023</a>) pide IFC sin fijar versión y obliga a enviar al IGN las envolventes del modelo. El <a href="https://www.ign.es/web/servicios-ciudadano/plan-bim" target="_blank" rel="noopener">procedimiento del IGN</a> las pide en IFC 4.3 o superior y referidas al sistema geodésico oficial (Real Decreto 1071/2007). <span class="tag">Por confirmar</span></p>
 </div>
 </div>
   </template>
@@ -2107,7 +2107,7 @@
 <div class="card w3">
 <h4>Otros casos</h4>
 <ul>
-          <li><strong>Resetear:</strong> vincular Origen a origen un archivo limpio y adquirir, o (desde 2021) <span class="ui">Resetear coordenadas compartidas</span>.</li>
+          <li><strong>Resetear:</strong> vincular Origen a origen un archivo limpio y adquirir, o (desde Revit 2021.1) <span class="ui">Resetear coordenadas compartidas</span>.</li>
           <li><strong>Topografía nueva:</strong> si el DWG es un «guardar como» del anterior, marcarlo antes como «No compartir coordenadas»; luego repetir Adquirir › Reconciliar en cada RVT.</li>
           <li><strong>Exportar a DWG:</strong> coordenadas «Compartidas», exportando vistas, no planos.</li>
         </ul>
@@ -2125,7 +2125,7 @@
 </div>
 <div class="card w3">
 <h4>¿Y el punto base?</h4>
-<p>Desde Revit 2020.2 no tiene icono de clip, aunque la ayuda aún hable de «desanclarlo». Moverlo solo cambia las coordenadas medidas desde él (<a href="https://help.autodesk.com/cloudhelp/2027/ENU/Revit-Model/files/GUID-A973AC69-7095-4C09-BD7E-E3B6EAF36ABB.htm" target="_blank" rel="noopener">ayuda de Revit 2027</a>). Para recolocar el proyecto: <span class="ui">Gestionar › Ubicación › Reubicar proyecto</span>.</p>
+<p>Desde Revit 2020.2 no tiene icono de clip, aunque la ayuda aún hable de «desanclarlo». Moverlo solo cambia las coordenadas medidas desde él (<a href="https://help.autodesk.com/cloudhelp/2027/ENU/Revit-Model/files/GUID-A973AC69-7095-4C09-BD7E-E3B6EAF36ABB.htm" target="_blank" rel="noopener">ayuda de Revit 2027</a>). Para recolocar el proyecto: <span class="ui">Gestionar › Ubicación del proyecto › Posición › Reubicar proyecto</span>.</p>
 </div>
 <div class="card w3 y">
 <span class="c-label">Regla práctica</span><p>Con todo configurado, fija con pin los tres puntos y deja el Survey Point con clip.</p>
@@ -2232,7 +2232,7 @@
 <h4>Shared Reference Point</h4>
 <ol class="vsteps">
           <li>Civil 3D: <span class="ui">Toolbox › Export Shared Reference Points for Autodesk Revit</span>, con dos puntos a la misma cota.</li>
-          <li>Revit: <span class="ui">Import Shared Coordinates from XML File</span>.</li>
+          <li>Revit, con el complemento <strong>Shared Reference Point Extension</strong> (se descarga aparte): <span class="ui">Import Shared Coordinates from XML File</span>.</li>
           <li><span class="ui">Gestionar › Ubicación › Emplazamiento › Hacer actual</span>.</li>
         </ol>
 </div>
@@ -2242,7 +2242,7 @@
 </div>
 <div class="card w3">
 <h4>EPSG en Revit</h4>
-<p>Hoy, en la interfaz de Revit no se puede asignar un EPSG directamente; solo la API lo admite.</p>
+<p>En Revit no se escribe un EPSG: se hereda al adquirir de un DWG georreferenciado, por la API (<code>SiteLocation.SetGeoCoordinateSystem</code>) o, desde 2026, en flujos conectados con Forma. El EPSG del exportador IFC solo va al IFC.</p>
 </div>
 </div>
   </template>
@@ -2262,7 +2262,7 @@
 <div class="card w3">
 <h4>Por qué vuela</h4>
 <p>La opción <span class="ui">Colocar en</span> pone el origen del dibujo en el nivel elegido. Todo lo que tenga Z sube desde ahí.</p>
-<div class="formula">cota final = cota del nivel + Z del DWG<br><span class="y">650 + 650 = 1 300</span></div>
+<div class="formula">cota final = cota del nivel + Z del DWG <span style="color:var(--s500)">(salvo por coordenadas compartidas)</span><br><span class="y">650 + 650 = 1 300</span></div>
 <p>Pasa cuando los niveles se escriben en cotas absolutas y el topógrafo también entregó Z reales: la altura se cuenta dos veces.</p>
 </div>
 <div class="card w3">
@@ -2320,19 +2320,19 @@
 </div>
 <div class="card w3">
 <h4>La transformación</h4>
-<div class="formula">E = s·cos θ·x − s·sin θ·y + Eastings<br>N = s·sin θ·x + s·cos θ·y + Northings<br>H = z + OrthogonalHeight<br><span style="color:var(--s500)">θ = atan2(XAxisOrdinate, XAxisAbscissa)</span></div>
+<div class="formula">E = s·cos θ·x − s·sin θ·y + Eastings<br>N = s·sin θ·x + s·cos θ·y + Northings<br>H = s·z + OrthogonalHeight<br><span style="color:var(--s500)">θ = atan2(XAxisOrdinate, XAxisAbscissa)</span></div>
 <p><code>Scale</code> es único y convierte unidades: 0,001 si el modelo está en mm y el CRS en m. En IFC4.3, <code>IfcMapConversionScaled</code> añade <code>FactorX/Y/Z</code> para factores pactados.</p>
-<p>Ojo con guías anteriores que usan <code>Scale</code> como factor combinado: <a href="https://standards.buildingsmart.org/IFC/RELEASE/IFC4_3/HTML/lexical/IfcMapConversion.htm" target="_blank" rel="noopener">IFC 4.3 ADD2</a> lo reserva a las unidades y deja el factor de cuadrícula a <a href="https://standards.buildingsmart.org/IFC/RELEASE/IFC4_3/HTML/lexical/IfcMapConversionScaled.htm" target="_blank" rel="noopener">IfcMapConversionScaled</a>.</p>
+<p><code>Scale</code> afecta a los tres ejes: con el modelo en mm, la cota también pasa a metros. Siempre ha sido un factor de unidades, en <a href="https://standards.buildingsmart.org/IFC/RELEASE/IFC4/ADD1/HTML/schema/ifcrepresentationresource/lexical/ifcmapconversion.htm" target="_blank" rel="noopener">IFC4</a> y en <a href="https://standards.buildingsmart.org/IFC/RELEASE/IFC4_3/HTML/lexical/IfcMapConversion.htm" target="_blank" rel="noopener">IFC4.3</a>. La guía de buildingSMART v2.0 lo usaba como factor combinado solo en X e Y; para eso, IFC4.3 añade <a href="https://standards.buildingsmart.org/IFC/RELEASE/IFC4_3/HTML/lexical/IfcMapConversionScaled.htm" target="_blank" rel="noopener">IfcMapConversionScaled</a>.</p>
 </div>
 <div class="card w6">
 <h4>Ejemplo para España (IFC4)</h4>
 <pre><code>#20=IFCPROJECTEDCRS('<span class="y">EPSG:<span data-pais="epsg">25830</span></span>','<span data-pais="crs-nombre">ETRS89 / UTM zone 30N</span>','EPSG:<span data-pais="datum-code">6258</span>','EPSG:<span data-pais="vdatum-code">5180</span>','<span data-pais="metodo">Transverse Mercator</span>',<span data-pais="zona-ifc">'30N'</span>,#10);
 #21=IFCMAPCONVERSION(#11,#20,<span class="y"><span data-pais="e-raw">440125.250</span>,<span data-pais="n-raw">4474310.800</span>,655.320</span>,0.9993908,0.0348995,1.);</code></pre>
-<p><code>GeodeticDatum</code> y <code>VerticalDatum</code> llevan códigos de datum: <span data-pais="datum-code">6258</span> (<span data-pais="datum">ETRS89</span>) y <span data-pais="vdatum-code">5180</span> (<span data-pais="alt">Alicante</span>), no el <span data-pais="alt-epsg">5782</span> del sistema vertical (<a href="https://standards.buildingsmart.org/IFC/RELEASE/IFC4_3/HTML/lexical/IfcProjectedCRS.htm" target="_blank" rel="noopener">IFC4.3</a>).</p>
+<p><code>GeodeticDatum</code> y <code>VerticalDatum</code> admiten el nombre del datum (<span data-pais="datum">ETRS89</span>, <span data-pais="alt">Alicante</span>) o su código EPSG de datum (<span data-pais="datum-code">6258</span>, <span data-pais="vdatum-code">5180</span>), nunca el <span data-pais="alt-epsg">5782</span> del sistema vertical (<a href="https://standards.buildingsmart.org/IFC/RELEASE/IFC4_3/HTML/lexical/IfcProjectedCRS.htm" target="_blank" rel="noopener">IFC4.3</a>).</p>
 </div>
 <div class="card w3">
 <h4>IFC2x3 y referencias</h4>
-<p>IFC2x3 lo emula con <code>ePSet_MapConversion</code>, que pocos visores leen. La guía es.BIM pide al menos dos puntos documentados; la <a href="https://www.buildingsmart.org/wp-content/uploads/2020/02/User-Guide-for-Geo-referencing-in-IFC-v2.0.pdf" target="_blank" rel="noopener">guía de buildingSMART v2.0</a> es la referencia pública (la v3.0 es solo para registrados). Los BIM Fit Check alemanes de 2025 exigían LoGeoRef 50.</p>
+<p>IFC2x3 lo emula con <code>ePSet_MapConversion</code>, que pocos visores leen. La guía es.BIM pide al menos dos puntos documentados; la <a href="https://www.buildingsmart.org/wp-content/uploads/2020/02/User-Guide-for-Geo-referencing-in-IFC-v2.0.pdf" target="_blank" rel="noopener">guía de buildingSMART v2.0</a> es la referencia pública (la v3.0 se descarga gratis previo registro). Los BIM Fit Check alemanes de 2025 exigían LoGeoRef 50.</p>
 </div>
 </div>
   </template>
@@ -2343,9 +2343,9 @@
       <thead><tr><th>Revit</th><th>Archicad</th><th>Tekla</th><th>Allplan 2026</th><th>Vectorworks</th><th>BricsCAD BIM</th><th>Bonsai / IFC</th></tr></thead>
       <tbody>
         <tr><td>Origen interno</td><td>Project Origin</td><td>Model origin</td><td>Punto global 0,0,0</td><td>Internal Origin</td><td>WCS 0,0,0</td><td>Origen local</td></tr>
-        <tr><td>Punto base</td><td>Project Origin (IFC Site)</td><td>Project base point</td><td>Base Point</td><td>User Origin</td><td>Project Location</td><td>Placement de IfcSite</td></tr>
+        <tr><td>Punto base</td><td>Project Origin o Survey Point (opción de exportación IFC)</td><td>Project base point</td><td>Base Point</td><td>User Origin</td><td>Project Location</td><td>Placement de IfcSite</td></tr>
         <tr class="is-key"><td>Survey Point</td><td>Survey Point (AC25+)</td><td>Base point con E/N</td><td>Survey Point</td><td>Survey Point</td><td>Survey Location</td><td>IfcMapConversion</td></tr>
-        <tr><td>Norte verdadero</td><td>Project North</td><td>Angle to North</td><td>True North</td><td>Angle to true north</td><td>NORTHDIRECTION</td><td>XAxisAbscissa / Ordinate</td></tr>
+        <tr><td>Norte verdadero</td><td>Project North</td><td>Angle to North</td><td>True North <span class="tag">Por confirmar</span></td><td>Angle to true north</td><td>NORTHDIRECTION</td><td>XAxisAbscissa / Ordinate</td></tr>
       </tbody>
     </table></div>
 </div></div>
@@ -2360,13 +2360,13 @@
 <div class="card w3">
 <ul>
           <li><strong>Bentley:</strong> el DGN tiene sistema geográfico y Global Origin.</li>
-          <li><strong>Bonsai:</strong> False Origin para coordenadas grandes; IFC2x3 no se puede georreferenciar.</li>
-          <li><strong>SketchUp</strong> no exporta el CRS: se completa con IfcOpenShell o IfcGref.</li>
+          <li><strong>Bonsai:</strong> False Origin para coordenadas grandes; no edita la georreferencia en IFC2x3, aunque IfcOpenShell sí lee la convención ePSet de buildingSMART.</li>
+          <li><strong>SketchUp</strong> no exporta el CRS de serie; la extensión IFC Manager sí, y si no, se completa con IfcOpenShell o IfcGref.</li>
         </ul>
 </div>
 <div class="card w3">
 <h4>Archicad y Revit no giran igual</h4>
-<p>Revit mide los ángulos en sentido horario desde +Y; Archicad, en sentido antihorario desde +X.</p>
+<p>Revit y Archicad no usan el mismo convenio de giro: hay que comprobarlo con un modelo de prueba antes de copiar el ángulo.</p>
 </div>
 </div>
   </template>
@@ -2454,7 +2454,7 @@
           <tbody>
             <tr><td>Dónde</td><td><code>IfcMapConversion</code> · <code>Eastings</code>, <code>Northings</code></td><td>Coordenadas UTM del origen local</td></tr>
             <tr><td>Hacia dónde</td><td><code>XAxisAbscissa</code>, <code>XAxisOrdinate</code></td><td>Coseno y seno del giro respecto a la cuadrícula</td></tr>
-            <tr><td>A qué cota</td><td><code>OrthogonalHeight</code></td><td>Altitud del ±0,00 sobre REDNAP</td></tr>
+            <tr><td>A qué cota</td><td><code>OrthogonalHeight</code></td><td>Altitud del origen del modelo (el ±0,00 si coinciden) <span class="tag">Inferido</span></td></tr>
             <tr class="is-key"><td>En qué sistema</td><td><code>IfcProjectedCRS</code> · <code>Name</code></td><td><code>EPSG:<span data-pais="epsg">25830</span></code> (o el huso que toque)</td></tr>
             <tr><td>Unidades</td><td><code>Scale</code></td><td>1 en metros; 0,001 si el modelo va en milímetros</td></tr>
           </tbody>
@@ -2607,7 +2607,7 @@ print("OK" if error &lt; 0.01 else f"Desvío de {error:.3f} m")</code></pre>
         <h4>Qué es</h4>
         <ul>
           <li>Parte de las BIM Interoperability Tools de Autodesk, gratis para usuarios con licencia de Revit.</li>
-          <li>Versión 10.0 con Revit 2026; la 9.2 sigue disponible para Revit 2022 a 2025.</li>
+          <li>Versión 10.0 con Revit 2026; la 10.0 ya no admite la API; si se necesita, la 9.2 sigue disponible para Revit 2022 a 2025.</li>
           <li>Desde el informe se hace zoom al elemento que falla.</li>
         </ul>
       </div>
