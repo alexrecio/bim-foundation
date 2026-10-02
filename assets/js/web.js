@@ -482,3 +482,10 @@
     if (b) { b.closest('.slide').scrollIntoView(); open(m[1], b); }
   }
 })();
+
+// Navegación y ayuda al lector (buscador, glosario, dudas frecuentes, guía): assets/js/ayuda.js
+(function () {
+  const s = document.createElement('script');
+  s.src = (document.documentElement.dataset.root || './') + 'assets/js/ayuda.js';
+  document.body.appendChild(s);
+})();
