@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Borrador: quitar noindex al publicar -->
-  <meta name="bf-fuente" content="articulos/coordenadas-compartidas/index.html@36a127abccb14a3bec27b6eebd8e5720062a85da">
+  <meta name="bf-fuente" content="articulos/coordenadas-compartidas/index.html@579869a4246a6cc6ab8f7da093112f01f906b347">
   <meta name="robots" content="noindex, nofollow">
   <title>Koordinatensysteme in BIM | bimkernel</title>
   <meta name="description" content="Koordinatensysteme in BIM: das Bezugssystem, das Physisches und Digitales koordiniert, vom Datum und der Kartenabbildung bis zum Modell, zum IFC und zur Absteckung.">
@@ -221,9 +221,13 @@
         </div>
         <div class="b-cards">
           <div class="card w6 g">
-            <span class="c-label">Zwei Daten: eines für die Lage, eines für die Höhe</span>
-            <svg class="draw" viewBox="0 0 720 250" role="img" aria-label="Zwei Daten. Links das geodätische Datum (Lage): ein Ellipsoid in Perspektive, zentriert im Massenmittelpunkt der Erde, mit der Drehachse und dem Meridian von Greenwich als Bezug; darauf ein Punkt P mit seiner Breite und Länge. Rechts das Höhendatum: ein überhöhter Schnitt durch die Erde, mit dem Geoid als gewellter Linie, die der Meeresoberfläche folgt und unter den Kontinenten weiterläuft; ein Pegel an der Küste liefert die Null, und vom Geoid aus wird die Höhe H eines Punktes an Land gemessen. Auf dem Ellipsoid sind vereinfachte Kontinente und Relief eingezeichnet, um zu zeigen, dass es eine glatte Form ist, die sie ignoriert.">
-              <g font-family="JetBrains Mono, monospace" font-size="12" font-weight="700"><text x="10" y="16">GEODÄTISCHES DATUM · das Ellipsoid</text><text x="320" y="16">HÖHENDATUM · das Geoid</text></g>
+            <span class="c-label">2 Daten: eines für die Lage, eines für die Höhe</span>
+            <svg class="draw" viewBox="0 0 720 284" role="img" aria-label="Zwei Daten. Links das geodätische Datum (Lage): ein Ellipsoid in Perspektive, zentriert im Massenmittelpunkt der Erde, mit der Drehachse und dem Meridian von Greenwich als Bezug; darauf ein Punkt P mit seiner Breite und Länge. Rechts das Höhendatum: ein überhöhter Schnitt durch die Erde, mit dem Geoid als gewellter Linie, die der Meeresoberfläche folgt und unter den Kontinenten weiterläuft; ein Pegel an der Küste liefert die Null, und vom Geoid aus wird die Höhe H eines Punktes an Land gemessen. Auf dem Ellipsoid sind vereinfachte Kontinente und Relief eingezeichnet, um zu zeigen, dass es eine glatte Form ist, die sie ignoriert.">
+              <g font-family="JetBrains Mono, monospace" font-weight="700">
+                <text x="10" y="17" font-size="15">GEODÄTISCHES DATUM</text><rect x="10" y="25" width="80" height="19" fill="#000"/><text x="16" y="39" font-size="12" fill="#fff">ELLIPSOID</text>
+                <text x="320" y="17" font-size="15">HÖHENDATUM</text><rect x="320" y="25" width="50" height="19" fill="#000"/><text x="326" y="39" font-size="12" fill="#fff">GEOID</text>
+              </g>
+              <g transform="translate(0 34)">
               <path d="M150 26 V232" stroke="#000" stroke-width="2"/><polygon points="150,20 145,30 155,30" fill="#000"/>
               <ellipse cx="150" cy="128" rx="112" ry="90" fill="#fff" fill-opacity=".85" stroke="#000" stroke-width="3"/>
               <path d="M70 96 C84 80 104 78 112 90 C120 102 108 112 116 124 C122 138 108 160 96 170 C86 160 80 140 74 130 C64 118 62 106 70 96 Z" fill="#E2E2DC" stroke="#8F8F87" stroke-width="1"/>
@@ -267,11 +271,12 @@
               <rect x="505" y="40" width="211" height="182" fill="#fff" stroke="#000" stroke-width="1.5" stroke-dasharray="4 4"/>
               <path d="M441 100 L428 40" stroke="#000" stroke-width="1"/>
               <path d="M700 168 L700 199 M344 183 L330 204" stroke="#000" stroke-width="1"/>
+              <path d="M506 204 C530 202 560 204 587 196 C617 190 640 168 668 136 S700 100 715 96 V221 H506 Z" fill="#E2E2DC" stroke="#8F8F87" stroke-width="1.2" stroke-linejoin="round"/>
               <path d="M515 168 q 9 -6 18 0 t 18 0 t 18 0" fill="none" stroke="#000" stroke-width="2"/>
               <path d="M515 178 h54" stroke="#999" stroke-width="1.5" stroke-dasharray="4 5"/>
               <rect x="569" y="122" width="18" height="56" fill="#fff" stroke="#000" stroke-width="3"/><path d="M578 122 V110" stroke="#000" stroke-width="3"/>
-              <path d="M587 168 C615 162 640 174 668 167 S700 160 712 164" fill="none" stroke="#000" stroke-width="2.5"/>
-              <path d="M587 196 C617 190 640 168 668 136 S700 100 712 96" fill="none" stroke="#000" stroke-width="3"/>
+              <path d="M587 168 C605 164 622 166 638 170" fill="none" stroke="#000" stroke-width="2.5"/>
+              <path d="M638 170 C650 172 660 168 668 167 S700 160 712 164" fill="none" stroke="#000" stroke-width="2" stroke-dasharray="3 4"/>
               <circle cx="676" cy="122" r="7" fill="#FFFF00" stroke="#000" stroke-width="2.5"/>
               <path d="M676 166 V134" stroke="#000" stroke-width="2.5"/><polygon points="676,130 671,140 681,140" fill="#000"/>
               <g font-family="JetBrains Mono, monospace" font-size="11">
@@ -283,6 +288,7 @@
                 <text x="686" y="152" font-size="13" font-weight="700">H</text>
                 <text x="712" y="210" text-anchor="end" fill="#666">Geoid, unter Land</text>
                 <text x="320" y="246" fill="#666">gewellt, ohne Formel → Höhe</text>
+              </g>
               </g>
             </svg>
           </div>
