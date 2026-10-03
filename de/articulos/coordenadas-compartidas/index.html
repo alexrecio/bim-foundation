@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Borrador: quitar noindex al publicar -->
-  <meta name="bf-fuente" content="articulos/coordenadas-compartidas/index.html@102d40defc49c06c70d3a665d89225d58241c073">
+  <meta name="bf-fuente" content="articulos/coordenadas-compartidas/index.html@bd9bcd75780fe3dee6da3c0a5353cc88416c2100">
   <meta name="robots" content="noindex, nofollow">
   <title>Koordinatensysteme in BIM | bimkernel</title>
   <meta name="description" content="Koordinatensysteme in BIM: das Werkzeug, das Physisches und Digitales koordiniert, vom Datum und der Kartenabbildung bis zum Modell, zum IFC und zur Absteckung.">
@@ -91,7 +91,7 @@
               <circle cx="300" cy="168" r="52" fill="#FFFF00" stroke="#000" stroke-width="3"/>
               <g font-family="JetBrains Mono, monospace" text-anchor="middle"><text x="300" y="158" font-size="11" font-weight="700">KOORDINATEN-</text><text x="300" y="172" font-size="11" font-weight="700">SYSTEM</text><text x="300" y="192" font-size="12">E · N · H</text></g>
               <g font-family="JetBrains Mono, monospace" font-size="11" fill="#666" text-anchor="middle"><text x="300" y="14">physisch ▸ digital</text><text x="300" y="330">digital ▸ physisch</text></g>
-              <path d="M170 201 L150 346 M430 201 L452 346" stroke="#000" stroke-width="1.2" stroke-dasharray="3 4"/>
+              <path d="M170 201 L84 344 M430 201 L452 346" stroke="#000" stroke-width="1.2" stroke-dasharray="3 4"/>
               <g transform="translate(14 214)">
               <g fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M6 252 C50 246 90 254 140 250 S220 246 262 251" stroke-width="3"/>
@@ -111,6 +111,7 @@
               </g>
               <g font-family="JetBrains Mono, monospace" font-size="12">
                 <text x="128" y="124" text-anchor="middle">Totalstation</text>
+                <text x="230" y="152" text-anchor="middle">Prisma</text>
                 <text x="238" y="276" text-anchor="middle">Nagel</text>
                 <text x="130" y="302" text-anchor="middle" font-weight="700">PHYSISCHES BAUWERK</text>
                 <text x="130" y="318" text-anchor="middle" fill="#666">im Betrieb</text>
@@ -1790,7 +1791,7 @@
       </div>
       <div class="card w4 k">
         <h4>Welche Form das Höhendatum hat</h4>
-        <p>Die des Geoids: der Fläche gleichen Schwerepotenzials, auf der ruhendes Wasser in keine Richtung fließen würde. Sie folgt der Massenverteilung des Planeten (Gebirge, Gräben, Dichte im Inneren) und passt daher in keine Formel mit zwei Parametern wie das Ellipsoid: Sie wird aus Schwere- und Satellitenmessungen berechnet und als Gitter von Undulationen N veröffentlicht. Das Datum jedes Landes realisiert sie nur näherungsweise.</p>
+        <p>Die des Geoids: der Fläche gleichen Schwerepotenzials, die sich am besten dem mittleren Meeresspiegel anpasst und auf der ruhendes Wasser in keine Richtung fließen würde. Sie folgt der Massenverteilung des Planeten (Gebirge, Gräben, Dichte im Inneren) und passt daher in keine Formel mit zwei Parametern wie das Ellipsoid: Sie wird aus Schwere- und Satellitenmessungen berechnet und als Gitter von Undulationen N veröffentlicht. Das Datum jedes Landes realisiert sie nur näherungsweise.</p>
       </div>
       <div class="card w2"><span class="c-label">Geoid gegenüber Ellipsoid</span><b class="c-num" style="font-size:clamp(1.3rem,2vw,2rem);white-space:nowrap">−106 bis +86<small>m</small></b><span class="c-foot">Undulation N weltweit · EGM2008</span></div>
       <div class="card w3">
@@ -1802,7 +1803,7 @@
         <p>Die Höhe ergibt sich aus GNSS abzüglich der Undulation: <span class="mono">H = h − N</span>. Kanada hat sein CGVD2013 so definiert, ohne Ursprungspegel.</p>
       </div>
       <div class="card w6 g">
-        <p style="margin:0">Das mittlere Meer fällt nicht ganz mit dem Geoid zusammen: Strömungen, Winde und Salzgehalt trennen es in der Größenordnung von einem Meter <span class="tag">Abgeleitet</span>, und deshalb haben zwei Länder mit unterschiedlichen Pegeln unterschiedliche Höhennullpunkte.</p>
+        <p style="margin:0">Das mittlere Meer fällt nicht ganz mit dem Geoid zusammen: Strömungen, Winde und Salzgehalt trennen es in der Größenordnung von einem Meter (bis etwa 2 m), und deshalb haben zwei Länder mit unterschiedlichen Pegeln unterschiedliche Höhennullpunkte.</p>
       </div>
       <div class="card w6">
         <div class="table-wrap"><table>
