@@ -368,7 +368,7 @@ body:has(.deck) footer.site { padding-left: var(--side); }
   background: var(--white); border: 1px solid var(--s200); border-radius: 8px;
 }
 @media (min-width: 1200px) { .card { padding: 20px; } }
-.card.g { background: var(--s50); }
+.card.g { background: var(--white); }
 .card.k { background: var(--black); border-color: var(--black); color: var(--white); }
 .card.y { background: var(--accent); border-color: var(--black); }
 .c-label { font-family: var(--mono); font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--s500); line-height: 1.4; }
