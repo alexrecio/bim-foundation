@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Borrador: quitar noindex al publicar -->
-  <meta name="bf-fuente" content="articulos/coordenadas-compartidas/index.html@769255d385d00fe2e60c34183bb575a256d3b4a2">
+  <meta name="bf-fuente" content="articulos/coordenadas-compartidas/index.html@5af2526f4b52c97861f220870863b110a430feaa">
   <meta name="robots" content="noindex, nofollow">
   <title>Koordinatensysteme in BIM | bimkernel</title>
   <meta name="description" content="Wie gemeinsame Koordinaten in Revit, Civil 3D, IFC und weiterer BIM-Software funktionieren, mit dem spanischen geodätischen Rahmen (ETRS89, EPSG, Höhen über Alicante).">
@@ -2142,7 +2142,7 @@
             <tr class="is-key"><td>Kombinierter Faktor</td><td class="num">0,999 542 (−458 ppm)</td><td class="num">0,999 936 (−64 ppm)</td><td class="num">1,000 181 (+181 ppm)</td></tr>
           </tbody>
         </table></div>
-        <p class="table-note">Puerta del Sol (EPSG 25830), Opernhaus Sydney (EPSG 7856) und Plaza Mayor in Lima (EPSG 31978). Eigene Berechnung mit PROJ und einem mittleren Erdradius von 6 371 km. <span class="tag">Abgeleitet</span></p>
+        <p class="table-note">Puerta del Sol (EPSG 25830), Opernhaus Sydney (EPSG 7856) und Plaza Mayor in Lima (EPSG 31978). Eigene Berechnung mit PROJ und einem mittleren Erdradius von 6 371 km; streng genommen verwendet der Höhenfaktor die ellipsoidische Höhe h = H + N, was in Madrid −4,7 cm je 100 m ergibt. <span class="tag">Abgeleitet</span></p>
       </div>
 <div class="card w3">
 <h4>Der Maßstabsfaktor</h4>
@@ -2178,12 +2178,12 @@
           <thead><tr><th></th><th>Spanien</th><th>Australien</th><th>Peru</th></tr></thead>
           <tbody>
             <tr><td>Höhendatum</td><td>Mittlerer Meeresspiegel in Alicante (Festland), EPSG 5782</td><td>AHD, EPSG 5711</td><td>Pegel La Punta (Callao)</td></tr>
-            <tr class="is-key"><td>Amtliches Geoidmodell</td><td>EGM08-REDNAP (IGN), etwa 3,8 cm Genauigkeit</td><td>AUSGeoid2020 (Geoscience Australia)</td><td>EGM2008 <span class="tag">Noch zu bestätigen</span></td></tr>
+            <tr class="is-key"><td>Amtliches Geoidmodell</td><td>EGM08-REDNAP (IGN), etwa 3,8 cm Genauigkeit</td><td>AUSGeoid2020 (Geoscience Australia)</td><td>EGM2008 (globales Modell; vom IGN Perú vorgeschrieben)</td></tr>
             <tr><td>Höhenart</td><td>Orthometrisch</td><td>Normal-orthometrisch</td><td>Normal-orthometrisch</td></tr>
           </tbody>
         </table></div>
       </div>
-      <div class="card w6"><p class="table-note" style="margin:0">Quellen: <a href="https://datos-geodesia.ign.es/geoide/EGM08-REDNAP_Spain_IGN.pdf" target="_blank" rel="noopener">IGN, EGM08-REDNAP</a> · <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2007-15822" target="_blank" rel="noopener">Real Decreto 1071/2007</a> · <a href="https://www.icsm.gov.au/australian-height-datum" target="_blank" rel="noopener">ICSM (AHD)</a> · <a href="https://www.ga.gov.au" target="_blank" rel="noopener">Geoscience Australia (AUSGeoid2020)</a> · <a href="https://sirgas.ipgh.org/wp-content/uploads/2025/05/10.1515_jogs-2025-0183-1.pdf" target="_blank" rel="noopener">Journal of Geodetic Science 2025 (SIRGAS)</a> · <a href="https://cdn.www.gob.pe/uploads/document/file/7557116/6419766-6385362-norma-tecnica-geodesica-2024.pdf" target="_blank" rel="noopener">IGN Peru, Norma Técnica Geodésica 2024</a>.</p></div>
+      <div class="card w6"><p class="table-note" style="margin:0">Quellen: <a href="https://datos-geodesia.ign.es/geoide/EGM08-REDNAP_Spain_IGN.pdf" target="_blank" rel="noopener">IGN, EGM08-REDNAP</a> · <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2007-15822" target="_blank" rel="noopener">Real Decreto 1071/2007</a> · <a href="https://www.icsm.gov.au/australian-height-datum" target="_blank" rel="noopener">ICSM (AHD)</a> · <a href="https://www.ga.gov.au" target="_blank" rel="noopener">Geoscience Australia (AUSGeoid2020)</a> · <a href="https://sirgas.ipgh.org/wp-content/uploads/2025/05/10.1515_jogs-2025-0183-1.pdf" target="_blank" rel="noopener">Journal of Geodetic Science 2025 (SIRGAS)</a> · <a href="https://cdn.www.gob.pe/uploads/document/file/7557116/6419766-6385362-norma-tecnica-geodesica-2024.pdf" target="_blank" rel="noopener">IGN Peru, Norma Técnica Geodésica 2024</a> · <a href="https://cdn.www.gob.pe/uploads/document/file/670932/ESPECIFICACIONES-TECNICAS-PARA-LEVANTAMIENTOS-VERTICALES.pdf" target="_blank" rel="noopener">IGN Perú, Spezifikationen für Höhenmessungen (2016)</a>.</p></div>
     </div>
   </template>
 
