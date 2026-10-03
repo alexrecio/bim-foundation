@@ -880,3 +880,32 @@ a.bfm-a:hover { background: var(--s50); }
 .bfm-row.is-current { background: var(--black); color: var(--white); }
 .bfm-lang { display: flex; align-items: center; justify-content: space-between; padding: 4px 8px; font-size: 14px; font-weight: 800; }
 .bfm-lang .bf-lang { margin: 0; padding: 0; border: 0; }
+
+/* Capa 2: ciclo con su agente en cada fase (la posición de cada tarjeta repite la del círculo) */
+.ciclo-l2 { display: grid; gap: 12px; margin-top: 10px; }
+.ciclo-l2 ol { list-style: none; margin: 0 !important; padding: 0 !important; display: contents; }
+.ciclo-l2 > ol > li { margin: 0 !important; padding: 10px 12px; background: var(--white); outline: 1px dashed #B9B9B0; outline-offset: -1px; display: flex; flex-direction: column; gap: 4px; }
+.ciclo-l2 .cl-centro { display: flex; align-items: center; justify-content: center; }
+.ciclo-l2 .cl-circ { display: block; width: 100%; max-width: 250px; height: auto; }
+.ciclo-l2 .cl-fase { font-family: var(--mono); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: #666; }
+.ciclo-l2 .cl-quien { display: flex; align-items: center; gap: 8px; font-weight: 900; font-size: 15px; text-transform: uppercase; letter-spacing: -.01em; line-height: 1.15; }
+.ciclo-l2 .cl-ico { flex: none; width: 22px; height: 22px; }
+.l2-body .ciclo-l2 p { font-size: 14px; line-height: 1.4; }
+.l2-body .ciclo-l2 .cl-riesgo { font-size: 13px; color: var(--s800); }
+.ciclo-l2 .cl-riesgo span { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: .06em; padding: 1px 5px; background: var(--black); color: var(--white); margin-right: 4px; }
+.ciclo-l2 .cl-sistema, .ciclo-l2 .cl-sistema .cl-quien { background: var(--black) !important; color: var(--white); outline-color: var(--black) !important; }
+.ciclo-l2 .cl-decision { padding: 10px 12px; background: var(--accent); outline: 1px solid var(--black); outline-offset: -1px; display: flex; flex-direction: column; gap: 4px; }
+.l2-body .ciclo-l2 .cl-decision p { font-size: 13px; color: var(--black); }
+.ciclo-l2 .cl-sistema ul { margin: 0 !important; padding-left: 18px !important; }
+.l2-body .ciclo-l2 .cl-sistema li { font-size: 13px; color: var(--white); margin: 0; }
+.ciclo-l2 .cl-sistema a { color: var(--white); }
+@media (min-width: 900px) {
+  .ciclo-l2 { grid-template-columns: 1fr minmax(220px, 250px) 1fr; grid-template-areas: "medir codificar disenar" "uso centro sistema" "decision centro sistema" "construir replantear coordinar"; align-items: stretch; }
+  .ciclo-l2 .cl-decision { grid-area: decision; }
+  .ciclo-l2 .cl-centro { grid-area: centro; }
+  .ciclo-l2 .cl-medir { grid-area: medir; } .ciclo-l2 .cl-codificar { grid-area: codificar; } .ciclo-l2 .cl-disenar { grid-area: disenar; }
+  .ciclo-l2 .cl-coordinar { grid-area: coordinar; } .ciclo-l2 .cl-replantear { grid-area: replantear; } .ciclo-l2 .cl-construir { grid-area: construir; }
+  .ciclo-l2 .cl-uso { grid-area: uso; } .ciclo-l2 .cl-sistema { grid-area: sistema; align-self: center; }
+  .ciclo-l2 .cl-fase:not(.cl-uso .cl-fase) { display: none; }
+}
+@media (max-width: 899px) { .ciclo-l2 .cl-circ { max-width: 240px; } }
