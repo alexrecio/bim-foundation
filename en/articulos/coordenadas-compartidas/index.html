@@ -6,12 +6,12 @@
   <!-- Draft: remove noindex on publishing -->
   <meta name="robots" content="noindex, nofollow">
   <!-- Translation of articulos/coordenadas-compartidas/index.html at this git blob (herramientas/i18n.mjs flags it when the Spanish page changes) -->
-  <meta name="bf-fuente" content="articulos/coordenadas-compartidas/index.html@1a70b94569cf25db0970e1188e1acdb2e33b6fa4">
+  <meta name="bf-fuente" content="articulos/coordenadas-compartidas/index.html@8f21553a6f8b0d9f3f08603823bea2f717ad8703">
   <title>Coordinate systems in BIM | bimkernel</title>
-  <meta name="description" content="Coordinate systems in BIM: the tool that coordinates the physical and the digital, from the datum and the projection to the model, IFC and setting out.">
+  <meta name="description" content="Coordinate systems in BIM: the reference system that coordinates the physical and the digital, from the datum and the projection to the model, IFC and setting out.">
   <meta property="og:type" content="article">
   <meta property="og:title" content="Coordinate systems in BIM · bimkernel">
-  <meta property="og:description" content="The tool that coordinates the physical and the digital: it translates physical reality into digital data with precision, and vice versa.">
+  <meta property="og:description" content="The reference system that coordinates the physical and the digital: it translates physical reality into digital data with precision, and vice versa.">
   <link rel="icon" href="../../../assets/img/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="../../../assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="../../../assets/css/estilo.css">
@@ -73,14 +73,14 @@
         <div class="b-title">
           <span class="slide-n"></span>
           <span class="kicker-y">A · Why coordinates</span>
-          <h2 class="display">The tool that coordinates the physical and the digital<span class="dot">.</span></h2>
+          <h2 class="display">The reference system that coordinates the physical and the digital<span class="dot">.</span></h2>
           <p class="slide-lead">It translates physical reality into digital data with precision, and vice versa.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="porque"><span class="plus">+</span> See detail</button></div>
         </div>
         <div class="b-cards">
           <div class="card w6">
             <span class="c-label">A cyclical process, one system at the centre · the whole life of the asset</span>
-            <svg class="draw" viewBox="0 0 760 316" role="img" aria-label="Cyclical process between the physical asset, on the left, and the digital asset, on the right. On the left, the site: a surveyor with a total station measures the prism set on a nail, next to a tree and a structure under construction. On the right, a screen with the E, N and H axes, a grid and the model of the building with the same nail. At the top, from the physical to the digital: measure, encode and design. At the bottom, from the digital to the physical: coordinate, set out and build. At the centre, the coordinate system connects every stage.">
+            <svg class="draw" viewBox="0 0 760 316" role="img" aria-label="Cyclical process between the physical asset, on the left, and the digital asset, on the right. On the left, the site: a surveyor with a total station measures the prism set on a nail, next to a tree and a structure under construction. On the right, a screen with the E, N and H axes, a grid and the model of the building with the same nail. At the top, from the physical to the digital: measure, encode and design. At the bottom, from the digital to the physical: coordinate, set out and build. At the centre, the reference system connects every stage.">
               <g transform="translate(140 34) scale(.8)">
               <g stroke="#B9B9B0" stroke-width="1.2" stroke-dasharray="3 4"><line x1="300" y1="168" x2="217" y2="85"/><line x1="300" y1="168" x2="300" y2="50"/><line x1="300" y1="168" x2="383" y2="85"/><line x1="300" y1="168" x2="383" y2="251"/><line x1="300" y1="168" x2="300" y2="286"/><line x1="300" y1="168" x2="217" y2="251"/><line x1="300" y1="168" x2="182" y2="168"/><line x1="300" y1="168" x2="418" y2="168"/></g>
               <circle cx="300" cy="168" r="118" fill="none" stroke="#000" stroke-width="2.5"/>
@@ -91,7 +91,7 @@
               <circle cx="418" cy="168" r="34" fill="#fff" stroke="#000" stroke-width="3"/>
               <rect x="398" y="152" width="40" height="27" rx="3" fill="#fff" stroke="#000" stroke-width="2.5"/><path d="M418 179 V184 M410 184 H426" stroke="#000" stroke-width="2.5" stroke-linecap="round"/><path d="M408 173 V162 L416 158 L428 161 V170 Z M408 162 L420 165 L428 161 M420 165 V175" fill="none" stroke="#000" stroke-width="1.5" stroke-linejoin="round"/>
               <circle cx="300" cy="168" r="52" fill="#FFFF00" stroke="#000" stroke-width="3"/>
-              <g font-family="JetBrains Mono, monospace" text-anchor="middle"><text x="300" y="158" font-size="13" font-weight="700">COORDINATE</text><text x="300" y="172" font-size="13" font-weight="700">SYSTEM</text><text x="300" y="192" font-size="14">E · N · H</text></g>
+              <g font-family="JetBrains Mono, monospace" text-anchor="middle"><text x="300" y="158" font-size="13" font-weight="700">REFERENCE</text><text x="300" y="172" font-size="13" font-weight="700">SYSTEM</text><text x="300" y="192" font-size="14">E · N · H</text></g>
               <g font-family="JetBrains Mono, monospace" font-size="13" fill="#666" text-anchor="middle"><text x="300" y="14">physical ▸ digital</text><text x="300" y="330">digital ▸ physical</text></g>
               </g>
               <path d="M214 166 H256 M504 166 H522" stroke="#000" stroke-width="1.2" stroke-dasharray="3 4"/>
@@ -2405,7 +2405,7 @@
 <ul>
           <li><strong>Model origin:</strong> the 0,0,0 where the engine calculates. It does not move.</li>
           <li><strong>Project base:</strong> the project's own reference for setting out and levels. It is not shared.</li>
-          <li><strong>Georeferenced point:</strong> carries the transformation to the real coordinate system.</li>
+          <li><strong>Georeferenced point:</strong> carries the transformation to the real reference system.</li>
         </ul>
 </div>
 <div class="card w3">
