@@ -27,6 +27,8 @@
     'Se recuerda en todos los artículos': 'Gilt für alle Beiträge',
     'Antes de empezar': 'Bevor Sie beginnen', '¿En qué sistema trabajas': 'In welchem System arbeiten Sie',
     'Los ejemplos de coordenadas del artículo se calculan en el sistema que elijas. Se recuerda en toda la serie.': 'Die Koordinatenbeispiele des Beitrags werden in dem von Ihnen gewählten System berechnet. Die Auswahl gilt für die gesamte Serie.',
+    'Las explicaciones son generales; los ejemplos, datos y coordenadas se calculan para tu país y tu sistema. Se recuerda en toda la serie.': 'Die Erklärungen sind allgemein; Beispiele, Daten und Koordinaten werden für Ihr Land und Ihr System berechnet. Die Wahl gilt für die ganze Reihe.',
+    'Red geodésica nacional': 'Nationales geodätisches Netz',
     'Sistema de coordenadas': 'Koordinatensystem', 'Usar este sistema': 'Dieses System verwenden', 'Ahora no': 'Jetzt nicht',
     // Koordinatenleser (Vermessungspunkt)
     'Con clip': 'Beschnitten', 'Sin clip, en el vértice': 'Unbeschnitten, am Festpunkt', 'edificio': 'Gebäude', 'origen interno': 'interner Ursprung',
@@ -72,6 +74,7 @@
     [/^(enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|octubre|noviembre|diciembre) (\d{4})$/, (m, a, y) => MES[a] + ' ' + y],
     [/^(ENE|FEB|MAR|ABR|MAY|JUN|JUL|AGO|SEP|OCT|NOV|DIC) (\d{4})$/, (m, a, y) => (MES3[a] || a) + ' ' + y],
     [/^Artículo (\d+)$/, 'Beitrag $1'],
+    [/^([\d.,]+°) O$/, '$1 W'], [/^([\d.,]+°) E$/, '$1 O'],
     [/^(I|II|III|IV|V|VI) ([^·]+)$/, (m, r, n) => r + ' ' + (t[n] || n)],
     [/^Detalle: /, 'Details: '],
     [/^(\d+) resultados$/, '$1 Treffer'],
