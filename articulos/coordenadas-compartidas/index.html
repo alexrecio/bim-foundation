@@ -286,13 +286,13 @@
         <div class="b-title">
           <span class="slide-n"></span>
           <span class="kicker-y">Proyección</span>
-          <h2 class="display">Aplanar la Tierra deforma<span class="dot">.</span></h2>
-          <p class="slide-lead">La proyección pasa del elipsoide al plano. UTM lo hace en husos de 6° para que la deformación sea pequeña.</p>
+          <h2 class="display">Proyectar es pasar a un plano euclídeo<span class="dot">.</span></h2>
+          <p class="slide-lead">Sobre el elipsoide no sirven la regla ni Pitágoras. La proyección es una abstracción: un plano donde se diseña con la geometría de siempre, a cambio de una pequeña deformación.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="proyeccion"><span class="plus">+</span> Ver detalle</button></div>
         </div>
         <div class="b-cards">
           <div class="card w4 g">
-            <span class="c-label">Un huso, desenrollado</span>
+            <span class="c-label">Del elipsoide al plano E · N</span>
             <svg class="draw" viewBox="0 0 400 220" role="img" aria-label="El mismo elipsoide del datum, dividido en husos con uno resaltado, y ese huso aplanado en una cuadrícula">
               <ellipse cx="100" cy="110" rx="96" ry="70" fill="#fff" stroke="#000" stroke-width="3"/>
               <ellipse cx="100" cy="110" rx="96" ry="16" fill="none" stroke="#000" stroke-width="1.5"/>
@@ -307,9 +307,9 @@
             </svg>
           </div>
           <div class="card w2 k">
-            <span class="c-label">Husos</span>
-            <b class="c-num">60</b>
-            <span class="c-foot">de 6° cada uno</span>
+            <span class="c-label">En el plano</span>
+            <span class="c-title mono" style="color:var(--accent);font-size:15px;text-transform:none;white-space:nowrap">d = √(ΔE² + ΔN²)</span>
+            <span class="c-foot">distancias, rectas y ángulos de dibujo</span>
           </div>
           <div class="card w3">
             <span class="c-label">Falso Este</span>
@@ -1782,6 +1782,18 @@
       <div class="card w3 y">
         <h4>Por qué importa al modelar</h4>
         <p>Las coordenadas que se escriben en el modelo y en el IFC suelen ser proyectadas. Dentro del huso, la deformación es pequeña pero no nula, y crece al salir de él: una obra entre dos husos elige uno y lo escribe.</p>
+      </div>
+      <div class="card w6 y">
+        <h4>Por qué una abstracción</h4>
+        <div class="table-wrap"><table>
+          <thead><tr><th></th><th>Sobre el elipsoide</th><th>En el plano proyectado</th></tr></thead>
+          <tbody>
+            <tr><td>Distancia</td><td>Línea geodésica, con fórmulas elipsoidales</td><td>Pitágoras entre dos pares (E, N)</td></tr>
+            <tr><td>Recta</td><td>No existe: todo es curvo</td><td>Una recta de dibujo</td></tr>
+            <tr class="is-key"><td>Dónde se diseña</td><td>En ningún programa de diseño</td><td>En todos: el espacio de trabajo es euclídeo</td></tr>
+          </tbody>
+        </table></div>
+        <p class="table-note">El precio es el factor de escala: un metro del plano no es exactamente un metro del terreno (ver <a href="#escala">escala</a>). <span class="tag">Inferido</span></p>
       </div>
       <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2007-15822" target="_blank" rel="noopener">Real Decreto 1071/2007, art. 5</a> · <a href="https://epsg.io/16030" target="_blank" rel="noopener">EPSG:16030 (UTM 30N)</a>.</p></div>
     </div>
