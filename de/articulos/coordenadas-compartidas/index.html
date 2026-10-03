@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Borrador: quitar noindex al publicar -->
-  <meta name="bf-fuente" content="articulos/coordenadas-compartidas/index.html@5af2526f4b52c97861f220870863b110a430feaa">
+  <meta name="bf-fuente" content="articulos/coordenadas-compartidas/index.html@9bec94d5230242e9d977a393e57bd498be9c4757">
   <meta name="robots" content="noindex, nofollow">
   <title>Koordinatensysteme in BIM | bimkernel</title>
   <meta name="description" content="Wie gemeinsame Koordinaten in Revit, Civil 3D, IFC und weiterer BIM-Software funktionieren, mit dem spanischen geodätischen Rahmen (ETRS89, EPSG, Höhen über Alicante).">
@@ -83,8 +83,8 @@
         <div class="b-title">
           <span class="slide-n"></span>
           <span class="kicker-y">A · Warum Koordinaten</span>
-          <h2 class="display">Übersetzer zwischen real und digital<span class="dot">.</span></h2>
-          <p class="slide-lead">Koordinaten verbinden Gelände und Modell in beide Richtungen. Ohne sie findet das Gemessene nicht an seinen Platz und das Geplante nicht zurück an seinen.</p>
+          <h2 class="display">Übersetzer hin und zurück<span class="dot">.</span></h2>
+          <p class="slide-lead">Koordinaten bringen das Gemessene ins Modell und das Geplante zurück an seinen Ort im Gelände.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="porque"><span class="plus">+</span> Details ansehen</button></div>
         </div>
         <div class="b-cards">
@@ -159,8 +159,8 @@
         <div class="b-title">
           <span class="slide-n"></span>
           <span class="kicker-y">B · Wie wir die Erde vermessen</span>
-          <h2 class="display">Das Datum, der Schlüssel<span class="dot">.</span></h2>
-          <p class="slide-lead">Ein Datum ist eine mathematische Form, die an der Erde befestigt ist: wo ihr Mittelpunkt liegt, wohin ihre Achsen zeigen und zu welchem Zeitpunkt. Es braucht zwei: eines für die Lage und eines für die Höhe.</p>
+          <h2 class="display">Das Datum verankert die Form<span class="dot">.</span></h2>
+          <p class="slide-lead">Ein Datum verankert ein Ellipsoid: seinen Mittelpunkt, seine Achsen und einen Zeitpunkt. Es gibt eines für die Lage und eines für die Höhe.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="tierra"><span class="plus">+</span> Details ansehen</button></div>
         </div>
         <div class="b-cards">
@@ -198,8 +198,8 @@
         <div class="b-title">
           <span class="slide-n"></span>
           <span class="kicker-y">Geodätische Netze</span>
-          <h2 class="display">Das Netz verankert das Datum im Boden<span class="dot">.</span></h2>
-          <p class="slide-lead">Ein Datum ist nur eine Definition, bis es im Gelände vermarkt wird. GNSS-Stationen und Festpunkte legen die Lage fest; ein Pegel und eine Kette von Höhenbolzen die Höhe.</p>
+          <h2 class="display">Das Netz realisiert das Datum<span class="dot">.</span></h2>
+          <p class="slide-lead">GNSS-Stationen und Festpunkte legen die Lage fest; ein Pegel und die Höhenbolzen die Höhe.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="redes"><span class="plus">+</span> Details ansehen</button></div>
         </div>
         <div class="b-cards">
@@ -250,7 +250,7 @@
           <span class="slide-n"></span>
           <span class="kicker-y">Geografische Koordinaten</span>
           <h2 class="display">Breite, Länge und Höhe<span class="dot">.</span></h2>
-          <p class="slide-lead">Auf dem Datum wird ein Punkt mit zwei Winkeln und einer Höhe angegeben. Das liefert GNSS, und es gilt für den ganzen Planeten, aber in Grad lässt sich keine Baustelle vermessen.</p>
+          <p class="slide-lead">Zwei Winkel und eine Höhe über dem Datum. Sie gelten für den ganzen Planeten, messen aber nicht in Metern.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="coordenadas"><span class="plus">+</span> Details ansehen</button></div>
         </div>
         <div class="b-cards">
@@ -293,8 +293,8 @@
         <div class="b-title">
           <span class="slide-n"></span>
           <span class="kicker-y">Kartenabbildung</span>
-          <h2 class="display">Wer die Erde abflacht, verzerrt etwas<span class="dot">.</span></h2>
-          <p class="slide-lead">Eine Abbildung überträgt das Ellipsoid in die Ebene. UTM teilt sie in schmale Zonen, damit die Verzerrung klein bleibt.</p>
+          <h2 class="display">Abflachen heißt verzerren<span class="dot">.</span></h2>
+          <p class="slide-lead">Die Abbildung überträgt das Ellipsoid in die Ebene. UTM tut das in Zonen von 6°, damit die Verzerrung klein bleibt.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="proyeccion"><span class="plus">+</span> Details ansehen</button></div>
         </div>
         <div class="b-cards">
@@ -335,7 +335,7 @@
           <span class="slide-n"></span>
           <span class="kicker-y">Projizierte Koordinaten</span>
           <h2 class="display">Ostwert und Nordwert, in Metern<span class="dot">.</span></h2>
-          <p class="slide-lead">Nach der Abbildung wird der Punkt in Metern auf einem Gitter angegeben. Datum, Abbildung und Höhe bilden zusammen ein Bezugssystem mit eigenem Code.</p>
+          <p class="slide-lead">Nach der Abbildung wird der Punkt in Metern angegeben. Datum und Abbildung haben zusammen einen EPSG-Code.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="plano"><span class="plus">+</span> Details ansehen</button></div>
         </div>
         <div class="b-cards">
@@ -357,8 +357,8 @@
         <div class="b-title">
           <span class="slide-n"></span>
           <span class="kicker-y">Orientierung</span>
-          <h2 class="display">Vier Nordrichtungen<span class="dot">.</span></h2>
-          <p class="slide-lead">Das Gebäude wird gerade gezeichnet, im amtlichen Plan ist es aber verdreht. Diese Drehung wird gegen Gitter-Nord gemessen, nicht gegen geografisch Nord.</p>
+          <h2 class="display">Die Drehung zählt ab Gitter-Nord<span class="dot">.</span></h2>
+          <p class="slide-lead">Das Gebäude wird gerade gezeichnet, der amtliche Plan dreht es. Der Winkel geht von Gitter-Nord aus, nicht von geografisch Nord.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="nortes"><span class="plus">+</span> Details ansehen</button></div>
         </div>
         <div class="b-cards">
@@ -395,7 +395,7 @@
           <span class="slide-n"></span>
           <span class="kicker-y">Maßstab</span>
           <h2 class="display">Ein Gittermeter ist kein Baustellenmeter<span class="dot">.</span></h2>
-          <p class="slide-lead">Abbildung und Höhenlage dehnen oder stauchen die Strecken, je nachdem, wo die Baustelle liegt. Gearbeitet wird im Gitter oder im Gelände: Sie müssen wählen und es festhalten.</p>
+          <p class="slide-lead">Abbildung und Höhenlage verändern die Strecken. Gearbeitet wird im Gitter oder im Gelände, und es wird festgehalten, worin.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="escala"><span class="plus">+</span> Details ansehen</button></div>
         </div>
         <div class="b-cards">
@@ -424,7 +424,7 @@
           <span class="slide-n"></span>
           <span class="kicker-y">Höhen</span>
           <h2 class="display">Zwei Höhen für denselben Punkt<span class="dot">.</span></h2>
-          <p class="slide-lead">GNSS misst über dem Ellipsoid, die Pläne über dem Meeresspiegel. Dazwischen liegt das Geoid, und sein Abstand ändert sich von Ort zu Ort.</p>
+          <p class="slide-lead">GNSS misst über dem Ellipsoid, die Pläne über dem Geoid. Der Unterschied, N, ändert sich mit dem Ort.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="alturas"><span class="plus">+</span> Details ansehen</button></div>
         </div>
         <div class="b-cards">
@@ -459,7 +459,7 @@
           <span class="slide-n"></span>
           <span class="kicker-y">Bezugssysteme nach Land</span>
           <h2 class="display">Jedes Land, sein System<span class="dot">.</span></h2>
-          <p class="slide-lead">Datum, Abbildung und Höhen legt die Vermessungsbehörde jedes Landes fest. Wählen Sie Ihres und übernehmen Sie den EPSG-Code.</p>
+          <p class="slide-lead">Die Vermessungsbehörde jedes Landes legt Datum, Abbildung und Höhen fest. Wählen Sie Ihres und verwenden Sie seinen EPSG-Code.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="paises"><span class="plus">+</span> Alle ansehen</button></div>
         </div>
         <div class="b-cards">
@@ -474,8 +474,8 @@
         <div class="b-title">
           <span class="slide-n"></span>
           <span class="kicker-y">C · Vermessung</span>
-          <h2 class="display">Vom Feld ins Modell<span class="dot">.</span></h2>
-          <p class="slide-lead">Der Vermesser stützt sich auf das geodätische Netz und liefert Koordinaten in einem bekannten System. Dieses System erbt das Modell.</p>
+          <h2 class="display">Das Modell erbt das System des Vermessers<span class="dot">.</span></h2>
+          <p class="slide-lead">Der Vermesser stützt sich auf das Netz und liefert Koordinaten in einem bekannten System.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="topografia"><span class="plus">+</span> Details ansehen</button></div>
         </div>
         <div class="b-cards">
@@ -508,7 +508,7 @@
           <span class="slide-n"></span>
           <span class="kicker-y">Gleitkomma</span>
           <h2 class="display">Fern vom Ursprung wackelt alles<span class="dot">.</span></h2>
-          <p class="slide-lead">Bei großen Zahlen verliert jede Software an Genauigkeit. Deshalb modelliert man nicht direkt in UTM.</p>
+          <p class="slide-lead">Bei großen Koordinaten verliert jede Software an Genauigkeit. Deshalb modelliert man nicht direkt in UTM.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="limite"><span class="plus">+</span> Details ansehen</button></div>
         </div>
         <div class="b-cards">
@@ -550,8 +550,8 @@
         <div class="b-title">
           <span class="slide-n"></span>
           <span class="kicker-y">Warum das passiert</span>
-          <h2 class="display">Die Stellen reichen nicht für alles<span class="dot">.</span></h2>
-          <p class="slide-lead">Eine Gleitkommazahl hat nur begrenzt viele Stellen. Verbraucht der ganzzahlige Teil sie, bleiben keine Dezimalen übrig.</p>
+          <h2 class="display">Ganzzahlen fressen Dezimalen<span class="dot">.</span></h2>
+          <p class="slide-lead">Eine Gleitkommazahl hat nur begrenzt viele Stellen. Bei Millionen von Metern bleiben wenige für die Millimeter.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="decimales"><span class="plus">+</span> Details ansehen</button></div>
         </div>
         <div class="b-cards">
@@ -597,7 +597,7 @@
           <span class="slide-n"></span>
           <span class="kicker-y">Der Preis</span>
           <h2 class="display">Mehr Stellen, mehr Bytes<span class="dot">.</span></h2>
-          <p class="slide-lead">Doppelte Genauigkeit verdoppelt den Speicherbedarf jeder Koordinate. Im Modell merkt man das kaum, in einer Punktwolke schon.</p>
+          <p class="slide-lead">Doppelte Genauigkeit verdoppelt den Speicherbedarf jeder Koordinate: Das merkt man in einer Punktwolke, nicht in einem Modell.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="bytes"><span class="plus">+</span> Details ansehen</button></div>
         </div>
         <div class="b-cards">
@@ -630,7 +630,7 @@
           <span class="slide-n"></span>
           <span class="kicker-y">Punktwolken</span>
           <h2 class="display">Senkrechten, die tanzen<span class="dot">.</span></h2>
-          <p class="slide-lead">Eine einfach verknüpfte Punktwolke in UTM zeigt zitternde Kanten. Schuld ist nicht der Scanner, sondern die Genauigkeit.</p>
+          <p class="slide-lead">Eine einfach verknüpfte Punktwolke in UTM zittert. Schuld ist nicht der Scanner, sondern die numerische Genauigkeit.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="plomos"><span class="plus">+</span> Details ansehen</button></div>
         </div>
         <div class="b-cards">
@@ -665,7 +665,7 @@
           <span class="slide-n"></span>
           <span class="kicker-y">Der Trick</span>
           <h2 class="display">Das Große abziehen, das Kleine speichern<span class="dot">.</span></h2>
-          <p class="slide-lead">Der Versatz wird nur einmal gespeichert. Jeder Stützpunkt trägt nur den kleinen Rest und nutzt alle Dezimalen.</p>
+          <p class="slide-lead">Der Versatz wird einmal gespeichert; jeder Stützpunkt trägt nur den kleinen Rest, mit allen Dezimalen.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="cribar"><span class="plus">+</span> Details ansehen</button></div>
         </div>
         <div class="b-cards">
@@ -745,8 +745,8 @@
         <div class="b-title">
           <span class="slide-n"></span>
           <span class="kicker-y">Das universelle Prinzip</span>
-          <h2 class="display">Drei Ursprünge<span class="dot">.</span></h2>
-          <p class="slide-lead">Nur der georeferenzierte Punkt verbindet das Modell mit der realen Welt.</p>
+          <h2 class="display">Drei Ursprünge, einer verbindet<span class="dot">.</span></h2>
+          <p class="slide-lead">Nur der georeferenzierte Punkt verknüpft das Modell mit der realen Welt.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="origenes"><span class="plus">+</span> Details ansehen</button></div>
         </div>
         <div class="b-cards">
@@ -786,7 +786,7 @@
           <span class="slide-n"></span>
           <span class="kicker-y">Beispiel · Spanien</span>
           <h2 class="display">ETRS89, UTM und Alicante<span class="dot">.</span></h2>
-          <p class="slide-lead">Das ist der amtliche Bezugsrahmen. Im BAP, in Civil 3D und im IFC wird er per EPSG-Code angegeben.</p>
+          <p class="slide-lead">Das ist der amtliche Bezugsrahmen. BAP, Civil 3D und IFC geben ihn per EPSG-Code an.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="espana"><span class="plus">+</span> Details ansehen</button></div>
         </div>
         <div class="b-cards">
@@ -948,7 +948,7 @@
           <span class="slide-n"></span>
           <span class="kicker-y">Revit · Vermessungspunkt</span>
           <h2 class="display">Der Vermessungspunkt ist nicht der Ursprung<span class="dot">.</span></h2>
-          <p class="slide-lead">Gemeinsame Koordinaten haben einen eigenen Ursprung. Der Vermessungspunkt ist nur eine Markierung: Beschnitten liegt er in diesem Ursprung, unbeschnitten wandert er zu einem Punkt und zeigt dessen Koordinaten.</p>
+          <p class="slide-lead">Er ist nur eine Markierung. Beschnitten liegt er im gemeinsamen Ursprung; unbeschnitten auf einem Punkt, dessen Koordinaten er zeigt.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="survey"><span class="plus">+</span> Details ansehen</button></div>
         </div>
         <div class="b-cards">
@@ -1006,7 +1006,7 @@
           <span class="slide-n"></span>
           <span class="kicker-y">Revit · Campus</span>
           <h2 class="display">Jedes Gebäude, sein lokales System<span class="dot">.</span></h2>
-          <p class="slide-lead">Jedes Gebäude wird gerade und nahe am eigenen Ursprung modelliert. Das Grundstücksmodell platziert und dreht es und veröffentlicht seine Position.</p>
+          <p class="slide-lead">Jedes Gebäude gerade und nahe am eigenen Ursprung. Das Grundstücksmodell platziert und dreht es und veröffentlicht seine Position.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="campus"><span class="plus">+</span> Schritte ansehen</button></div>
         </div>
         <div class="b-cards">
@@ -1043,7 +1043,7 @@
           <span class="slide-n"></span>
           <span class="kicker-y">Revit · Typologien</span>
           <h2 class="display">Eine Verknüpfung, mehrere Positionen<span class="dot">.</span></h2>
-          <p class="slide-lead">Der Wohnungstyp wird so oft verknüpft, wie er vorkommt. Jedes Exemplar speichert seine benannte Position in der verknüpften Datei.</p>
+          <p class="slide-lead">Der Wohnungstyp wird so oft verknüpft, wie er vorkommt; jedes Exemplar speichert seine benannte Position.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="tipologias"><span class="plus">+</span> Schritte ansehen</button></div>
         </div>
         <div class="b-cards">
@@ -1143,7 +1143,7 @@
           <span class="slide-n"></span>
           <span class="kicker-y">In der Cloud</span>
           <h2 class="display">Jede Plattform liest anders<span class="dot">.</span></h2>
-          <p class="slide-lead">Sie föderieren Modelle aus vielen Programmen, suchen die Georeferenzierung aber nicht alle an derselben Stelle.</p>
+          <p class="slide-lead">Alle föderieren Modelle aus vielen Programmen, suchen die Georeferenzierung aber nicht alle an derselben Stelle.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="plataformas"><span class="plus">+</span> Details ansehen</button></div>
         </div>
         <div class="b-cards">
@@ -1208,7 +1208,7 @@
           <span class="slide-n"></span>
           <span class="kicker-y">DWG in Revit</span>
           <h2 class="display">Das schwebende CAD<span class="dot">.</span></h2>
-          <p class="slide-lead">Eine CAD-DWG liefert nur Ursprung und Drehung; eine Civil-3D-DWG mit zugewiesenem System zusätzlich ihren EPSG-Code. In beiden Fällen addiert sich die Höhe der Zeichnung zur Höhe der Ebene.</p>
+          <p class="slide-lead">Eine normale DWG liefert Ursprung und Drehung; eine aus Civil 3D zusätzlich ihren EPSG-Code. In beiden Fällen addiert sich die Höhe der Zeichnung zur Höhe der Ebene.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="dwg"><span class="plus">+</span> Details ansehen</button></div>
         </div>
         <div class="b-cards">
@@ -1288,7 +1288,7 @@
           <span class="slide-n"></span>
           <span class="kicker-y">Qualitätsprüfung</span>
           <h2 class="display">Vier Fragen pro Modell<span class="dot">.</span></h2>
-          <p class="slide-lead">Ein Modell kann perfekt aussehen und hundert Meter danebenliegen. Vor der Föderation muss es beantworten: wo es liegt, wohin es zeigt, auf welcher Höhe und in welchem System.</p>
+          <p class="slide-lead">Ein Modell kann gut aussehen und hundert Meter danebenliegen. Vor der Föderation: wo es liegt, wohin es zeigt, auf welcher Höhe und in welchem System.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="calidad"><span class="plus">+</span> Details ansehen</button></div>
         </div>
         <div class="b-cards">
@@ -1392,7 +1392,7 @@
           <span class="slide-n"></span>
           <span class="kicker-y">IfcOpenShell</span>
           <h2 class="display">Prüfen mit Code<span class="dot">.</span></h2>
-          <p class="slide-lead">Eine offene Python-Bibliothek prüft gegen das IDS und rechnet zusätzlich, was das IDS nicht kann: Sie überführt den Kontrollpunkt nach UTM und vergleicht ihn mit der Vermessung.</p>
+          <p class="slide-lead">Eine offene Python-Bibliothek validiert gegen das IDS und überführt zusätzlich den Kontrollpunkt nach UTM, um ihn mit dem des Vermessers zu vergleichen.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="ifcopenshell"><span class="plus">+</span> Skript ansehen</button></div>
         </div>
         <div class="b-cards">
@@ -1501,7 +1501,7 @@
           <span class="slide-n"></span>
           <span class="kicker-y">In jedem Programm</span>
           <h2 class="display">Was Ihr Programm schon kann<span class="dot">.</span></h2>
-          <p class="slide-lead">Ohne Installation: ein Kontrollwürfel an jedem Kontrollpunkt, dessen Koordinaten Sie im Programm und in einem neutralen Viewer ablesen.</p>
+          <p class="slide-lead">Ohne Installation: ein Kontrollwürfel an jedem Kontrollpunkt, abgelesen in Ihrem Programm und in einem neutralen Viewer.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="herramientas"><span class="plus">+</span> Wo nachsehen</button></div>
         </div>
         <div class="b-cards">
@@ -1525,7 +1525,7 @@
           <span class="slide-n"></span>
           <span class="kicker-y">Zurück auf die Baustelle</span>
           <h2 class="display">Vom Modell zur Absteckung<span class="dot">.</span></h2>
-          <p class="slide-lead">Was im Gelände gemessen wurde, kehrt dorthin zurück. Vier Regeln, damit es an derselben Stelle ankommt.</p>
+          <p class="slide-lead">Das im Gelände Gemessene kehrt dorthin zurück. Vier Regeln, damit es an derselben Stelle ankommt.</p>
           <div class="slide-actions">
             <button type="button" class="btn l2-btn" data-l2="glosario"><span class="plus">+</span> Glossar</button>
             <button type="button" class="btn ghost l2-btn" data-l2="fuentes"><span class="plus">+</span> Quellen</button>
