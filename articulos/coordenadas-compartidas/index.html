@@ -82,8 +82,8 @@
         <div class="b-title">
           <span class="slide-n"></span>
           <span class="kicker-y">A · Por qué coordenadas</span>
-          <h2 class="display">Un traductor entre lo real y lo digital<span class="dot">.</span></h2>
-          <p class="slide-lead">Las coordenadas crean una relación de ida y vuelta entre el terreno y el modelo. Sin ellas, lo medido no entra en su sitio ni lo proyectado vuelve al suyo.</p>
+          <h2 class="display">Un traductor de ida y vuelta<span class="dot">.</span></h2>
+          <p class="slide-lead">Las coordenadas llevan lo medido al modelo y devuelven lo proyectado a su sitio en el terreno.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="porque"><span class="plus">+</span> Ver detalle</button></div>
         </div>
         <div class="b-cards">
@@ -158,8 +158,8 @@
         <div class="b-title">
           <span class="slide-n"></span>
           <span class="kicker-y">B · Cómo medimos la Tierra</span>
-          <h2 class="display">El datum, la llave<span class="dot">.</span></h2>
-          <p class="slide-lead">Un datum es una forma matemática fijada a la Tierra: dónde está su centro, hacia dónde miran sus ejes y en qué fecha. Hacen falta dos, uno para la posición y otro para la altura.</p>
+          <h2 class="display">El datum fija la forma a la Tierra<span class="dot">.</span></h2>
+          <p class="slide-lead">Un datum ancla un elipsoide: su centro, sus ejes y una fecha. Hay uno para la posición y otro para la altura.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="tierra"><span class="plus">+</span> Ver detalle</button></div>
         </div>
         <div class="b-cards">
@@ -197,8 +197,8 @@
         <div class="b-title">
           <span class="slide-n"></span>
           <span class="kicker-y">Redes geodésicas</span>
-          <h2 class="display">La red clava el datum al suelo<span class="dot">.</span></h2>
-          <p class="slide-lead">Un datum es solo una definición hasta que se marca en el terreno. Estaciones GNSS y vértices fijan la posición; un mareógrafo y una cadena de clavos, la altura.</p>
+          <h2 class="display">La red materializa el datum<span class="dot">.</span></h2>
+          <p class="slide-lead">Estaciones GNSS y vértices fijan la posición; un mareógrafo y los clavos de nivelación, la altura.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="redes"><span class="plus">+</span> Ver detalle</button></div>
         </div>
         <div class="b-cards">
@@ -249,7 +249,7 @@
           <span class="slide-n"></span>
           <span class="kicker-y">Coordenadas geográficas</span>
           <h2 class="display">Latitud, longitud y altura<span class="dot">.</span></h2>
-          <p class="slide-lead">Sobre el datum, un punto se escribe con dos ángulos y una altura. Es lo que da el GNSS y vale para todo el planeta, pero en grados no se mide una obra.</p>
+          <p class="slide-lead">Dos ángulos y una altura sobre el datum. Valen para todo el planeta, pero no miden en metros.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="coordenadas"><span class="plus">+</span> Ver detalle</button></div>
         </div>
         <div class="b-cards">
@@ -292,8 +292,8 @@
         <div class="b-title">
           <span class="slide-n"></span>
           <span class="kicker-y">Proyección</span>
-          <h2 class="display">Aplanar la Tierra deforma algo<span class="dot">.</span></h2>
-          <p class="slide-lead">Una proyección pasa del elipsoide al plano. UTM la corta en husos estrechos para que la deformación sea pequeña.</p>
+          <h2 class="display">Aplanar la Tierra deforma<span class="dot">.</span></h2>
+          <p class="slide-lead">La proyección pasa del elipsoide al plano. UTM lo hace en husos de 6° para que la deformación sea pequeña.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="proyeccion"><span class="plus">+</span> Ver detalle</button></div>
         </div>
         <div class="b-cards">
@@ -334,7 +334,7 @@
           <span class="slide-n"></span>
           <span class="kicker-y">Coordenadas proyectadas</span>
           <h2 class="display">Este y Norte, en metros<span class="dot">.</span></h2>
-          <p class="slide-lead">Tras proyectar, el punto se escribe en metros sobre una cuadrícula. Datum, proyección y altura juntos forman un sistema de referencia con su propio código.</p>
+          <p class="slide-lead">Tras proyectar, el punto se escribe en metros. Datum y proyección juntos tienen un código EPSG.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="plano"><span class="plus">+</span> Ver detalle</button></div>
         </div>
         <div class="b-cards">
@@ -356,8 +356,8 @@
         <div class="b-title">
           <span class="slide-n"></span>
           <span class="kicker-y">Orientación</span>
-          <h2 class="display">Cuatro nortes<span class="dot">.</span></h2>
-          <p class="slide-lead">El edificio se dibuja recto, pero en el plano oficial está girado. Ese giro se mide respecto al norte de cuadrícula, no al geográfico.</p>
+          <h2 class="display">El giro se mide desde el norte de cuadrícula<span class="dot">.</span></h2>
+          <p class="slide-lead">El edificio se dibuja recto y el plano oficial lo gira. El ángulo parte del norte de cuadrícula, no del geográfico.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="nortes"><span class="plus">+</span> Ver detalle</button></div>
         </div>
         <div class="b-cards">
@@ -394,7 +394,7 @@
           <span class="slide-n"></span>
           <span class="kicker-y">Escala</span>
           <h2 class="display">Un metro de cuadrícula no es un metro de obra<span class="dot">.</span></h2>
-          <p class="slide-lead">La proyección y la altitud estiran o encogen las distancias según dónde esté la obra. Se trabaja en cuadrícula o en terreno: hay que elegir y escribirlo.</p>
+          <p class="slide-lead">La proyección y la altitud cambian las distancias. Se trabaja en cuadrícula o en terreno, y se escribe cuál.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="escala"><span class="plus">+</span> Ver detalle</button></div>
         </div>
         <div class="b-cards">
@@ -423,7 +423,7 @@
           <span class="slide-n"></span>
           <span class="kicker-y">Alturas</span>
           <h2 class="display">Dos alturas para un mismo punto<span class="dot">.</span></h2>
-          <p class="slide-lead">El GNSS mide sobre el elipsoide; los planos, sobre el nivel del mar. Entre las dos está el geoide, y su separación cambia de un lugar a otro.</p>
+          <p class="slide-lead">El GNSS mide sobre el elipsoide; los planos, sobre el geoide. La diferencia, N, cambia con el lugar.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="alturas"><span class="plus">+</span> Ver detalle</button></div>
         </div>
         <div class="b-cards">
@@ -458,7 +458,7 @@
           <span class="slide-n"></span>
           <span class="kicker-y">Sistemas de referencia por país</span>
           <h2 class="display">Cada país, su marco<span class="dot">.</span></h2>
-          <p class="slide-lead">Datum, proyección y altitudes los fija el organismo cartográfico de cada país. Elige el tuyo y copia su código EPSG.</p>
+          <p class="slide-lead">El organismo cartográfico de cada país fija datum, proyección y altitudes. Elige el tuyo y usa su código EPSG.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="paises"><span class="plus">+</span> Ver todos</button></div>
         </div>
         <div class="b-cards">
@@ -473,8 +473,8 @@
         <div class="b-title">
           <span class="slide-n"></span>
           <span class="kicker-y">C · Topografía</span>
-          <h2 class="display">Del campo al modelo<span class="dot">.</span></h2>
-          <p class="slide-lead">El topógrafo se apoya en la red geodésica y entrega coordenadas en un sistema conocido. Ese sistema es el que hereda el modelo.</p>
+          <h2 class="display">El modelo hereda el sistema del topógrafo<span class="dot">.</span></h2>
+          <p class="slide-lead">El topógrafo se apoya en la red y entrega coordenadas en un sistema conocido.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="topografia"><span class="plus">+</span> Ver detalle</button></div>
         </div>
         <div class="b-cards">
@@ -507,7 +507,7 @@
           <span class="slide-n"></span>
           <span class="kicker-y">Coma flotante</span>
           <h2 class="display">Lejos del origen, todo baila<span class="dot">.</span></h2>
-          <p class="slide-lead">Con números grandes, cualquier programa pierde precisión. Por eso no se modela directamente en UTM.</p>
+          <p class="slide-lead">Con coordenadas grandes, todo programa pierde precisión. Por eso no se modela directamente en UTM.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="limite"><span class="plus">+</span> Ver detalle</button></div>
         </div>
         <div class="b-cards">
@@ -549,8 +549,8 @@
         <div class="b-title">
           <span class="slide-n"></span>
           <span class="kicker-y">Por qué pasa</span>
-          <h2 class="display">Las cifras no dan para todo<span class="dot">.</span></h2>
-          <p class="slide-lead">Un número en coma flotante tiene cifras contadas. Si la parte entera se las come, no quedan decimales.</p>
+          <h2 class="display">Los enteros se comen los decimales<span class="dot">.</span></h2>
+          <p class="slide-lead">Un número en coma flotante tiene cifras contadas. Con millones de metros, quedan pocas para los milímetros.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="decimales"><span class="plus">+</span> Ver detalle</button></div>
         </div>
         <div class="b-cards">
@@ -596,7 +596,7 @@
           <span class="slide-n"></span>
           <span class="kicker-y">El coste</span>
           <h2 class="display">Más cifras, más bytes<span class="dot">.</span></h2>
-          <p class="slide-lead">La doble precisión duplica lo que pesa cada coordenada. En un modelo apenas se nota; en una nube de puntos, sí.</p>
+          <p class="slide-lead">La doble precisión duplica el peso de cada coordenada: se nota en una nube de puntos, no en un modelo.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="bytes"><span class="plus">+</span> Ver detalle</button></div>
         </div>
         <div class="b-cards">
@@ -629,7 +629,7 @@
           <span class="slide-n"></span>
           <span class="kicker-y">Nubes de puntos</span>
           <h2 class="display">Plomos que bailan<span class="dot">.</span></h2>
-          <p class="slide-lead">Una nube en UTM vinculada sin más dibuja aristas que tiemblan. No es el escáner: es la precisión.</p>
+          <p class="slide-lead">Una nube en UTM vinculada sin más tiembla. No es el escáner: es la precisión numérica.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="plomos"><span class="plus">+</span> Ver detalle</button></div>
         </div>
         <div class="b-cards">
@@ -664,7 +664,7 @@
           <span class="slide-n"></span>
           <span class="kicker-y">El truco</span>
           <h2 class="display">Resta lo grande, guarda lo pequeño<span class="dot">.</span></h2>
-          <p class="slide-lead">El desplazamiento se guarda una sola vez. Cada vértice solo lleva la parte pequeña y aprovecha todos sus decimales.</p>
+          <p class="slide-lead">El desplazamiento se guarda una vez; cada vértice lleva solo la parte pequeña, con todos sus decimales.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="cribar"><span class="plus">+</span> Ver detalle</button></div>
         </div>
         <div class="b-cards">
@@ -744,8 +744,8 @@
         <div class="b-title">
           <span class="slide-n"></span>
           <span class="kicker-y">El concepto universal</span>
-          <h2 class="display">Tres orígenes<span class="dot">.</span></h2>
-          <p class="slide-lead">Solo el punto georreferenciado conecta el modelo con el mundo real.</p>
+          <h2 class="display">Tres orígenes, uno conecta<span class="dot">.</span></h2>
+          <p class="slide-lead">Solo el punto georreferenciado une el modelo con el mundo real.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="origenes"><span class="plus">+</span> Ver detalle</button></div>
         </div>
         <div class="b-cards">
@@ -785,7 +785,7 @@
           <span class="slide-n"></span>
           <span class="kicker-y">Ejemplo · España</span>
           <h2 class="display">ETRS89, UTM y Alicante<span class="dot">.</span></h2>
-          <p class="slide-lead">Es el marco oficial. En el BEP, en Civil 3D y en el IFC se escribe con un código EPSG.</p>
+          <p class="slide-lead">Es el marco oficial. El BEP, Civil 3D y el IFC lo escriben con un código EPSG.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="espana"><span class="plus">+</span> Ver detalle</button></div>
         </div>
         <div class="b-cards">
@@ -947,7 +947,7 @@
           <span class="slide-n"></span>
           <span class="kicker-y">Revit · Survey Point</span>
           <h2 class="display">El Survey Point no es el origen<span class="dot">.</span></h2>
-          <p class="slide-lead">Las coordenadas compartidas tienen su propio origen. El Survey Point es una marca: con clip está en ese origen; sin clip va a un vértice y muestra sus coordenadas.</p>
+          <p class="slide-lead">Es solo una marca. Con clip está en el origen compartido; sin clip, en un vértice cuyas coordenadas muestra.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="survey"><span class="plus">+</span> Ver detalle</button></div>
         </div>
         <div class="b-cards">
@@ -1005,7 +1005,7 @@
           <span class="slide-n"></span>
           <span class="kicker-y">Revit · campus</span>
           <h2 class="display">Cada edificio, su sistema local<span class="dot">.</span></h2>
-          <p class="slide-lead">Cada edificio se modela recto y cerca de su origen. El modelo de parcela lo coloca, lo gira y le publica su posición.</p>
+          <p class="slide-lead">Cada edificio, recto y cerca de su origen. El modelo de parcela lo coloca, lo gira y le publica su posición.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="campus"><span class="plus">+</span> Ver los pasos</button></div>
         </div>
         <div class="b-cards">
@@ -1042,7 +1042,7 @@
           <span class="slide-n"></span>
           <span class="kicker-y">Revit · tipologías</span>
           <h2 class="display">Un vínculo, varias posiciones<span class="dot">.</span></h2>
-          <p class="slide-lead">La vivienda tipo se vincula tantas veces como se repite. Cada ejemplar guarda su posición con nombre dentro del archivo vinculado.</p>
+          <p class="slide-lead">La vivienda tipo se vincula tantas veces como se repite; cada ejemplar guarda su posición con nombre.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="tipologias"><span class="plus">+</span> Ver los pasos</button></div>
         </div>
         <div class="b-cards">
@@ -1142,7 +1142,7 @@
           <span class="slide-n"></span>
           <span class="kicker-y">En la nube</span>
           <h2 class="display">Cada plataforma lee a su manera<span class="dot">.</span></h2>
-          <p class="slide-lead">Federan modelos de muchos programas, pero no todas buscan la georreferencia en el mismo sitio.</p>
+          <p class="slide-lead">Todas federan modelos de muchos programas, pero no todas buscan la georreferencia en el mismo sitio.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="plataformas"><span class="plus">+</span> Ver detalle</button></div>
         </div>
         <div class="b-cards">
@@ -1207,7 +1207,7 @@
           <span class="slide-n"></span>
           <span class="kicker-y">DWG en Revit</span>
           <h2 class="display">El CAD que vuela<span class="dot">.</span></h2>
-          <p class="slide-lead">Un DWG de CAD solo aporta un origen y un giro; uno de Civil 3D con sistema asignado aporta además su EPSG. En los dos, la cota del dibujo se suma a la del nivel.</p>
+          <p class="slide-lead">Un DWG normal aporta origen y giro; uno de Civil 3D, además su EPSG. En ambos, la cota del dibujo se suma a la del nivel.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="dwg"><span class="plus">+</span> Ver detalle</button></div>
         </div>
         <div class="b-cards">
@@ -1287,7 +1287,7 @@
           <span class="slide-n"></span>
           <span class="kicker-y">Control de calidad</span>
           <h2 class="display">Cuatro preguntas por modelo<span class="dot">.</span></h2>
-          <p class="slide-lead">Un modelo puede verse perfecto y estar a cien metros. Antes de federarlo, que responda dónde está, hacia dónde mira, a qué cota y en qué sistema.</p>
+          <p class="slide-lead">Un modelo puede verse bien y estar a cien metros. Antes de federar: dónde está, hacia dónde mira, a qué cota y en qué sistema.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="calidad"><span class="plus">+</span> Ver detalle</button></div>
         </div>
         <div class="b-cards">
@@ -1357,7 +1357,7 @@
           <span class="slide-n"></span>
           <span class="kicker-y">IDS</span>
           <h2 class="display">El requisito, en un fichero<span class="dot">.</span></h2>
-          <p class="slide-lead">Un XML de buildingSMART dice qué tiene que traer el IFC. Va con el contrato y cualquier comprobador lo lee igual.</p>
+          <p class="slide-lead">Un XML de buildingSMART dice qué debe traer el IFC. Va con el contrato y todo comprobador lo lee igual.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="ids"><span class="plus">+</span> Ver un ejemplo</button></div>
         </div>
         <div class="b-cards">
@@ -1391,7 +1391,7 @@
           <span class="slide-n"></span>
           <span class="kicker-y">IfcOpenShell</span>
           <h2 class="display">Comprobar con código<span class="dot">.</span></h2>
-          <p class="slide-lead">Una librería abierta de Python pasa el IDS y además hace la cuenta que el IDS no hace: lleva el punto testigo a UTM y lo compara con el topógrafo.</p>
+          <p class="slide-lead">Una librería abierta de Python valida el IDS y además lleva el punto testigo a UTM para compararlo con el del topógrafo.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="ifcopenshell"><span class="plus">+</span> Ver el script</button></div>
         </div>
         <div class="b-cards">
@@ -1500,7 +1500,7 @@
           <span class="slide-n"></span>
           <span class="kicker-y">En cada programa</span>
           <h2 class="display">Lo que ya trae tu programa<span class="dot">.</span></h2>
-          <p class="slide-lead">Sin instalar nada: un cubo testigo en cada punto de control y leer sus coordenadas en el programa y en un visor neutro.</p>
+          <p class="slide-lead">Sin instalar nada: un cubo testigo en cada punto de control, leído en tu programa y en un visor neutro.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="herramientas"><span class="plus">+</span> Ver dónde mirar</button></div>
         </div>
         <div class="b-cards">
@@ -1524,7 +1524,7 @@
           <span class="slide-n"></span>
           <span class="kicker-y">De vuelta a la obra</span>
           <h2 class="display">Del modelo al replanteo<span class="dot">.</span></h2>
-          <p class="slide-lead">Lo que se midió en el terreno vuelve a él. Cuatro reglas para que llegue al mismo sitio.</p>
+          <p class="slide-lead">Lo medido en el terreno vuelve a él. Cuatro reglas para que llegue al mismo sitio.</p>
           <div class="slide-actions">
             <button type="button" class="btn l2-btn" data-l2="glosario"><span class="plus">+</span> Glosario</button>
             <button type="button" class="btn ghost l2-btn" data-l2="fuentes"><span class="plus">+</span> Fuentes</button>
