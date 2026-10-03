@@ -284,12 +284,8 @@ body.l2-lock .pz-hud { display: none; }
 .article-item a:hover::after, .article-item a:focus-visible::after { opacity: 1; }
 .article-item.is-soon a::after { content: none; }
 
-/* Capa 2: la ficha emergente es una hoja de detalle sobre papel milimetrado */
-.l2-panel {
-  background-color: var(--s50);
-  background-image: linear-gradient(var(--hair) 1px, transparent 1px), linear-gradient(90deg, var(--hair) 1px, transparent 1px);
-  background-size: 8px 8px; background-attachment: local;
-}
+/* Capa 2: hoja de detalle en blanco liso, sin cuadrícula (Álex) */
+.l2-panel { background: var(--white); }
 .l2-head { position: relative; padding-bottom: 14px; }
 .l2-head::after { content: ""; position: absolute; left: 0; right: 56px; bottom: 0; height: 7px;
   background: repeating-linear-gradient(90deg, var(--black) 0 1px, transparent 1px 40px) bottom left / 100% 7px no-repeat,

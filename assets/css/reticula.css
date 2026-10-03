@@ -90,7 +90,7 @@ html.rt .card.ficha::after, html.rt .card.pais-portada::after { content: none; }
 html.rt .mapa a { border-radius: 0; background: rgba(255,255,255,.6); border-style: dashed; }
 
 /* Capa 2: panel de vidrio sobre el fondo fijo */
-html.rt .l2-panel { border-radius: 0; background-color: rgba(255,255,255,.82); -webkit-backdrop-filter: blur(20px) saturate(140%); backdrop-filter: blur(20px) saturate(140%); outline: 1px dashed var(--line); }
+html.rt .l2-panel { border-radius: 0; background: var(--white); outline: 1px dashed var(--line); }
 html.rt #l2-modal { background: rgba(0,0,0,.35); }
 html.rt .l2-body .card::after { content: ""; }
 

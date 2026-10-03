@@ -459,7 +459,7 @@ body:has(.deck) footer.site { padding-left: var(--side); }
 @media (min-width: 1024px) { #l2-modal { padding: 28px; } }
 #l2-modal.is-visible { display: flex; }
 .l2-panel {
-  position: relative; width: 100%; max-width: 84rem; max-height: 94vh; max-height: 94svh; overflow-y: auto; background: var(--s50); border-radius: 12px;
+  position: relative; width: 100%; max-width: 84rem; max-height: 94vh; max-height: 94svh; overflow-y: auto; background: var(--white); border-radius: 12px;
   box-shadow: 0 25px 50px -12px rgba(0,0,0,.25); transform: translateY(24px) scale(.98); opacity: 0;
   transition: transform .45s cubic-bezier(.2,.8,.2,1), opacity .35s ease;
 }
