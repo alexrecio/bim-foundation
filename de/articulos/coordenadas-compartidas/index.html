@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Borrador: quitar noindex al publicar -->
-  <meta name="bf-fuente" content="articulos/coordenadas-compartidas/index.html@7e76a7010fd39e3568397c8efc6b28921d0b7019">
+  <meta name="bf-fuente" content="articulos/coordenadas-compartidas/index.html@102d40defc49c06c70d3a665d89225d58241c073">
   <meta name="robots" content="noindex, nofollow">
   <title>Koordinatensysteme in BIM | bimkernel</title>
   <meta name="description" content="Koordinatensysteme in BIM: das Werkzeug, das Physisches und Digitales koordiniert, vom Datum und der Kartenabbildung bis zum Modell, zum IFC und zur Absteckung.">
@@ -224,7 +224,7 @@
           <span class="kicker-y">Datum</span>
           <h2 class="display">Das Datum verankert die Form<span class="dot">.</span></h2>
           <p class="slide-lead"><strong>Geodätisches Datum:</strong> verankert das Ellipsoid an der Erde mit einem Mittelpunkt, Achsen und einem Zeitpunkt und legt die Lage fest.</p>
-          <p class="slide-lead"><strong>Höhendatum:</strong> legt die Höhe vom Geoid aus fest, dem mittleren Meeresspiegel, den die Pegel messen: eine gewellte Fläche ohne einfache Formel.</p>
+          <p class="slide-lead"><strong>Höhendatum:</strong> legt die Höhe vom Geoid oder einer Näherung daran aus fest: dem unter den Kontinenten verlängerten mittleren Meeresspiegel, gewellt, weil er der tatsächlichen Schwere folgt.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="tierra"><span class="plus">+</span> Details ansehen</button></div>
         </div>
         <div class="b-cards">
@@ -1788,10 +1788,11 @@
         <h4>Ein Ellipsoid ist kein Datum</h4>
         <p>Dasselbe Ellipsoid GRS80 nutzen ETRS89, GDA2020 und SIRGAS, und sie liefern für denselben Ort unterschiedliche Koordinaten: Was sich ändert, ist, wo und wann es verankert wird.</p>
       </div>
-      <div class="card w6 k">
+      <div class="card w4 k">
         <h4>Welche Form das Höhendatum hat</h4>
-        <p>Die des Geoids: der Fläche, auf der die Schwere dasselbe Potenzial hat, die ein ruhendes Meer annähme, wenn es die Kontinente durchqueren könnte. Sie folgt der Massenverteilung des Planeten (Gebirge, Gräben, Dichte im Inneren) und passt daher in keine Formel mit zwei Parametern wie das Ellipsoid: Sie wird aus Schwere- und Satellitenmessungen berechnet und als Gitter von Undulationen N veröffentlicht.</p>
+        <p>Die des Geoids: der Fläche gleichen Schwerepotenzials, auf der ruhendes Wasser in keine Richtung fließen würde. Sie folgt der Massenverteilung des Planeten (Gebirge, Gräben, Dichte im Inneren) und passt daher in keine Formel mit zwei Parametern wie das Ellipsoid: Sie wird aus Schwere- und Satellitenmessungen berechnet und als Gitter von Undulationen N veröffentlicht. Das Datum jedes Landes realisiert sie nur näherungsweise.</p>
       </div>
+      <div class="card w2"><span class="c-label">Geoid gegenüber Ellipsoid</span><b class="c-num" style="font-size:clamp(1.3rem,2vw,2rem);white-space:nowrap">−106 bis +86<small>m</small></b><span class="c-foot">Undulation N weltweit · EGM2008</span></div>
       <div class="card w3">
         <span class="c-label">Option 1 · eine Null an der Küste</span>
         <p>Das Meer wird an einem oder mehreren Pegeln über Jahre gemittelt, und ein Nivellementnetz trägt diese Null ins Landesinnere: Alicante auf der Iberischen Halbinsel, 30 Pegel im AHD, La Punta in Peru.</p>
@@ -1819,7 +1820,7 @@
         <h4>Warum der Zeitpunkt zählt</h4>
         <p>Australien wandert um rund 7 cm pro Jahr nach Nordosten. Nach 26 Jahren lagen die GDA94-Punkte ≈ 1,8 m neben ihrer tatsächlichen Position, deshalb wurde GDA2020 geschaffen. ETRS89 umgeht das Problem, indem es sich mit der Eurasischen Platte bewegt, entfernt sich aber jedes Jahr um rund 2,5 cm vom ITRF.</p>
       </div>
-      <div class="card w6"><p class="table-note" style="margin:0">Quellen: <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2007-15822" target="_blank" rel="noopener">Real Decreto 1071/2007</a> · <a href="https://www.euref.eu/" target="_blank" rel="noopener">EUREF</a> · <a href="https://www.icsm.gov.au/gda2020" target="_blank" rel="noopener">ICSM: GDA2020</a> · <a href="https://www.icsm.gov.au/australian-height-datum" target="_blank" rel="noopener">ICSM: AHD</a> · <a href="https://cdn.www.gob.pe/uploads/document/file/7557116/6419766-6385362-norma-tecnica-geodesica-2024.pdf" target="_blank" rel="noopener">IGN Peru: Norma Técnica Geodésica 2024</a> · <a href="https://sirgas.ipgh.org/wp-content/uploads/2025/05/10.1515_jogs-2025-0183-1.pdf" target="_blank" rel="noopener">Journal of Geodetic Science 2025 (SIRGAS), Höhenursprung Perus</a> · <a href="https://epsg.io/7019-ellipsoid" target="_blank" rel="noopener">EPSG:7019 (GRS 1980)</a> · <a href="https://geodesy.noaa.gov/GEOID/" target="_blank" rel="noopener">NOAA NGS · Geoid</a> · <a href="https://natural-resources.canada.ca/science-data/science-research/geomatics/geodetic-reference-systems/height-reference-system-modernization" target="_blank" rel="noopener">NRCan · CGVD2013</a>.</p></div>
+      <div class="card w6"><p class="table-note" style="margin:0">Quellen: <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2007-15822" target="_blank" rel="noopener">Real Decreto 1071/2007</a> · <a href="https://www.euref.eu/" target="_blank" rel="noopener">EUREF</a> · <a href="https://www.icsm.gov.au/gda2020" target="_blank" rel="noopener">ICSM: GDA2020</a> · <a href="https://www.icsm.gov.au/australian-height-datum" target="_blank" rel="noopener">ICSM: AHD</a> · <a href="https://cdn.www.gob.pe/uploads/document/file/7557116/6419766-6385362-norma-tecnica-geodesica-2024.pdf" target="_blank" rel="noopener">IGN Peru: Norma Técnica Geodésica 2024</a> · <a href="https://sirgas.ipgh.org/wp-content/uploads/2025/05/10.1515_jogs-2025-0183-1.pdf" target="_blank" rel="noopener">Journal of Geodetic Science 2025 (SIRGAS), Höhenursprung Perus</a> · <a href="https://epsg.io/7019-ellipsoid" target="_blank" rel="noopener">EPSG:7019 (GRS 1980)</a> · <a href="https://geodesy.noaa.gov/GEOID/" target="_blank" rel="noopener">NOAA NGS · Geoid</a> · <a href="https://natural-resources.canada.ca/science-data/science-research/geomatics/geodetic-reference-systems/height-reference-system-modernization" target="_blank" rel="noopener">NRCan · CGVD2013</a> · <a href="https://earth-info.nga.mil/index.php?dir=wgs84&amp;action=wgs84" target="_blank" rel="noopener">NGA · WGS 84 und EGM2008</a>.</p></div>
     </div>
   </template>
 
