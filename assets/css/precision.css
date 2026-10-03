@@ -303,20 +303,6 @@ body.l2-lock .pz-hud { display: none; }
 /* Sin efecto de entrada de lámina: las crucetas mareaban (Álex); las tarjetas entran con el fundido de «Movimiento» */
 .slide .bento { position: relative; }
 
-/* Cursor de CAD sobre los dibujos */
-.pz-cad { position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity .15s; z-index: 2; }
-.pz-cad.is-on { opacity: 1; }
-.pz-cad .x, .pz-cad .y { position: absolute; background: rgba(0,0,0,.35); }
-.pz-cad .x { left: var(--l); width: var(--w); top: var(--cy); height: 1px; }
-.pz-cad .y { top: var(--t); height: var(--h); left: var(--cx); width: 1px; }
-.card.k .pz-cad .x, .card.k .pz-cad .y { background: rgba(255,255,0,.6); }
-.pz-cad span {
-  position: absolute; left: var(--cx); top: var(--cy); transform: translate(10px, -150%); white-space: nowrap;
-  font-family: var(--mono); font-size: 10px; font-weight: 700; letter-spacing: .06em; font-feature-settings: "zero" 1, "tnum" 1;
-  background: var(--black); color: var(--accent); padding: 2px 6px; border-radius: 2px;
-}
-.card svg.draw { cursor: none; }
-
 /* Cubiertas trazadas en la portada */
 .cover svg.pz-cover-svg { position: absolute; inset: 14% 8% 15%; width: 84%; height: 71%; transition: transform .3s; }
 .article-item a:hover .cover svg.pz-cover-svg { transform: scale(1.06); }

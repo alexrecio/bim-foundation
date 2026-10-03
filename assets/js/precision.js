@@ -133,28 +133,7 @@
 
   // Sin efecto de contador en las cifras (Álex: fuera); salen fijas desde el principio
 
-  // ---------- Cursor de CAD: sobre un dibujo, retícula y coordenadas locales del dibujo ----------
-  if (fino) document.querySelectorAll('.card svg.draw').forEach((svg) => {
-    const card = svg.closest('.card');
-    const cad = document.createElement('div');
-    cad.className = 'pz-cad'; cad.setAttribute('aria-hidden', 'true');
-    cad.innerHTML = '<i class="x"></i><i class="y"></i><span></span>';
-    card.appendChild(cad);
-    const lbl = cad.querySelector('span');
-    svg.addEventListener('pointermove', (e) => {
-      const r = svg.getBoundingClientRect(), c = card.getBoundingClientRect();
-      const vb = svg.viewBox && svg.viewBox.baseVal && svg.viewBox.baseVal.width ? svg.viewBox.baseVal : { x: 0, y: 0, width: r.width, height: r.height };
-      const s = Math.min(r.width / vb.width, r.height / vb.height);
-      const ox = r.left + (r.width - vb.width * s) / 2, oy = r.top + (r.height - vb.height * s) / 2;
-      const ux = vb.x + (e.clientX - ox) / s, uy = vb.y + (e.clientY - oy) / s;
-      cad.style.setProperty('--l', r.left - c.left + 'px'); cad.style.setProperty('--t', r.top - c.top + 'px');
-      cad.style.setProperty('--w', r.width + 'px'); cad.style.setProperty('--h', r.height + 'px');
-      cad.style.setProperty('--cx', e.clientX - c.left + 'px'); cad.style.setProperty('--cy', e.clientY - c.top + 'px');
-      lbl.textContent = `x ${ux.toFixed(1).replace('.', ',')}  y ${uy.toFixed(1).replace('.', ',')}`;
-      cad.classList.add('is-on');
-    });
-    svg.addEventListener('pointerleave', () => cad.classList.remove('is-on'));
-  });
+  // Sin cursor de CAD sobre los dibujos (Álex: tapaba el dibujo y añadía ruido)
 
   // ---------- Cubiertas de la portada: el dibujo se inserta en la página y se traza al aparecer ----------
   const cubiertas = [...document.querySelectorAll('.article-list .cover img[src$=".svg"]')];
