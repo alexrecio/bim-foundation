@@ -82,6 +82,10 @@ html.rt .article-item a::after { content: none; }
 html.rt .cover { border-radius: 0; background-color: rgba(255,255,255,.5); }
 html.rt .card.ficha .cover, html.rt .cover { border-style: dashed; }
 
+/* Portada de artículo: la ficha y el país van sin recuadro, para que respire */
+html.rt .card.ficha, html.rt .card.pais-portada { outline: 0; background: none; box-shadow: none; -webkit-backdrop-filter: none; backdrop-filter: none; }
+html.rt .card.ficha::after, html.rt .card.pais-portada::after { content: none; }
+
 /* Mapa de bloques de la portada de artículo */
 html.rt .mapa a { border-radius: 0; background: rgba(255,255,255,.6); border-style: dashed; }
 

@@ -350,8 +350,6 @@
     document.querySelectorAll('.paises').forEach((el) => { el.querySelector('select').value = p.id; el.querySelector('.paises-out').innerHTML = paisCard(p); });
     document.querySelectorAll('[data-pais-portada]').forEach((el) => {
       el.querySelector('select').value = p.id;
-      el.querySelector('.pp-pais').textContent = p.nombre;
-      el.querySelectorAll('.pp-reg li').forEach((li) => li.classList.toggle('is-key', li.dataset.reg === p.reg));
     });
     document.querySelectorAll('.paises-tabla tr[data-p]').forEach((tr) => tr.classList.toggle('is-key', tr.dataset.p === p.id));
     document.querySelectorAll('[data-crs-chip]').forEach((b) => { b.innerHTML = `<span class="label">Tu sistema</span><b>${p.nombre} · EPSG ${sysId}</b><i>cambiar</i>`; });
@@ -412,11 +410,9 @@
       el.querySelector('select').addEventListener('change', (e) => setCrs(e.target.value));
       el.addEventListener('click', (e) => { const b = e.target.closest('button[data-epsg]'); if (b) setCrs(paisId, b.dataset.epsg); });
     });
-    // Portada de cada artículo: solo el país del lector (sin datum ni EPSG; el sistema se elige más adelante en las slides)
+    // Portada de cada artículo: solo el desplegable del país y por qué elegirlo (sin datum ni EPSG; el sistema se elige más adelante en las slides)
     document.querySelectorAll('[data-pais-portada]').forEach((el) => {
-      el.innerHTML = `<span class="c-label">Desde dónde lees</span>
-        <div class="pp-top"><b class="pp-pais"></b>${paisSelect('Cambiar país')}</div>
-        <ol class="pp-reg">${REG.map(([r, n]) => `<li data-reg="${r}"><b>${n}</b><em><span>${P.filter((p) => p.reg === r).length}</span> países</em></li>`).join('')}</ol>
+      el.innerHTML = `${paisSelect('Tu país')}
         <p class="pp-hint">Los ejemplos y los datos se adaptan a tu país. Se recuerda en todos los artículos.</p>`;
       el.querySelector('select').addEventListener('change', (e) => setCrs(e.target.value));
     });

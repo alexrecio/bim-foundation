@@ -536,19 +536,9 @@ body.l2-lock { overflow: hidden; }
 .l2-head .label { font-family: var(--mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: .1em; color: var(--s500); }
 
 /* Mapa del artículo por bloques (portada) */
-/* Portada del artículo: país del lector (sin datum ni EPSG) */
-.pais-portada { display: flex; flex-direction: column; gap: 16px; }
-.pp-top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 20px; }
-.pp-pais { font-weight: 900; text-transform: uppercase; letter-spacing: -.04em; line-height: .95; font-size: clamp(2rem, 3.4vw, 3rem); }
-.pp-pais::after { content: "."; background: var(--accent); }
-.pp-reg { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
-.pp-reg li { display: flex; flex-direction: column; gap: 4px; padding: 10px 12px; border: 1px dashed var(--s300); background: var(--white); }
-.pp-reg b { font-weight: 900; text-transform: uppercase; font-size: 13px; line-height: 1.1; letter-spacing: -.01em; }
-.pp-reg em { font-style: normal; font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: .08em; color: var(--s500); }
-.pp-reg li.is-key { background: var(--accent); border: 1px solid var(--black); }
-.pp-reg li.is-key em { color: var(--black); }
+/* Portada del artículo: desplegable del país y por qué elegirlo (sin datum ni EPSG) */
+.pais-portada { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
 .pp-hint { margin: 0; font-size: 14px; line-height: 1.5; color: var(--s600, #555); max-width: 52ch; }
-@media (max-width: 639px) { .pp-reg { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 .mapa { list-style: none; margin: 6px 0 0; padding: 0; display: grid; gap: 6px; }
 .mapa a { display: grid; grid-template-columns: 34px minmax(0, 1fr); align-items: center; gap: 2px 12px; padding: 8px 10px; background: var(--white); border: 1px solid var(--s200); border-radius: 6px; text-decoration: none; transition: border-color .2s, background .2s; }
 .mapa a:hover { border-color: var(--black); }
