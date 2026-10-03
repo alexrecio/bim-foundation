@@ -24,6 +24,7 @@
     'Elige el sistema de tu obra': 'Wählen Sie das System Ihres Projekts', 'códigos EPSG para el BEP y el IFC': 'EPSG-Codes für BAP und IFC',
     'Fuentes:': 'Quellen:', 'sin código EPSG': 'ohne EPSG-Code', 'pies US': 'US-Survey-Fuß', 'pies': 'Fuß', 'en pies': 'in Fuß',
     'su sistema de altitudes': 'sein Höhensystem', 'su red geodésica nacional': 'sein nationales geodätisches Netz',
+    'Desde dónde lees': 'Ihr Standort', 'Cambiar país': 'Land ändern', 'países': 'Länder', 'Los ejemplos y los datos se adaptan a tu país. Se recuerda en todos los artículos.': 'Beispiele und Daten passen sich Ihrem Land an. Die Wahl gilt für alle Beiträge.',
     'Se recuerda en todos los artículos': 'Gilt für alle Beiträge',
     'Antes de empezar': 'Bevor Sie beginnen', '¿En qué sistema trabajas': 'In welchem System arbeiten Sie',
     'Los ejemplos de coordenadas del artículo se calculan en el sistema que elijas. Se recuerda en toda la serie.': 'Die Koordinatenbeispiele des Beitrags werden in dem von Ihnen gewählten System berechnet. Die Auswahl gilt für die gesamte Serie.',
