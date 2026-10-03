@@ -5,6 +5,7 @@
 (function () {
   const t = {
     // Navigation and states
+    'La serie': 'The series', 'Inicio →': 'Home →', 'Consulta': 'Reference', 'Preferencias': 'Preferences', 'pregunta → respuesta': 'question → answer',
     'Inicio': 'Home', 'Idioma': 'Language', 'Artículos': 'Articles', 'Glosario': 'Glossary', 'Buscar': 'Search', 'Ayuda': 'Help', 'Menú': 'Menu', 'Cerrar': 'Close',
     'Borrador': 'Draft', 'Próximamente': 'Coming soon', 'Relleno ficticio': 'Fictitious filler', 'Ficticio': 'Fictitious',
     'Serie bimkernel': 'bimkernel series', 'Tema': 'Topic', 'Primer artículo': 'First article',
