@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Borrador: quitar noindex al publicar -->
-  <meta name="bf-fuente" content="articulos/coordenadas-compartidas/index.html@8253c32e02825d509b15d8649d623f64eaf78b63">
+  <meta name="bf-fuente" content="articulos/coordenadas-compartidas/index.html@d52f5d846133a5aece273aa9c18be2947abf6071">
   <meta name="robots" content="noindex, nofollow">
   <title>Koordinatensysteme in BIM | bimkernel</title>
   <meta name="description" content="Wie gemeinsame Koordinaten in Revit, Civil 3D, IFC und weiterer BIM-Software funktionieren, mit dem spanischen geodätischen Rahmen (ETRS89, EPSG, Höhen über Alicante).">
@@ -89,25 +89,20 @@
         </div>
         <div class="b-cards">
           <div class="card w6">
-            <span class="c-label">Hin und zurück, dieselbe Zahl</span>
-            <svg class="draw" viewBox="0 0 640 200" role="img" aria-label="Beziehung in beide Richtungen. Links das Gelände mit einem Vermessungsnagel; rechts ein Bildschirm mit dem Gebäudemodell; eine gelbe Linie mit den Koordinaten E, N und H verbindet den Nagel mit der Gebäudeecke">
-              <path d="M10 170 C70 160 110 150 160 156 S250 172 290 164" fill="none" stroke="#000" stroke-width="3" stroke-linecap="round"/>
-              <path d="M150 156 V128" stroke="#000" stroke-width="3" stroke-linecap="round"/><circle cx="150" cy="122" r="7" fill="#fff" stroke="#000" stroke-width="3"/>
-              <g font-family="JetBrains Mono, monospace" font-size="12"><text x="10" y="194">REALITÄT · wird gemessen</text><text x="104" y="118">Nagel</text></g>
-              <rect x="380" y="20" width="250" height="150" rx="6" fill="#fff" stroke="#000" stroke-width="3"/><path d="M470 170 V186 M440 186 H500" stroke="#000" stroke-width="3" stroke-linecap="round"/>
-              <path d="M430 140 V80 L480 56 L560 74 V128 Z M430 80 L510 98 L560 74 M510 98 V150" fill="none" stroke="#000" stroke-width="2.5" stroke-linejoin="round"/>
-              <path d="M430 140 L510 150 L560 128" fill="none" stroke="#000" stroke-width="2.5" stroke-linejoin="round"/>
-              <text x="392" y="40" font-family="JetBrains Mono, monospace" font-size="12">MODELL · wird geplant</text>
-              <path d="M158 122 C240 100 340 120 424 140" fill="none" stroke="#FFFF00" stroke-width="6" stroke-linecap="round"/>
-              <path d="M158 122 C240 100 340 120 424 140" fill="none" stroke="#000" stroke-width="1.5" stroke-dasharray="4 5"/>
-              <text x="250" y="66" font-family="JetBrains Mono, monospace" font-size="12">messen ▸</text><text x="236" y="152" font-family="JetBrains Mono, monospace" font-size="12">◂ abstecken</text><rect x="240" y="76" width="96" height="26" rx="13" fill="#000"/><text x="288" y="94" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="13" font-weight="700" fill="#FFFF00">E · N · H</text>
+            <span class="c-label">Ein Kreislauf, ein System · gilt das ganze Leben des Bauwerks</span>
+            <svg class="draw" viewBox="0 0 640 300" role="img" aria-label="Kreislauf mit dem Koordinatensystem in der Mitte. Links das physische Bauwerk: Realität, bauen und betreiben. Rechts das digitale Bauwerk: codieren, planen und koordinieren. Oben führt das Messen vom Physischen ins Digitale; unten bringt das Abstecken es zurück.">
+              <path d="M320 22 V288" stroke="#000" stroke-width="1" stroke-dasharray="2 5"/>
+              <circle cx="320" cy="155" r="112" fill="none" stroke="#000" stroke-width="2.5"/>
+              <polygon points="357,55 362,44 370,55" fill="#000"/><polygon points="283,255 278,266 270,255" fill="#000"/><polygon points="220,118 209,113 220,105" fill="#000"/><polygon points="420,192 431,197 420,205" fill="#000"/>
+              <g font-family="JetBrains Mono, monospace" font-size="12"><line x1="320" y1="155" x2="320" y2="43" stroke="#B9B9B0" stroke-width="1.2" stroke-dasharray="3 4"/><circle cx="320" cy="43" r="8" fill="#FFFF00" stroke="#000" stroke-width="2.5"/><text x="320" y="29" text-anchor="middle" font-weight="700">messen</text><line x1="320" y1="155" x2="399" y2="76" stroke="#B9B9B0" stroke-width="1.2" stroke-dasharray="3 4"/><circle cx="399" cy="76" r="6" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="413" y="66" text-anchor="start">codieren</text><line x1="320" y1="155" x2="432" y2="155" stroke="#B9B9B0" stroke-width="1.2" stroke-dasharray="3 4"/><circle cx="432" cy="155" r="6" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="452" y="159" text-anchor="start">planen</text><line x1="320" y1="155" x2="399" y2="234" stroke="#B9B9B0" stroke-width="1.2" stroke-dasharray="3 4"/><circle cx="399" cy="234" r="6" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="413" y="252" text-anchor="start">koordinieren</text><line x1="320" y1="155" x2="320" y2="267" stroke="#B9B9B0" stroke-width="1.2" stroke-dasharray="3 4"/><circle cx="320" cy="267" r="8" fill="#FFFF00" stroke="#000" stroke-width="2.5"/><text x="320" y="291" text-anchor="middle" font-weight="700">abstecken</text><line x1="320" y1="155" x2="241" y2="234" stroke="#B9B9B0" stroke-width="1.2" stroke-dasharray="3 4"/><circle cx="241" cy="234" r="6" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="227" y="252" text-anchor="end">bauen</text><line x1="320" y1="155" x2="208" y2="155" stroke="#B9B9B0" stroke-width="1.2" stroke-dasharray="3 4"/><circle cx="208" cy="155" r="6" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="188" y="159" text-anchor="end">betreiben</text><line x1="320" y1="155" x2="241" y2="76" stroke="#B9B9B0" stroke-width="1.2" stroke-dasharray="3 4"/><circle cx="241" cy="76" r="6" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="227" y="66" text-anchor="end">Realität</text></g>
+              <circle cx="320" cy="155" r="54" fill="#FFFF00" stroke="#000" stroke-width="3"/>
+              <g font-family="JetBrains Mono, monospace" text-anchor="middle"><text x="320" y="145" font-size="11" font-weight="700">KOORDINATEN-</text><text x="320" y="159" font-size="11" font-weight="700">SYSTEM</text><text x="320" y="179" font-size="12">E · N · H</text></g>
+              <g font-family="JetBrains Mono, monospace" font-size="12" font-weight="700"><text x="16" y="26">PHYSISCHES BAUWERK</text><text x="624" y="26" text-anchor="end">DIGITALES BAUWERK</text></g>
+              <path d="M16 96 C40 90 60 86 96 92" fill="none" stroke="#000" stroke-width="3" stroke-linecap="round"/><path d="M56 89 V66" stroke="#000" stroke-width="3" stroke-linecap="round"/><circle cx="56" cy="60" r="6" fill="#fff" stroke="#000" stroke-width="3"/>
+              <rect x="540" y="42" width="84" height="54" rx="4" fill="#fff" stroke="#000" stroke-width="2.5"/><path d="M582 96 V104 M568 104 H596" stroke="#000" stroke-width="2.5" stroke-linecap="round"/><path d="M562 84 V64 L578 56 L602 62 V80 Z M562 64 L586 70 L602 62 M586 70 V88 M562 84 L586 88 L602 80" fill="none" stroke="#000" stroke-width="1.8" stroke-linejoin="round"/>
             </svg>
+
           </div>
-          <div class="card w4">
-            <span class="c-label">Sechs Phasen, ein System</span>
-            <svg class="draw" viewBox="0 0 430 96" role="img" aria-label="Phasen: Realität, messen, codieren, planen, koordinieren, abstecken und betreiben, und zurück zur Realität"><path d="M30 44 H402" stroke="#000" stroke-width="2"/><path d="M402 50 C402 74 30 74 30 56" fill="none" stroke="#000" stroke-width="1.5" stroke-dasharray="4 4"/><polygon points="30,50 26,58 34,58" fill="#000"/><circle cx="30" cy="44" r="6" fill="#000" stroke="#000" stroke-width="2.5"/><text x="30" y="26" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700">Realität</text><circle cx="92" cy="44" r="6" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="92" y="92" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11">messen</text><circle cx="154" cy="44" r="6" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="154" y="26" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11">codieren</text><circle cx="216" cy="44" r="6" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="216" y="92" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11">planen</text><circle cx="278" cy="44" r="6" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="278" y="26" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11">koordinieren</text><circle cx="340" cy="44" r="6" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="340" y="92" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11">abstecken</text><circle cx="402" cy="44" r="6" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="402" y="26" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11">betreiben</text></svg>
-          </div>
-          <div class="card w2 k"><span class="c-label">Gilt</span><span class="c-title">Das ganze Leben des Bauwerks</span></div>
         </div>
       </div>
     </section>
@@ -256,31 +251,30 @@
         <div class="b-cards">
           <div class="card w6 g">
             <span class="c-label">Ein Punkt auf dem Ellipsoid</span>
-            <svg class="draw" viewBox="0 0 640 220" role="img" aria-label="Ellipsoid mit Äquator und Nullmeridian von Greenwich. Ein Punkt P auf der Oberfläche: Seine Breite ist der Winkel der Normalen zur Äquatorebene, seine Länge der Winkel ab Greenwich entlang des Äquators und seine Höhe der Abstand über dem Ellipsoid">
-              <ellipse cx="170" cy="115" rx="130" ry="95" fill="#fff" stroke="#000" stroke-width="3"/>
-              <ellipse cx="170" cy="115" rx="130" ry="22" fill="none" stroke="#000" stroke-width="1.5"/>
-              <ellipse cx="170" cy="115" rx="40" ry="95" fill="none" stroke="#999" stroke-width="1.5" stroke-dasharray="4 4"/>
-              <path d="M262 48 C 280 80, 282 110, 262 130" fill="none" stroke="#000" stroke-width="1.5"/>
-              <path d="M202 130 L262 48" stroke="#000" stroke-width="2" stroke-dasharray="5 4"/>
-              <path d="M202 130 H262" stroke="#000" stroke-width="2"/>
-              <path d="M232 130 A30 30 0 0 0 220 106" fill="none" stroke="#000" stroke-width="2"/>
-              <path d="M170 137 Q 220 136 262 130" fill="none" stroke="#000" stroke-width="4"/>
-              <path d="M262 48 L282 20" stroke="#000" stroke-width="2.5"/><polygon points="285,15 276,22 286,26" fill="#000"/>
-              <circle cx="262" cy="48" r="7" fill="#FFFF00" stroke="#000" stroke-width="2.5"/>
-              <g font-family="JetBrains Mono, monospace" font-size="13" font-weight="700">
-                <text x="238" y="122">φ</text><text x="208" y="154">λ</text><text x="292" y="30">h</text><text x="272" y="56">P</text>
-              </g>
-              <g font-family="JetBrains Mono, monospace" font-size="11">
-                <text x="170" y="13" fill="#666" text-anchor="middle">Greenwich</text><text x="20" y="140" fill="#666">Äquator</text>
-                <text x="360" y="64"><tspan font-weight="700">φ Breite</tspan> · Winkel zum Äquator</text>
-                <text x="360" y="110"><tspan font-weight="700">λ Länge</tspan> · Winkel ab Greenwich</text>
-                <text x="360" y="156"><tspan font-weight="700">h Höhe</tspan> · Meter über dem Ellipsoid</text>
-              </g>
+            <svg class="draw" viewBox="0 0 640 244" role="img" aria-label="Zwei Ansichten. Im Profil: Die Breite φ ist der Winkel zwischen der Äquatorebene und der Normalen zum Ellipsoid im Punkt P; die Höhe h wird entlang dieser Normalen gemessen. Vom Nordpol aus: Die Länge λ ist der Winkel am Pol zwischen dem Meridian von Greenwich und dem Meridian von P.">
+              <g font-family="JetBrains Mono, monospace" font-size="12" font-weight="700"><text x="10" y="16">φ BREITE · im Profil</text><text x="340" y="16">λ LÄNGE · vom Pol aus</text></g>
+              <ellipse cx="150" cy="134" rx="120" ry="88" fill="#fff" stroke="#000" stroke-width="3"/>
+              <path d="M30 134 H270" stroke="#000" stroke-width="1.5"/>
+              <circle cx="150" cy="134" r="3" fill="#000"/>
+              <path d="M182 134 L219 62" stroke="#000" stroke-width="2" stroke-dasharray="5 4"/>
+              <path d="M208 134 A26 26 0 0 0 194 111" fill="none" stroke="#000" stroke-width="2.5"/>
+              <path d="M219 62 L233 35" stroke="#000" stroke-width="2.5"/><polygon points="236,29 227,36 237,40" fill="#000"/>
+              <circle cx="219" cy="62" r="7" fill="#FFFF00" stroke="#000" stroke-width="2.5"/>
+              <g font-family="JetBrains Mono, monospace" font-size="14" font-weight="700"><text x="212" y="126">φ</text><text x="244" y="40">h</text><text x="198" y="56">P</text></g>
+              <g font-family="JetBrains Mono, monospace" font-size="11" fill="#666"><text x="36" y="128">Äquator</text><text x="150" y="238" text-anchor="middle">Normale zum Ellipsoid in P</text></g>
+              <path d="M328 30 V236" stroke="#000" stroke-width="1" stroke-dasharray="2 5"/>
+              <circle cx="485" cy="128" r="88" fill="#fff" stroke="#000" stroke-width="3"/>
+              <path d="M485 128 V216" stroke="#999" stroke-width="2" stroke-dasharray="5 4"/>
+              <path d="M485 128 L542 195" stroke="#000" stroke-width="2.5"/>
+              <path d="M485 160 A32 32 0 0 0 506 152" fill="none" stroke="#000" stroke-width="2.5"/>
+              <circle cx="485" cy="128" r="4" fill="#000"/>
+              <circle cx="542" cy="195" r="7" fill="#FFFF00" stroke="#000" stroke-width="2.5"/>
+              <g font-family="JetBrains Mono, monospace" font-size="14" font-weight="700"><text x="500" y="182">λ</text><text x="554" y="206">P</text></g>
+              <g font-family="JetBrains Mono, monospace" font-size="11" fill="#666"><text x="493" y="122">Nordpol</text><text x="485" y="236" text-anchor="middle">Greenwich · 0°</text><text x="580" y="150">Meridian</text><text x="580" y="164">von P</text></g>
             </svg>
           </div>
           <div class="card w2 k" data-slot="0"><span class="c-label">Ihr Land · <span data-pc="nombre">España</span></span><span class="c-title mono" style="font-size:18px;color:var(--accent)"><span data-pc="lat">40,42° N</span><br><span data-pc="lon">3,70° O</span></span><span class="c-foot">Datum <span data-pc="datum">ETRS89</span></span></div>
-          <div class="card w2" data-slot="1"><span class="c-label"><span data-pc="region">Asia y Oceanía</span> · <span data-pc="nombre">Australia</span></span><span class="c-title mono" style="font-size:18px"><span data-pc="lat">33,87° S</span><br><span data-pc="lon">151,21° E</span></span><span class="c-foot">Datum <span data-pc="datum">GDA2020</span></span></div>
-          <div class="card w2" data-slot="2"><span class="c-label"><span data-pc="region">América</span> · <span data-pc="nombre">Perú</span></span><span class="c-title mono" style="font-size:18px"><span data-pc="lat">12,05° S</span><br><span data-pc="lon">77,04° O</span></span><span class="c-foot">Datum <span data-pc="datum">SIRGAS</span></span></div>
+          <div class="card w4 y"><span class="c-label">Achtung</span><span class="c-title">Anderes Datum, andere Winkel</span><span class="c-foot">Koordinaten ohne ihr Datum verorten nichts</span></div>
         </div>
       </div>
     </section>
@@ -293,13 +287,13 @@
         <div class="b-title">
           <span class="slide-n"></span>
           <span class="kicker-y">Kartenabbildung</span>
-          <h2 class="display">Abflachen heißt verzerren<span class="dot">.</span></h2>
-          <p class="slide-lead">Die Abbildung überträgt das Ellipsoid in die Ebene. UTM tut das in Zonen von 6°, damit die Verzerrung klein bleibt.</p>
+          <h2 class="display">Projizieren ergibt eine euklidische Ebene<span class="dot">.</span></h2>
+          <p class="slide-lead">Auf dem Ellipsoid helfen weder Lineal noch Pythagoras. Die Abbildung abstrahiert zu einer Ebene, in der mit gewohnter Geometrie geplant wird, um den Preis einer kleinen Verzerrung.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="proyeccion"><span class="plus">+</span> Details ansehen</button></div>
         </div>
         <div class="b-cards">
           <div class="card w4 g">
-            <span class="c-label">Eine Zone, abgewickelt</span>
+            <span class="c-label">Vom Ellipsoid zur Ebene E · N</span>
             <svg class="draw" viewBox="0 0 400 220" role="img" aria-label="Dasselbe Ellipsoid des Datums, in Zonen geteilt, eine davon hervorgehoben, und diese Zone zu einem Gitter abgewickelt">
               <ellipse cx="100" cy="110" rx="96" ry="70" fill="#fff" stroke="#000" stroke-width="3"/>
               <ellipse cx="100" cy="110" rx="96" ry="16" fill="none" stroke="#000" stroke-width="1.5"/>
@@ -314,9 +308,9 @@
             </svg>
           </div>
           <div class="card w2 k">
-            <span class="c-label">Zonen</span>
-            <b class="c-num">60</b>
-            <span class="c-foot">zu je 6°</span>
+            <span class="c-label">In der Ebene</span>
+            <span class="c-title mono" style="color:var(--accent);font-size:15px;text-transform:none;white-space:nowrap">d = √(ΔE² + ΔN²)</span>
+            <span class="c-foot">Strecken, Geraden und Zeichnungswinkel</span>
           </div>
           <div class="card w3">
             <span class="c-label">False Easting</span>
@@ -1573,6 +1567,7 @@
 <tr class="is-key"><td>Planen</td><td>Jede Disziplin</td><td>Ein lokaler Ursprung nahe am Gebäude und eine Transformation ins amtliche System</td><td>Dass jeder seinen eigenen Ursprung wählt (<a href="#principio">die goldene Regel</a>)</td></tr>
 <tr><td>Koordinieren</td><td>BIM-Koordinator</td><td>Für alle Modelle dieselben</td><td>Verschobene, verdrehte oder höhenversetzte Modelle</td></tr>
 <tr><td>Abstecken</td><td>Bauunternehmen</td><td>Die Absteckungsfestpunkte der Baustelle</td><td>Gitter- und Geländestrecken verwechseln (<a href="#escala">Maßstab</a>)</td></tr>
+<tr><td>Bauen</td><td>Bauunternehmen</td><td>Die Absteckungsfestpunkte und das Aufmaß des Gebauten</td><td>Das Ausgeführte in einem anderen System messen und es nicht mit dem Modell vergleichen können</td></tr>
 <tr><td>Betreiben</td><td>Eigentümer</td><td>Die des übergebenen Modells</td><td>Die Georeferenzierung im finalen Modell verlieren (<a href="#ifc">IFC</a>)</td></tr>
 </tbody>
 </table></div>
@@ -1672,6 +1667,18 @@
 
   <template id="l2-coordenadas">
     <div class="b-cards">
+      <div class="card w6">
+        <h4>Ein Punkt auf drei Kontinenten, jeder in seinem Datum</h4>
+        <div class="table-wrap"><table>
+          <thead><tr><th></th><th>Madrid · Puerta del Sol</th><th>Sydney · Opernhaus</th><th>Lima · Plaza Mayor</th></tr></thead>
+          <tbody>
+            <tr><td>Breite</td><td class="num">40,4169° N</td><td class="num">33,8568° S</td><td class="num">12,0464° S</td></tr>
+            <tr><td>Länge</td><td class="num">3,7036° O</td><td class="num">151,2153° E</td><td class="num">77,0302° O</td></tr>
+            <tr class="is-key"><td>Datum</td><td>ETRS89</td><td>GDA2020</td><td>SIRGAS 2000</td></tr>
+          </tbody>
+        </table></div>
+        <p class="table-note">Es sind drei verschiedene Orte, jeder im amtlichen Datum seines Landes angegeben.</p>
+      </div>
       <div class="card w3">
         <h4>Warum Grad zum Messen nicht taugen</h4>
         <div class="table-wrap"><table>
@@ -1702,7 +1709,7 @@
         <p>Sie ist der Winkel zwischen der Senkrechten auf das Ellipsoid in diesem Punkt (der Normalen) und der Äquatorebene. Weil das Ellipsoid abgeplattet ist, verläuft diese Linie nicht durch den Erdmittelpunkt, außer am Äquator und an den Polen.</p>
       </div>
       <div class="card w3 y">
-        <h4>Gleicher Ort, anderes Datum, andere Zahlen</h4>
+        <h4>Wie viel sich ändert: ED50 gegenüber ETRS89</h4>
         <p>Geografische Koordinaten gehören immer zu ihrem Datum. Die der Puerta del Sol in ED50 und in ETRS89 unterscheiden sich um etwa 4 bis 5 Bogensekunden, rund 170 m im Gelände (siehe <a href="#tierra">das Datum</a>).</p>
       </div>
       <div class="card w6"><p class="table-note" style="margin:0">Quellen: <a href="https://epsg.io/4258" target="_blank" rel="noopener">EPSG:4258</a> · <a href="https://epsg.io/7844" target="_blank" rel="noopener">EPSG:7844</a> · <a href="https://epsg.io/4674" target="_blank" rel="noopener">EPSG:4674</a> · <a href="https://epsg.io/4936" target="_blank" rel="noopener">EPSG:4936</a> · <a href="https://epsg.io/7842" target="_blank" rel="noopener">EPSG:7842</a> · <a href="https://epsg.io/4988" target="_blank" rel="noopener">EPSG:4988</a> · <a href="https://www.icsm.gov.au/gda2020" target="_blank" rel="noopener">ICSM (GDA2020)</a>.</p></div>
@@ -1775,6 +1782,18 @@
       <div class="card w3 y">
         <h4>Warum das beim Modellieren zählt</h4>
         <p>Die Koordinaten im Modell und im IFC sind meist projiziert. Innerhalb der Zone ist die Verzerrung klein, aber nicht null, und sie wächst außerhalb: Ein Bauwerk zwischen zwei Zonen wählt eine und dokumentiert sie.</p>
+      </div>
+      <div class="card w6 y">
+        <h4>Warum eine Abstraktion</h4>
+        <div class="table-wrap"><table>
+          <thead><tr><th></th><th>Auf dem Ellipsoid</th><th>In der projizierten Ebene</th></tr></thead>
+          <tbody>
+            <tr><td>Strecke</td><td>Geodätische Linie, mit Ellipsoidformeln</td><td>Pythagoras zwischen zwei Paaren (E, N)</td></tr>
+            <tr><td>Gerade</td><td>Gibt es nicht: alles ist gekrümmt</td><td>Eine Zeichnungsgerade</td></tr>
+            <tr class="is-key"><td>Wo geplant wird</td><td>In keinem Planungsprogramm</td><td>In allen: Der Arbeitsraum ist euklidisch</td></tr>
+          </tbody>
+        </table></div>
+        <p class="table-note">Der Preis ist der Maßstabsfaktor: Ein Meter in der Ebene ist nicht genau ein Meter im Gelände (siehe <a href="#escala">Maßstab</a>). <span class="tag">Abgeleitet</span></p>
       </div>
       <div class="card w6"><p class="table-note" style="margin:0">Quellen: <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2007-15822" target="_blank" rel="noopener">Real Decreto 1071/2007, Art. 5</a> · <a href="https://epsg.io/16030" target="_blank" rel="noopener">EPSG:16030 (UTM 30N)</a>.</p></div>
     </div>
