@@ -6,7 +6,7 @@
   <!-- Draft: remove noindex on publishing -->
   <meta name="robots" content="noindex, nofollow">
   <!-- Translation of articulos/coordenadas-compartidas/index.html at this git blob (herramientas/i18n.mjs flags it when the Spanish page changes) -->
-  <meta name="bf-fuente" content="articulos/coordenadas-compartidas/index.html@8f21553a6f8b0d9f3f08603823bea2f717ad8703">
+  <meta name="bf-fuente" content="articulos/coordenadas-compartidas/index.html@7542b602daca5c2a28c637d1f0b64246bc31f023">
   <title>Coordinate systems in BIM | bimkernel</title>
   <meta name="description" content="Coordinate systems in BIM: the reference system that coordinates the physical and the digital, from the datum and the projection to the model, IFC and setting out.">
   <meta property="og:type" content="article">
@@ -442,7 +442,7 @@
           <div class="card w2" data-slot="2"><span class="c-label"><span data-pc="region">Americas</span> · <span data-pc="nombre">Peru</span></span><span class="c-title mono" style="font-size:18px"><span data-pc="e-pt">277 925</span> E<br><span data-pc="n-pt">8 667 092</span> N</span><span class="c-foot">EPSG <span data-pc="epsg">32718</span> · in <span data-pc="u-pt">m</span></span></div>
           <div class="card w6 g">
             <span class="c-label">What an EPSG code contains</span>
-            <div class="flow"><span class="chip">Datum</span><span class="arrow">+</span><span class="chip">Projection and zone</span><span class="arrow">+</span><span class="chip">Units and axes</span><span class="arrow">=</span><span class="chip y">A reference system</span></div>
+            <div class="flow"><span class="chip">Datum</span><span class="arrow">+</span><span class="chip">Projection and zone</span><span class="arrow">+</span><span class="chip">Units and axes</span><span class="arrow">=</span><span class="chip y">A coordinate reference system (CRS)</span></div>
             <p class="c-text" style="margin-top:10px">Height goes separately, with its own code, and is combined with it.</p>
           </div>
         </div>
@@ -3038,7 +3038,7 @@ print("OK" if error &lt; 0.01 else f"Deviation of {error:.3f} m")</code></pre>
           <tbody>
             <tr><td>Revit</td><td><span class="ui">Spot Coordinate</span> annotation with origin “Survey Point”, which measures from the shared origin</td><td>Easting, Northing and elevation of the control cube</td></tr>
             <tr><td>Archicad</td><td><span class="ui">Show Survey Point Coordinates</span></td><td>The point coordinates, next to it</td></tr>
-            <tr><td>Civil 3D</td><td><span class="ui">Drawing Settings › Units and Zone</span></td><td>The assigned coordinate system</td></tr>
+            <tr><td>Civil 3D</td><td><span class="ui">Drawing Settings › Units and Zone</span></td><td>The assigned reference system (Autodesk calls it a «coordinate system»)</td></tr>
             <tr><td>Bonsai</td><td>Georeferencing panel</td><td>Local-to-global conversion of a point</td></tr>
             <tr class="is-key"><td>BIMcollab Zoom</td><td><span class="ui">Use georeferencing</span> option</td><td>That IFC files are placed by their conversion</td></tr>
           </tbody>
@@ -3059,9 +3059,9 @@ print("OK" if error &lt; 0.01 else f"Deviation of {error:.3f} m")</code></pre>
   <template id="l2-glosario">
 <div class="b-cards"><div class="card w6">
 <dl class="glossary">
-      <dt>CRS</dt><dd>Coordinate reference system: datum, projection and units.</dd>
+      <dt>CRS</dt><dd>Coordinate reference system: datum + coordinate system (axes and units); in projected ones, the projection too.</dd>
       <dt>Datum</dt><dd>Model of the Earth to which the coordinates refer. In <span data-pais="nombre">Spain</span>, <span data-pais="datum">ETRS89</span>.</dd>
-      <dt>EPSG</dt><dd>Registry with a numeric code for each reference system.</dd>
+      <dt>EPSG</dt><dd>Registry with a numeric code for each reference system, datum and transformation.</dd>
       <dt>UTM</dt><dd>Universal Transverse Mercator projection, in 6° zones.</dd>
       <dt>Orthometric height</dt><dd>Height above mean sea level. The one on drawings.</dd>
       <dt>Ellipsoidal height</dt><dd>Height above the ellipsoid. The one a GNSS receiver gives.</dd>

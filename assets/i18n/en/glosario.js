@@ -47,10 +47,10 @@ window.BF_GLOSARIO = [
    "coordinate reference system",
    "CRS",
    "reference system",
-   "coordinate system",
+   "reference systems",
+   "sistema de referencia de coordenadas",
    "sistema de referencia",
-   "SRC",
-   "sistema de coordenadas"
+   "SRC"
   ]
  },
  {
@@ -403,7 +403,7 @@ window.BF_GLOSARIO = [
   "t": "Model federation and alignment",
   "en": "Federación y alineación de modelos",
   "b": "IV",
-  "d": "Combining models from different disciplines and programs in a common viewer to coordinate them (clash detection, review). It only works if they all share the same coordinate system.",
+  "d": "Combining models from different disciplines and programs in a common viewer to coordinate them (clash detection, review). It only works if they all share the same coordinate system (axes and origin) and, if they are georeferenced, the same reference system and the same transformation.",
   "ej": "Architecture (Archicad), structure (Tekla) and MEP (Revit) models federated in Navisworks or BIMcollab.",
   "eq": "Navisworks: Units and Transform; ACC: Transform; BIMcollab Zoom: IFC Global Origin / Use georeferencing; Solibri; Trimble Connect; Dalux.",
   "err": "Using the viewer's Transform as a permanent fix instead of correcting the origin in the source model.",
@@ -851,6 +851,29 @@ window.BF_GLOSARIO = [
    "época de referencia",
    "deriva continental",
    "datum dinámico"
+  ]
+ },
+ {
+  "id": "C36",
+  "slug": "sistema-de-coordenadas",
+  "t": "Coordinate system (CS)",
+  "en": "Sistema de coordenadas",
+  "b": "I",
+  "d": "Definition of the axes in which coordinates are written: how many there are, their order, their direction and their units (for example, Easting and Northing in metres, or latitude and longitude in degrees). On its own it is not anchored to the Earth: combined with a datum it forms a coordinate reference system (ISO 19111).",
+  "ej": "In ETRS89 / UTM zone 30N (EPSG:25830) the coordinate system is Cartesian with Easting and Northing axes in metres; EPSG:3042 uses the same datum and the same projection but with Northing-Easting order.",
+  "eq": "Revit: 'shared coordinates' and Survey Point (axes and origin, no datum); Civil 3D calls a full CRS a 'coordinate system'; CAD: WCS/UCS; IFC: the model's local axes and the projection of IfcProjectedCRS.",
+  "err": "Calling something a 'coordinate system' when it is really a reference system (datum included), or exchanging data with the same datum but with the axes in a different order.",
+  "rel": [
+   "C02",
+   "C03",
+   "C04",
+   "C31"
+  ],
+  "al": [
+   "coordinate system",
+   "coordinate systems",
+   "sistema de coordenadas",
+   "sistemas de coordenadas"
   ]
  },
  {

@@ -23,7 +23,7 @@
    "coordinate reference system",
    "CRS",
    "reference system",
-   "coordinate system"
+   "reference systems"
   ],
   "h": "738127c136"
  },
@@ -229,7 +229,7 @@
  },
  "C17": {
   "t": "Model federation and alignment",
-  "d": "Combining models from different disciplines and programs in a common viewer to coordinate them (clash detection, review). It only works if they all share the same coordinate system.",
+  "d": "Combining models from different disciplines and programs in a common viewer to coordinate them (clash detection, review). It only works if they all share the same coordinate system (axes and origin) and, if they are georeferenced, the same reference system and the same transformation.",
   "ej": "Architecture (Archicad), structure (Tekla) and MEP (Revit) models federated in Navisworks or BIMcollab.",
   "eq": "Navisworks: Units and Transform; ACC: Transform; BIMcollab Zoom: IFC Global Origin / Use georeferencing; Solibri; Trimble Connect; Dalux.",
   "err": "Using the viewer's Transform as a permanent fix instead of correcting the origin in the source model.",
@@ -240,7 +240,7 @@
    "federated",
    "model alignment"
   ],
-  "h": "0a023a0408"
+  "h": "fb13fd0aa6"
  },
  "C18": {
   "t": "IfcSite RefLatitude / RefLongitude / RefElevation",
@@ -2918,5 +2918,17 @@
    "platform versions"
   ],
   "h": "8111cf8b00"
+ },
+ "C36": {
+  "t": "Coordinate system (CS)",
+  "d": "Definition of the axes in which coordinates are written: how many there are, their order, their direction and their units (for example, Easting and Northing in metres, or latitude and longitude in degrees). On its own it is not anchored to the Earth: combined with a datum it forms a coordinate reference system (ISO 19111).",
+  "ej": "In ETRS89 / UTM zone 30N (EPSG:25830) the coordinate system is Cartesian with Easting and Northing axes in metres; EPSG:3042 uses the same datum and the same projection but with Northing-Easting order.",
+  "eq": "Revit: 'shared coordinates' and Survey Point (axes and origin, no datum); Civil 3D calls a full CRS a 'coordinate system'; CAD: WCS/UCS; IFC: the model's local axes and the projection of IfcProjectedCRS.",
+  "err": "Calling something a 'coordinate system' when it is really a reference system (datum included), or exchanging data with the same datum but with the axes in a different order.",
+  "al": [
+   "coordinate system",
+   "coordinate systems"
+  ],
+  "h": "f2146404cb"
  }
 }
