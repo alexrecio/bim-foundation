@@ -1796,51 +1796,25 @@
 
   <template id="l2-coordenadas">
     <div class="b-cards">
-      <div class="card w6">
-        <h4>Un punto en tres continentes, cada uno en su datum</h4>
+      <div class="card w2"><span class="c-label">1° de latitud</span><b class="c-num">≈ 111<small>km</small></b><span class="c-foot">1° de longitud: 85 km en Madrid, 92 en Sídney, 109 en Lima</span></div>
+      <div class="card w2"><span class="c-label">1″ de latitud</span><b class="c-num">≈ 31<small>m</small></b><span class="c-foot">la cuadrícula de grados no es cuadrada</span></div>
+      <div class="card w2 y"><span class="c-label">0,000 001°</span><b class="c-num">≈ 11<small>cm</small></b><span class="c-foot">grados con seis decimales</span></div>
+      <div class="card w4">
+        <h4>Tres lugares, en grados y en metros desde el centro de la Tierra</h4>
         <div class="table-wrap"><table>
-          <thead><tr><th></th><th>Madrid · Puerta del Sol</th><th>Sídney · Ópera</th><th>Lima · Plaza Mayor</th></tr></thead>
+          <thead><tr><th></th><th>Madrid · Sol</th><th>Sídney · Ópera</th><th>Lima · Plaza Mayor</th></tr></thead>
           <tbody>
             <tr><td>Latitud</td><td class="num">40,4169° N</td><td class="num">33,8568° S</td><td class="num">12,0464° S</td></tr>
             <tr><td>Longitud</td><td class="num">3,7036° O</td><td class="num">151,2153° E</td><td class="num">77,0302° O</td></tr>
             <tr class="is-key"><td>Datum</td><td>ETRS89</td><td>GDA2020</td><td>SIRGAS 2000</td></tr>
+            <tr><td>X (m)</td><td class="num">4 852 668</td><td class="num">−4 646 970</td><td class="num">1 400 170</td></tr>
+            <tr><td>Y (m)</td><td class="num">−314 112</td><td class="num">2 553 078</td><td class="num">−6 079 439</td></tr>
+            <tr><td>Z (m)</td><td class="num">4 113 338</td><td class="num">−3 533 265</td><td class="num">−1 322 420</td></tr>
           </tbody>
         </table></div>
-        <p class="table-note">Son tres lugares distintos, cada uno escrito en el datum oficial de su país.</p>
+        <p class="table-note">X, Y, Z (geocéntricas) son con lo que calcula el GNSS por dentro; en obra casi nadie las usa. Con h = 0, cálculo propio con PROJ y los EPSG 4936, 7842 y 4988. <span class="tag">Inferido</span></p>
       </div>
-      <div class="card w3">
-        <h4>Por qué los grados no sirven para medir</h4>
-        <div class="table-wrap"><table>
-          <thead><tr><th>Ángulo</th><th>Distancia en el terreno</th></tr></thead>
-          <tbody>
-            <tr><td class="num">1° de latitud</td><td class="num">≈ 111 km</td></tr>
-            <tr><td class="num">1″ de latitud</td><td class="num">≈ 31 m</td></tr>
-            <tr class="is-key"><td class="num">0,000 001°</td><td class="num">≈ 11 cm</td></tr>
-          </tbody>
-        </table></div>
-        <p class="table-note">Un grado de longitud mide distinto según la latitud: unos 85 km en Madrid, 92 km en Sídney y 109 km en Lima. Una cuadrícula de grados no es cuadrada, y una obra necesita metros iguales en todas direcciones.</p>
-      </div>
-      <div class="card w3 g">
-        <h4>La otra forma: geocéntricas</h4>
-        <p>El mismo punto también se escribe en metros desde el centro de la Tierra (X, Y, Z). Es con lo que calcula el GNSS por dentro; en obra casi nadie las usa.</p>
-        <div class="table-wrap"><table>
-          <thead><tr><th>Punto</th><th>X</th><th>Y</th><th>Z</th></tr></thead>
-          <tbody>
-            <tr><td>Madrid</td><td class="num">4 852 668</td><td class="num">−314 112</td><td class="num">4 113 338</td></tr>
-            <tr><td>Sídney</td><td class="num">−4 646 970</td><td class="num">2 553 078</td><td class="num">−3 533 265</td></tr>
-            <tr><td>Lima</td><td class="num">1 400 170</td><td class="num">−6 079 439</td><td class="num">−1 322 420</td></tr>
-          </tbody>
-        </table></div>
-        <p class="table-note">Metros, con h = 0. Cálculo propio con PROJ y los EPSG 4936, 7842 y 4988. <span class="tag">Inferido</span></p>
-      </div>
-      <div class="card w3 k">
-        <h4>La latitud no se mide desde el centro</h4>
-        <p>Es el ángulo de la perpendicular al elipsoide en ese punto (la normal) con el plano del ecuador. Como el elipsoide está achatado, esa línea no pasa por el centro de la Tierra, salvo en el ecuador y en los polos.</p>
-      </div>
-      <div class="card w3 y">
-        <h4>Cuánto cambia: ED50 frente a ETRS89</h4>
-        <p>Las coordenadas geográficas siempre van con su datum. Las de la Puerta del Sol en ED50 y en ETRS89 difieren en unos 4 o 5 segundos de arco, unos 170 m en el terreno (ver <a href="#tierra">el datum</a>).</p>
-      </div>
+      <div class="card w2 k"><span class="c-label">ED50 frente a ETRS89 · Puerta del Sol</span><b class="c-num" style="color:var(--accent)">≈ 170<small>m</small></b><span class="c-foot">4 o 5 segundos de arco (<a href="#tierra">el datum</a>)</span></div>
       <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://epsg.io/4258" target="_blank" rel="noopener">EPSG:4258</a> · <a href="https://epsg.io/7844" target="_blank" rel="noopener">EPSG:7844</a> · <a href="https://epsg.io/4674" target="_blank" rel="noopener">EPSG:4674</a> · <a href="https://epsg.io/4936" target="_blank" rel="noopener">EPSG:4936</a> · <a href="https://epsg.io/7842" target="_blank" rel="noopener">EPSG:7842</a> · <a href="https://epsg.io/4988" target="_blank" rel="noopener">EPSG:4988</a> · <a href="https://www.icsm.gov.au/gda2020" target="_blank" rel="noopener">ICSM (GDA2020)</a>.</p></div>
     </div>
   </template>
