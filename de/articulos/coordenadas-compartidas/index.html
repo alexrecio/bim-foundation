@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Borrador: quitar noindex al publicar -->
-  <meta name="bf-fuente" content="articulos/coordenadas-compartidas/index.html@8f21553a6f8b0d9f3f08603823bea2f717ad8703">
+  <meta name="bf-fuente" content="articulos/coordenadas-compartidas/index.html@7542b602daca5c2a28c637d1f0b64246bc31f023">
   <meta name="robots" content="noindex, nofollow">
   <title>Koordinatensysteme in BIM | bimkernel</title>
   <meta name="description" content="Koordinatensysteme in BIM: das Bezugssystem, das Physisches und Digitales koordiniert, vom Datum und der Kartenabbildung bis zum Modell, zum IFC und zur Absteckung.">
@@ -441,7 +441,7 @@
           <div class="card w2" data-slot="2"><span class="c-label"><span data-pc="region">América</span> · <span data-pc="nombre">Perú</span></span><span class="c-title mono" style="font-size:18px"><span data-pc="e-pt">277 925</span> E<br><span data-pc="n-pt">8 667 092</span> N</span><span class="c-foot">EPSG <span data-pc="epsg">32718</span> · in <span data-pc="u-pt">m</span></span></div>
           <div class="card w6 g">
             <span class="c-label">Was ein EPSG-Code enthält</span>
-            <div class="flow"><span class="chip">Datum</span><span class="arrow">+</span><span class="chip">Abbildung und Zone</span><span class="arrow">+</span><span class="chip">Einheiten und Achsen</span><span class="arrow">=</span><span class="chip y">Ein Bezugssystem</span></div>
+            <div class="flow"><span class="chip">Datum</span><span class="arrow">+</span><span class="chip">Abbildung und Zone</span><span class="arrow">+</span><span class="chip">Einheiten und Achsen</span><span class="arrow">=</span><span class="chip y">Ein Koordinatenreferenzsystem (CRS)</span></div>
             <p class="c-text" style="margin-top:10px">Die Höhe kommt getrennt hinzu, mit eigenem Code, und wird damit kombiniert.</p>
           </div>
         </div>
@@ -3038,7 +3038,7 @@ print("OK" if error &lt; 0.01 else f"Abweichung von {error:.3f} m")</code></pre>
           <tbody>
             <tr><td>Revit</td><td>Beschriftung <span class="ui">Punktkoordinate</span> mit Ursprung „Vermessungspunkt“, die vom gemeinsamen Ursprung aus misst</td><td>Ostwert, Nordwert und Höhe des Kontrollwürfels</td></tr>
             <tr><td>Archicad</td><td><span class="ui">Show Survey Point Coordinates</span></td><td>Die Koordinaten des Punkts, direkt daneben</td></tr>
-            <tr><td>Civil 3D</td><td><span class="ui">Zeichnungseinstellungen › Einheiten und Zone</span></td><td>Das zugewiesene Koordinatensystem</td></tr>
+            <tr><td>Civil 3D</td><td><span class="ui">Zeichnungseinstellungen › Einheiten und Zone</span></td><td>Das zugewiesene Bezugssystem (Autodesk nennt es „Koordinatensystem“)</td></tr>
             <tr><td>Bonsai</td><td>Georeferenzierungs-Panel</td><td>Umrechnung eines Punkts von lokal nach global</td></tr>
             <tr class="is-key"><td>BIMcollab Zoom</td><td>Option <span class="ui">Use georeferencing</span></td><td>Dass die IFC-Dateien über ihre Umrechnung platziert werden</td></tr>
           </tbody>
@@ -3059,9 +3059,9 @@ print("OK" if error &lt; 0.01 else f"Abweichung von {error:.3f} m")</code></pre>
   <template id="l2-glosario">
 <div class="b-cards"><div class="card w6">
 <dl class="glossary">
-      <dt>CRS</dt><dd>Koordinatenreferenzsystem: Datum, Abbildung und Einheiten.</dd>
+      <dt>CRS</dt><dd>Koordinatenreferenzsystem: Datum + Koordinatensystem (Achsen und Einheiten); bei projizierten auch die Abbildung.</dd>
       <dt>Datum</dt><dd>Erdmodell, auf das sich die Koordinaten beziehen. In <span data-pais="nombre">España</span>, <span data-pais="datum">ETRS89</span>.</dd>
-      <dt>EPSG</dt><dd>Register mit einem numerischen Code für jedes Bezugssystem.</dd>
+      <dt>EPSG</dt><dd>Register mit einem numerischen Code für jedes Bezugssystem, jedes Datum und jede Transformation.</dd>
       <dt>UTM</dt><dd>Universale Transversale Mercator-Abbildung in Zonen von 6°.</dd>
       <dt>Orthometrische Höhe</dt><dd>Höhe über dem mittleren Meeresspiegel. Die Höhe in den Plänen.</dd>
       <dt>Ellipsoidische Höhe</dt><dd>Höhe über dem Ellipsoid. Die Höhe, die GNSS liefert.</dd>
