@@ -179,28 +179,45 @@
           <span class="slide-n"></span>
           <span class="kicker-y">Datum</span>
           <h2 class="display">El datum fija la forma a la Tierra<span class="dot">.</span></h2>
-          <p class="slide-lead">Un datum ancla un elipsoide: su centro, sus ejes y una fecha. Hay uno para la posición y otro para la altura.</p>
+          <p class="slide-lead">El datum horizontal ancla el elipsoide a la Tierra con un centro, unos ejes y una fecha, y fija la posición. La altura se fija aparte: el datum vertical parte del nivel del mar en un mareógrafo.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="tierra"><span class="plus">+</span> Ver detalle</button></div>
         </div>
         <div class="b-cards">
           <div class="card w6 g">
-            <span class="c-label">Fijar la forma a la Tierra</span>
-            <svg class="draw" viewBox="0 0 640 252" role="img" aria-label="Dos maneras de anclar un elipsoide a la Tierra. Antes: el elipsoide se apoyaba en un punto fundamental de un país y su centro no coincidía con el de la Tierra. Hoy: el elipsoide se centra en el centro de masas de la Tierra, con sus ejes orientados y una fecha de referencia">
-              <g font-family="JetBrains Mono, monospace" font-size="12">
-                <text x="10" y="18" font-weight="700">ANTES · datum local</text>
-                <g transform="translate(0 22)"><path d="M40 120 C 48 76, 84 46, 120 40 C 146 34, 164 46, 184 40 C 216 34, 244 66, 252 94 C 260 120, 248 138, 252 156 C 242 184, 212 202, 176 200 C 148 204, 128 194, 106 198 C 72 194, 46 162, 40 120 Z" fill="none" stroke="#000" stroke-width="3"/>
-                <ellipse cx="166" cy="124" rx="102" ry="84" fill="none" stroke="#000" stroke-width="1.5" stroke-dasharray="6 5"/>
-                <circle cx="166" cy="124" r="3" fill="#000"/><circle cx="148" cy="120" r="3" fill="#fff" stroke="#000" stroke-width="1.5"/>
-                <path d="M110 44 V24" stroke="#000" stroke-width="2.5" stroke-linecap="round"/><circle cx="110" cy="44" r="5" fill="#000"/>
-                <text x="120" y="22">punto fundamental</text>
-                </g><text x="40" y="248" fill="#666">encaja bien solo cerca de ese punto</text>
-                <text x="380" y="18" font-weight="700">HOY · datum geocéntrico</text>
-                <g transform="translate(0 22)"><path d="M380 120 C 388 76, 424 46, 460 40 C 486 34, 504 46, 524 40 C 556 34, 584 66, 592 94 C 600 120, 588 138, 592 156 C 582 184, 552 202, 516 200 C 488 204, 468 194, 446 198 C 412 194, 386 162, 380 120 Z" fill="none" stroke="#000" stroke-width="3"/>
-                <ellipse cx="488" cy="120" rx="104" ry="84" fill="none" stroke="#000" stroke-width="1.5"/>
-                <path d="M488 120 V44" stroke="#000" stroke-width="2"/><polygon points="488,38 483,48 493,48" fill="#000"/><text x="472" y="58" text-anchor="end">eje de giro</text>
-                <path d="M488 120 H560" stroke="#000" stroke-width="1.5" stroke-dasharray="4 4"/><text x="528" y="112" text-anchor="middle">Greenwich</text>
-                <circle cx="488" cy="120" r="8" fill="#FFFF00" stroke="#000" stroke-width="2.5"/><text x="488" y="146" text-anchor="middle">centro de masas</text>
-                </g><text x="380" y="248" fill="#666">centro + ejes + fecha (época)</text>
+            <span class="c-label">Dos datums: uno para la posición, otro para la altura</span>
+            <svg class="draw" viewBox="0 0 640 250" role="img" aria-label="Dos datums. A la izquierda, el datum horizontal: un elipsoide en perspectiva, centrado en el centro de masas de la Tierra, con el eje de giro y el meridiano de Greenwich como referencias; sobre él, un punto P con su latitud y longitud. A la derecha, el datum vertical: un mareógrafo fija el cero en el nivel medio del mar y desde ese cero se mide la altura H de un punto en tierra.">
+              <g font-family="JetBrains Mono, monospace" font-size="12" font-weight="700"><text x="10" y="16">DATUM HORIZONTAL · el elipsoide</text><text x="350" y="16">DATUM VERTICAL · el nivel del mar</text></g>
+              <path d="M150 26 V232" stroke="#000" stroke-width="2"/><polygon points="150,20 145,30 155,30" fill="#000"/>
+              <ellipse cx="150" cy="128" rx="112" ry="90" fill="#fff" fill-opacity=".85" stroke="#000" stroke-width="3"/>
+              <path d="M38 128 A112 22 0 0 1 262 128" fill="none" stroke="#999" stroke-width="1.5" stroke-dasharray="4 4"/>
+              <path d="M38 128 A112 22 0 0 0 262 128" fill="none" stroke="#000" stroke-width="1.8"/>
+              <path d="M54 82 A96 16 0 0 0 246 82" fill="none" stroke="#B9B9B0" stroke-width="1.2"/>
+              <path d="M54 174 A96 16 0 0 0 246 174" fill="none" stroke="#B9B9B0" stroke-width="1.2"/>
+              <path d="M150 38 A40 90 0 0 0 150 218" fill="none" stroke="#B9B9B0" stroke-width="1.2"/>
+              <path d="M150 38 A84 90 0 0 1 150 218" fill="none" stroke="#B9B9B0" stroke-width="1.2"/>
+              <path d="M150 38 A40 90 0 0 1 150 218" fill="none" stroke="#000" stroke-width="2.5"/>
+              <circle cx="150" cy="128" r="6" fill="#FFFF00" stroke="#000" stroke-width="2.5"/>
+              <circle cx="222" cy="86" r="6" fill="#000"/>
+              <g font-family="JetBrains Mono, monospace" font-size="11">
+                <text x="158" y="30">eje de giro</text>
+                <text x="180" y="54">Greenwich</text>
+                <text x="142" y="148" text-anchor="end" fill="#666">centro</text><text x="142" y="160" text-anchor="end" fill="#666">de masas</text>
+                <text x="230" y="80" font-weight="700">P (φ, λ)</text>
+                <text x="10" y="246" fill="#666">centro + ejes + época → fija la posición</text>
+              </g>
+              <path d="M330 30 V240" stroke="#000" stroke-width="1" stroke-dasharray="2 5"/>
+              <path d="M350 196 q 10 -6 20 0 t 20 0 t 20 0" fill="none" stroke="#000" stroke-width="2"/>
+              <path d="M350 206 h60" stroke="#999" stroke-width="1.5" stroke-dasharray="4 5"/>
+              <rect x="410" y="150" width="20" height="56" fill="#fff" stroke="#000" stroke-width="3"/><path d="M420 150 V138" stroke="#000" stroke-width="3"/>
+              <path d="M430 196 H630" stroke="#000" stroke-width="2" stroke-dasharray="7 5"/>
+              <path d="M430 220 C470 214 500 190 540 150 S600 108 630 104" fill="none" stroke="#000" stroke-width="3"/>
+              <circle cx="566" cy="128" r="7" fill="#FFFF00" stroke="#000" stroke-width="2.5"/>
+              <path d="M566 194 V140" stroke="#000" stroke-width="2.5"/><polygon points="566,136 561,146 571,146" fill="#000"/>
+              <g font-family="JetBrains Mono, monospace" font-size="11">
+                <text x="420" y="132" text-anchor="middle">mareógrafo</text>
+                <text x="438" y="190" font-weight="700">cero</text><text x="350" y="224" fill="#666">nivel medio del mar</text>
+                <text x="576" y="168" font-size="14" font-weight="700">H</text>
+                <text x="350" y="246" fill="#666">un cero en la costa → fija la altura</text>
               </g>
             </svg>
           </div>
