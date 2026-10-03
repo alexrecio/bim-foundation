@@ -26,12 +26,12 @@
    "Koordinatenreferenzsysteme",
    "Koordinatenreferenzsystems",
    "Referenzsystem",
-   "Koordinatensystem",
-   "Koordinatensysteme",
-   "Koordinatensystems",
    "KRS",
    "CRS",
-   "KBS"
+   "KBS",
+   "Bezugssystem",
+   "Bezugssysteme",
+   "Bezugssystems"
   ],
   "h": "738127c136"
  },
@@ -288,7 +288,7 @@
  },
  "C17": {
   "t": "Modellföderation und Ausrichtung",
-  "d": "Modelle verschiedener Fachdisziplinen und Programme in einem gemeinsamen Viewer zusammenführen, um sie zu koordinieren (Kollisionsprüfung, Prüfung). Das funktioniert nur, wenn alle dasselbe Koordinatensystem verwenden.",
+  "d": "Modelle verschiedener Fachdisziplinen und Programme in einem gemeinsamen Viewer zusammenführen, um sie zu koordinieren (Kollisionsprüfung, Prüfung). Das funktioniert nur, wenn alle dasselbe Koordinatensystem (Achsen und Ursprung) und, falls georeferenziert, dasselbe Bezugssystem und dieselbe Transformation verwenden.",
   "ej": "Architektur- (Archicad), Tragwerks- (Tekla) und TGA-Modelle (Revit), föderiert in Navisworks oder BIMcollab.",
   "eq": "Navisworks: Units and Transform; ACC: Transform; BIMcollab Zoom: IFC Global Origin / Use georeferencing; Solibri; Trimble Connect; Dalux.",
   "err": "Die Transform-Funktion des Viewers als Dauerlösung nutzen, statt den Ursprung im Quellmodell zu korrigieren.",
@@ -303,7 +303,7 @@
    "Koordinationsmodells",
    "Ausrichtung"
   ],
-  "h": "0a023a0408"
+  "h": "fb13fd0aa6"
  },
  "C18": {
   "t": "IfcSite (Breite, Länge, Höhe)",
@@ -3221,5 +3221,18 @@
    "Versionsnummer der Plattform"
   ],
   "h": "8111cf8b00"
+ },
+ "C36": {
+  "t": "Koordinatensystem",
+  "d": "Festlegung der Achsen, mit denen Koordinaten geschrieben werden: wie viele es sind, ihre Reihenfolge, ihre Richtung und ihre Einheiten (zum Beispiel Ost und Nord in Metern oder Breite und Länge in Grad). Für sich allein ist es nicht an der Erde verankert: Zusammen mit einem Datum bildet es ein Koordinatenreferenzsystem (ISO 19111).",
+  "ej": "In ETRS89 / UTM 30N (EPSG:25830) ist das Koordinatensystem kartesisch mit den Achsen Ost und Nord in Metern; EPSG:3042 verwendet dasselbe Datum und dieselbe Abbildung, aber mit der Reihenfolge Nord-Ost.",
+  "eq": "Revit: „gemeinsam genutzte Koordinaten“ und Vermessungspunkt (Achsen und Ursprung, ohne Datum); Civil 3D nennt ein vollständiges CRS „coordinate system“; CAD: WKS/BKS; IFC: die lokalen Achsen des Modells und die Abbildung von IfcProjectedCRS.",
+  "err": "Etwas „Koordinatensystem“ nennen, das in Wirklichkeit ein Bezugssystem (mit Datum) ist, oder Daten mit demselben Datum, aber vertauschter Achsenreihenfolge austauschen.",
+  "al": [
+   "Koordinatensystem",
+   "Koordinatensysteme",
+   "Koordinatensystems"
+  ],
+  "h": "f2146404cb"
  }
 }
