@@ -1863,7 +1863,6 @@
         <ul>
           <li>Un cilindro transversal toca el elipsoide a lo largo de un meridiano.</li>
           <li>Cada huso mide 6° de longitud; hay 60.</li>
-          <li>El meridiano central vale 500 000 m de Este, para no tener valores negativos.</li>
           <li>En el hemisferio norte el Norte se cuenta desde el ecuador.</li>
           <li>La escala en el meridiano central es 0,9996: así el error se reparte a lo ancho del huso.</li>
         </ul>
@@ -1872,20 +1871,9 @@
         <h4>Por qué importa al modelar</h4>
         <p>Las coordenadas que se escriben en el modelo y en el IFC suelen ser proyectadas. Dentro del huso, la deformación es pequeña pero no nula, y crece al salir de él: una obra entre dos husos elige uno y lo escribe.</p>
       </div>
-      <div class="card w6 y">
-        <h4>Por qué una abstracción</h4>
-        <div class="table-wrap"><table>
-          <thead><tr><th></th><th>Sobre el elipsoide</th><th>En el plano proyectado</th></tr></thead>
-          <tbody>
-            <tr><td>Distancia</td><td>Línea geodésica, con fórmulas elipsoidales</td><td>Pitágoras entre dos pares (E, N)</td></tr>
-            <tr><td>Recta</td><td>No hay rectas: su equivalente es la línea geodésica</td><td>Una recta de dibujo</td></tr>
-            <tr class="is-key"><td>Dónde se diseña</td><td>En casi ningún programa de diseño (los de topografía y SIG sí calculan sobre el elipsoide)</td><td>En todos: el espacio de trabajo es euclídeo</td></tr>
-          </tbody>
-        </table></div>
-        <p class="table-note">El precio es el factor de escala: un metro del plano no es exactamente un metro del terreno (ver <a href="#escala">escala</a>). <span class="tag">Inferido</span></p>
-      </div>
       <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2007-15822" target="_blank" rel="noopener">Real Decreto 1071/2007, art. 5</a> · <a href="https://epsg.io/16030" target="_blank" rel="noopener">EPSG:16030 (UTM 30N)</a>.</p></div>
     </div>
+  
   </template>
   <template id="l2-plano">
     <div class="b-cards">
@@ -1898,27 +1886,22 @@
             <tr><td>Meridiano central de la zona</td><td class="num">3° O</td><td class="num">153° E</td><td class="num">75° O</td></tr>
             <tr><td>Falso este</td><td class="num">500 000 m</td><td class="num">500 000 m</td><td class="num">500 000 m</td></tr>
             <tr class="is-key"><td>Falso norte</td><td class="num">0 m (hemisferio norte)</td><td class="num">10 000 000 m</td><td class="num">10 000 000 m</td></tr>
-            <tr><td>Altura (sistema aparte)</td><td>Alicante · EPSG 5782</td><td>AHD · EPSG 5711</td><td>La Punta (Callao) · IGN Perú</td></tr>
           </tbody>
         </table></div>
         <p class="table-note">Al oeste del meridiano central el Este es menor de 500 000 (Lima, Sídney y Madrid lo están). En el hemisferio sur el Norte se cuenta hacia abajo desde 10 000 km para que nunca sea negativo.</p>
       </div>
-      <div class="card w3 g">
+      <div class="card w3">
         <h4>La definición de IFC</h4>
         <div class="quote" style="margin:0"><p>«A coordinate reference system is a coordinate system which is related to the real world by a datum».</p><cite>buildingSMART · <a href="https://standards.buildingsmart.org/IFC/RELEASE/IFC4_3/HTML/lexical/IfcCoordinateReferenceSystem.htm" target="_blank" rel="noopener">IfcCoordinateReferenceSystem</a></cite></div>
       </div>
-      <div class="card w3">
-        <h4>Qué es un código EPSG</h4>
-        <p>Un número de un registro público que identifica sin ambigüedad datum, tipo de coordenadas y proyección. Escribirlo evita describir el sistema con palabras.</p>
-        <h4 style="margin-top:12px">En tu sistema</h4>
-        <p>En <span data-pais="nombre">España</span>, <span data-pais="epsg-nombre">UTM 30</span> para la planta y <span data-pais="alt">Alicante</span> para la cota.</p>
-      </div>
-      <div class="card w6 k">
+      <div class="card w3 k">
         <h4>¿Y las coordenadas locales?</h4>
         <p>En obra y en el modelo se trabaja a menudo con un origen propio y números pequeños (x, y, z). No tienen código: hay que documentar cómo se pasa de ellas al sistema oficial (ver <a href="#origenes">tres orígenes</a>).</p>
       </div>
-      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://epsg.io/25830" target="_blank" rel="noopener">EPSG:25830</a> · <a href="https://epsg.io/7856" target="_blank" rel="noopener">EPSG:7856</a> · <a href="https://epsg.io/31978" target="_blank" rel="noopener">EPSG:31978</a> · <a href="https://epsg.io/5782" target="_blank" rel="noopener">EPSG:5782</a> · <a href="https://epsg.io/5711" target="_blank" rel="noopener">EPSG:5711</a> · <a href="https://standards.buildingsmart.org/IFC/RELEASE/IFC4_3/HTML/lexical/IfcCoordinateReferenceSystem.htm" target="_blank" rel="noopener">IFC4.3</a>. Coordenadas calculadas con PROJ.</p></div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://epsg.io/25830" target="_blank" rel="noopener">EPSG:25830</a> · <a href="https://epsg.io/7856" target="_blank" rel="noopener">EPSG:7856</a> · <a href="https://epsg.io/31978" target="_blank" rel="noopener">EPSG:31978</a> · <a href="https://standards.buildingsmart.org/IFC/RELEASE/IFC4_3/HTML/lexical/IfcCoordinateReferenceSystem.htm" target="_blank" rel="noopener">IFC4.3</a>. Coordenadas calculadas con PROJ.</p></div>
     </div>
+  
+  
   </template>
 
   <template id="l2-topografia">
@@ -2088,7 +2071,7 @@
 
   <template id="l2-limites">
 <div class="b-cards">
-<div class="card w6">
+<div class="card w3">
 <span class="c-label">Radio, no diámetro</span>
 <svg class="draw" viewBox="0 0 600 250" role="img" aria-label="Círculo de 16 km de radio y 32 km de diámetro, el límite de 20 millas; dentro, un círculo menor de unos 5 km donde Bonsai empieza a avisar">
 <circle cx="200" cy="110" r="96" fill="none" stroke="#000" stroke-width="3"/>
@@ -2101,22 +2084,24 @@
 </svg>
 </div>
 <div class="card w3">
-<h4>Los límites de cada fabricante</h4>
+<h4>Qué cuenta en Revit</h4>
 <ul>
-          <li><strong>Revit:</strong> toda la geometría, propia o vinculada, debe quedar dentro de ese radio. Autodesk pide 16 km (10 millas) de radio; el plano de modelado mide 32 km (20 millas) de diámetro. El aviso de 20 millas al importar CAD sí las cuenta desde el origen del archivo.</li>
-          <li><strong>Bonsai</strong> (antes BlenderBIM) avisa de errores milimétricos a partir de unos 5 km del origen.</li>
+          <li>Toda la geometría, propia o vinculada, debe quedar dentro del radio.</li>
+          <li>El aviso de 20 millas al importar CAD se cuenta desde el origen del archivo importado.</li>
         </ul>
 </div>
-      <div class="card w3 g">
+      <div class="card w3 k">
         <h4>Dónde está el cuello de botella</h4>
         <p>Revit almacena la geometría en doble precisión (la API trabaja con <code>double</code>, en pies). Las tarjetas gráficas, en cambio, dibujan normalmente en precisión simple: el modelo puede estar bien guardado y aun así verse mal.</p>
       </div>
-      <div class="card w6 y">
+      <div class="card w3 y">
         <span class="c-label">Lectura nuestra <span class="tag">Inferido</span></span>
         <p>A 16 km la precisión simple ronda el milímetro: 0,98 mm en metros y 1,2 mm en los pies internos de Revit. Encaja con el radio que Autodesk fija para Revit, aunque Autodesk no publica el cálculo.</p>
       </div>
 <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://help.autodesk.com/cloudhelp/2026/ENU/Revit-Model/files/GUID-3F79BF5A-F051-49F3-951E-D3E86F51BECC.htm" target="_blank" rel="noopener">ayuda de Revit</a> · <a href="https://docs-unstable.bonsaibim.org/guides/authoring/advanced_modeling/georeferencing.html" target="_blank" rel="noopener">documentación de Bonsai</a> · <a href="https://www.revitapidocs.com/2024/c2fd995c-95c0-58fb-f5de-f3246cbc5600.htm" target="_blank" rel="noopener">Revit API, clase XYZ</a>.</p></div>
 </div>
+  
+  
   </template>
 
   <template id="l2-plataformas">
@@ -2247,17 +2232,16 @@
           <tbody>
             <tr><td>Distancia al meridiano central</td><td class="num">≈ 60 km</td><td class="num">≈ 165 km</td><td class="num">≈ 221 km</td></tr>
             <tr><td>Factor de cuadrícula (k)</td><td class="num">0,999 644</td><td class="num">0,999 936</td><td class="num">1,000 204</td></tr>
-            <tr><td>Altitud aproximada</td><td class="num">650 m</td><td class="num">0 m</td><td class="num">150 m</td></tr>
-            <tr><td>Factor de elevación</td><td class="num">0,999 898</td><td class="num">1,000 000</td><td class="num">0,999 976</td></tr>
+            <tr><td>Factor de elevación (altitud)</td><td class="num">0,999 898 (650 m)</td><td class="num">1,000 000 (0 m)</td><td class="num">0,999 976 (150 m)</td></tr>
             <tr class="is-key"><td>Factor combinado</td><td class="num">0,999 542 (−458 ppm)</td><td class="num">0,999 936 (−64 ppm)</td><td class="num">1,000 181 (+181 ppm)</td></tr>
           </tbody>
         </table></div>
-        <p class="table-note">Puerta del Sol (EPSG 25830), Ópera de Sídney (EPSG 7856) y Plaza Mayor de Lima (EPSG 31978). Cálculo propio con PROJ y un radio medio de 6 371 km; en rigor el factor de elevación usa la altura elipsoidal h = H + N, que en Madrid da −4,7 cm cada 100 m. <span class="tag">Inferido</span></p>
+        <p class="table-note">Puerta del Sol (EPSG 25830), Ópera (7856) y Plaza Mayor de Lima (31978). Cálculo propio con PROJ y radio medio de 6 371 km; con la altura elipsoidal h = H + N, Madrid da −4,7 cm cada 100 m. <span class="tag">Inferido</span></p>
       </div>
 <div class="card w3">
 <h4>El factor de escala</h4>
 <ul>
-          <li>En UTM vale <span class="mono">k0 = 0,9996</span> en el meridiano central del huso y crece hacia los bordes. La normativa española lo llama <strong>coeficiente de anamorfosis (K)</strong> (<a href="https://cdn.transportes.gob.es/portal-web-transportes/carreteras/normativa_tecnica/05_estudios_proyectos/nota_de_servicio_3-2024_prescripciones_cartografia_estudios_informativos_vi.pdf" target="_blank" rel="noopener">Nota de Servicio 03/2024</a>).</li>
+          <li>La normativa española llama al factor de cuadrícula <strong>coeficiente de anamorfosis (K)</strong> (<a href="https://cdn.transportes.gob.es/portal-web-transportes/carreteras/normativa_tecnica/05_estudios_proyectos/nota_de_servicio_3-2024_prescripciones_cartografia_estudios_informativos_vi.pdf" target="_blank" rel="noopener">Nota de Servicio 03/2024</a>).</li>
           <li>El <strong>factor combinado</strong> multiplica el factor de cuadrícula por el de elevación (<a href="https://pro.arcgis.com/es/pro-app/2.7/help/editing/introduction-to-ground-to-grid.htm" target="_blank" rel="noopener">Esri</a>).</li>
           <li>No todos los programas admiten un factor de escala en la transformación. Si uno lo usa y otro no, el BEP dice quién aplica la corrección.</li>
         </ul>
@@ -2266,11 +2250,8 @@
         <h4>Cuadrícula o terreno</h4>
         <p><strong>Cuadrícula:</strong> el modelo encaja con la cartografía, pero las distancias de replanteo hay que corregirlas. <strong>Terreno:</strong> las distancias coinciden con la cinta, pero el modelo ya no encaja exacto con la cartografía. Lo que no vale es no decidirlo.</p>
       </div>
-<div class="card w3">
-<h4>Local frente a proyectada</h4>
-<p>Las coordenadas locales tienen un origen cómodo y miden «a cinta métrica». Las UTM son números grandes y llevan la deformación de la proyección.</p>
-</div>
     </div>
+  
   </template>
   <template id="l2-alturas">
     <div class="b-cards">
@@ -2614,18 +2595,9 @@
   <template id="l2-ifc">
 <div class="b-cards">
 <div class="card w3">
-<h4>Tres formas de llevar la ubicación</h4>
-<ol class="vsteps">
-          <li><code>IfcSite.RefLatitude/RefLongitude</code> en WGS84: aproximada e informativa.</li>
-          <li>Coordenadas grandes en el placement de <code>IfcSite</code> o en el contexto, con <code>TrueNorth</code>.</li>
-          <li><code>IfcMapConversion</code> + <code>IfcProjectedCRS</code>: la correcta. Si existe, manda sobre <code>TrueNorth</code>.</li>
-        </ol>
-</div>
-<div class="card w3">
 <h4>La transformación</h4>
 <div class="formula">E = s·cos θ·x − s·sin θ·y + Eastings<br>N = s·sin θ·x + s·cos θ·y + Northings<br>H = s·z + OrthogonalHeight<br><span style="color:var(--s500)">θ = atan2(XAxisOrdinate, XAxisAbscissa)</span></div>
-<p><code>Scale</code> es único y convierte unidades: 0,001 si el modelo está en mm y el CRS en m. En IFC4.3, <code>IfcMapConversionScaled</code> añade <code>FactorX/Y/Z</code> para factores pactados.</p>
-<p><code>Scale</code> afecta a los tres ejes: con el modelo en mm, la cota también pasa a metros. Siempre ha sido un factor de unidades, en <a href="https://standards.buildingsmart.org/IFC/RELEASE/IFC4/ADD1/HTML/schema/ifcrepresentationresource/lexical/ifcmapconversion.htm" target="_blank" rel="noopener">IFC4</a> y en <a href="https://standards.buildingsmart.org/IFC/RELEASE/IFC4_3/HTML/lexical/IfcMapConversion.htm" target="_blank" rel="noopener">IFC4.3</a>. La guía de buildingSMART v2.0 lo usaba como factor combinado solo en X e Y; para eso, IFC4.3 añade <a href="https://standards.buildingsmart.org/IFC/RELEASE/IFC4_3/HTML/lexical/IfcMapConversionScaled.htm" target="_blank" rel="noopener">IfcMapConversionScaled</a>.</p>
+<p><code>Scale</code> es un factor de unidades para los tres ejes (0,001 con el modelo en mm y el CRS en m), en <a href="https://standards.buildingsmart.org/IFC/RELEASE/IFC4/ADD1/HTML/schema/ifcrepresentationresource/lexical/ifcmapconversion.htm" target="_blank" rel="noopener">IFC4</a> y en <a href="https://standards.buildingsmart.org/IFC/RELEASE/IFC4_3/HTML/lexical/IfcMapConversion.htm" target="_blank" rel="noopener">IFC4.3</a>. Para un factor de escala pactado, IFC4.3 añade <a href="https://standards.buildingsmart.org/IFC/RELEASE/IFC4_3/HTML/lexical/IfcMapConversionScaled.htm" target="_blank" rel="noopener">IfcMapConversionScaled</a>. Si hay <code>IfcMapConversion</code>, manda sobre <code>TrueNorth</code>.</p>
 </div>
 <div class="card w6">
 <h4>Ejemplo para España (IFC4)</h4>
@@ -2638,6 +2610,7 @@
 <p>IFC2x3 lo emula con <code>ePSet_MapConversion</code>, que pocos visores leen. La guía es.BIM pide al menos dos puntos documentados; la <a href="https://www.buildingsmart.org/wp-content/uploads/2020/02/User-Guide-for-Geo-referencing-in-IFC-v2.0.pdf" target="_blank" rel="noopener">guía de buildingSMART v2.0</a> es la referencia pública (la v3.0 se descarga gratis previo registro). Los BIM Fit Check alemanes de 2025 exigían LoGeoRef 50.</p>
 </div>
 </div>
+  
   </template>
 
   <template id="l2-otros">
