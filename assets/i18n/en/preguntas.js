@@ -7,6 +7,12 @@ window.BF_PREGUNTAS = [
   "I"
  ],
  [
+  "Why use an ellipsoid and not the real shape of the Earth?",
+  "coordenadas-compartidas",
+  "forma",
+  "I"
+ ],
+ [
   "Why do models arrive out of place when federated?",
   "coordenadas-compartidas",
   "principio",

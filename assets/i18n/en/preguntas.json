@@ -36,5 +36,6 @@
  "entorno-comun-de-datos#autoria": "Is syncing to the cloud the same as sharing?",
  "entorno-comun-de-datos#espana": "What does the Spanish BIM Plan require of the CDE?",
  "coordenadas-compartidas#porque": "What is a coordinate system for in a BIM project?",
- "coordenadas-compartidas#principio": "Why do models arrive out of place when federated?"
+ "coordenadas-compartidas#principio": "Why do models arrive out of place when federated?",
+ "coordenadas-compartidas#forma": "Why use an ellipsoid and not the real shape of the Earth?"
 }
