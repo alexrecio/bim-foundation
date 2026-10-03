@@ -434,13 +434,15 @@
       mn.appendChild(b);
     }
     // Portada del artículo: «Tu sistema» a la vista y «Empezar» pide el país si aún no se ha elegido
+    // (solo en los artículos que llevan el selector de país en la portada, hoy el 01 de coordenadas)
+    const pidePais = !!document.querySelector('[data-pais-portada]');
     document.querySelectorAll('#portada [data-crs-chip]').forEach((b) => b.addEventListener('click', (e) => { e.stopPropagation(); crsDialog(); }));
-    document.querySelectorAll('#portada .slide-actions a[href^="#"]').forEach((a) => a.addEventListener('click', (e) => {
+    if (pidePais) document.querySelectorAll('#portada .slide-actions a[href^="#"]').forEach((a) => a.addEventListener('click', (e) => {
       if (ls('bf-pais-ok') || ls('bf-pais')) return;
       e.preventDefault(); crsDialog(() => { const t = document.querySelector(a.getAttribute('href')); if (t) t.scrollIntoView({ behavior: 'smooth' }); });
     }));
     crsDraw();
-    if (document.querySelector('main.deck') && !ls('bf-crs-ok') && !/[?&]sin-bienvenida/.test(location.search)) crsDialog();
+    if (pidePais && document.querySelector('main.deck') && !ls('bf-crs-ok') && !/[?&]sin-bienvenida/.test(location.search)) crsDialog();
   }
 
   // Lector de coordenadas: un cursor que se arrastra y se lee en tres sistemas
