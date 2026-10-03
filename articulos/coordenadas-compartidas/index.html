@@ -159,46 +159,90 @@
           <span class="slide-n"></span>
           <span class="kicker-y">B · Cómo medimos la Tierra</span>
           <h2 class="display">El datum, la llave<span class="dot">.</span></h2>
-          <p class="slide-lead">Para medir la Tierra hay que darle una forma y fijarla a ella. Eso es un datum, y hacen falta dos: uno para la posición y otro para la altura.</p>
+          <p class="slide-lead">Un datum es una forma matemática fijada a la Tierra: dónde está su centro, hacia dónde miran sus ejes y en qué fecha. Hacen falta dos, uno para la posición y otro para la altura.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="tierra"><span class="plus">+</span> Ver detalle</button></div>
         </div>
         <div class="b-cards">
-          <div class="card w4 g">
-            <span class="c-label">Tres formas para la misma Tierra</span>
-            <svg class="draw" viewBox="0 0 400 230" role="img" aria-label="Sección de la Tierra: esfera, elipsoide achatado y geoide ondulado">
-              <circle cx="150" cy="115" r="96" fill="none" stroke="#B9B9B0" stroke-width="2" stroke-dasharray="6 6"/>
-              <ellipse cx="150" cy="115" rx="104" ry="86" fill="#fff" stroke="#000" stroke-width="3"/>
-              <path d="M46 115 C 56 70, 92 40, 120 33 C 142 26, 158 36, 176 30 C 210 22, 240 58, 252 84 C 262 108, 250 128, 256 146 C 246 178, 214 200, 178 200 C 150 206, 130 194, 108 200 C 72 196, 52 160, 46 115 Z" fill="none" stroke="#000" stroke-width="6"/><path d="M46 115 C 56 70, 92 40, 120 33 C 142 26, 158 36, 176 30 C 210 22, 240 58, 252 84 C 262 108, 250 128, 256 146 C 246 178, 214 200, 178 200 C 150 206, 130 194, 108 200 C 72 196, 52 160, 46 115 Z" fill="none" stroke="#FFFF00" stroke-width="3"/>
-              <line x1="150" y1="115" x2="254" y2="115" stroke="#000" stroke-width="1.5"/><circle cx="150" cy="115" r="4" fill="#000"/>
-              <text x="186" y="109" font-family="JetBrains Mono, monospace" font-size="11">a</text>
-              <g font-family="JetBrains Mono, monospace" font-size="11">
-                <line x1="270" y1="40" x2="292" y2="40" stroke="#B9B9B0" stroke-width="2" stroke-dasharray="4 4"/><text x="300" y="44" fill="#666">esfera</text>
-                <line x1="270" y1="70" x2="292" y2="70" stroke="#000" stroke-width="3"/><text x="300" y="74">elipsoide</text>
-                <line x1="270" y1="100" x2="292" y2="100" stroke="#000" stroke-width="6"/><line x1="270" y1="100" x2="292" y2="100" stroke="#FFFF00" stroke-width="3"/><text x="300" y="104">geoide</text>
-                <text x="270" y="200" fill="#666">exagerado</text>
+          <div class="card w6 g">
+            <span class="c-label">Fijar la forma a la Tierra</span>
+            <svg class="draw" viewBox="0 0 640 252" role="img" aria-label="Dos maneras de anclar un elipsoide a la Tierra. Antes: el elipsoide se apoyaba en un punto fundamental de un país y su centro no coincidía con el de la Tierra. Hoy: el elipsoide se centra en el centro de masas de la Tierra, con sus ejes orientados y una fecha de referencia">
+              <g font-family="JetBrains Mono, monospace" font-size="12">
+                <text x="10" y="18" font-weight="700">ANTES · datum local</text>
+                <g transform="translate(0 22)"><path d="M40 120 C 48 76, 84 46, 120 40 C 146 34, 164 46, 184 40 C 216 34, 244 66, 252 94 C 260 120, 248 138, 252 156 C 242 184, 212 202, 176 200 C 148 204, 128 194, 106 198 C 72 194, 46 162, 40 120 Z" fill="none" stroke="#000" stroke-width="3"/>
+                <ellipse cx="166" cy="124" rx="102" ry="84" fill="none" stroke="#000" stroke-width="1.5" stroke-dasharray="6 5"/>
+                <circle cx="166" cy="124" r="3" fill="#000"/><circle cx="148" cy="120" r="3" fill="#fff" stroke="#000" stroke-width="1.5"/>
+                <path d="M110 44 V24" stroke="#000" stroke-width="2.5" stroke-linecap="round"/><circle cx="110" cy="44" r="5" fill="#000"/>
+                <text x="120" y="22">punto fundamental</text>
+                </g><text x="40" y="248" fill="#666">encaja bien solo cerca de ese punto</text>
+                <text x="380" y="18" font-weight="700">HOY · datum geocéntrico</text>
+                <g transform="translate(0 22)"><path d="M380 120 C 388 76, 424 46, 460 40 C 486 34, 504 46, 524 40 C 556 34, 584 66, 592 94 C 600 120, 588 138, 592 156 C 582 184, 552 202, 516 200 C 488 204, 468 194, 446 198 C 412 194, 386 162, 380 120 Z" fill="none" stroke="#000" stroke-width="3"/>
+                <ellipse cx="488" cy="120" rx="104" ry="84" fill="none" stroke="#000" stroke-width="1.5"/>
+                <path d="M488 120 V44" stroke="#000" stroke-width="2"/><polygon points="488,38 483,48 493,48" fill="#000"/><text x="472" y="58" text-anchor="end">eje de giro</text>
+                <path d="M488 120 H560" stroke="#000" stroke-width="1.5" stroke-dasharray="4 4"/><text x="528" y="112" text-anchor="middle">Greenwich</text>
+                <circle cx="488" cy="120" r="8" fill="#FFFF00" stroke="#000" stroke-width="2.5"/><text x="488" y="146" text-anchor="middle">centro de masas</text>
+                </g><text x="380" y="248" fill="#666">centro + ejes + fecha (época)</text>
               </g>
             </svg>
           </div>
-          <div class="card w2 y">
-            <span class="c-label">Posición</span>
-            <span class="c-title">Datum geodésico</span>
-            <span class="c-foot">elipsoide anclado · <span data-pais="datum">ETRS89</span></span>
-          </div>
-          <div class="card w3 k">
-            <span class="c-label">Altura</span>
-            <span class="c-title">Datum vertical</span>
-            <span class="c-foot">nivel medio del mar · <span data-pais="alt">Alicante</span></span>
-          </div>
-          <div class="card w3">
-            <span class="c-label">Cambiar de datum</span>
-            <span class="c-title">Cientos de metros</span>
-            <span class="c-foot">lo que puede moverse un mismo punto</span>
-          </div>
+          <div class="card w2"><span class="c-label">Europa · España</span><span class="c-title">ETRS89</span><span class="c-foot">altura: Alicante</span></div>
+          <div class="card w2"><span class="c-label">Oceanía · Australia</span><span class="c-title">GDA2020</span><span class="c-foot">altura: AHD</span></div>
+          <div class="card w2 k"><span class="c-label">América · Perú</span><span class="c-title">SIRGAS 2000</span><span class="c-foot">altura: red nacional</span></div>
         </div>
       </div>
     </section>
 
     <!-- ========== TIPOS DE COORDENADAS ========== -->
+    <section class="slide" id="redes" data-nav="Redes geodésicas">
+      <div class="bento">
+        <div class="b-title">
+          <span class="slide-n"></span>
+          <span class="kicker-y">Redes geodésicas</span>
+          <h2 class="display">La red clava el datum al suelo<span class="dot">.</span></h2>
+          <p class="slide-lead">Un datum es solo una definición hasta que se marca en el terreno. Estaciones GNSS y vértices fijan la posición; un mareógrafo y una cadena de clavos, la altura.</p>
+          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="redes"><span class="plus">+</span> Ver detalle</button></div>
+        </div>
+        <div class="b-cards">
+          <div class="card w6 g">
+            <span class="c-label">Dos anclajes, dos redes</span>
+            <svg class="draw" viewBox="0 0 640 230" role="img" aria-label="Arriba, el anclaje de la posición: los satélites enlazan las estaciones GNSS permanentes con el centro de la Tierra, la estación envía correcciones al receptor de obra y los vértices dan puntos fijos. Abajo, el anclaje de la altura: el mareógrafo fija el cero en el mar y una cadena de clavos de nivelación lleva esa altura tierra adentro hasta la obra">
+              <g font-family="JetBrains Mono, monospace" font-size="11">
+                <text x="0" y="14" font-weight="700">POSICIÓN · datum horizontal</text>
+                <text x="0" y="132" font-weight="700">ALTURA · datum vertical</text>
+              </g>
+              <g stroke="#000" stroke-width="2" fill="#fff">
+                <g transform="translate(200 24)"><rect x="-8" y="-6" width="16" height="12"/><path d="M-8 0h-16M8 0h16" stroke-width="3"/></g>
+                <g transform="translate(420 24)"><rect x="-8" y="-6" width="16" height="12"/><path d="M-8 0h-16M8 0h16" stroke-width="3"/></g>
+              </g>
+              <g stroke="#999" stroke-width="1.5" stroke-dasharray="4 5" fill="none"><path d="M200 34 L120 62"/><path d="M200 34 L300 58"/><path d="M420 34 L300 58"/><path d="M420 34 L520 78"/></g>
+              <path d="M40 100 Q 120 40 200 100" fill="#fff" stroke="#000" stroke-width="3"/>
+              <rect x="113" y="62" width="14" height="22" fill="#fff" stroke="#000" stroke-width="3"/><path d="M109 62h22" stroke="#000" stroke-width="3"/>
+              <rect x="262" y="72" width="76" height="28" fill="#fff" stroke="#000" stroke-width="3"/><path d="M300 72 V62" stroke="#000" stroke-width="3"/>
+              <circle cx="300" cy="58" r="8" fill="#FFFF00" stroke="#000" stroke-width="3"/>
+              <path d="M338 80 Q 430 66 510 82" stroke="#000" stroke-width="1.5" stroke-dasharray="2 5" fill="none"/>
+              <path d="M520 86 V100" stroke="#000" stroke-width="3"/><rect x="510" y="78" width="20" height="9" rx="3" fill="#fff" stroke="#000" stroke-width="2.5"/>
+              <path d="M30 100h610" stroke="#000" stroke-width="3"/>
+              <g font-family="JetBrains Mono, monospace" font-size="11" text-anchor="middle">
+                <text x="120" y="116">vértice</text><text x="300" y="116">estación permanente</text><text x="520" y="116">receptor en obra</text>
+                <text x="424" y="64" fill="#666">correcciones</text>
+              </g>
+              <path d="M0 196 q 10 -6 20 0 t 20 0 t 20 0 t 20 0" fill="none" stroke="#000" stroke-width="2"/>
+              <path d="M0 210h80" stroke="#999" stroke-width="1.5" stroke-dasharray="4 5"/>
+              <rect x="82" y="160" width="22" height="50" fill="#fff" stroke="#000" stroke-width="3"/><path d="M93 160 V150" stroke="#000" stroke-width="3"/>
+              <path d="M104 210 L640 210" stroke="#000" stroke-width="3"/>
+              <path d="M104 180 L 520 180" stroke="#000" stroke-width="1.5" stroke-dasharray="2 5"/>
+              <g fill="#fff" stroke="#000" stroke-width="2.5"><circle cx="210" cy="180" r="6"/><circle cx="320" cy="180" r="6"/><circle cx="430" cy="180" r="6"/></g>
+              <path d="M520 168 V210" stroke="#000" stroke-width="3"/><path d="M510 168h20" stroke="#000" stroke-width="3"/>
+              <g font-family="JetBrains Mono, monospace" font-size="11" text-anchor="middle">
+                <text x="112" y="164" text-anchor="start">mareógrafo · cero</text><text x="320" y="200">clavos de nivelación</text><text x="574" y="174">cota en obra</text>
+              </g>
+            </svg>
+          </div>
+          <div class="card w2"><span class="c-label">Europa · España</span><span class="c-title">ERGNSS · REGENTE</span><span class="c-foot">altura: REDNAP</span></div>
+          <div class="card w2"><span class="c-label">Oceanía · Australia</span><span class="c-title">ARGN · AUSCORS</span><span class="c-foot">altura: nivelación del AHD</span></div>
+          <div class="card w2 k"><span class="c-label">América · Perú</span><span class="c-title" style="color:var(--accent)">REGPMOC</span><span class="c-foot">altura: red nacional</span></div>
+        </div>
+      </div>
+    </section>
     <section class="slide" id="coordenadas" data-nav="Tipos de coordenadas">
       <div class="bento">
         <div class="b-title">
@@ -242,45 +286,6 @@
     </section>
 
     <!-- ========== REDES GEODÉSICAS ========== -->
-    <section class="slide" id="redes" data-nav="Redes geodésicas">
-      <div class="bento">
-        <div class="b-title">
-          <span class="slide-n"></span>
-          <span class="kicker-y">Redes geodésicas</span>
-          <h2 class="display">El datum está clavado en el suelo<span class="dot">.</span></h2>
-          <p class="slide-lead">Pilares, antenas GNSS fijas y clavos de nivelación con coordenadas oficiales. Todo levantamiento se apoya en ellos.</p>
-          <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="redes"><span class="plus">+</span> Ver detalle</button></div>
-        </div>
-        <div class="b-cards">
-          <div class="card w6 g">
-            <span class="c-label">Tres redes en el terreno</span>
-            <svg class="draw" viewBox="0 0 640 210" role="img" aria-label="Satélites, un vértice geodésico en una colina, una estación GNSS permanente en un edificio que envía correcciones a un receptor en obra y un clavo de nivelación en un muro">
-              <g stroke="#000" stroke-width="2" fill="#fff">
-                <g transform="translate(150 26)"><rect x="-8" y="-6" width="16" height="12"/><path d="M-8 0h-16M8 0h16" stroke-width="3"/></g>
-                <g transform="translate(470 20)"><rect x="-8" y="-6" width="16" height="12"/><path d="M-8 0h-16M8 0h16" stroke-width="3"/></g>
-              </g>
-              <g stroke="#999" stroke-width="1.5" stroke-dasharray="4 5" fill="none"><path d="M150 36 L104 104"/><path d="M150 36 L300 92"/><path d="M470 30 L300 92"/><path d="M470 30 L438 138"/></g>
-              <path d="M10 180 Q 100 92 190 180" fill="#fff" stroke="#000" stroke-width="3"/>
-              <rect x="96" y="104" width="16" height="34" fill="#fff" stroke="#000" stroke-width="3"/><path d="M92 104h24" stroke="#000" stroke-width="3"/>
-              <rect x="250" y="122" width="100" height="58" fill="#fff" stroke="#000" stroke-width="3"/><path d="M300 122 V96" stroke="#000" stroke-width="3"/>
-              <circle cx="300" cy="92" r="9" fill="#FFFF00" stroke="#000" stroke-width="3"/>
-              <g stroke="#000" stroke-width="2" fill="none"><path d="M318 82 a24 24 0 0 1 0 22"/><path d="M328 74 a36 36 0 0 1 0 38"/></g>
-              <path d="M340 100 Q 390 92 432 132" stroke="#000" stroke-width="1.5" stroke-dasharray="2 5" fill="none"/>
-              <path d="M438 140 V180" stroke="#000" stroke-width="3"/><rect x="428" y="130" width="20" height="10" rx="3" fill="#fff" stroke="#000" stroke-width="2.5"/>
-              <rect x="540" y="96" width="70" height="84" fill="#fff" stroke="#000" stroke-width="3"/><circle cx="575" cy="150" r="7" fill="#fff" stroke="#000" stroke-width="3"/><path d="M575 143v14M568 150h14" stroke="#000" stroke-width="1.5"/>
-              <path d="M0 180h640" stroke="#000" stroke-width="3"/>
-              <g font-family="JetBrains Mono, monospace" font-size="11" text-anchor="middle">
-                <text x="104" y="200">vértice</text><text x="300" y="200">estación permanente</text><text x="438" y="200">receptor</text><text x="575" y="200">clavo de nivelación</text>
-                <text x="392" y="84" fill="#666">correcciones</text>
-              </g>
-            </svg>
-          </div>
-          <div class="card w2 k"><span class="c-label">Red pasiva</span><span class="c-title" style="color:var(--accent)">Vértices</span><span class="c-foot">se visitan y se estaciona en ellos</span></div>
-          <div class="card w2 y"><span class="c-label">Red activa</span><span class="c-title">Estaciones GNSS</span><span class="c-foot">correcciones en tiempo real</span></div>
-          <div class="card w2"><span class="c-label">Nivelación</span><span class="c-title">Clavos</span><span class="c-foot">altitudes oficiales</span></div>
-        </div>
-      </div>
-    </section>
 
     <!-- ========== PROYECCIÓN ========== -->
     <section class="slide" id="proyeccion" data-nav="De la esfera al plano">
@@ -1586,31 +1591,41 @@
   <template id="l2-tierra">
     <div class="b-cards">
       <div class="card w3">
+        <h4>Cómo se fija una forma a la Tierra</h4>
+        <ol class="vsteps">
+          <li><strong>Elegir el elipsoide.</strong> Hoy casi todos usan GRS80: a = 6 378 137 m y 1/f = 298,257 222 101.</li>
+          <li><strong>Colocar su centro.</strong> Antes se apoyaba en un punto fundamental del país; hoy se pone en el centro de masas de la Tierra, que los satélites permiten medir.</li>
+          <li><strong>Orientar sus ejes:</strong> el de giro de la Tierra y el meridiano de Greenwich.</li>
+          <li><strong>Fijar una fecha (época),</strong> porque las placas se mueven.</li>
+          <li><strong>Materializarlo</strong> con una red de vértices en el terreno (<a href="#redes">redes geodésicas</a>).</li>
+        </ol>
+      </div>
+      <div class="card w3">
         <h4>Tres superficies</h4>
         <ul>
           <li><strong>Terreno:</strong> donde se mide y se construye.</li>
           <li><strong>Geoide:</strong> superficie de igual gravedad que coincide con el nivel medio del mar. Es irregular y de él salen las altitudes.</li>
           <li><strong>Elipsoide:</strong> forma matemática sencilla sobre la que se calculan latitudes, longitudes y proyecciones.</li>
         </ul>
-      </div>
-      <div class="card w3 g">
-        <h4>Por qué es la llave</h4>
-        <p>Todo lo que viene después cuelga de él: las coordenadas geográficas, la proyección, las redes que lo materializan en el terreno y el código EPSG que lo nombra. Un ejemplo: entre ED50 y ETRS89, en España, un mismo punto se mueve unos 200 m.</p>
+        <p>El elipsoide solo no es un datum: GRS80 lo comparten datums distintos que dan coordenadas distintas.</p>
       </div>
       <div class="card w6">
         <div class="table-wrap"><table>
-          <thead><tr><th>Elipsoide GRS80</th><th>Valor</th><th>Lo usan</th></tr></thead>
+          <thead><tr><th>Tres continentes</th><th>España</th><th>Australia</th><th>Perú</th></tr></thead>
           <tbody>
-            <tr><td>Semieje mayor (a)</td><td class="num">6 378 137 m</td><td rowspan="2">ETRS89 y REGCAN95. WGS84 usa un elipsoide casi idéntico.</td></tr>
-            <tr><td>Inverso del achatamiento (1/f)</td><td class="num">298,257 222 101</td></tr>
+            <tr class="is-key"><td>Datum actual</td><td>ETRS89 (EPSG 4258)</td><td>GDA2020 (EPSG 7844)</td><td>SIRGAS 2000 (EPSG 4674)</td></tr>
+            <tr><td>Anclado a</td><td>La placa euroasiática, coincidente con el ITRF en 1989</td><td>ITRF2014 en la fecha 2020,0</td><td>ITRF2000 en la fecha 2000,4</td></tr>
+            <tr><td>Datum anterior</td><td>ED50, apoyado en Potsdam</td><td>AGD66 y después GDA94</td><td>PSAD56, apoyado en La Canoa (Venezuela)</td></tr>
+            <tr><td>Salto al cambiar</td><td>≈ 200 m</td><td>≈ 200 m de AGD66 a GDA94; ≈ 1,8 m de GDA94 a GDA2020</td><td>cientos de metros <span class="tag">Por confirmar</span></td></tr>
+            <tr><td>Datum vertical</td><td>Nivel medio del mar en Alicante (EPSG 5782)</td><td>AHD: nivel medio de 30 mareógrafos, 1966–68 (EPSG 5711)</td><td>Red de nivelación nacional; origen en el mareógrafo de La Punta (Callao) <span class="tag">Por confirmar</span></td></tr>
           </tbody>
         </table></div>
       </div>
       <div class="card w6 k">
-        <h4>Un datum que viaja con su placa</h4>
-        <p>ETRS89 está ligado a la placa euroasiática y WGS84 está alineado con el ITRF, sin placa fija. Como la placa se mueve, los dos se separan unos centímetros cada año: para posicionar una obra no son intercambiables.</p>
+        <h4>Por qué importa la fecha</h4>
+        <p>Australia se desplaza unos 7 cm al año hacia el noreste. En 26 años, los puntos de GDA94 se habían separado ≈ 1,8 m de su posición real, y por eso se creó GDA2020. ETRS89 evita el problema moviéndose con la placa euroasiática, pero se separa del ITRF unos 2,5 cm al año.</p>
       </div>
-      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2007-15822" target="_blank" rel="noopener">Real Decreto 1071/2007</a> · <a href="https://epsg.io/7019-ellipsoid" target="_blank" rel="noopener">EPSG:7019 (GRS 1980)</a> · <a href="https://www.euref.eu/" target="_blank" rel="noopener">EUREF</a>.</p></div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2007-15822" target="_blank" rel="noopener">Real Decreto 1071/2007</a> · <a href="https://www.euref.eu/" target="_blank" rel="noopener">EUREF</a> · <a href="https://www.icsm.gov.au/gda2020" target="_blank" rel="noopener">ICSM: GDA2020</a> · <a href="https://www.icsm.gov.au/australian-height-datum" target="_blank" rel="noopener">ICSM: AHD</a> · <a href="https://cdn.www.gob.pe/uploads/document/file/7557116/6419766-6385362-norma-tecnica-geodesica-2024.pdf" target="_blank" rel="noopener">IGN Perú: norma técnica geodésica 2024</a> · <a href="https://epsg.io/7019-ellipsoid" target="_blank" rel="noopener">EPSG:7019 (GRS 1980)</a>.</p></div>
     </div>
   </template>
 
@@ -1646,11 +1661,22 @@
       <div class="card w6">
         <h4>Tres redes, tres usos</h4>
         <div class="table-wrap"><table>
-          <thead><tr><th>Red</th><th>Qué es</th><th>Para qué sirve en obra</th></tr></thead>
+          <thead><tr><th>Red</th><th>Qué es</th><th>Qué ancla</th><th>Para qué sirve en obra</th></tr></thead>
           <tbody>
-            <tr><td>Pasiva · vértices geodésicos</td><td>Pilares o señales con coordenadas oficiales, en lugares despejados</td><td>Estacionar el GNSS o la estación total y enlazar el levantamiento con el datum</td></tr>
-            <tr class="is-key"><td>Activa · estaciones permanentes</td><td>Antenas GNSS fijas que registran sin parar y publican sus datos</td><td>Posicionar en tiempo real (RTK) o calcular después, sin pisar un vértice</td></tr>
-            <tr><td>Nivelación · clavos</td><td>Señales en muros y obras de fábrica con altitud ortométrica</td><td>Dar cotas oficiales; el modelo de geoide enlaza estas altitudes con el GNSS</td></tr>
+            <tr class="is-key"><td>Activa · estaciones permanentes</td><td>Antenas GNSS fijas que registran sin parar y publican sus datos</td><td>Posición: enlazan el datum con el centro de la Tierra y fijan su época</td><td>Posicionar en tiempo real (RTK) o calcular después, sin pisar un vértice</td></tr>
+            <tr><td>Pasiva · vértices geodésicos</td><td>Pilares o señales con coordenadas oficiales, en lugares despejados</td><td>Posición: llevan el datum a cada comarca</td><td>Estacionar el GNSS o la estación total y comprobar el enlace</td></tr>
+            <tr><td>Nivelación · clavos</td><td>Señales en muros y obras de fábrica con altitud ortométrica</td><td>Altura: arrastran el cero del mareógrafo tierra adentro</td><td>Dar cotas oficiales; el modelo de geoide enlaza estas altitudes con el GNSS</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card w6">
+        <h4>En tres continentes</h4>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Red</th><th>España</th><th>Australia</th><th>Perú</th></tr></thead>
+          <tbody>
+            <tr class="is-key"><td>Activa (GNSS)</td><td>ERGNSS del IGN, más las redes de las comunidades autónomas</td><td>ARGN y AUSCORS (Geoscience Australia), más las redes de cada estado</td><td>REGPMOC, del IGN Perú</td></tr>
+            <tr><td>Pasiva (vértices)</td><td>REGENTE y Red Geodésica Nacional</td><td>Marcas de control de cada estado (SSM, PM)</td><td>Red Geodésica Geocéntrica Nacional</td></tr>
+            <tr><td>Nivelación</td><td>REDNAP, con origen en el mareógrafo de Alicante</td><td>Red nacional de nivelación ajustada en 1971 sobre el AHD <span class="tag">Por confirmar</span></td><td>Red vertical oficial; origen en el mareógrafo de La Punta (Callao) <span class="tag">Por confirmar</span></td></tr>
           </tbody>
         </table></div>
       </div>
@@ -1659,22 +1685,22 @@
         <svg class="draw" viewBox="0 0 300 200" role="img" aria-label="Marcos anidados: global, continental, red nacional y bases de obra">
           <g font-family="JetBrains Mono, monospace" font-size="11">
             <rect x="4" y="4" width="292" height="192" rx="10" fill="#fff" stroke="#000" stroke-width="2"/><text x="16" y="24">marco global · ITRF</text>
-            <rect x="24" y="36" width="252" height="150" rx="10" fill="#fff" stroke="#000" stroke-width="2"/><text x="36" y="56">continental · ETRS89, SIRGAS…</text>
+            <rect x="24" y="36" width="252" height="150" rx="10" fill="#fff" stroke="#000" stroke-width="2"/><text x="36" y="56">ETRS89 · GDA2020 · SIRGAS</text>
             <rect x="44" y="68" width="212" height="108" rx="10" fill="#fff" stroke="#000" stroke-width="2"/><text x="56" y="88">red nacional</text>
             <rect x="64" y="100" width="172" height="66" rx="10" fill="#FFFF00" stroke="#000" stroke-width="2.5"/><text x="80" y="124" font-weight="700">bases de obra</text><text x="80" y="144" fill="#000">y modelo</text>
           </g>
         </svg>
       </div>
       <div class="card w3 k">
-        <h4>Los continentes se mueven</h4>
-        <p>Las placas se desplazan unos centímetros al año. ETRS89 va fijo a la placa euroasiática y GDA2020 a la australiana, así que sus coordenadas no cambian con el tiempo. SIRGAS las da en una época de referencia. WGS84 sigue al marco global: el mismo vértice cambia de año en año.</p>
+        <h4>Por qué una red y no un punto</h4>
+        <p>El antiguo punto fundamental era uno solo: si se movía o se medía mal, arrastraba a todo el país. Con cientos de puntos enlazados entre sí y con los satélites, los errores se reparten y se detectan, y cualquier obra tiene uno cerca. <span class="tag">Inferido</span></p>
       </div>
       <div class="card w6 y">
         <span class="c-label">En <span data-pais="nombre">España</span></span>
         <span class="c-title"><span data-pais="red">REGENTE · ERGNSS · REDNAP</span></span>
         <p>Mantenida por <span data-pais="org">IGN</span>. Las bases de replanteo deberían enlazarse con ella y el informe topográfico, decir con qué vértices o estaciones.</p>
       </div>
-      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2007-15822" target="_blank" rel="noopener">Real Decreto 1071/2007</a> (REGENTE, REDNAP y estaciones permanentes) · <a href="https://www.euref.eu" target="_blank" rel="noopener">EUREF</a> · <a href="https://sirgas.ipgh.org" target="_blank" rel="noopener">SIRGAS</a> · <a href="https://www.icsm.gov.au" target="_blank" rel="noopener">ICSM (GDA2020)</a> · <a href="https://itrf.ign.fr" target="_blank" rel="noopener">ITRF</a> · <a href="https://geodesy.noaa.gov/CORS/" target="_blank" rel="noopener">NOAA CORS</a>.</p></div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2007-15822" target="_blank" rel="noopener">Real Decreto 1071/2007</a> (REGENTE, REDNAP y estaciones permanentes) · <a href="https://www.euref.eu" target="_blank" rel="noopener">EUREF</a> · <a href="https://www.icsm.gov.au/gda2020" target="_blank" rel="noopener">ICSM (GDA2020)</a> · <a href="https://www.icsm.gov.au/australian-height-datum" target="_blank" rel="noopener">ICSM (AHD)</a> · <a href="https://www.ga.gov.au" target="_blank" rel="noopener">Geoscience Australia (redes GNSS)</a> · <a href="https://cdn.www.gob.pe/uploads/document/file/7557116/6419766-6385362-norma-tecnica-geodesica-2024.pdf" target="_blank" rel="noopener">IGN Perú, norma técnica geodésica 2024</a> · <a href="https://sirgas.ipgh.org" target="_blank" rel="noopener">SIRGAS</a> · <a href="https://itrf.ign.fr" target="_blank" rel="noopener">ITRF</a>.</p></div>
     </div>
   </template>
 
