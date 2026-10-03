@@ -11,6 +11,7 @@ window.SERIE = [
     tema: 'Georreferenciación',
     fecha: '2026-10',
     lectura: '43 ideas',
+    tiempo: {es:[770,2983],en:[754,2936],de:[715,2732]}, // s: [diapositivas, con detalle] · herramientas/tiempos-lectura.mjs
     estado: 'borrador' // borrador | publicado | proximamente | relleno (ficticio)
   },
   {
@@ -21,6 +22,7 @@ window.SERIE = [
     tema: 'Información',
     fecha: '2026-10',
     lectura: '34 ideas',
+    tiempo: {es:[605,1797],en:[607,1762],de:[554,1625]}, // s: [diapositivas, con detalle] · herramientas/tiempos-lectura.mjs
     estado: 'borrador'
   },
   {
@@ -31,6 +33,7 @@ window.SERIE = [
     tema: 'Gestión de la información',
     fecha: '2026-10',
     lectura: '39 ideas',
+    tiempo: {es:[629,2159],en:[632,2117],de:[595,1984]}, // s: [diapositivas, con detalle] · herramientas/tiempos-lectura.mjs
     estado: 'borrador'
   },
   {
@@ -41,6 +44,7 @@ window.SERIE = [
     tema: 'Coordinación',
     fecha: '2026-10',
     lectura: '34 ideas',
+    tiempo: {es:[662,1891],en:[651,1846],de:[610,1739]}, // s: [diapositivas, con detalle] · herramientas/tiempos-lectura.mjs
     estado: 'borrador'
   },
   {
@@ -51,6 +55,7 @@ window.SERIE = [
     tema: 'Datos',
     fecha: '2026-10',
     lectura: '28 ideas',
+    tiempo: {es:[598,1694],en:[596,1681],de:[549,1548]}, // s: [diapositivas, con detalle] · herramientas/tiempos-lectura.mjs
     estado: 'borrador'
   },
   {
@@ -61,6 +66,7 @@ window.SERIE = [
     tema: 'Gestión',
     fecha: '2026-10',
     lectura: '29 ideas',
+    tiempo: {es:[506,1674],en:[484,1613],de:[467,1484]}, // s: [diapositivas, con detalle] · herramientas/tiempos-lectura.mjs
     estado: 'borrador'
   },
   {
@@ -71,6 +77,7 @@ window.SERIE = [
     tema: 'Operación',
     fecha: '2026-10',
     lectura: '32 ideas',
+    tiempo: {es:[614,1964],en:[600,1899],de:[558,1764]}, // s: [diapositivas, con detalle] · herramientas/tiempos-lectura.mjs
     estado: 'borrador'
   }
 ];

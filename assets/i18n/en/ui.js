@@ -46,6 +46,8 @@
     'Glosario completo →': 'Full glossary →', 'Los 40 mejores resultados': 'Top 40 results', '1 resultado': '1 result',
     'Prueba con otra palabra (también vale en inglés: «survey point», «shared coordinates»), quita los filtros o mira el': 'Try another word (Spanish terms work too: «coordenadas compartidas», «punto base»), remove the filters or check the',
     'glosario': 'glossary',
+    // Reading time (web.js, herramientas/tiempos-lectura.mjs)
+    'Lectura': 'Reading', 'diapositivas': 'slides', 'con detalle': 'with detail',
     // How to read it (guide)
     'Cómo se lee': 'How to read it', 'Una idea por pantalla': 'One idea per screen',
     'Titular, una frase y un dibujo. Baja con la rueda, las flechas o deslizando.': 'A headline, one sentence and a drawing. Scroll with the wheel, the arrow keys or by swiping.',

@@ -79,6 +79,11 @@
     `<img src="${root}assets/img/cubiertas/${a.slug || '_plantilla'}.svg" alt="" onerror="this.src='${root}assets/img/cubiertas/_plantilla.svg'">` +
     `<span class="cover-t">${a.tema || 'Tema'}</span><span class="cover-bf">bk</span></div>`;
 
+  // Tiempo de lectura (serie.js → tiempo, lo calcula herramientas/tiempos-lectura.mjs): [diapositivas, con detalle] en segundos
+  const lang = document.documentElement.dataset.lang || 'es';
+  const tiempo = (a) => (a.tiempo && (a.tiempo[lang] || a.tiempo.es)) || null;
+  const min = (s) => `${Math.max(1, Math.round(s / 60))} min`;
+
   // Portada de la web: rejilla de artículos con su cubierta
   const list = document.getElementById('article-list');
   if (list) {
@@ -88,7 +93,7 @@
       return `<li class="article-item${soon ? ' is-soon' : ''}"><a href="${url(`articulos/${a.slug}/`)}">
         ${cover(a)}
         <div class="article-body"><h3>${a.titulo}</h3>
-          <div class="meta">${fmtFecha(a.fecha)} · ${a.lectura}${estado ? ` <span class="soon">${estado}</span>` : ''}</div>
+          <div class="meta">${fmtFecha(a.fecha)} · ${a.lectura}${tiempo(a) ? ` · ${min(tiempo(a)[0])}` : ''}${estado ? ` <span class="soon">${estado}</span>` : ''}</div>
           <p>${a.resumen}</p></div>
       </a></li>`;
     }).join('');
@@ -105,6 +110,8 @@
       <div class="chips"><span class="chip y">${actual.lectura}</span>${actual.fecha ? `<span class="chip">${fmtFecha(actual.fecha)}</span>` : ''}</div>
       ${estado ? `<span class="badge n">${estado}</span>` : ''}</div>`;
   });
+  const t = tiempo(actual), h1 = document.querySelector('#portada h1.display');
+  if (t && h1) h1.insertAdjacentHTML('afterend', `<p class="lectura-t"><span>Lectura</span> <b>${min(t[0])}</b> <span>diapositivas</span> <span aria-hidden="true">·</span> <b>${min(t[1])}</b> <span>con detalle</span></p>`);
   const dn = document.querySelector('#deck-nav > .kicker-y');
   if (dn) dn.insertAdjacentHTML('beforebegin', `<img class="deck-ico" src="${icono(actual)}" alt="">`);
 

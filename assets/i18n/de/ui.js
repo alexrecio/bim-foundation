@@ -46,6 +46,8 @@
     'Glosario completo →': 'Vollständiges Glossar →', 'Los 40 mejores resultados': 'Die 40 besten Treffer', '1 resultado': '1 Treffer',
     'Prueba con otra palabra (también vale en inglés: «survey point», «shared coordinates»), quita los filtros o mira el': 'Versuchen Sie ein anderes Wort (auch spanische Begriffe funktionieren: «coordenadas compartidas», «punto base»), entfernen Sie die Filter oder schauen Sie ins',
     'glosario': 'Glossar',
+    // Lesezeit (web.js, herramientas/tiempos-lectura.mjs)
+    'Lectura': 'Lesezeit', 'diapositivas': 'Folien', 'con detalle': 'mit Details',
     // So lesen Sie die Serie (Anleitung)
     'Cómo se lee': 'So lesen Sie die Serie', 'Una idea por pantalla': 'Eine Idee pro Bildschirm',
     'Titular, una frase y un dibujo. Baja con la rueda, las flechas o deslizando.': 'Überschrift, ein Satz und eine Zeichnung. Blättern Sie mit dem Mausrad, den Pfeiltasten oder durch Wischen.',

@@ -269,6 +269,8 @@ figure.diagram figcaption { margin-top: 10px; font-family: var(--mono); font-siz
 .article-item h3 { margin: 0 0 8px; font-size: clamp(1.3rem, 2vw, 1.6rem); font-weight: 900; text-transform: uppercase; letter-spacing: -.04em; line-height: 1; }
 .article-item p { margin: 0; color: var(--s500); font-size: 15px; line-height: 1.55; }
 .article-item .meta { margin: 0 0 8px; font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: .1em; color: var(--s600); line-height: 1.9; }
+.lectura-t { margin: 14px 0 0; font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: .1em; color: var(--s600); }
+.lectura-t b { color: var(--black); font-weight: 700; }
 .article-item .meta .soon { background: var(--s100); padding: 1px 6px; margin-left: 4px; }
 .article-item a:hover .cover { border-color: var(--black); }
 .article-item a:hover .cover-n { color: var(--black); }
