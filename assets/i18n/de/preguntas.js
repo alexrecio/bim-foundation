@@ -7,6 +7,12 @@ window.BF_PREGUNTAS = [
   "I"
  ],
  [
+  "Warum liegen Modelle beim Föderieren an der falschen Stelle?",
+  "coordenadas-compartidas",
+  "principio",
+  "I"
+ ],
+ [
   "Welchen EPSG-Code trage ich in den BAP und ins IFC ein?",
   "coordenadas-compartidas",
   "paises",
