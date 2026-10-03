@@ -1749,82 +1749,48 @@
   <template id="l2-tierra">
     <div class="b-cards">
       <div class="card w3">
-        <h4>Tres superficies</h4>
-        <ul>
-          <li><strong>Terreno:</strong> donde se mide y se construye.</li>
-          <li><strong>Geoide:</strong> la referencia de las altitudes (abajo, qué forma tiene).</li>
-          <li><strong>Elipsoide:</strong> sobre él se calculan latitudes, longitudes y proyecciones.</li>
-        </ul>
-              </div>
-      <div class="card w3 k">
-        <h4>Por qué un elipsoide</h4>
-        <ul>
-          <li><strong>No una esfera:</strong> la Tierra está achatada por los polos; una esfera se equivocaría en kilómetros.</li>
-          <li><strong>No el geoide:</strong> sirve para las alturas, no para calcular posiciones.</li>
-          <li><strong>El elipsoide:</strong> dos números lo definen, y con él se calculan distancias, ángulos y proyecciones.</li>
-        </ul>
-      </div>
-      <div class="card w6">
-        <h4>Elipsoides en uso</h4>
-        <div class="table-wrap"><table>
-          <thead><tr><th>Elipsoide</th><th>a (m)</th><th>1/f</th><th>Lo usan</th></tr></thead>
-          <tbody>
-            <tr class="is-key"><td>GRS80 · EPSG 7019</td><td class="num">6 378 137</td><td class="num">298,257 222 101</td><td>ETRS89 (España), GDA2020 (Australia), SIRGAS (Perú)</td></tr>
-            <tr><td>WGS 84 · EPSG 7030</td><td class="num">6 378 137</td><td class="num">298,257 223 563</td><td>GPS; difiere de GRS80 en décimas de milímetro</td></tr>
-            <tr><td>Internacional 1924 · EPSG 7022</td><td class="num">6 378 388</td><td class="num">297</td><td>ED50 (España) y PSAD56 (Perú), datums antiguos</td></tr>
-            <tr><td>Nacional Australiano · EPSG 7003</td><td class="num">6 378 160</td><td class="num">298,25</td><td>AGD66 y AGD84 (Australia), antiguos</td></tr>
-          </tbody>
-        </table></div>
-        <p class="table-note">a = radio ecuatorial; f = achatamiento, la diferencia relativa entre a y b. En GRS80, b = 6 356 752 m, unos 21 km menos que a.</p>
-      </div>
-
-      <div class="card w3">
-        <h4>Cómo se fija una forma a la Tierra</h4>
+        <h4>Cómo se ancla el elipsoide</h4>
         <ol class="vsteps">
-          <li><strong>Elegir el elipsoide.</strong> Hoy casi todos usan GRS80: a = 6 378 137 m y 1/f = 298,257 222 101.</li>
-          <li><strong>Colocar su centro.</strong> Antes se apoyaba en un punto fundamental del país; hoy se pone en el centro de masas de la Tierra, que los satélites permiten medir.</li>
-          <li><strong>Orientar sus ejes:</strong> el de giro de la Tierra y el meridiano de Greenwich.</li>
-          <li><strong>Fijar una fecha (época),</strong> porque las placas se mueven.</li>
-          <li><strong>Materializarlo</strong> con una red de vértices en el terreno (<a href="#redes">redes geodésicas</a>).</li>
+          <li><strong>Centro:</strong> el de masas de la Tierra (antes, un punto del país).</li>
+          <li><strong>Ejes:</strong> el de giro y el meridiano de Greenwich.</li>
+          <li><strong>Fecha:</strong> las placas se mueven; Australia, 7 cm al año.</li>
+          <li><strong>Vértices</strong> en el terreno que lo materializan (<a href="#redes">redes</a>).</li>
         </ol>
       </div>
-      <div class="card w3 g">
-        <h4>Un elipsoide no es un datum</h4>
-        <p>El mismo elipsoide GRS80 lo usan ETRS89, GDA2020 y SIRGAS, y dan coordenadas distintas para un mismo lugar: lo que cambia es dónde y cuándo se ancla.</p>
-      </div>
-      <div class="card w4 k">
-        <h4>Qué forma tiene el datum vertical</h4>
-        <p>La del geoide: la superficie de igual potencial de la gravedad que mejor se ajusta al nivel medio del mar, en la que el agua en reposo no fluiría hacia ningún lado. Sigue el reparto de masas del planeta (montañas, fosas, densidad del interior), así que no cabe en una fórmula de dos parámetros como el elipsoide: se calcula con medidas de gravedad y de satélites y se publica como una malla de ondulaciones N. El datum de cada país lo materializa solo de forma aproximada.</p>
-      </div>
-      <div class="card w2"><span class="c-label">Geoide frente a elipsoide</span><b class="c-num" style="font-size:clamp(1.3rem,2vw,2rem);white-space:nowrap">−106 a +86<small>m</small></b><span class="c-foot">ondulación N en todo el planeta · EGM2008</span></div>
       <div class="card w3">
-        <span class="c-label">Opción 1 · un cero en la costa</span>
-        <p>Se promedia el mar en uno o varios mareógrafos durante años y una red de nivelación lleva ese cero tierra adentro: Alicante en la Península, 30 mareógrafos en el AHD, La Punta en Perú.</p>
+        <h4>Elipsoides en uso</h4>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Elipsoide</th><th>Radio ecuatorial (m)</th><th>Achatamiento 1/f</th></tr></thead>
+          <tbody>
+            <tr class="is-key"><td>GRS80</td><td class="num">6 378 137</td><td class="num">298,257 222 101</td></tr>
+            <tr><td>WGS 84</td><td class="num">6 378 137</td><td class="num">298,257 223 563</td></tr>
+          </tbody>
+        </table></div>
+        <p class="table-note"><strong>Un elipsoide no es un datum:</strong> GRS80 sirve a ETRS89, GDA2020 y SIRGAS.</p>
       </div>
+      <div class="card w2 k">
+        <h4>Qué forma tiene el geoide</h4>
+        <p>La superficie de igual potencial de la gravedad que mejor se ajusta al mar medio. Sigue el reparto de masas, así que no cabe en una fórmula: se publica como una malla.</p>
+      </div>
+      <div class="card w1"><span class="c-label">Ondulación N</span><b class="c-num" style="font-size:clamp(1.1rem,1.6vw,1.6rem);white-space:nowrap">−106 a +86<small>m</small></b><span class="c-foot">en todo el planeta · EGM2008</span></div>
       <div class="card w3">
-        <span class="c-label">Opción 2 · un modelo de geoide</span>
-        <p>La altura sale del GNSS restando la ondulación: <span class="mono">H = h − N</span>. Canadá definió así su CGVD2013, sin mareógrafo de origen.</p>
-      </div>
-      <div class="card w6 g">
-        <p style="margin:0">El mar medio no coincide del todo con el geoide: corrientes, vientos y salinidad lo separan del orden de un metro (hasta unos 2 m), y por eso dos países con mareógrafos distintos tienen ceros de altura distintos.</p>
+        <h4>Dos maneras de fijar el cero de altitudes</h4>
+        <div class="l2-dos">
+          <p><span class="c-label">1 · Mareógrafo</span>Años de mar promediado en la costa y una nivelación que lleva ese cero tierra adentro. El mar medio se separa del geoide hasta unos 2 m: cada mareógrafo, un cero distinto.</p>
+          <p><span class="c-label">2 · Modelo de geoide</span>La altitud sale del GNSS: <span class="mono">H = h − N</span>. Canadá lo hizo en CGVD2013.</p>
+        </div>
       </div>
       <div class="card w6">
         <div class="table-wrap"><table>
           <thead><tr><th>Tres continentes</th><th>España</th><th>Australia</th><th>Perú</th></tr></thead>
           <tbody>
-            <tr class="is-key"><td>Datum actual</td><td>ETRS89 (EPSG 4258)</td><td>GDA2020 (EPSG 7844)</td><td>SIRGAS 2000 (EPSG 4674)</td></tr>
-            <tr><td>Anclado a</td><td>La placa euroasiática, coincidente con el ITRF en 1989</td><td>ITRF2014 en la fecha 2020,0</td><td>ITRF2000 en la fecha 2000,4</td></tr>
-            <tr><td>Datum anterior</td><td>ED50, apoyado en Potsdam</td><td>AGD66 y después GDA94</td><td>PSAD56, apoyado en La Canoa (Venezuela)</td></tr>
-            <tr><td>Salto al cambiar</td><td>≈ 150–200 m</td><td>≈ 200 m de AGD66 a GDA94; ≈ 1,8 m de GDA94 a GDA2020</td><td>≈ 450 m <span class="tag">Inferido</span></td></tr>
-            <tr><td>Datum vertical</td><td>Nivel medio del mar en Alicante en la Península (EPSG 5782); cada isla, su mareógrafo</td><td>AHD: nivel medio de 30 mareógrafos, 1966–68 (EPSG 5711); Tasmania, AHD-TAS83</td><td>Red de nivelación nacional; origen en el mareógrafo de La Punta (Callao)</td></tr>
+            <tr><td>Anclado a</td><td>ITRF en 1989, y se mueve con la placa euroasiática (se separa 2,5 cm/año)</td><td>ITRF2014 en 2020,0</td><td>ITRF2000 en 2000,4</td></tr>
+            <tr><td>Datum anterior · salto</td><td>ED50 · ≈ 150–200 m</td><td>AGD66 · ≈ 200 m; GDA94 · ≈ 1,8 m</td><td>PSAD56 · ≈ 450 m <span class="tag">Inferido</span></td></tr>
           </tbody>
         </table></div>
+              <p class="table-note">Fuentes: <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2007-15822" target="_blank" rel="noopener">Real Decreto 1071/2007</a> · <a href="https://www.euref.eu/" target="_blank" rel="noopener">EUREF</a> · <a href="https://www.icsm.gov.au/gda2020" target="_blank" rel="noopener">ICSM: GDA2020</a> · <a href="https://www.icsm.gov.au/australian-height-datum" target="_blank" rel="noopener">ICSM: AHD</a> · <a href="https://cdn.www.gob.pe/uploads/document/file/7557116/6419766-6385362-norma-tecnica-geodesica-2024.pdf" target="_blank" rel="noopener">IGN Perú: norma técnica geodésica 2024</a> · <a href="https://sirgas.ipgh.org/wp-content/uploads/2025/05/10.1515_jogs-2025-0183-1.pdf" target="_blank" rel="noopener">Journal of Geodetic Science 2025 (SIRGAS), origen vertical de Perú</a> · <a href="https://geodesy.noaa.gov/GEOID/" target="_blank" rel="noopener">NOAA NGS · Geoid</a> · <a href="https://natural-resources.canada.ca/science-data/science-research/geomatics/geodetic-reference-systems/height-reference-system-modernization" target="_blank" rel="noopener">NRCan · CGVD2013</a> · <a href="https://earth-info.nga.mil/index.php?dir=wgs84&amp;action=wgs84" target="_blank" rel="noopener">NGA · WGS 84 y EGM2008</a> · EPSG: <a href="https://epsg.io/7019-ellipsoid" target="_blank" rel="noopener">7019</a> y <a href="https://epsg.io/7030-ellipsoid" target="_blank" rel="noopener">7030</a>.</p>
       </div>
-      <div class="card w6 k">
-        <h4>Por qué importa la fecha</h4>
-        <p>Australia se desplaza unos 7 cm al año hacia el noreste. En 26 años, los puntos de GDA94 se habían separado ≈ 1,8 m de su posición real, y por eso se creó GDA2020. ETRS89 evita el problema moviéndose con la placa euroasiática, pero se separa del ITRF unos 2,5 cm al año.</p>
-      </div>
-      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2007-15822" target="_blank" rel="noopener">Real Decreto 1071/2007</a> · <a href="https://www.euref.eu/" target="_blank" rel="noopener">EUREF</a> · <a href="https://www.icsm.gov.au/gda2020" target="_blank" rel="noopener">ICSM: GDA2020</a> · <a href="https://www.icsm.gov.au/australian-height-datum" target="_blank" rel="noopener">ICSM: AHD</a> · <a href="https://cdn.www.gob.pe/uploads/document/file/7557116/6419766-6385362-norma-tecnica-geodesica-2024.pdf" target="_blank" rel="noopener">IGN Perú: norma técnica geodésica 2024</a> · <a href="https://sirgas.ipgh.org/wp-content/uploads/2025/05/10.1515_jogs-2025-0183-1.pdf" target="_blank" rel="noopener">Journal of Geodetic Science 2025 (SIRGAS), origen vertical de Perú</a> · <a href="https://epsg.io/7019-ellipsoid" target="_blank" rel="noopener">EPSG:7019 (GRS 1980)</a> · <a href="https://geodesy.noaa.gov/GEOID/" target="_blank" rel="noopener">NOAA NGS · Geoid</a> · <a href="https://natural-resources.canada.ca/science-data/science-research/geomatics/geodetic-reference-systems/height-reference-system-modernization" target="_blank" rel="noopener">NRCan · CGVD2013</a> · <a href="https://earth-info.nga.mil/index.php?dir=wgs84&amp;action=wgs84" target="_blank" rel="noopener">NGA · WGS 84 y EGM2008</a> · <a href="https://epsg.io/7030-ellipsoid" target="_blank" rel="noopener">EPSG:7030</a> · <a href="https://epsg.io/7022-ellipsoid" target="_blank" rel="noopener">EPSG:7022</a> · <a href="https://epsg.io/7003-ellipsoid" target="_blank" rel="noopener">EPSG:7003</a>.</p></div>
+
     </div>
   </template>
 

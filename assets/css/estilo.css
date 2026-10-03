@@ -909,3 +909,8 @@ a.bfm-a:hover { background: var(--s50); }
   .ciclo-l2 .cl-fase:not(.cl-uso .cl-fase) { display: none; }
 }
 @media (max-width: 899px) { .ciclo-l2 .cl-circ { max-width: 240px; } }
+/* Capa 2: dos opciones lado a lado dentro de una tarjeta */
+.l2-dos { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 6px 0; }
+.l2-body .l2-dos p { font-size: 14px; line-height: 1.4; }
+.l2-dos .c-label { display: block; margin-bottom: 2px; }
+@media (min-width: 640px) { .w1 { grid-column: span 1; } }
