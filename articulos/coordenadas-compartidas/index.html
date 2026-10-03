@@ -220,9 +220,13 @@
         </div>
         <div class="b-cards">
           <div class="card w6 g">
-            <span class="c-label">Dos datums: uno para la posición, otro para la altura</span>
-            <svg class="draw" viewBox="0 0 720 250" role="img" aria-label="Dos datums. A la izquierda, el datum geodésico (horizontal): un elipsoide en perspectiva, centrado en el centro de masas de la Tierra, con el eje de giro y el meridiano de Greenwich como referencias; sobre él, un punto P con su latitud y longitud. A la derecha, el datum vertical: un corte de la Tierra, exagerado, con el geoide como una línea ondulada que sigue la superficie del mar y continúa bajo los continentes; un mareógrafo en la costa da el cero y desde el geoide se mide la altura H de un punto en tierra. El elipsoide lleva dibujados continentes y relieve simplificados para mostrar que es una forma lisa que los ignora.">
-              <g font-family="JetBrains Mono, monospace" font-size="12" font-weight="700"><text x="10" y="16">DATUM GEODÉSICO · el elipsoide</text><text x="320" y="16">DATUM VERTICAL · el geoide</text></g>
+            <span class="c-label">2 datums: uno para la posición, otro para la altura</span>
+            <svg class="draw" viewBox="0 0 720 284" role="img" aria-label="Dos datums. A la izquierda, el datum geodésico (horizontal): un elipsoide en perspectiva, centrado en el centro de masas de la Tierra, con el eje de giro y el meridiano de Greenwich como referencias; sobre él, un punto P con su latitud y longitud. A la derecha, el datum vertical: un corte de la Tierra, exagerado, con el geoide como una línea ondulada que sigue la superficie del mar y continúa bajo los continentes; un mareógrafo en la costa da el cero y desde el geoide se mide la altura H de un punto en tierra. El elipsoide lleva dibujados continentes y relieve simplificados para mostrar que es una forma lisa que los ignora.">
+              <g font-family="JetBrains Mono, monospace" font-weight="700">
+                <text x="10" y="17" font-size="15">DATUM GEODÉSICO</text><rect x="10" y="25" width="80" height="19" fill="#000"/><text x="16" y="39" font-size="12" fill="#fff">ELIPSOIDE</text>
+                <text x="320" y="17" font-size="15">DATUM VERTICAL</text><rect x="320" y="25" width="58" height="19" fill="#000"/><text x="326" y="39" font-size="12" fill="#fff">GEOIDE</text>
+              </g>
+              <g transform="translate(0 34)">
               <path d="M150 26 V232" stroke="#000" stroke-width="2"/><polygon points="150,20 145,30 155,30" fill="#000"/>
               <ellipse cx="150" cy="128" rx="112" ry="90" fill="#fff" fill-opacity=".85" stroke="#000" stroke-width="3"/>
               <path d="M70 96 C84 80 104 78 112 90 C120 102 108 112 116 124 C122 138 108 160 96 170 C86 160 80 140 74 130 C64 118 62 106 70 96 Z" fill="#E2E2DC" stroke="#8F8F87" stroke-width="1"/>
@@ -266,11 +270,12 @@
               <rect x="505" y="40" width="211" height="182" fill="#fff" stroke="#000" stroke-width="1.5" stroke-dasharray="4 4"/>
               <path d="M441 100 L428 40" stroke="#000" stroke-width="1"/>
               <path d="M700 168 L700 199 M344 183 L330 204" stroke="#000" stroke-width="1"/>
+              <path d="M506 204 C530 202 560 204 587 196 C617 190 640 168 668 136 S700 100 715 96 V221 H506 Z" fill="#E2E2DC" stroke="#8F8F87" stroke-width="1.2" stroke-linejoin="round"/>
               <path d="M515 168 q 9 -6 18 0 t 18 0 t 18 0" fill="none" stroke="#000" stroke-width="2"/>
               <path d="M515 178 h54" stroke="#999" stroke-width="1.5" stroke-dasharray="4 5"/>
               <rect x="569" y="122" width="18" height="56" fill="#fff" stroke="#000" stroke-width="3"/><path d="M578 122 V110" stroke="#000" stroke-width="3"/>
-              <path d="M587 168 C615 162 640 174 668 167 S700 160 712 164" fill="none" stroke="#000" stroke-width="2.5"/>
-              <path d="M587 196 C617 190 640 168 668 136 S700 100 712 96" fill="none" stroke="#000" stroke-width="3"/>
+              <path d="M587 168 C605 164 622 166 638 170" fill="none" stroke="#000" stroke-width="2.5"/>
+              <path d="M638 170 C650 172 660 168 668 167 S700 160 712 164" fill="none" stroke="#000" stroke-width="2" stroke-dasharray="3 4"/>
               <circle cx="676" cy="122" r="7" fill="#FFFF00" stroke="#000" stroke-width="2.5"/>
               <path d="M676 166 V134" stroke="#000" stroke-width="2.5"/><polygon points="676,130 671,140 681,140" fill="#000"/>
               <g font-family="JetBrains Mono, monospace" font-size="11">
@@ -282,6 +287,7 @@
                 <text x="686" y="152" font-size="13" font-weight="700">H</text>
                 <text x="712" y="210" text-anchor="end" fill="#666">geoide, bajo tierra</text>
                 <text x="320" y="246" fill="#666">ondulado, sin fórmula → fija la altura</text>
+              </g>
               </g>
             </svg>
           </div>
