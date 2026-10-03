@@ -925,3 +925,6 @@ a.bfm-a:hover { background: var(--s50); }
 .l2-dl { display: grid; grid-template-columns: auto 1fr; gap: 6px 10px; margin: 10px 0 0; }
 .l2-dl dt { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: .06em; color: #666; padding-top: 3px; }
 .l2-dl dd { margin: 0; font-size: 14px; line-height: 1.4; }
+/* Capa 2 de «Cada país, su marco»: la tabla de todos los países se desplaza dentro de su tarjeta para que la ficha quepa en una pantalla */
+.l2-body .paises-tabla { max-height: min(36vh, 320px); overflow: auto; }
+.l2-body .paises-tabla thead th { position: sticky; top: 0; z-index: 1; background: var(--white); }

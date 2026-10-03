@@ -369,7 +369,8 @@
   }).join('')}</select></label>`;
   // Tabla completa para la capa 2 (<div class="paises-tabla"></div>)
   const paisesTabla = (el) => {
-    const L = [...P].sort((x, y) => x.nombre.localeCompare(y.nombre, 'es'));
+    // El país del lector va primero, para que se vea sin desplazar la tabla
+    const L = [...P].sort((x, y) => (y.id === paisId) - (x.id === paisId) || x.nombre.localeCompare(y.nombre, 'es'));
     el.innerHTML = `<div class="table-wrap"><table><thead><tr><th>País</th><th>Datum</th><th>Proyección</th><th>EPSG habitual</th><th>Altitudes</th><th>Red geodésica</th></tr></thead><tbody>${L.map((p) => `<tr data-p="${p.id}"${p.id === paisId ? ' class="is-key"' : ''}><td>${p.nombre}${p.revisar ? ' ' + pc() : ''}</td><td>${p.datum}${p.datumEpsg ? ` <span class="mono">${p.datumEpsg}</span>` : ''}</td><td>${p.proy}</td><td class="mono">${p.epsg.map(([c]) => c).join(' · ')}</td><td>${p.alt ? `${p.alt}${p.altEpsg ? ` <span class="mono">${p.altEpsg}</span>` : ''}` : pc()}</td><td>${p.red || '—'} · <a href="${p.url}" target="_blank" rel="noopener">${p.org}</a></td></tr>`).join('')}</tbody></table></div>`;
   };
   // Ventana de bienvenida: país + sistema; se abre la primera vez y desde «Tu sistema» en el menú

@@ -1906,10 +1906,6 @@
 
   <template id="l2-topografia">
     <div class="b-cards">
-      <div class="card w6 g">
-        <h4>Bases de replanteo</h4>
-        <p>Puntos fijos en la obra con coordenadas en el sistema del proyecto. Desde ellos la estación total sitúa el resto. Si el modelo y las bases no comparten sistema, el replanteo no cuadra.</p>
-      </div>
       <div class="card w6">
         <h4>Un levantamiento en local</h4>
         <p>Muchos topógrafos entregan en un sistema local: origen cómodo y sin deformación de proyección. Es válido, pero para georreferenciarlo hacen falta al menos dos puntos con coordenadas en los dos sistemas; mejor tres, para comprobar.</p>
@@ -1922,7 +1918,11 @@
           <g font-family="JetBrains Mono, monospace" font-size="11"><text x="360" y="58">2 puntos con coordenadas</text><text x="360" y="76">en los dos sistemas</text><text x="360" y="104" fill="#666">→ desplazamiento + giro</text><text x="360" y="120" fill="#666">  (+ escala, si hace falta)</text></g>
         </svg>
       </div>
-      <div class="card w6 k">
+      <div class="card w3">
+        <h4>Bases de replanteo</h4>
+        <p>Puntos fijos en la obra con coordenadas en el sistema del proyecto. Desde ellos la estación total sitúa el resto. Si el modelo y las bases no comparten sistema, el replanteo no cuadra.</p>
+      </div>
+      <div class="card w3 k">
         <h4>Qué pedir siempre al topógrafo</h4>
         <ul>
           <li>Sistema de referencia y huso, con su código EPSG.</li>
@@ -1933,6 +1933,7 @@
       </div>
       <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2007-15822" target="_blank" rel="noopener">Real Decreto 1071/2007</a> (redes REGENTE y REDNAP) · guía es.BIM (dos puntos documentados).</p></div>
     </div>
+  
   </template>
 
   <template id="l2-limite">
@@ -2170,27 +2171,28 @@
       <div class="card w6">
         <h4>Los marcos oficiales, país a país</h4>
         <div class="paises-tabla"></div>
-        <p class="table-note">En los países con varios husos o zonas, el código depende de dónde está la obra. Fila resaltada: tu país.</p>
+        <p class="table-note">Primera fila, resaltada: tu país. Con varios husos o zonas, el código depende de dónde está la obra. Fuentes: <a href="https://epsg.org" target="_blank" rel="noopener">registro EPSG</a> (códigos comprobados con la base de datos PROJ, versión EPSG 11.022) y el organismo enlazado en cada fila.</p>
       </div>
-      <div class="card w3 g">
+      <div class="card w3">
         <h4>Cómo elegir el código</h4>
         <ol class="vsteps">
-          <li>Buscar el sistema que publica el organismo cartográfico del país.</li>
-          <li>Si hay husos o zonas, tomar el de la obra, aunque la obra toque dos.</li>
-          <li>Comprobar el código y sus parámetros en el registro EPSG.</li>
-          <li>Escribirlo en el BEP y en el IfcProjectedCRS, junto al de altitudes.</li>
+          <li>Con husos o zonas, el de la obra, aunque toque dos.</li>
+          <li>Comprobarlo en el registro EPSG.</li>
+          <li>Escribirlo en el BEP y en el IFC, con el de altitudes.</li>
         </ol>
       </div>
       <div class="card w3 k">
         <h4>Lo que cambia de un país a otro</h4>
         <ul>
-          <li>La unidad: metros en casi todos, pies topográficos en sistemas estatales heredados de Estados Unidos (el US survey foot es obsoleto desde el 1-1-2023).</li>
+          <li>La unidad: metros, o pies en sistemas estatales de EE. UU. (el US survey foot es obsoleto desde 2023).</li>
           <li>El orden de los ejes: algunos registros dan norte antes que este.</li>
-          <li>El datum: los marcos continentales (ETRS89, SIRGAS, NAD83, GDA2020) se mueven con su placa; los antiguos, como OSGB36, necesitan una transformación desde el GNSS.</li>
+          <li>El datum: los continentales se mueven con su placa; los antiguos, como OSGB36, piden una transformación desde el GNSS.</li>
         </ul>
       </div>
-      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://epsg.org" target="_blank" rel="noopener">registro EPSG</a> (códigos comprobados con la base de datos PROJ, versión EPSG 11.022) y el organismo enlazado en cada fila.</p></div>
+      
     </div>
+  
+  
   </template>
 
   <template id="l2-espana">
@@ -2346,7 +2348,7 @@
 
   <template id="l2-survey">
     <div class="b-cards">
-      <div class="card w6">
+      <div class="card w3">
         <h4>Tres cosas que no hay que confundir</h4>
         <div class="table-wrap"><table>
           <thead><tr><th>Elemento</th><th>Qué es</th><th>Dónde está</th></tr></thead>
@@ -2357,7 +2359,7 @@
           </tbody>
         </table></div>
       </div>
-      <div class="card w6">
+      <div class="card w3">
         <h4>Mover el Survey Point</h4>
         <div class="table-wrap"><table>
           <thead><tr><th>Estado</th><th>Qué se mueve</th><th>Coordenadas compartidas del modelo</th></tr></thead>
@@ -2377,6 +2379,7 @@
       </div>
       <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://help.autodesk.com/cloudhelp/2027/ENU/Revit-Model/files/GUID-4EAEF1B1-CC5B-4484-9727-91ACD90B0B78.htm" target="_blank" rel="noopener">Revit 2027: mover el Survey Point</a> · <a href="https://www.bimpure.com/blog/understanding-revits-mysterious-survey-point" target="_blank" rel="noopener">BIMpure: el misterioso Survey Point</a>. El lector usa un ejemplo sin giro entre los sistemas.</p></div>
     </div>
+  
   </template>
 
   <template id="l2-revit">
@@ -2823,22 +2826,14 @@
             <tr><td>Sin georref.</td><td>✗</td><td>✗</td></tr>
           </tbody>
         </table></div>
-        <p class="table-note"><code>minOccurs="1"</code> convierte «si existe» en «tiene que existir». Probado con IfcTester 0.9.0 sobre tres IFC de prueba.</p>
+        <p class="table-note"><code>minOccurs="1"</code> convierte «si existe» en «tiene que existir». Probado con IfcTester 0.9.0 sobre tres IFC de prueba. No hay un IDS oficial de georreferenciación: cada proyecto escribe el suyo.</p>
       </div>
-      <div class="card w3 g">
-        <h4>El límite</h4>
-        <p>Cada requisito mira un valor. Un IFC con el EPSG correcto y un Este desplazado 300 m pasa el IDS, porque nada en el fichero dice dónde debe caer el punto testigo. <span class="tag">Inferido</span></p>
-        <p>Tampoco existe un IDS oficial de georreferenciación: cada proyecto escribe el suyo.</p>
-      </div>
-      <div class="card w3">
-        <h4>Quién lo lee</h4>
-        <ul>
-          <li>IfcTester, de IfcOpenShell, en consola, web o Python.</li>
-          <li>Solibri, con la regla 244 (IDS 0.9.6, 0.9.7 y 1.0).</li>
-        </ul>
+      <div class="card w6">
+        <p style="margin:0"><strong>Quién lo lee:</strong> IfcTester, de IfcOpenShell (consola, web o Python), y Solibri con la regla 244 (IDS 0.9.6, 0.9.7 y 1.0).</p>
       </div>
       <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://www.buildingsmart.org/?p=30065" target="_blank" rel="noopener">IDS 1.0, estándar final (4 de junio de 2024)</a> · <a href="https://github.com/buildingSMART/IDS/tree/development/Documentation/UserManual" target="_blank" rel="noopener">manual de IDS: facetas</a> · <a href="https://help.solibri.com/hc/en-us/articles/19053798036375-244-IDS-Validation" target="_blank" rel="noopener">Solibri, regla 244</a>.</p></div>
     </div>
+  
   </template>
 
   <template id="l2-ifcopenshell">
@@ -2867,14 +2862,16 @@ print("OK" if error &lt; 0.01 else f"Desvío de {error:.3f} m")</code></pre>
           <thead><tr><th>Herramienta del mismo entorno</th><th>Para qué sirve</th></tr></thead>
           <tbody>
             <tr><td><a href="https://docs.ifcopenshell.org/autoapi/ifcopenshell/api/georeference/index.html" target="_blank" rel="noopener">API de georreferenciación</a> · Bonsai · IfcPatch</td><td>Añadir o corregir la conversión cuando falla</td></tr>
-            <tr><td><a href="https://github.com/dd-bim/City2BIM/wiki/IFCGeoRefChecker" target="_blank" rel="noopener">IFCGeoRefChecker</a></td><td>Informe del nivel LoGeoRef (HTW Dresden)</td></tr>
             <tr><td><a href="https://ifcgref.bk.tudelft.nl/templates/guid.html" target="_blank" rel="noopener">IfcGref</a></td><td>Calcular la conversión desde puntos y un EPSG (TU Delft)</td></tr>
             <tr><td><a href="https://osarch.org/2026/06/04/ifc-georeferencer-browser-based-georeferencing/" target="_blank" rel="noopener">IFC Georeferencer</a></td><td>Ajuste Helmert en el navegador (2026)</td></tr>
           </tbody>
         </table></div>
+        <p class="table-note">Fuentes: <a href="https://docs.ifcopenshell.org/ifctester.html" target="_blank" rel="noopener">documentación de IfcTester</a> · <a href="https://docs.ifcopenshell.org/autoapi/ifcopenshell/util/geolocation/index.html" target="_blank" rel="noopener">ifcopenshell.util.geolocation</a>.</p>
       </div>
-      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://docs.ifcopenshell.org/ifctester.html" target="_blank" rel="noopener">documentación de IfcTester</a> · <a href="https://docs.ifcopenshell.org/autoapi/ifcopenshell/util/geolocation/index.html" target="_blank" rel="noopener">ifcopenshell.util.geolocation</a>.</p></div>
+      
     </div>
+  
+  
   </template>
 
   <template id="l2-model-checker">
