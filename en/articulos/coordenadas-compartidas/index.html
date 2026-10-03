@@ -6,7 +6,7 @@
   <!-- Draft: remove noindex on publishing -->
   <meta name="robots" content="noindex, nofollow">
   <!-- Translation of articulos/coordenadas-compartidas/index.html at this git blob (herramientas/i18n.mjs flags it when the Spanish page changes) -->
-  <meta name="bf-fuente" content="articulos/coordenadas-compartidas/index.html@bd9bcd75780fe3dee6da3c0a5353cc88416c2100">
+  <meta name="bf-fuente" content="articulos/coordenadas-compartidas/index.html@c4ebf4e05203cf5267f97b56d2bc2fe19b965f3d">
   <title>Coordinate systems in BIM | bimkernel</title>
   <meta name="description" content="Coordinate systems in BIM: the tool that coordinates the physical and the digital, from the datum and the projection to the model, IFC and setting out.">
   <meta property="og:type" content="article">
@@ -80,63 +80,81 @@
         <div class="b-cards">
           <div class="card w6">
             <span class="c-label">A cyclical process, one system at the centre · the whole life of the asset</span>
-            <svg class="draw alto" viewBox="0 0 600 548" role="img" aria-label="Cyclical process between the physical asset and the digital asset. On the left, reality: a surveyor with a total station measures a nail in the ground, next to a tree. On the right, a computer screen with the E, N and H axes and the model of a building. At the top, from the physical to the digital: measure, encode and design. At the bottom, from the digital to the physical: coordinate, set out and build. At the centre, the coordinate system connects every stage.">
+            <svg class="draw" viewBox="0 0 760 316" role="img" aria-label="Cyclical process between the physical asset, on the left, and the digital asset, on the right. On the left, the site: a surveyor with a total station measures the prism set on a nail, next to a tree and a structure under construction. On the right, a screen with the E, N and H axes, a grid and the model of the building with the same nail. At the top, from the physical to the digital: measure, encode and design. At the bottom, from the digital to the physical: coordinate, set out and build. At the centre, the coordinate system connects every stage.">
+              <g transform="translate(140 34) scale(.8)">
               <g stroke="#B9B9B0" stroke-width="1.2" stroke-dasharray="3 4"><line x1="300" y1="168" x2="217" y2="85"/><line x1="300" y1="168" x2="300" y2="50"/><line x1="300" y1="168" x2="383" y2="85"/><line x1="300" y1="168" x2="383" y2="251"/><line x1="300" y1="168" x2="300" y2="286"/><line x1="300" y1="168" x2="217" y2="251"/><line x1="300" y1="168" x2="182" y2="168"/><line x1="300" y1="168" x2="418" y2="168"/></g>
               <circle cx="300" cy="168" r="118" fill="none" stroke="#000" stroke-width="2.5"/>
               <polygon points="195,129 184,124 195,115" fill="#000"/><polygon points="253,66 249,55 263,56" fill="#000"/><polygon points="339,63 344,52 353,63" fill="#000"/><polygon points="402,121 413,117 412,131" fill="#000"/><polygon points="406,205 417,210 406,220" fill="#000"/><polygon points="348,269 353,280 339,280" fill="#000"/><polygon points="263,274 258,285 248,274" fill="#000"/><polygon points="199,216 188,221 188,207" fill="#000"/>
-              <g font-family="JetBrains Mono, monospace" font-size="12"><circle cx="217" cy="85" r="6" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="204" y="76" text-anchor="end">measure</text><circle cx="300" cy="50" r="6" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="300" y="36" text-anchor="middle">encode</text><circle cx="383" cy="85" r="6" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="396" y="76" text-anchor="start">design</text><circle cx="383" cy="251" r="6" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="396" y="268" text-anchor="start">coordinate</text><circle cx="300" cy="286" r="6" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="300" y="310" text-anchor="middle">set out</text><circle cx="217" cy="251" r="6" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="204" y="268" text-anchor="end">build</text></g>
+              <g font-family="JetBrains Mono, monospace" font-size="14"><circle cx="217" cy="85" r="6" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="204" y="76" text-anchor="end">measure</text><circle cx="300" cy="50" r="6" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="300" y="36" text-anchor="middle">encode</text><circle cx="383" cy="85" r="6" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="396" y="76" text-anchor="start">design</text><circle cx="383" cy="251" r="6" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="396" y="268" text-anchor="start">coordinate</text><circle cx="300" cy="286" r="6" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="300" y="310" text-anchor="middle">set out</text><circle cx="217" cy="251" r="6" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="204" y="268" text-anchor="end">build</text></g>
               <circle cx="182" cy="168" r="34" fill="#fff" stroke="#000" stroke-width="3"/>
               <path d="M160 182 C172 177 188 176 204 180" fill="none" stroke="#000" stroke-width="3" stroke-linecap="round"/><path d="M182 177 V160" stroke="#000" stroke-width="3" stroke-linecap="round"/><circle cx="182" cy="154" r="5" fill="#fff" stroke="#000" stroke-width="2.5"/>
               <circle cx="418" cy="168" r="34" fill="#fff" stroke="#000" stroke-width="3"/>
               <rect x="398" y="152" width="40" height="27" rx="3" fill="#fff" stroke="#000" stroke-width="2.5"/><path d="M418 179 V184 M410 184 H426" stroke="#000" stroke-width="2.5" stroke-linecap="round"/><path d="M408 173 V162 L416 158 L428 161 V170 Z M408 162 L420 165 L428 161 M420 165 V175" fill="none" stroke="#000" stroke-width="1.5" stroke-linejoin="round"/>
               <circle cx="300" cy="168" r="52" fill="#FFFF00" stroke="#000" stroke-width="3"/>
-              <g font-family="JetBrains Mono, monospace" text-anchor="middle"><text x="300" y="158" font-size="11" font-weight="700">COORDINATE</text><text x="300" y="172" font-size="11" font-weight="700">SYSTEM</text><text x="300" y="192" font-size="12">E · N · H</text></g>
-              <g font-family="JetBrains Mono, monospace" font-size="11" fill="#666" text-anchor="middle"><text x="300" y="14">physical ▸ digital</text><text x="300" y="330">digital ▸ physical</text></g>
-              <path d="M170 201 L84 344 M430 201 L452 346" stroke="#000" stroke-width="1.2" stroke-dasharray="3 4"/>
-              <g transform="translate(14 214)">
+              <g font-family="JetBrains Mono, monospace" text-anchor="middle"><text x="300" y="158" font-size="13" font-weight="700">COORDINATE</text><text x="300" y="172" font-size="13" font-weight="700">SYSTEM</text><text x="300" y="192" font-size="14">E · N · H</text></g>
+              <g font-family="JetBrains Mono, monospace" font-size="13" fill="#666" text-anchor="middle"><text x="300" y="14">physical ▸ digital</text><text x="300" y="330">digital ▸ physical</text></g>
+              </g>
+              <path d="M214 166 H256 M504 166 H522" stroke="#000" stroke-width="1.2" stroke-dasharray="3 4"/>
+              <g transform="translate(2 -20) scale(.88)">
               <g fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M6 252 C50 246 90 254 140 250 S220 246 262 251" stroke-width="3"/>
-                <path d="M20 262 l-8 10 M50 262 l-8 10 M80 262 l-8 10 M110 262 l-8 10 M140 262 l-8 10 M170 262 l-8 10 M200 262 l-8 10 M230 262 l-8 10" stroke="#B9B9B0" stroke-width="1.5"/>
-                <path d="M38 250 V196" stroke-width="3"/>
-                <path d="M38 200 C14 202 8 178 22 168 C14 150 34 136 46 146 C56 132 78 146 70 162 C84 170 76 196 56 196 C50 204 42 202 38 200 Z" fill="#E2E2DC" stroke-width="2.5"/>
-                <circle cx="88" cy="146" r="9" stroke-width="2.5" fill="#fff"/>
-                <path d="M88 155 V206 M88 206 L78 250 M88 206 L98 250 M88 170 L112 182" stroke-width="3"/>
-                <path d="M128 196 L108 250 M128 196 L148 250 M128 196 V250" stroke-width="2.5"/>
-                <rect x="118" y="172" width="20" height="22" rx="2" fill="#fff" stroke-width="2.5"/>
-                <rect x="138" y="176" width="12" height="8" fill="#fff" stroke-width="2"/>
-                <path d="M128 131 V170" stroke-width="1"/>
-                <path d="M152 180 L224 168" stroke-width="1.5" stroke-dasharray="4 4"/>
-                <path d="M230 250 V172" stroke-width="2.5"/>
-                <circle cx="230" cy="166" r="6" fill="#fff" stroke-width="2.5"/>
-                <path d="M224 250 h12 M230 250 l0 8" stroke-width="3"/>
+                <g stroke="#B9B9B0" stroke-width="2">
+                  <path d="M150 286 V176 M196 286 V176 M242 286 V176"/>
+                  <path d="M144 250 H248 M144 213 H248 M144 176 H248"/>
+                  <path d="M150 250 L196 213 M196 250 L242 213" stroke-width="1.2" stroke-dasharray="3 4"/>
+                </g>
+                <path d="M4 290 C40 284 80 292 120 288 S200 284 236 289" stroke-width="3"/>
+                <path d="M16 300 l-8 10 M46 300 l-8 10 M76 300 l-8 10 M106 300 l-8 10 M136 300 l-8 10 M166 300 l-8 10 M196 300 l-8 10 M226 300 l-8 10" stroke="#B9B9B0" stroke-width="1.5"/>
+                <path d="M30 288 V226 M30 250 L18 238 M30 244 L42 232" stroke-width="3"/>
+                <path d="M30 230 C6 232 0 206 14 196 C6 176 28 160 40 172 C50 156 74 170 66 188 C82 196 74 226 52 226 C46 234 36 232 30 230 Z" fill="#E2E2DC" stroke-width="2.5"/>
+                <circle cx="80" cy="190" r="8" fill="#fff" stroke-width="2.5"/>
+                <path d="M70 186 A10 10 0 0 1 90 186 Z" fill="#000" stroke-width="1.5"/>
+                <path d="M80 198 V244 M80 244 L72 288 M80 244 L88 288" stroke-width="3"/>
+                <path d="M80 208 L100 220 L106 214" stroke-width="2.5"/>
+                <rect x="72" y="204" width="16" height="22" rx="2" fill="#fff" stroke-width="2"/>
+                <path d="M120 236 L102 288 M120 236 L138 288 M120 236 V288" stroke-width="2.5"/>
+                <path d="M110 236 H130" stroke-width="3"/>
+                <rect x="110" y="208" width="20" height="26" rx="2" fill="#fff" stroke-width="2.5"/>
+                <rect x="113" y="212" width="8" height="7" fill="#000" stroke-width="1"/>
+                <path d="M124 214 h14 v-6 h-14 Z" fill="#fff" stroke-width="2"/>
+                <path d="M140 211 L214 196" stroke-width="1.5" stroke-dasharray="4 4"/>
+                <path d="M222 288 V200" stroke-width="2.5"/>
+                <circle cx="222" cy="194" r="7" fill="#fff" stroke-width="2.5"/>
+                <circle cx="222" cy="194" r="2.5" fill="#000" stroke-width="1"/>
+                <circle cx="228" cy="236" r="3" fill="#fff" stroke-width="1.5"/>
+                <path d="M214 289 L222 296 L230 289" stroke-width="2.5"/>
+              </g>
+              <g font-family="JetBrains Mono, monospace" font-size="13.5">
+                <text x="120" y="166" text-anchor="middle">total station</text><path d="M120 170 V204" stroke="#000" stroke-width="1"/>
+                <text x="222" y="178" text-anchor="middle">prism</text>
+                <text x="222" y="318" text-anchor="middle">nail</text>
+                <text x="130" y="350" text-anchor="middle" font-weight="700">PHYSICAL ASSET</text>
+                <text x="130" y="366" text-anchor="middle" fill="#666">the built work, in use</text>
+              </g>
+              </g>
+              <g transform="translate(-134 -62)">
+              <g fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="648" y="104" width="244" height="182" rx="6" fill="#fff" stroke-width="3"/>
+                <path d="M648 124 H892" stroke-width="2"/>
+                <circle cx="662" cy="114" r="3" fill="#000" stroke-width="1"/><circle cx="674" cy="114" r="3" fill="#fff" stroke-width="1.5"/><circle cx="686" cy="114" r="3" fill="#fff" stroke-width="1.5"/>
+                <g stroke="#D6D6CF" stroke-width="1" stroke-dasharray="2 4"><path d="M660 150 H880 M660 180 H880 M660 210 H880 M660 240 H880 M690 132 V276 M730 132 V276 M770 132 V276 M810 132 V276 M850 132 V276"/></g>
+                <path d="M770 286 V306 M740 306 H800" stroke-width="3"/>
+                <path d="M676 262 H738 M676 262 L708 242 M676 262 V200" stroke-width="2"/>
+                <path d="M738 262 l-7 -4 v8 Z M676 200 l-4 7 h8 Z M708 242 l-8 1 l4 6 Z" fill="#000" stroke-width="1"/>
+                <path d="M770 250 L815 264 L866 248 V176 L815 160 L770 174 Z" fill="#E2E2DC" stroke-width="2.5"/>
+                <path d="M770 174 L815 188 L866 174 M815 188 V264" stroke-width="2.5"/>
+                <path d="M770 198 L815 212 L866 198 M770 224 L815 238 L866 224" stroke="#8F8F87" stroke-width="1.5"/>
+                <path d="M783 186 v10 M796 190 v10 M783 210 v10 M796 214 v10 M830 192 v10 M848 186 v10 M830 216 v10 M848 210 v10" stroke="#8F8F87" stroke-width="2"/>
+                <path d="M676 262 L766 272" stroke="#8F8F87" stroke-width="1.2" stroke-dasharray="3 4"/>
+                <path d="M764 272 h8 M768 268 v8" stroke-width="2"/>
               </g>
               <g font-family="JetBrains Mono, monospace" font-size="12">
-                <text x="128" y="124" text-anchor="middle">total station</text>
-                <text x="230" y="152" text-anchor="middle">prism</text>
-                <text x="238" y="276" text-anchor="middle">nail</text>
-                <text x="130" y="302" text-anchor="middle" font-weight="700">PHYSICAL ASSET</text>
-                <text x="130" y="318" text-anchor="middle" fill="#666">the built work, in use</text>
+                <text x="700" y="118" fill="#666" font-size="10">model · E N H</text>
+                <g font-weight="700"><text x="742" y="266">E</text><text x="711" y="238">N</text><text x="682" y="202">H</text></g>
+                <text x="778" y="282">nail</text>
+                <text x="770" y="350" text-anchor="middle" font-weight="700">DIGITAL ASSET</text>
+                <text x="770" y="366" text-anchor="middle" fill="#666">the model</text>
               </g>
-              </g>
-              <g transform="translate(-153.6 292.4) scale(.8)">
-              <g fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="642" y="72" width="248" height="168" rx="6" fill="#fff" stroke-width="3"/>
-                <path d="M766 240 V262 M736 262 H796" stroke-width="3"/>
-                <path d="M670 214 H740 M670 214 L708 190 M670 214 V146" stroke-width="2"/>
-                <path d="M740 214 l-7 -4 v8 Z M670 146 l-4 7 h8 Z" fill="#000" stroke-width="1"/>
-                <path d="M708 190 l-8 1 l4 6 Z" fill="#000" stroke-width="1"/>
-                <path d="M770 200 L820 216 L870 198 V128 L820 112 L770 128 Z" fill="#E2E2DC" stroke-width="2.5"/>
-                <path d="M770 128 L820 144 L870 128 M820 144 V216" stroke-width="2.5"/>
-                <path d="M780 156 L810 166 M780 180 L810 190 M830 164 L860 154 M830 188 L860 178" stroke="#8F8F87" stroke-width="1.5"/>
-                <path d="M670 214 L776 226" stroke="#8F8F87" stroke-width="1.2" stroke-dasharray="3 4"/>
-                <circle cx="780" cy="226" r="4" fill="#000" stroke-width="1"/>
-              </g>
-              <g font-family="JetBrains Mono, monospace" font-size="15" font-weight="700">
-                <text x="746" y="219">E</text><text x="712" y="186">N</text><text x="676" y="146">H</text>
-                <text x="788" y="232" font-weight="400" font-size="14">nail</text>
-                <text x="766" y="300" text-anchor="middle">DIGITAL ASSET</text>
-              </g>
-              <text x="766" y="318" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="14" fill="#666">the model</text>
+            
               </g>
             </svg>
 
