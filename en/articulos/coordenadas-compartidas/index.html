@@ -6,7 +6,7 @@
   <!-- Draft: remove noindex on publishing -->
   <meta name="robots" content="noindex, nofollow">
   <!-- Translation of articulos/coordenadas-compartidas/index.html at this git blob (herramientas/i18n.mjs flags it when the Spanish page changes) -->
-  <meta name="bf-fuente" content="articulos/coordenadas-compartidas/index.html@c1643c5d30998650e4ee41581e0d4c822a2f49fd">
+  <meta name="bf-fuente" content="articulos/coordenadas-compartidas/index.html@1a70b94569cf25db0970e1188e1acdb2e33b6fa4">
   <title>Coordinate systems in BIM | bimkernel</title>
   <meta name="description" content="Coordinate systems in BIM: the tool that coordinates the physical and the digital, from the datum and the projection to the model, IFC and setting out.">
   <meta property="og:type" content="article">
@@ -1753,10 +1753,10 @@
             <tr class="is-key"><td>GRS80 · EPSG 7019</td><td class="num">6 378 137</td><td class="num">298.257 222 101</td><td>ETRS89 (Spain), GDA2020 (Australia), SIRGAS (Peru)</td></tr>
             <tr><td>WGS 84 · EPSG 7030</td><td class="num">6 378 137</td><td class="num">298.257 223 563</td><td>GPS; differs from GRS80 by tenths of a millimetre</td></tr>
             <tr><td>International 1924 · EPSG 7022</td><td class="num">6 378 388</td><td class="num">297</td><td>ED50 (Spain) and PSAD56 (Peru), old datums</td></tr>
-            <tr><td>Australian National · EPSG 7003</td><td class="num">6 378 160</td><td class="num">298.25</td><td>AGD66 (Australia), old</td></tr>
+            <tr><td>Australian National · EPSG 7003</td><td class="num">6 378 160</td><td class="num">298.25</td><td>AGD66 and AGD84 (Australia), old</td></tr>
           </tbody>
         </table></div>
-        <p class="table-note">a = equatorial radius; f = flattening, the relative difference between a and b.</p>
+        <p class="table-note">a = equatorial radius; f = flattening, the relative difference between a and b. In GRS80, b = 6 356 752 m, about 21 km less than a.</p>
       </div>
 
       <div class="card w3">
@@ -1805,7 +1805,7 @@
         <h4>Why the date matters</h4>
         <p>Australia moves about 7 cm a year to the north-east. In 26 years, GDA94 points had drifted ≈ 1.8 m from their true position, which is why GDA2020 was created. ETRS89 avoids the problem by moving with the Eurasian plate, but it drifts away from the ITRF by about 2.5 cm a year.</p>
       </div>
-      <div class="card w6"><p class="table-note" style="margin:0">Sources: <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2007-15822" target="_blank" rel="noopener">Royal Decree 1071/2007</a> · <a href="https://www.euref.eu/" target="_blank" rel="noopener">EUREF</a> · <a href="https://www.icsm.gov.au/gda2020" target="_blank" rel="noopener">ICSM: GDA2020</a> · <a href="https://www.icsm.gov.au/australian-height-datum" target="_blank" rel="noopener">ICSM: AHD</a> · <a href="https://cdn.www.gob.pe/uploads/document/file/7557116/6419766-6385362-norma-tecnica-geodesica-2024.pdf" target="_blank" rel="noopener">IGN Perú: 2024 geodetic technical standard</a> · <a href="https://sirgas.ipgh.org/wp-content/uploads/2025/05/10.1515_jogs-2025-0183-1.pdf" target="_blank" rel="noopener">Journal of Geodetic Science 2025 (SIRGAS), vertical origin of Peru</a> · <a href="https://epsg.io/7019-ellipsoid" target="_blank" rel="noopener">EPSG:7019 (GRS 1980)</a> · <a href="https://geodesy.noaa.gov/GEOID/" target="_blank" rel="noopener">NOAA NGS · Geoid</a> · <a href="https://natural-resources.canada.ca/science-data/science-research/geomatics/geodetic-reference-systems/height-reference-system-modernization" target="_blank" rel="noopener">NRCan · CGVD2013</a> · <a href="https://earth-info.nga.mil/index.php?dir=wgs84&amp;action=wgs84" target="_blank" rel="noopener">NGA · WGS 84 and EGM2008</a> · <a href="https://epsg.io/7019-ellipsoid" target="_blank" rel="noopener">EPSG:7019</a> · <a href="https://epsg.io/7030-ellipsoid" target="_blank" rel="noopener">EPSG:7030</a> · <a href="https://epsg.io/7022-ellipsoid" target="_blank" rel="noopener">EPSG:7022</a> · <a href="https://epsg.io/7003-ellipsoid" target="_blank" rel="noopener">EPSG:7003</a> · <a href="https://earth-info.nga.mil/index.php?dir=wgs84&amp;action=wgs84" target="_blank" rel="noopener">NGA, EGM2008</a>.</p></div>
+      <div class="card w6"><p class="table-note" style="margin:0">Sources: <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2007-15822" target="_blank" rel="noopener">Royal Decree 1071/2007</a> · <a href="https://www.euref.eu/" target="_blank" rel="noopener">EUREF</a> · <a href="https://www.icsm.gov.au/gda2020" target="_blank" rel="noopener">ICSM: GDA2020</a> · <a href="https://www.icsm.gov.au/australian-height-datum" target="_blank" rel="noopener">ICSM: AHD</a> · <a href="https://cdn.www.gob.pe/uploads/document/file/7557116/6419766-6385362-norma-tecnica-geodesica-2024.pdf" target="_blank" rel="noopener">IGN Perú: 2024 geodetic technical standard</a> · <a href="https://sirgas.ipgh.org/wp-content/uploads/2025/05/10.1515_jogs-2025-0183-1.pdf" target="_blank" rel="noopener">Journal of Geodetic Science 2025 (SIRGAS), vertical origin of Peru</a> · <a href="https://epsg.io/7019-ellipsoid" target="_blank" rel="noopener">EPSG:7019 (GRS 1980)</a> · <a href="https://geodesy.noaa.gov/GEOID/" target="_blank" rel="noopener">NOAA NGS · Geoid</a> · <a href="https://natural-resources.canada.ca/science-data/science-research/geomatics/geodetic-reference-systems/height-reference-system-modernization" target="_blank" rel="noopener">NRCan · CGVD2013</a> · <a href="https://earth-info.nga.mil/index.php?dir=wgs84&amp;action=wgs84" target="_blank" rel="noopener">NGA · WGS 84 and EGM2008</a> · <a href="https://epsg.io/7030-ellipsoid" target="_blank" rel="noopener">EPSG:7030</a> · <a href="https://epsg.io/7022-ellipsoid" target="_blank" rel="noopener">EPSG:7022</a> · <a href="https://epsg.io/7003-ellipsoid" target="_blank" rel="noopener">EPSG:7003</a>.</p></div>
     </div>
   </template>
 
