@@ -11,7 +11,7 @@ window.SERIE = [
     tema: 'Georreferenciación',
     fecha: '2026-10',
     lectura: '42 ideas',
-    tiempo: {es:[742,2948],en:[754,2936],de:[688,2700]}, // s: [diapositivas, con detalle] · herramientas/tiempos-lectura.mjs
+    tiempo: {es:[742,2948],en:[727,2903],de:[688,2700]}, // s: [diapositivas, con detalle] · herramientas/tiempos-lectura.mjs
     estado: 'borrador' // borrador | publicado | proximamente | relleno (ficticio)
   },
   {

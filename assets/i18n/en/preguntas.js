@@ -9,7 +9,7 @@ window.BF_PREGUNTAS = [
  [
   "Why use an ellipsoid and not the real shape of the Earth?",
   "coordenadas-compartidas",
-  "forma",
+  "tierra",
   "I"
  ],
  [
