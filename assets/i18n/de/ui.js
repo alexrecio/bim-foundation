@@ -30,6 +30,7 @@
     'Los ejemplos de coordenadas del artículo se calculan en el sistema que elijas. Se recuerda en toda la serie.': 'Die Koordinatenbeispiele des Beitrags werden in dem von Ihnen gewählten System berechnet. Die Auswahl gilt für die gesamte Serie.',
     'Las explicaciones son generales; los ejemplos, datos y coordenadas se calculan para tu país y tu sistema. Se recuerda en toda la serie.': 'Die Erklärungen sind allgemein; Beispiele, Daten und Koordinaten werden für Ihr Land und Ihr System berechnet. Die Wahl gilt für die ganze Reihe.',
     'Red geodésica nacional': 'Nationales geodätisches Netz',
+    'La serie': 'Die Reihe', 'Inicio →': 'Start →', 'Consulta': 'Nachschlagen', 'Preferencias': 'Einstellungen', 'pregunta → respuesta': 'Frage → Antwort', 'Idioma': 'Sprache', 'A–Z': 'A–Z',
     'Sistema de coordenadas': 'Koordinatensystem', 'Usar este sistema': 'Dieses System verwenden', 'Ahora no': 'Jetzt nicht',
     // Koordinatenleser (Vermessungspunkt)
     'Con clip': 'Beschnitten', 'Sin clip, en el vértice': 'Unbeschnitten, am Festpunkt', 'edificio': 'Gebäude', 'origen interno': 'interner Ursprung',
