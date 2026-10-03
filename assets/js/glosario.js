@@ -43,10 +43,10 @@ window.BF_GLOSARIO = [
    "C07"
   ],
   "al": [
+   "sistema de referencia de coordenadas",
    "sistema de referencia",
    "CRS",
-   "SRC",
-   "sistema de coordenadas"
+   "SRC"
   ]
  },
  {
@@ -349,7 +349,7 @@ window.BF_GLOSARIO = [
   "t": "Federación y alineación de modelos",
   "en": "Model federation and alignment",
   "b": "IV",
-  "d": "Combinar modelos de distintas disciplinas y programas en un visor común para coordinarlos (detección de interferencias, revisión). Funciona solo si todos comparten el mismo sistema de coordenadas.",
+  "d": "Combinar modelos de distintas disciplinas y programas en un visor común para coordinarlos (detección de interferencias, revisión). Funciona solo si todos comparten el mismo sistema de coordenadas (ejes y origen) y, si están georreferenciados, el mismo sistema de referencia y la misma transformación.",
   "ej": "Modelos de arquitectura (Archicad), estructura (Tekla) e instalaciones (Revit) federados en Navisworks o BIMcollab.",
   "eq": "Navisworks: Units and Transform; ACC: Transform; BIMcollab Zoom: IFC Global Origin / Use georeferencing; Solibri; Trimble Connect; Dalux.",
   "err": "Usar el Transform del visor como solución permanente en lugar de corregir el origen en el modelo fuente.",
@@ -736,6 +736,27 @@ window.BF_GLOSARIO = [
    "deriva continental",
    "ITRF",
    "datum dinámico"
+  ]
+ },
+ {
+  "id": "C36",
+  "slug": "sistema-de-coordenadas",
+  "t": "Sistema de coordenadas",
+  "en": "Coordinate system (CS)",
+  "b": "I",
+  "d": "Definición de los ejes con los que se escriben las coordenadas: cuántos son, su orden, su dirección y sus unidades (por ejemplo, Este y Norte en metros, o latitud y longitud en grados). Por sí solo no se ancla a la Tierra: unido a un datum forma un sistema de referencia de coordenadas (ISO 19111).",
+  "ej": "En ETRS89 / UTM 30N (EPSG:25830) el sistema de coordenadas es cartesiano con ejes Este y Norte en metros; EPSG:3042 usa el mismo datum y la misma proyección pero con el orden Norte-Este.",
+  "eq": "Revit: 'coordenadas compartidas' y Survey Point (ejes y origen, sin datum); Civil 3D llama 'coordinate system' a un CRS completo; CAD: SCU/SCP; IFC: los ejes locales del modelo y la proyección de IfcProjectedCRS.",
+  "err": "Llamar 'sistema de coordenadas' a algo que en realidad es un sistema de referencia (datum incluido), o intercambiar datos con el mismo datum pero con los ejes en otro orden.",
+  "rel": [
+   "C02",
+   "C03",
+   "C04",
+   "C31"
+  ],
+  "al": [
+   "sistema de coordenadas",
+   "sistemas de coordenadas"
   ]
  },
  {

@@ -19,7 +19,7 @@ GENERAL = 'coordenadas_bim_fuentes_y_glosario.xlsx'
 
 ALIAS = {
     'C01': ['georreferenciación', 'georreferenciar', 'georreferenciado', 'georeferencing'],
-    'C02': ['sistema de referencia', 'CRS', 'SRC', 'sistema de coordenadas'],
+    'C02': ['sistema de referencia de coordenadas', 'sistema de referencia', 'CRS', 'SRC'],
     'C03': ['datum', 'datum geodésico'],
     'C04': ['EPSG', 'código EPSG', 'WKT'],
     'C05': ['proyección', 'UTM', 'huso', 'Mercator'],
@@ -53,6 +53,7 @@ ALIAS = {
     'C33': ['ETRS89', 'REGCAN95', 'RD 1071/2007'],
     'C34': ['unidades del modelo', 'conversión de unidades'],
     'C35': ['época de referencia', 'deriva continental', 'ITRF', 'datum dinámico'],
+    'C36': ['sistema de coordenadas', 'sistemas de coordenadas'],
 }
 ROMANO = {'I': 'I', 'II': 'II', 'III': 'III', 'IV': 'IV', 'V': 'V', 'VI': 'VI'}
 
