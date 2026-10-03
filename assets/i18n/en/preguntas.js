@@ -7,6 +7,12 @@ window.BF_PREGUNTAS = [
   "I"
  ],
  [
+  "Why do models arrive out of place when federated?",
+  "coordenadas-compartidas",
+  "principio",
+  "I"
+ ],
+ [
   "Which EPSG code do I put in the BEP and in the IFC?",
   "coordenadas-compartidas",
   "paises",
