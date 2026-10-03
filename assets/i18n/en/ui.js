@@ -27,6 +27,8 @@
     'Se recuerda en todos los artículos': 'Remembered across all articles',
     'Antes de empezar': 'Before you start', '¿En qué sistema trabajas': 'Which system do you work in',
     'Los ejemplos de coordenadas del artículo se calculan en el sistema que elijas. Se recuerda en toda la serie.': 'The coordinate examples in the article are calculated in the system you choose. It is remembered across the whole series.',
+    'Las explicaciones son generales; los ejemplos, datos y coordenadas se calculan para tu país y tu sistema. Se recuerda en toda la serie.': 'The explanations are general; the examples, data and coordinates are calculated for your country and your system. It is remembered across the whole series.',
+    'Red geodésica nacional': 'National geodetic network',
     'Sistema de coordenadas': 'Coordinate system', 'Usar este sistema': 'Use this system', 'Ahora no': 'Not now',
     // Coordinate reader (Survey Point)
     'Con clip': 'Clipped', 'Sin clip, en el vértice': 'Unclipped, on the control point', 'edificio': 'building', 'origen interno': 'internal origin',
@@ -74,6 +76,7 @@
     [/^Artículo (\d+)$/, 'Article $1'],
     [/^(I|II|III|IV|V|VI) ([^·]+)$/, (m, r, n) => r + ' ' + (t[n] || n)],
     [/^Detalle: /, 'Detail: '],
+    [/^([\d.,]+° )O$/, '$1W'],
     [/^(\d+) resultados$/, '$1 results'],
     [/^(\d+) de (\d+) términos$/, '$1 of $2 terms'],
     [/^(\d+) de (\d+)$/, '$1 of $2'],
@@ -87,7 +90,7 @@
   window.BF_I18N_UI = {
     t, re,
     // Elements whose figures are generated with a decimal comma (switched to a decimal point)
-    num: '[data-pais], .pz-origin, .pz-hud, .lector-out, .lector-far, .crs-prev, [data-crs-chip]',
+    num: '[data-pais], [data-pc], .pz-origin, .pz-hud, .lector-out, .lector-far, .crs-prev, [data-crs-chip]',
     // Series catalogue (assets/js/serie.js): translated fields per slug
     serie: {
       'coordenadas-compartidas': { titulo: 'Coordinate systems in BIM', resumen: 'First the concepts that hold for any program (geodesy, surveying, precision and transformation); then standards, software, platforms, interoperability and quality control.', tema: 'Georeferencing' },
