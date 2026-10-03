@@ -90,7 +90,7 @@
     num: '',
     // Katalog der Serie (assets/js/serie.js): übersetzte Felder je Slug
     serie: {
-      'coordenadas-compartidas': { titulo: 'Koordinatensysteme in BIM', lectura: '40 Ideen', resumen: 'Zuerst die Grundlagen, die für jedes Programm gelten (Geodäsie, Vermessung, Genauigkeit und Transformation); danach Normen, Software, Plattformen, Interoperabilität und Qualitätsprüfung.', tema: 'Georeferenzierung' },
+      'coordenadas-compartidas': { titulo: 'Koordinatensysteme in BIM', lectura: '42 Ideen', resumen: 'Zuerst die Grundlagen, die für jedes Programm gelten (Geodäsie, Vermessung, Genauigkeit und Transformation); danach Normen, Software, Plattformen, Interoperabilität und Qualitätsprüfung.', tema: 'Georeferenzierung' },
       'niveles-de-informacion': { titulo: 'Informationsbedarfstiefe', lectura: '34 Ideen', resumen: 'In jeder Phase genau das Nötige anfordern: nicht mehr Geometrie und nicht weniger Daten.', tema: 'Information' },
       'entorno-comun-de-datos': { titulo: 'Gemeinsame Datenumgebung', lectura: '39 Ideen', resumen: 'Ein einziger Ort, an dem Informationen einen Status, eine Version und einen Verantwortlichen haben.', tema: 'Management' },
       'deteccion-de-interferencias': { titulo: 'Kollisionsprüfung', lectura: '34 Ideen', resumen: 'Kollisionen im Modell finden, bevor sie die Baustelle erreichen.', tema: 'Koordination' },
