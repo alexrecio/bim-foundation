@@ -6,7 +6,7 @@
   <!-- Draft: remove noindex on publishing -->
   <meta name="robots" content="noindex, nofollow">
   <!-- Translation of articulos/coordenadas-compartidas/index.html at this git blob (herramientas/i18n.mjs flags it when the Spanish page changes) -->
-  <meta name="bf-fuente" content="articulos/coordenadas-compartidas/index.html@102d40defc49c06c70d3a665d89225d58241c073">
+  <meta name="bf-fuente" content="articulos/coordenadas-compartidas/index.html@bd9bcd75780fe3dee6da3c0a5353cc88416c2100">
   <title>Coordinate systems in BIM | bimkernel</title>
   <meta name="description" content="Coordinate systems in BIM: the tool that coordinates the physical and the digital, from the datum and the projection to the model, IFC and setting out.">
   <meta property="og:type" content="article">
@@ -92,7 +92,7 @@
               <circle cx="300" cy="168" r="52" fill="#FFFF00" stroke="#000" stroke-width="3"/>
               <g font-family="JetBrains Mono, monospace" text-anchor="middle"><text x="300" y="158" font-size="11" font-weight="700">COORDINATE</text><text x="300" y="172" font-size="11" font-weight="700">SYSTEM</text><text x="300" y="192" font-size="12">E · N · H</text></g>
               <g font-family="JetBrains Mono, monospace" font-size="11" fill="#666" text-anchor="middle"><text x="300" y="14">physical ▸ digital</text><text x="300" y="330">digital ▸ physical</text></g>
-              <path d="M170 201 L150 346 M430 201 L452 346" stroke="#000" stroke-width="1.2" stroke-dasharray="3 4"/>
+              <path d="M170 201 L84 344 M430 201 L452 346" stroke="#000" stroke-width="1.2" stroke-dasharray="3 4"/>
               <g transform="translate(14 214)">
               <g fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M6 252 C50 246 90 254 140 250 S220 246 262 251" stroke-width="3"/>
@@ -112,6 +112,7 @@
               </g>
               <g font-family="JetBrains Mono, monospace" font-size="12">
                 <text x="128" y="124" text-anchor="middle">total station</text>
+                <text x="230" y="152" text-anchor="middle">prism</text>
                 <text x="238" y="276" text-anchor="middle">nail</text>
                 <text x="130" y="302" text-anchor="middle" font-weight="700">PHYSICAL ASSET</text>
                 <text x="130" y="318" text-anchor="middle" fill="#666">the built work, in use</text>
@@ -1792,7 +1793,7 @@
       </div>
       <div class="card w4 k">
         <h4>What shape the vertical datum has</h4>
-        <p>That of the geoid: the surface of equal gravity potential, on which water at rest would not flow in any direction. It follows the distribution of the planet's mass (mountains, trenches, density of the interior), so it does not fit a two-parameter formula like the ellipsoid: it is calculated from gravity and satellite measurements and published as a grid of undulations N. Each country's datum realises it only approximately.</p>
+        <p>That of the geoid: the surface of equal gravity potential that best fits mean sea level, on which water at rest would not flow in any direction. It follows the distribution of the planet's mass (mountains, trenches, density of the interior), so it does not fit a two-parameter formula like the ellipsoid: it is calculated from gravity and satellite measurements and published as a grid of undulations N. Each country's datum realises it only approximately.</p>
       </div>
       <div class="card w2"><span class="c-label">Geoid versus ellipsoid</span><b class="c-num" style="font-size:clamp(1.3rem,2vw,2rem);white-space:nowrap">−106 to +86<small>m</small></b><span class="c-foot">undulation N across the planet · EGM2008</span></div>
       <div class="card w3">
@@ -1804,7 +1805,7 @@
         <p>Height comes from GNSS by subtracting the undulation: <span class="mono">H = h − N</span>. Canada defined its CGVD2013 this way, with no origin tide gauge.</p>
       </div>
       <div class="card w6 g">
-        <p style="margin:0">Mean sea level does not quite coincide with the geoid: currents, winds and salinity separate them by around a metre <span class="tag">Inferred</span>, which is why two countries with different tide gauges have different height zeros.</p>
+        <p style="margin:0">Mean sea level does not quite coincide with the geoid: currents, winds and salinity separate them by around a metre (up to about 2 m), which is why two countries with different tide gauges have different height zeros.</p>
       </div>
       <div class="card w6">
         <div class="table-wrap"><table>
