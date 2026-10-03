@@ -250,31 +250,30 @@
         <div class="b-cards">
           <div class="card w6 g">
             <span class="c-label">Un punto sobre el elipsoide</span>
-            <svg class="draw" viewBox="0 0 640 220" role="img" aria-label="Elipsoide con el ecuador y el meridiano de Greenwich. Un punto P en la superficie: su latitud es el ángulo de la normal con el plano del ecuador, su longitud el ángulo desde Greenwich a lo largo del ecuador y su altura la distancia sobre el elipsoide">
-              <ellipse cx="170" cy="115" rx="130" ry="95" fill="#fff" stroke="#000" stroke-width="3"/>
-              <ellipse cx="170" cy="115" rx="130" ry="22" fill="none" stroke="#000" stroke-width="1.5"/>
-              <ellipse cx="170" cy="115" rx="40" ry="95" fill="none" stroke="#999" stroke-width="1.5" stroke-dasharray="4 4"/>
-              <path d="M262 48 C 280 80, 282 110, 262 130" fill="none" stroke="#000" stroke-width="1.5"/>
-              <path d="M202 130 L262 48" stroke="#000" stroke-width="2" stroke-dasharray="5 4"/>
-              <path d="M202 130 H262" stroke="#000" stroke-width="2"/>
-              <path d="M232 130 A30 30 0 0 0 220 106" fill="none" stroke="#000" stroke-width="2"/>
-              <path d="M170 137 Q 220 136 262 130" fill="none" stroke="#000" stroke-width="4"/>
-              <path d="M262 48 L282 20" stroke="#000" stroke-width="2.5"/><polygon points="285,15 276,22 286,26" fill="#000"/>
-              <circle cx="262" cy="48" r="7" fill="#FFFF00" stroke="#000" stroke-width="2.5"/>
-              <g font-family="JetBrains Mono, monospace" font-size="13" font-weight="700">
-                <text x="238" y="122">φ</text><text x="208" y="154">λ</text><text x="292" y="30">h</text><text x="272" y="56">P</text>
-              </g>
-              <g font-family="JetBrains Mono, monospace" font-size="11">
-                <text x="170" y="13" fill="#666" text-anchor="middle">Greenwich</text><text x="20" y="140" fill="#666">ecuador</text>
-                <text x="360" y="64"><tspan font-weight="700">φ latitud</tspan> · ángulo con el ecuador</text>
-                <text x="360" y="110"><tspan font-weight="700">λ longitud</tspan> · ángulo desde Greenwich</text>
-                <text x="360" y="156"><tspan font-weight="700">h altura</tspan> · metros sobre el elipsoide</text>
-              </g>
+            <svg class="draw" viewBox="0 0 640 244" role="img" aria-label="Dos vistas. De perfil: la latitud φ es el ángulo entre el plano del ecuador y la normal al elipsoide en el punto P; la altura h se mide sobre esa normal. Desde el polo norte: la longitud λ es el ángulo en el polo entre el meridiano de Greenwich y el meridiano de P.">
+              <g font-family="JetBrains Mono, monospace" font-size="12" font-weight="700"><text x="10" y="16">φ LATITUD · de perfil</text><text x="340" y="16">λ LONGITUD · desde el polo</text></g>
+              <ellipse cx="150" cy="134" rx="120" ry="88" fill="#fff" stroke="#000" stroke-width="3"/>
+              <path d="M30 134 H270" stroke="#000" stroke-width="1.5"/>
+              <circle cx="150" cy="134" r="3" fill="#000"/>
+              <path d="M182 134 L219 62" stroke="#000" stroke-width="2" stroke-dasharray="5 4"/>
+              <path d="M208 134 A26 26 0 0 0 194 111" fill="none" stroke="#000" stroke-width="2.5"/>
+              <path d="M219 62 L233 35" stroke="#000" stroke-width="2.5"/><polygon points="236,29 227,36 237,40" fill="#000"/>
+              <circle cx="219" cy="62" r="7" fill="#FFFF00" stroke="#000" stroke-width="2.5"/>
+              <g font-family="JetBrains Mono, monospace" font-size="14" font-weight="700"><text x="212" y="126">φ</text><text x="244" y="40">h</text><text x="198" y="56">P</text></g>
+              <g font-family="JetBrains Mono, monospace" font-size="11" fill="#666"><text x="36" y="128">ecuador</text><text x="150" y="238" text-anchor="middle">normal al elipsoide en P</text></g>
+              <path d="M328 30 V236" stroke="#000" stroke-width="1" stroke-dasharray="2 5"/>
+              <circle cx="485" cy="128" r="88" fill="#fff" stroke="#000" stroke-width="3"/>
+              <path d="M485 128 V216" stroke="#999" stroke-width="2" stroke-dasharray="5 4"/>
+              <path d="M485 128 L542 195" stroke="#000" stroke-width="2.5"/>
+              <path d="M485 160 A32 32 0 0 0 506 152" fill="none" stroke="#000" stroke-width="2.5"/>
+              <circle cx="485" cy="128" r="4" fill="#000"/>
+              <circle cx="542" cy="195" r="7" fill="#FFFF00" stroke="#000" stroke-width="2.5"/>
+              <g font-family="JetBrains Mono, monospace" font-size="14" font-weight="700"><text x="500" y="182">λ</text><text x="554" y="206">P</text></g>
+              <g font-family="JetBrains Mono, monospace" font-size="11" fill="#666"><text x="493" y="122">polo norte</text><text x="485" y="236" text-anchor="middle">Greenwich · 0°</text><text x="590" y="150">meridiano</text><text x="590" y="164">de P</text></g>
             </svg>
           </div>
           <div class="card w2 k" data-slot="0"><span class="c-label">Tu país · <span data-pc="nombre">España</span></span><span class="c-title mono" style="font-size:18px;color:var(--accent)"><span data-pc="lat">40,42° N</span><br><span data-pc="lon">3,70° O</span></span><span class="c-foot">datum <span data-pc="datum">ETRS89</span></span></div>
-          <div class="card w2" data-slot="1"><span class="c-label"><span data-pc="region">Asia y Oceanía</span> · <span data-pc="nombre">Australia</span></span><span class="c-title mono" style="font-size:18px"><span data-pc="lat">33,87° S</span><br><span data-pc="lon">151,21° E</span></span><span class="c-foot">datum <span data-pc="datum">GDA2020</span></span></div>
-          <div class="card w2" data-slot="2"><span class="c-label"><span data-pc="region">América</span> · <span data-pc="nombre">Perú</span></span><span class="c-title mono" style="font-size:18px"><span data-pc="lat">12,05° S</span><br><span data-pc="lon">77,04° O</span></span><span class="c-foot">datum <span data-pc="datum">SIRGAS</span></span></div>
+          <div class="card w4 y"><span class="c-label">Ojo</span><span class="c-title">Otro datum, otros ángulos</span><span class="c-foot">unas coordenadas sin su datum no sitúan nada</span></div>
         </div>
       </div>
     </section>
@@ -1668,6 +1667,18 @@
 
   <template id="l2-coordenadas">
     <div class="b-cards">
+      <div class="card w6">
+        <h4>Un punto en tres continentes, cada uno en su datum</h4>
+        <div class="table-wrap"><table>
+          <thead><tr><th></th><th>Madrid · Puerta del Sol</th><th>Sídney · Ópera</th><th>Lima · Plaza Mayor</th></tr></thead>
+          <tbody>
+            <tr><td>Latitud</td><td class="num">40,4169° N</td><td class="num">33,8568° S</td><td class="num">12,0464° S</td></tr>
+            <tr><td>Longitud</td><td class="num">3,7036° O</td><td class="num">151,2153° E</td><td class="num">77,0302° O</td></tr>
+            <tr class="is-key"><td>Datum</td><td>ETRS89</td><td>GDA2020</td><td>SIRGAS 2000</td></tr>
+          </tbody>
+        </table></div>
+        <p class="table-note">Son tres lugares distintos, cada uno escrito en el datum oficial de su país.</p>
+      </div>
       <div class="card w3">
         <h4>Por qué los grados no sirven para medir</h4>
         <div class="table-wrap"><table>
@@ -1698,7 +1709,7 @@
         <p>Es el ángulo de la perpendicular al elipsoide en ese punto (la normal) con el plano del ecuador. Como el elipsoide está achatado, esa línea no pasa por el centro de la Tierra, salvo en el ecuador y en los polos.</p>
       </div>
       <div class="card w3 y">
-        <h4>Mismo lugar, otro datum, otros números</h4>
+        <h4>Cuánto cambia: ED50 frente a ETRS89</h4>
         <p>Las coordenadas geográficas siempre van con su datum. Las de la Puerta del Sol en ED50 y en ETRS89 difieren en unos 4 o 5 segundos de arco, unos 170 m en el terreno (ver <a href="#tierra">el datum</a>).</p>
       </div>
       <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://epsg.io/4258" target="_blank" rel="noopener">EPSG:4258</a> · <a href="https://epsg.io/7844" target="_blank" rel="noopener">EPSG:7844</a> · <a href="https://epsg.io/4674" target="_blank" rel="noopener">EPSG:4674</a> · <a href="https://epsg.io/4936" target="_blank" rel="noopener">EPSG:4936</a> · <a href="https://epsg.io/7842" target="_blank" rel="noopener">EPSG:7842</a> · <a href="https://epsg.io/4988" target="_blank" rel="noopener">EPSG:4988</a> · <a href="https://www.icsm.gov.au/gda2020" target="_blank" rel="noopener">ICSM (GDA2020)</a>.</p></div>
