@@ -308,9 +308,28 @@
     'e-big': (p) => fmt(big(ej(p)[0]), 0), 'n-big': (p) => fmt(big(ej(p)[1]), 0), 'e-small': () => '125,250', 'n-small': () => '310,800',
     'e-aprox': (p) => fmt(aprox(ej(p)[0]), 0), 'n-aprox': (p) => fmt(aprox(ej(p)[1]), 0),
     'n-bytes': (p) => ej(p)[1].toFixed(3).length,
-    'topo-e': (p) => (big(ej(p)[0]) + 10).toFixed(3), 'topo-n': (p) => (big(ej(p)[1]) + 20).toFixed(3)
+    'topo-e': (p) => (big(ej(p)[0]) + 10).toFixed(3), 'topo-n': (p) => (big(ej(p)[1]) + 20).toFixed(3),
+    // Punto de ejemplo del país (capital o zona) sin redondear: geográficas, proyectadas y factor de escala de cuadrícula
+    region: (p) => (REG.find(([r]) => r === p.reg) || ['', ''])[1],
+    lat: (p) => (sis(p)[7] == null ? '—' : `${fmt(Math.abs(sis(p)[7]), 2)}° ${sis(p)[7] < 0 ? 'S' : 'N'}`),
+    lon: (p) => (sis(p)[8] == null ? '—' : `${fmt(Math.abs(sis(p)[8]), 2)}° ${sis(p)[8] < 0 ? 'O' : 'E'}`),
+    'e-pt': (p) => fmt(Math.round(sis(p)[5]), 0), 'n-pt': (p) => fmt(Math.round(sis(p)[6]), 0),
+    'u-pt': (p) => (sis(p)[2] === 'm' ? 'm' : 'pies'),
+    'k-cm': (p) => { const k = sis(p)[9]; if (k == null) return '—'; const v = (k - 1) * 1e4; return (v < 0 ? '−' : '+') + Math.abs(v).toFixed(1).replace('.', ','); },
+    'alt-o-red': (p) => p.alt || 'Red nacional',
+    'red-corta': (p) => (p.red || 'Red geodésica nacional').replace(/\s*\([^)]*\)/g, '')
   };
-  const paisTexts = () => { const p = cur(); if (!p) return; document.querySelectorAll('[data-pais]').forEach((el) => { const f = CAMPOS[el.dataset.pais]; if (f) el.textContent = f(p); }); };
+  // Tarjetas «tu país + dos de otros continentes» (<… data-slot="0|1|2"> con <span data-pc="campo">): la 0 es el país del lector
+  const COMP = { EU: ['AU', 'PE'], AM: ['ES', 'AU'], AP: ['ES', 'PE'], MA: ['AU', 'PE'] };
+  const campoEn = (p, s, k) => { const o = sysId; sysId = s; try { return CAMPOS[k] ? String(CAMPOS[k](p)) : ''; } finally { sysId = o; } };
+  const slotTexts = (p0) => {
+    const ids = [p0.id, ...(COMP[p0.reg] || ['ES', 'AU']).filter((i) => i !== p0.id)];
+    document.querySelectorAll('[data-slot]').forEach((el) => {
+      const i = +el.dataset.slot; const p = byId(ids[i]); if (!p) return;
+      el.querySelectorAll('[data-pc]').forEach((x) => { x.textContent = campoEn(p, i === 0 ? sysId : p.key, x.dataset.pc); });
+    });
+  };
+  const paisTexts = () => { const p = cur(); if (!p) return; document.querySelectorAll('[data-pais]').forEach((el) => { const f = CAMPOS[el.dataset.pais]; if (f) el.textContent = f(p); }); slotTexts(p); };
   window.BF_CRS = { origen: () => { const p = cur(); if (!p) return null; const s2 = sis(p); return [big(s2[5]) + 100, big(s2[6]) + 200]; } };
   const dEpsg = (c) => (c ? 'EPSG ' + c : 'sin código EPSG');
   const codes = (p, btn) => p.epsg.map(([c, t]) => `<${btn ? 'button type="button"' : 'span'} class="paises-code${c === sysId ? ' is-key' : ''}" data-epsg="${c}"><b>${c}</b>${t}</${btn ? 'button' : 'span'}>`).join('');
@@ -345,7 +364,7 @@
     el.innerHTML = `<div class="table-wrap"><table><thead><tr><th>País</th><th>Datum</th><th>Proyección</th><th>EPSG habitual</th><th>Altitudes</th><th>Red geodésica</th></tr></thead><tbody>${L.map((p) => `<tr data-p="${p.id}"${p.id === paisId ? ' class="is-key"' : ''}><td>${p.nombre}${p.revisar ? ' ' + pc() : ''}</td><td>${p.datum}${p.datumEpsg ? ` <span class="mono">${p.datumEpsg}</span>` : ''}</td><td>${p.proy}</td><td class="mono">${p.epsg.map(([c]) => c).join(' · ')}</td><td>${p.alt ? `${p.alt}${p.altEpsg ? ` <span class="mono">${p.altEpsg}</span>` : ''}` : pc()}</td><td>${p.red || '—'} · <a href="${p.url}" target="_blank" rel="noopener">${p.org}</a></td></tr>`).join('')}</tbody></table></div>`;
   };
   // Ventana de bienvenida: país + sistema; se abre la primera vez y desde «Tu sistema» en el menú
-  const crsDialog = () => {
+  const crsDialog = (alAcabar) => {
     if (document.getElementById('crs-dialog')) return;
     let did = paisId, dsys = sysId;
     const d = document.createElement('div');
@@ -355,7 +374,7 @@
       return `<div class="crs-box">
         <span class="kicker-y">Antes de empezar</span>
         <h3 id="crs-t">¿En qué sistema trabajas<span class="dot">?</span></h3>
-        <p>Los ejemplos de coordenadas del artículo se calculan en el sistema que elijas. Se recuerda en toda la serie.</p>
+        <p>Las explicaciones son generales; los ejemplos, datos y coordenadas se calculan para tu país y tu sistema. Se recuerda en toda la serie.</p>
         ${paisSelect('País')}
         <span class="c-label">Sistema de coordenadas</span>
         <div class="crs-codes">${codes(p, true).replace(/is-key/g, '').replace(`data-epsg="${dsys}"`, `data-epsg="${dsys}" aria-pressed="true"`)}</div>
@@ -368,8 +387,8 @@
       d.querySelector('select').value = did;
       d.querySelector('select').addEventListener('change', (e) => { did = e.target.value; dsys = byId(did).key; paint(); });
       d.querySelectorAll('[data-epsg]').forEach((b) => b.addEventListener('click', () => { dsys = +b.dataset.epsg; paint(); }));
-      d.querySelector('[data-crs-ok]').addEventListener('click', () => { setCrs(did, dsys); ls('bf-crs-ok', '1'); close(); });
-      d.querySelector('[data-crs-skip]').addEventListener('click', () => { ls('bf-crs-ok', '1'); close(); });
+      d.querySelector('[data-crs-ok]').addEventListener('click', () => { setCrs(did, dsys); ls('bf-crs-ok', '1'); ls('bf-pais-ok', '1'); close(); if (alAcabar) alAcabar(); });
+      d.querySelector('[data-crs-skip]').addEventListener('click', () => { ls('bf-crs-ok', '1'); close(); if (alAcabar) alAcabar(); });
     };
     const close = () => { d.remove(); document.removeEventListener('keydown', esc); };
     const esc = (e) => { if (e.key === 'Escape') { ls('bf-crs-ok', '1'); close(); } };
@@ -399,6 +418,12 @@
       b.addEventListener('click', (e) => { e.stopPropagation(); crsDialog(); });
       mn.appendChild(b);
     }
+    // Portada del artículo: «Tu sistema» a la vista y «Empezar» pide el país si aún no se ha elegido
+    document.querySelectorAll('#portada [data-crs-chip]').forEach((b) => b.addEventListener('click', (e) => { e.stopPropagation(); crsDialog(); }));
+    document.querySelectorAll('#portada .slide-actions a[href^="#"]').forEach((a) => a.addEventListener('click', (e) => {
+      if (ls('bf-pais-ok') || ls('bf-pais')) return;
+      e.preventDefault(); crsDialog(() => { const t = document.querySelector(a.getAttribute('href')); if (t) t.scrollIntoView({ behavior: 'smooth' }); });
+    }));
     crsDraw();
     if (document.querySelector('main.deck') && !ls('bf-crs-ok') && !/[?&]sin-bienvenida/.test(location.search)) crsDialog();
   }

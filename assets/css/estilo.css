@@ -837,3 +837,4 @@ kbd { display: inline-block; min-width: 1.6em; padding: 1px 5px; border: 1px sol
 #bf-lang-aviso p { margin: 0; font-weight: 800; line-height: 1.35; }
 #bf-lang-aviso > div { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
 @media (min-width: 1200px) { #bf-lang-fijo.en-articulo { display: none; } }
+.crs-chip.crs-portada { width: auto; margin: 0; }

@@ -57,7 +57,7 @@
           <span class="kicker-y lg">Realidad · modelo · obra</span>
           <h1 class="display">Sistemas de<br>coordenadas<br><span class="hl-y">en BIM<span class="dot">.</span></span></h1>
           <p class="slide-lead">La herramienta que traduce la realidad física a datos digitales con precisión, y los devuelve a su sitio.</p>
-          <div class="slide-actions"><a class="btn" href="#porque">Empezar <span aria-hidden="true">↓</span></a></div>
+          <div class="slide-actions"><a class="btn" href="#porque">Empezar <span aria-hidden="true">↓</span></a><button type="button" class="crs-chip crs-portada" data-crs-chip></button></div>
         </div>
         <div class="b-cards">
           <div class="card w6 ficha" data-ficha></div>
@@ -184,9 +184,9 @@
               </g>
             </svg>
           </div>
-          <div class="card w2"><span class="c-label">Europa · España</span><span class="c-title">ETRS89</span><span class="c-foot">altura: Alicante</span></div>
-          <div class="card w2"><span class="c-label">Oceanía · Australia</span><span class="c-title">GDA2020</span><span class="c-foot">altura: AHD</span></div>
-          <div class="card w2 k"><span class="c-label">América · Perú</span><span class="c-title">SIRGAS 2000</span><span class="c-foot">altura: red nacional</span></div>
+          <div class="card w2 k" data-slot="0"><span class="c-label">Tu país · <span data-pc="nombre">España</span></span><span class="c-title" style="color:var(--accent)"><span data-pc="datum">ETRS89</span></span><span class="c-foot">altura: <span data-pc="alt-o-red">Alicante</span></span></div>
+          <div class="card w2" data-slot="1"><span class="c-label"><span data-pc="region">Asia y Oceanía</span> · <span data-pc="nombre">Australia</span></span><span class="c-title"><span data-pc="datum">GDA2020</span></span><span class="c-foot">altura: <span data-pc="alt-o-red">AHD</span></span></div>
+          <div class="card w2" data-slot="2"><span class="c-label"><span data-pc="region">América</span> · <span data-pc="nombre">Perú</span></span><span class="c-title"><span data-pc="datum">SIRGAS</span></span><span class="c-foot">altura: <span data-pc="alt-o-red">La Punta (Callao)</span></span></div>
         </div>
       </div>
     </section>
@@ -237,9 +237,9 @@
               </g>
             </svg>
           </div>
-          <div class="card w2"><span class="c-label">Europa · España</span><span class="c-title">ERGNSS · REGENTE</span><span class="c-foot">altura: REDNAP</span></div>
-          <div class="card w2"><span class="c-label">Oceanía · Australia</span><span class="c-title">ARGN · AUSCORS</span><span class="c-foot">altura: nivelación del AHD</span></div>
-          <div class="card w2 k"><span class="c-label">América · Perú</span><span class="c-title" style="color:var(--accent)">REGPMOC</span><span class="c-foot">altura: red nacional</span></div>
+          <div class="card w2 k" data-slot="0"><span class="c-label">Tu país · <span data-pc="nombre">España</span></span><span class="c-title" style="font-size:15px;line-height:1.2;color:var(--accent)"><span data-pc="red-corta">REGENTE · REDNAP · ERGNSS</span></span><span class="c-foot">mantiene: <span data-pc="org">IGN</span></span></div>
+          <div class="card w2" data-slot="1"><span class="c-label"><span data-pc="region">Asia y Oceanía</span> · <span data-pc="nombre">Australia</span></span><span class="c-title" style="font-size:15px;line-height:1.2"><span data-pc="red-corta">Marcas de control estatales + AUSCORS/ARGN</span></span><span class="c-foot">mantiene: <span data-pc="org">ICSM / Geoscience Australia</span></span></div>
+          <div class="card w2" data-slot="2"><span class="c-label"><span data-pc="region">América</span> · <span data-pc="nombre">Perú</span></span><span class="c-title" style="font-size:15px;line-height:1.2"><span data-pc="red-corta">REGPMOC + Red Geodésica Geocéntrica Nacional</span></span><span class="c-foot">mantiene: <span data-pc="org">IGN Perú</span></span></div>
         </div>
       </div>
     </section>
@@ -277,9 +277,9 @@
               </g>
             </svg>
           </div>
-          <div class="card w2"><span class="c-label">Europa · Madrid</span><span class="c-title mono" style="font-size:18px">40,4169° N<br>3,7036° O</span><span class="c-foot">Puerta del Sol · ETRS89</span></div>
-          <div class="card w2"><span class="c-label">Oceanía · Sídney</span><span class="c-title mono" style="font-size:18px">33,8568° S<br>151,2153° E</span><span class="c-foot">Ópera · GDA2020</span></div>
-          <div class="card w2 k"><span class="c-label">América · Lima</span><span class="c-title mono" style="font-size:18px;color:var(--accent)">12,0464° S<br>77,0302° O</span><span class="c-foot">Plaza Mayor · SIRGAS 2000</span></div>
+          <div class="card w2 k" data-slot="0"><span class="c-label">Tu país · <span data-pc="nombre">España</span></span><span class="c-title mono" style="font-size:18px;color:var(--accent)"><span data-pc="lat">40,42° N</span><br><span data-pc="lon">3,70° O</span></span><span class="c-foot">datum <span data-pc="datum">ETRS89</span></span></div>
+          <div class="card w2" data-slot="1"><span class="c-label"><span data-pc="region">Asia y Oceanía</span> · <span data-pc="nombre">Australia</span></span><span class="c-title mono" style="font-size:18px"><span data-pc="lat">33,87° S</span><br><span data-pc="lon">151,21° E</span></span><span class="c-foot">datum <span data-pc="datum">GDA2020</span></span></div>
+          <div class="card w2" data-slot="2"><span class="c-label"><span data-pc="region">América</span> · <span data-pc="nombre">Perú</span></span><span class="c-title mono" style="font-size:18px"><span data-pc="lat">12,05° S</span><br><span data-pc="lon">77,04° O</span></span><span class="c-foot">datum <span data-pc="datum">SIRGAS</span></span></div>
         </div>
       </div>
     </section>
@@ -299,10 +299,12 @@
         <div class="b-cards">
           <div class="card w4 g">
             <span class="c-label">Un huso, desenrollado</span>
-            <svg class="draw" viewBox="0 0 400 220" role="img" aria-label="Globo dividido en husos con uno resaltado y el mismo huso aplanado en una cuadrícula">
-              <circle cx="100" cy="110" r="90" fill="#fff" stroke="#000" stroke-width="3"/>
-              <g fill="none" stroke="#B9B9B0" stroke-width="1.5"><ellipse cx="100" cy="110" rx="70" ry="90"/><ellipse cx="100" cy="110" rx="45" ry="90"/><ellipse cx="100" cy="110" rx="20" ry="90"/></g>
-              <path d="M100 20 C 113 50, 120 80, 120 110 C 120 140, 113 170, 100 200 C 87 170, 80 140, 80 110 C 80 80, 87 50, 100 20 Z" fill="#FFFF00" stroke="#000" stroke-width="2"/>
+            <svg class="draw" viewBox="0 0 400 220" role="img" aria-label="El mismo elipsoide del datum, dividido en husos con uno resaltado, y ese huso aplanado en una cuadrícula">
+              <ellipse cx="100" cy="110" rx="96" ry="70" fill="#fff" stroke="#000" stroke-width="3"/>
+              <ellipse cx="100" cy="110" rx="96" ry="16" fill="none" stroke="#000" stroke-width="1.5"/>
+              <g fill="none" stroke="#B9B9B0" stroke-width="1.5"><ellipse cx="100" cy="110" rx="72" ry="70"/><ellipse cx="100" cy="110" rx="46" ry="70"/></g>
+              <path d="M100 40 C 114 62, 121 86, 121 110 C 121 134, 114 158, 100 180 C 86 158, 79 134, 79 110 C 79 86, 86 62, 100 40 Z" fill="#FFFF00" stroke="#000" stroke-width="2"/>
+              <text x="100" y="206" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#666">el elipsoide del datum</text>
               <path d="M200 110 h40" stroke="#000" stroke-width="2"/><polygon points="244,110 234,104 234,116" fill="#000"/>
               <rect x="262" y="20" width="76" height="180" fill="#FFFF00" stroke="#000" stroke-width="2.5"/>
               <g stroke="#000" stroke-width="1" opacity=".5"><path d="M262 50h76M262 80h76M262 110h76M262 140h76M262 170h76M287 20v180M313 20v180"/></g>
@@ -338,9 +340,9 @@
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="plano"><span class="plus">+</span> Ver detalle</button></div>
         </div>
         <div class="b-cards">
-          <div class="card w2"><span class="c-label">Europa · Madrid</span><span class="c-title mono" style="font-size:18px">440 309 E<br>4 474 267 N</span><span class="c-foot">EPSG 25830 · UTM 30N</span></div>
-          <div class="card w2"><span class="c-label">Oceanía · Sídney</span><span class="c-title mono" style="font-size:18px">334 901 E<br>6 252 291 N</span><span class="c-foot">EPSG 7856 · MGA 56</span></div>
-          <div class="card w2 k"><span class="c-label">América · Lima</span><span class="c-title mono" style="font-size:18px;color:var(--accent)">278 985 E<br>8 667 501 N</span><span class="c-foot">EPSG 31978 · UTM 18S</span></div>
+          <div class="card w2 k" data-slot="0"><span class="c-label">Tu país · <span data-pc="nombre">España</span></span><span class="c-title mono" style="font-size:18px;color:var(--accent)"><span data-pc="e-pt">440 616</span> E<br><span data-pc="n-pt">4 474 610</span> N</span><span class="c-foot">EPSG <span data-pc="epsg">25830</span> · en <span data-pc="u-pt">m</span></span></div>
+          <div class="card w2" data-slot="1"><span class="c-label"><span data-pc="region">Asia y Oceanía</span> · <span data-pc="nombre">Australia</span></span><span class="c-title mono" style="font-size:18px"><span data-pc="e-pt">334 436</span> E<br><span data-pc="n-pt">6 250 816</span> N</span><span class="c-foot">EPSG <span data-pc="epsg">7856</span> · en <span data-pc="u-pt">m</span></span></div>
+          <div class="card w2" data-slot="2"><span class="c-label"><span data-pc="region">América</span> · <span data-pc="nombre">Perú</span></span><span class="c-title mono" style="font-size:18px"><span data-pc="e-pt">277 925</span> E<br><span data-pc="n-pt">8 667 092</span> N</span><span class="c-foot">EPSG <span data-pc="epsg">32718</span> · en <span data-pc="u-pt">m</span></span></div>
           <div class="card w6 g">
             <span class="c-label">Lo que lleva un código EPSG</span>
             <div class="flow"><span class="chip">Datum</span><span class="arrow">+</span><span class="chip">Proyección y zona</span><span class="arrow">+</span><span class="chip">Unidades y ejes</span><span class="arrow">=</span><span class="chip y">Un sistema de referencia</span></div>
@@ -411,9 +413,9 @@
 <g font-family="JetBrains Mono, monospace" font-size="11"><circle cx="253" cy="132.4" r="5" fill="#fff" stroke="#000" stroke-width="2"/><text x="253" y="122" text-anchor="middle">Madrid</text><circle cx="170" cy="111.3" r="5" fill="#fff" stroke="#000" stroke-width="2"/><text x="160" y="126" text-anchor="end">Sídney</text><circle cx="126" cy="92" r="5" fill="#000"/><text x="126" y="82" text-anchor="middle">Lima</text></g>
 </svg>
           </div>
-          <div class="card w2"><span class="c-label">Europa · Madrid</span><b class="c-num">−4,6<small>cm</small></b><span class="c-foot">cada 100 m · a 650 m de altitud</span></div>
-          <div class="card w2"><span class="c-label">Oceanía · Sídney</span><b class="c-num">−0,6<small>cm</small></b><span class="c-foot">cada 100 m · junto al mar</span></div>
-          <div class="card w2 k"><span class="c-label">América · Lima</span><b class="c-num" style="color:var(--accent)">+1,8<small>cm</small></b><span class="c-foot">cada 100 m · lejos del centro del huso</span></div>
+          <div class="card w2 k" data-slot="0"><span class="c-label">Tu país · <span data-pc="nombre">España</span></span><b class="c-num" style="color:var(--accent)"><span data-pc="k-cm">−3,6</span><small>cm</small></b><span class="c-foot">cada 100 m, solo por la proyección</span></div>
+          <div class="card w2" data-slot="1"><span class="c-label"><span data-pc="region">Asia y Oceanía</span> · <span data-pc="nombre">Australia</span></span><b class="c-num"><span data-pc="k-cm">−0,6</span><small>cm</small></b><span class="c-foot">cada 100 m, solo por la proyección</span></div>
+          <div class="card w2" data-slot="2"><span class="c-label"><span data-pc="region">América</span> · <span data-pc="nombre">Perú</span></span><b class="c-num"><span data-pc="k-cm">+2,1</span><small>cm</small></b><span class="c-foot">cada 100 m, solo por la proyección</span></div>
         </div>
       </div>
     </section>
@@ -443,10 +445,10 @@
             </svg>
             <span class="c-foot">GNSS da h · los planos usan H · H = h − N</span>
           </div>
-          <div class="card w2 k"><span class="c-label">N en la península</span><b class="c-num" style="color:var(--accent)">≈50<small>m</small></b><span class="c-foot">lo que se equivoca un modelo con h en vez de H</span></div>
-          <div class="card w2"><span class="c-label">Europa · España</span><span class="c-title">Alicante</span><span class="c-foot">geoide EGM08-REDNAP</span></div>
-          <div class="card w2"><span class="c-label">Oceanía · Australia</span><span class="c-title">AHD</span><span class="c-foot">geoide AUSGeoid2020</span></div>
-          <div class="card w2 k"><span class="c-label">América · Perú</span><span class="c-title" style="color:var(--accent)">La Punta</span><span class="c-foot">geoide EGM2008</span></div>
+          <div class="card w2 y"><span class="c-label">N en el mundo</span><b class="c-num">±100<small>m</small></b><span class="c-foot">lo que se equivoca un modelo con h en vez de H</span></div>
+          <div class="card w2 k" data-slot="0"><span class="c-label">Tu país · <span data-pc="nombre">España</span></span><span class="c-title" style="color:var(--accent)"><span data-pc="alt-o-red">Alicante</span></span><span class="c-foot">EPSG <span data-pc="alt-epsg">5782</span></span></div>
+          <div class="card w2" data-slot="1"><span class="c-label"><span data-pc="region">Asia y Oceanía</span> · <span data-pc="nombre">Australia</span></span><span class="c-title"><span data-pc="alt-o-red">AHD</span></span><span class="c-foot">EPSG <span data-pc="alt-epsg">5711</span></span></div>
+          <div class="card w2" data-slot="2"><span class="c-label"><span data-pc="region">América</span> · <span data-pc="nombre">Perú</span></span><span class="c-title"><span data-pc="alt-o-red">La Punta (Callao)</span></span><span class="c-foot">EPSG <span data-pc="alt-epsg">—</span></span></div>
         </div>
       </div>
     </section>
