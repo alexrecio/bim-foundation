@@ -497,4 +497,83 @@
     const k = e.deltaMode === 1 ? 16 : e.deltaMode === 2 ? ol.clientHeight : 1;
     ol.scrollTop += e.deltaY * k;
   }, { passive: false });
+
+  // ---------- Menú general (botón del cartucho): panel con la serie, consulta y preferencias ----------
+  // Sustituye a la tira horizontal del cartucho: todo en vertical, agrupado y a un clic. La tira (#menu-content) sigue
+  // en el HTML porque otros scripts dejan ahí sus botones («Tu sistema», idioma); el panel los reutiliza.
+  const capsula = document.getElementById('nav-capsule');
+  const disparador = document.getElementById('menu-trigger');
+  if (capsula && disparador) {
+    capsula.classList.add('bf-panel-on');
+    let panel = null;
+    const icoSvg = (d) => `<svg width="16" height="16" viewBox="0 0 20 20" aria-hidden="true">${d}</svg>`;
+    const ICO = {
+      buscar: icoSvg('<circle cx="8.5" cy="8.5" r="6" fill="none" stroke="currentColor" stroke-width="2.5"/><path d="M13 13l5 5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>'),
+      glosario: icoSvg('<path d="M4 3h9a3 3 0 0 1 3 3v11H7a3 3 0 0 1-3-3Z" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M8 8h5M8 11h4" stroke="currentColor" stroke-width="2"/>'),
+      dudas: icoSvg('<circle cx="10" cy="10" r="7.5" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M7.8 7.8a2.3 2.3 0 1 1 3 2.2c-.6.3-.8.7-.8 1.4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="10" cy="14.2" r="1.1" fill="currentColor"/>'),
+      guia: icoSvg('<rect x="3" y="4" width="14" height="12" rx="1.5" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M6 8h5M6 11h8" stroke="currentColor" stroke-width="2"/>'),
+      sistema: icoSvg('<path d="M10 2v16M2 10h16" stroke="currentColor" stroke-width="2"/><circle cx="10" cy="10" r="4" fill="none" stroke="currentColor" stroke-width="2.2"/>')
+    };
+    const ESTADO = { borrador: 'Borrador', relleno: 'Ficticio', proximamente: 'Próximamente' };
+    const enPagina = (p) => window.BF_I18N ? window.BF_I18N.aqui === p : new RegExp('/' + p.replace(/\//g, '\\/') + '$').test(location.pathname);
+    const pintarPanel = () => {
+      const enInicio = window.BF_I18N ? window.BF_I18N.aqui === '' : !!document.getElementById('article-list');
+      const arts = serie.map((a) => {
+        const actual = a.slug === slugActual;
+        const soon = a.estado === 'proximamente';
+        const n = `<span class="bfm-n">${esc(a.numero)}</span><img src="${root}assets/img/iconos/${a.slug}.svg" alt="" onerror="this.style.visibility='hidden'"><span class="bfm-t">${esc(a.titulo)}</span>${ESTADO[a.estado] ? `<span class="bfm-e">${ESTADO[a.estado]}</span>` : ''}`;
+        return `<li>${soon ? `<span class="bfm-a is-soon">${n}</span>` : `<a class="bfm-a${actual ? ' is-current' : ''}" href="${url(`articulos/${a.slug}/`)}"${actual ? ' aria-current="page"' : ''}>${n}</a>`}</li>`;
+      }).join('');
+      const crs = document.querySelector('[data-crs-chip] b');
+      const L = window.BF_I18N && window.BF_I18N.idiomas ? window.BF_I18N.idiomas() : [];
+      const fila = (href, ico, t, extra = '', actual = false) => `<a class="bfm-row${actual ? ' is-current' : ''}" href="${href}"${actual ? ' aria-current="page"' : ''}>${ico}<span>${t}</span>${extra}</a>`;
+      panel.innerHTML = `
+        <button type="button" class="bfm-search" data-buscar>${ICO.buscar}<span>Busca un concepto, una duda o un programa…</span><kbd>/</kbd></button>
+        <div class="bfm-sec"><div class="bfm-h"><span class="label">La serie</span><a href="${url('')}"${enInicio ? ' aria-current="page"' : ''}>Inicio →</a></div><ol class="bfm-arts">${arts}</ol></div>
+        <div class="bfm-sec"><span class="label">Consulta</span>
+          ${fila(url('glosario/'), ICO.glosario, 'Glosario', '<em>A–Z</em>', enPagina('glosario/'))}
+          ${fila(url('faq/'), ICO.dudas, 'Dudas frecuentes', '<em>pregunta → respuesta</em>', enPagina('faq/'))}
+          <button type="button" class="bfm-row" data-guia>${ICO.guia}<span>Cómo se lee</span><kbd>?</kbd></button></div>
+        ${(crs || L.length > 1) ? `<div class="bfm-sec bfm-pref"><span class="label">Preferencias</span>
+          ${crs ? `<button type="button" class="bfm-row" data-bfm-crs>${ICO.sistema}<span>Tu sistema</span><em>${esc(crs.textContent)}</em></button>` : ''}
+          ${L.length > 1 ? `<div class="bfm-lang"><span>Idioma</span><div class="bf-lang" role="group" aria-label="Idioma · Language" data-i18n-no>${L.map((x) => x.actual
+            ? `<span class="is-current" lang="${x.l}" title="${x.n}">${x.l.toUpperCase()}</span>`
+            : `<a href="${window.BF_I18N.destino(x.l)}" hreflang="${x.l}" lang="${x.l}" title="${x.n}" data-lang-to="${x.l}">${x.l.toUpperCase()}</a>`).join('')}</div></div>` : ''}</div>` : ''}`;
+    };
+    const abrirMenu = () => {
+      cerrarTodo();
+      if (!panel) {
+        panel = document.createElement('div');
+        panel.id = 'bf-menu'; panel.className = 'custom-scroll';
+        panel.setAttribute('role', 'dialog'); panel.setAttribute('aria-label', 'Menú');
+        document.body.appendChild(panel);
+        panel.addEventListener('click', (e) => {
+          if (e.target.closest('[data-bfm-crs]')) { cerrarMenu(); const b = document.querySelector('[data-crs-menu], [data-crs-chip]'); if (b) b.click(); return; }
+          if (e.target.closest('[data-buscar], [data-guia]')) { cerrarMenu(); return; } // el manejador global abre el panel que toque
+          const a = e.target.closest('a[href]');
+          if (a && a.hash && !a.dataset.langTo && !e.metaKey && !e.ctrlKey) { e.preventDefault(); cerrarMenu(); ir(a.href); }
+        });
+        panel.addEventListener('wheel', (e) => e.stopPropagation(), { passive: true });
+      }
+      pintarPanel();
+      panel.classList.add('is-open'); capsula.classList.add('bf-menu-abierto');
+      disparador.setAttribute('aria-expanded', 'true');
+      const f = panel.querySelector('.bfm-a.is-current, .bfm-search'); if (f) f.focus({ preventScroll: true });
+    };
+    const cerrarMenu = () => {
+      if (!panel || !panel.classList.contains('is-open')) return;
+      panel.classList.remove('is-open'); capsula.classList.remove('bf-menu-abierto');
+      disparador.setAttribute('aria-expanded', 'false');
+    };
+    // Captura antes que el despliegue horizontal de web.js
+    document.addEventListener('click', (e) => {
+      if (e.target.closest('#menu-trigger')) {
+        e.preventDefault(); e.stopPropagation(); capsula.classList.remove('menu-open');
+        if (panel && panel.classList.contains('is-open')) cerrarMenu(); else abrirMenu();
+        return;
+      }
+      if (panel && panel.classList.contains('is-open') && !e.target.closest('#bf-menu')) cerrarMenu();
+    }, true);
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') cerrarMenu(); });
+  }
 })();
