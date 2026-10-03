@@ -48,4 +48,4 @@ Se puede abrir `index.html` con doble clic. Para ver las URL como en producción
 
 ## Publicar
 
-Pensada para Cloudflare Pages o GitHub Pages sin paso de compilación (directorio raíz `/`). Mientras sea borrador lleva `noindex`: quitar la etiqueta `<meta name="robots">` de cada página al publicar.
+Pensada para Cloudflare Pages o GitHub Pages sin paso de compilación (directorio raíz `/`). Dominio: **https://bimkernel.com** (Cloudflare Pages, proyecto `bim-foundation`). `_headers` (canonical y hreflang de cada página), `sitemap.xml` y `robots.txt` se generan con `node herramientas/dominio.mjs`: ejecutarlo al añadir, quitar o traducir una página. Mientras sea borrador lleva `noindex`: quitar la etiqueta `<meta name="robots">` de cada página al publicar.
