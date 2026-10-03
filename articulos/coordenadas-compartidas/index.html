@@ -170,14 +170,14 @@
               <circle cx="190" cy="112" r="6" fill="#FFFF00" stroke="#000" stroke-width="2.5"/>
               <g font-family="JetBrains Mono, monospace" font-size="14" font-weight="700"><text x="265" y="104" text-anchor="middle">a</text><text x="198" y="66">b</text></g>
               <g font-family="JetBrains Mono, monospace" font-size="12">
-                <path d="M392 60 h34" stroke="#000" stroke-width="3"/><text x="436" y="64" font-weight="700">TIERRA REAL</text><text x="436" y="80" fill="#666">irregular (exagerada)</text>
+                <path d="M392 60 h34" stroke="#000" stroke-width="3"/><text x="436" y="64" font-weight="700">TIERRA REAL</text><text x="436" y="80" fill="#666">nivel del mar, irregular</text><text x="436" y="96" fill="#666">(exagerado)</text>
                 <path d="M392 128 h34" stroke="#000" stroke-width="2" stroke-dasharray="7 5"/><text x="436" y="132" font-weight="700">ELIPSOIDE</text><text x="436" y="148" fill="#666">modelo matemático:</text><text x="436" y="164" fill="#666">dos radios y nada más</text>
               </g>
             </svg>
           </div>
           <div class="card w2"><span class="c-label">Radio ecuatorial · a</span><b class="c-num">6 378<small>km</small></b><span class="c-foot">GRS80 · 6 378 137 m</span></div>
           <div class="card w2"><span class="c-label">Radio polar · b</span><b class="c-num">6 357<small>km</small></b><span class="c-foot">achatado unos 21 km</span></div>
-          <div class="card w2 k"><span class="c-label">Distancia a la Tierra real</span><b class="c-num" style="color:var(--accent)">±100<small>m</small></b><span class="c-foot">como mucho, en todo el planeta</span></div>
+          <div class="card w2 k"><span class="c-label">Geoide frente a elipsoide</span><b class="c-num" style="color:var(--accent);font-size:clamp(1.3rem,2vw,2rem);white-space:nowrap">−106 a +86<small>m</small></b><span class="c-foot">el nivel del mar, en todo el planeta; el relieve añade kilómetros</span></div>
         </div>
       </div>
     </section>
@@ -472,7 +472,7 @@
             </svg>
             <span class="c-foot">GNSS da h · los planos usan H · H = h − N</span>
           </div>
-          <div class="card w2 y"><span class="c-label">N en el mundo</span><b class="c-num">±100<small>m</small></b><span class="c-foot">lo que se equivoca un modelo con h en vez de H</span></div>
+          <div class="card w2 y"><span class="c-label">N en el mundo</span><b class="c-num" style="font-size:clamp(1.3rem,2vw,2rem);white-space:nowrap">−106 a +86<small>m</small></b><span class="c-foot">lo que se equivoca un modelo con h en vez de H</span></div>
           <div class="card w2 k" data-slot="0"><span class="c-label">Tu país · <span data-pc="nombre">España</span></span><span class="c-title" style="color:var(--accent)"><span data-pc="alt-o-red">Alicante</span></span><span class="c-foot">EPSG <span data-pc="alt-epsg">5782</span></span></div>
           <div class="card w2" data-slot="1"><span class="c-label"><span data-pc="region">Asia y Oceanía</span> · <span data-pc="nombre">Australia</span></span><span class="c-title"><span data-pc="alt-o-red">AHD</span></span><span class="c-foot">EPSG <span data-pc="alt-epsg">5711</span></span></div>
           <div class="card w2" data-slot="2"><span class="c-label"><span data-pc="region">América</span> · <span data-pc="nombre">Perú</span></span><span class="c-title"><span data-pc="alt-o-red">La Punta (Callao)</span></span><span class="c-foot">EPSG <span data-pc="alt-epsg">—</span></span></div>
@@ -1688,7 +1688,7 @@
         </table></div>
         <p class="table-note">a = radio ecuatorial; f = achatamiento, la diferencia relativa entre a y b.</p>
       </div>
-      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://epsg.io/7019-ellipsoid" target="_blank" rel="noopener">EPSG:7019</a> · <a href="https://epsg.io/7030-ellipsoid" target="_blank" rel="noopener">EPSG:7030</a> · <a href="https://epsg.io/7022-ellipsoid" target="_blank" rel="noopener">EPSG:7022</a> · <a href="https://epsg.io/7003-ellipsoid" target="_blank" rel="noopener">EPSG:7003</a> · <a href="https://www.ngs.noaa.gov/GEOID/" target="_blank" rel="noopener">NOAA NGS (geoide)</a>.</p></div>
+      <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://epsg.io/7019-ellipsoid" target="_blank" rel="noopener">EPSG:7019</a> · <a href="https://epsg.io/7030-ellipsoid" target="_blank" rel="noopener">EPSG:7030</a> · <a href="https://epsg.io/7022-ellipsoid" target="_blank" rel="noopener">EPSG:7022</a> · <a href="https://epsg.io/7003-ellipsoid" target="_blank" rel="noopener">EPSG:7003</a> · <a href="https://earth-info.nga.mil/index.php?dir=wgs84&amp;action=wgs84" target="_blank" rel="noopener">NGA, EGM2008</a>.</p></div>
     </div>
   </template>
   <template id="l2-tierra">
