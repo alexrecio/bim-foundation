@@ -6,10 +6,10 @@
   <!-- Borrador: quitar noindex al publicar -->
   <meta name="robots" content="noindex, nofollow">
   <title>Sistemas de coordenadas en BIM | bimkernel</title>
-  <meta name="description" content="Sistemas de coordenadas en BIM: la herramienta que coordina lo físico y lo digital, del datum y la proyección al modelo, el IFC y el replanteo.">
+  <meta name="description" content="Sistemas de coordenadas en BIM: el sistema de referencia que coordina lo físico y lo digital, del datum y la proyección al modelo, el IFC y el replanteo.">
   <meta property="og:type" content="article">
   <meta property="og:title" content="Sistemas de coordenadas en BIM · bimkernel">
-  <meta property="og:description" content="La herramienta que coordina lo físico y lo digital: traduce con precisión la realidad física a datos digitales, y viceversa.">
+  <meta property="og:description" content="El sistema de referencia que coordina lo físico y lo digital: traduce con precisión la realidad física a datos digitales, y viceversa.">
   <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="../../assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="../../assets/css/estilo.css">
@@ -71,14 +71,14 @@
         <div class="b-title">
           <span class="slide-n"></span>
           <span class="kicker-y">A · Por qué coordenadas</span>
-          <h2 class="display">La herramienta que coordina lo físico y lo digital<span class="dot">.</span></h2>
+          <h2 class="display">El sistema de referencia que coordina lo físico y lo digital<span class="dot">.</span></h2>
           <p class="slide-lead">Traduce con precisión la realidad física a datos digitales, y viceversa.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="porque"><span class="plus">+</span> Ver detalle</button></div>
         </div>
         <div class="b-cards">
           <div class="card w6">
             <span class="c-label">Un proceso cíclico, un sistema en el centro · toda la vida del activo</span>
-            <svg class="draw" viewBox="0 0 760 316" role="img" aria-label="Proceso cíclico entre el activo físico, a la izquierda, y el activo digital, a la derecha. A la izquierda, la obra: un topógrafo con una estación total mide el prisma colocado sobre un clavo, junto a un árbol y una estructura en construcción. A la derecha, una pantalla con los ejes E, N y H, una cuadrícula y el modelo del edificio con el mismo clavo. Arriba, de lo físico a lo digital: medir, codificar y diseñar. Abajo, de lo digital a lo físico: coordinar, replantear y construir. En el centro, el sistema de coordenadas conecta todas las fases.">
+            <svg class="draw" viewBox="0 0 760 316" role="img" aria-label="Proceso cíclico entre el activo físico, a la izquierda, y el activo digital, a la derecha. A la izquierda, la obra: un topógrafo con una estación total mide el prisma colocado sobre un clavo, junto a un árbol y una estructura en construcción. A la derecha, una pantalla con los ejes E, N y H, una cuadrícula y el modelo del edificio con el mismo clavo. Arriba, de lo físico a lo digital: medir, codificar y diseñar. Abajo, de lo digital a lo físico: coordinar, replantear y construir. En el centro, el sistema de referencia conecta todas las fases.">
               <g transform="translate(140 34) scale(.8)">
               <g stroke="#B9B9B0" stroke-width="1.2" stroke-dasharray="3 4"><line x1="300" y1="168" x2="217" y2="85"/><line x1="300" y1="168" x2="300" y2="50"/><line x1="300" y1="168" x2="383" y2="85"/><line x1="300" y1="168" x2="383" y2="251"/><line x1="300" y1="168" x2="300" y2="286"/><line x1="300" y1="168" x2="217" y2="251"/><line x1="300" y1="168" x2="182" y2="168"/><line x1="300" y1="168" x2="418" y2="168"/></g>
               <circle cx="300" cy="168" r="118" fill="none" stroke="#000" stroke-width="2.5"/>
@@ -89,7 +89,7 @@
               <circle cx="418" cy="168" r="34" fill="#fff" stroke="#000" stroke-width="3"/>
               <rect x="398" y="152" width="40" height="27" rx="3" fill="#fff" stroke="#000" stroke-width="2.5"/><path d="M418 179 V184 M410 184 H426" stroke="#000" stroke-width="2.5" stroke-linecap="round"/><path d="M408 173 V162 L416 158 L428 161 V170 Z M408 162 L420 165 L428 161 M420 165 V175" fill="none" stroke="#000" stroke-width="1.5" stroke-linejoin="round"/>
               <circle cx="300" cy="168" r="52" fill="#FFFF00" stroke="#000" stroke-width="3"/>
-              <g font-family="JetBrains Mono, monospace" text-anchor="middle"><text x="300" y="158" font-size="13" font-weight="700">SISTEMA DE</text><text x="300" y="172" font-size="13" font-weight="700">COORDENADAS</text><text x="300" y="192" font-size="14">E · N · H</text></g>
+              <g font-family="JetBrains Mono, monospace" text-anchor="middle"><text x="300" y="158" font-size="13" font-weight="700">SISTEMA DE</text><text x="300" y="172" font-size="13" font-weight="700">REFERENCIA</text><text x="300" y="192" font-size="14">E · N · H</text></g>
               <g font-family="JetBrains Mono, monospace" font-size="13" fill="#666" text-anchor="middle"><text x="300" y="14">físico ▸ digital</text><text x="300" y="330">digital ▸ físico</text></g>
               </g>
               <path d="M214 166 H256 M504 166 H522" stroke="#000" stroke-width="1.2" stroke-dasharray="3 4"/>
@@ -2403,7 +2403,7 @@
 <ul>
           <li><strong>Origen del modelo:</strong> el 0,0,0 donde calcula el motor. No se mueve.</li>
           <li><strong>Base del proyecto:</strong> referencia propia para replanteo y cotas. No se comparte.</li>
-          <li><strong>Punto georreferenciado:</strong> lleva la transformación al sistema de coordenadas real.</li>
+          <li><strong>Punto georreferenciado:</strong> lleva la transformación al sistema de referencia real.</li>
         </ul>
 </div>
 <div class="card w3">
