@@ -914,3 +914,14 @@ a.bfm-a:hover { background: var(--s50); }
 .l2-body .l2-dos p { font-size: 14px; line-height: 1.4; }
 .l2-dos .c-label { display: block; margin-bottom: 2px; }
 @media (min-width: 640px) { .w1 { grid-column: span 1; } }
+/* Capa 2: lista con pictograma por línea */
+.l2-icos { list-style: none; margin: 0 !important; padding: 0 !important; display: grid; gap: 10px; }
+.l2-icos li { display: grid; grid-template-columns: 24px 1fr; gap: 10px; align-items: start; margin: 0 !important; }
+.l2-ico { width: 24px; height: 24px; display: block; }
+.l2-icos li { padding-left: 0 !important; } .l2-icos li::before { content: none !important; display: none !important; }
+.l2-body .ciclo-l2 .cl-sistema li::before { background: var(--white); }
+/* Capa 2: ficha de opción con título con pictograma y pares dato/valor */
+.l2-red .cl-quien, .l2-body .cl-quien { display: flex; align-items: center; gap: 8px; font-weight: 900; font-size: 15px; text-transform: uppercase; letter-spacing: -.01em; line-height: 1.15; }
+.l2-dl { display: grid; grid-template-columns: auto 1fr; gap: 6px 10px; margin: 10px 0 0; }
+.l2-dl dt { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: .06em; color: #666; padding-top: 3px; }
+.l2-dl dd { margin: 0; font-size: 14px; line-height: 1.4; }

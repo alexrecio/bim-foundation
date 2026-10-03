@@ -1847,31 +1847,21 @@
 
   <template id="l2-redes">
     <div class="b-cards">
-      <div class="card w6">
-        <h4>Tres redes, tres usos</h4>
-        <div class="table-wrap"><table>
-          <thead><tr><th>Red</th><th>Qué es</th><th>Qué ancla</th><th>Para qué sirve en obra</th></tr></thead>
-          <tbody>
-            <tr class="is-key"><td>Activa · estaciones permanentes</td><td>Antenas GNSS fijas que registran sin parar y publican sus datos</td><td>Posición: enlazan el datum con el centro de la Tierra y fijan su época</td><td>Posicionar en tiempo real (RTK) o calcular después, sin pisar un vértice</td></tr>
-            <tr><td>Pasiva · vértices geodésicos</td><td>Pilares o señales con coordenadas oficiales, en lugares despejados</td><td>Posición: llevan el datum a cada comarca</td><td>Estacionar el GNSS o la estación total y comprobar el enlace</td></tr>
-            <tr><td>Nivelación · clavos</td><td>Señales en muros y obras de fábrica con altitud ortométrica</td><td>Altura: arrastran el cero del mareógrafo tierra adentro</td><td>Dar cotas oficiales; el modelo de geoide enlaza estas altitudes con el GNSS</td></tr>
-          </tbody>
-        </table></div>
+      <div class="card w2">
+        <div class="l2-red"><span class="cl-quien"><svg class="l2-ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21 V11 M8 21 H16"/><path d="M7 7 A7 7 0 0 1 17 7 M9.5 9.5 A3.5 3.5 0 0 1 14.5 9.5"/><circle cx="12" cy="11" r="1.5" fill="#000"/></svg>Red activa</span></div>
+        <dl class="l2-dl"><dt>Qué es</dt><dd>Antenas GNSS fijas que registran sin parar y publican sus datos.</dd><dt>Qué ancla</dt><dd>La posición: enlazan el datum con el centro de la Tierra y fijan su época.</dd><dt>En obra</dt><dd>Posicionar en tiempo real (RTK) o después, sin pisar un vértice.</dd></dl>
       </div>
-      <div class="card w6">
-        <h4>En tres continentes</h4>
-        <div class="table-wrap"><table>
-          <thead><tr><th>Red</th><th>España</th><th>Australia</th><th>Perú</th></tr></thead>
-          <tbody>
-            <tr class="is-key"><td>Activa (GNSS)</td><td>ERGNSS del IGN, más las redes de las comunidades autónomas</td><td>ARGN y AUSCORS (Geoscience Australia), más las redes de cada estado</td><td>REGPMOC, del IGN Perú</td></tr>
-            <tr><td>Pasiva (vértices)</td><td>REGENTE y Red Geodésica Nacional</td><td>Marcas de control de cada estado (SSM, PM)</td><td>Red Geodésica Geocéntrica Nacional (puntos de orden A, B y C)</td></tr>
-            <tr><td>Nivelación</td><td>REDNAP, con origen en el mareógrafo de Alicante en la Península; cada isla, su mareógrafo</td><td>Red nacional de nivelación ajustada en 1971 sobre el AHD (Tasmania, AHD-TAS83)</td><td>Red vertical oficial; origen en el mareógrafo de La Punta (Callao)</td></tr>
-          </tbody>
-        </table></div>
+      <div class="card w2">
+        <div class="l2-red"><span class="cl-quien"><svg class="l2-ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21 L10 6 H14 L16 21 Z"/><circle cx="12" cy="4" r="1.5" fill="#000"/></svg>Red pasiva</span></div>
+        <dl class="l2-dl"><dt>Qué es</dt><dd>Vértices: pilares o señales con coordenadas oficiales, en lugares despejados.</dd><dt>Qué ancla</dt><dd>La posición, llevada a cada comarca.</dd><dt>En obra</dt><dd>Estacionar el GNSS o la estación total y comprobar el enlace.</dd></dl>
       </div>
-      <div class="card w3 g">
+      <div class="card w2">
+        <div class="l2-red"><span class="cl-quien"><svg class="l2-ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20 H20 M7 20 V9 H17 V20"/><circle cx="12" cy="13" r="2.4" fill="#FFFF00"/></svg>Red de nivelación</span></div>
+        <dl class="l2-dl"><dt>Qué es</dt><dd>Clavos en muros y obras de fábrica con altitud ortométrica.</dd><dt>Qué ancla</dt><dd>La altura: arrastran el cero del mareógrafo tierra adentro.</dd><dt>En obra</dt><dd>Dar cotas oficiales; el geoide las enlaza con el GNSS.</dd></dl>
+      </div>
+      <div class="card w3">
         <h4>De lo global a la obra</h4>
-        <svg class="draw" viewBox="0 0 300 200" role="img" aria-label="Marcos anidados: global, continental, red nacional y bases de obra">
+        <svg class="draw" viewBox="0 0 300 200" role="img" aria-label="Marcos anidados: global, continental, red nacional y bases de obra" style="max-height:230px">
           <g font-family="JetBrains Mono, monospace" font-size="11">
             <rect x="4" y="4" width="292" height="192" rx="10" fill="#fff" stroke="#000" stroke-width="2"/><text x="16" y="24">marco global · ITRF</text>
             <rect x="24" y="36" width="252" height="150" rx="10" fill="#fff" stroke="#000" stroke-width="2"/><text x="36" y="56">ETRS89 · GDA2020 · SIRGAS</text>
@@ -1882,12 +1872,8 @@
       </div>
       <div class="card w3 k">
         <h4>Por qué una red y no un punto</h4>
-        <p>El antiguo punto fundamental era uno solo: si se movía o se medía mal, arrastraba a todo el país. Con cientos de puntos enlazados entre sí y con los satélites, los errores se reparten y se detectan, y cualquier obra tiene uno cerca. <span class="tag">Inferido</span></p>
-      </div>
-      <div class="card w6 y">
-        <span class="c-label">En <span data-pais="nombre">España</span></span>
-        <span class="c-title"><span data-pais="red">REGENTE · ERGNSS · REDNAP</span></span>
-        <p>Mantenida por <span data-pais="org">IGN</span>. Las bases de replanteo deberían enlazarse con ella y el informe topográfico, decir con qué vértices o estaciones.</p>
+        <p>El antiguo punto fundamental era uno solo: si se movía o se medía mal, arrastraba a todo el país. Con cientos de puntos enlazados, los errores se reparten y se detectan, y cualquier obra tiene uno cerca. <span class="tag">Inferido</span></p>
+        <p style="margin-top:10px"><strong>En obra:</strong> las bases de replanteo se enlazan con la red, y el informe topográfico dice con qué vértices o estaciones.</p>
       </div>
       <div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2007-15822" target="_blank" rel="noopener">Real Decreto 1071/2007</a> (REGENTE, REDNAP y estaciones permanentes) · <a href="https://www.euref.eu" target="_blank" rel="noopener">EUREF</a> · <a href="https://www.icsm.gov.au/gda2020" target="_blank" rel="noopener">ICSM (GDA2020)</a> · <a href="https://www.icsm.gov.au/australian-height-datum" target="_blank" rel="noopener">ICSM (AHD)</a> · <a href="https://www.ga.gov.au" target="_blank" rel="noopener">Geoscience Australia (redes GNSS)</a> · <a href="https://cdn.www.gob.pe/uploads/document/file/7557116/6419766-6385362-norma-tecnica-geodesica-2024.pdf" target="_blank" rel="noopener">IGN Perú, norma técnica geodésica 2024</a> · <a href="https://sirgas.ipgh.org/wp-content/uploads/2025/05/10.1515_jogs-2025-0183-1.pdf" target="_blank" rel="noopener">Journal of Geodetic Science 2025 (SIRGAS), origen vertical de Perú</a> · <a href="https://sirgas.ipgh.org" target="_blank" rel="noopener">SIRGAS</a> · <a href="https://itrf.ign.fr" target="_blank" rel="noopener">ITRF</a>.</p></div>
     </div>
@@ -2451,58 +2437,42 @@
         </ol>
 </div>
 <div class="card w3">
+<h4>Los tres puntos de Revit</h4>
+<ul class="l2-icos">
+<li><svg class="l2-ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 18 H20 M6 18 V4"/><circle cx="6" cy="18" r="2" fill="#000"/></svg><span><strong>Origen interno:</strong> el 0,0,0 del motor; no se mueve.</span></li>
+<li><svg class="l2-ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M6.5 6.5 L17.5 17.5 M17.5 6.5 L6.5 17.5"/></svg><span><strong>Punto base del proyecto:</strong> cotas y replanteo propios, no se comparte. Moverlo solo cambia lo que se mide desde él; para recolocar, <span class="ui">Posición › Reubicar proyecto</span> (<a href="https://help.autodesk.com/cloudhelp/2027/ENU/Revit-Model/files/GUID-A973AC69-7095-4C09-BD7E-E3B6EAF36ABB.htm" target="_blank" rel="noopener">ayuda</a>).</span></li>
+<li><svg class="l2-ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4 L20 19 H4 Z"/><circle cx="12" cy="14" r="1.6" fill="#000"/></svg><span><strong>Survey Point:</strong> una marca dentro de las coordenadas compartidas, no su origen (<a href="#survey">por qué</a>).</span></li>
+</ul>
+<p class="table-note"><strong>Regla práctica:</strong> con todo configurado, pin en los tres y el Survey Point con clip.</p>
+</div>
+<div class="card w2">
 <h4>Sin DWG</h4>
-<p><span class="ui">Gestionar › Coordenadas › Especificar coordenadas en punto</span>: Norte, Este, cota y ángulo de un punto conocido.</p>
+<p><span class="ui">Gestionar › Coordenadas › Especificar coordenadas en punto</span>: norte, este, cota y ángulo de un punto conocido.</p>
 </div>
-<div class="card w3">
+<div class="card w2">
 <h4>En la nube</h4>
-<p>En Cloud Worksharing <em>Publicar</em> puede estar desactivado: solo se adquiere del maestro y las posiciones se reparten con <span class="ui">Transferir normas de proyecto</span>.</p>
+<p>En Cloud Worksharing <em>Publicar</em> puede estar desactivado: se adquiere del maestro y se reparte con <span class="ui">Transferir normas de proyecto</span>.</p>
 </div>
-<div class="card w3">
-<h4>Varios RVT</h4>
-<ol class="vsteps">
-          <li>Las disciplinas se vinculan Origen a origen mientras modelan.</li>
-          <li>El emplazamiento coloca la arquitectura (planta, giro y cota) y <strong>publica</strong>.</li>
-          <li>A partir de ahí: <strong>Automático – Por coordenadas compartidas</strong>.</li>
-        </ol>
-</div>
-<div class="card w3">
-<h4>Otros casos</h4>
-<ul>
-          <li><strong>Resetear:</strong> vincular Origen a origen un archivo limpio y adquirir, o (desde Revit 2021.1) <span class="ui">Resetear coordenadas compartidas</span>.</li>
-          <li><strong>Topografía nueva:</strong> si el DWG es un «guardar como» del anterior, marcarlo antes como «No compartir coordenadas»; luego repetir Adquirir › Reconciliar en cada RVT.</li>
-          <li><strong>Exportar a DWG:</strong> coordenadas «Compartidas», exportando vistas, no planos.</li>
-        </ul>
-</div>
-<div class="card w3 y">
-<span class="c-label">Consejos de Modelical</span><p>Descargar los vínculos antes de adquirir, no mover vínculos para arreglar el anfitrión y revisar si el DWG tiene SCP adicionales.</p>
-</div>
-<div class="card w3">
-<h4>Qué hace cada uno en Revit</h4>
-<ul>
-          <li><strong>Origen interno:</strong> el 0,0,0 del motor. Se puede mostrar en las vistas desde Revit 2020.2.</li>
-          <li><strong>Punto base del proyecto:</strong> referencia para el replanteo y las cotas del propio proyecto. No se comparte con otros archivos.</li>
-          <li><strong>Punto de reconocimiento (Survey Point):</strong> una marca dentro del sistema de coordenadas compartidas. No es su origen: se explica en «El Survey Point no es el origen».</li>
-        </ul>
-</div>
-<div class="card w3">
-<h4>¿Y el punto base?</h4>
-<p>Desde Revit 2020.2 no tiene icono de clip, aunque la ayuda aún hable de «desanclarlo». Moverlo solo cambia las coordenadas medidas desde él (<a href="https://help.autodesk.com/cloudhelp/2027/ENU/Revit-Model/files/GUID-A973AC69-7095-4C09-BD7E-E3B6EAF36ABB.htm" target="_blank" rel="noopener">ayuda de Revit 2027</a>). Para recolocar el proyecto: <span class="ui">Gestionar › Ubicación del proyecto › Posición › Reubicar proyecto</span>.</p>
-</div>
-<div class="card w3 y">
-<span class="c-label">Regla práctica</span><p>Con todo configurado, fija con pin los tres puntos y deja el Survey Point con clip.</p>
-</div>
-<div class="card w3">
-<h4>Revit frente a AutoCAD</h4>
-<p>AutoCAD desplaza la geometría respecto al SCU. Revit hace lo contrario: deja el modelo quieto y recoloca los sistemas de coordenadas respecto a él.</p>
-</div>
-<div class="card w3">
+<div class="card w2 k">
 <h4>Sin factor de escala</h4>
-<p>Revit no documenta ningún factor de escala para las coordenadas compartidas: solo traslación, cota y rotación (<a href="https://help.autodesk.com/cloudhelp/2026/ENU/Revit-Model/files/GUID-95563197-F844-45EE-AAA1-5DB7FEFC76BD.htm" target="_blank" rel="noopener">ayuda de Revit</a>). Si Civil 3D trabaja con factor, hay que corregirlo en uno de los dos.</p>
+<p>Revit solo traslada, eleva y gira (<a href="https://help.autodesk.com/cloudhelp/2026/ENU/Revit-Model/files/GUID-95563197-F844-45EE-AAA1-5DB7FEFC76BD.htm" target="_blank" rel="noopener">ayuda</a>). Si Civil 3D usa factor, se corrige en uno de los dos.</p>
 </div>
-<div class="card w3">
-<h4>Exportar a IFC</h4>
-<p>Con un EPSG y exportando a IFC4 escribe <code>IfcMapConversion</code>. Ojo con el doble desplazamiento: la posición también en <code>IfcSite</code>.</p>
+<div class="card w2">
+<h4>Rehacer</h4>
+<ul>
+<li><strong>Resetear:</strong> <span class="ui">Resetear coordenadas compartidas</span> (desde 2021.1).</li>
+<li><strong>Topografía nueva:</strong> si es un «guardar como», marcarla antes «No compartir coordenadas» y repetir Adquirir en cada RVT.</li>
+</ul>
+</div>
+<div class="card w2">
+<h4>Al exportar</h4>
+<ul>
+<li><strong>DWG:</strong> coordenadas «Compartidas», desde vistas, no planos.</li>
+<li><strong>IFC4 con EPSG:</strong> escribe <code>IfcMapConversion</code>; ojo al doble desplazamiento en <code>IfcSite</code>.</li>
+</ul>
+</div>
+<div class="card w2 y">
+<span class="c-label">Consejos de Modelical</span><p>Descargar los vínculos antes de adquirir, no mover vínculos para arreglar el anfitrión y revisar si el DWG tiene SCP adicionales.</p>
 </div>
 </div>
   </template>
@@ -2614,33 +2584,30 @@
 <div class="table-wrap"><table>
 <thead><tr><th>Posición al vincular</th><th>DWG de CAD</th><th>DWG de Civil 3D con sistema asignado</th></tr></thead>
 <tbody>
-<tr><td>Automático: centro a centro</td><td>Lo deja en el centro del modelo; sus coordenadas no cuentan.</td><td>Igual. Es el primer paso que propone Autodesk antes de adquirir.</td></tr>
-<tr><td>Automático: origen a origen</td><td>El 0,0 del dibujo cae en el origen interno. Si se dibujó en coordenadas reales, la geometría aparece a kilómetros.</td><td>Siempre ocurre: el dibujo está en coordenadas de proyección.</td></tr>
-<tr><td>Automático: por coordenadas compartidas</td><td>Solo funciona si Revit ya tiene las compartidas fijadas.</td><td>Revit avisa de que los sistemas difieren y, con <span class="ui">Alinear</span>, casa el punto de referencia del DWG con el Survey Point o el Project Base Point.</td></tr>
-<tr><td>Adquirir coordenadas</td><td>El sistema universal (SCU) del dibujo pasa a ser el compartido: su origen es el origen y su eje Y, el norte.</td><td>Además, en <span class="ui">Ubicación</span> aparecen el sistema GIS, la latitud y la longitud.</td></tr>
+<tr><td>Centro a centro</td><td>Al centro del modelo; sus coordenadas no cuentan.</td><td>Igual. Es el primer paso antes de adquirir.</td></tr>
+<tr><td>Origen a origen</td><td>Su 0,0 cae en el origen interno: si se dibujó en coordenadas reales, aparece a kilómetros.</td><td>Siempre a kilómetros: está en coordenadas de proyección.</td></tr>
+<tr><td>Por coordenadas compartidas</td><td>Solo si Revit ya las tiene fijadas.</td><td>Avisa de que los sistemas difieren; <span class="ui">Alinear</span> casa su referencia con el Survey Point o el punto base.</td></tr>
+<tr class="is-key"><td>Adquirir coordenadas</td><td>Su SCU pasa a ser el sistema compartido: su origen y su eje Y como norte.</td><td>Además, <span class="ui">Ubicación</span> muestra su sistema GIS, latitud y longitud.</td></tr>
 </tbody>
 </table></div>
+<p class="table-note">Fuentes: <a href="https://help.autodesk.com/cloudhelp/2021/ENU/Revit-Model/files/GUID-C922A152-0A30-4E27-BED2-BCE9FF2E5E30.htm" target="_blank" rel="noopener">Revit: posición al importar y vincular</a> · <a href="https://help.autodesk.com/cloudhelp/2024/ENU/Revit-Model/files/GUID-D184A004-D0BF-44D1-9C02-99480B129CAD.htm" target="_blank" rel="noopener">opciones de importación y vínculo CAD</a> · <a href="https://help.autodesk.com/cloudhelp/2014/ENU/Revit/files/GUID-651EE8A9-FCFC-4999-91C6-4628FBCED902.htm" target="_blank" rel="noopener">adquirir coordenadas de un DWG</a> · <a href="https://help.autodesk.com/cloudhelp/2027/ENU/Revit-Model/files/GUID-77BBFD78-8389-4FD4-8C95-929D92AAC590.htm" target="_blank" rel="noopener">vincular un DWG y adquirir</a> · <a href="https://help.autodesk.com/cloudhelp/2027/ENU/Revit-Model/files/GUID-0C6D8890-73D9-4DAC-A0A6-84C45E54C6A8.htm" target="_blank" rel="noopener">vincular por coordenadas compartidas</a> · <a href="https://forums.autodesk.com/t5/revit-architecture-forum/shared-reference-point-wrong-elevation/td-p/11451665" target="_blank" rel="noopener">foro de Autodesk: cota equivocada</a>.</p>
 </div>
 <div class="card w3">
-<h4>Por qué vuela</h4>
-<p>La opción <span class="ui">Colocar en</span> pone el origen del dibujo en el nivel elegido. Todo lo que tenga Z sube desde ahí.</p>
-<div class="formula">cota final = cota del nivel + Z del DWG <span style="color:var(--s500)">(salvo por coordenadas compartidas)</span><br><span class="y">650 + 650 = 1 300</span></div>
-<p>Pasa cuando los niveles se escriben en cotas absolutas y el topógrafo también entregó Z reales: la altura se cuenta dos veces.</p>
-</div>
-<div class="card w3">
-<h4>Cómo evitarlo</h4>
-<ol class="vsteps">
-<li>Pactar en el BEP quién lleva la cota: el dibujo (Z reales) o el modelo (niveles).</li>
-<li>Si el dibujo trae Z reales, vincularlo en un nivel cuya cota interna sea 0.</li>
-<li>Poner una cota de elevación sobre un punto conocido del DWG y compararla con el topógrafo.</li>
+<h4>Cómo evitar la cota doble</h4>
+<p><span class="ui">Colocar en</span> pone el origen del dibujo en el nivel elegido, salvo al vincular por coordenadas compartidas.</p>
+<ol class="vsteps" style="margin-top:10px !important">
+<li>Pactar en el BEP quién lleva la cota: el dibujo o los niveles.</li>
+<li>Si el dibujo trae Z reales, vincularlo en un nivel de cota interna 0.</li>
+<li>Comprobar la cota de un punto conocido del DWG con la del topógrafo.</li>
 </ol>
 </div>
-<div class="card w6">
+<div class="card w3 k">
 <h4>Los planos en 2D también vuelan</h4>
-<p>Curvas de nivel, puntos de levantamiento o líneas copiadas de un 3D conservan su Z. En planta no se nota, pero en 3D y en sección aparecen colgadas. Dos salidas: aplanar el dibujo antes de vincularlo (<code>FLATTEN</code> en AutoCAD) o vincularlo con <span class="ui">Solo vista actual</span>, que lo trata como anotación y no lo lleva a las vistas 3D.</p>
+<p>Curvas, puntos o líneas copiadas de un 3D conservan su Z: en planta no se nota, en 3D y en sección cuelgan. Dos salidas: aplanar antes de vincular (<code>FLATTEN</code> en AutoCAD) o vincular con <span class="ui">Solo vista actual</span>, que no lo lleva a las vistas 3D.</p>
 </div>
-<div class="card w6"><p class="table-note" style="margin:0">Fuentes: <a href="https://help.autodesk.com/cloudhelp/2021/ENU/Revit-Model/files/GUID-C922A152-0A30-4E27-BED2-BCE9FF2E5E30.htm" target="_blank" rel="noopener">Revit: posición al importar y vincular</a> · <a href="https://help.autodesk.com/cloudhelp/2024/ENU/Revit-Model/files/GUID-D184A004-D0BF-44D1-9C02-99480B129CAD.htm" target="_blank" rel="noopener">opciones de importación y vínculo CAD</a> · <a href="https://help.autodesk.com/cloudhelp/2014/ENU/Revit/files/GUID-651EE8A9-FCFC-4999-91C6-4628FBCED902.htm" target="_blank" rel="noopener">adquirir coordenadas de un DWG</a> · <a href="https://help.autodesk.com/cloudhelp/2027/ENU/Revit-Model/files/GUID-77BBFD78-8389-4FD4-8C95-929D92AAC590.htm" target="_blank" rel="noopener">vincular un DWG y adquirir</a> · <a href="https://help.autodesk.com/cloudhelp/2027/ENU/Revit-Model/files/GUID-0C6D8890-73D9-4DAC-A0A6-84C45E54C6A8.htm" target="_blank" rel="noopener">vincular por coordenadas compartidas</a> · <a href="https://forums.autodesk.com/t5/revit-architecture-forum/shared-reference-point-wrong-elevation/td-p/11451665" target="_blank" rel="noopener">foro de Autodesk: cota equivocada</a>.</p></div>
+
 </div>
+  
   </template>
 
 
