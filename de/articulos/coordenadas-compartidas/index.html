@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Borrador: quitar noindex al publicar -->
-  <meta name="bf-fuente" content="articulos/coordenadas-compartidas/index.html@d1a446bcc1ee45e1a91a8f3246ce6d8d2ef1297a">
+  <meta name="bf-fuente" content="articulos/coordenadas-compartidas/index.html@05b336fb8a05aa5c810c11ceee772a898bd24578">
   <meta name="robots" content="noindex, nofollow">
   <title>Koordinatensysteme in BIM | bimkernel</title>
-  <meta name="description" content="Wie gemeinsame Koordinaten in Revit, Civil 3D, IFC und weiterer BIM-Software funktionieren, mit dem spanischen geodätischen Rahmen (ETRS89, EPSG, Höhen über Alicante).">
+  <meta name="description" content="Koordinatensysteme in BIM: das Werkzeug, das Physisches und Digitales koordiniert, vom Datum und der Kartenabbildung bis zum Modell, zum IFC und zur Absteckung.">
   <meta property="og:type" content="article">
   <meta property="og:title" content="Koordinatensysteme in BIM · bimkernel">
-  <meta property="og:description" content="Interner Ursprung, Projektbasispunkt und Vermessungspunkt: Das Modell bleibt stehen, bewegt wird das Koordinatensystem.">
+  <meta property="og:description" content="Das Werkzeug, das Physisches und Digitales koordiniert: Es übersetzt die Realität präzise in Daten und bringt sie wieder an ihren Ort zurück.">
   <link rel="icon" href="../../../assets/img/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="../../../assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="../../../assets/css/estilo.css">
@@ -57,7 +57,6 @@
           <p class="hero-id"><a href="../../" style="text-decoration:none">bimkernel · 01</a></p>
           <span class="kicker-y lg">Realität · Modell · Baustelle</span>
           <h1 class="display">Koordinaten-<br>systeme<br><span class="hl-y">in BIM<span class="dot">.</span></span></h1>
-          <p class="slide-lead">Das Werkzeug, das die physische Realität präzise in digitale Daten übersetzt und sie wieder an ihren Ort zurückbringt.</p>
           <div class="slide-actions"><a class="btn" href="#porque">Los geht’s <span aria-hidden="true">↓</span></a><button type="button" class="crs-chip crs-portada" data-crs-chip></button></div>
         </div>
         <div class="b-cards">
@@ -83,25 +82,27 @@
         <div class="b-title">
           <span class="slide-n"></span>
           <span class="kicker-y">A · Warum Koordinaten</span>
-          <h2 class="display">Übersetzer hin und zurück<span class="dot">.</span></h2>
-          <p class="slide-lead">Koordinaten bringen das Gemessene ins Modell und das Geplante zurück an seinen Ort im Gelände.</p>
+          <h2 class="display">Physisches und Digitales koordinieren<span class="dot">.</span></h2>
+          <p class="slide-lead">Das Koordinatensystem übersetzt die physische Realität präzise in digitale Daten und bringt sie wieder an ihren Ort zurück.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="porque"><span class="plus">+</span> Details ansehen</button></div>
         </div>
         <div class="b-cards">
           <div class="card w6">
-            <span class="c-label">Ein Kreislauf, ein System · gilt das ganze Leben des Bauwerks</span>
-            <svg class="draw" viewBox="22 0 556 330" role="img" aria-label="Kreislauf mit dem Koordinatensystem in der Mitte. Linke Hälfte, das physische Bauwerk: Realität, bauen und betreiben. Rechte Hälfte, das digitale Bauwerk: codieren, planen und koordinieren. Oben führt das Messen vom Physischen ins Digitale; unten bringt das Abstecken es zurück.">
-              <path d="M300 48 A120 120 0 0 0 300 288 L300 224 A56 56 0 0 1 300 112 Z" fill="#EFEFEA"/>
-              <path d="M300 18 V296" stroke="#000" stroke-width="1" stroke-dasharray="2 5"/>
-              <circle cx="300" cy="168" r="120" fill="none" stroke="#000" stroke-width="2.5"/>
-              <polygon points="340,61 345,50 354,61" fill="#000"/><polygon points="404,121 415,116 414,130" fill="#000"/><polygon points="408,206 419,211 408,220" fill="#000"/><polygon points="349,271 354,282 340,282" fill="#000"/><polygon points="260,275 255,286 246,275" fill="#000"/><polygon points="196,215 185,220 186,206" fill="#000"/><polygon points="192,130 181,125 192,116" fill="#000"/><polygon points="251,65 246,54 260,54" fill="#000"/>
-              <g font-family="JetBrains Mono, monospace" font-size="12"><circle cx="300" cy="48" r="9" fill="#FFFF00" stroke="#000" stroke-width="2.5"/><text x="300" y="34" text-anchor="middle" font-weight="700" font-size="13">messen</text><circle cx="385" cy="83" r="6" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="398" y="74" text-anchor="start">codieren</text><circle cx="420" cy="168" r="6" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="438" y="172" text-anchor="start">planen</text><circle cx="385" cy="253" r="6" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="398" y="270" text-anchor="start">koordinieren</text><circle cx="300" cy="288" r="9" fill="#FFFF00" stroke="#000" stroke-width="2.5"/><text x="300" y="312" text-anchor="middle" font-weight="700" font-size="13">abstecken</text><circle cx="215" cy="253" r="6" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="202" y="270" text-anchor="end">bauen</text><circle cx="180" cy="168" r="6" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="162" y="172" text-anchor="end">betreiben</text><circle cx="215" cy="83" r="6" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="202" y="74" text-anchor="end">Realität</text></g>
-              <circle cx="300" cy="168" r="56" fill="#FFFF00" stroke="#000" stroke-width="3"/>
+            <span class="c-label">Ein Kreislauf, ein System in der Mitte · das ganze Leben des Bauwerks</span>
+            <svg class="draw" viewBox="0 0 600 334" role="img" aria-label="Kreislauf zwischen dem physischen Bauwerk links und dem digitalen Bauwerk rechts. Oben, vom Physischen zum Digitalen: messen, codieren und planen. Unten, vom Digitalen zum Physischen: koordinieren, abstecken und bauen. In der Mitte verbindet das Koordinatensystem alle Phasen.">
+              <g stroke="#B9B9B0" stroke-width="1.2" stroke-dasharray="3 4"><line x1="300" y1="168" x2="217" y2="85"/><line x1="300" y1="168" x2="300" y2="50"/><line x1="300" y1="168" x2="383" y2="85"/><line x1="300" y1="168" x2="383" y2="251"/><line x1="300" y1="168" x2="300" y2="286"/><line x1="300" y1="168" x2="217" y2="251"/><line x1="300" y1="168" x2="182" y2="168"/><line x1="300" y1="168" x2="418" y2="168"/></g>
+              <circle cx="300" cy="168" r="118" fill="none" stroke="#000" stroke-width="2.5"/>
+              <polygon points="195,129 184,124 195,115" fill="#000"/><polygon points="253,66 249,55 263,56" fill="#000"/><polygon points="339,63 344,52 353,63" fill="#000"/><polygon points="402,121 413,117 412,131" fill="#000"/><polygon points="406,205 417,210 406,220" fill="#000"/><polygon points="348,269 353,280 339,280" fill="#000"/><polygon points="263,274 258,285 248,274" fill="#000"/><polygon points="199,216 188,221 188,207" fill="#000"/>
+              <g font-family="JetBrains Mono, monospace" font-size="12"><circle cx="217" cy="85" r="6" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="204" y="76" text-anchor="end">messen</text><circle cx="300" cy="50" r="6" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="300" y="36" text-anchor="middle">codieren</text><circle cx="383" cy="85" r="6" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="396" y="76" text-anchor="start">planen</text><circle cx="383" cy="251" r="6" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="396" y="268" text-anchor="start">koordinieren</text><circle cx="300" cy="286" r="6" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="300" y="310" text-anchor="middle">abstecken</text><circle cx="217" cy="251" r="6" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="204" y="268" text-anchor="end">bauen</text></g>
+              <circle cx="182" cy="168" r="34" fill="#fff" stroke="#000" stroke-width="3"/>
+              <path d="M160 182 C172 177 188 176 204 180" fill="none" stroke="#000" stroke-width="3" stroke-linecap="round"/><path d="M182 177 V160" stroke="#000" stroke-width="3" stroke-linecap="round"/><circle cx="182" cy="154" r="5" fill="#fff" stroke="#000" stroke-width="2.5"/>
+              <circle cx="418" cy="168" r="34" fill="#fff" stroke="#000" stroke-width="3"/>
+              <rect x="398" y="152" width="40" height="27" rx="3" fill="#fff" stroke="#000" stroke-width="2.5"/><path d="M418 179 V184 M410 184 H426" stroke="#000" stroke-width="2.5" stroke-linecap="round"/><path d="M408 173 V162 L416 158 L428 161 V170 Z M408 162 L420 165 L428 161 M420 165 V175" fill="none" stroke="#000" stroke-width="1.5" stroke-linejoin="round"/>
+              <g font-family="JetBrains Mono, monospace" font-size="12" font-weight="700"><text x="138" y="166" text-anchor="end">PHYSISCHES</text><text x="138" y="181" text-anchor="end">BAUWERK</text><text x="462" y="166">DIGITALES</text><text x="462" y="181">BAUWERK</text></g>
+              <g font-family="JetBrains Mono, monospace" font-size="11" fill="#666"><text x="138" y="196" text-anchor="end">im Betrieb</text><text x="462" y="196">das Modell</text></g>
+              <circle cx="300" cy="168" r="52" fill="#FFFF00" stroke="#000" stroke-width="3"/>
               <g font-family="JetBrains Mono, monospace" text-anchor="middle"><text x="300" y="158" font-size="11" font-weight="700">KOORDINATEN-</text><text x="300" y="172" font-size="11" font-weight="700">SYSTEM</text><text x="300" y="192" font-size="12">E · N · H</text></g>
-              <g font-family="JetBrains Mono, monospace" font-size="12" font-weight="700" text-anchor="middle"><text x="70" y="250">PHYSISCHES</text><text x="70" y="266">BAUWERK</text><text x="530" y="250">DIGITALES</text><text x="530" y="266">BAUWERK</text></g>
-              <path d="M30 228 C55 220 80 218 110 224" fill="none" stroke="#000" stroke-width="3" stroke-linecap="round"/><path d="M70 220 V196" stroke="#000" stroke-width="3" stroke-linecap="round"/><circle cx="70" cy="190" r="6" fill="#fff" stroke="#000" stroke-width="3"/>
-              <rect x="494" y="180" width="72" height="46" rx="4" fill="#fff" stroke="#000" stroke-width="2.5"/><path d="M530 226 V232 M518 232 H542" stroke="#000" stroke-width="2.5" stroke-linecap="round"/><path d="M512 216 V198 L526 191 L546 196 V212 Z M512 198 L532 203 L546 196 M532 203 V219 M512 216 L532 219 L546 212" fill="none" stroke="#000" stroke-width="1.8" stroke-linejoin="round"/>
-              <g font-family="JetBrains Mono, monospace" font-size="11" fill="#666" text-anchor="middle"><text x="300" y="14">physisch ▸ digital</text><text x="300" y="326">digital ▸ physisch</text></g>
+              <g font-family="JetBrains Mono, monospace" font-size="11" fill="#666" text-anchor="middle"><text x="300" y="14">physisch ▸ digital</text><text x="300" y="330">digital ▸ physisch</text></g>
             </svg>
 
           </div>
