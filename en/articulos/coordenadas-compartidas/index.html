@@ -6,7 +6,7 @@
   <!-- Draft: remove noindex on publishing -->
   <meta name="robots" content="noindex, nofollow">
   <!-- Translation of articulos/coordenadas-compartidas/index.html at this git blob (herramientas/i18n.mjs flags it when the Spanish page changes) -->
-  <meta name="bf-fuente" content="articulos/coordenadas-compartidas/index.html@02c2fbc05f1d50fb3a7e29f553d0075911dba703">
+  <meta name="bf-fuente" content="articulos/coordenadas-compartidas/index.html@a8fd0e9764d915da4c7e05eaf96fb972905a9aef">
   <title>Coordinate systems in BIM | bimkernel</title>
   <meta name="description" content="Coordinate systems in BIM: the tool that coordinates the physical and the digital, from the datum and the projection to the model, IFC and setting out.">
   <meta property="og:type" content="article">
@@ -181,14 +181,14 @@
           <span class="slide-n"></span>
           <span class="kicker-y">Datum</span>
           <h2 class="display">The datum ties the shape to the Earth<span class="dot">.</span></h2>
-          <p class="slide-lead">The horizontal datum anchors the ellipsoid to the Earth with a centre, axes and a date, and fixes position. Height is fixed separately: the vertical datum starts from sea level at a tide gauge.</p>
+          <p class="slide-lead">The geodetic datum anchors the ellipsoid to the Earth with a centre, axes and a date, and fixes position. Height is fixed separately: the vertical datum starts from mean sea level, measured at one or more tide gauges.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="tierra"><span class="plus">+</span> See detail</button></div>
         </div>
         <div class="b-cards">
           <div class="card w6 g">
             <span class="c-label">Two datums: one for position, one for height</span>
-            <svg class="draw" viewBox="0 0 640 250" role="img" aria-label="Two datums. On the left, the horizontal datum: an ellipsoid in perspective, centred on the Earth's centre of mass, with the rotation axis and the Greenwich meridian as references; on it, a point P with its latitude and longitude. On the right, the vertical datum: a tide gauge fixes zero at mean sea level, and the height H of a point on land is measured from that zero.">
-              <g font-family="JetBrains Mono, monospace" font-size="12" font-weight="700"><text x="10" y="16">HORIZONTAL DATUM · the ellipsoid</text><text x="350" y="16">VERTICAL DATUM · sea level</text></g>
+            <svg class="draw" viewBox="0 0 640 250" role="img" aria-label="Two datums. On the left, the geodetic (horizontal) datum: an ellipsoid in perspective, centred on the Earth's centre of mass, with the rotation axis and the Greenwich meridian as references; on it, a point P with its latitude and longitude. On the right, the vertical datum: a tide gauge fixes zero at mean sea level, and the height H of a point on land is measured from that zero.">
+              <g font-family="JetBrains Mono, monospace" font-size="12" font-weight="700"><text x="10" y="16">GEODETIC DATUM · the ellipsoid</text><text x="350" y="16">VERTICAL DATUM · sea level</text></g>
               <path d="M150 26 V232" stroke="#000" stroke-width="2"/><polygon points="150,20 145,30 155,30" fill="#000"/>
               <ellipse cx="150" cy="128" rx="112" ry="90" fill="#fff" fill-opacity=".85" stroke="#000" stroke-width="3"/>
               <path d="M38 128 A112 22 0 0 1 262 128" fill="none" stroke="#999" stroke-width="1.5" stroke-dasharray="4 4"/>
