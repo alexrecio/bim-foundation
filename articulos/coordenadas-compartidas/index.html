@@ -90,7 +90,7 @@
               <circle cx="300" cy="168" r="52" fill="#FFFF00" stroke="#000" stroke-width="3"/>
               <g font-family="JetBrains Mono, monospace" text-anchor="middle"><text x="300" y="158" font-size="11" font-weight="700">SISTEMA DE</text><text x="300" y="172" font-size="11" font-weight="700">COORDENADAS</text><text x="300" y="192" font-size="12">E · N · H</text></g>
               <g font-family="JetBrains Mono, monospace" font-size="11" fill="#666" text-anchor="middle"><text x="300" y="14">físico ▸ digital</text><text x="300" y="330">digital ▸ físico</text></g>
-              <path d="M170 201 L150 346 M430 201 L452 346" stroke="#000" stroke-width="1.2" stroke-dasharray="3 4"/>
+              <path d="M170 201 L84 344 M430 201 L452 346" stroke="#000" stroke-width="1.2" stroke-dasharray="3 4"/>
               <g transform="translate(14 214)">
               <g fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M6 252 C50 246 90 254 140 250 S220 246 262 251" stroke-width="3"/>
@@ -110,6 +110,7 @@
               </g>
               <g font-family="JetBrains Mono, monospace" font-size="12">
                 <text x="128" y="124" text-anchor="middle">estación total</text>
+                <text x="230" y="152" text-anchor="middle">prisma</text>
                 <text x="238" y="276" text-anchor="middle">clavo</text>
                 <text x="130" y="302" text-anchor="middle" font-weight="700">ACTIVO FÍSICO</text>
                 <text x="130" y="318" text-anchor="middle" fill="#666">la obra, en uso</text>
@@ -1790,7 +1791,7 @@
       </div>
       <div class="card w4 k">
         <h4>Qué forma tiene el datum vertical</h4>
-        <p>La del geoide: la superficie de igual potencial gravitatorio, en la que el agua en reposo no fluiría hacia ningún lado. Sigue el reparto de masas del planeta (montañas, fosas, densidad del interior), así que no cabe en una fórmula de dos parámetros como el elipsoide: se calcula con medidas de gravedad y de satélites y se publica como una malla de ondulaciones N. El datum de cada país lo materializa solo de forma aproximada.</p>
+        <p>La del geoide: la superficie de igual potencial de la gravedad que mejor se ajusta al nivel medio del mar, en la que el agua en reposo no fluiría hacia ningún lado. Sigue el reparto de masas del planeta (montañas, fosas, densidad del interior), así que no cabe en una fórmula de dos parámetros como el elipsoide: se calcula con medidas de gravedad y de satélites y se publica como una malla de ondulaciones N. El datum de cada país lo materializa solo de forma aproximada.</p>
       </div>
       <div class="card w2"><span class="c-label">Geoide frente a elipsoide</span><b class="c-num" style="font-size:clamp(1.3rem,2vw,2rem);white-space:nowrap">−106 a +86<small>m</small></b><span class="c-foot">ondulación N en todo el planeta · EGM2008</span></div>
       <div class="card w3">
@@ -1802,7 +1803,7 @@
         <p>La altura sale del GNSS restando la ondulación: <span class="mono">H = h − N</span>. Canadá definió así su CGVD2013, sin mareógrafo de origen.</p>
       </div>
       <div class="card w6 g">
-        <p style="margin:0">El mar medio no coincide del todo con el geoide: corrientes, vientos y salinidad lo separan del orden de un metro <span class="tag">Inferido</span>, y por eso dos países con mareógrafos distintos tienen ceros de altura distintos.</p>
+        <p style="margin:0">El mar medio no coincide del todo con el geoide: corrientes, vientos y salinidad lo separan del orden de un metro (hasta unos 2 m), y por eso dos países con mareógrafos distintos tienen ceros de altura distintos.</p>
       </div>
       <div class="card w6">
         <div class="table-wrap"><table>
