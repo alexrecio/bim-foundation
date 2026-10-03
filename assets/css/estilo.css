@@ -347,6 +347,9 @@ body:has(.deck) footer.site { padding-left: var(--side); }
 @media (min-width: 640px) { .m-full.w2 { grid-column: span 2; } .m-full.w3 { grid-column: span 3; } }
 
 .slide-n { display: block; font-family: var(--mono); font-size: 11px; font-weight: 700; letter-spacing: .1em; color: var(--s400); margin-bottom: 12px; }
+/* Sin cabecera pequeña sobre el titular (contador, bloque, regla y antetítulo): el menú ya lo dice.
+   El antetítulo sigue en el HTML para el buscador y la accesibilidad del índice. */
+.slide .slide-n, .slide .slide-n + .kicker-y { display: none; }
 .slide .kicker-y { margin-bottom: 16px; }
 .slide h2 { font-size: clamp(2.1rem, 4.6vw, 4rem); }
 .slide h1.display { font-size: clamp(2.5rem, 6.4vw, 5.2rem); line-height: 1; }
