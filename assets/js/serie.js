@@ -10,8 +10,8 @@ window.SERIE = [
     resumen: 'Primero los conceptos que valen para cualquier programa (geodesia, topografía, precisión y transformación); después estándares, software, plataformas, interoperabilidad y control de calidad.',
     tema: 'Georreferenciación',
     fecha: '2026-10',
-    lectura: '43 ideas',
-    tiempo: {es:[770,2983],en:[754,2936],de:[715,2732]}, // s: [diapositivas, con detalle] · herramientas/tiempos-lectura.mjs
+    lectura: '42 ideas',
+    tiempo: {es:[742,2948],en:[754,2936],de:[715,2732]}, // s: [diapositivas, con detalle] · herramientas/tiempos-lectura.mjs
     estado: 'borrador' // borrador | publicado | proximamente | relleno (ficticio)
   },
   {
