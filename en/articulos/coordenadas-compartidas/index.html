@@ -6,12 +6,12 @@
   <!-- Draft: remove noindex on publishing -->
   <meta name="robots" content="noindex, nofollow">
   <!-- Translation of articulos/coordenadas-compartidas/index.html at this git blob (herramientas/i18n.mjs flags it when the Spanish page changes) -->
-  <meta name="bf-fuente" content="articulos/coordenadas-compartidas/index.html@d1a446bcc1ee45e1a91a8f3246ce6d8d2ef1297a">
+  <meta name="bf-fuente" content="articulos/coordenadas-compartidas/index.html@05b336fb8a05aa5c810c11ceee772a898bd24578">
   <title>Coordinate systems in BIM | bimkernel</title>
-  <meta name="description" content="How shared coordinates work in Revit, Civil 3D, IFC and the rest of BIM software, with the Spanish geodetic framework (ETRS89, EPSG, Alicante heights).">
+  <meta name="description" content="Coordinate systems in BIM: the tool that coordinates the physical and the digital, from the datum and the projection to the model, IFC and setting out.">
   <meta property="og:type" content="article">
   <meta property="og:title" content="Coordinate systems in BIM · bimkernel">
-  <meta property="og:description" content="Internal Origin, Project Base Point and Survey Point: the model stays put and what moves is the coordinate system.">
+  <meta property="og:description" content="The tool that coordinates the physical and the digital: it translates reality into data with precision and puts it back in its place.">
   <link rel="icon" href="../../../assets/img/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="../../../assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="../../../assets/css/estilo.css">
@@ -58,7 +58,6 @@
           <p class="hero-id"><a href="../../" style="text-decoration:none">bimkernel · 01</a></p>
           <span class="kicker-y lg">Reality · model · site</span>
           <h1 class="display">Coordinate<br>systems<br><span class="hl-y">in BIM<span class="dot">.</span></span></h1>
-          <p class="slide-lead">The tool that translates physical reality into digital data with precision, and puts it back in its place.</p>
           <div class="slide-actions"><a class="btn" href="#porque">Start <span aria-hidden="true">↓</span></a><button type="button" class="crs-chip crs-portada" data-crs-chip></button></div>
         </div>
         <div class="b-cards">
@@ -84,25 +83,27 @@
         <div class="b-title">
           <span class="slide-n"></span>
           <span class="kicker-y">A · Why coordinates</span>
-          <h2 class="display">A two-way translator<span class="dot">.</span></h2>
-          <p class="slide-lead">Coordinates bring what is measured into the model and return what is designed to its place on the ground.</p>
+          <h2 class="display">The tool that coordinates the physical and the digital<span class="dot">.</span></h2>
+          <p class="slide-lead">It translates physical reality into digital data with precision, and puts it back in its place.</p>
           <div class="slide-actions"><button type="button" class="btn l2-btn" data-l2="porque"><span class="plus">+</span> See detail</button></div>
         </div>
         <div class="b-cards">
           <div class="card w6">
-            <span class="c-label">One cycle, one system · it lasts the whole life of the asset</span>
-            <svg class="draw" viewBox="22 0 556 330" role="img" aria-label="Cycle with the coordinate system at its centre. Left half, the physical asset: reality, build and operate. Right half, the digital asset: encode, design and coordinate. At the top, measuring takes the physical to the digital; at the bottom, setting out brings it back.">
-              <path d="M300 48 A120 120 0 0 0 300 288 L300 224 A56 56 0 0 1 300 112 Z" fill="#EFEFEA"/>
-              <path d="M300 18 V296" stroke="#000" stroke-width="1" stroke-dasharray="2 5"/>
-              <circle cx="300" cy="168" r="120" fill="none" stroke="#000" stroke-width="2.5"/>
-              <polygon points="340,61 345,50 354,61" fill="#000"/><polygon points="404,121 415,116 414,130" fill="#000"/><polygon points="408,206 419,211 408,220" fill="#000"/><polygon points="349,271 354,282 340,282" fill="#000"/><polygon points="260,275 255,286 246,275" fill="#000"/><polygon points="196,215 185,220 186,206" fill="#000"/><polygon points="192,130 181,125 192,116" fill="#000"/><polygon points="251,65 246,54 260,54" fill="#000"/>
-              <g font-family="JetBrains Mono, monospace" font-size="12"><circle cx="300" cy="48" r="9" fill="#FFFF00" stroke="#000" stroke-width="2.5"/><text x="300" y="34" text-anchor="middle" font-weight="700" font-size="13">measure</text><circle cx="385" cy="83" r="6" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="398" y="74" text-anchor="start">encode</text><circle cx="420" cy="168" r="6" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="438" y="172" text-anchor="start">design</text><circle cx="385" cy="253" r="6" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="398" y="270" text-anchor="start">coordinate</text><circle cx="300" cy="288" r="9" fill="#FFFF00" stroke="#000" stroke-width="2.5"/><text x="300" y="312" text-anchor="middle" font-weight="700" font-size="13">set out</text><circle cx="215" cy="253" r="6" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="202" y="270" text-anchor="end">build</text><circle cx="180" cy="168" r="6" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="162" y="172" text-anchor="end">operate</text><circle cx="215" cy="83" r="6" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="202" y="74" text-anchor="end">reality</text></g>
-              <circle cx="300" cy="168" r="56" fill="#FFFF00" stroke="#000" stroke-width="3"/>
+            <span class="c-label">A cyclical process, one system at the centre · the whole life of the asset</span>
+            <svg class="draw" viewBox="0 0 600 334" role="img" aria-label="Cyclical process between the physical asset, on the left, and the digital asset, on the right. At the top, from the physical to the digital: measure, encode and design. At the bottom, from the digital to the physical: coordinate, set out and build. At the centre, the coordinate system connects every stage.">
+              <g stroke="#B9B9B0" stroke-width="1.2" stroke-dasharray="3 4"><line x1="300" y1="168" x2="217" y2="85"/><line x1="300" y1="168" x2="300" y2="50"/><line x1="300" y1="168" x2="383" y2="85"/><line x1="300" y1="168" x2="383" y2="251"/><line x1="300" y1="168" x2="300" y2="286"/><line x1="300" y1="168" x2="217" y2="251"/><line x1="300" y1="168" x2="182" y2="168"/><line x1="300" y1="168" x2="418" y2="168"/></g>
+              <circle cx="300" cy="168" r="118" fill="none" stroke="#000" stroke-width="2.5"/>
+              <polygon points="195,129 184,124 195,115" fill="#000"/><polygon points="253,66 249,55 263,56" fill="#000"/><polygon points="339,63 344,52 353,63" fill="#000"/><polygon points="402,121 413,117 412,131" fill="#000"/><polygon points="406,205 417,210 406,220" fill="#000"/><polygon points="348,269 353,280 339,280" fill="#000"/><polygon points="263,274 258,285 248,274" fill="#000"/><polygon points="199,216 188,221 188,207" fill="#000"/>
+              <g font-family="JetBrains Mono, monospace" font-size="12"><circle cx="217" cy="85" r="6" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="204" y="76" text-anchor="end">measure</text><circle cx="300" cy="50" r="6" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="300" y="36" text-anchor="middle">encode</text><circle cx="383" cy="85" r="6" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="396" y="76" text-anchor="start">design</text><circle cx="383" cy="251" r="6" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="396" y="268" text-anchor="start">coordinate</text><circle cx="300" cy="286" r="6" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="300" y="310" text-anchor="middle">set out</text><circle cx="217" cy="251" r="6" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="204" y="268" text-anchor="end">build</text></g>
+              <circle cx="182" cy="168" r="34" fill="#fff" stroke="#000" stroke-width="3"/>
+              <path d="M160 182 C172 177 188 176 204 180" fill="none" stroke="#000" stroke-width="3" stroke-linecap="round"/><path d="M182 177 V160" stroke="#000" stroke-width="3" stroke-linecap="round"/><circle cx="182" cy="154" r="5" fill="#fff" stroke="#000" stroke-width="2.5"/>
+              <circle cx="418" cy="168" r="34" fill="#fff" stroke="#000" stroke-width="3"/>
+              <rect x="398" y="152" width="40" height="27" rx="3" fill="#fff" stroke="#000" stroke-width="2.5"/><path d="M418 179 V184 M410 184 H426" stroke="#000" stroke-width="2.5" stroke-linecap="round"/><path d="M408 173 V162 L416 158 L428 161 V170 Z M408 162 L420 165 L428 161 M420 165 V175" fill="none" stroke="#000" stroke-width="1.5" stroke-linejoin="round"/>
+              <g font-family="JetBrains Mono, monospace" font-size="12" font-weight="700"><text x="138" y="166" text-anchor="end">PHYSICAL</text><text x="138" y="181" text-anchor="end">ASSET</text><text x="462" y="166">DIGITAL</text><text x="462" y="181">ASSET</text></g>
+              <g font-family="JetBrains Mono, monospace" font-size="11" fill="#666"><text x="138" y="196" text-anchor="end">the built work, in use</text><text x="462" y="196">the model</text></g>
+              <circle cx="300" cy="168" r="52" fill="#FFFF00" stroke="#000" stroke-width="3"/>
               <g font-family="JetBrains Mono, monospace" text-anchor="middle"><text x="300" y="158" font-size="11" font-weight="700">COORDINATE</text><text x="300" y="172" font-size="11" font-weight="700">SYSTEM</text><text x="300" y="192" font-size="12">E · N · H</text></g>
-              <g font-family="JetBrains Mono, monospace" font-size="12" font-weight="700" text-anchor="middle"><text x="70" y="250">PHYSICAL</text><text x="70" y="266">ASSET</text><text x="530" y="250">DIGITAL</text><text x="530" y="266">ASSET</text></g>
-              <path d="M30 228 C55 220 80 218 110 224" fill="none" stroke="#000" stroke-width="3" stroke-linecap="round"/><path d="M70 220 V196" stroke="#000" stroke-width="3" stroke-linecap="round"/><circle cx="70" cy="190" r="6" fill="#fff" stroke="#000" stroke-width="3"/>
-              <rect x="494" y="180" width="72" height="46" rx="4" fill="#fff" stroke="#000" stroke-width="2.5"/><path d="M530 226 V232 M518 232 H542" stroke="#000" stroke-width="2.5" stroke-linecap="round"/><path d="M512 216 V198 L526 191 L546 196 V212 Z M512 198 L532 203 L546 196 M532 203 V219 M512 216 L532 219 L546 212" fill="none" stroke="#000" stroke-width="1.8" stroke-linejoin="round"/>
-              <g font-family="JetBrains Mono, monospace" font-size="11" fill="#666" text-anchor="middle"><text x="300" y="14">physical ▸ digital</text><text x="300" y="326">digital ▸ physical</text></g>
+              <g font-family="JetBrains Mono, monospace" font-size="11" fill="#666" text-anchor="middle"><text x="300" y="14">physical ▸ digital</text><text x="300" y="330">digital ▸ physical</text></g>
             </svg>
 
           </div>
