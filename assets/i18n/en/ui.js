@@ -25,7 +25,7 @@
     'Elige el sistema de tu obra': 'Choose your project’s system', 'códigos EPSG para el BEP y el IFC': 'EPSG codes for the BEP and the IFC',
     'Fuentes:': 'Sources:', 'sin código EPSG': 'no EPSG code', 'pies US': 'US survey feet', 'pies': 'feet', 'en pies': 'in feet',
     'su sistema de altitudes': 'its height system', 'su red geodésica nacional': 'its national geodetic network',
-    'Desde dónde lees': 'Where you read from', 'Cambiar país': 'Change country', 'países': 'countries', 'Los ejemplos y los datos se adaptan a tu país. Se recuerda en todos los artículos.': 'Examples and data adapt to your country. It is remembered across all articles.',
+    'Los ejemplos y los datos se adaptan a tu país. Se recuerda en todos los artículos.': 'Examples and data adapt to your country. It is remembered across all articles.',
     'Se recuerda en todos los artículos': 'Remembered across all articles',
     'Antes de empezar': 'Before you start', '¿En qué sistema trabajas': 'Which system do you work in',
     'Los ejemplos de coordenadas del artículo se calculan en el sistema que elijas. Se recuerda en toda la serie.': 'The coordinate examples in the article are calculated in the system you choose. It is remembered across the whole series.',
