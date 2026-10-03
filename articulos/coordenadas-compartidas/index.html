@@ -440,7 +440,7 @@
           <div class="card w2" data-slot="2"><span class="c-label"><span data-pc="region">América</span> · <span data-pc="nombre">Perú</span></span><span class="c-title mono" style="font-size:18px"><span data-pc="e-pt">277 925</span> E<br><span data-pc="n-pt">8 667 092</span> N</span><span class="c-foot">EPSG <span data-pc="epsg">32718</span> · en <span data-pc="u-pt">m</span></span></div>
           <div class="card w6 g">
             <span class="c-label">Lo que lleva un código EPSG</span>
-            <div class="flow"><span class="chip">Datum</span><span class="arrow">+</span><span class="chip">Proyección y zona</span><span class="arrow">+</span><span class="chip">Unidades y ejes</span><span class="arrow">=</span><span class="chip y">Un sistema de referencia</span></div>
+            <div class="flow"><span class="chip">Datum</span><span class="arrow">+</span><span class="chip">Proyección y zona</span><span class="arrow">+</span><span class="chip">Unidades y ejes</span><span class="arrow">=</span><span class="chip y">Un sistema de referencia de coordenadas (CRS)</span></div>
             <p class="c-text" style="margin-top:10px">La altura va aparte, con su propio código, y se combina con él.</p>
           </div>
         </div>
@@ -3037,7 +3037,7 @@ print("OK" if error &lt; 0.01 else f"Desvío de {error:.3f} m")</code></pre>
           <tbody>
             <tr><td>Revit</td><td>Anotación <span class="ui">Cota de coordenada</span> con origen «Punto de reconocimiento», que mide desde el origen compartido</td><td>Este, Norte y elevación del cubo testigo</td></tr>
             <tr><td>Archicad</td><td><span class="ui">Mostrar coordenadas del Survey Point</span></td><td>Las coordenadas del punto, junto a él</td></tr>
-            <tr><td>Civil 3D</td><td><span class="ui">Configuración del dibujo › Unidades y zona</span></td><td>El sistema de coordenadas asignado</td></tr>
+            <tr><td>Civil 3D</td><td><span class="ui">Configuración del dibujo › Unidades y zona</span></td><td>El sistema de referencia asignado (Autodesk lo llama «sistema de coordenadas»)</td></tr>
             <tr><td>Bonsai</td><td>Panel de georreferenciación</td><td>Conversión de local a global de un punto</td></tr>
             <tr class="is-key"><td>BIMcollab Zoom</td><td>Opción <span class="ui">Use georeferencing</span></td><td>Que los IFC se coloquen por su conversión</td></tr>
           </tbody>
@@ -3058,9 +3058,9 @@ print("OK" if error &lt; 0.01 else f"Desvío de {error:.3f} m")</code></pre>
   <template id="l2-glosario">
 <div class="b-cards"><div class="card w6">
 <dl class="glossary">
-      <dt>CRS</dt><dd>Sistema de referencia de coordenadas: datum, proyección y unidades.</dd>
+      <dt>CRS</dt><dd>Sistema de referencia de coordenadas: datum + sistema de coordenadas (ejes y unidades); en los proyectados, también la proyección.</dd>
       <dt>Datum</dt><dd>Modelo de la Tierra al que se refieren las coordenadas. En <span data-pais="nombre">España</span>, <span data-pais="datum">ETRS89</span>.</dd>
-      <dt>EPSG</dt><dd>Registro con un código numérico para cada sistema de referencia.</dd>
+      <dt>EPSG</dt><dd>Registro con un código numérico para cada sistema de referencia, datum y transformación.</dd>
       <dt>UTM</dt><dd>Proyección Universal Transversa de Mercator, en husos de 6°.</dd>
       <dt>Altura ortométrica</dt><dd>Altitud sobre el nivel medio del mar. La de los planos.</dd>
       <dt>Altura elipsoidal</dt><dd>Altura sobre el elipsoide. La que da un GNSS.</dd>
